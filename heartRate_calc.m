@@ -101,7 +101,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	%% Block 3.1 ==== Algorithm 1: Peak counting
 	% Set peak-detection params
     threshold = threshold_fraction * max(temporal_mean_filt(firstSample : end));
-    minPeakDistance = max_bpm;
+    minPeakDistance = 60 / max_bpm * fr;
 	
 	% Perform peak counting for each window
 	windowStart = firstSample;
@@ -145,7 +145,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	
 	%% Block 3.2 ==== Algorithm 2: Autocorrelation
 	% Set peak-detection params
-    minPeakDistance = max_bpm;
+    minPeakDistance = 60 / max_bpm * fr;
     
 	% Step 1: Calculate the window-based autocorrelation of the signal stream
 	windowStart = firstSample;
