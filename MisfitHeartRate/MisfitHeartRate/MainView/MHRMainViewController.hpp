@@ -14,9 +14,11 @@
 #import <opencv2/highgui/cap_ios.h>
 #import <opencv2/highgui/highgui.hpp>
 #import <opencv2/highgui/highgui_c.h>
+#import <vector>
 
 using namespace cv;
 
 @interface MHRMainViewController : UIViewController <CvVideoCameraDelegate>
+
 
 @end

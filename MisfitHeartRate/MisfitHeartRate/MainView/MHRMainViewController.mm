@@ -10,18 +10,21 @@
 
 @interface MHRMainViewController ()
 {
-    CvCapture *videoCapture;
+//    CvCapture *videoCapture;
 }
 
 @property (strong, nonatomic) CvVideoCamera *videoCamera;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UISwitch *cameraSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 @end
 
 @implementation MHRMainViewController
 
 @synthesize videoCamera = _videoCamera;
+@synthesize cameraSwitch = _cameraSwitch;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,60 +42,22 @@
     [super viewDidLoad];
     
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSLog(@"resourcePath = %@", resourcePath);
-    NSLog(@"%@", [resourcePath stringByDeletingLastPathComponent]);
-    //    NSLog(@"%@", [[resourcePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]);
-    
-    String fileName("test.mp4");
-    
+    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test.mp4"];
+    NSLog(@"filePath = %@", filePath);
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:[[resourcePath stringByDeletingLastPathComponent] stringByAppendingString:@"/test.mp4"]])
+    if (![fileManager fileExistsAtPath:filePath])
     {
         NSLog(@"file is not exists!");
     }
-    
-    VideoCapture _videoCapture;
-    _videoCapture.open(fileName);
-    if (!_videoCapture.isOpened())
-    {
-        NSLog(@"_videoCapture is not opened!");
-        return;
-    }
-    
-    
-    CvCapture *capture = cvCreateFileCapture("2014-06-10-Self-Face_crop.mp4");
-    
-    if (!capture)
-    {
-        NSLog(@"Cannot read file \"2014-06-10-Self-Face_crop.mp4\"");
-        return;
-    }
-    
-    IplImage *frame;
-    Mat mat;
-    for (int i = 0; i < 10; ++i)
-    {
-        frame = cvQueryFrame(capture);
-        if (!frame)
-            break;
-        mat = cvarrToMat(frame);
-        _imageView.image = MatToUIImage(mat);
-        cvWaitKey(30);
-        //        waitKey(30);
-    }
-    cvReleaseCapture(&capture);
-    
-    
-    //    _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
-    //    _videoCamera.delegate = self;
-    //    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-    //    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-    //    _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
-    //    _videoCamera.rotateVideo = YES;
-    //    _videoCamera.defaultFPS = 30;
-    //    _videoCamera.grayscaleMode = NO;
-    //    [_videoCamera start];'
-    
+   
+    _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
+    _videoCamera.delegate = self;
+    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+    _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+    _videoCamera.rotateVideo = YES;
+    _videoCamera.defaultFPS = 30;
+    _videoCamera.grayscaleMode = NO;
 }
 
 
@@ -109,6 +74,68 @@
 }
 
 
+- (IBAction)startButtonDidTap:(id)sender {
+    _cameraSwitch.enabled = NO;
+    if (_cameraSwitch.isOn)
+    {
+        [_videoCamera start];
+        return;
+    }
+    
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test.mp4"];
+    VideoCapture videoCapture([filePath UTF8String]);
+    Mat frame;
+    if (!videoCapture.isOpened())
+    {
+        NSLog(@"Error when reading %@", filePath);
+    }
+    
+    int nFrame = videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
+    NSLog(@"nFrame = %i", nFrame);
+    NSLog(@"Frame rate = %f", videoCapture.get(CV_CAP_PROP_FPS));
+
+    _imageView.image = nil;
+    while(1)
+    {
+        videoCapture >> frame;
+        if (frame.empty())
+        {
+            break;
+        }
+        ++nFrame;
+        
+        NSLog(@"nFrame = %i", nFrame);
+//        NSLog(@"channels = %i", frame.channels());
+//        NSLog(@"type = %i", frame.type());
+//        NSLog(@"test type = %i", CV_8UC3);
+        
+        if (_imageView.image == nil)
+        {
+//            _imageView.image = [self UIImageFromCVMat:frame];
+            _imageView.image = MatToUIImage(frame);
+        }
+        
+//        for (int i = 0; i < frame.rows; ++i)
+//            for (int j = 0; j < frame.cols; ++j) {
+//                NSLog(@"p(%i, %i) = %i, %i, %i", i, j, frame.at<Vec3b>(i, j)[0], frame.at<Vec3b>(i, j)[1], frame.at<Vec3b>(i, j)[2]);
+//            }
+//        [NSThread sleepForTimeInterval:1];
+    }
+   NSLog(@"nFrame = %i", nFrame);
+}
+
+
+- (IBAction)stopButtonDidTap:(id)sender {
+    _cameraSwitch.enabled = YES;
+    if (_cameraSwitch.isOn)
+    {
+        [_videoCamera stop];
+        return;
+    }
+}
+
+
 #pragma - Protocol CvVideoCameraDelegate
 
 - (void)processImage:(cv::Mat &)image
@@ -119,8 +146,14 @@
     cvtColor(image, image_copy, CV_BGRA2BGR);
     
     // invert image
-    bitwise_not(image_copy, image_copy);
-    //    cvtColor(image_copy, image, CV_BGR2BGRA);
+//    bitwise_not(image_copy, image_copy);
+//    cvtColor(image_copy, image, CV_BGR2BGRA);
+    
+//    NSLog(@"channels = %i", image.channels());
+//    for (int i = 0; i < image.rows; ++i) {
+//        for (int j = 0; j < image.cols; ++j)
+//            NSLog(@"p(%i, %i) = %i, %i, %i, %i", i, j, image.at<Vec3b>(i, j)[0], image.at<Vec3b>(i, j)[1], image.at<Vec3b>(i, j)[2], image.at<Vec3b>(i, j)[3]);
+//    }
 }
 
 @end
