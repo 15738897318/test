@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DCB55F171957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
+		DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F181957CB3B0095A98E /* CoreGraphics.framework */; };
+		DCB55F1B1957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
+		DCB55F1D1957CB3B0095A98E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1C1957CB3B0095A98E /* CoreData.framework */; };
+		DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F211957CB3B0095A98E /* InfoPlist.strings */; };
+		DCB55F251957CB3B0095A98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F241957CB3B0095A98E /* main.m */; };
+		DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */; };
+		DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F2A1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld */; };
+		DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F2D1957CB3B0095A98E /* Images.xcassets */; };
+		DCB55F351957CB3B0095A98E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F341957CB3B0095A98E /* XCTest.framework */; };
+		DCB55F361957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
+		DCB55F371957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
+		DCB55F381957CB3B0095A98E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1C1957CB3B0095A98E /* CoreData.framework */; };
+		DCB55F401957CB3B0095A98E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F3E1957CB3B0095A98E /* InfoPlist.strings */; };
+		DCB55F421957CB3B0095A98E /* MisfitHeartRateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F411957CB3B0095A98E /* MisfitHeartRateTests.m */; };
+		DCB55F521957CC170095A98E /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F511957CC170095A98E /* opencv2.framework */; };
+		DCB55F5A1957CC4C0095A98E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F531957CC4C0095A98E /* Accelerate.framework */; };
+		DCB55F5B1957CC4C0095A98E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */; };
+		DCB55F5C1957CC4C0095A98E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F551957CC4C0095A98E /* AVFoundation.framework */; };
+		DCB55F5E1957CC4C0095A98E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F571957CC4C0095A98E /* CoreImage.framework */; };
+		DCB55F5F1957CC4C0095A98E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F581957CC4C0095A98E /* CoreMedia.framework */; };
+		DCB55F601957CC4C0095A98E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F591957CC4C0095A98E /* CoreVideo.framework */; };
+		DCB55F621957CC6E0095A98E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F611957CC6E0095A98E /* QuartzCore.framework */; };
+		DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */; };
+		DCB55F671957CDCD0095A98E /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F651957CDCD0095A98E /* test.mp4 */; };
+		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
+		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
+		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DCB55F391957CB3B0095A98E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB55F0B1957CB3B0095A98E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB55F121957CB3B0095A98E;
+			remoteInfo = opticalHeartRate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisfitHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DCB55F181957CB3B0095A98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DCB55F1A1957CB3B0095A98E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DCB55F1C1957CB3B0095A98E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DCB55F201957CB3B0095A98E /* MisfitHeartRate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MisfitHeartRate-Info.plist"; path = "../MisfitHeartRate/MisfitHeartRate-Info.plist"; sourceTree = "<group>"; };
+		DCB55F221957CB3B0095A98E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DCB55F241957CB3B0095A98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../MisfitHeartRate/main.m; sourceTree = "<group>"; };
+		DCB55F261957CB3B0095A98E /* MisfitHeartRate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MisfitHeartRate-Prefix.pch"; path = "../MisfitHeartRate/MisfitHeartRate-Prefix.pch"; sourceTree = "<group>"; };
+		DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = MHRAppDelegate.hpp; path = ../MisfitHeartRate/MHRAppDelegate.hpp; sourceTree = "<group>"; };
+		DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRAppDelegate.mm; path = ../MisfitHeartRate/MHRAppDelegate.mm; sourceTree = "<group>"; };
+		DCB55F2B1957CB3B0095A98E /* opticalHeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = opticalHeartRate.xcdatamodel; sourceTree = "<group>"; };
+		DCB55F2D1957CB3B0095A98E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../MisfitHeartRate/Images.xcassets; sourceTree = "<group>"; };
+		DCB55F331957CB3B0095A98E /* MisfitHeartRateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MisfitHeartRateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCB55F341957CB3B0095A98E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DCB55F3D1957CB3B0095A98E /* MisfitHeartRateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MisfitHeartRateTests-Info.plist"; sourceTree = "<group>"; };
+		DCB55F3F1957CB3B0095A98E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DCB55F411957CB3B0095A98E /* MisfitHeartRateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MisfitHeartRateTests.m; path = ../MisfitHeartRateTests/MisfitHeartRateTests.m; sourceTree = "<group>"; };
+		DCB55F511957CC170095A98E /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = frameworks/opencv2.framework; sourceTree = "<group>"; };
+		DCB55F531957CC4C0095A98E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		DCB55F551957CC4C0095A98E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DCB55F561957CC4C0095A98E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		DCB55F571957CC4C0095A98E /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		DCB55F581957CC4C0095A98E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		DCB55F591957CC4C0095A98E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		DCB55F611957CC6E0095A98E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "2014-06-10-Self-Face_crop.mp4"; sourceTree = "<group>"; };
+		DCB55F651957CDCD0095A98E /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRMainViewController.hpp; path = MisfitHeartRate/MainView/MHRMainViewController.hpp; sourceTree = SOURCE_ROOT; };
+		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
+		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
+		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DCB55F101957CB3B0095A98E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB55F621957CC6E0095A98E /* QuartzCore.framework in Frameworks */,
+				DCB55F5A1957CC4C0095A98E /* Accelerate.framework in Frameworks */,
+				DCB55F5B1957CC4C0095A98E /* AssetsLibrary.framework in Frameworks */,
+				DCB55F5C1957CC4C0095A98E /* AVFoundation.framework in Frameworks */,
+				DCB55F5E1957CC4C0095A98E /* CoreImage.framework in Frameworks */,
+				DCB55F5F1957CC4C0095A98E /* CoreMedia.framework in Frameworks */,
+				DCB55F601957CC4C0095A98E /* CoreVideo.framework in Frameworks */,
+				DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */,
+				DCB55F521957CC170095A98E /* opencv2.framework in Frameworks */,
+				DCB55F1D1957CB3B0095A98E /* CoreData.framework in Frameworks */,
+				DCB55F1B1957CB3B0095A98E /* UIKit.framework in Frameworks */,
+				DCB55F171957CB3B0095A98E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCB55F301957CB3B0095A98E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB55F351957CB3B0095A98E /* XCTest.framework in Frameworks */,
+				DCB55F381957CB3B0095A98E /* CoreData.framework in Frameworks */,
+				DCB55F371957CB3B0095A98E /* UIKit.framework in Frameworks */,
+				DCB55F361957CB3B0095A98E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DCB55F0A1957CB3B0095A98E = {
+			isa = PBXGroup;
+			children = (
+				DCB55F1E1957CB3B0095A98E /* MisfitlHeartRate */,
+				DCB55F3B1957CB3B0095A98E /* MisfitHeartRateTests */,
+				DCB55F151957CB3B0095A98E /* Frameworks */,
+				DCB55F141957CB3B0095A98E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DCB55F141957CB3B0095A98E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */,
+				DCB55F331957CB3B0095A98E /* MisfitHeartRateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCB55F151957CB3B0095A98E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F611957CC6E0095A98E /* QuartzCore.framework */,
+				DCB55F531957CC4C0095A98E /* Accelerate.framework */,
+				DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */,
+				DCB55F551957CC4C0095A98E /* AVFoundation.framework */,
+				DCB55F561957CC4C0095A98E /* CoreAudio.framework */,
+				DCB55F571957CC4C0095A98E /* CoreImage.framework */,
+				DCB55F581957CC4C0095A98E /* CoreMedia.framework */,
+				DCB55F591957CC4C0095A98E /* CoreVideo.framework */,
+				DCB55F511957CC170095A98E /* opencv2.framework */,
+				DCB55F161957CB3B0095A98E /* Foundation.framework */,
+				DCB55F181957CB3B0095A98E /* CoreGraphics.framework */,
+				DCB55F1A1957CB3B0095A98E /* UIKit.framework */,
+				DCB55F1C1957CB3B0095A98E /* CoreData.framework */,
+				DCB55F341957CB3B0095A98E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCB55F1E1957CB3B0095A98E /* MisfitlHeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F631957CDCD0095A98E /* resources */,
+				DCB55F4B1957CBB80095A98E /* MainView */,
+				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
+				DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */,
+				DCB55F2D1957CB3B0095A98E /* Images.xcassets */,
+				DCB55F2A1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld */,
+				DCB55F1F1957CB3B0095A98E /* Supporting Files */,
+			);
+			name = MisfitlHeartRate;
+			path = MisfitHeartRate;
+			sourceTree = "<group>";
+		};
+		DCB55F1F1957CB3B0095A98E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F201957CB3B0095A98E /* MisfitHeartRate-Info.plist */,
+				DCB55F211957CB3B0095A98E /* InfoPlist.strings */,
+				DCB55F241957CB3B0095A98E /* main.m */,
+				DCB55F261957CB3B0095A98E /* MisfitHeartRate-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DCB55F3B1957CB3B0095A98E /* MisfitHeartRateTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F411957CB3B0095A98E /* MisfitHeartRateTests.m */,
+				DCB55F3C1957CB3B0095A98E /* Supporting Files */,
+			);
+			path = MisfitHeartRateTests;
+			sourceTree = "<group>";
+		};
+		DCB55F3C1957CB3B0095A98E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F3D1957CB3B0095A98E /* MisfitHeartRateTests-Info.plist */,
+				DCB55F3E1957CB3B0095A98E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DCB55F4B1957CBB80095A98E /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */,
+				DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */,
+				DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		DCB55F631957CDCD0095A98E /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				DCB55F721957E0EF0095A98E /* test.avi */,
+				DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */,
+				DCB55F651957CDCD0095A98E /* test.mp4 */,
+			);
+			path = resources;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DCB55F121957CB3B0095A98E /* MisfitHeartRate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCB55F451957CB3B0095A98E /* Build configuration list for PBXNativeTarget "MisfitHeartRate" */;
+			buildPhases = (
+				DCB55F0F1957CB3B0095A98E /* Sources */,
+				DCB55F101957CB3B0095A98E /* Frameworks */,
+				DCB55F111957CB3B0095A98E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MisfitHeartRate;
+			productName = opticalHeartRate;
+			productReference = DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DCB55F321957CB3B0095A98E /* MisfitHeartRateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCB55F481957CB3B0095A98E /* Build configuration list for PBXNativeTarget "MisfitHeartRateTests" */;
+			buildPhases = (
+				DCB55F2F1957CB3B0095A98E /* Sources */,
+				DCB55F301957CB3B0095A98E /* Frameworks */,
+				DCB55F311957CB3B0095A98E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCB55F3A1957CB3B0095A98E /* PBXTargetDependency */,
+			);
+			name = MisfitHeartRateTests;
+			productName = opticalHeartRateTests;
+			productReference = DCB55F331957CB3B0095A98E /* MisfitHeartRateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DCB55F0B1957CB3B0095A98E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MHR;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = misfit;
+				TargetAttributes = {
+					DCB55F321957CB3B0095A98E = {
+						TestTargetID = DCB55F121957CB3B0095A98E;
+					};
+				};
+			};
+			buildConfigurationList = DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "MisfitHeartRate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DCB55F0A1957CB3B0095A98E;
+			productRefGroup = DCB55F141957CB3B0095A98E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DCB55F121957CB3B0095A98E /* MisfitHeartRate */,
+				DCB55F321957CB3B0095A98E /* MisfitHeartRateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DCB55F111957CB3B0095A98E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
+				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
+				DCB55F731957E0EF0095A98E /* test.avi in Resources */,
+				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
+				DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */,
+				DCB55F671957CDCD0095A98E /* test.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCB55F311957CB3B0095A98E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB55F401957CB3B0095A98E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DCB55F0F1957CB3B0095A98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
+				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
+				DCB55F251957CB3B0095A98E /* main.m in Sources */,
+				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCB55F2F1957CB3B0095A98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCB55F421957CB3B0095A98E /* MisfitHeartRateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DCB55F3A1957CB3B0095A98E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB55F121957CB3B0095A98E /* MisfitHeartRate */;
+			targetProxy = DCB55F391957CB3B0095A98E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DCB55F211957CB3B0095A98E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCB55F221957CB3B0095A98E /* en */,
+			);
+			name = InfoPlist.strings;
+			path = ../MisfitHeartRate;
+			sourceTree = "<group>";
+		};
+		DCB55F3E1957CB3B0095A98E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCB55F3F1957CB3B0095A98E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DCB55F431957CB3B0095A98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DCB55F441957CB3B0095A98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DCB55F461957CB3B0095A98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
+				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = MisfitHeartRate;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DCB55F471957CB3B0095A98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
+				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = MisfitHeartRate;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DCB55F491957CB3B0095A98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/opticalHeartRate.app/opticalHeartRate";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "opticalHeartRate/opticalHeartRate-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "opticalHeartRateTests/MisfitHeartRateTests-Info.plist";
+				PRODUCT_NAME = MisfitHeartRateTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DCB55F4A1957CB3B0095A98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/opticalHeartRate.app/opticalHeartRate";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "opticalHeartRate/opticalHeartRate-Prefix.pch";
+				INFOPLIST_FILE = "opticalHeartRateTests/MisfitHeartRateTests-Info.plist";
+				PRODUCT_NAME = MisfitHeartRateTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "MisfitHeartRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCB55F431957CB3B0095A98E /* Debug */,
+				DCB55F441957CB3B0095A98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCB55F451957CB3B0095A98E /* Build configuration list for PBXNativeTarget "MisfitHeartRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCB55F461957CB3B0095A98E /* Debug */,
+				DCB55F471957CB3B0095A98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCB55F481957CB3B0095A98E /* Build configuration list for PBXNativeTarget "MisfitHeartRateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCB55F491957CB3B0095A98E /* Debug */,
+				DCB55F4A1957CB3B0095A98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DCB55F2A1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DCB55F2B1957CB3B0095A98E /* opticalHeartRate.xcdatamodel */,
+			);
+			currentVersion = DCB55F2B1957CB3B0095A98E /* opticalHeartRate.xcdatamodel */;
+			path = opticalHeartRate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DCB55F0B1957CB3B0095A98E /* Project object */;
+}

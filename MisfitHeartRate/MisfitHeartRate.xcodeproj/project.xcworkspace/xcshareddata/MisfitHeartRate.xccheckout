@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DFFDDF22-3729-4E11-A9E0-00A0FF5AC933</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MisfitHeartRate</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0EB97730-8D31-4D80-897F-76A13BC0C101</key>
+		<string>https://github.com/Misfit-Wearables/opticalHeartRate</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MisfitHeartRate/MisfitHeartRate.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0EB97730-8D31-4D80-897F-76A13BC0C101</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Misfit-Wearables/opticalHeartRate</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0EB97730-8D31-4D80-897F-76A13BC0C101</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0EB97730-8D31-4D80-897F-76A13BC0C101</string>
+			<key>IDESourceControlWCCName</key>
+			<string>videoHeartRate</string>
+		</dict>
+	</array>
+</dict>
+</plist>
