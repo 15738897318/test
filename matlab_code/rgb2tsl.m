@@ -18,6 +18,6 @@ function tslmap = rgb2tsl(rgbmap)
 	temp2 = ones(size(g_primes));
 	temp2(bsxfun(@eq, g_primes, 0)) = 0;
 	
-	tslmap(:, :, 1) = bsxfun(@plus, 1 / (2 * pi) * bsxfun(@times, bsxfun(@atan2, r_primes, g_primes), temp2), temp1);
-	tslmap(:, :, 2) = bsxfun(@power, (9/5 * (bsxfun(@power, r_primes, 2) + bsxfun(@power, g_primes, 2))), 1/2);
+	tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
+	tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
 	tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
