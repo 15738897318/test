@@ -47,7 +47,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	for i = startIndex : endIndex
 		k = k + 1;
 		
-		% Extract the ith frame in the video stream
+		% Extract thee ith frame in the video stream
 		temp.cdata = read(vid, i);
 		% Convert the extracted frame to RGB image
 		[rgbframe, ~] = frame2im(temp);
@@ -63,7 +63,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 				colorframe = rgb2ycbcr(rgbframe);
 			case 'tsl'
 				colorframe = rgb2tsl(rgbframe);
-        end
+        	end
         
 		if getRaw
 			colorframes(:, :, :, k) = colorframe;
