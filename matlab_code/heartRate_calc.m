@@ -12,6 +12,8 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	threshold_fraction = 0;
 	conversion_method = 'mode-balance';
 	
+	
+	
 	%% Block 1 ==== Load the video & convert it to the desired colour-space
 	% Get the filename-only part of the full path
 	[~, vidName] = fileparts(vidFile);
@@ -52,6 +54,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 		% Convert the extracted frame to RGB image
 		[rgbframe, ~] = frame2im(temp);
 		
+		% Convert the extracted frame to the desired colour-space
 		switch colourspace
 			case 'rgb'
 				colorframe = rgbframe;
@@ -70,19 +73,17 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 			monoframes(:, :, k) = squeeze(colorframe(:, :, colour_channel))
 		
 		else
-			%monoframes(:, :, k) = squeeze(double(colorframe(:, :, colour_channel)));
+			% Extract the right channel from the colour frame
+			monoframe = squeeze(double(colorframe(:, :, colour_channel)));
 			
 			% Downsample the frame for ease of computation
-			%monoframe = filt_img(squeeze(double(colorframe(:, :, colour_channel))));
-			%monoframes(:, :, k) = monoframe(1 : 4 : end, 1 : 4 : end);
+			monoframe = corrDn(monoframe, filt, 'reflect1', [4 4], [1 1], size(monoframe));
 			
-			monoframe = squeeze(double(colorframe(:, :, colour_channel)));
-			monoframes(:, :, k) = corrDn(monoframe, filt, 'reflect1', [4 4], [1 1], size(monoframe));
-			
-			%colorframe = colorframe(1 * round(size(colorframe, 1) / 4) + 1 : 2 * round(size(colorframe, 1) / 4), 1 * round(size(colorframe, 2) / 4) + 1 : 2 * round(size(colorframe, 2) / 4), :);
-			%monoframes(:, :, k) = squeeze(colorframe(:, :, colour_channel));
+			% Put the frame into the video stream
+			monoframes(:, :, k) = monoframe;
 		end
 	end
+	
 	
 	
 	%% Block 2 ==== Extract a signal stream & pre-process it
@@ -91,6 +92,8 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	
 	% Convert the frame stream into a 1-D signal
 	[temporal_mean, debug_frames2signal] = frames2signal(monoframes, conversion_method, fr, cutoff_freq);
+	
+	
 	
 	%% Block 3 ==== Heart-rate calculation
 	% Set peak-detection params
@@ -104,11 +107,21 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	[avg_hr_autocorr, debug_autocorr] = hr_calc_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance);
 	
 	
+	
 	%% ============ Function output and summary
 	% Display the average rate using total peak counts on the full stream
 	[~, peak_locs] = findpeaks(temporal_mean(firstSample : end), 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold);
 	disp('Average heart-rate: ');
 	disp(length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60);
+	
+	disp('Average heart-rate (PDA): ');
+	disp(avg_hr_pda);
+	
+	disp('Average heart-rate (ACF): ');
+	disp(avg_hr_autocorr);
+	
+	disp('Reference heart-rate (Basis): ');
+	disp(ref_reading);
 	
 	% Output of the function
 	hr_array = [ref_reading, colour_channel, avg_hr_autocorr, avg_hr_pda];

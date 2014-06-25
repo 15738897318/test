@@ -62,9 +62,12 @@ function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, wind
 		windowStart = windowStart + round((1 - overlap_ratio) * segment_length);
 	end
 	
+	% Prune the beats counted to include only unique ones
+	heartBeats = unique(heartBeats, 'rows', 'stable');
+	
 	% Calculate the average HR for the whole stream
 	if ~isempty(heartBeats)
-		avg_hr = round(size(unique(heartBeats(:, 2)), 1) / length(heartRates(firstSample : end)) * fr * 60);
+		avg_hr = round(size(heartBeats, 1) / length(heartRates(firstSample : end)) * fr * 60);
 	else
 		avg_hr = 0;
 	end

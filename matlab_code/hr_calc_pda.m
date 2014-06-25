@@ -21,7 +21,7 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 		end
 		
 		% b. Equal-step progression
-		segment_length = window_size;
+		%segment_length = window_size;
 		
 		% Record all beats in the window, even if there are duplicates
 		heartBeats = [heartBeats; [max_peak_strengths, (windowStart - 1 + max_peak_locs)]];		
@@ -33,9 +33,12 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 		windowStart = windowStart + round((1 - overlap_ratio) * segment_length);
 	end
 	
+	% Prune the beats counted to include only unique ones
+	heartBeats = unique(heartBeats, 'rows', 'stable');
+	
 	% Calculate the average HR for the whole stream
 	if ~isempty(heartBeats)
-		avg_hr = round(size(unique(heartBeats(:, 2)), 1) / length(heartRates(firstSample : end)) * fr * 60);
+		avg_hr = round(size(heartBeats, 1) / length(heartRates(firstSample : end)) * fr * 60);
 	else
 		avg_hr = 0;
 	end
