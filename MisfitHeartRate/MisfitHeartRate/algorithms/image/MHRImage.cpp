@@ -1,12 +1,12 @@
 //
-//  ImageUtilities.cpp
+//  MHRImage.cpp
 //  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 6/24/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#include "ImageUtilities.h"
+#include "MHRImage.h"
 
 
 namespace cv {

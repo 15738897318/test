@@ -1,16 +1,16 @@
 //
-//  ImageUtilities.h
+//  MHRImage.h
 //  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 6/24/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__ImageUtilities__
-#define __MisfitHeartRate__ImageUtilities__
+#ifndef __MisfitHeartRate__MHRImage__
+#define __MisfitHeartRate__MHRImage__
 
 #include <iostream>
-#include "Matrix.h"
+#include "MHRMatrix.h"
 
 namespace cv {
 
@@ -18,6 +18,6 @@ namespace cv {
     Mat rgb2tsl(const Mat& srcRGBmap);
 }
 
-#endif /* defined(__MisfitHeartRate__ImageUtilities__) */
+#endif /* defined(__MisfitHeartRate__MHRImage__) */
 
 

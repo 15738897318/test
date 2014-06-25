@@ -1,13 +1,13 @@
 //
-//  Matrix.h
+//  MHRMatrix.h
 //  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 6/24/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__Matrix__
-#define __MisfitHeartRate__Matrix__
+#ifndef __MisfitHeartRate__MHRMatrix__
+#define __MisfitHeartRate__MHRMatrix__
 
 #include <iostream>
 
@@ -39,4 +39,4 @@ namespace cv {
     Mat multiply(const Mat &a, double x);
 }
 
-#endif /* defined(__MisfitHeartRate__Matrix__) */
+#endif /* defined(__MisfitHeartRate__MHRMatrix__) */

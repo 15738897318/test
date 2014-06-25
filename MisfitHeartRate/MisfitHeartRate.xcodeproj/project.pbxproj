@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */; };
+		DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */; };
+		DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */; };
 		DCB55F171957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
 		DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F181957CB3B0095A98E /* CoreGraphics.framework */; };
 		DCB55F1B1957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
@@ -48,6 +51,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHRImage.cpp; path = image/MHRImage.cpp; sourceTree = "<group>"; };
+		DCAE6B9F195A789800B9FE9F /* MHRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRImage.h; path = image/MHRImage.h; sourceTree = "<group>"; };
+		DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MHRMatrix.cpp; sourceTree = "<group>"; };
+		DCAE6BA2195A789800B9FE9F /* MHRMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHRMatrix.h; sourceTree = "<group>"; };
+		DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHRMath.cpp; path = math/MHRMath.cpp; sourceTree = "<group>"; };
+		DCAE6BA8195A795500B9FE9F /* MHRMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRMath.h; path = math/MHRMath.h; sourceTree = "<group>"; };
 		DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisfitHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCB55F181957CB3B0095A98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +126,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCAE6B9D195A789800B9FE9F /* algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				DCAE6BA6195A794800B9FE9F /* math */,
+				DCAE6BA5195A791B00B9FE9F /* image */,
+				DCAE6BA0195A789800B9FE9F /* matrix */,
+			);
+			path = algorithms;
+			sourceTree = "<group>";
+		};
+		DCAE6BA0195A789800B9FE9F /* matrix */ = {
+			isa = PBXGroup;
+			children = (
+				DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */,
+				DCAE6BA2195A789800B9FE9F /* MHRMatrix.h */,
+			);
+			path = matrix;
+			sourceTree = "<group>";
+		};
+		DCAE6BA5195A791B00B9FE9F /* image */ = {
+			isa = PBXGroup;
+			children = (
+				DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */,
+				DCAE6B9F195A789800B9FE9F /* MHRImage.h */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		DCAE6BA6195A794800B9FE9F /* math */ = {
+			isa = PBXGroup;
+			children = (
+				DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */,
+				DCAE6BA8195A795500B9FE9F /* MHRMath.h */,
+			);
+			name = math;
+			sourceTree = "<group>";
+		};
 		DCB55F0A1957CB3B0095A98E = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +206,7 @@
 		DCB55F1E1957CB3B0095A98E /* MisfitlHeartRate */ = {
 			isa = PBXGroup;
 			children = (
+				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCB55F631957CDCD0095A98E /* resources */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
@@ -321,9 +368,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */,
 				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
+				DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
+				DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
