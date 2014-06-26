@@ -1,6 +1,6 @@
 %install;
 
-alpha = 20 : 30 : 80; %Eulerian magnifier
+alpha = 50 : 30 : 80; %Eulerian magnifier
 pyr_level = 4 : 2 : 6; %Standard: 4, but updated by the real frame size
 min_hr = 30 : 10 : 50; %BPM %Standard: 50
 max_hr = 60 : 30 : 210; %BPM %Standard: 90

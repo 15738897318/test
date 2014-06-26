@@ -1,18 +1,23 @@
+% Notes:
+% - Basis takes 15secs to generate an HR estimate
+% - Cardiio takes 30secs to generate an HR estimate
+
+
 install;
 
 window_size_in_sec = 10;
 overlap_ratio = 0;
 max_bpm = 200; %BPM
-cutoff_freq = 7.5; %Hz
+cutoff_freq = 5; %Hz
 time_lag = 3; %seconds
 
 results_file = 'hr_results.csv';
 
 src_folder = '/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
-file_template = '2014-06-10-Self-Finger_crop-ideal-from-0.5-to-2-alpha-50-level-4-chromAtn-1.avi'%'*Finger*.avi';
+file_template = '*.avi';%'2014-06-10-Self-Finger_crop-ideal-from-0.66667-to-1-alpha-20-level-6-chromAtn-2.avi'%
 
 colourspace = 'tsl';
-channels_to_process = 2;
+channels_to_process = 1 : 3;
 
 file_list = dir([src_folder file_template]);
 
