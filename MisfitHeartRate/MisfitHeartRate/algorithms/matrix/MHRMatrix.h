@@ -10,6 +10,7 @@
 #define __MisfitHeartRate__MHRMatrix__
 
 #include <iostream>
+#include <opencv2/imgproc/imgproc.hpp>
 
 namespace cv {
     
@@ -37,6 +38,10 @@ namespace cv {
     
     // return mat .* x
     Mat multiply(const Mat &a, double x);
+    
+    // allcomb(A1,A2,A3,...,AN) returns all combinations of the elements in A1, A2, ..., and AN.
+    // B is P-by-N matrix is which P is the product of the number of elements of the N inputs.
+    Mat allcomb(std::vector<Mat>);
 }
 
 #endif /* defined(__MisfitHeartRate__MHRMatrix__) */
