@@ -14,7 +14,7 @@ time_lag = 3; %seconds
 results_file = 'hr_results.csv';
 
 src_folder = '/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
-file_template = '*.avi';%'2014-06-10-Self-Finger_crop-ideal-from-0.5-to-3.5-alpha-50-level-4-chromAtn-1.avi'%
+file_template = '*.avi';%'2014-06-10-Self-Finger_crop-ideal-from-0.66667-to-1-alpha-20-level-6-chromAtn-2.avi'%
 
 colourspace = 'tsl';
 channels_to_process = 1 : 3;

@@ -17,7 +17,12 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 			segment_length = window_size;
 		else
 			[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold);
-			segment_length = round((max(min_peak_locs) + max(max_peak_locs)) / 2);
+			
+			if isempty(min_peak_locs)
+				segment_length = round((max(max_peak_locs) + window_size) / 2);
+			else
+				segment_length = round((max(min_peak_locs) + max(max_peak_locs)) / 2);
+			end
 		end
 		
 		% b. Equal-step progression
