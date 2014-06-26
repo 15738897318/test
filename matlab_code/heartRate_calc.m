@@ -4,13 +4,13 @@
 
 
 function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, colour_channel, ref_reading, colourspace, time_lag)
-	
+											%Double				%Double			%Double	%Double		 %Int			 %Double		%String		%Double
 	close all
 	
 	debug = 1;
 	getRaw = 0;
-	threshold_fraction = 0;
-	conversion_method = 'mode-balance';
+	threshold_fraction = 0; %Double
+	conversion_method = 'mode-balance'; %String
 	
 	
 	
@@ -26,19 +26,19 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	vidHeight = vid.Height;
 	vidWidth = vid.Width;
 	nChannels = 3;
-	fr = vid.FrameRate;
-	len = vid.NumberOfFrames;
+	fr = vid.FrameRate; %Double
+	len = vid.NumberOfFrames; %Int
 	
-	window_size = round(window_size_in_sec * fr);
-	firstSample = round(fr * time_lag);
+	window_size = round(window_size_in_sec * fr); %Int
+	firstSample = round(fr * time_lag);	%Int
 	
 	% Define the indices of the frames to be processed
-	startIndex = 1; %400
-	endIndex = len; %1400
+	startIndex = 1; %400	%Int
+	endIndex = len; %1400	%Int
 	
 	% Convert colourspaces for each frame
-	k = 0;
-	filt = fspecial('gaussian', [7 7], 2.5);
+	k = 0; %Int
+	filt = fspecial('gaussian', [7 7], 2.5); %Double array
 	clearvars output_array
 	clearvars colorframe
 	clearvars colorframes
@@ -52,35 +52,35 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 		% Extract the ith frame in the video stream
 		temp.cdata = read(vid, i);
 		% Convert the extracted frame to RGB image
-		[rgbframe, ~] = frame2im(temp);
+		[rgbframe, ~] = frame2im(temp); %Double MxNx3 array
 		
 		% Convert the extracted frame to the desired colour-space
 		switch colourspace
 			case 'rgb'
-				colorframe = rgbframe;
+				colorframe = rgbframe; %Double MxNx3 array
 			case 'hsv'
-				colorframe = rgb2hsv(rgbframe);
+				colorframe = rgb2hsv(rgbframe); %Double MxNx3 array
 			case 'ntsc'
-				colorframe = rgb2ntsc(rgbframe);
+				colorframe = rgb2ntsc(rgbframe); %Double MxNx3 array
 			case 'ycbcr'
-				colorframe = rgb2ycbcr(rgbframe);
+				colorframe = rgb2ycbcr(rgbframe); %Double MxNx3 array
 			case 'tsl'
-				colorframe = rgb2tsl(rgbframe);
+				colorframe = rgb2tsl(rgbframe); %Double MxNx3 array
         end
         
 		if getRaw
-			colorframes(:, :, :, k) = colorframe;
-			monoframes(:, :, k) = squeeze(colorframe(:, :, colour_channel))
+			colorframes(:, :, :, k) = colorframe; %Double MxNx3xT array
+			monoframes(:, :, k) = squeeze(colorframe(:, :, colour_channel)); %Double MxNxT array
 		
 		else
 			% Extract the right channel from the colour frame
-			monoframe = squeeze(double(colorframe(:, :, colour_channel)));
+			monoframe = squeeze(double(colorframe(:, :, colour_channel))); %Double MxN array
 			
 			% Downsample the frame for ease of computation
 			monoframe = corrDn(monoframe, filt, 'reflect1', [4 4], [1 1], size(monoframe));
 			
 			% Put the frame into the video stream
-			monoframes(:, :, k) = monoframe;
+			monoframes(:, :, k) = monoframe; %Double MxNxT array
 		end
 	end
 	
@@ -92,20 +92,21 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	
 	% Convert the frame stream into a 1-D signal
 	[temporal_mean, debug_frames2signal] = frames2signal(monoframes, conversion_method, fr, cutoff_freq);
-	
+	%Double T-element vector
 	
 	
 	%% Block 3 ==== Heart-rate calculation
 	% Set peak-detection params
-    threshold = threshold_fraction * max(temporal_mean(firstSample : end));
-    minPeakDistance = round(60 / max_bpm * fr);
+    threshold = threshold_fraction * max(temporal_mean(firstSample : end)); %Double
+    minPeakDistance = round(60 / max_bpm * fr); %Int
 	
 	% Calculate heart-rate using peak-detection on the signal
 	[avg_hr_pda, debug_pda] = hr_calc_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
+	%Double
 	
 	% Calculate heart-rate using peak-detection on the signal
 	[avg_hr_autocorr, debug_autocorr] = hr_calc_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance);
-	
+	%Double
 	
 	
 	%% ============ Function output and summary
