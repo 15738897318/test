@@ -97,7 +97,52 @@ namespace cv {
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
 	Mat buildGDownStack(String vidFile, int startIndex, int endIndex, int level) {
-		return Mat();
+        // Read video
+		VideoCapture vid(vidFile);
+        
+		// Extract video info
+		int vidHeight = (int)vid.get(CV_CAP_PROP_FRAME_HEIGHT);
+		int vidWidth = (int)vid.get(CV_CAP_PROP_FRAME_WIDTH);
+		int nChannels = 3;		// should get from vid?
+        
+        // firstFrame
+        Mat frame = Mat::zeros(vidHeight, vidWidth, CV_8UC3);
+        for (int i = 0; i <= startIndex; ++i)
+            vid >> frame;
+        Mat rgbframe = convertTo(frame, CV_64FC3);
+        frame = rgb2ntsc(rgbframe);
+        
+        // Blur and downsample the frame
+        Mat blurred = blurDnClr(frame, level);
+        
+        // create pyr stack
+        // Note that this stack is actually just a SINGLE level of the pyramid
+        int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1], blurred.size.p[2]};
+        Mat GDownStack = Mat::zeros(4, GdownSize, CV_64F);
+        
+        // The first frame in the stack is saved
+        for (int i = 0; i < GDownStack.size.p[1]; ++i)
+            for (int j = 0; j < GDownStack.size.p[2]; ++j)
+                for (int t = 0; t < GDownStack.size.p[3]; ++t)
+                    GDownStack.at<Vec3d>(0, i, j)[t] = blurred.at<Vec3d>(i, j)[t];
+        
+        for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
+            // Create a frame from the ith array in the stream
+            vid >> frame;
+            rgbframe = convertTo(frame, CV_64FC3);
+            frame = rgb2ntsc(rgbframe);
+            
+            // Blur and downsample the frame
+            blurred = blurDnClr(frame, level);
+            
+            // The kth element in the stack is saved
+            // Note that this stack is actually just a SINGLE level of the pyramid
+            for (int i = 0; i < GDownStack.size.p[1]; ++i)
+                for (int j = 0; j < GDownStack.size.p[2]; ++j)
+                    for (int t = 0; t < GDownStack.size.p[3]; ++t)
+                        GDownStack.at<Vec3d>(k, i, j)[t] = blurred.at<Vec3d>(i, j)[t];
+        }
+        return GDownStack;
 	}
     
     

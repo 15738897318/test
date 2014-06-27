@@ -9,17 +9,12 @@
 #ifndef __MisfitHeartRate__MHREulerian__
 #define __MisfitHeartRate__MHREulerian__
 
-#include <iostream>
 #include <string>
 #include <vector>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/imgproc/imgproc_c.h>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/highgui/highgui_c.h>
-#include <opencv2/imgproc/types_c.h>
 #include "MHRImage.h"
 //#import <opencv2/highgui/ios.h>
 //#import <opencv2/highgui/cap_ios.h>
+
 
 namespace cv {
 	// Spatial Filtering: Gaussian blur and down sample

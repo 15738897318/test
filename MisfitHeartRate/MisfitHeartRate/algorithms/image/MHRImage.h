@@ -9,7 +9,11 @@
 #ifndef __MisfitHeartRate__MHRImage__
 #define __MisfitHeartRate__MHRImage__
 
-#include <iostream>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/imgproc/imgproc_c.h>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/highgui/highgui_c.h>
+#include <opencv2/imgproc/types_c.h>
 #include "MHRMatrix.h"
 
 namespace cv {
@@ -21,6 +25,9 @@ namespace cv {
     
 	// convert a RGB Mat to a NTSC Mat
 	Mat ntsc2rgb(const Mat& srcNTSCmap);
+    
+    // 3-color version of blurDn
+    Mat blurDnClr(const Mat& src, int level);
     
 	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
 	// and select a specific band indicated by LEVEL.
