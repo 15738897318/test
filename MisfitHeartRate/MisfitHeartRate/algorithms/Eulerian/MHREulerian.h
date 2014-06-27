@@ -22,14 +22,15 @@
 //#import <opencv2/highgui/cap_ios.h>
 
 namespace cv {
+	// Spatial Filtering: Gaussian blur and down sample
+	// Temporal Filtering: Ideal bandpass
+	void amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
+										  double alpha, int level,
+										  double freqBandLowEnd, double freqBandHighEnd,
+										  double samplingRate, double chromAttenuation);
     
-    void amplifySpatialGdownTemporalIdeal(String inFile, String resultDir,
-                                          double alpha, int level,
-                                          double freq_band_low_end, double freq_band_high_end,
-                                          double samplingRate, double chromAttenuation);
-    
-    void runEulerian();
-    
+	// run Eulerian
+	void runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir);
 }
 
 
