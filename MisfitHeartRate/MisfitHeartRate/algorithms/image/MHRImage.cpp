@@ -87,6 +87,16 @@ namespace cv {
 	Mat ntsc2rgb(const Mat& srcNTSCmap)	{
 		return srcNTSCmap;
 	}
+
+    
+    // Blur and downsample an image.  The blurring is done with
+    // filter kernel specified by FILT (default = 'binom5')
+    Mat blurDnClr(const Mat& src, int level) {
+        Mat ans(src);
+        for (int i = 0; i < level; ++i)
+            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
+        return ans;
+    }
     
 	
 	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX

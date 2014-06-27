@@ -26,7 +26,8 @@ namespace cv {
 	// convert a RGB Mat to a NTSC Mat
 	Mat ntsc2rgb(const Mat& srcNTSCmap);
     
-    // 3-color version of blurDn
+    // Blur and downsample an image.  The blurring is done with
+    // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level);
     
 	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
