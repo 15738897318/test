@@ -21,10 +21,12 @@ namespace cv {
 	Mat rgb2tsl(const Mat& srcRGBmap);
     
 	// convert a RGB Mat to a NTSC Mat
-	Mat rgb2ntsc(const Mat& srcRGBmap);
+    // ref: http://en.wikipedia.org/wiki/YIQ
+	Mat rgb2ntsc(const Mat& rgbFrame);
     
 	// convert a RGB Mat to a NTSC Mat
-	Mat ntsc2rgb(const Mat& srcNTSCmap);
+    // ref: http://en.wikipedia.org/wiki/YIQ
+	Mat ntsc2rgb(const Mat& ntscFrame);
     
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
@@ -44,10 +46,6 @@ namespace cv {
 	// WH: higher cutoff frequency of ideal band pass filter
 	// SAMPLINGRATE: sampling rate of INPUT
 	Mat idealBandpassing(Mat input, int dim, double wl, double wh, double samplingRate);
-    
-    // convert a frame to signal
-    void frames2signal(Mat monoframes, String conversion_method, double frameRate, double cutoff_freq,
-                       double &temporal_mean, Mat &debug_frames2signal);
 }
 
 #endif /* defined(__MisfitHeartRate__MHRImage__) */

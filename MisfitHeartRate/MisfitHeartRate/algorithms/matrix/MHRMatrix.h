@@ -20,6 +20,9 @@ namespace cv {
 	// return a vector of integer from a to b with specific step
 	vector<int> vectorRange(int a, int b, int step = 1);
     
+    // import data from a array to a Mat
+    Mat arrayToMat(double a[], int rows, int cols);
+    
 	// convert a Mat to another type Mat
 	Mat convertTo(const Mat &src, int type, double alpha = 1.0, double beta = 0.0);
     

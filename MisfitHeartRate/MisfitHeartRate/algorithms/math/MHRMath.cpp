@@ -13,7 +13,6 @@ using namespace std;
 
 
 namespace cv {
-    
     // return Discrete Fourier Transform of a 2-2 Mat by dimension
 	Mat fft(const Mat &src, int dimension) {
 		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
@@ -67,4 +66,11 @@ namespace cv {
 		return ans;
 	}
     
+    
+    // convert a frame to signal
+    void frames2signal(Mat monoframes, String conversion_method, double frameRate, double cutoff_freq,
+                       double &temporal_mean, Mat &debug_frames2signal)
+    {
+        
+    }
 };

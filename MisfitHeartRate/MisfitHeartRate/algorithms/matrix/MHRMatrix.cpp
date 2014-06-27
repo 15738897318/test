@@ -19,6 +19,16 @@ namespace cv {
 	}
     
     
+    // import data from a array to a Mat
+    Mat arrayToMat(double a[], int rows, int cols) {
+        Mat ans(rows, cols, CV_64F, 0);
+        for (int i = 0; i < rows; ++i)
+            for (int j = 0; j < cols; ++j)
+                ans.at<double>(i, j) = a[i*cols + j];
+        return ans;
+    }
+    
+    
 	// convert a Mat to another type Mat
 	Mat convertTo(const Mat &src, int type, double alpha, double beta) {
 		Mat ans;

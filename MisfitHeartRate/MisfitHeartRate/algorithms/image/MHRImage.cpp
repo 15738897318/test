@@ -78,14 +78,53 @@ namespace cv {
     
     
 	// convert a RGB Mat to a NTSC Mat
-	Mat rgb2ntsc(const Mat& srcRGBmap) {
-		return srcRGBmap;
+    // ref: http://en.wikipedia.org/wiki/YIQ
+	Mat rgb2ntsc(const Mat& rgbFrame) {
+        int rows = rgbFrame.rows, cols = rgbFrame.cols;
+        double baseArray[9] = {
+            0.299, 0.587, 0.114,
+            0.595716, -0.274453, -0.321263,
+            0.211456, -0.522591, 0.311135,
+        };
+        Mat base = arrayToMat(baseArray, 3, 3);
+        // calculate result Mat
+        Mat ans(rows, cols, CV_64F, 0);
+        for (int i = 0; i < rows; ++i)
+            for (int j = 0; j < cols; ++j) {
+                Mat tmp(3, 1, CV_64F, 0);
+                for (int channel = 0; channel < 3; ++channel)
+                    tmp.at<double>(channel, 0) = rgbFrame.at<Vec3d>(i, j)[channel];
+                tmp = base * tmp;
+                for (int channel = 0; channel < 3; ++channel)
+                    ans.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0);
+            }
+		return ans;
 	}
     
     
 	// convert a RGB Mat to a NTSC Mat
-	Mat ntsc2rgb(const Mat& srcNTSCmap)	{
-		return srcNTSCmap;
+    // ref: http://en.wikipedia.org/wiki/YIQ
+	Mat ntsc2rgb(const Mat& ntscFrame)	{
+        int rows = ntscFrame.rows, cols = ntscFrame.cols;
+        double baseArray[9] = {
+            1, 0.9563, 0.6210,
+            1, -0.2721, -0.6474,
+            1, -1.1070, 1.7046,
+        };
+        Mat base = arrayToMat(baseArray, 3, 3);
+        // calculate result Mat
+        Mat ans(rows, cols, CV_64F, 0);
+        for (int i = 0; i < rows; ++i)
+            for (int j = 0; j < cols; ++j) {
+                Mat tmp(3, 1, CV_64F, 0);
+                for (int channel = 0; channel < 3; ++channel)
+                    tmp.at<double>(channel, 0) = ntscFrame.at<Vec3d>(i, j)[channel];
+                tmp = base * tmp;
+                for (int channel = 0; channel < 3; ++channel)
+                    ans.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0);
+            }
+		return ans;
+		return ntscFrame;
 	}
 
     
@@ -128,7 +167,7 @@ namespace cv {
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
         int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1], blurred.size.p[2]};
-        Mat GDownStack = Mat::zeros(4, GdownSize, CV_64F);
+        Mat GDownStack = Mat::zeros(3, GdownSize, CV_64FC3);
         
         // The first frame in the stack is saved
         for (int i = 0; i < GDownStack.size.p[1]; ++i)
