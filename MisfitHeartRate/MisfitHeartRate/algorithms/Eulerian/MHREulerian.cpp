@@ -62,7 +62,23 @@ namespace cv {
         
 		// Temporal filtering
 		printf("Temporal filtering...\n");
-		Mat filteredStack = idealBandpassing(GdownStack, 1, freqBandLowEnd, freqBandHighEnd, samplingRate);
+//		Mat filteredStack = idealBandpassing(GdownStack, 1, freqBandLowEnd, freqBandHighEnd, samplingRate);
+        double kernelArray[15] = {0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594,
+            0.1704, 0.1594, 0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034};
+        Mat kernel = arrayToMat(kernelArray, 1, 15);
+        
+        int filteredSize[3] = {GdownStack.size.p[0]-7, GdownStack.size.p[1], GdownStack.size.p[2]};
+        Mat filteredStack(3, filteredSize, CV_64FC3, 0);
+        
+        for (int x = 0; x < GdownStack.size.p[1]; ++x)
+            for (int y = 0; y < GdownStack.size.p[2]; ++y) {
+                Mat tmp(1, 15, CV_64F, 0);
+                for (int t = 0; t < GdownStack.size.p[0]; ++t)
+                    for (int channel = 0; channel < 3; ++channel)
+                        tmp.at<double>(0, t) = GdownStack.at<Vec3d>(t, x, y)[channel];
+                // ???? should do with each channel ????
+                filter2D(tmp, tmp, -1, kernel);
+            }
 		printf("Finished\n");
         
 		// amplify
@@ -71,7 +87,7 @@ namespace cv {
 				for (int k = 0; k < filteredStack.size.p[2]; ++k) {
 					filteredStack.at<Vec3d>(i, j, k)[0] *= alpha;
 					filteredStack.at<Vec3d>(i, j, k)[1] *= alpha*chromAttenuation;
-					filteredStack.at<Vec3d>(i, j, k)[0] *= alpha*chromAttenuation;
+					filteredStack.at<Vec3d>(i, j, k)[2] *= alpha*chromAttenuation;
 				}
 		// =================
         

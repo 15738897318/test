@@ -40,12 +40,6 @@ namespace cv {
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
 	Mat buildGDownStack(String vidFile, int startIndex, int endIndex, int level);
-    
-	// Apply ideal band pass filter on INPUT along dimension DIM.
-	// WL: lower cutoff frequency of ideal band pass filter
-	// WH: higher cutoff frequency of ideal band pass filter
-	// SAMPLINGRATE: sampling rate of INPUT
-	Mat idealBandpassing(Mat input, int dim, double wl, double wh, double samplingRate);
 }
 
 #endif /* defined(__MisfitHeartRate__MHRImage__) */

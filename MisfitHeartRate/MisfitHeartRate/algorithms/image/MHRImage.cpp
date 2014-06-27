@@ -193,13 +193,4 @@ namespace cv {
         }
         return GDownStack;
 	}
-    
-    
-	// Apply ideal band pass filter on INPUT along dimension DIM.
-	// WL: lower cutoff frequency of ideal band pass filter
-	// WH: higher cutoff frequency of ideal band pass filter
-	// SAMPLINGRATE: sampling rate of INPUT
-	Mat idealBandpassing(Mat input, int dim, double wl, double wh, double samplingRate) {
-		return input;
-	}
 }
