@@ -60,7 +60,8 @@ function amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, ...
     
     % Temporal filtering
     disp('Temporal filtering...')
-    filtered_stack = ideal_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
+    %filtered_stack = ideal_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
+    filtered_stack = filter_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
     disp('Finished')
     
     %% amplify
