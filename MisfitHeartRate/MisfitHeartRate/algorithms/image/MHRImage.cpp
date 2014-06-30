@@ -15,27 +15,27 @@ namespace cv {
 	{
 		int nRow = srcRGBmap.rows;
 		int nCol = srcRGBmap.cols;
-		Mat rbgmap(nRow, nCol, CV_32FC3, srcRGBmap.data);
+		Mat rbgmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
 		
 		//        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
 		//        r_primes(isnan(r_primes)) = -1/3;
-		Mat r_primes = Mat::zeros(nRow, nCol, CV_32FC1);
+		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 0), sumChannels(rbgmap), r_primes);
-		subtract(r_primes, Mat(nRow, nCol, CV_32FC1, 1.0/3.0), r_primes);
+		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), r_primes);
 		
 		//        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
 		//        g_primes(isnan(g_primes)) = -1/3;
-		Mat g_primes = Mat::zeros(nRow, nCol, CV_32FC1);
+		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 1), sumChannels(rbgmap), g_primes);
-		subtract(r_primes, Mat(nRow, nCol, CV_32FC1, 1.0/3.0), g_primes);
+		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), g_primes);
 		
 		//        temp1 = zeros(size(g_primes));
 		//        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
 		//        temp1(bsxfun(@lt, g_primes, 0)) = 3/4;
 		//        temp2 = ones(size(g_primes));
 		//        temp2(bsxfun(@eq, g_primes, 0)) = 0;
-		Mat temp1 = Mat::zeros(nRow, nCol, CV_32FC1);
-		Mat temp2 = Mat::ones(nRow, nCol, CV_32FC1);
+		Mat temp1 = Mat::zeros(nRow, nCol, CV_64F);
+		Mat temp2 = Mat::ones(nRow, nCol, CV_64F);
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
 				if (g_primes.at<double>(i, j) > 0)
@@ -51,16 +51,16 @@ namespace cv {
 					temp2.at<double>(i, j) = 0;
 				}
 		
-		Mat tslmap = Mat::zeros(nRow, nCol, CV_32FC3);
+		Mat tslmap = Mat::zeros(nRow, nCol, CV_64FC3);
 		//        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
-		multiply(tmp0, Mat(nRow, nCol, CV_32FC1, 1/(2*M_PI)), tmp0);
+		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
 		multiply(tmp0, temp2, tmp0);
 		add(tmp0, temp1, tmp0);
 		//        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
 		Mat tmp1 = powMat(r_primes, 2);
 		add(tmp1, powMat(g_primes, 2), tmp1);
-		multiply(tmp1, Mat(nRow, nCol, CV_64F, 9.0/5.0), tmp1);
+		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
 		pow(tmp1, 0.5, tmp1);
 		//        tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
 		Mat tmp2 = add(multiply(cloneWithChannel(rbgmap, 0), 0.299),
@@ -88,10 +88,10 @@ namespace cv {
         };
         Mat base = arrayToMat(baseArray, 3, 3);
         // calculate result Mat
-        Mat ans(rows, cols, CV_64F, 0);
+        Mat ans = Mat::zeros(rows, cols, CV_64FC3);
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j) {
-                Mat tmp(3, 1, CV_64F, 0);
+				Mat tmp = Mat::zeros(3, 1, CV_64F);
                 for (int channel = 0; channel < 3; ++channel)
                     tmp.at<double>(channel, 0) = rgbFrame.at<Vec3d>(i, j)[channel];
                 tmp = base * tmp;
@@ -113,10 +113,10 @@ namespace cv {
         };
         Mat base = arrayToMat(baseArray, 3, 3);
         // calculate result Mat
-        Mat ans(rows, cols, CV_64F, 0);
+		Mat ans = Mat::zeros(rows, cols, CV_64FC3);
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j) {
-                Mat tmp(3, 1, CV_64F, 0);
+				Mat tmp = Mat::zeros(3, 1, CV_64F);
                 for (int channel = 0; channel < 3; ++channel)
                     tmp.at<double>(channel, 0) = ntscFrame.at<Vec3d>(i, j)[channel];
                 tmp = base * tmp;
@@ -167,7 +167,7 @@ namespace cv {
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
         int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1]};
-		Mat GDownStack = Mat(3, GdownSize, CV_64FC3, 0);
+		Mat GDownStack = Mat(3, GdownSize, CV_64FC3, cvScalar(0));
         
         // The first frame in the stack is saved
         for (int i = 0; i < GDownStack.size.p[1]; ++i)

@@ -52,7 +52,7 @@ namespace cv {
         
 //        Convert colourspaces for each frame
         int monoframesSize[] = {vidHeight, vidWidth, len};
-        Mat monoframes = Mat(3, monoframesSize, CV_32FC1, 0);
+        Mat monoframes = Mat(3, monoframesSize, CV_32FC1, CvScalar(0));
         Mat gaussianFilter = getGaussianKernel(7, 2.5);
         for (int k = 0; k < len; ++k)
         {
@@ -89,7 +89,7 @@ namespace cv {
 //                    monoframe = filt_img(squeeze(double(colorframe(:, :, colour_channel))));
 //                monoframes(:, :, k) = monoframe(1 : 4 : end, 1 : 4 : end);
                 
-                Mat monoframe = Mat(vidHeight, vidWidth, CV_32FC1, 0);
+                Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
 //                monoframes(:, :, k) = corrDn(monoframe, filt, 'reflect1', [4 4], [1 1], size(monoframe));
             }
         }

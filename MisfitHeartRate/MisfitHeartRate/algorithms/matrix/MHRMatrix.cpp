@@ -21,7 +21,7 @@ namespace cv {
     
     // import data from a array to a Mat
     Mat arrayToMat(double a[], int rows, int cols) {
-        Mat ans(rows, cols, CV_64F, 0);
+		Mat ans = Mat::zeros(rows, cols, CV_64F);
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j)
                 ans.at<double>(i, j) = a[i*cols + j];
@@ -82,7 +82,7 @@ namespace cv {
 	// default intput/output type is double - CV_64F
 	Mat powMat(const Mat &src, double n)
 	{
-		Mat ans;
+		Mat ans = Mat::zeros(src.rows, src.cols, CV_64F);
 		pow(src, n, ans);
 		return ans;
 	}
