@@ -166,8 +166,8 @@ namespace cv {
         
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
-        int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1], blurred.size.p[2]};
-        Mat GDownStack = Mat::zeros(3, GdownSize, CV_64FC3);
+        int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1]};
+		Mat GDownStack = Mat(3, GdownSize, CV_64FC3, 0);
         
         // The first frame in the stack is saved
         for (int i = 0; i < GDownStack.size.p[1]; ++i)
