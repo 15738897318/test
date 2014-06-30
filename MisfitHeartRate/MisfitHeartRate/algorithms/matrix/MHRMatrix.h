@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 using namespace std;
 
@@ -25,6 +26,9 @@ namespace cv {
     
 	// convert a Mat to another type Mat
 	Mat convertTo(const Mat &src, int type, double alpha = 1.0, double beta = 0.0);
+    
+    // convert a VideoCapture to vector<Mat>
+    vector<Mat> videoCaptureToVector(VideoCapture &src);
     
 	// sum all channels in one pixcel
 	// default output type is double - CV_64F

@@ -21,7 +21,7 @@ namespace cv {
 		String vidName = vidFile.substr(vidFile.find_last_of('/') + 1);
         
 		// Create the output file with full path
-		String outFile = outDir + "-ideal-from-" + std::to_string(freqBandLowEnd)
+        String outFile = outDir + vidName + "-ideal-from-" + std::to_string(freqBandLowEnd)
         + "-to-" + std::to_string(freqBandHighEnd)
         + "-alpha-" + std::to_string(alpha)
         + "-level-" + std::to_string(level)
@@ -29,14 +29,25 @@ namespace cv {
         + ".avi";
 		
 		// Read video
-		VideoCapture vid(vidFile);
+		VideoCapture vidIn(vidFile);
+        if (!vidIn.isOpened())
+        {
+            printf("%s is not opened!", vidFile.c_str());
+            return;
+        }
         
 		// Extract video info
-		int vidHeight = (int)vid.get(CV_CAP_PROP_FRAME_HEIGHT);
-		int vidWidth = (int)vid.get(CV_CAP_PROP_FRAME_WIDTH);
+        vector<Mat> vid = videoCaptureToVector(vidIn);
+		int vidHeight = vid[0].rows;
+		int vidWidth = vid[1].cols;
 		int nChannels = 3;		// should get from vid?
-		int frameRate = (int)vid.get(CV_CAP_PROP_FPS);
-		int len = (int)vid.get(CV_CAP_PROP_FRAME_COUNT);
+		int frameRate = 30;     // Can not get it from vidIn!!!! :((
+		int len = vid.size();
+        
+
+        printf("width = %d, height = %d\n", vidWidth, vidHeight);
+        printf("frameRate = %d, len = %d\n", frameRate, len);
+
         
 		samplingRate = frameRate;
 		int filter_length = 5;
@@ -97,8 +108,6 @@ namespace cv {
 		// output video
 		// init
 		Mat frame;
-		for (int i = 0; i < startIndex; ++i)
-			vid >> frame;
 		// Convert each frame from the filtered stream to movie frame
 		for (int i = startIndex, k = 1; i <= endIndex; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
@@ -113,7 +122,7 @@ namespace cv {
 			resize(filtered, filtered, cvSize(vidHeight, vidWidth), 0, 0, INTER_CUBIC);
             
 			// Extract the ith frame in the video stream
-			vid >> frame;
+            frame = vid[i];
 			// Convert the extracted frame to RGB (double-precision) image
 			Mat rgbframe = convertTo(frame, CV_64FC3);
             
@@ -149,7 +158,7 @@ namespace cv {
 		//String resultsDir = "Results";
 		//String src_folder = "/Users/storm5906/Desktop/eulerianMagnifcation/codeMatlab/";
 		//String file_template = "*Finger*.mp4";
-		String inFile = srcDir + "\\" + fileName;
+		String inFile = srcDir + "/" + fileName;
 		printf("Processing file: %s\n", inFile.c_str());
         
 		vector<int> alpha = vectorRange(20, 80, 30);		// Eulerian magnifier

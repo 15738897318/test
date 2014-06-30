@@ -75,15 +75,31 @@
 
 
 - (IBAction)startButtonDidTap:(id)sender {
-    _cameraSwitch.enabled = NO;
-    if (_cameraSwitch.isOn)
-    {
-        [_videoCamera start];
-        return;
-    }
-    
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test.mp4"];
+    
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"-yyyy-MM-dd-HH-mm-ss";
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSString *tmp = @"Library/Documentation/";
+    NSString *outputPath = [paths objectAtIndex:0];
+    outputPath = [outputPath substringToIndex:([outputPath length] - [tmp length] + 1)];
+    outputPath = [outputPath stringByAppendingFormat:@"Documents/"];
+//                  [formater stringFromDate:[NSDate date]]];
+    [MHRUtilities createDirectory:outputPath];
+    
+    runEulerian([resourcePath UTF8String], "test.mp4", "", [outputPath UTF8String]);
+    
+    
+    
+//    _cameraSwitch.enabled = NO;
+//    if (_cameraSwitch.isOn)
+//    {
+//        [_videoCamera start];
+//        return;
+//    }
+//    
+
     VideoCapture videoCapture([filePath UTF8String]);
     Mat frame;
     if (!videoCapture.isOpened())
@@ -94,6 +110,10 @@
     int nFrame = videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
     NSLog(@"nFrame = %i", nFrame);
     NSLog(@"Frame rate = %f", videoCapture.get(CV_CAP_PROP_FPS));
+    
+    NSLog(@"width = %f, height = %f",
+          videoCapture.get(CV_CAP_PROP_FRAME_WIDTH),
+          videoCapture.get(CV_CAP_PROP_FRAME_HEIGHT));
 
     _imageView.image = nil;
     while(1)
@@ -104,23 +124,28 @@
             break;
         }
         ++nFrame;
-        
+    
         NSLog(@"nFrame = %i", nFrame);
-//        NSLog(@"channels = %i", frame.channels());
-//        NSLog(@"type = %i", frame.type());
-//        NSLog(@"test type = %i", CV_8UC3);
+        NSLog(@"channels = %i", frame.channels());
+        NSLog(@"type = %i", frame.type());
+        NSLog(@"test type = %i", CV_8UC3);
         
-        if (_imageView.image == nil)
-        {
-//            _imageView.image = [self UIImageFromCVMat:frame];
-            _imageView.image = MatToUIImage(frame);
-        }
+        NSLog(@"width = %i, height = %i",
+              frame.cols,
+              frame.rows);
+
+    
+//        if (_imageView.image == nil)
+//        {
+////            _imageView.image = [self UIImageFromCVMat:frame];
+//            _imageView.image = MatToUIImage(frame);
+//        }
         
 //        for (int i = 0; i < frame.rows; ++i)
 //            for (int j = 0; j < frame.cols; ++j) {
 //                NSLog(@"p(%i, %i) = %i, %i, %i", i, j, frame.at<Vec3b>(i, j)[0], frame.at<Vec3b>(i, j)[1], frame.at<Vec3b>(i, j)[2]);
 //            }
-//        [NSThread sleepForTimeInterval:1];
+        [NSThread sleepForTimeInterval:1];
     }
    NSLog(@"nFrame = %i", nFrame);
 }

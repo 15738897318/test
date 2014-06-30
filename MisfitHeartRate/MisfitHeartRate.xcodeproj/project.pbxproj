@@ -40,6 +40,7 @@
 		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
 		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
+		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
 		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
 		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
+		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
+		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,7 @@
 			children = (
 				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCB55F631957CDCD0095A98E /* resources */,
+				DCBDEA1D196124D3005F6298 /* Utilities */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
 				DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */,
@@ -293,6 +297,15 @@
 			);
 			path = resources;
 			sourceTree = SOURCE_ROOT;
+		};
+		DCBDEA1D196124D3005F6298 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DCBDEA1E196124F3005F6298 /* MHRUtilities.h */,
+				DCBDEA1F196124F3005F6298 /* MHRUtilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -402,6 +415,7 @@
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
 				DCAE6BB1195AEC0B00B9FE9F /* MHREulerian.cpp in Sources */,
 				DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */,
+				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

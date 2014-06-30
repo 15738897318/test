@@ -14,6 +14,8 @@
 #import <opencv2/highgui/cap_ios.h>
 #import <opencv2/highgui/highgui.hpp>
 #import <opencv2/highgui/highgui_c.h>
+#import "MHREulerian.h"
+#import "MHRUtilities.h"
 
 
 using namespace cv;

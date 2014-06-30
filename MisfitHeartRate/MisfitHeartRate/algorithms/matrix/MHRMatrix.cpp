@@ -37,6 +37,20 @@ namespace cv {
 	}
     
     
+    // convert a VideoCapture to vector<Mat>
+    vector<Mat> videoCaptureToVector(VideoCapture &src) {
+        vector<Mat> ans;
+        Mat frame;
+        while(1) {
+            src >> frame;
+            if (frame.empty())
+                break;
+            ans.push_back(frame);
+        }
+        return ans;
+    }
+    
+    
 	// sum all channels in one pixcel
 	// default output type is double - CV_64F
 	Mat sumChannels(const Mat &src)

@@ -16,6 +16,7 @@
 #include <opencv2/imgproc/types_c.h>
 #include "MHRMatrix.h"
 
+
 namespace cv {
 	// convert a RGB Mat to a TSL Mat
 	Mat rgb2tsl(const Mat& srcRGBmap);
