@@ -26,7 +26,7 @@ namespace cv {
         + "-alpha-" + std::to_string(alpha)
         + "-level-" + std::to_string(level)
         + "-chromAtn-" + std::to_string(chromAttenuation)
-        + ".avi";
+        + ".mp4";
         
         printf("outFile = %s", outFile.c_str());
 		
@@ -57,7 +57,7 @@ namespace cv {
         
 		// Prepare the output video-writer
 //        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
-		VideoWriter vidOut(outFile, CV_FOURCC('A','E','M','I'), frameRate, cvSize(vidWidth, vidHeight), true);
+		VideoWriter vidOut(outFile, CV_FOURCC('M','J','P','G'), frameRate, cvSize(vidWidth, vidHeight), true);
 		if (!vidOut.isOpened()) {
 			printf("outFile %s is not opened!\n", outFile.c_str());
 			return;
@@ -138,17 +138,13 @@ namespace cv {
 			// Convert the image from RGB colour-space to NTSC colour-space
 			frame = rgb2ntsc(rgbframe);
             
-//            printf("frame size = (%d, %d)\n", frame.cols, frame.rows);
-//            printf("filtered size = (%d, %d)\n", filtered.cols, filtered.rows);
-            
 			// Add the filtered frame to the original frame
 			filtered = filtered + frame;
-//            filtered = add(filtered, frame);
             
 			// Convert the colour-space from NTSC back to RGB
 			frame = ntsc2rgb(filtered);
             
-            printf("amplifySpatialGdownTemporalIdeal: %d --> %d\n", i, endIndex);
+            printf("Convert each frame from the filtered stream to movie frame: %d --> %d\n", i, endIndex);
             
 			// Clip the values of the frame by 0 and 1
 			for (int x = 0; x < frame.rows; ++x)
@@ -162,8 +158,9 @@ namespace cv {
 					}
             
 			// Write the frame into the video as unsigned 8-bit integer array
-			vidOut.write(convertTo(frame, CV_8UC3));
+            vidOut << convertTo(frame, CV_8UC3);
 		}
+        vidOut.release();
 		printf("Finished\n");
 	}
     

@@ -44,6 +44,7 @@
 		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
 		DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */; };
+		DCC56C7E1962A927009122FB /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		DCBDEA2419614ED6005F6298 /* test0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test0.mp4; sourceTree = "<group>"; };
 		DCBDEA2619617A8E005F6298 /* UIImageCVMatConverter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIImageCVMatConverter.hpp; path = Utilities/UIImageCVMatConverter.hpp; sourceTree = "<group>"; };
 		DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UIImageCVMatConverter.mm; path = Utilities/UIImageCVMatConverter.mm; sourceTree = "<group>"; };
+		DCC56C7D1962A927009122FB /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 			children = (
 				DCBDEA2419614ED6005F6298 /* test0.mp4 */,
 				DCBDEA2119614C43005F6298 /* small.mp4 */,
+				DCC56C7D1962A927009122FB /* test.jpg */,
 				DCB55F721957E0EF0095A98E /* test.avi */,
 				DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */,
 				DCB55F651957CDCD0095A98E /* test.mp4 */,
@@ -398,6 +401,7 @@
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
 				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
 				DCBDEA2219614C43005F6298 /* small.mp4 in Resources */,
+				DCC56C7E1962A927009122FB /* test.jpg in Resources */,
 				DCB55F731957E0EF0095A98E /* test.avi in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
 				DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */,
