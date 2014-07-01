@@ -45,7 +45,8 @@ namespace cv {
             src >> frame;
             if (frame.empty())
                 break;
-            ans.push_back(frame);
+            Mat tmp = frame.clone();
+            ans.push_back(tmp);
         }
         return ans;
     }
