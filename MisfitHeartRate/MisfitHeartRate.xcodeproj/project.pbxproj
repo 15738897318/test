@@ -41,6 +41,9 @@
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
 		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
+		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
+		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
+		DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +102,10 @@
 		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
+		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
+		DCBDEA2419614ED6005F6298 /* test0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test0.mp4; sourceTree = "<group>"; };
+		DCBDEA2619617A8E005F6298 /* UIImageCVMatConverter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIImageCVMatConverter.hpp; path = Utilities/UIImageCVMatConverter.hpp; sourceTree = "<group>"; };
+		DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UIImageCVMatConverter.mm; path = Utilities/UIImageCVMatConverter.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,8 +242,8 @@
 		DCB55F1E1957CB3B0095A98E /* MisfitlHeartRate */ = {
 			isa = PBXGroup;
 			children = (
-				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCB55F631957CDCD0095A98E /* resources */,
+				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCBDEA1D196124D3005F6298 /* Utilities */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
@@ -291,6 +298,8 @@
 		DCB55F631957CDCD0095A98E /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCBDEA2419614ED6005F6298 /* test0.mp4 */,
+				DCBDEA2119614C43005F6298 /* small.mp4 */,
 				DCB55F721957E0EF0095A98E /* test.avi */,
 				DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */,
 				DCB55F651957CDCD0095A98E /* test.mp4 */,
@@ -301,6 +310,8 @@
 		DCBDEA1D196124D3005F6298 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DCBDEA2619617A8E005F6298 /* UIImageCVMatConverter.hpp */,
+				DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */,
 				DCBDEA1E196124F3005F6298 /* MHRUtilities.h */,
 				DCBDEA1F196124F3005F6298 /* MHRUtilities.m */,
 			);
@@ -383,8 +394,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
 				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
+				DCBDEA2219614C43005F6298 /* small.mp4 in Resources */,
 				DCB55F731957E0EF0095A98E /* test.avi in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
 				DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */,
@@ -416,6 +429,7 @@
 				DCAE6BB1195AEC0B00B9FE9F /* MHREulerian.cpp in Sources */,
 				DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
+				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,7 +555,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = MisfitHeartRate;
 				WRAPPER_EXTENSION = app;
 			};
@@ -559,7 +573,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = MisfitHeartRate;
 				WRAPPER_EXTENSION = app;
 			};

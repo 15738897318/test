@@ -40,7 +40,7 @@ namespace cv {
 	// the second dimension is the y axis of the video
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
-	Mat buildGDownStack(String vidFile, int startIndex, int endIndex, int level);
+	Mat buildGDownStack(const vector<Mat>& vid, int startIndex, int endIndex, int level);
 }
 
 #endif /* defined(__MisfitHeartRate__MHRImage__) */

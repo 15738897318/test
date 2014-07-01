@@ -76,7 +76,7 @@
 
 - (IBAction)startButtonDidTap:(id)sender {
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test.mp4"];
+    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test0.mp4"];
     
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"-yyyy-MM-dd-HH-mm-ss";
@@ -88,7 +88,7 @@
 //                  [formater stringFromDate:[NSDate date]]];
     [MHRUtilities createDirectory:outputPath];
     
-    runEulerian([resourcePath UTF8String], "test.mp4", "", [outputPath UTF8String]);
+    runEulerian([resourcePath UTF8String], "test0.mp4", "", [outputPath UTF8String]);
     
     
     
@@ -100,54 +100,39 @@
 //    }
 //    
 
-    VideoCapture videoCapture([filePath UTF8String]);
-    Mat frame;
-    if (!videoCapture.isOpened())
-    {
-        NSLog(@"Error when reading %@", filePath);
-    }
-    
-    int nFrame = videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
-    NSLog(@"nFrame = %i", nFrame);
-    NSLog(@"Frame rate = %f", videoCapture.get(CV_CAP_PROP_FPS));
-    
-    NSLog(@"width = %f, height = %f",
-          videoCapture.get(CV_CAP_PROP_FRAME_WIDTH),
-          videoCapture.get(CV_CAP_PROP_FRAME_HEIGHT));
-
-    _imageView.image = nil;
-    while(1)
-    {
-        videoCapture >> frame;
-        if (frame.empty())
-        {
-            break;
-        }
-        ++nFrame;
-    
-        NSLog(@"nFrame = %i", nFrame);
-        NSLog(@"channels = %i", frame.channels());
-        NSLog(@"type = %i", frame.type());
-        NSLog(@"test type = %i", CV_8UC3);
-        
-        NSLog(@"width = %i, height = %i",
-              frame.cols,
-              frame.rows);
-
-    
-//        if (_imageView.image == nil)
+//    VideoCapture videoCapture([filePath UTF8String]);
+//    Mat frame;
+//    if (!videoCapture.isOpened())
+//    {
+//        NSLog(@"Error when reading %@", filePath);
+//    }
+//    
+//    int nFrame = videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
+//    NSLog(@"nFrame = %i", nFrame);
+//    NSLog(@"Frame rate = %f", videoCapture.get(CV_CAP_PROP_FPS));
+//    
+//    NSLog(@"width = %f, height = %f",
+//          videoCapture.get(CV_CAP_PROP_FRAME_WIDTH),
+//          videoCapture.get(CV_CAP_PROP_FRAME_HEIGHT));
+//
+//    _imageView.image = nil;
+//    while(1)
+//    {
+//        videoCapture >> frame;
+//        if (frame.empty())
 //        {
-////            _imageView.image = [self UIImageFromCVMat:frame];
-//            _imageView.image = MatToUIImage(frame);
+//            break;
 //        }
-        
-//        for (int i = 0; i < frame.rows; ++i)
-//            for (int j = 0; j < frame.cols; ++j) {
-//                NSLog(@"p(%i, %i) = %i, %i, %i", i, j, frame.at<Vec3b>(i, j)[0], frame.at<Vec3b>(i, j)[1], frame.at<Vec3b>(i, j)[2]);
-//            }
-        [NSThread sleepForTimeInterval:1];
-    }
-   NSLog(@"nFrame = %i", nFrame);
+//        ++nFrame;
+//    
+//        NSLog(@"nFrame = %i", nFrame);
+//        NSLog(@"channels = %i", frame.channels());
+//        NSLog(@"type = %i", frame.type());
+//        NSLog(@"test type = %i", CV_8UC3);
+//        NSLog(@"width = %i, height = %i", frame.cols, frame.rows);
+//        [NSThread sleepForTimeInterval:1];
+//    }
+//   NSLog(@"nFrame = %i", nFrame);
 }
 
 

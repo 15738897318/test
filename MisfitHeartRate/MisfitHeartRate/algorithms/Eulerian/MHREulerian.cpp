@@ -27,12 +27,14 @@ namespace cv {
         + "-level-" + std::to_string(level)
         + "-chromAtn-" + std::to_string(chromAttenuation)
         + ".avi";
+        
+        printf("outFile = %s", outFile.c_str());
 		
 		// Read video
 		VideoCapture vidIn(vidFile);
         if (!vidIn.isOpened())
         {
-            printf("%s is not opened!", vidFile.c_str());
+            printf("%s is not opened!\n", vidFile.c_str());
             return;
         }
         
@@ -54,9 +56,10 @@ namespace cv {
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / filter_length) / log(2)));
         
 		// Prepare the output video-writer
+//        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
 		VideoWriter vidOut(outFile, CV_FOURCC('A','E','M','I'), frameRate, cvSize(vidWidth, vidHeight), true);
 		if (!vidOut.isOpened()) {
-			printf("outFile %s is not opened!", outFile.c_str());
+			printf("outFile %s is not opened!\n", outFile.c_str());
 			return;
 		}
         
@@ -68,28 +71,31 @@ namespace cv {
 		// compute Gaussian blur stack
 		// This stack actually is just a single level of the pyramid
 		printf("Spatial filtering...\n");
-		Mat GdownStack = buildGDownStack(vidFile, startIndex, endIndex, level);
+		Mat GdownStack = buildGDownStack(vid, startIndex, endIndex, level);
 		printf("Finished\n");
         
 		// Temporal filtering
 		printf("Temporal filtering...\n");
 //		Mat filteredStack = idealBandpassing(GdownStack, 1, freqBandLowEnd, freqBandHighEnd, samplingRate);
+        int filteredSize[3] = {GdownStack.size.p[0]-7, GdownStack.size.p[1], GdownStack.size.p[2]};
+        Mat filteredStack(3, filteredSize, CV_64FC3, CvScalar(0));
+        
         double kernelArray[15] = {0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594,
             0.1704, 0.1594, 0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034};
         Mat kernel = arrayToMat(kernelArray, 1, 15);
         
-        int filteredSize[3] = {GdownStack.size.p[0]-7, GdownStack.size.p[1], GdownStack.size.p[2]};
-        Mat filteredStack(3, filteredSize, CV_64FC3, 0);
-        
+        Mat tmp = Mat::zeros(1, GdownStack.size.p[0], CV_64FC3);
         for (int x = 0; x < GdownStack.size.p[1]; ++x)
             for (int y = 0; y < GdownStack.size.p[2]; ++y) {
-                Mat tmp(1, 15, CV_64F, 0);
                 for (int t = 0; t < GdownStack.size.p[0]; ++t)
-                    for (int channel = 0; channel < 3; ++channel)
-                        tmp.at<double>(0, t) = GdownStack.at<Vec3d>(t, x, y)[channel];
-                // ???? should do with each channel ????
-                filter2D(tmp, tmp, -1, kernel);
+//                    for (int channel = 0; channel < 3; ++channel)
+                        tmp.at<Vec3d>(0, t) = GdownStack.at<Vec3d>(t, x, y);
+                filter2D(tmp, tmp, -1, kernel);   // ???? should do with each channel ????
+                for (int t = 7; t < GdownStack.size.p[0]; ++t)
+                    filteredStack.at<Vec3d>(t-7, x, y) = tmp.at<Vec3d>(0, t);
             }
+        
+        
 		printf("Finished\n");
         
 		// amplify
@@ -109,17 +115,20 @@ namespace cv {
 		// init
 		Mat frame;
 		// Convert each frame from the filtered stream to movie frame
-		for (int i = startIndex, k = 1; i <= endIndex; ++i, ++k) {
+		for (int i = startIndex, k = 0; i <= endIndex && k <= filteredStack.size.p[0]; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
 			// by removing the singleton dimensions of the kth filtered array
 			// since the filtered stack is just a selected level of the Gaussian pyramid
-			Mat filtered = Mat::zeros(filteredStack.size.p[1], filteredStack.size.p[2], CV_64F);
-			for (int i = 0; i < filteredStack.size.p[1]; ++i)
-				for (int j = 0; j < filteredStack.size.p[2]; ++j)
-					filtered.at<double>(i, j) = filteredStack.at<double>(k, i, j);
-			
+			Mat filtered = Mat::zeros(filteredStack.size.p[1], filteredStack.size.p[2], CV_64FC3);
+            
+            printf("filteredStack size = (%d, %d)\n", filteredStack.size.p[1], filteredStack.size.p[2]);
+            
+			for (int x = 0; x < filteredStack.size.p[1]; ++x)
+				for (int y = 0; y < filteredStack.size.p[2]; ++y)
+					filtered.at<Vec3d>(x, y) = filteredStack.at<Vec3d>(k, x, y);
+            
 			// Format the image to the right size
-			resize(filtered, filtered, cvSize(vidHeight, vidWidth), 0, 0, INTER_CUBIC);
+			resize(filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
             
 			// Extract the ith frame in the video stream
             frame = vid[i];
@@ -129,21 +138,27 @@ namespace cv {
 			// Convert the image from RGB colour-space to NTSC colour-space
 			frame = rgb2ntsc(rgbframe);
             
+//            printf("frame size = (%d, %d)\n", frame.cols, frame.rows);
+//            printf("filtered size = (%d, %d)\n", filtered.cols, filtered.rows);
+            
 			// Add the filtered frame to the original frame
 			filtered = filtered + frame;
+//            filtered = add(filtered, frame);
             
 			// Convert the colour-space from NTSC back to RGB
 			frame = ntsc2rgb(filtered);
             
+            printf("amplifySpatialGdownTemporalIdeal: %d --> %d\n", i, endIndex);
+            
 			// Clip the values of the frame by 0 and 1
-			for (int i = 0; i < frame.rows; ++i)
-				for (int j = 0; j < frame.cols; ++j)
-					for (int k = 0; k < 3; ++k) {
-						double tmp = frame.at<Vec3d>(i, j)[k];
+			for (int x = 0; x < frame.rows; ++x)
+				for (int y = 0; y < frame.cols; ++y)
+					for (int t = 0; t < 3; ++t) {
+						double tmp = frame.at<Vec3d>(x, y)[t];
 						if (tmp > 1)
-							frame.at<Vec3d>(i, j)[k] = 1;
+							frame.at<Vec3d>(x, y)[t] = 1;
 						else if (tmp < 0)
-							frame.at<Vec3d>(i, j)[k] = 0;
+							frame.at<Vec3d>(x, y)[t] = 0;
 					}
             
 			// Write the frame into the video as unsigned 8-bit integer array
@@ -161,12 +176,12 @@ namespace cv {
 		String inFile = srcDir + "/" + fileName;
 		printf("Processing file: %s\n", inFile.c_str());
         
-		vector<int> alpha = vectorRange(20, 80, 30);		// Eulerian magnifier
-		vector<int> pyrLevel = vectorRange(4, 6, 2);		// Standard: 4, but updated by the real frame size
-		vector<int> minHR = vectorRange(30, 50, 10);		// BPM Standard: 50
-		vector<int> maxHR = vectorRange(60, 210, 30);		// BPM Standard: 90
-		vector<int> frameRate = vectorRange(30, 30);		// Standard: 30, but updated by the real frame-rate
-		vector<int> chromaMagnifier = vectorRange(1, 2);	// Standard: 1
+		vector<int> alpha = vectorRange(30, 30);            // Eulerian magnifier
+		vector<int> pyrLevel = vectorRange(6, 6);           // Standard: 4, but updated by the real frame size
+		vector<int> minHR = vectorRange(30, 30);            // BPM Standard: 50
+		vector<int> maxHR = vectorRange(240, 240);          // BPM Standard: 90
+		vector<int> frameRate = vectorRange(30, 30);        // Standard: 30, but updated by the real frame-rate
+		vector<int> chromaMagnifier = vectorRange(1, 1);    // Standard: 1
         
 		// generate all combinations of parameters
 		vector<vector<int>> tmp;
@@ -180,7 +195,6 @@ namespace cv {
         
 		// amplify_spatial_Gdown_temporal_ideal each combination
 		int nRow = int(paramsSet.size());
-		int nCol = int(paramsSet[0].size());
 		for (int i = 0; i < nRow; ++i) {
 			double currAlpha = paramsSet[i][0];
 			int currPyrLevel = paramsSet[i][1];
