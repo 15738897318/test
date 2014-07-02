@@ -18,6 +18,7 @@ class hrDebug{
 public:
     vector<pair<double,int>> heartBeats;
     vector<double> heartRates;
+    vector<double> autocorrelation;
 };
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */
