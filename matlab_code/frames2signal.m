@@ -11,14 +11,16 @@ function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_meth
 		
 		case 'mode-balance'
 			% Selection parameters
-			training_time = 0.5; %seconds %Double
-			lower_pct_range = 30; %Double
-			upper_pct_range = 30; %Double
+			training_time = [0.5, 3]; %seconds %Double
+			lower_pct_range = 40; %Double
+			upper_pct_range = 40; %Double
 	
 			% Find the mode of the pixel values in the first few frames
-			stretched_first_frame = reshape(monoframes(:, :, 1 : round(fr * training_time)), [size(monoframes, 1) * size(monoframes, 2) * round(fr * training_time), 1]);
+			stretched_first_frame = reshape(monoframes(:, :, round(fr * training_time(1)) + 1 : round(fr * training_time(2))), ...
+											[size(monoframes, 1) * size(monoframes, 2) * (round(fr * training_time(2)) - round(fr * training_time(1))), 1]);
 			%Double 1-D vector
-			[counts, centres] = hist(stretched_first_frame, 50 * round(fr * training_time));
+			%[counts, centres] = hist(stretched_first_frame, 50 * round(fr * training_time));
+			[counts, centres] = hist(stretched_first_frame, 50);
 			%[Int vector, Double vector] 
 			[~, argmax] = max(counts); %Int
 			centre_mode = centres(argmax); %Double
