@@ -35,6 +35,12 @@ namespace cv {
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level);
+
+    // Compute correlation of matrices IM with FILT, followed by
+    // downsampling.  These arguments should be 1D or 2D matrices, and IM
+    // must be larger (in both dimensions) than FILT.  The origin of filt
+    // is assumed to be floor(size(filt)/2)+1.
+    Mat corrDn(const Mat &src, const Mat &filter, int rectRow, int rectCol);
     
 	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
 	// and select a specific band indicated by LEVEL.

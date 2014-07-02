@@ -140,9 +140,27 @@ namespace cv {
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level) {
-        Mat ans(src);
+        Mat ans;
         for (int i = 0; i < level; ++i)
-            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
+            pyrDown(src, ans, Size(ans.cols/2, ans.rows/2));
+        return ans;
+    }
+    
+    
+    // Compute correlation of matrices IM with FILT, followed by
+    // downsampling.  These arguments should be 1D or 2D matrices, and IM
+    // must be larger (in both dimensions) than FILT.  The origin of filt
+    // is assumed to be floor(size(filt)/2)+1.
+    Mat corrDn(const Mat &src, const Mat &filter, int rectRow, int rectCol)
+    {
+        Mat tmp;
+        filter2D(src, tmp, -1, filter);
+        int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
+        int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
+        Mat ans = Mat::zeros(m, n, CV_64F);
+        for (int i = 0, x = 0; i < m; ++i, x += rectRow)
+            for (int j = 0, y = 0; j < n; ++j, y += rectCol)
+                ans.at<double>(i, j) = tmp.at<double>(x, y);
         return ans;
     }
     
