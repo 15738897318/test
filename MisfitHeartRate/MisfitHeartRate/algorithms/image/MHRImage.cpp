@@ -10,6 +10,14 @@
 
 
 namespace cv {
+    // print a frame to file
+    bool frameToFile(const Mat& frame, const String& outFile)
+    {
+        printf("Save a frame to %s\n", outFile.c_str());
+        return imwrite(outFile, frame);
+    }
+
+    
 	// convert a RGB Mat to a TSL Mat
 	Mat rgb2tsl(const Mat& srcRGBmap)
 	{
@@ -94,7 +102,9 @@ namespace cv {
             for (int j = 0; j < cols; ++j) {
                 for (int channel = 0; channel < 3; ++channel)
                     tmp.at<double>(channel, 0) = rgbFrame.at<Vec3d>(i, j)[channel];
+//                printf("%f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
                 tmp = base * tmp;
+//                printf("---> %f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
                 for (int channel = 0; channel < 3; ++channel)
                     ans.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0);
             }
@@ -130,9 +140,27 @@ namespace cv {
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level) {
-        Mat ans(src);
+        Mat ans;
         for (int i = 0; i < level; ++i)
-            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
+            pyrDown(src, ans, Size(ans.cols/2, ans.rows/2));
+        return ans;
+    }
+    
+    
+    // Compute correlation of matrices IM with FILT, followed by
+    // downsampling.  These arguments should be 1D or 2D matrices, and IM
+    // must be larger (in both dimensions) than FILT.  The origin of filt
+    // is assumed to be floor(size(filt)/2)+1.
+    Mat corrDn(const Mat &src, const Mat &filter, int rectRow, int rectCol)
+    {
+        Mat tmp;
+        filter2D(src, tmp, -1, filter);
+        int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
+        int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
+        Mat ans = Mat::zeros(m, n, CV_64F);
+        for (int i = 0, x = 0; i < m; ++i, x += rectRow)
+            for (int j = 0, y = 0; j < n; ++j, y += rectCol)
+                ans.at<double>(i, j) = tmp.at<double>(x, y);
         return ans;
     }
     
@@ -155,10 +183,14 @@ namespace cv {
         Mat rgbframe = convertTo(frame, CV_64FC3);
         frame = rgb2ntsc(rgbframe);
         
+        frameToFile(vid[0], "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_rgb2ntsc.jpg");
+        
         // Blur and downsample the frame
         Mat blurred = blurDnClr(frame, level);
         
         printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
+        
+        frameToFile(blurred, "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_blurred.jpg");
         
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
