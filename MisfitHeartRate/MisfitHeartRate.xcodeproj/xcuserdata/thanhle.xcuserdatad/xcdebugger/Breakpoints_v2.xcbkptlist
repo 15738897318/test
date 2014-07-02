@@ -23,7 +23,7 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MisfitHeartRate/algorithms/hr_calc_pda.cpp"
+            filePath = "MisfitHeartRate/algorithms/HeartRateCal/hr_calc_pda.cpp"
             timestampString = "425978892.46817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

@@ -1,7 +1,7 @@
 %install;
 
-alpha = 30; %Eulerian magnifier %Standard: < 50
-pyr_level = 6; %Standard: 4, but updated by the real frame size
+alpha = 50; %Eulerian magnifier %Standard: < 50
+pyr_level = 4; %Standard: 4, but updated by the real frame size
 min_hr = 30; %BPM %Standard: 30
 max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
@@ -17,11 +17,11 @@ chroma_magnifier = 1; %Standard: 1
 
 resultsDir = 'Results';
 src_folder = '/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/';
-file_template = '*.mp4';
+file_template = 'test*.mp4';
 
 file_list = dir([src_folder file_template]);
 
-for file_ind = 18 : length(file_list)
+for file_ind = 1 : length(file_list)
 	inFile = [src_folder file_list(file_ind).name];
 	
 	display(sprintf('File %d of %d \n', file_ind, length(file_list)));
