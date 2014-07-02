@@ -14,22 +14,18 @@ time_lag = 3; %seconds
 results_file = 'hr_results.csv';
 
 src_folder = '/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
-file_template = '*alpha-50*.avi';%'2014-06-10-Self-Finger_crop-ideal-from-0.66667-to-1-alpha-20-level-6-chromAtn-2.avi'%
+file_template = '*.avi';%'2014-06-10-Self-Finger_crop-ideal-from-0.66667-to-1-alpha-20-level-6-chromAtn-2.avi'%
 
-colourspace = 'rgb';
+colourspace = 'tsl';
 channels_to_process = 1 : 3;
 
 file_list = dir([src_folder file_template]);
-
-fileID = fopen([src_folder results_file], 'a');
 
 hr_array = {};
 k = 0;
 if ~exist([src_folder results_file], 'file')
 	k = 1;
 	hr_array{k} = 'ref_reading,channel,autocorr_reading,peak_detection_reading,type,colourspace,video_file,min_freq,max_freq,alpha,level,chromAtn';
-	
-	fprintf(fileID, '%s', hr_array{k});
 end
 
 for file_ind = 1 : length(file_list)
@@ -83,9 +79,11 @@ for file_ind = 1 : length(file_list)
 		hr_array{k} = [strjoin(cellstr(num2str(hr_output'))', ',') ',' ...
 						type ',' colourspace ',' file_list(file_ind).name ',' ...
 						min_hr ',' max_hr ',' alpha ',' level ',' chromAtn];
-		
-		fprintf(fileID, '\n%s', hr_array{k});
 	end
 end
 
+fileID = fopen([src_folder results_file], 'a');
+for ind = 1 : length(hr_array)
+	fprintf(fileID, '\n%s', hr_array{ind});
+end
 fclose(fileID);
