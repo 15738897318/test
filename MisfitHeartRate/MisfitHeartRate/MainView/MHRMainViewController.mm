@@ -8,6 +8,7 @@
 
 #import "MHRMainViewController.hpp"
 #import "UIImageCVMatConverter.hpp"
+#import "matlab.h"
 
 
 @interface MHRMainViewController ()
@@ -90,7 +91,19 @@
 //                  [formater stringFromDate:[NSDate date]]];
     [MHRUtilities createDirectory:outputPath];
     
-    runEulerian([resourcePath UTF8String], "test0.mp4", "", [outputPath UTF8String]);
+    
+#pragma mark -
+#pragma mark - test conv
+    vector<double> src = {1, 7, 3, 89, 5, 16, 5};
+    vector<double> kernel = {0.1, 1.38, 0.76};
+    vector<double> res = conv(src, kernel);
+    for (int i = 0, sz = (int)res.size(); i < sz; ++i)
+        printf("%f, ", res[i]);
+    printf("\n");
+        
+    
+    
+//    runEulerian([resourcePath UTF8String], "test0.mp4", "", [outputPath UTF8String]);
 //    runEulerian([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", "", [outputPath UTF8String]);
     
 /*----------------read image file----------------*/
