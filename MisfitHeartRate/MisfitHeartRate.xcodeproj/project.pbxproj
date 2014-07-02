@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCA50B621963CCEC00F99D33 /* 2014-06-13-Self-Finger_crop.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCA50B611963CCEC00F99D33 /* 2014-06-13-Self-Finger_crop.mp4 */; };
 		DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */; };
 		DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */; };
 		DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCA50B611963CCEC00F99D33 /* 2014-06-13-Self-Finger_crop.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "2014-06-13-Self-Finger_crop.mp4"; sourceTree = "<group>"; };
 		DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHRImage.cpp; path = image/MHRImage.cpp; sourceTree = "<group>"; };
 		DCAE6B9F195A789800B9FE9F /* MHRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRImage.h; path = image/MHRImage.h; sourceTree = "<group>"; };
 		DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MHRMatrix.cpp; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		DCB55F631957CDCD0095A98E /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCA50B611963CCEC00F99D33 /* 2014-06-13-Self-Finger_crop.mp4 */,
 				DCBDEA2419614ED6005F6298 /* test0.mp4 */,
 				DCBDEA2119614C43005F6298 /* small.mp4 */,
 				DCC56C7D1962A927009122FB /* test.jpg */,
@@ -400,6 +403,7 @@
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
 				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
+				DCA50B621963CCEC00F99D33 /* 2014-06-13-Self-Finger_crop.mp4 in Resources */,
 				DCBDEA2219614C43005F6298 /* small.mp4 in Resources */,
 				DCC56C7E1962A927009122FB /* test.jpg in Resources */,
 				DCB55F731957E0EF0095A98E /* test.avi in Resources */,

@@ -78,7 +78,7 @@
 
 - (IBAction)startButtonDidTap:(id)sender {
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test0.mp4"];
+//    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test0.mp4"];
     
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"-yyyy-MM-dd-HH-mm-ss";
@@ -90,7 +90,8 @@
 //                  [formater stringFromDate:[NSDate date]]];
     [MHRUtilities createDirectory:outputPath];
     
-    runEulerian([resourcePath UTF8String], "test0.mp4", "", [outputPath UTF8String]);
+//    runEulerian([resourcePath UTF8String], "test0.mp4", "", [outputPath UTF8String]);
+    runEulerian([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", "", [outputPath UTF8String]);
     
 /*----------------read image file----------------*/
 //    NSString *imageFile = [resourcePath stringByAppendingPathComponent:@"test.jpg"];
