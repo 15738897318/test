@@ -63,7 +63,7 @@
         }
         
         //Prune the beats counted to include only unique ones
-        heartBeats = matlabFunc.unique_stable(heartBeats);
+        heartBeats = unique_stable(heartBeats);
         
         //Calc the avg HR for the whole stream
         

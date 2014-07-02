@@ -87,14 +87,14 @@ namespace cv {
         int minPeakDistance = round(60 / max_bpm * frameRate);
         
         // Calculate heart-rate using peak-detection on the signal
-        hr_debug debug_pda;
+        hrDebug debug_pda;
         double avg_hr_pda = hr_calc_pda(temporal_mean, frameRate, firstSample,
                                         window_size, overlap_ratio,
                                         minPeakDistance, threshold,
                                         debug_pda);
         
         // Calculate heart-rate using peak-detection on the signal
-        hr_debug debug_autocorr;
+        hrDebug debug_autocorr;
         double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
                                                   window_size, overlap_ratio,
                                                   minPeakDistance,
