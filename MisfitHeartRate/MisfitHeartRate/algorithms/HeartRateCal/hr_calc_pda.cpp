@@ -14,10 +14,9 @@
         
         //Perform peak counting for each window
         int windowStart = firstSample;
+        
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
-        
-        
         while(windowStart <= (int) temporal_mean.size() - window_size){
             
             //Window to perform peak-couting in
@@ -42,7 +41,7 @@
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size + 1) / 2 ; //round
                 }else{
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
-                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end())) / 2 ; //round
+                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
                 }
             }
             
