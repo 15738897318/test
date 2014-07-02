@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */; };
+		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
+		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
+		12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
 		DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */; };
 		DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */; };
 		DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */; };
@@ -58,6 +62,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_calc_pda.cpp; sourceTree = "<group>"; };
+		12B587D91963EBA300BA19A5 /* hr_calc_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_calc_pda.h; sourceTree = "<group>"; };
+		12B587DB1963EC9100BA19A5 /* hrDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hrDebug.cpp; sourceTree = "<group>"; };
+		12B587DC1963EC9100BA19A5 /* hrDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hrDebug.h; sourceTree = "<group>"; };
+		12B587E21963F48700BA19A5 /* matlab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matlab.cpp; sourceTree = "<group>"; };
+		12B587E31963F48700BA19A5 /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matlab.h; sourceTree = "<group>"; };
+		12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calc_autocorr.cpp; path = HeartRateCal/hr_calc_autocorr.cpp; sourceTree = "<group>"; };
+		12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calc_autocorr.h; path = HeartRateCal/hr_calc_autocorr.h; sourceTree = "<group>"; };
 		DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHRImage.cpp; path = image/MHRImage.cpp; sourceTree = "<group>"; };
 		DCAE6B9F195A789800B9FE9F /* MHRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRImage.h; path = image/MHRImage.h; sourceTree = "<group>"; };
 		DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MHRMatrix.cpp; sourceTree = "<group>"; };
@@ -144,9 +156,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12B587E11963F45600BA19A5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				12B587E21963F48700BA19A5 /* matlab.cpp */,
+				12B587E31963F48700BA19A5 /* matlab.h */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		DCAE6B9D195A789800B9FE9F /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				12B587E11963F45600BA19A5 /* lib */,
 				DCAE6BAE195AEBFB00B9FE9F /* Eulerian */,
 				DCAE6BAA195A80FF00B9FE9F /* HeartRateCal */,
 				DCAE6BA6195A794800B9FE9F /* math */,
@@ -188,6 +210,12 @@
 			children = (
 				DCAE6BAC195A811800B9FE9F /* MHRHeartRateCal.h */,
 				DCAE6BAB195A811800B9FE9F /* MHRHeartRateCal.cpp */,
+				12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */,
+				12B587D91963EBA300BA19A5 /* hr_calc_pda.h */,
+				12B587DB1963EC9100BA19A5 /* hrDebug.cpp */,
+				12B587DC1963EC9100BA19A5 /* hrDebug.h */,
+				12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */,
+				12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */,
 			);
 			name = HeartRateCal;
 			sourceTree = "<group>";
@@ -427,14 +455,18 @@
 				DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */,
 				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
+				12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */,
 				DCAE6BAD195A811800B9FE9F /* MHRHeartRateCal.cpp in Sources */,
 				DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */,
+				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
 				DCAE6BB1195AEC0B00B9FE9F /* MHREulerian.cpp in Sources */,
 				DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
+				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
+				12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
