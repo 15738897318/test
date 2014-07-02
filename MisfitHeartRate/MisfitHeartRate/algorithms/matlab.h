@@ -11,6 +11,8 @@
 
 #include <iostream>
 #include <vector>
+#include <set>
+#include "MHRMatrix.h"
 
 using namespace std;
 using namespace cv;
@@ -21,5 +23,8 @@ using namespace cv;
     
     // unique_stable with vector<pair<double,int>>
     vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr);
+
+    // conv(seg1, seg2, 'same')
+    vector<double> conv(vector<double> seg1, vector<double> seg2);
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

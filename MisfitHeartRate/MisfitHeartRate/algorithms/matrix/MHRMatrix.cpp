@@ -29,6 +29,23 @@ namespace cv {
     }
     
     
+    // vector to Mat
+    Mat vectorToMat(vector<double> arr){
+        Mat ans = Mat::zeros(1, (int) arr.size(), CV_64F);
+        for(int i=0; i<(int) arr.size(); ++i){
+            ans.at<double>(0,i) = arr[i];
+        }
+        return ans;
+    }
+    
+    // Mat to vector 1D (just get the first row)
+    vector<double> matToVector1D(Mat m){
+        vector<double> arr;
+        for(int i=0; i<m.cols; ++i) arr.push_back(m.at<double>(0,i));
+        return arr;
+    }
+    
+    
 	// convert a Mat to another type Mat
 	Mat convertTo(const Mat &src, int type, double alpha, double beta) {
 		Mat ans;

@@ -36,8 +36,10 @@
     }
 
 
+// unique_stable with vector<pair<double,int>>
 vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr){
     set<int> mys;
+    
     vector<pair<double,int>> res;
     for(int i=0; i<(int) arr.size(); ++i){
         if(mys.count(arr[i].second)>0) continue;
@@ -45,4 +47,16 @@ vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr){
         mys.insert(arr[i].second);
     }
     return res;
+}
+
+// conv(seg1, seg2, 'same')
+vector<double> conv(vector<double> seg1, vector<double> seg2){
+    
+    Mat src = vectorToMat(seg1);
+    Mat dst;
+    Mat kernel = vectorToMat(seg2);
+    
+    filter2D(src, dst, -1, kernel);
+    return matToVector1D(dst);
+    
 }

@@ -24,6 +24,12 @@ namespace cv {
     // import data from a array to a Mat
     Mat arrayToMat(double a[], int rows, int cols);
     
+    // data from vector 1D to Mat
+    Mat vectorToMat(vector<double> arr);
+    
+    // data from Mat to vector 1D
+    vector<double> matToVector1D(Mat m);
+    
 	// convert a Mat to another type Mat
 	Mat convertTo(const Mat &src, int type, double alpha = 1.0, double beta = 0.0);
     
