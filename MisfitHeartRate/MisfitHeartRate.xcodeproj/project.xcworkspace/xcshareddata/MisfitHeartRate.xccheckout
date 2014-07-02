@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>DFFDDF22-3729-4E11-A9E0-00A0FF5AC933</string>
+	<string>2EDC390B-D8BD-4E50-9098-D0BD6A523FD8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MisfitHeartRate</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0EB97730-8D31-4D80-897F-76A13BC0C101</key>
-		<string>https://github.com/Misfit-Wearables/opticalHeartRate</string>
+		<key>4FA00FE4-284C-47B6-9158-EF30698B31BC</key>
+		<string>https://github.com/Misfit-Wearables/videoHeartRate</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MisfitHeartRate/MisfitHeartRate.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0EB97730-8D31-4D80-897F-76A13BC0C101</key>
+		<key>4FA00FE4-284C-47B6-9158-EF30698B31BC</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Misfit-Wearables/opticalHeartRate</string>
+	<string>https://github.com/Misfit-Wearables/videoHeartRate</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0EB97730-8D31-4D80-897F-76A13BC0C101</string>
+	<string>4FA00FE4-284C-47B6-9158-EF30698B31BC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0EB97730-8D31-4D80-897F-76A13BC0C101</string>
+			<string>4FA00FE4-284C-47B6-9158-EF30698B31BC</string>
 			<key>IDESourceControlWCCName</key>
 			<string>videoHeartRate</string>
 		</dict>
