@@ -10,7 +10,7 @@
 
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
-    void matlab::findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
+    void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
         max_peak_strengths.clear(); max_peak_locs.clear();
         
         vector<pair<double,int>> peak_list;
@@ -36,7 +36,7 @@
     }
 
 
-vector<pair<double,int>> matlab::unique_stable(vector<pair<double,int>> arr){
+vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr){
     set<int> mys;
     vector<pair<double,int>> res;
     for(int i=0; i<(int) arr.size(); ++i){

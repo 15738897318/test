@@ -1,13 +1,13 @@
 //
-//  hr_calc_pda.h
+//  hr_calc_autocorr.h
 //  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__hr_calc_pda__
-#define __MisfitHeartRate__hr_calc_pda__
+#ifndef __MisfitHeartRate__hr_calc_autocorr__
+#define __MisfitHeartRate__hr_calc_autocorr__
 
 
 
@@ -22,18 +22,10 @@
 #include <opencv2/imgproc/types_c.h>
 #include "MHRImage.h"
 #include "MHRMath.h"
-
 #include "hrDebug.h"
 #include "matlab.h"
-//#import <opencv2/highgui/ios.h>
-//#import <opencv2/highgui/cap_ios.h>
-
 
 using namespace std;
 using namespace cv;
-    
-    double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug);
-    
 
-
-#endif /* defined(__MisfitHeartRate__hr_calc_pda__) */
+#endif /* defined(__MisfitHeartRate__hr_calc_autocorr__) */
