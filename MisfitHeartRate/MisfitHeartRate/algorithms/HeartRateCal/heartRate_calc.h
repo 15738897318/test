@@ -22,7 +22,8 @@
 #include "MHRMatrix.h"
 #include "frames2signal.h"
 #include "hr_calc_pda.h"
-#include "hrDebug.h"
+#include "hr_calc_autocorr.h"
+
 
 namespace cv {
     vector<double> heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,

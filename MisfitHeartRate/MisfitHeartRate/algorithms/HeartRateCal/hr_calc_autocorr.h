@@ -31,6 +31,7 @@
 using namespace std;
 using namespace cv;
 
-double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance);
+double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+                        int window_size, double overlap_ratio, double minPeakDistance);
 
 #endif /* defined(__MisfitHeartRate__hr_calc_autocorr__) */

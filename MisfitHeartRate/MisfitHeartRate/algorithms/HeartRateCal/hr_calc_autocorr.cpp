@@ -8,7 +8,8 @@
 
 #include "hr_calc_autocorr.h"
 
-double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance){
+double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+                        int window_size, double overlap_ratio, double minPeakDistance){
     // Step 1: calc the window-based autocorrelation of the signal stream
     
     int windowStart = firstSample;
