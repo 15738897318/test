@@ -7,11 +7,8 @@
 //
 
 #include "hr_calc_pda.h"
-#include "hrDebug.h"
-#include "matlab.h"
 
-namespace cv{
-    
+
     
     double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug){
         
@@ -20,9 +17,8 @@ namespace cv{
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
         
-        matlab matlabFunc;
         
-        while(windowStart < (int) temporal_mean.size() - window_size){
+        while(windowStart <= (int) temporal_mean.size() - window_size){
             
             //Window to perform peak-couting in
             vector<double> segment;
@@ -33,7 +29,7 @@ namespace cv{
             for(int i=windowStart; i<windowStart+window_size; ++i) segment.push_back(temporal_mean[i]);
             
             //Count the number of peaks in this window
-            matlabFunc.findpeaks(segment, minPeakDistance, threshold, max_peak_strengths, max_peak_locs);
+            findpeaks(segment, minPeakDistance, threshold, max_peak_strengths, max_peak_locs);
             
             //Define the segment length
             // a. Shine-step-counting style
@@ -41,7 +37,7 @@ namespace cv{
                 segment_length = window_size;
             }else{
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
-                matlabFunc.findpeaks(segment, minPeakDistance, threshold, min_peak_strengths, min_peak_locs);
+                findpeaks(segment, minPeakDistance, threshold, min_peak_strengths, min_peak_locs);
                 if(min_peak_locs.empty()){
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size + 1) / 2 ; //round
                 }else{
@@ -84,4 +80,3 @@ namespace cv{
     }
     
     
-}
