@@ -66,11 +66,4 @@ namespace cv {
 		return ans;
 	}
     
-    
-    // convert a frame to signal
-    void frames2signal(Mat monoframes, String conversion_method, double frameRate, double cutoff_freq,
-                       double &temporal_mean, Mat &debug_frames2signal)
-    {
-        
-    }
 };
