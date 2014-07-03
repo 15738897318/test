@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		129E826219655D6600C66D97 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 129E826119655D6600C66D97 /* config.c */; };
 		12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */; };
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		129E826119655D6600C66D97 /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = config.c; sourceTree = "<group>"; };
 		12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calc_pda.cpp; path = HeartRateCal/hr_calc_pda.cpp; sourceTree = "<group>"; };
 		12B587D91963EBA300BA19A5 /* hr_calc_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calc_pda.h; path = HeartRateCal/hr_calc_pda.h; sourceTree = "<group>"; };
 		12B587DB1963EC9100BA19A5 /* hrDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hrDebug.cpp; path = HeartRateCal/hrDebug.cpp; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		12B587E31963F48700BA19A5 /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = matlab.h; path = math/matlab.h; sourceTree = "<group>"; };
 		12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calc_autocorr.cpp; path = HeartRateCal/hr_calc_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calc_autocorr.h; path = HeartRateCal/hr_calc_autocorr.h; sourceTree = "<group>"; };
+		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
 		DCA50B881964173000F99D33 /* heartRate_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = heartRate_calc.cpp; path = HeartRateCal/heartRate_calc.cpp; sourceTree = "<group>"; };
 		DCA50B891964173000F99D33 /* heartRate_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = heartRate_calc.h; path = HeartRateCal/heartRate_calc.h; sourceTree = "<group>"; };
 		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				DCAE6BA6195A794800B9FE9F /* math */,
 				DCAE6BA5195A791B00B9FE9F /* image */,
 				DCAE6BA0195A789800B9FE9F /* matrix */,
+				12B587EB19651DD700BA19A5 /* config.h */,
+				129E826119655D6600C66D97 /* config.c */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCA50B8A1964173000F99D33 /* heartRate_calc.cpp in Sources */,
+				129E826219655D6600C66D97 /* config.c in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 				12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */,
 			);

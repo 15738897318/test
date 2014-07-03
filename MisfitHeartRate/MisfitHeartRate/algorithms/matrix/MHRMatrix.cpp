@@ -28,6 +28,14 @@ namespace cv {
         return ans;
     }
     
+    Mat arrayToMat(const double a[], int rows, int cols) {
+		Mat ans = Mat::zeros(rows, cols, CV_64F);
+        for (int i = 0; i < rows; ++i)
+            for (int j = 0; j < cols; ++j)
+                ans.at<double>(i, j) = a[i*cols + j];
+        return ans;
+    }
+    
     
     // vector to Mat
     Mat vectorToMat(vector<double> arr){

@@ -16,6 +16,7 @@
 #import <opencv2/highgui/highgui_c.h>
 #import "MHREulerian.h"
 #import "MHRUtilities.h"
+#import "matlab.h"
 
 
 using namespace cv;

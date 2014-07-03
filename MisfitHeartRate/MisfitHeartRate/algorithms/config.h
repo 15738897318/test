@@ -24,7 +24,7 @@ const double _training_time=0.5;
 //for matlab class================
 
 //kernel for low_pass_filter function, used in frames2sinal function
-double _filtArray[] = {
+const double _filtArray[] = {
     -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
     0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
     0.0956, 0.0580, 0.0217, -0.0076, -0.0265   };

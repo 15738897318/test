@@ -31,7 +31,7 @@ void findpeaks(vector<double> segment, double minPeakDistance, double threshold,
     for(int i=0; i<(int) peak_list.size(); ++i)
         if(peak_list[i].second!=-1){
             max_peak_locs.push_back(peak_list[i].second);
-            max_peak_strengths.push_back(peak_list[i].first);
+            max_peak_strengths.push_back(segment[peak_list[i].second]);
         }
 }
 
@@ -56,13 +56,13 @@ vector<double> conv(vector<double> seg1, vector<double> seg2){
     Mat dst;
     Mat kernel = vectorToMat(seg2);
     
-    filter2D(src, dst, -1, kernel);
+    filter2D(src, dst, -1, kernel, Point(-1,-1), 0 , BORDER_CONSTANT);
     return matToVector1D(dst);
     
 }
 
 // [counts, centres] = hist(arr, nbins)
-void hist( vector<double> arr, int nbins, vector<double> &counts, vector<double> &centers){
+void hist( vector<double> arr, int nbins, vector<int> &counts, vector<double> &centers){
     counts.clear();
     centers.clear();
     
@@ -91,7 +91,7 @@ void hist( vector<double> arr, int nbins, vector<double> &counts, vector<double>
 double invprctile(vector<double> arr, double x){
     int cnt = 0;
     for(int i=0; i<(int) arr.size(); ++i)
-        if(x < arr[i] + 1e-9) ++cnt;
+        if(arr[i] < x + 1e-9) ++cnt;
     return 100.0 * cnt / arr.size();
 }
 
@@ -103,12 +103,17 @@ double prctile(vector<double> arr, double percent){
     int int_idx = (int) (idx+1e-9);
     if(fabs(idx - int_idx)<1e-9){
         // idx is a whole number
+        if(int_idx==0) return NaN;
         int next_int = int_idx;
-        if(next_int < n) ++next_int;
-        return (arr[int_idx - 1] + arr[next_int - 1]) / 2;
+        if(next_int < n) next_int++;
+        return (arr[int_idx-1] + arr[next_int-1])/2;
     }else{
-        int next_int = int_idx + 1;
-        return arr[next_int - 1];
+        int ceil_int = (int)(ceil(idx));
+        int floor_int = (int)(floor(idx));
+        double vfloor = arr[floor_int-1];
+        double vceil = arr[ceil_int-1];
+        return vfloor + (idx - floor_int)/(ceil_int-floor_int) * (vceil - vfloor);
+        
     }
 }
 
@@ -117,6 +122,6 @@ vector<double> low_pass_filter(vector<double> arr){
     Mat src = vectorToMat(arr);
     Mat filt = arrayToMat(_filtArray,1,15);
     Mat dst;
-    filter2D(src, dst, -1, filt);
-    return arr;
+    filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
+    return matToVector1D(dst);
 }

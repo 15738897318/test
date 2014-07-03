@@ -60,7 +60,8 @@ vector<double> frames2signal(const Mat& monoframes, String conversion_method, do
                     arr.push_back(monoframes.at<double>(x,y,i));
         
         //find the mode
-        vector<double> counts, centres;
+        vector<double> centres;
+        vector<int> counts;
         
         hist(arr, nbins, counts, centres);
         
