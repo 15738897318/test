@@ -13,6 +13,7 @@
 #include <vector>
 #include <set>
 #include "MHRMatrix.h"
+#include "config.h"
 
 using namespace std;
 using namespace cv;

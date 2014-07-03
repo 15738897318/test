@@ -114,12 +114,8 @@ double prctile(vector<double> arr, double percent){
 
 //filter function for frames2signal function
 vector<double> low_pass_filter(vector<double> arr){
-    double filtArray[] = {
-        -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
-        0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
-        0.0956, 0.0580, 0.0217, -0.0076, -0.0265   };
     Mat src = vectorToMat(arr);
-    Mat filt = arrayToMat(filtArray,1,15);
+    Mat filt = arrayToMat(_filtArray,1,15);
     Mat dst;
     filter2D(src, dst, -1, filt);
     return arr;

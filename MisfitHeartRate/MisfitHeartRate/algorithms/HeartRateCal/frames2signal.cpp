@@ -31,7 +31,7 @@ vector<double> frames2signal(const Mat& monoframes, String conversion_method, do
     }else if(conversion_method == "trimmed-mean"){
         
         //Set the trimmed size here
-        int trimmed_size = 30;
+        int trimmed_size = _trimmed_size;
         
         double size = (height - trimmed_size * 2) * (width - trimmed_size * 2);
         for(int i=0; i<total_frames; ++i){
@@ -45,9 +45,9 @@ vector<double> frames2signal(const Mat& monoframes, String conversion_method, do
     }else if(conversion_method == "mode-balance"){
         
         // Selection parameters
-        double training_time = 0.5;
-        double lower_pct_range = 30;
-        double upper_pct_range = 30;
+        double training_time = _training_time;
+        double lower_pct_range = _lower_pct_range;
+        double upper_pct_range = _upper_pct_range;
         
         int first_tranning_frames = min( (int) round(fr * training_time), total_frames );
         int nbins = (int) (50 * round(fr * training_time));
