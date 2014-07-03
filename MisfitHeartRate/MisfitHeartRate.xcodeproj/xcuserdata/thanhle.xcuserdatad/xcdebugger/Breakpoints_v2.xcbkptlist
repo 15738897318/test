@@ -53,12 +53,12 @@
                   symbolName = "frames2signal(cv::Mat const&amp;, cv::String, double, double, cv::Mat&amp;)"
                   moduleName = "MisfitHeartRate"
                   urlString = "file:///Users/thanhle/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
-                  timestampString = "426077404.0609"
+                  timestampString = "426078578.795261"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
                   endingLineNumber = "115"
-                  offsetFromSymbolStart = "573">
+                  offsetFromSymbolStart = "566">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   symbolName = "frames2signal(cv::Mat const&amp;, cv::String, double, double, cv::Mat&amp;)"
                   moduleName = "MisfitHeartRate"
                   urlString = "file:///Users/thanhle/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
-                  timestampString = "426077404.06111"
+                  timestampString = "426078578.795451"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
                   endingLineNumber = "115"
-                  offsetFromSymbolStart = "3173">
+                  offsetFromSymbolStart = "3060">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -81,12 +81,12 @@
                   symbolName = "frames2signal(cv::Mat const&amp;, cv::String, double, double, cv::Mat&amp;)"
                   moduleName = "MisfitHeartRate"
                   urlString = "file:///Users/thanhle/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
-                  timestampString = "426077404.061259"
+                  timestampString = "426078578.795636"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
                   endingLineNumber = "115"
-                  offsetFromSymbolStart = "3869">
+                  offsetFromSymbolStart = "3756">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -95,12 +95,12 @@
                   symbolName = "frames2signal(cv::Mat const&amp;, cv::String, double, double, cv::Mat&amp;)"
                   moduleName = "MisfitHeartRate"
                   urlString = "file:///Users/thanhle/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
-                  timestampString = "426077404.061402"
+                  timestampString = "426078578.7958"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
                   endingLineNumber = "115"
-                  offsetFromSymbolStart = "6422">
+                  offsetFromSymbolStart = "6309">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -109,12 +109,12 @@
                   symbolName = "frames2signal(cv::Mat const&amp;, cv::String, double, double, cv::Mat&amp;)"
                   moduleName = "MisfitHeartRate"
                   urlString = "file:///Users/thanhle/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
-                  timestampString = "426077404.061544"
+                  timestampString = "426078578.795957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
                   endingLineNumber = "115"
-                  offsetFromSymbolStart = "6572">
+                  offsetFromSymbolStart = "6458">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -156,11 +156,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MisfitHeartRate/MainView/MHRMainViewController.mm"
-            timestampString = "426077042.037736"
+            timestampString = "426078296.186482"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-startButtonDidTap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,7 +228,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MisfitHeartRate/algorithms/math/matlab.cpp"
@@ -318,6 +318,54 @@
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "prctile(vector&lt;double&gt; arr, double percent)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MisfitHeartRate/MainView/MHRMainViewController.mm"
+            timestampString = "426078296.186482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-startButtonDidTap:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "426078466.713201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "frames2signal(const Mat&amp; monoframes, String conversion_method, double fr, double cutoff_freq, Mat &amp;debug_monoframes)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "426078505.243744"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "frames2signal(const Mat&amp; monoframes, String conversion_method, double fr, double cutoff_freq, Mat &amp;debug_monoframes)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

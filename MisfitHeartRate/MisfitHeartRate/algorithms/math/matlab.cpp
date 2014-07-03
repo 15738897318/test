@@ -123,5 +123,7 @@ vector<double> low_pass_filter(vector<double> arr){
     Mat filt = arrayToMat(_filtArray,1,15);
     Mat dst;
     filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
-    return matToVector1D(dst);
+    vector<double> ans = matToVector1D(dst);
+    for(int i=0; i<7; ++i) if(!ans.empty()) ans.pop_back();
+    return ans;
 }

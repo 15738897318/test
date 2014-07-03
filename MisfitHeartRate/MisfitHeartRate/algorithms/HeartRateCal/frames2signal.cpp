@@ -50,7 +50,7 @@ vector<double> frames2signal(const Mat& monoframes, String conversion_method, do
         double upper_pct_range = _upper_pct_range;
         
         int first_tranning_frames = min( (int) round(fr * training_time), total_frames );
-        int nbins = (int) (50 * round(fr * training_time));
+        int nbins = (int) (50);
         
         // this arr stores values of pixels from first trainning frames
         vector<double> arr;

@@ -17,6 +17,7 @@
 #import "MHREulerian.h"
 #import "MHRUtilities.h"
 #import "matlab.h"
+#import "frames2signal.h"
 
 
 using namespace cv;
