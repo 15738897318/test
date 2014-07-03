@@ -89,17 +89,21 @@ vector<double> frames2signal(const Mat& monoframes, String conversion_method, do
         
         for(int i=0; i<total_frames; ++i){
             double sum = 0;
-            
+            int cnt = 0; //number of not-NaN-pixels
             for(int x=0; x<height; ++x)
                 for(int y=0; y<width; ++y){
                     double val=monoframes.at<double>(x,y,i);
                     if(val<lower_range - 1e-9 || val>upper_range + 1e-9){
                         val=0;
-                        debug_monoframes.at<double>(x,y,i)=0; //set 0 for rejected pixels
-                    }
+                        debug_monoframes.at<double>(x,y,i)=NaN; //set 0 for rejected pixels
+                    }else ++cnt;
                     sum+=val;
                 }
-            temporal_mean.push_back(sum/size);
+            
+            if(cnt==0) //push NaN for all-NaN-frames
+                temporal_mean.push_back(NaN);
+            else
+                temporal_mean.push_back(sum/size);
         }
         
     }// end of mode-balance

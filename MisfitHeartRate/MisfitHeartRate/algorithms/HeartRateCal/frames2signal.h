@@ -22,6 +22,7 @@
 #include "MHRMath.h"
 #include "MHRMatrix.h"
 #include "matlab.h"
+#include "config.h"
 
 using namespace cv;
 using namespace std;
