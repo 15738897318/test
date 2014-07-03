@@ -1,23 +1,23 @@
 //
-//  MHRImage.h
+//  image.h
 //  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 6/24/14.
+//  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__MHRImage__
-#define __MisfitHeartRate__MHRImage__
+#ifndef __MisfitHeartRate__image__
+#define __MisfitHeartRate__image__
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgproc/imgproc_c.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/imgproc/types_c.h>
-#include "MHRMatrix.h"
+#include "matrix.h"
 
 
-namespace cv {
+namespace MHR {
     // print a frame to file
     bool frameToFile(const Mat& frame, const String& outFile);
     
@@ -35,7 +35,7 @@ namespace cv {
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level);
-
+    
     // Compute correlation of matrices IM with FILT, followed by
     // downsampling.  These arguments should be 1D or 2D matrices, and IM
     // must be larger (in both dimensions) than FILT.  The origin of filt
@@ -52,6 +52,4 @@ namespace cv {
 	Mat buildGDownStack(const vector<Mat>& vid, int startIndex, int endIndex, int level);
 }
 
-#endif /* defined(__MisfitHeartRate__MHRImage__) */
-
-
+#endif /* defined(__MisfitHeartRate__image__) */

@@ -9,7 +9,7 @@
 #include "heartRate_calc.h"
 
 
-namespace cv {
+namespace MHR {
     vector<double> heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag)
@@ -21,9 +21,9 @@ namespace cv {
         // Extract video info
         int vidHeight = vid[0].rows;
         int vidWidth = vid[0].cols;
-        int nChannels = 3;
+//        int nChannels = 3;
         double frameRate = 30;
-        int len = vid.size();
+        int len = (int)vid.size();
         
         int window_size = round(window_size_in_sec * frameRate);
         int firstSample = round(frameRate * time_lag);

@@ -2,38 +2,4 @@
 <Bucket
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MisfitHeartRate/algorithms/Eulerian/MHREulerian.cpp"
-            timestampString = "425971167.853279"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "amplifySpatialGdownTemporalIdeal(String vidFile, String outDir, double alpha, int level, double freqBandLowEnd, double freqBandHighEnd, double samplingRate, double chromAttenuation)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MisfitHeartRate/algorithms/Eulerian/MHREulerian.cpp"
-            timestampString = "425971337.435185"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "amplifySpatialGdownTemporalIdeal(String vidFile, String outDir, double alpha, int level, double freqBandLowEnd, double freqBandHighEnd, double samplingRate, double chromAttenuation)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

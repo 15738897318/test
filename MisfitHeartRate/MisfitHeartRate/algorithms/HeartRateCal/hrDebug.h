@@ -14,11 +14,16 @@
 
 using namespace std;
 
-class hrDebug{
-public:
-    vector<pair<double,int>> heartBeats;
-    vector<double> heartRates;
-    vector<double> autocorrelation;
-};
+
+namespace MHR {
+    struct hrDebug {
+    public:
+        vector<pair<double,int>> heartBeats;
+        vector<double> heartRates;
+        vector<double> autocorrelation;
+    };
+    
+    void testMathFunctions();
+}
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */

@@ -19,14 +19,16 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/imgproc/types_c.h>
-#include "MHRMath.h"
-#include "MHRMatrix.h"
+#include "matrix.h"
 #include "matlab.h"
 #include "config.h"
 
 using namespace cv;
 using namespace std;
 
-vector<double> frames2signal(const Mat& monoframes, String conversion_method, double fr, double cutoff_freq, Mat &debug_monoframes);
+
+namespace MHR {
+    vector<double> frames2signal(const Mat& monoframes, String conversion_method, double fr, double cutoff_freq, Mat &debug_monoframes);
+}
 
 #endif /* defined(__MisfitHeartRate__frame2signal__) */

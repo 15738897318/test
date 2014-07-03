@@ -13,10 +13,10 @@
 		12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
 		DCA50B8A1964173000F99D33 /* heartRate_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B881964173000F99D33 /* heartRate_calc.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
-		DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */; };
-		DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */; };
-		DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */; };
-		DCAE6BB1195AEC0B00B9FE9F /* MHREulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE6BAF195AEC0B00B9FE9F /* MHREulerian.cpp */; };
+		DCAE523D196575A800A8AFB6 /* run_hr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE523B196575A800A8AFB6 /* run_hr.cpp */; };
+		DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE523E196579BC00A8AFB6 /* matrix.cpp */; };
+		DCAE524319657AF300A8AFB6 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
+		DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
 		DCB55F171957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
 		DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F181957CB3B0095A98E /* CoreGraphics.framework */; };
 		DCB55F1B1957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
@@ -76,14 +76,14 @@
 		DCA50B891964173000F99D33 /* heartRate_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = heartRate_calc.h; path = HeartRateCal/heartRate_calc.h; sourceTree = "<group>"; };
 		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
 		DCA50B8C1964179200F99D33 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = frames2signal.h; path = HeartRateCal/frames2signal.h; sourceTree = "<group>"; };
-		DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHRImage.cpp; path = image/MHRImage.cpp; sourceTree = "<group>"; };
-		DCAE6B9F195A789800B9FE9F /* MHRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRImage.h; path = image/MHRImage.h; sourceTree = "<group>"; };
-		DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MHRMatrix.cpp; sourceTree = "<group>"; };
-		DCAE6BA2195A789800B9FE9F /* MHRMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHRMatrix.h; sourceTree = "<group>"; };
-		DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHRMath.cpp; path = math/MHRMath.cpp; sourceTree = "<group>"; };
-		DCAE6BA8195A795500B9FE9F /* MHRMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRMath.h; path = math/MHRMath.h; sourceTree = "<group>"; };
-		DCAE6BAF195AEC0B00B9FE9F /* MHREulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MHREulerian.cpp; path = Eulerian/MHREulerian.cpp; sourceTree = "<group>"; };
-		DCAE6BB0195AEC0B00B9FE9F /* MHREulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHREulerian.h; path = Eulerian/MHREulerian.h; sourceTree = "<group>"; };
+		DCAE523B196575A800A8AFB6 /* run_hr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = run_hr.cpp; path = HeartRateCal/run_hr.cpp; sourceTree = "<group>"; };
+		DCAE523C196575A800A8AFB6 /* run_hr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = run_hr.h; path = HeartRateCal/run_hr.h; sourceTree = "<group>"; };
+		DCAE523E196579BC00A8AFB6 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		DCAE523F196579BC00A8AFB6 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		DCAE524119657AF300A8AFB6 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = image/image.cpp; sourceTree = "<group>"; };
+		DCAE524219657AF300A8AFB6 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = image/image.h; sourceTree = "<group>"; };
+		DCAE524419657B7700A8AFB6 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eulerian.cpp; path = Eulerian/eulerian.cpp; sourceTree = "<group>"; };
+		DCAE524519657B7700A8AFB6 /* eulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eulerian.h; path = Eulerian/eulerian.h; sourceTree = "<group>"; };
 		DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisfitHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCB55F181957CB3B0095A98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,8 +176,8 @@
 		DCAE6BA0195A789800B9FE9F /* matrix */ = {
 			isa = PBXGroup;
 			children = (
-				DCAE6BA2195A789800B9FE9F /* MHRMatrix.h */,
-				DCAE6BA1195A789800B9FE9F /* MHRMatrix.cpp */,
+				DCAE523F196579BC00A8AFB6 /* matrix.h */,
+				DCAE523E196579BC00A8AFB6 /* matrix.cpp */,
 			);
 			path = matrix;
 			sourceTree = "<group>";
@@ -185,8 +185,8 @@
 		DCAE6BA5195A791B00B9FE9F /* image */ = {
 			isa = PBXGroup;
 			children = (
-				DCAE6B9F195A789800B9FE9F /* MHRImage.h */,
-				DCAE6B9E195A789800B9FE9F /* MHRImage.cpp */,
+				DCAE524219657AF300A8AFB6 /* image.h */,
+				DCAE524119657AF300A8AFB6 /* image.cpp */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -196,8 +196,6 @@
 			children = (
 				12B587E21963F48700BA19A5 /* matlab.cpp */,
 				12B587E31963F48700BA19A5 /* matlab.h */,
-				DCAE6BA8195A795500B9FE9F /* MHRMath.h */,
-				DCAE6BA7195A795500B9FE9F /* MHRMath.cpp */,
 			);
 			name = math;
 			sourceTree = "<group>";
@@ -205,16 +203,18 @@
 		DCAE6BAA195A80FF00B9FE9F /* HeartRateCal */ = {
 			isa = PBXGroup;
 			children = (
-				DCA50B881964173000F99D33 /* heartRate_calc.cpp */,
+				DCAE523C196575A800A8AFB6 /* run_hr.h */,
+				DCAE523B196575A800A8AFB6 /* run_hr.cpp */,
 				DCA50B891964173000F99D33 /* heartRate_calc.h */,
-				12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */,
+				DCA50B881964173000F99D33 /* heartRate_calc.cpp */,
 				12B587D91963EBA300BA19A5 /* hr_calc_pda.h */,
-				12B587DB1963EC9100BA19A5 /* hrDebug.cpp */,
+				12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */,
 				12B587DC1963EC9100BA19A5 /* hrDebug.h */,
-				12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */,
+				12B587DB1963EC9100BA19A5 /* hrDebug.cpp */,
 				12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */,
-				DCA50B8B1964179200F99D33 /* frames2signal.cpp */,
+				12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */,
 				DCA50B8C1964179200F99D33 /* frames2signal.h */,
+				DCA50B8B1964179200F99D33 /* frames2signal.cpp */,
 			);
 			name = HeartRateCal;
 			sourceTree = "<group>";
@@ -222,8 +222,8 @@
 		DCAE6BAE195AEBFB00B9FE9F /* Eulerian */ = {
 			isa = PBXGroup;
 			children = (
-				DCAE6BB0195AEC0B00B9FE9F /* MHREulerian.h */,
-				DCAE6BAF195AEC0B00B9FE9F /* MHREulerian.cpp */,
+				DCAE524519657B7700A8AFB6 /* eulerian.h */,
+				DCAE524419657B7700A8AFB6 /* eulerian.cpp */,
 			);
 			name = Eulerian;
 			sourceTree = "<group>";
@@ -451,17 +451,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAE6BA4195A789800B9FE9F /* MHRMatrix.cpp in Sources */,
 				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
+				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
 				12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */,
-				DCAE6BA9195A795500B9FE9F /* MHRMath.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
-				DCAE6BB1195AEC0B00B9FE9F /* MHREulerian.cpp in Sources */,
-				DCAE6BA3195A789800B9FE9F /* MHRImage.cpp in Sources */,
+				DCAE523D196575A800A8AFB6 /* run_hr.cpp in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
+				DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */,
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
+				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCA50B8A1964173000F99D33 /* heartRate_calc.cpp in Sources */,

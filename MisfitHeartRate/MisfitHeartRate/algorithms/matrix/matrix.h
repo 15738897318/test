@@ -1,23 +1,24 @@
 //
-//  MHRMatrix.h
+//  matrix.h
 //  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 6/24/14.
+//  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__MHRMatrix__
-#define __MisfitHeartRate__MHRMatrix__
+#ifndef __MisfitHeartRate__matrix__
+#define __MisfitHeartRate__matrix__
 
 #include <iostream>
 #include <vector>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+using namespace cv;
 using namespace std;
 
 
-namespace cv {
+namespace MHR {
 	// return a vector of integer from a to b with specific step
 	vector<int> vectorRange(int a, int b, int step = 1);
     
@@ -67,4 +68,4 @@ namespace cv {
 	vector<vector<int>> allcomb(std::vector<vector<int>> a);
 }
 
-#endif /* defined(__MisfitHeartRate__MHRMatrix__) */
+#endif /* defined(__MisfitHeartRate__matrix__) */

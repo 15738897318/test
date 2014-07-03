@@ -17,16 +17,12 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/imgproc/types_c.h>
-#include "MHRImage.h"
-#include "MHRMath.h"
-#include "MHRMatrix.h"
+#include "image.h"
+#include "matrix.h"
 #include "heartRate_calc.h"
-//#import <opencv2/highgui/ios.h>
-//#import <opencv2/highgui/cap_ios.h>
 
 
-namespace cv {
-    
+namespace MHR {
     // run Heart Rate calculation
     void run_hr(vector<Mat> &vid, String resultsDir,
                 double min_hr, double max_hr,

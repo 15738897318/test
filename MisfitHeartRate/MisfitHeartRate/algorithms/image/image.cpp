@@ -1,22 +1,22 @@
 //
-//  MHRImage.cpp
+//  image.cpp
 //  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 6/24/14.
+//  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#include "MHRImage.h"
+#include "image.h"
 
 
-namespace cv {
+namespace MHR {
     // print a frame to file
     bool frameToFile(const Mat& frame, const String& outFile)
     {
         printf("Save a frame to %s\n", outFile.c_str());
         return imwrite(outFile, frame);
     }
-
+    
     
 	// convert a RGB Mat to a TSL Mat
 	Mat rgb2tsl(const Mat& srcRGBmap)
@@ -102,9 +102,9 @@ namespace cv {
             for (int j = 0; j < cols; ++j) {
                 for (int channel = 0; channel < 3; ++channel)
                     tmp.at<double>(channel, 0) = rgbFrame.at<Vec3d>(i, j)[channel];
-//                printf("%f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
+                //                printf("%f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
                 tmp = base * tmp;
-//                printf("---> %f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
+                //                printf("---> %f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
                 for (int channel = 0; channel < 3; ++channel)
                     ans.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0);
             }
@@ -135,7 +135,7 @@ namespace cv {
             }
 		return ans;
 	}
-
+    
     
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
@@ -174,10 +174,10 @@ namespace cv {
 	// the forth dimension is the color channel
 	Mat buildGDownStack(const vector<Mat>& vid, int startIndex, int endIndex, int level) {
 		// Extract video info
-		int vidHeight = vid[0].rows;
-		int vidWidth = vid[0].cols;
-		int nChannels = vid[0].channels(); // 3 ????
-
+//		int vidHeight = vid[0].rows;
+//		int vidWidth = vid[0].cols;
+//		int nChannels = vid[0].channels(); // 3 ????
+        
         // firstFrame
         Mat frame = vid[0];
         Mat rgbframe = convertTo(frame, CV_64FC3);
@@ -211,7 +211,7 @@ namespace cv {
             rgbframe = convertTo(frame, CV_64FC3);
             frame = rgb2ntsc(rgbframe);
             
-//            printf("buildGDownStack: %d --> %d\n", i, endIndex);
+            //            printf("buildGDownStack: %d --> %d\n", i, endIndex);
             
             // Blur and downsample the frame
             blurred = blurDnClr(frame, level);

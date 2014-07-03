@@ -1,15 +1,15 @@
 //
-//  MHRMatrix.cpp
+//  matrix.cpp
 //  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 6/24/14.
+//  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#include "MHRMatrix.h"
+#include "matrix.h"
 
 
-namespace cv {
+namespace MHR {
 	// return a vector of integer from a to b with specific step
 	vector<int> vectorRange(int a, int b, int step) {
 		vector<int> ans;
@@ -164,7 +164,7 @@ namespace cv {
         
 		// generate all combinations of set a
 		vector<vector<int>> ans;
-		int row = 0, id = 0;
+		int id = 0;
 		bool isPop = false;
 		vector<int> stackPos;
 		stackPos.push_back(0);

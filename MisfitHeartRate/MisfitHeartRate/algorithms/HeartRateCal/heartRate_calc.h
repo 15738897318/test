@@ -17,15 +17,14 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/imgproc/types_c.h>
-#include "MHRImage.h"
-#include "MHRMath.h"
-#include "MHRMatrix.h"
+#include "image.h"
+#include "matrix.h"
 #include "frames2signal.h"
 #include "hr_calc_pda.h"
 #include "hr_calc_autocorr.h"
 
 
-namespace cv {
+namespace MHR {
     vector<double> heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag);

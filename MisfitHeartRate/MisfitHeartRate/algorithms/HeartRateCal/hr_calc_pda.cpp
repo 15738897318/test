@@ -9,7 +9,7 @@
 #include "hr_calc_pda.h"
 
 
-    
+namespace MHR {
     double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug){
         
         //Perform peak counting for each window
@@ -81,7 +81,5 @@
         debug.heartRates=heartRates;
         
         return avg_hr;
-        
     }
-    
-    
+}

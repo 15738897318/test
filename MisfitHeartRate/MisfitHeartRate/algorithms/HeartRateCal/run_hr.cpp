@@ -9,8 +9,7 @@
 #include "run_hr.h"
 
 
-namespace cv {
-    
+namespace MHR {
     // run Heart Rate calculation
     void run_hr(vector<Mat> &vid, String resultsDir,
                 double min_hr, double max_hr,
@@ -29,7 +28,7 @@ namespace cv {
         String colourspace = "tsl";
         vector<int> channels_to_process = vectorRange(0, 2, 1);
      
-        for (int i = 0, sz = channels_to_process.size(); i < sz; ++i)
+        for (int i = 0, sz = (int)channels_to_process.size(); i < sz; ++i)
         {
             int colour_channel = channels_to_process[i];
             
@@ -37,5 +36,4 @@ namespace cv {
                                        max_bpm, cutoff_freq, colour_channel, colourspace, time_lag);
         }
     }
-
 }
