@@ -48,7 +48,7 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 		
 		number_of_relevant_frames = length(heartRates(firstSample : end)) - sum(~isfinite(temporal_mean(firstSample : end))); %Int
 		if number_of_relevant_frames ~= 0
-			relevant_time = number_of_relevant_frames * fr * 60; %Double
+			relevant_time = number_of_relevant_frames / (fr * 60); %Double
 			avg_hr = round(size(heartBeats, 1) / relevant_time); %Double
 		else
 			avg_hr = 0;
