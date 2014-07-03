@@ -14,9 +14,13 @@
 #import <opencv2/highgui/cap_ios.h>
 #import <opencv2/highgui/highgui.hpp>
 #import <opencv2/highgui/highgui_c.h>
-
+#import "eulerian.h"
+#import "run_hr.h"
+#import "MHRUtilities.h"
 
 using namespace cv;
+using namespace MHR;
+
 
 @interface MHRMainViewController : UIViewController <CvVideoCameraDelegate>
 
