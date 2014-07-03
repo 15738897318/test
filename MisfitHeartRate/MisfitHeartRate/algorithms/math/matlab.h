@@ -29,7 +29,7 @@ vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr);
 vector<double> conv(vector<double> seg1, vector<double> seg2);
 
 // [counts, centres] = hist(arr, nbins)
-void hist( vector<double> arr, int nbins, vector<double> &counts, vector<double> &centers);
+void hist( vector<double> arr, int nbins, vector<int> &counts, vector<double> &centers);
 
 // invprctile
 double invprctile(vector<double> arr, double x);

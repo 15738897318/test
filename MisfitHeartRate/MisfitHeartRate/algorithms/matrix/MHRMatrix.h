@@ -23,6 +23,7 @@ namespace cv {
     
     // import data from a array to a Mat
     Mat arrayToMat(double a[], int rows, int cols);
+    Mat arrayToMat(const double a[], int rows, int cols);
     
     // data from vector 1D to Mat
     Mat vectorToMat(vector<double> arr);
