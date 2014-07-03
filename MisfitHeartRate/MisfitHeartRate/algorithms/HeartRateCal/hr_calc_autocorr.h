@@ -27,6 +27,7 @@
 #include "MHRMatrix.h"
 #include "hrDebug.h"
 #include "matlab.h"
+#include "config.h"
 
 using namespace std;
 using namespace cv;

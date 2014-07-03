@@ -25,6 +25,7 @@
 
 #include "hrDebug.h"
 #include "matlab.h"
+#include "config.h"
 //#import <opencv2/highgui/ios.h>
 //#import <opencv2/highgui/cap_ios.h>
 

@@ -78,6 +78,9 @@
 
 
 - (IBAction)startButtonDidTap:(id)sender {
+    
+    
+    
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test0.mp4"];
     

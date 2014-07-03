@@ -8,32 +8,32 @@
 
 #include "matlab.h"
 
-    // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
-    // complexity: O(n^2), n = number of peaks
-    void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
-        max_peak_strengths.clear(); max_peak_locs.clear();
-        
-        vector<pair<double,int>> peak_list;
-        
-        for(int i=1; i<(int) segment.size()-1; ++i){
-            if(segment[i] - segment[i-1] > threshold && segment[i] - segment[i+1] > threshold)
-                peak_list.push_back(pair<double,int> (-segment[i], i));
-        }
-        
-        sort(peak_list.begin(), peak_list.end());
-        for(int i=0; i<(int) peak_list.size(); ++i){
-            int pos=peak_list[i].second;
-            if(pos==-1) continue;
-            for(int j=0; j<(int) peak_list.size(); ++j) if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
-                peak_list[j].second=-1;
-        }
-        
-        for(int i=0; i<(int) peak_list.size(); ++i)
-            if(peak_list[i].second!=-1){
-                max_peak_locs.push_back(peak_list[i].second);
-                max_peak_strengths.push_back(peak_list[i].first);
-            }
+// findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
+// complexity: O(n^2), n = number of peaks
+void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
+    max_peak_strengths.clear(); max_peak_locs.clear();
+    
+    vector<pair<double,int>> peak_list;
+    
+    for(int i=1; i<(int) segment.size()-1; ++i){
+        if(segment[i] - segment[i-1] > threshold && segment[i] - segment[i+1] > threshold)
+            peak_list.push_back(pair<double,int> (-segment[i], i));
     }
+    
+    sort(peak_list.begin(), peak_list.end());
+    for(int i=0; i<(int) peak_list.size(); ++i){
+        int pos=peak_list[i].second;
+        if(pos==-1) continue;
+        for(int j=0; j<(int) peak_list.size(); ++j) if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
+            peak_list[j].second=-1;
+    }
+    
+    for(int i=0; i<(int) peak_list.size(); ++i)
+        if(peak_list[i].second!=-1){
+            max_peak_locs.push_back(peak_list[i].second);
+            max_peak_strengths.push_back(peak_list[i].first);
+        }
+}
 
 
 // unique_stable with vector<pair<double,int>>
@@ -59,4 +59,64 @@ vector<double> conv(vector<double> seg1, vector<double> seg2){
     filter2D(src, dst, -1, kernel);
     return matToVector1D(dst);
     
+}
+
+// [counts, centres] = hist(arr, nbins)
+void hist( vector<double> arr, int nbins, vector<double> &counts, vector<double> &centers){
+    counts.clear();
+    centers.clear();
+    
+    double minv=arr[0], maxv=arr[0];
+    for(int i=0; i<(int)arr.size(); ++i){
+        minv=min(minv,arr[i]);
+        maxv=max(maxv,arr[i]);
+    }
+    
+    double length = maxv-minv;
+    double bin_length = length/nbins;
+    
+    counts.resize(nbins,0);
+    centers.resize(nbins,0);
+    for(int i=0; i<nbins; ++i) centers[i] = bin_length * i + bin_length / 2;
+    
+    for(int i=0; i<(int) arr.size(); ++i){
+        double v=arr[i]-minv;
+        int p = (int)((v - 1e-9)/bin_length);
+        ++counts[p];
+    }
+    
+}
+
+// invprctile
+double invprctile(vector<double> arr, double x){
+    int cnt = 0;
+    for(int i=0; i<(int) arr.size(); ++i)
+        if(x < arr[i] + 1e-9) ++cnt;
+    return 100.0 * cnt / arr.size();
+}
+
+//prctile
+double prctile(vector<double> arr, double percent){
+    sort(arr.begin(), arr.end());
+    int n = (int) arr.size();
+    double idx = percent * n / 100;
+    int int_idx = (int) (idx+1e-9);
+    if(fabs(idx - int_idx)<1e-9){
+        // idx is a whole number
+        int next_int = int_idx;
+        if(next_int < n) ++next_int;
+        return (arr[int_idx - 1] + arr[next_int - 1]) / 2;
+    }else{
+        int next_int = int_idx + 1;
+        return arr[next_int - 1];
+    }
+}
+
+//filter function for frames2signal function
+vector<double> low_pass_filter(vector<double> arr){
+    Mat src = vectorToMat(arr);
+    Mat filt = arrayToMat(_filtArray,1,15);
+    Mat dst;
+    filter2D(src, dst, -1, filt);
+    return arr;
 }

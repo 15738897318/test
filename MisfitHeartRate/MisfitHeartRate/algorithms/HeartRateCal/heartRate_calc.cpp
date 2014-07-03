@@ -63,6 +63,7 @@ namespace cv {
                 colorframe = rgb2tsl(rgbframe);
             
             // Extract the right channel from the colour frame
+            
             Mat monoframe = Mat::zeros(colorframe.size.p[0], colorframe.size.p[1], CV_64F);
             for (int x = 0; x < colorframe.size.p[0]; ++x)
                 for (int y = 0; y < colorframe.size.p[1]; ++y)
@@ -79,7 +80,8 @@ namespace cv {
 
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-        vector<double> temporal_mean = frames2signal(monoframes, conversion_method, frameRate, cutoff_freq);
+        Mat debug_monoframes;
+        vector<double> temporal_mean = frames2signal(monoframes, conversion_method, frameRate, cutoff_freq, debug_monoframes);
         
         // Block 3 ==== Heart-rate calculation
         // Set peak-detection params
@@ -96,7 +98,8 @@ namespace cv {
         // Calculate heart-rate using peak-detection on the signal
         hrDebug debug_autocorr;
         double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
-                                                  window_size, overlap_ratio, minPeakDistance);
+                                                  window_size, overlap_ratio, minPeakDistance,
+                                                  debug_autocorr);
 //        double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
 //                                                  window_size, overlap_ratio,
 //                                                  minPeakDistance,

@@ -21,7 +21,4 @@ namespace cv {
     // return Inverse Discrete Fourier Transform of a 2-2 Mat by dimension
 	Mat ifft(const Mat &src, int dimension);
 
-    // convert a frame to signal
-    void frames2signal(Mat monoframes, String conversion_method, double frameRate, double cutoff_freq,
-                       double &temporal_mean, Mat &debug_frames2signal);
 }
