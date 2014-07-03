@@ -122,7 +122,13 @@ double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample
     
     double avg_hr=0;
     if(!heartBeats.empty()){
-        avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
+        //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
+        int cnt=0;
+        for(int i=firstSample; i<(int)temporal_mean.size(); ++i)
+            if(temporal_mean[i]>0) ++cnt;
+        if(cnt==0) avg_hr = 0;
+        else
+            avg_hr = round((double)heartBeats.size() / cnt * fr * 60);
     }
     
     debug.heartBeats = heartBeats;
