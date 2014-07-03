@@ -78,7 +78,15 @@ function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, wind
 	
 	% Calculate the average HR for the whole stream
 	if ~isempty(heartBeats)
-		avg_hr = round(size(heartBeats, 1) / length(heartRates(firstSample : end)) * fr * 60); %Double
+		%avg_hr = round(size(heartBeats, 1) / length(heartRates(firstSample : end)) * fr * 60); %Double
+		
+		number_of_relevant_frames = length(heartRates(firstSample : end)) - sum(~isfinite(temporal_mean(firstSample : end))); %Int
+		if number_of_relevant_frames ~= 0
+			relevant_time = number_of_relevant_frames * fr * 60; %Double
+			avg_hr = round(size(heartBeats, 1) / relevant_time); %Double
+		else
+			avg_hr = 0;
+		end
 	else
 		avg_hr = 0;
 	end
