@@ -17,6 +17,13 @@ namespace MHR {
     }
     
     
+    void hrResult::operator = (const hrResult &other)
+    {
+        this->autocorr = other.autocorr;
+        this->pda = other.pda;
+    }
+    
+    
     hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag)

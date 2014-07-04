@@ -197,18 +197,4 @@ namespace MHR {
 //        for (int i = 0, sz = (int)vid.size(); i < sz-lastIndex; ++i)
         return ans;
 	}
-    
-    
-	// run Eulerian
-	vector<Mat> runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir) {
-		//String file_template = "*Finger*.mp4";
-		String inFile = srcDir + "/" + fileName;
-		printf("Processing file: %s\n", inFile.c_str());
-        
-        return amplifySpatialGdownTemporalIdeal(inFile, resultsDir,
-                                                _eulerian_alpha, _eulerian_pyrLevel,
-                                                _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
-                                                _eulerian_frameRate, _eulerian_chromaMagnifier
-                                                );
-	}
 }

@@ -24,9 +24,6 @@ namespace MHR {
                                                  double alpha, int level,
                                                  double freqBandLowEnd, double freqBandHighEnd,
                                                  double samplingRate, double chromAttenuation);
-    
-	// run Eulerian
-	vector<Mat> runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir);
 }
 
 #endif /* defined(__MisfitHeartRate__eulerian__) */

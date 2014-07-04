@@ -31,6 +31,8 @@ namespace MHR {
         double pda;             // avg_hr_pda
         
         hrResult(double autocorr, double pda);
+        
+        void operator = (const hrResult &other);
     };
     
     

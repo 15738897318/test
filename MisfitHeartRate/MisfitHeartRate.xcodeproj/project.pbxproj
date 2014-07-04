@@ -18,6 +18,7 @@
 		DCAE524319657AF300A8AFB6 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
 		DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
 		DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCAE524819669B4900A8AFB6 /* test1.mp4 */; };
+		DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */; };
 		DCB55F171957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
 		DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F181957CB3B0095A98E /* CoreGraphics.framework */; };
 		DCB55F1B1957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
@@ -86,6 +87,8 @@
 		DCAE524419657B7700A8AFB6 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eulerian.cpp; path = Eulerian/eulerian.cpp; sourceTree = "<group>"; };
 		DCAE524519657B7700A8AFB6 /* eulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eulerian.h; path = Eulerian/eulerian.h; sourceTree = "<group>"; };
 		DCAE524819669B4900A8AFB6 /* test1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test1.mp4; sourceTree = "<group>"; };
+		DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_algorithms.cpp; sourceTree = "<group>"; };
+		DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_algorithms.h; sourceTree = "<group>"; };
 		DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisfitHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCB55F181957CB3B0095A98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -171,6 +174,8 @@
 				DCAE6BA5195A791B00B9FE9F /* image */,
 				DCAE6BA0195A789800B9FE9F /* matrix */,
 				12B587EB19651DD700BA19A5 /* config.h */,
+				DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */,
+				DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				DCAE523D196575A800A8AFB6 /* run_hr.cpp in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
 				DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */,
+				DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */,
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,

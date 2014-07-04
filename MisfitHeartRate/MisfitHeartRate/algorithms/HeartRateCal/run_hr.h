@@ -23,10 +23,10 @@
 
 
 namespace MHR {
-    // run Heart Rate calculation
-    hrResult run_hr(vector<Mat> &vid, String resultsDir, const String &vidType,
-                    double min_hr, double max_hr,
-                    double alpha, int level, double chromAtn);
+//    // run Heart Rate calculation
+//    hrResult run_hr(vector<Mat> &vid, String resultsDir, const String &vidType,
+//                    double min_hr, double max_hr,
+//                    double alpha, int level, double chromAtn);
 }
 
 #endif /* defined(__MisfitHeartRate__run_hr__) */

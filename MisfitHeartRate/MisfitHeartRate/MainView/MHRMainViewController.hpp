@@ -17,6 +17,7 @@
 #import <time.h>
 #import "eulerian.h"
 #import "run_hr.h"
+#import "run_algorithms.h"
 #import "MHRUtilities.h"
 
 using namespace cv;
