@@ -16,12 +16,12 @@ const double NaN = -1e9;
 
 
 /*--------------for run_eulerian()--------------*/
-double _eulerian_alpha = 30;          // Eulerian magnifier
-double _eulerian_pyrLevel = 6;        // Standard: 4, but updated by the real frame size
-double _eulerian_minHR = 30;          // BPM Standard: 50
-double _eulerian_maxHR = 240;         // BPM Standard: 90
-double _eulerian_frameRate = 30;      // Standard: 30, but updated by the real frame-rate
-double _eulerian_chromaMagnifier = 1; // Standard: 1
+const double _eulerian_alpha = 30;          // Eulerian magnifier
+const double _eulerian_pyrLevel = 6;        // Standard: 4, but updated by the real frame size
+const double _eulerian_minHR = 30;          // BPM Standard: 50
+const double _eulerian_maxHR = 240;         // BPM Standard: 90
+const double _eulerian_frameRate = 30;      // Standard: 30, but updated by the real frame-rate
+const double _eulerian_chromaMagnifier = 1; // Standard: 1
 
 
 /*--------------for run_hr()--------------*/

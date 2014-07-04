@@ -21,9 +21,9 @@ namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
 	vector<Mat> amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
-										  double alpha, int level,
-										  double freqBandLowEnd, double freqBandHighEnd,
-										  double samplingRate, double chromAttenuation);
+                                                 double alpha, int level,
+                                                 double freqBandLowEnd, double freqBandHighEnd,
+                                                 double samplingRate, double chromAttenuation);
     
 	// run Eulerian
 	vector<Mat> runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir);
