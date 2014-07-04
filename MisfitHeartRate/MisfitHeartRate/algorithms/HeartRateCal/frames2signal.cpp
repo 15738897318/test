@@ -10,23 +10,25 @@
 
 
 namespace MHR {
-    vector<double> frames2signal(const Mat& monoframes, String conversion_method, double fr, double cutoff_freq, Mat &debug_monoframes)
+    vector<double> frames2signal(const vector<Mat>& monoframes, String conversion_method,
+                                 double fr, double cutoff_freq,
+                                 const vector<Mat>& debug_monoframes)
     {
         //=== Block 1. Convert the frame stream into a 1-D signal
         
         vector<double> temporal_mean;
-        int height = monoframes.size.p[0];
-        int width = monoframes.size.p[1];
-        int total_frames = monoframes.size.p[2];
+        int height = monoframes[0].size.p[0];
+        int width = monoframes[0].size.p[1];
+        int total_frames = (int)monoframes.size();
         
         if(conversion_method == "simple-mean"){
-            
+
             double size = height * width;
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y)
-                        sum+=monoframes.at<double>(x,y,i);
+                        sum+=monoframes[i].at<double>(x,y);
                 temporal_mean.push_back(sum/size);
             }
             
@@ -40,32 +42,31 @@ namespace MHR {
                 double sum = 0;
                 for(int x=trimmed_size; x<height-trimmed_size; ++x)
                     for(int y=trimmed_size; y<width-trimmed_size; ++y)
-                        sum+=monoframes.at<double>(x,y,i);
+                        sum+=monoframes[i].at<double>(x,y);
                 temporal_mean.push_back(sum/size);
             }
             
         }else if(conversion_method == "mode-balance"){
             
             // Selection parameters
-            double training_time = _training_time;
-            double lower_pct_range = _lower_pct_range;
-            double upper_pct_range = _upper_pct_range;
+            double training_time = _training_time_end - _training_time_start;
+            double lower_pct_range = _pct_reach_below_mode;
+            double upper_pct_range = _pct_reach_above_mode;
             
-            int first_tranning_frames = min( (int) round(fr * training_time), total_frames );
-            int nbins = (int) (50);
-            
+            int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
+
             // this arr stores values of pixels from first trainning frames
             vector<double> arr;
-            for(int i=0; i<first_tranning_frames; ++i)
+            for(int i = 0; i < first_tranning_frames; ++i)
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y)
-                        arr.push_back(monoframes.at<double>(x,y,i));
+                        arr.push_back(monoframes[i].at<double>(x,y));
             
             //find the mode
             vector<double> centres;
             vector<int> counts;
             
-            hist(arr, nbins, counts, centres);
+            hist(arr, _number_of_bins, counts, centres);
             
             int argmax=0;
             for(int i=0; i<(int)counts.size(); ++i) if(counts[i]>counts[argmax]) argmax = i;
@@ -88,17 +89,17 @@ namespace MHR {
             //now calc the avg of each frame while inogre the values outside the range
             double size = height * width;
             
-            debug_monoframes = monoframes.clone(); //this is the debug Mat
-            
+            //this is the debug vector<Mat>
+            vector<Mat> debug_monoframes(monoframes);
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
                 int cnt = 0; //number of not-NaN-pixels
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y){
-                        double val=monoframes.at<double>(x,y,i);
+                        double val=monoframes[i].at<double>(x,y);
                         if(val<lower_range - 1e-9 || val>upper_range + 1e-9){
                             val=0;
-                            debug_monoframes.at<double>(x,y,i)=NaN; //set 0 for rejected pixels
+                            debug_monoframes[i].at<double>(x,y)=NaN; //set 0 for rejected pixels
                         }else ++cnt;
                         sum+=val;
                     }

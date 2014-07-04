@@ -12,7 +12,7 @@
 namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
-	void amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
+	vector<Mat> amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
 										  double alpha, int level,
 										  double freqBandLowEnd, double freqBandHighEnd,
 										  double samplingRate, double chromAttenuation)
@@ -27,23 +27,24 @@ namespace MHR {
         + "-level-" + std::to_string(level)
         + "-chromAtn-" + std::to_string(chromAttenuation)
         + ".mp4";
-        
         printf("outFile = %s", outFile.c_str());
+        
+        vector<Mat> ans;
 		
 		// Read video
 		VideoCapture vidIn(vidFile);
         if (!vidIn.isOpened())
         {
             printf("%s is not opened!\n", vidFile.c_str());
-            return;
+            return ans;
         }
         
 		// Extract video info
         vector<Mat> vid = videoCaptureToVector(vidIn);
 		int vidHeight = vid[0].rows;
 		int vidWidth = vid[1].cols;
-//		int nChannels = 3;		// should get from vid?
-		int frameRate = 30;     // Can not get it from vidIn!!!! :((
+		int nChannels = _number_of_channels;		// should get from vid?
+		int frameRate = _frameRate;                 // Can not get it from vidIn!!!! :((
 		int len = (int)vid.size();
         
         
@@ -53,20 +54,23 @@ namespace MHR {
         frameToFile(vid[0], outDir + "test_frame_in.jpg");
         
 		samplingRate = frameRate;
-		int filter_length = 5;
-		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / filter_length) / log(2)));
+		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
         
 		// Prepare the output video-writer
-        //        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
+//        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
 		VideoWriter vidOut(outFile, CV_FOURCC('M','J','P','G'), frameRate, cvSize(vidWidth, vidHeight), true);
 		if (!vidOut.isOpened()) {
 			printf("outFile %s is not opened!\n", outFile.c_str());
-			return;
+			return ans;
 		}
         
 		// Define the indices of the frames to be processed
-		int startIndex = 0;
-		int endIndex = len - 10;
+		int startIndex = _startFrame;
+        int endIndex = len - 1;
+        if (_endFrame > 0)
+            endIndex = min(endIndex, _endFrame);
+        else
+            endIndex = max(0, endIndex + _endFrame);
         
 		// ================= Core part of the algo described in literature
 		// compute Gaussian blur stack
@@ -81,23 +85,20 @@ namespace MHR {
                 tmpGdownStack.at<Vec3d>(i, j) = GdownStack.at<Vec3d>(0, i, j);
         frameToFile(tmpGdownStack, "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_GdownStack.jpg");
         //////////////////////////////////////////
+        
 		// Temporal filtering
 		printf("Temporal filtering...\n");
         //		Mat filteredStack = idealBandpassing(GdownStack, 1, freqBandLowEnd, freqBandHighEnd, samplingRate);
         int filteredSize[3] = {GdownStack.size.p[0]-7, GdownStack.size.p[1], GdownStack.size.p[2]};
         Mat filteredStack(3, filteredSize, CV_64FC3, CvScalar(0));
-        
-        double kernelArray[15] = {0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594,
-            0.1704, 0.1594, 0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034};
-        Mat kernel = arrayToMat(kernelArray, 1, 15);
-        
+        Mat kernel = arrayToMat(_eulerianTemporalFilterKernel, 1, _eulerianTemporalFilterKernel_size);
         Mat tmp = Mat::zeros(1, GdownStack.size.p[0], CV_64FC3);
         for (int x = 0; x < GdownStack.size.p[1]; ++x)
             for (int y = 0; y < GdownStack.size.p[2]; ++y) {
                 for (int t = 0; t < GdownStack.size.p[0]; ++t)
-                    //                    for (int channel = 0; channel < 3; ++channel)
+//                    for (int channel = 0; channel < 3; ++channel)
                     tmp.at<Vec3d>(0, t) = GdownStack.at<Vec3d>(t, x, y);
-                filter2D(tmp, tmp, -1, kernel);   // ???? should do with each channel ????
+                filter2D(tmp, tmp, -1, kernel);
                 for (int t = 7; t < GdownStack.size.p[0]; ++t)
                     filteredStack.at<Vec3d>(t-7, x, y) = tmp.at<Vec3d>(0, t);
             }
@@ -119,7 +120,6 @@ namespace MHR {
         frameToFile(tmpFilteredStack, "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_FilteredStack.jpg");
         //////////////////////////////////////////
         
-        
 		// =================
         
 		// Render on the input video
@@ -128,8 +128,9 @@ namespace MHR {
 		// output video
 		// init
 		Mat frame;
+        int lastIndex = 0;
 		// Convert each frame from the filtered stream to movie frame
-		for (int i = startIndex, k = 0; i <= endIndex && k <= filteredStack.size.p[0]; ++i, ++k) {
+		for (int i = startIndex, k = 0; i <= endIndex && k < filteredStack.size.p[0]; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
 			// by removing the singleton dimensions of the kth filtered array
 			// since the filtered stack is just a selected level of the Gaussian pyramid
@@ -173,7 +174,7 @@ namespace MHR {
 			// Clip the values of the frame by 0 and 1
 			for (int x = 0; x < frame.rows; ++x)
 				for (int y = 0; y < frame.cols; ++y)
-					for (int t = 0; t < 3; ++t) {
+					for (int t = 0; t < nChannels; ++t) {
 						double tmp = frame.at<Vec3d>(x, y)[t];
                         tmp = min(tmp, 255.0);
                         tmp = max(tmp, 0.0);
@@ -185,53 +186,29 @@ namespace MHR {
                 frameToFile(frame, outDir + "test_processed_frame_out.jpg");
             
             // Write the frame into the video as unsigned 8-bit integer array
+//            vidOut << frame;
             vidOut << convertTo(frame, CV_8UC3);
-            //            vidOut << frame;
+//            vid[i] = frame;
+            ans.push_back(frame.clone());
+            lastIndex = i;
 		}
         vidOut.release();
 		printf("Finished\n");
+//        for (int i = 0, sz = (int)vid.size(); i < sz-lastIndex; ++i)
+        return ans;
 	}
     
     
 	// run Eulerian
-	void runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir) {
-		//String resultsDir = "Results";
-		//String src_folder = "/Users/storm5906/Desktop/eulerianMagnifcation/codeMatlab/";
+	vector<Mat> runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir) {
 		//String file_template = "*Finger*.mp4";
 		String inFile = srcDir + "/" + fileName;
 		printf("Processing file: %s\n", inFile.c_str());
         
-		vector<int> alpha = vectorRange(30, 30);            // Eulerian magnifier
-		vector<int> pyrLevel = vectorRange(6, 6);           // Standard: 4, but updated by the real frame size
-		vector<int> minHR = vectorRange(30, 30);            // BPM Standard: 50
-		vector<int> maxHR = vectorRange(240, 240);          // BPM Standard: 90
-		vector<int> frameRate = vectorRange(30, 30);        // Standard: 30, but updated by the real frame-rate
-		vector<int> chromaMagnifier = vectorRange(1, 1);    // Standard: 1
-        
-		// generate all combinations of parameters
-		vector<vector<int>> tmp;
-		tmp.push_back(alpha);
-		tmp.push_back(pyrLevel);
-		tmp.push_back(minHR);
-		tmp.push_back(maxHR);
-		tmp.push_back(frameRate);
-		tmp.push_back(chromaMagnifier);
-		vector<vector<int>> paramsSet = allcomb(tmp);
-        
-		// amplify_spatial_Gdown_temporal_ideal each combination
-		int nRow = int(paramsSet.size());
-		for (int i = 0; i < nRow; ++i) {
-			double currAlpha = paramsSet[i][0];
-			int currPyrLevel = paramsSet[i][1];
-			double currMinHr = paramsSet[i][2];
-			double currMaxHr = paramsSet[i][3];
-			double currFrameRate = paramsSet[i][4];
-			double currChromaMagnifier = paramsSet[i][5];
-			amplifySpatialGdownTemporalIdeal(inFile, resultsDir,
-                                             currAlpha, currPyrLevel,
-                                             currMinHr/60.0, currMaxHr/60.0,
-                                             currFrameRate, currChromaMagnifier
-                                             );
-		}
+        return amplifySpatialGdownTemporalIdeal(inFile, resultsDir,
+                                                _eulerian_alpha, _eulerian_pyrLevel,
+                                                _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
+                                                _eulerian_frameRate, _eulerian_chromaMagnifier
+                                                );
 	}
 }

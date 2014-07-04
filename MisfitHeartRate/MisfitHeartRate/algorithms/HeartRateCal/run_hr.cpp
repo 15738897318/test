@@ -11,29 +11,22 @@
 
 namespace MHR {
     // run Heart Rate calculation
-    void run_hr(vector<Mat> &vid, String resultsDir,
-                double min_hr, double max_hr,
-                double alpha, int level, double chromAtn)
+    hrResult run_hr(vector<Mat> &vid, String resultsDir, const String &vidType,
+                    double min_hr, double max_hr,
+                    double alpha, int level, double chromAtn)
     {
-        // Notes:
         // - Basis takes 15secs to generate an HR estimate
         // - Cardiio takes 30secs to generate an HR estimate
+    
+        hrResult hr_output = heartRate_calc(vid, _window_size_in_sec, _overlap_ratio,
+                                            _max_bpm, _cutoff_freq, _channels_to_process,
+                                            _colourspace, _time_lag);
+        // debug info
+        printf("run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, alpha = %lf, level = %d, chromAtn = %lf)\n",
+               vidType.c_str(), _colourspace.c_str(), min_hr, max_hr, alpha, level, chromAtn);
         
-        double window_size_in_sec = 10;
-        double overlap_ratio = 0;
-        double max_bpm = 200;   // BPM
-        double cutoff_freq = 5;    // Hz
-        double time_lag = 3;       // seconds
+        printf("hr_output = {%lf, %lf}\n", hr_output.autocorr, hr_output.pda);
         
-        String colourspace = "tsl";
-        vector<int> channels_to_process = vectorRange(0, 2, 1);
-     
-        for (int i = 0, sz = (int)channels_to_process.size(); i < sz; ++i)
-        {
-            int colour_channel = channels_to_process[i];
-            
-            vector<double> hr_output = heartRate_calc(vid, window_size_in_sec, overlap_ratio,
-                                       max_bpm, cutoff_freq, colour_channel, colourspace, time_lag);
-        }
+        return hr_output;
     }
 }

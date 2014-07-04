@@ -52,6 +52,7 @@ namespace MHR {
                 findpeaks(local_autocorr, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
                 if(min_peak_locs.empty()){
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size + 1) / 2 ; //round
+                    segment_length = min(segment_length, window_size);
                 }else{
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
                                       + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round

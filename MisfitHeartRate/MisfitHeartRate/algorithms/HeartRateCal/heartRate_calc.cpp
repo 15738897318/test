@@ -10,7 +10,14 @@
 
 
 namespace MHR {
-    vector<double> heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
+    hrResult::hrResult(double autocorr, double pda)
+    {
+        this->autocorr = autocorr;
+        this->pda = pda;
+    }
+    
+    
+    hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag)
     {
@@ -34,22 +41,15 @@ namespace MHR {
         
         // Convert colourspaces for each frame
         Mat rgbframe, colorframe;
-        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
-        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
+        vector<Mat> monoframes;
+//        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
+//        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
         
-        double filtArray[] = {
-            0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
-            0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
-            0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
-            0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175,
-            0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
-            0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
-            0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085
-        };
-        Mat filt = arrayToMat(filtArray, 7, 7);
+        Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
 
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
+            printf("heartRate_cal: index = %i\n", i);
             rgbframe = vid[i];
             if (colourspace == "rgb")
                 colorframe = rgbframe;
@@ -64,28 +64,28 @@ namespace MHR {
             
             // Extract the right channel from the colour frame
             
-            Mat monoframe = Mat::zeros(colorframe.size.p[0], colorframe.size.p[1], CV_64F);
-            for (int x = 0; x < colorframe.size.p[0]; ++x)
-                for (int y = 0; y < colorframe.size.p[1]; ++y)
+            Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+            for (int x = 0; x < vidHeight; ++x)
+                for (int y = 0; y < vidWidth; ++y)
                     monoframe.at<double>(x, y) = colorframe.at<Vec3d>(x, y)[colour_channel];
 			
 			// Downsample the frame for ease of computation
             monoframe = corrDn(monoframe, filt, 4, 4);
 			
 			// Put the frame into the video stream
-            for (int x = 0; x < vidHeight; ++x)
-                for (int y = 0; y < vidWidth; ++y)
-                    monoframes.at<double>(x, y, k) = monoframe.at<double>(x, y);
+            monoframes.push_back(monoframe);
         }
 
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-        Mat debug_monoframes;
+        vector<Mat> debug_monoframes;
         vector<double> temporal_mean = frames2signal(monoframes, conversion_method, frameRate, cutoff_freq, debug_monoframes);
         
         // Block 3 ==== Heart-rate calculation
         // Set peak-detection params
-        double threshold = threshold_fraction * (*max_element(temporal_mean.begin() + firstSample, temporal_mean.begin()));
+        if (firstSample > temporal_mean.size())
+            firstSample = 0;
+        double threshold = threshold_fraction * (*max_element(temporal_mean.begin() + firstSample, temporal_mean.end()));
         int minPeakDistance = round(60 / max_bpm * frameRate);
         
         // Calculate heart-rate using peak-detection on the signal
@@ -98,13 +98,10 @@ namespace MHR {
         // Calculate heart-rate using peak-detection on the signal
         hrDebug debug_autocorr;
         double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
-                                                  window_size, overlap_ratio, minPeakDistance,
+                                                  window_size, overlap_ratio,
+                                                  minPeakDistance,
                                                   debug_autocorr);
-//        double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
-//                                                  window_size, overlap_ratio,
-//                                                  minPeakDistance,
-//                                                  debug_autocorr);
 
-        return vector<double>{avg_hr_autocorr, avg_hr_pda};
+        return hrResult(avg_hr_autocorr, avg_hr_pda);
     }
 }
