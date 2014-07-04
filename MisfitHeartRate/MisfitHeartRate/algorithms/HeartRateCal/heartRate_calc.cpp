@@ -41,8 +41,9 @@ namespace MHR {
         
         // Convert colourspaces for each frame
         Mat rgbframe, colorframe;
-        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
-        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
+        vector<Mat> monoframes;
+//        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
+//        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
         
         double filtArray[] = {
             0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
@@ -57,6 +58,7 @@ namespace MHR {
 
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
+            printf("heartRate_cal: index = %i\n", i);
             rgbframe = vid[i];
             if (colourspace == "rgb")
                 colorframe = rgbframe;
@@ -71,28 +73,28 @@ namespace MHR {
             
             // Extract the right channel from the colour frame
             
-            Mat monoframe = Mat::zeros(colorframe.size.p[0], colorframe.size.p[1], CV_64F);
-            for (int x = 0; x < colorframe.size.p[0]; ++x)
-                for (int y = 0; y < colorframe.size.p[1]; ++y)
+            Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+            for (int x = 0; x < vidHeight; ++x)
+                for (int y = 0; y < vidWidth; ++y)
                     monoframe.at<double>(x, y) = colorframe.at<Vec3d>(x, y)[colour_channel];
 			
 			// Downsample the frame for ease of computation
             monoframe = corrDn(monoframe, filt, 4, 4);
 			
 			// Put the frame into the video stream
-            for (int x = 0; x < vidHeight; ++x)
-                for (int y = 0; y < vidWidth; ++y)
-                    monoframes.at<double>(x, y, k) = monoframe.at<double>(x, y);
+            monoframes.push_back(monoframe);
         }
 
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-        Mat debug_monoframes;
+        vector<Mat> debug_monoframes;
         vector<double> temporal_mean = frames2signal(monoframes, conversion_method, frameRate, cutoff_freq, debug_monoframes);
         
         // Block 3 ==== Heart-rate calculation
         // Set peak-detection params
-        double threshold = threshold_fraction * (*max_element(temporal_mean.begin() + firstSample, temporal_mean.begin()));
+        if (firstSample > temporal_mean.size())
+            firstSample = 0;
+        double threshold = threshold_fraction * (*max_element(temporal_mean.begin() + firstSample, temporal_mean.end()));
         int minPeakDistance = round(60 / max_bpm * frameRate);
         
         // Calculate heart-rate using peak-detection on the signal
