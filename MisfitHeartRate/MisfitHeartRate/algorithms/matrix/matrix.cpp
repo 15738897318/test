@@ -66,10 +66,15 @@ namespace MHR {
     vector<Mat> videoCaptureToVector(VideoCapture &src) {
         vector<Mat> ans;
         Mat frame;
+        int c = 0;
         while(1) {
+            ++c;
+            printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
                 break;
+            if (frame.rows > 256 || frame.cols > 256)
+                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
             Mat tmp = frame.clone();
             ans.push_back(tmp);
         }
