@@ -1,5 +1,7 @@
 function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_method, fr, cutoff_freq)
-		
+	% Load constants
+	constants;
+	
 	%=== Block 1. Convert the frame stream into a 1-D signal
 	%conversion_method = 'simple-mean';
 	switch conversion_method
@@ -11,16 +13,15 @@ function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_meth
 		
 		case 'mode-balance'
 			% Selection parameters
-			training_time = [0.5, 3]; %seconds %Double
-			lower_pct_range = 45; %Double
-			upper_pct_range = 45; %Double
+			training_time = training_time_range; %seconds %Double
+			lower_pct_range = pct_reach_below_mode; %Double
+			upper_pct_range = pct_reach_above_mode; %Double
 	
 			% Find the mode of the pixel values in the first few frames
 			stretched_first_frame = reshape(monoframes(:, :, round(fr * training_time(1)) + 1 : round(fr * training_time(2))), ...
 											[size(monoframes, 1) * size(monoframes, 2) * (round(fr * training_time(2)) - round(fr * training_time(1))), 1]);
 			%Double 1-D vector
-			%[counts, centres] = hist(stretched_first_frame, 50 * round(fr * training_time));
-			[counts, centres] = hist(stretched_first_frame, 50);
+			[counts, centres] = hist(stretched_first_frame, number_of_bins);
 			%[Int vector, Double vector] 
 			[~, argmax] = max(counts); %Int
 			centre_mode = centres(argmax); %Double
@@ -50,8 +51,7 @@ function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_meth
 	end
 	
 	%=== Block 2. Low-pass-filter the signal stream to remove unwanted noises
-	H = design(fdesign.lowpass('N,Fp,Fst', 14, cutoff_freq / fr, 1.1 * cutoff_freq / fr), 'ALLFIR');
-    b = H(2).Numerator / sum(H(2).Numerator);
-    a = 1;
-	temporal_mean_filt = filter(b, a, temporal_mean);  %Double 1-D vector
-	temporal_mean_filt = temporal_mean_filt(8 : end);
+	filter_kernel = beatSignalFilterKernel;
+    
+    temporal_mean_filt = filter(filter_kernel, 1, temporal_mean);  %Double 1-D vector
+	temporal_mean_filt = temporal_mean_filt(floor(length(filter_kernel) / 2) : end);

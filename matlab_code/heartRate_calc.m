@@ -7,12 +7,13 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 											%Double				%Double			%Double	%Double		 %Int			 %Double		%String		%Double
 	close all
 	
-	debug = 1;
-	getRaw = 0;
-	threshold_fraction = 0; %Double
-	conversion_method = 'mode-balance'; %String
+	%Load constants
+	constants;
 	
-	
+	debug = flagDebug;
+	getRaw = flagGetRaw;
+	threshold_fraction = peakStrengthThreshold_fraction; %Double
+	conversion_method = frames2signalConversionMethod; %String
 	
 	%% Block 1 ==== Load the video & convert it to the desired colour-space
 	% Get the filename-only part of the full path
@@ -25,25 +26,29 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	% Extract video info
 	vidHeight = vid.Height;
 	vidWidth = vid.Width;
-	nChannels = 3;
 	fr = vid.FrameRate; %Double
 	len = vid.NumberOfFrames; %Int
 	
+	nChannels = number_of_channels;
 	window_size = round(window_size_in_sec * fr); %Int
 	firstSample = round(fr * time_lag);	%Int
-	
-	% Define the indices of the frames to be processed
-	startIndex = 1; %400	%Int
-	endIndex = len; %1400	%Int
+	if endIndex > 0
+		endIndex = endIndex;
+	else
+		endIndex = len + endIndex;
+	end
 	
 	% Convert colourspaces for each frame
-	k = 0; %Int
-	filt = fspecial('gaussian', [7 7], 2.5); %Double array
 	clearvars output_array
 	clearvars colorframe
 	clearvars colorframes
 	clearvars monoframe
 	clearvars monoframes
+	
+	filt = frame_downsampling_filt; %Double array
+	frame_downsample_factor = ceil(length(filt) / 2);
+	
+	k = 0; %Int
 	temp = struct('cdata', zeros(vidHeight, vidWidth, nChannels, 'uint8'),...
 				  'colormap', []);
 	for i = startIndex : endIndex
@@ -68,7 +73,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 				colorframe = rgb2tsl(rgbframe); %Double MxNx3 array
         end
         
-		if getRaw
+		if getRaw & debug
 			colorframes(:, :, :, k) = colorframe; %Double MxNx3xT array
 			monoframes(:, :, k) = squeeze(colorframe(:, :, colour_channel)); %Double MxNxT array
 		
@@ -77,7 +82,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 			monoframe = squeeze(double(colorframe(:, :, colour_channel))); %Double MxN array
 			
 			% Downsample the frame for ease of computation
-			monoframe = corrDn(monoframe, filt, 'reflect1', [4 4], [1 1], size(monoframe));
+			monoframe = corrDn(monoframe, filt, 'reflect1', [frame_downsample_factor frame_downsample_factor], [1 1], size(monoframe));
 			
 			% Put the frame into the video stream
 			monoframes(:, :, k) = monoframe; %Double MxNxT array

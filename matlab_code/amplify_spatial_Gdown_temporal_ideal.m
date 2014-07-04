@@ -16,6 +16,8 @@ function amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, ...
 											alpha, level, ...
                      						freq_band_low_end, freq_band_high_end, ...
                      						samplingRate, chromAttenuation)
+    %Load constants
+    constants;
     
     % Get the filename-only part of the full path
     [~, vidName] = fileparts(vidFile);
@@ -34,13 +36,12 @@ function amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, ...
     % Extract video info
     vidHeight = vid.Height;
     vidWidth = vid.Width;
-    nChannels = 3;
     fr = vid.FrameRate;
     len = vid.NumberOfFrames;
+    nChannels = number_of_channels;
     
 	samplingRate = fr;
-	filter_length = 5;
-	level = min(level, floor(log(min(vidHeight, vidWidth) / filter_length) / log(2)));
+	level = min(level, floor(log(min(vidHeight, vidWidth) / Gpyr_filter_length) / log(2)));
 	
     % Prepare the output video-writer
     vidOut = VideoWriter(outName);
@@ -48,20 +49,25 @@ function amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, ...
     open(vidOut)
     
     % Define the indices of the frames to be processed
-    startIndex = 1;
-    endIndex = len - 10;
+    startIndex = startFrame;
+    
+    if endFrame > 0
+    	endIndex = endFrame;
+    else
+    	endIndex = len + endFrame;
+    end
     
     %% ================= Core part of the algo described in literature
     % compute Gaussian blur stack
     % This stack actually is just a single level of the pyramid
     disp('Spatial filtering...')
-    Gdown_stack = build_GDown_stack(vidFile, startIndex, endIndex, level);
+    Gdown_stack = build_GDown_stack(vidFile, startIndex, endIndex, level); % TxMxNxC array
     disp('Finished')
     
     % Temporal filtering
     disp('Temporal filtering...')
     %filtered_stack = ideal_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
-    filtered_stack = filter_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
+    filtered_stack = filter_bandpassing(Gdown_stack, 1);
     disp('Finished')
     
     %% amplify
@@ -83,35 +89,39 @@ function amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, ...
     for i = startIndex : endIndex
         k = k + 1;
         
-		% Reconstruct the frame from pyramid stack		
-		% by removing the singleton dimensions of the kth filtered array
-		% since the filtered stack is just a selected level of the Gaussian pyramid
-        filtered = squeeze(filtered_stack(k, :, :, :));
-        
-        % Format the image to the right size
-        filtered = imresize(filtered, [vidHeight vidWidth]); %Bicubic interpolation
+        if k <= size(filtered_stack, 1)
+			% Reconstruct the frame from pyramid stack		
+			% by removing the singleton dimensions of the kth filtered array
+			% since the filtered stack is just a selected level of the Gaussian pyramid
+			filtered = squeeze(filtered_stack(k, :, :, :));
 		
-		% Extract the ith frame in the video stream
-        temp.cdata = read(vid, i);
-        % Convert the extracted frame to RGB image
-        [rgbframe, ~] = frame2im(temp);
-        % Convert the RGB image to double-precision image
-        rgbframe = im2double(rgbframe);
-        % Convert the image from RGB colour-space to NTSC colour-space
-        frame = rgb2ntsc(rgbframe);
+			% Format the image to the right size
+			filtered = imresize(filtered, [vidHeight vidWidth]); %Bicubic interpolation
 		
-		% Add the filtered frame to the original frame
-        filtered = filtered + frame;
-        
-        % Convert the colour-space from NTSC back to RGB
-        frame = ntsc2rgb(filtered);
+			% Extract the ith frame in the video stream
+			temp.cdata = read(vid, i);
+			% Convert the extracted frame to RGB image
+			[rgbframe, ~] = frame2im(temp);
+			% Convert the RGB image to double-precision image
+			rgbframe = im2double(rgbframe);
+			% Convert the image from RGB colour-space to NTSC colour-space
+			frame = rgb2ntsc(rgbframe);
 		
-		% Clip the values of the frame by 0 and 1
-        frame(frame > 1) = 1;
-        frame(frame < 0) = 0;
-        
-        % Write the frame into the video as unsigned 8-bit integer array
-        writeVideo(vidOut, im2uint8(frame));
+			% Add the filtered frame to the original frame
+			filtered = filtered + frame;
+		
+			% Convert the colour-space from NTSC back to RGB
+			frame = ntsc2rgb(filtered);
+		
+			% Clip the values of the frame by 0 and 1
+			frame(frame > 1) = 1;
+			frame(frame < 0) = 0;
+		
+			% Write the frame into the video as unsigned 8-bit integer array
+			writeVideo(vidOut, im2uint8(frame));
+		else
+			break;
+		end
     end
 
     disp('Finished')
