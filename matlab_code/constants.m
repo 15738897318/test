@@ -1,8 +1,8 @@
 %%------- Eulerian-magnification parameters
 
 % Control params for the algorithm
-alpha = 50; %Eulerian magnifier %Standard: < 50
-pyr_level = 4; %Standard: 4, but updated by the real frame size
+alpha = 30; %Eulerian magnifier %Standard: < 50
+pyr_level = 6; %Standard: 6, but updated by the real frame size
 min_hr = 30; %BPM %Standard: 30
 max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
@@ -42,7 +42,14 @@ endIndex = 0; %1400	%Int  %Positive number to get definite end-frame, negative n
 peakStrengthThreshold_fraction = 0; %Double
 frames2signalConversionMethod = 'mode-balance'; %String
 
-frame_downsampling_filt = fspecial('gaussian', [7 7], 2.5); %Double array
+%frame_downsampling_filt = fspecial('gaussian', [7 7], 2.5); %Double array
+frame_downsampling_filt = [0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085;...
+						   0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127;...
+						   0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162;...
+						   0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175;...
+						   0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162;...
+						   0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127;...
+						   0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085];
 
 
 % frames2signal: Native params for the 'mode-balance' conversion method in 
