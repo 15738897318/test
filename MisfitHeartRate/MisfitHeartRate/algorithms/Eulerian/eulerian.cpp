@@ -130,7 +130,7 @@ namespace MHR {
 		// init
 		Mat frame;
 		// Convert each frame from the filtered stream to movie frame
-		for (int i = startIndex, k = 0; i <= endIndex && k <= filteredStack.size.p[0]; ++i, ++k) {
+		for (int i = startIndex, k = 0; i <= endIndex && k < filteredStack.size.p[0]; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
 			// by removing the singleton dimensions of the kth filtered array
 			// since the filtered stack is just a selected level of the Gaussian pyramid
@@ -186,10 +186,9 @@ namespace MHR {
                 frameToFile(frame, outDir + "test_processed_frame_out.jpg");
             
             // Write the frame into the video as unsigned 8-bit integer array
-            frame.convertTo(frame, CV_8UC3);
-            ans.push_back(frame.clone());
-            vidOut << frame;
 //            vidOut << frame;
+            vidOut << convertTo(frame, CV_8UC3);
+            ans.push_back(frame.clone());
 		}
         vidOut.release();
 		printf("Finished\n");
