@@ -22,20 +22,10 @@
 #include "frames2signal.h"
 #include "hr_calc_pda.h"
 #include "hr_calc_autocorr.h"
+#include "hr_signal_calc.h"
 
 
 namespace MHR {
-    struct hrResult
-    {
-        double autocorr;        // avg_hr_autocorr
-        double pda;             // avg_hr_pda
-        
-        hrResult(double autocorr, double pda);
-        
-        void operator = (const hrResult &other);
-    };
-    
-    
     hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag);
