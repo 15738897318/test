@@ -49,16 +49,15 @@ namespace MHR {
         }else if(conversion_method == "mode-balance"){
             
             // Selection parameters
-            double training_time = _training_time;
-            double lower_pct_range = _lower_pct_range;
-            double upper_pct_range = _upper_pct_range;
+            double training_time = _training_time_end - _training_time_start;
+            double lower_pct_range = _pct_reach_below_mode;
+            double upper_pct_range = _pct_reach_above_mode;
             
-            int first_tranning_frames = min( (int) round(fr * training_time), total_frames );
-            int nbins = (int) (50);
-            
+            int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
+
             // this arr stores values of pixels from first trainning frames
             vector<double> arr;
-            for(int i=0; i<first_tranning_frames; ++i)
+            for(int i = 0; i < first_tranning_frames; ++i)
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y)
                         arr.push_back(monoframes[i].at<double>(x,y));
@@ -67,7 +66,7 @@ namespace MHR {
             vector<double> centres;
             vector<int> counts;
             
-            hist(arr, nbins, counts, centres);
+            hist(arr, _number_of_bins, counts, centres);
             
             int argmax=0;
             for(int i=0; i<(int)counts.size(); ++i) if(counts[i]>counts[argmax]) argmax = i;

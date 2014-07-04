@@ -18,13 +18,14 @@ namespace MHR {
         // - Basis takes 15secs to generate an HR estimate
         // - Cardiio takes 30secs to generate an HR estimate
     
-        hrResult hr_output = heartRate_calc(vid, _run_hr_window_size_in_sec, _run_hr_overlap_ratio,
-                                            _run_hr_max_bpm, _run_hr_cutoff_freq, _run_hr_channels_to_process,
-                                            _run_hr_colourspace, _run_hr_time_lag);
+        hrResult hr_output = heartRate_calc(vid, _window_size_in_sec, _overlap_ratio,
+                                            _max_bpm, _cutoff_freq, _channels_to_process,
+                                            _colourspace, _time_lag);
         // debug info
-        printf("run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, alpha = %lf, level = %d, chromAtn = %lf)",
-               vidType.c_str(), _run_hr_colourspace.c_str(), min_hr, max_hr, alpha, level, chromAtn);
-        printf("hr_output = {%lf, %lf}", hr_output.autocorr, hr_output.pda);
+        printf("run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, alpha = %lf, level = %d, chromAtn = %lf)\n",
+               vidType.c_str(), _colourspace.c_str(), min_hr, max_hr, alpha, level, chromAtn);
+        
+        printf("hr_output = {%lf, %lf}\n", hr_output.autocorr, hr_output.pda);
         
         return hr_output;
     }

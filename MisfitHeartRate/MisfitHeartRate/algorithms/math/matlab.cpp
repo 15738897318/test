@@ -127,7 +127,7 @@ namespace MHR {
     //filter function for frames2signal function
     vector<double> low_pass_filter(vector<double> arr){
         Mat src = vectorToMat(arr);
-        Mat filt = arrayToMat(_filtArray,1,15);
+        Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
         Mat dst;
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
         vector<double> ans = matToVector1D(dst);

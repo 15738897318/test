@@ -45,16 +45,7 @@ namespace MHR {
 //        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
 //        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
         
-        double filtArray[] = {
-            0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
-            0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
-            0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
-            0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175,
-            0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
-            0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
-            0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085
-        };
-        Mat filt = arrayToMat(filtArray, 7, 7);
+        Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
 
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
