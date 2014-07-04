@@ -12,7 +12,7 @@
 namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
-	void amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
+	vector<Mat> amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
 										  double alpha, int level,
 										  double freqBandLowEnd, double freqBandHighEnd,
 										  double samplingRate, double chromAttenuation)
@@ -27,15 +27,16 @@ namespace MHR {
         + "-level-" + std::to_string(level)
         + "-chromAtn-" + std::to_string(chromAttenuation)
         + ".mp4";
-        
         printf("outFile = %s", outFile.c_str());
+        
+        vector<Mat> ans;
 		
 		// Read video
 		VideoCapture vidIn(vidFile);
         if (!vidIn.isOpened())
         {
             printf("%s is not opened!\n", vidFile.c_str());
-            return;
+            return ans;
         }
         
 		// Extract video info
@@ -57,11 +58,11 @@ namespace MHR {
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / filter_length) / log(2)));
         
 		// Prepare the output video-writer
-        //        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
+//        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
 		VideoWriter vidOut(outFile, CV_FOURCC('M','J','P','G'), frameRate, cvSize(vidWidth, vidHeight), true);
 		if (!vidOut.isOpened()) {
 			printf("outFile %s is not opened!\n", outFile.c_str());
-			return;
+			return ans;
 		}
         
 		// Define the indices of the frames to be processed
@@ -185,53 +186,27 @@ namespace MHR {
                 frameToFile(frame, outDir + "test_processed_frame_out.jpg");
             
             // Write the frame into the video as unsigned 8-bit integer array
-            vidOut << convertTo(frame, CV_8UC3);
-            //            vidOut << frame;
+            frame.convertTo(frame, CV_8UC3);
+            ans.push_back(frame.clone());
+            vidOut << frame;
+//            vidOut << frame;
 		}
         vidOut.release();
 		printf("Finished\n");
+        return ans;
 	}
     
     
 	// run Eulerian
-	void runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir) {
-		//String resultsDir = "Results";
-		//String src_folder = "/Users/storm5906/Desktop/eulerianMagnifcation/codeMatlab/";
+	vector<Mat> runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir) {
 		//String file_template = "*Finger*.mp4";
 		String inFile = srcDir + "/" + fileName;
 		printf("Processing file: %s\n", inFile.c_str());
         
-		vector<int> alpha = vectorRange(30, 30);            // Eulerian magnifier
-		vector<int> pyrLevel = vectorRange(6, 6);           // Standard: 4, but updated by the real frame size
-		vector<int> minHR = vectorRange(30, 30);            // BPM Standard: 50
-		vector<int> maxHR = vectorRange(240, 240);          // BPM Standard: 90
-		vector<int> frameRate = vectorRange(30, 30);        // Standard: 30, but updated by the real frame-rate
-		vector<int> chromaMagnifier = vectorRange(1, 1);    // Standard: 1
-        
-		// generate all combinations of parameters
-		vector<vector<int>> tmp;
-		tmp.push_back(alpha);
-		tmp.push_back(pyrLevel);
-		tmp.push_back(minHR);
-		tmp.push_back(maxHR);
-		tmp.push_back(frameRate);
-		tmp.push_back(chromaMagnifier);
-		vector<vector<int>> paramsSet = allcomb(tmp);
-        
-		// amplify_spatial_Gdown_temporal_ideal each combination
-		int nRow = int(paramsSet.size());
-		for (int i = 0; i < nRow; ++i) {
-			double currAlpha = paramsSet[i][0];
-			int currPyrLevel = paramsSet[i][1];
-			double currMinHr = paramsSet[i][2];
-			double currMaxHr = paramsSet[i][3];
-			double currFrameRate = paramsSet[i][4];
-			double currChromaMagnifier = paramsSet[i][5];
-			amplifySpatialGdownTemporalIdeal(inFile, resultsDir,
-                                             currAlpha, currPyrLevel,
-                                             currMinHr/60.0, currMaxHr/60.0,
-                                             currFrameRate, currChromaMagnifier
-                                             );
-		}
+        return amplifySpatialGdownTemporalIdeal(inFile, resultsDir,
+                                                _eulerian_alpha, _eulerian_pyrLevel,
+                                                _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
+                                                _eulerian_frameRate, _eulerian_chromaMagnifier
+                                                );
 	}
 }
