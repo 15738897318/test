@@ -1,7 +1,7 @@
 %%------- Eulerian-magnification parameters
 
 % Control params for the algorithm
-alpha = 30; %Eulerian magnifier %Standard: < 50
+alpha = 50; %Eulerian magnifier %Standard: < 50
 pyr_level = 6; %Standard: 6, but updated by the real frame size
 min_hr = 30; %BPM %Standard: 30
 max_hr = 240; %BPM %Standard: > 150
