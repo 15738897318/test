@@ -140,9 +140,9 @@ namespace MHR {
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level) {
-        Mat ans;
+        Mat ans = src.clone();
         for (int i = 0; i < level; ++i)
-            pyrDown(src, ans, Size(ans.cols/2, ans.rows/2));
+            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
         return ans;
     }
     
@@ -211,7 +211,7 @@ namespace MHR {
             rgbframe = convertTo(frame, CV_64FC3);
             frame = rgb2ntsc(rgbframe);
             
-            //            printf("buildGDownStack: %d --> %d\n", i, endIndex);
+//            printf("buildGDownStack: %d --> %d\n", i, endIndex);
             
             // Blur and downsample the frame
             blurred = blurDnClr(frame, level);
