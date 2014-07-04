@@ -14,6 +14,7 @@
 #import <opencv2/highgui/cap_ios.h>
 #import <opencv2/highgui/highgui.hpp>
 #import <opencv2/highgui/highgui_c.h>
+#import <time.h>
 #import "eulerian.h"
 #import "run_hr.h"
 #import "MHRUtilities.h"
