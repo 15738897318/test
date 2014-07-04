@@ -184,14 +184,14 @@ namespace MHR {
         Mat rgbframe = convertTo(frame, CV_64FC3);
         frame = rgb2ntsc(rgbframe);
         
-        frameToFile(vid[0], "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_rgb2ntsc.jpg");
+        frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
         
         // Blur and downsample the frame
         Mat blurred = blurDnClr(frame, level);
         
         printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
         
-        frameToFile(blurred, "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_blurred.jpg");
+        frameToFile(blurred, "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_blurred.jpg");
         
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid

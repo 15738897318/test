@@ -36,7 +36,11 @@ namespace MHR {
 	Mat convertTo(const Mat &src, int type, double alpha = 1.0, double beta = 0.0);
     
     // convert a VideoCapture to vector<Mat>
-    vector<Mat> videoCaptureToVector(VideoCapture &src);
+    vector<Mat> videoCaptureToVector(VideoCapture &src, int nFrames = -1);
+    
+    // read frames from a VideoCapture to a vector<Mat>
+    // return true if endOfFile
+    bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames = -1);
     
 	// sum all channels in one pixcel
 	// default output type is double - CV_64F

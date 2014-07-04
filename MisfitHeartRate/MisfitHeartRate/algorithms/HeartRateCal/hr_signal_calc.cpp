@@ -28,6 +28,7 @@ namespace MHR {
                             double frameRate, double overlap_ratio,
                             double max_bpm, double threshold_fraction)
     {
+        clock_t t1 = clock();
         // Set peak-detection params
         if (firstSample > temporal_mean.size())
             firstSample = 0;
@@ -47,7 +48,8 @@ namespace MHR {
                                                   window_size, overlap_ratio,
                                                   minPeakDistance,
                                                   debug_autocorr);
-        
+        clock_t t2 = clock();
+        printf("hr_signal_calc() time = %f\n", ((float)t2 - (float)t1)/1000.0);
         return hrResult(avg_hr_autocorr, avg_hr_pda);
     }
 }

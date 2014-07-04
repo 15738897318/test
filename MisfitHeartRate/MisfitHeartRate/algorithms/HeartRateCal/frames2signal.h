@@ -30,7 +30,8 @@ using namespace std;
 namespace MHR {
     vector<double> frames2signal(const vector<Mat>& monoframes, String conversion_method,
                                  double fr, double cutoff_freq,
-                                 const vector<Mat>& debug_monoframes);
+                                 double &lower_range, double &upper_range, bool isCalcMode,
+                                 vector<Mat>& debug_monoframes);
 }
 
 #endif /* defined(__MisfitHeartRate__frame2signal__) */

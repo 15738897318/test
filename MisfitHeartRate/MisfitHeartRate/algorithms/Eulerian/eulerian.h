@@ -20,7 +20,7 @@
 namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
-	vector<Mat> amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
+	vector<Mat> amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, String outDir,
                                                  double alpha, int level,
                                                  double freqBandLowEnd, double freqBandHighEnd,
                                                  double samplingRate, double chromAttenuation);

@@ -1,5 +1,5 @@
 //
-//  OHRMainViewController.m
+//  MHRMainViewController.m
 //  opticalHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.

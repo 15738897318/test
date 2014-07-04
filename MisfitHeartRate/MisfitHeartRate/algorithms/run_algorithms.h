@@ -11,11 +11,14 @@
 
 #include <iostream>
 #include "eulerian.h"
-#include "run_hr.h"
+#include "temporal_mean_calc.h"
+
+using namespace cv;
+using namespace std;
 
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &resultsDir);
+    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir);
 }
 
 #endif /* defined(__MisfitHeartRate__run_algorithms__) */

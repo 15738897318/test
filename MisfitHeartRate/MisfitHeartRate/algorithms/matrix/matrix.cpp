@@ -63,22 +63,39 @@ namespace MHR {
     
     
     // convert a VideoCapture to vector<Mat>
-    vector<Mat> videoCaptureToVector(VideoCapture &src) {
+    vector<Mat> videoCaptureToVector(VideoCapture &src, int nFrames) {
         vector<Mat> ans;
         Mat frame;
         int c = 0;
-        while(1) {
-            ++c;
+        while(nFrames == -1 || c++ < nFrames) {
             printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
                 break;
-            if (frame.rows > 256 || frame.cols > 256)
-                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
-            Mat tmp = frame.clone();
-            ans.push_back(tmp);
+//            if (frame.rows > 256 || frame.cols > 256)
+//                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
+            ans.push_back(frame.clone());
         }
         return ans;
+    }
+    
+    
+    // read frames from a VideoCapture to a vector<Mat>
+    // return true if endOfFile
+    bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames)
+    {
+        Mat frame;
+        int c = 0;
+        while(nFrames == -1 || c++ < nFrames) {
+            printf("c = %d\n", c);
+            src >> frame;
+            if (frame.empty())
+                return (c == 1);
+//            if (frame.rows > 256 || frame.cols > 256)
+//                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
+            dst.push_back(frame.clone());
+        }
+        return false;
     }
     
     

@@ -1,32 +1,28 @@
 //
-//  heartRate_calc.cpp
+//  temporal_mean_calc.cpp
 //  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 7/2/14.
+//  Created by Bao Nguyen on 7/4/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#include "heartRate_calc.h"
+#include "temporal_mean_calc.h"
 
 
 namespace MHR {
-    hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
-                                  double max_bpm, double cutoff_freq, int colour_channel,
-                                  String colourspace, double time_lag)
+    vector<double> temporal_mean_calc(vector<Mat> &vid, double overlap_ratio,
+                                      double max_bpm, double cutoff_freq,
+                                      int colour_channel, String colourspace,
+                                      double &lower_range, double &upper_range, bool isCalcMode)
     {
-        double threshold_fraction = 0;
-        String conversion_method = "mode-balance";
+        String conversion_method = frames2signalConversionMethod;
         
         // Block 1 ==== Load the video & convert it to the desired colour-space
         // Extract video info
         int vidHeight = vid[0].rows;
         int vidWidth = vid[0].cols;
-//        int nChannels = 3;
-        double frameRate = 30;
+        double frameRate = _frameRate;
         int len = (int)vid.size();
-        
-        int window_size = round(window_size_in_sec * frameRate);
-        int firstSample = round(frameRate * time_lag);
         
         // Define the indices of the frames to be processed
         int startIndex = 0;     // 400
@@ -39,10 +35,10 @@ namespace MHR {
 //        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
         
         Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
-
+        
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
-            printf("heartRate_cal: index = %i\n", i);
+            printf("temporal_mean_calc: index = %i\n", i);
             rgbframe = vid[i];
             if (colourspace == "rgb")
                 colorframe = rgbframe;
@@ -68,14 +64,11 @@ namespace MHR {
 			// Put the frame into the video stream
             monoframes.push_back(monoframe);
         }
-
+        
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
         vector<Mat> debug_monoframes;
-        vector<double> temporal_mean = frames2signal(monoframes, conversion_method, frameRate, cutoff_freq, debug_monoframes);
-        
-        // Block 3 ==== Heart-rate calculation
-        return hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
-                              overlap_ratio, max_bpm, threshold_fraction);
+        return frames2signal(monoframes, conversion_method, frameRate, cutoff_freq,
+                             lower_range, upper_range, isCalcMode, debug_monoframes);
     }
 }
