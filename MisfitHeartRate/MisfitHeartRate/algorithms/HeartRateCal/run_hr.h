@@ -24,7 +24,7 @@
 
 namespace MHR {
     // run Heart Rate calculation
-    void run_hr(vector<Mat> &vid, String resultsDir,
+    hrResult run_hr(vector<Mat> &vid, String resultsDir,
                 double min_hr, double max_hr,
                 double alpha, int level, double chromAtn);
 }

@@ -10,7 +10,14 @@
 
 
 namespace MHR {
-    vector<double> heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
+    hrResult::hrResult(double autocorr, double pda)
+    {
+        this->autocorr = autocorr;
+        this->pda = pda;
+    }
+    
+    
+    hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag)
     {
@@ -98,13 +105,10 @@ namespace MHR {
         // Calculate heart-rate using peak-detection on the signal
         hrDebug debug_autocorr;
         double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
-                                                  window_size, overlap_ratio, minPeakDistance,
+                                                  window_size, overlap_ratio,
+                                                  minPeakDistance,
                                                   debug_autocorr);
-//        double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
-//                                                  window_size, overlap_ratio,
-//                                                  minPeakDistance,
-//                                                  debug_autocorr);
 
-        return vector<double>{avg_hr_autocorr, avg_hr_pda};
+        return hrResult(avg_hr_autocorr, avg_hr_pda);
     }
 }

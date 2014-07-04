@@ -11,7 +11,7 @@
 
 namespace MHR {
     // run Heart Rate calculation
-    void run_hr(vector<Mat> &vid, String resultsDir,
+    hrResult run_hr(vector<Mat> &vid, String resultsDir,
                 double min_hr, double max_hr,
                 double alpha, int level, double chromAtn)
     {
@@ -26,14 +26,8 @@ namespace MHR {
         double time_lag = 3;       // seconds
         
         String colourspace = "tsl";
-        vector<int> channels_to_process = vectorRange(0, 2, 1);
-     
-        for (int i = 0, sz = (int)channels_to_process.size(); i < sz; ++i)
-        {
-            int colour_channel = channels_to_process[i];
-            
-            vector<double> hr_output = heartRate_calc(vid, window_size_in_sec, overlap_ratio,
-                                       max_bpm, cutoff_freq, colour_channel, colourspace, time_lag);
-        }
+        int colour_channel = _channels_to_process;
+        return heartRate_calc(vid, window_size_in_sec, overlap_ratio,
+                              max_bpm, cutoff_freq, colour_channel, colourspace, time_lag);
     }
 }

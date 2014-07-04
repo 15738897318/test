@@ -25,7 +25,16 @@
 
 
 namespace MHR {
-    vector<double> heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
+    struct hrResult
+    {
+        double autocorr;        // avg_hr_autocorr
+        double pda;             // avg_hr_pda
+        
+        hrResult(double autocorr, double pda);
+    };
+    
+    
+    hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
                                   double max_bpm, double cutoff_freq, int colour_channel,
                                   String colourspace, double time_lag);
 }
