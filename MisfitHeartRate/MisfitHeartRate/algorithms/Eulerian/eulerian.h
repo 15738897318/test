@@ -11,6 +11,7 @@
 
 #include <string>
 #include <vector>
+#include "config.h"
 #include "image.h"
 //#import <opencv2/highgui/ios.h>
 //#import <opencv2/highgui/cap_ios.h>
@@ -19,13 +20,10 @@
 namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
-	void amplifySpatialGdownTemporalIdeal(String vidFile, String outDir,
-										  double alpha, int level,
-										  double freqBandLowEnd, double freqBandHighEnd,
-										  double samplingRate, double chromAttenuation);
-    
-	// run Eulerian
-	void runEulerian(String srcDir, String fileName, String fileTemplate, String resultsDir);
+	vector<Mat> amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, String outDir,
+                                                 double alpha, int level,
+                                                 double freqBandLowEnd, double freqBandHighEnd,
+                                                 double samplingRate, double chromAttenuation);
 }
 
 #endif /* defined(__MisfitHeartRate__eulerian__) */

@@ -1,11 +1,7 @@
 %install;
 
-alpha = 50; %Eulerian magnifier %Standard: < 50
-pyr_level = 4; %Standard: 4, but updated by the real frame size
-min_hr = 30; %BPM %Standard: 30
-max_hr = 240; %BPM %Standard: > 150
-frame_rate = 30; %Standard: 30, but updated by the real frame-rate
-chroma_magnifier = 1; %Standard: 1
+% Load constants
+constants;
 
 
 %alpha = 30; 50 : 30 : 80; %Eulerian magnifier %Standard: < 50
@@ -42,7 +38,7 @@ for file_ind = 1 : length(file_list)
 											curr_min_hr, curr_max_hr, ...
 											curr_frame_rate, curr_chroma_magnifier));
 											
-		amplify_spatial_Gdown_temporal_ideal(inFile, resultsDir, ...
+		eulerianGaussianPyramidMagnification(inFile, resultsDir, ...
 											curr_alpha, curr_pyr_level, ...
 											curr_min_hr/60, curr_max_hr/60, ...
 											curr_frame_rate, curr_chroma_magnifier);

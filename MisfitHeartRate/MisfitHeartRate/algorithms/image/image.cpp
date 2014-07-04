@@ -24,24 +24,24 @@ namespace MHR {
 		int nRow = srcRGBmap.rows;
 		int nCol = srcRGBmap.cols;
 		Mat rbgmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
-		
-		//        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
-		//        r_primes(isnan(r_primes)) = -1/3;
+
+//        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
+//        r_primes(isnan(r_primes)) = -1/3;
 		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 0), sumChannels(rbgmap), r_primes);
 		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), r_primes);
 		
-		//        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
-		//        g_primes(isnan(g_primes)) = -1/3;
+//        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
+//        g_primes(isnan(g_primes)) = -1/3;
 		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 1), sumChannels(rbgmap), g_primes);
 		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), g_primes);
 		
-		//        temp1 = zeros(size(g_primes));
-		//        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
-		//        temp1(bsxfun(@lt, g_primes, 0)) = 3/4;
-		//        temp2 = ones(size(g_primes));
-		//        temp2(bsxfun(@eq, g_primes, 0)) = 0;
+//        temp1 = zeros(size(g_primes));
+//        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
+//        temp1(bsxfun(@lt, g_primes, 0)) = 3/4;
+//        temp2 = ones(size(g_primes));
+//        temp2(bsxfun(@eq, g_primes, 0)) = 0;
 		Mat temp1 = Mat::zeros(nRow, nCol, CV_64F);
 		Mat temp2 = Mat::ones(nRow, nCol, CV_64F);
 		for (int i = 0; i < nRow; ++i)
@@ -60,17 +60,17 @@ namespace MHR {
 				}
 		
 		Mat tslmap = Mat::zeros(nRow, nCol, CV_64FC3);
-		//        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
+//        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
 		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
 		multiply(tmp0, temp2, tmp0);
 		add(tmp0, temp1, tmp0);
-		//        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
+//        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
 		Mat tmp1 = powMat(r_primes, 2);
 		add(tmp1, powMat(g_primes, 2), tmp1);
 		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
 		pow(tmp1, 0.5, tmp1);
-		//        tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
+//        tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
 		Mat tmp2 = add(multiply(cloneWithChannel(rbgmap, 0), 0.299),
 					   multiply(cloneWithChannel(rbgmap, 1), 0.587));
 		add(tmp2, multiply(cloneWithChannel(rbgmap, 2), 0.114), tmp2);
@@ -140,9 +140,9 @@ namespace MHR {
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     Mat blurDnClr(const Mat& src, int level) {
-        Mat ans;
+        Mat ans = src.clone();
         for (int i = 0; i < level; ++i)
-            pyrDown(src, ans, Size(ans.cols/2, ans.rows/2));
+            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
         return ans;
     }
     
@@ -157,6 +157,7 @@ namespace MHR {
         filter2D(src, tmp, -1, filter);
         int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
+        printf("corrDn, (m, n) = (%d, %d)\n", m, n);
         Mat ans = Mat::zeros(m, n, CV_64F);
         for (int i = 0, x = 0; i < m; ++i, x += rectRow)
             for (int j = 0, y = 0; j < n; ++j, y += rectCol)
@@ -183,14 +184,14 @@ namespace MHR {
         Mat rgbframe = convertTo(frame, CV_64FC3);
         frame = rgb2ntsc(rgbframe);
         
-        frameToFile(vid[0], "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_rgb2ntsc.jpg");
+        frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
         
         // Blur and downsample the frame
         Mat blurred = blurDnClr(frame, level);
         
         printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
         
-        frameToFile(blurred, "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_blurred.jpg");
+        frameToFile(blurred, "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_blurred.jpg");
         
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
@@ -211,7 +212,7 @@ namespace MHR {
             rgbframe = convertTo(frame, CV_64FC3);
             frame = rgb2ntsc(rgbframe);
             
-            //            printf("buildGDownStack: %d --> %d\n", i, endIndex);
+//            printf("buildGDownStack: %d --> %d\n", i, endIndex);
             
             // Blur and downsample the frame
             blurred = blurDnClr(frame, level);

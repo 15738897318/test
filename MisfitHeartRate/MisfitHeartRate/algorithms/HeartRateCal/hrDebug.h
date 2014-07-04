@@ -17,11 +17,11 @@ using namespace std;
 
 namespace MHR {
     struct hrDebug {
-    public:
         vector<pair<double,int>> heartBeats;
         vector<double> heartRates;
         vector<double> autocorrelation;
     };
+    
     
     void testMathFunctions();
 }

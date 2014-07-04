@@ -1,5 +1,5 @@
 //
-//  OHRMainViewController.m
+//  MHRMainViewController.m
 //  opticalHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
@@ -78,10 +78,10 @@
 
 
 - (IBAction)startButtonDidTap:(id)sender {
-    testMathFunctions();
-    return;
+//    testMathFunctions();
+//    return;
     
-//    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test0.mp4"];
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"-yyyy-MM-dd-HH-mm-ss";
@@ -92,8 +92,10 @@
     outputPath = [outputPath stringByAppendingFormat:@"Documents/"];
 //                  [formater stringFromDate:[NSDate date]]];
     [MHRUtilities createDirectory:outputPath];
-//    runEulerian([resourcePath UTF8String], "test0.mp4", "", [outputPath UTF8String]);
-//    runEulerian([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", "", [outputPath UTF8String]);
+    
+    
+    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
+//    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
 }
 
 
