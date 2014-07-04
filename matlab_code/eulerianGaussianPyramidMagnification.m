@@ -1,18 +1,13 @@
-% amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, alpha, 
+% eulerianGaussianPyramidMagnification(vidFile, outDir, alpha, 
 %                                      level, freq_band_low_end, freq_band_high_end, samplingRate, 
 %                                      chromAttenuation)
+% Based on code by Hao-yu Wu, Michael Rubinstein, Eugene Shih (June 2012)
 %
 % Spatial Filtering: Gaussian blur and down sample
-% Temporal Filtering: Ideal bandpass
+% Temporal Filtering: 15-tap FIR
 % 
-% Copyright (c) 2011-2012 Massachusetts Institute of Technology, 
-% Quanta Research Cambridge, Inc.
 %
-% Authors: Hao-yu Wu, Michael Rubinstein, Eugene Shih, 
-% License: Please refer to the LICENCE file
-% Date: June 2012
-%
-function amplify_spatial_Gdown_temporal_ideal(vidFile, outDir, ...
+function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
 											alpha, level, ...
                      						freq_band_low_end, freq_band_high_end, ...
                      						samplingRate, chromAttenuation)
