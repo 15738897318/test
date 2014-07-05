@@ -16,10 +16,61 @@ namespace MHR {
         printf("Save a frame to %s\n", outFile.c_str());
         return imwrite(outFile, frame);
     }
-    
-    
+
+
+    // multiply each pixel of a frame with a base matrix
+    // and clip the result's values by range [lower_bound, upper_bound]
+//    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
+//                    double lower_bound, double upper_bound)
+//    {
+//        frame.convertTo(dst, CV_64FC3);
+//        int nChannel = _number_of_channels;
+//        double maxChannelValue[_number_of_channels] = {0.0000001};
+//        // mutiply and find max value in each channel
+////        Mat tmp;
+////        MatIterator_<Vec3d> it = dst.begin<Vec3d>();
+////        MatIterator_<double> tmp_it;
+////        for (int i = 0; i < dst.rows; ++i)
+////            for (int j = 0; j < dst.cols; ++j) {
+////                tmp = base * Mat(*it);
+////                tmp_it = tmp.begin<double>();
+////                for (int channel = 0; channel < nChannel; ++channel)
+////                    maxChannelValue[channel] = max(maxChannelValue[channel], *tmp_it++);
+////                *it++ = Vec3d(tmp);
+////            }
+////        // clip
+////        it = dst.begin<Vec3d>();
+////        for (int i = 0; i < dst.rows; ++i)
+////            for (int j = 0; j < dst.cols; ++j) {
+////                for (int channel = 0; channel < nChannel; ++channel)
+////                    (*it)[channel] *= upper_bound/maxChannelValue[channel];
+////                ++it;
+////            }
+//        
+//        // use .at<>
+//        // mutiply and find max value in each channel
+//        Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
+//        for (int i = 0; i < dst.rows; ++i)
+//            for (int j = 0; j < dst.cols; ++j) {
+////                tmp = base * Mat(dst.at<Vec3d>(i, j));
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
+//                tmp = base * tmp;
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
+//                dst.at<Vec3d>(i, j) = Vec3d(tmp);
+//            }
+//        // clip
+//        for (int i = 0; i < dst.rows; ++i)
+//            for (int j = 0; j < dst.cols; ++j) {
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    dst.at<Vec3d>(i, j)[channel] *= upper_bound/maxChannelValue[channel];
+//            }
+//    }
+
+
 	// convert a RGB Mat to a TSL Mat
-	Mat rgb2tsl(const Mat& srcRGBmap)
+	void rgb2tsl(const Mat& srcRGBmap, Mat &dst)
 	{
 		int nRow = srcRGBmap.rows;
 		int nCol = srcRGBmap.cols;
@@ -30,13 +81,13 @@ namespace MHR {
 		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 0), sumChannels(rbgmap), r_primes);
 		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), r_primes);
-		
+
 //        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
 //        g_primes(isnan(g_primes)) = -1/3;
 		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 1), sumChannels(rbgmap), g_primes);
 		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), g_primes);
-		
+
 //        temp1 = zeros(size(g_primes));
 //        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
 //        temp1(bsxfun(@lt, g_primes, 0)) = 3/4;
@@ -58,8 +109,8 @@ namespace MHR {
 				{
 					temp2.at<double>(i, j) = 0;
 				}
-		
-		Mat tslmap = Mat::zeros(nRow, nCol, CV_64FC3);
+
+        dst = Mat::zeros(nRow, nCol, CV_64FC3);
 //        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
 		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
@@ -77,152 +128,109 @@ namespace MHR {
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
 			{
-				tslmap.at<Vec3d>(i, j)[0] = tmp0.at<double>(i, j);
-				tslmap.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
-				tslmap.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[0] = tmp0.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
 			}
-		return tslmap;
 	}
-    
-    
-	// convert a RGB Mat to a NTSC Mat
+
+
+    // convert a RGB Mat to a NTSC Mat
     // ref: http://en.wikipedia.org/wiki/YIQ
-	Mat rgb2ntsc(const Mat& rgbFrame) {
-        int rows = rgbFrame.rows, cols = rgbFrame.cols;
-        double baseArray[9] = {
+    //      http://www.mathworks.com/help/images/ref/rgb2ntsc.html
+    void rgb2ntsc(const Mat& rgbFrame, Mat &dst) {
+        /*double baseArray[9] = {
             0.299, 0.587, 0.114,
             0.595716, -0.274453, -0.321263,
             0.211456, -0.522591, 0.311135,
-        };
-        Mat base = arrayToMat(baseArray, 3, 3);
-        // calculate result Mat
-        Mat ans = Mat::zeros(rows, cols, CV_64FC3);
-        Mat tmp = Mat::zeros(3, 1, CV_64F);
-        for (int i = 0; i < rows; ++i)
-            for (int j = 0; j < cols; ++j) {
-                for (int channel = 0; channel < 3; ++channel)
-                    tmp.at<double>(channel, 0) = rgbFrame.at<Vec3d>(i, j)[channel];
-                //                printf("%f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
-                tmp = base * tmp;
-                //                printf("---> %f %f %f\n", tmp.at<double>(0, 0), tmp.at<double>(1, 0), tmp.at<double>(2, 0));
-                for (int channel = 0; channel < 3; ++channel)
-                    ans.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0);
+        };*/
+//        Mat base = arrayToMat(baseArray, 3, 3);
+//        mulAndClip(rgbFrame, dst, rgb2ntsc_baseMat, 0, 255);
+        rgbFrame.convertTo(dst, CV_64FC3);
+        int nRow = dst.rows, nCol = dst.cols;
+        int nChannel = _number_of_channels;
+        double maxChannelValue[_number_of_channels] = {0.0000001};
+        // mutiply and find max value in each channel
+        Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
+        for (int i = 0; i < nRow; ++i)
+            for (int j = 0; j < nCol; ++j) {
+//                tmp = base * Mat(dst.at<Vec3d>(i, j));
+                for (int channel = 0; channel < nChannel; ++channel)
+                    tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
+                tmp = rgb2ntsc_baseMat * tmp;
+                for (int channel = 0; channel < nChannel; ++channel)
+                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
+                dst.at<Vec3d>(i, j) = Vec3d(tmp);
             }
-		return ans;
-	}
-    
-    
-	// convert a RGB Mat to a NTSC Mat
+        // clip
+        for (int i = 0; i < nRow; ++i)
+            for (int j = 0; j < nCol; ++j) {
+                for (int channel = 0; channel < nChannel; ++channel)
+                    dst.at<Vec3d>(i, j)[channel] *= 255/maxChannelValue[channel];
+            }
+    }
+
+
+    // convert a RGB Mat to a NTSC Mat
     // ref: http://en.wikipedia.org/wiki/YIQ
-	Mat ntsc2rgb(const Mat& ntscFrame)	{
-        int rows = ntscFrame.rows, cols = ntscFrame.cols;
-        double baseArray[9] = {
-            1, 0.9563, 0.6210,
-            1, -0.2721, -0.6474,
-            1, -1.1070, 1.7046,
-        };
-        Mat base = arrayToMat(baseArray, 3, 3);
-        // calculate result Mat
-		Mat ans = Mat::zeros(rows, cols, CV_64FC3);
-        Mat tmp = Mat::zeros(3, 1, CV_64F);
-        for (int i = 0; i < rows; ++i)
-            for (int j = 0; j < cols; ++j) {
-                for (int channel = 0; channel < 3; ++channel)
-                    tmp.at<double>(channel, 0) = ntscFrame.at<Vec3d>(i, j)[channel];
-                tmp = base * tmp;
-                for (int channel = 0; channel < 3; ++channel)
-                    ans.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0);
+    //      http://www.mathworks.com/help/images/ref/ntsc2rgb.html
+    void ntsc2rgb(const Mat& ntscFrame, Mat &dst)  {
+        //double baseArray[9] = {
+        //  1, 0.9563, 0.6210,
+        //  1, -0.2721, -0.6474,
+        //  1, -1.1070, 1.7046,
+        //};
+//        Mat base = arrayToMat(baseArray, 3, 3);
+//        mulAndClip(ntscFrame, dst, ntsc2rgb_baseMat, 0, 255);
+        
+        ntscFrame.convertTo(dst, CV_64FC3);
+        int nRow = dst.rows, nCol = dst.cols;
+        int nChannel = _number_of_channels;
+        double maxChannelValue[_number_of_channels] = {0.0000001};
+        // mutiply and find max value in each channel
+        Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
+        for (int i = 0; i < nRow; ++i)
+            for (int j = 0; j < nCol; ++j) {
+//                tmp = base * Mat(dst.at<Vec3d>(i, j));
+                for (int channel = 0; channel < nChannel; ++channel)
+                    tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
+                tmp = ntsc2rgb_baseMat * tmp;
+                for (int channel = 0; channel < nChannel; ++channel)
+                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
+                dst.at<Vec3d>(i, j) = Vec3d(tmp);
             }
-		return ans;
-	}
-    
-    
+        // clip
+        for (int i = 0; i < nRow; ++i)
+            for (int j = 0; j < nCol; ++j) {
+                for (int channel = 0; channel < nChannel; ++channel)
+                    dst.at<Vec3d>(i, j)[channel] *= 255/maxChannelValue[channel];
+            }
+    }
+
+
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
-    Mat blurDnClr(const Mat& src, int level) {
-        Mat ans = src.clone();
+    void blurDnClr(const Mat& src, Mat &dst, int level) {
+        dst = src.clone();
         for (int i = 0; i < level; ++i)
-            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
-        return ans;
+            pyrDown(dst, dst, Size(dst.cols/2, dst.rows/2));
     }
-    
-    
+
+
     // Compute correlation of matrices IM with FILT, followed by
     // downsampling.  These arguments should be 1D or 2D matrices, and IM
     // must be larger (in both dimensions) than FILT.  The origin of filt
     // is assumed to be floor(size(filt)/2)+1.
-    Mat corrDn(const Mat &src, const Mat &filter, int rectRow, int rectCol)
+    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol)
     {
         Mat tmp;
         filter2D(src, tmp, -1, filter);
         int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
         printf("corrDn, (m, n) = (%d, %d)\n", m, n);
-        Mat ans = Mat::zeros(m, n, CV_64F);
+        dst = Mat::zeros(m, n, CV_64F);
         for (int i = 0, x = 0; i < m; ++i, x += rectRow)
             for (int j = 0, y = 0; j < n; ++j, y += rectCol)
-                ans.at<double>(i, j) = tmp.at<double>(x, y);
-        return ans;
+                dst.at<double>(i, j) = tmp.at<double>(x, y);
     }
-    
-	
-	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
-	// and select a specific band indicated by LEVEL.
-	// GDOWN_STACK: stack of one band of Gaussian pyramid of each frame
-	// the first dimension is the time axis
-	// the second dimension is the y axis of the video
-	// the third dimension is the x axis of the video
-	// the forth dimension is the color channel
-	Mat buildGDownStack(const vector<Mat>& vid, int startIndex, int endIndex, int level) {
-		// Extract video info
-//		int vidHeight = vid[0].rows;
-//		int vidWidth = vid[0].cols;
-//		int nChannels = vid[0].channels(); // 3 ????
-        
-        // firstFrame
-        Mat frame = vid[0];
-        Mat rgbframe = convertTo(frame, CV_64FC3);
-        frame = rgb2ntsc(rgbframe);
-        
-        frameToFile(vid[0], "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_rgb2ntsc.jpg");
-        
-        // Blur and downsample the frame
-        Mat blurred = blurDnClr(frame, level);
-        
-        printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
-        
-        frameToFile(blurred, "/var/mobile/Applications/64B8F9E2-660D-4F0F-8B6C-870F6CC686E8/Documents/test_frame_blurred.jpg");
-        
-        // create pyr stack
-        // Note that this stack is actually just a SINGLE level of the pyramid
-        int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1]};
-		Mat GDownStack = Mat(3, GdownSize, CV_64FC3, cvScalar(0));
-        
-        printf("GdownSize: (%d, %d, %d)\n", GDownStack.size.p[0], GDownStack.size.p[1], GDownStack.size.p[2]);
-        
-        // The first frame in the stack is saved
-        for (int i = 0; i < GDownStack.size.p[1]; ++i)
-            for (int j = 0; j < GDownStack.size.p[2]; ++j)
-                for (int t = 0; t < 3; ++t)
-                    GDownStack.at<Vec3d>(0, i, j)[t] = blurred.at<Vec3d>(i, j)[t];
-        
-        for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
-            // Create a frame from the ith array in the stream
-            frame = vid[i];
-            rgbframe = convertTo(frame, CV_64FC3);
-            frame = rgb2ntsc(rgbframe);
-            
-//            printf("buildGDownStack: %d --> %d\n", i, endIndex);
-            
-            // Blur and downsample the frame
-            blurred = blurDnClr(frame, level);
-            
-            // The kth element in the stack is saved
-            // Note that this stack is actually just a SINGLE level of the pyramid
-            for (int i = 0; i < GDownStack.size.p[1]; ++i)
-                for (int j = 0; j < GDownStack.size.p[2]; ++j)
-                    GDownStack.at<Vec3d>(k, i, j) = blurred.at<Vec3d>(i, j);
-        }
-        return GDownStack;
-	}
 }

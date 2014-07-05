@@ -20,14 +20,6 @@ namespace MHR {
     
     
     // import data from a array to a Mat
-    Mat arrayToMat(double a[], int rows, int cols) {
-		Mat ans = Mat::zeros(rows, cols, CV_64F);
-        for (int i = 0; i < rows; ++i)
-            for (int j = 0; j < cols; ++j)
-                ans.at<double>(i, j) = a[i*cols + j];
-        return ans;
-    }
-    
     Mat arrayToMat(const double a[], int rows, int cols) {
 		Mat ans = Mat::zeros(rows, cols, CV_64F);
         for (int i = 0; i < rows; ++i)
@@ -38,47 +30,39 @@ namespace MHR {
     
     
     // vector to Mat
-    Mat vectorToMat(vector<double> arr){
-        Mat ans = Mat::zeros(1, (int) arr.size(), CV_64F);
-        for(int i=0; i<(int) arr.size(); ++i){
-            ans.at<double>(0,i) = arr[i];
-        }
+    Mat vectorToMat(const vector<double>& arr){
+        int sz = (int)arr.size();
+        Mat ans = Mat::zeros(1, sz, CV_64F);
+        for(int i = 0; i < sz; ++i)
+            ans.at<double>(0, i) = arr[i];
         return ans;
     }
     
     // Mat to vector 1D (just get the first row)
-    vector<double> matToVector1D(Mat m){
+    vector<double> matToVector1D(const Mat &m) {
         vector<double> arr;
-        for(int i=0; i<m.cols; ++i) arr.push_back(m.at<double>(0,i));
+        for(int i = 0; i < m.cols; ++i)
+            arr.push_back(m.at<double>(0, i));
         return arr;
     }
-    
-    
-	// convert a Mat to another type Mat
-	Mat convertTo(const Mat &src, int type, double alpha, double beta) {
-		Mat ans;
-		src.convertTo(ans, type, alpha, beta);
-		return ans;
-	}
-    
-    
-    // convert a VideoCapture to vector<Mat>
-    vector<Mat> videoCaptureToVector(VideoCapture &src) {
-        vector<Mat> ans;
+
+
+    // read frames from a VideoCapture to a vector<Mat>
+    // return true if endOfFile
+    bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames)
+    {
         Mat frame;
         int c = 0;
-        while(1) {
-            ++c;
-            printf("c = %d\n", c);
+        while(nFrames == -1 || c++ < nFrames) {
+//            printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
-                break;
-            if (frame.rows > 256 || frame.cols > 256)
-                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
-            Mat tmp = frame.clone();
-            ans.push_back(tmp);
+                return (c == 1);
+//            if (frame.rows > 256 || frame.cols > 256)
+//                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
+            dst.push_back(frame.clone());
         }
-        return ans;
+        return false;
     }
     
     
@@ -156,49 +140,6 @@ namespace MHR {
 	{
 		Mat ans = Mat::zeros(a.rows, a.cols, a.type());
 		multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
-		return ans;
-	}
-    
-    
-	// allcomb(A1, A2, A3, ..., AN) returns all combinations of the elements in A1, A2, ..., and AN.
-	// B is P-by-N matrix is which P is the product of the number of elements of the N inputs.
-	vector<vector<int>> allcomb(std::vector<vector<int>> a) {
-		int p = 1, n = int(a.size());
-		for (int i = 0; i < n; ++i)
-			p = p*int(a[i].size());
-        
-		// generate all combinations of set a
-		vector<vector<int>> ans;
-		int id = 0;
-		bool isPop = false;
-		vector<int> stackPos;
-		stackPos.push_back(0);
-		while (!stackPos.empty()) {
-			if (id == n) {
-				vector<int> newElement;
-				for (int i = 0; i < n; ++i)
-					newElement.push_back(a[i][stackPos[i]]);
-				ans.push_back(newElement);
-				stackPos.pop_back();
-				isPop = true;
-				--id;
-				continue;
-			}
-			int sz = int(a[id].size()), pos = stackPos[id];
-			if (isPop) {
-				++pos;
-				stackPos.pop_back();
-				if (pos == sz) --id;
-				else {
-					stackPos.push_back(pos);
-					isPop = false;
-				}
-			}
-			else {
-				++id;
-				stackPos.push_back(0);
-			}
-		}
 		return ans;
 	}
 }

@@ -1,5 +1,5 @@
 //
-//  OHRMainViewController.m
+//  MHRMainViewController.m
 //  opticalHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
@@ -94,27 +94,8 @@
     [MHRUtilities createDirectory:outputPath];
     
     
-////////////////////////////////////////////////////////////////////////////////////////////////////
-    clock_t t1 = clock();
-    
-    vector<Mat> vid;
-    vid = runEulerian([resourcePath UTF8String], "test1.mp4", "", [outputPath UTF8String]);
-//    vid = runEulerian([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", "", [outputPath UTF8String]);
-    
-    clock_t t2 = clock();
-    printf("runEulerian() time = %f\n", (float)t2 - (float)t1);
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////
-    t1 = clock();
-    
-    hrResult hr = run_hr(vid, [outputPath UTF8String], "mp4",
-                         _eulerian_minHR, _eulerian_maxHR,
-                         _eulerian_alpha, _eulerian_pyrLevel, _eulerian_chromaMagnifier);
-    
-    t2 = clock();
-    printf("run_hr() time = %f\n", (float)t2 - (float)t1);
-    
-    printf("Heart Rate result {autocorr, pda} = {%lf, %lf}\n", hr.autocorr, hr.pda);
+//    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
+    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  OHRMainViewController.h
+//  MHRMainViewController.h
 //  opticalHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
@@ -16,7 +16,7 @@
 #import <opencv2/highgui/highgui_c.h>
 #import <time.h>
 #import "eulerian.h"
-#import "run_hr.h"
+#import "run_algorithms.h"
 #import "MHRUtilities.h"
 
 using namespace cv;

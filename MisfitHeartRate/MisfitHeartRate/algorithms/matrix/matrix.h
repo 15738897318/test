@@ -23,20 +23,17 @@ namespace MHR {
 	vector<int> vectorRange(int a, int b, int step = 1);
     
     // import data from a array to a Mat
-    Mat arrayToMat(double a[], int rows, int cols);
     Mat arrayToMat(const double a[], int rows, int cols);
     
     // data from vector 1D to Mat
-    Mat vectorToMat(vector<double> arr);
+    Mat vectorToMat(const vector<double>& arr);
     
     // data from Mat to vector 1D
-    vector<double> matToVector1D(Mat m);
+    vector<double> matToVector1D(const Mat &m);
     
-	// convert a Mat to another type Mat
-	Mat convertTo(const Mat &src, int type, double alpha = 1.0, double beta = 0.0);
-    
-    // convert a VideoCapture to vector<Mat>
-    vector<Mat> videoCaptureToVector(VideoCapture &src);
+    // read frames from a VideoCapture to a vector<Mat>
+    // return true if endOfFile
+    bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames = -1);
     
 	// sum all channels in one pixcel
 	// default output type is double - CV_64F
@@ -62,10 +59,6 @@ namespace MHR {
 	
 	// return mat .* x
 	Mat multiply(const Mat &a, double x);
-	
-	// allcomb(A1,A2,A3,...,AN) returns all combinations of the elements in A1, A2, ..., and AN.
-	// B is P-by-N matrix is which P is the product of the number of elements of the N inputs.
-	vector<vector<int>> allcomb(std::vector<vector<int>> a);
 }
 
 #endif /* defined(__MisfitHeartRate__matrix__) */

@@ -1,13 +1,13 @@
 //
-//  heartRate_calc.h
+//  hr_signal_calc.h
 //  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 7/2/14.
+//  Created by Bao Nguyen on 7/4/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__heartRate_calc__
-#define __MisfitHeartRate__heartRate_calc__
+#ifndef __MisfitHeartRate__hr_signal_calc__
+#define __MisfitHeartRate__hr_signal_calc__
 
 #include <iostream>
 #include <string>
@@ -31,12 +31,14 @@ namespace MHR {
         double pda;             // avg_hr_pda
         
         hrResult(double autocorr, double pda);
+        
+        void operator = (const hrResult &other);
     };
     
     
-    hrResult heartRate_calc(vector<Mat> &vid, double window_size_in_sec, double overlap_ratio,
-                                  double max_bpm, double cutoff_freq, int colour_channel,
-                                  String colourspace, double time_lag);
+    hrResult hr_signal_calc(vector<double> &temporal_mean, int firstSample, int window_size,
+                            double frameRate, double overlap_ratio,
+                            double max_bpm, double threshold_fraction);
 }
 
-#endif /* defined(__MisfitHeartRate__heartRate_calc__) */
+#endif /* defined(__MisfitHeartRate__hr_signal_calc__) */

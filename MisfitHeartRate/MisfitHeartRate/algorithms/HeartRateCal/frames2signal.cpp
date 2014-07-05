@@ -12,7 +12,8 @@
 namespace MHR {
     vector<double> frames2signal(const vector<Mat>& monoframes, String conversion_method,
                                  double fr, double cutoff_freq,
-                                 const vector<Mat>& debug_monoframes)
+                                 double &lower_range, double &upper_range, bool isCalcMode,
+                                 vector<Mat>& debug_monoframes)
     {
         //=== Block 1. Convert the frame stream into a 1-D signal
         
@@ -49,42 +50,49 @@ namespace MHR {
         }else if(conversion_method == "mode-balance"){
             
             // Selection parameters
-            double training_time = _training_time_end - _training_time_start;
+//            double training_time = _training_time_end - _training_time_start;
             double lower_pct_range = _pct_reach_below_mode;
             double upper_pct_range = _pct_reach_above_mode;
             
-            int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
+            int first_tranning_frames_start = min( (int)round(fr * _training_time_start), total_frames );
+            int first_tranning_frames_end = min( (int)round(fr * _training_time_end), total_frames );
+//            int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
 
             // this arr stores values of pixels from first trainning frames
             vector<double> arr;
-            for(int i = 0; i < first_tranning_frames; ++i)
+            for(int i = first_tranning_frames_start; i < first_tranning_frames_end; ++i)
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y)
                         arr.push_back(monoframes[i].at<double>(x,y));
             
-            //find the mode
-            vector<double> centres;
-            vector<int> counts;
+            if (isCalcMode)
+            {
+                //find the mode
+                vector<double> centres;
+                vector<int> counts;
+                
+                hist(arr, _number_of_bins, counts, centres);
+                
+                int argmax=0;
+                for(int i=0; i<(int)counts.size(); ++i) if(counts[i]>counts[argmax]) argmax = i;
+                double centre_mode = centres[argmax];
+                
+                // find the percentile range centred on the mode
+                double percentile_of_centre_mode = invprctile(arr, centre_mode);
+                double percentile_lower_range = max(0.0, percentile_of_centre_mode - lower_pct_range);
+                double percentile_upper_range = min(100.0, percentile_of_centre_mode + upper_pct_range);
+                // correct the percentile range for the boundary cases
+                if(percentile_upper_range == 100)
+                    percentile_lower_range = 100 - (lower_pct_range + upper_pct_range);
+                if(percentile_lower_range == 0)
+                    percentile_upper_range = (lower_pct_range + upper_pct_range);
+                
+                //convert the percentile range into pixel-value range
+                lower_range = prctile(arr, percentile_lower_range);
+                upper_range = prctile(arr, percentile_upper_range);
+            }
             
-            hist(arr, _number_of_bins, counts, centres);
-            
-            int argmax=0;
-            for(int i=0; i<(int)counts.size(); ++i) if(counts[i]>counts[argmax]) argmax = i;
-            double centre_mode = centres[argmax];
-            
-            // find the percentile range centred on the mode
-            double percentile_of_centre_mode = invprctile(arr, centre_mode);
-            double percentile_lower_range = max(0.0, percentile_of_centre_mode - lower_pct_range);
-            double percentile_upper_range = min(100.0, percentile_of_centre_mode + upper_pct_range);
-            // correct the percentile range for the boundary cases
-            if(percentile_upper_range == 100)
-                percentile_lower_range = 100 - (lower_pct_range + upper_pct_range);
-            if(percentile_lower_range == 0)
-                percentile_upper_range = (lower_pct_range + upper_pct_range);
-            
-            //convert the percentile range into pixel-value range
-            double lower_range = prctile(arr, percentile_lower_range);
-            double upper_range = prctile(arr, percentile_upper_range);
+            printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             
             //now calc the avg of each frame while inogre the values outside the range
             double size = height * width;
