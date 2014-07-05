@@ -100,6 +100,7 @@ namespace MHR {
         
 		// output video
 		// Convert each frame from the filtered stream to movie frame
+        Mat frame, rgbframe;
 		for (int i = startIndex, k = 0; i <= endIndex && k < filteredStack.size.p[0]; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
 			// by removing the singleton dimensions of the kth filtered array
@@ -120,9 +121,9 @@ namespace MHR {
                 frameToFile(filtered, outDir + "test_filtered_afterResize.jpg");
             
 			// Extract the ith frame in the video stream
-            Mat frame = vid[i];
+            frame = vid[i];
 			// Convert the extracted frame to RGB (double-precision) image
-			Mat rgbframe = convertTo(frame, CV_64FC3);
+            frame.convertTo(rgbframe, CV_64FC3);
             
 			// Convert the image from RGB colour-space to NTSC colour-space
             rgb2ntsc(rgbframe, frame);

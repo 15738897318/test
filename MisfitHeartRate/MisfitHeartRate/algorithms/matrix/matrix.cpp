@@ -20,14 +20,6 @@ namespace MHR {
     
     
     // import data from a array to a Mat
-    Mat arrayToMat(double a[], int rows, int cols) {
-		Mat ans = Mat::zeros(rows, cols, CV_64F);
-        for (int i = 0; i < rows; ++i)
-            for (int j = 0; j < cols; ++j)
-                ans.at<double>(i, j) = a[i*cols + j];
-        return ans;
-    }
-    
     Mat arrayToMat(const double a[], int rows, int cols) {
 		Mat ans = Mat::zeros(rows, cols, CV_64F);
         for (int i = 0; i < rows; ++i)
@@ -38,48 +30,23 @@ namespace MHR {
     
     
     // vector to Mat
-    Mat vectorToMat(vector<double> arr){
-        Mat ans = Mat::zeros(1, (int) arr.size(), CV_64F);
-        for(int i=0; i<(int) arr.size(); ++i){
-            ans.at<double>(0,i) = arr[i];
-        }
+    Mat vectorToMat(const vector<double>& arr){
+        int sz = (int)arr.size();
+        Mat ans = Mat::zeros(1, sz, CV_64F);
+        for(int i = 0; i < sz; ++i)
+            ans.at<double>(0, i) = arr[i];
         return ans;
     }
     
     // Mat to vector 1D (just get the first row)
-    vector<double> matToVector1D(Mat m){
+    vector<double> matToVector1D(const Mat &m) {
         vector<double> arr;
-        for(int i=0; i<m.cols; ++i) arr.push_back(m.at<double>(0,i));
+        for(int i = 0; i < m.cols; ++i)
+            arr.push_back(m.at<double>(0, i));
         return arr;
     }
-    
-    
-	// convert a Mat to another type Mat
-	Mat convertTo(const Mat &src, int type, double alpha, double beta) {
-		Mat ans;
-		src.convertTo(ans, type, alpha, beta);
-		return ans;
-	}
-    
-    
-    // convert a VideoCapture to vector<Mat>
-    vector<Mat> videoCaptureToVector(VideoCapture &src, int nFrames) {
-        vector<Mat> ans;
-        Mat frame;
-        int c = 0;
-        while(nFrames == -1 || c++ < nFrames) {
-//            printf("c = %d\n", c);
-            src >> frame;
-            if (frame.empty())
-                break;
-//            if (frame.rows > 256 || frame.cols > 256)
-//                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
-            ans.push_back(frame.clone());
-        }
-        return ans;
-    }
-    
-    
+
+
     // read frames from a VideoCapture to a vector<Mat>
     // return true if endOfFile
     bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames)
@@ -87,7 +54,7 @@ namespace MHR {
         Mat frame;
         int c = 0;
         while(nFrames == -1 || c++ < nFrames) {
-            printf("c = %d\n", c);
+//            printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
                 return (c == 1);

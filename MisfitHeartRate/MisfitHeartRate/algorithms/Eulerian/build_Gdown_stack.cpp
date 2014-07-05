@@ -24,7 +24,8 @@ namespace MHR {
         //		int nChannels = vid[0].channels(); // 3 ????
         
         // firstFrame
-        Mat frame, rgbframe = convertTo(vid[0], CV_64FC3);
+        Mat frame, rgbframe;
+        vid[0].convertTo(rgbframe, CV_64FC3);
         rgb2ntsc(rgbframe, frame);
         
         frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
@@ -53,7 +54,7 @@ namespace MHR {
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
             frame = vid[i];
-            rgbframe = convertTo(frame, CV_64FC3);
+            frame.convertTo(rgbframe, CV_64FC3);
             rgb2ntsc(rgbframe, frame);
             
             //            printf("buildGDownStack: %d --> %d\n", i, endIndex);

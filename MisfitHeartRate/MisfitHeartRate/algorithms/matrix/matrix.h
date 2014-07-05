@@ -23,20 +23,13 @@ namespace MHR {
 	vector<int> vectorRange(int a, int b, int step = 1);
     
     // import data from a array to a Mat
-    Mat arrayToMat(double a[], int rows, int cols);
     Mat arrayToMat(const double a[], int rows, int cols);
     
     // data from vector 1D to Mat
-    Mat vectorToMat(vector<double> arr);
+    Mat vectorToMat(const vector<double>& arr);
     
     // data from Mat to vector 1D
-    vector<double> matToVector1D(Mat m);
-    
-	// convert a Mat to another type Mat
-	Mat convertTo(const Mat &src, int type, double alpha = 1.0, double beta = 0.0);
-    
-    // convert a VideoCapture to vector<Mat>
-    vector<Mat> videoCaptureToVector(VideoCapture &src, int nFrames = -1);
+    vector<double> matToVector1D(const Mat &m);
     
     // read frames from a VideoCapture to a vector<Mat>
     // return true if endOfFile

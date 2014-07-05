@@ -35,7 +35,8 @@ namespace MHR {
             return hrResult(-1, -1);
         }
         
-        vector<Mat> vid = videoCaptureToVector(vidIn, _framesBlock_size);
+        vector<Mat> vid;
+        videoCaptureToVector(vidIn, vid, _framesBlock_size);
         // Extract video info
         int vidHeight = vid[0].rows;
         int vidWidth = vid[1].cols;
@@ -64,8 +65,6 @@ namespace MHR {
         
         double lower_range, upper_range;
         bool isCalcMode = true;
-
-        vector<Mat> ans;
         vector<Mat> monoframes, debug_monoframes;
         vector<double> temporal_mean;
         
@@ -91,12 +90,6 @@ namespace MHR {
                                                                        _eulerian_frameRate, _eulerian_chromaMagnifier
                                                                        );
             
-            // Write the frame into the video as unsigned 8-bit integer array
-            for (int i = isCalcMode ? 0:15, sz = (int)eulerianVid.size(); i < sz; ++i) {
-//              vidOut << frame;
-                vidOut << convertTo(eulerianVid[i], CV_8UC3);
-            }
-        
             /*-----------------------------------turn M-7 (1) frames to signals-----------------------------------*/
             vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
@@ -104,7 +97,7 @@ namespace MHR {
             for (int i = 0, sz = (int)tmp.size(); i < sz - _eulerianTemporalFilterKernel_size/2; ++i)
                 temporal_mean.push_back(tmp[i]);
             isCalcMode = false;
-            
+ 
             /*-----------------------------------keep last 15 frames (0)-----------------------------------*/
             // need to improve
             vector<Mat> newVid;
@@ -112,6 +105,12 @@ namespace MHR {
                 newVid.push_back(vid[i]);
             vid.clear();
             vid = newVid;
+            
+            /*-----------------------------------write frames to file-----------------------------------*/
+            for (int i = isCalcMode ? 0:15, sz = (int)eulerianVid.size(); i < sz; ++i) {
+                eulerianVid[i].convertTo(eulerianVid[i], CV_8UC3);
+                vidOut << eulerianVid[i];
+            }
         }
         vidOut.release();
         
