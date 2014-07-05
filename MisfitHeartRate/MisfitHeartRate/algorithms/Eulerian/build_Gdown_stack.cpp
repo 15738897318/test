@@ -48,19 +48,32 @@ namespace MHR {
         // The first frame in the stack is saved
         for (int i = 0; i < GDownStack.size.p[1]; ++i)
             for (int j = 0; j < GDownStack.size.p[2]; ++j)
-                for (int t = 0; t < 3; ++t)
-                    GDownStack.at<Vec3d>(0, i, j)[t] = blurred.at<Vec3d>(i, j)[t];
+                GDownStack.at<Vec3d>(0, i, j) = blurred.at<Vec3d>(i, j);
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
             frame = vid[i];
             frame.convertTo(rgbframe, CV_64FC3);
-            rgb2ntsc(rgbframe, frame);
             
-            //            printf("buildGDownStack: %d --> %d\n", i, endIndex);
+            printf("build_Gdown_Stack: %d --> %d: before rgb2ntsc()\n", i, endIndex);
+            clock_t t1 = clock();
+            rgb2ntsc(rgbframe, frame);
+            double timeRun = ((float)clock() - (float)t1)/CLOCKS_PER_SEC;
+            printf("build_Gdown_Stack: %d --> %d: after rgb2ntsc(), runTime = %lf\n", i, endIndex, timeRun);
             
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);
+            
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            t1 = clock();
+            rgb2tsl(rgbframe, frame);
+            timeRun = ((float)clock() - (float)t1)/CLOCKS_PER_SEC;
+            printf("rgb2tsl() runTime = %lf\n", timeRun);
+            ////////////////////////////////////////////////////////////////////////////////////
+
+            
+            printf("build_Gdown_Stack: %d --> %d: after blurDnClr()\n", i, endIndex);
             
             // The kth element in the stack is saved
             // Note that this stack is actually just a SINGLE level of the pyramid

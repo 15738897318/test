@@ -82,6 +82,7 @@ namespace MHR {
                 break;
             
             printf("load block: %d\n", ++c);
+            if (c > 1) break;
             
             /*-----------------------------------run_eulerian(): M frames (1)-----------------------------------*/
             vector<Mat> eulerianVid = amplifySpatialGdownTemporalIdeal(vid, outDir,

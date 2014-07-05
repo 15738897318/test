@@ -94,8 +94,8 @@
     [MHRUtilities createDirectory:outputPath];
     
     
-    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
-//    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
+//    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
+    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
 }
 
 
