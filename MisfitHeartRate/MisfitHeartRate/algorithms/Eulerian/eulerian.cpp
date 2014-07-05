@@ -123,7 +123,7 @@ namespace MHR {
 			Mat rgbframe = convertTo(frame, CV_64FC3);
             
 			// Convert the image from RGB colour-space to NTSC colour-space
-			frame = rgb2ntsc(rgbframe);
+            rgb2ntsc(rgbframe, frame);
             
 			// Add the filtered frame to the original frame
 			filtered = filtered + frame;
@@ -132,7 +132,7 @@ namespace MHR {
                 frameToFile(filtered, outDir + "test_filtered_afterAdd.jpg");
             
 			// Convert the colour-space from NTSC back to RGB
-			frame = ntsc2rgb(filtered);
+			ntsc2rgb(filtered, frame);
             
             if (i == 0)
                 frameToFile(filtered, outDir + "test_filtered_ntsc2rgb.jpg");

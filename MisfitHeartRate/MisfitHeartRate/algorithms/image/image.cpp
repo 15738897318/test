@@ -20,13 +20,14 @@ namespace MHR {
 
     // multiply each pixel of a frame with a base matrix
     // and clip the result's values by range [lower_bound, upper_bound]
-    Mat mulAndClip(const Mat &frame, const Mat &base, double lower_bound, double upper_bound) {
-        Mat ans;
-        frame.convertTo(ans, CV_64FC3);
-        int nChannel = ans.channels();
-        MatIterator_<Vec3d> it = ans.begin<Vec3d>();
-        for (int i = 0; i < ans.rows; ++i)
-            for (int j = 0; j < ans.cols; ++j) {
+    void mulAndClip(const Mat &frame, const Mat &base, Mat &dst,
+                    double lower_bound, double upper_bound)
+    {
+        frame.convertTo(dst, CV_64FC3);
+        int nChannel = dst.channels();
+        MatIterator_<Vec3d> it = dst.begin<Vec3d>();
+        for (int i = 0; i < dst.rows; ++i)
+            for (int j = 0; j < dst.cols; ++j) {
                 Mat tmp = base * Mat(*it);
                 MatIterator_<double> tmp_it = tmp.begin<double>();
                 for (int channel = 0; channel < nChannel; ++channel) {
@@ -35,12 +36,11 @@ namespace MHR {
                 }
                 *it++ = Vec3d(tmp);
             }
-        return ans;
     }
 
 
 	// convert a RGB Mat to a TSL Mat
-	Mat rgb2tsl(const Mat& srcRGBmap)
+	void rgb2tsl(const Mat& srcRGBmap, Mat &dst)
 	{
 		int nRow = srcRGBmap.rows;
 		int nCol = srcRGBmap.cols;
@@ -80,7 +80,7 @@ namespace MHR {
 					temp2.at<double>(i, j) = 0;
 				}
 
-		Mat tslmap = Mat::zeros(nRow, nCol, CV_64FC3);
+        dst = Mat::zeros(nRow, nCol, CV_64FC3);
 //        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
 		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
@@ -98,56 +98,38 @@ namespace MHR {
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
 			{
-				tslmap.at<Vec3d>(i, j)[0] = tmp0.at<double>(i, j);
-				tslmap.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
-				tslmap.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[0] = tmp0.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
 			}
-		return tslmap;
 	}
 
 
     // convert a RGB Mat to a NTSC Mat
     // ref: http://en.wikipedia.org/wiki/YIQ
     //      http://www.mathworks.com/help/images/ref/rgb2ntsc.html
-    Mat rgb2ntsc(const Mat& rgbFrame) {
+    void rgb2ntsc(const Mat& rgbFrame, Mat &dst) {
         /*double baseArray[9] = {
             0.299, 0.587, 0.114,
             0.595716, -0.274453, -0.321263,
             0.211456, -0.522591, 0.311135,
         };*/
-        double baseArray[9] = {
-            0.299, 0.587, 0.114,
-            0.596, -0.274, -0.322,
-            0.211, -0.523, 0.312,
-        };
-        Mat base = arrayToMat(baseArray, 3, 3);
-        return mulAndClip(rgbFrame, base, 0, 1);
+//        Mat base = arrayToMat(baseArray, 3, 3);
+        mulAndClip(rgbFrame, rgb2ntsc_baseMat, dst, 0, 255);
     }
 
 
     // convert a RGB Mat to a NTSC Mat
     // ref: http://en.wikipedia.org/wiki/YIQ
     //      http://www.mathworks.com/help/images/ref/ntsc2rgb.html
-    Mat ntsc2rgb(const Mat& ntscFrame)  {
-        clock_t startTime = clock();
-        int rows = ntscFrame.rows, cols = ntscFrame.cols;
+    void ntsc2rgb(const Mat& ntscFrame, Mat &dst)  {
         //double baseArray[9] = {
         //  1, 0.9563, 0.6210,
         //  1, -0.2721, -0.6474,
         //  1, -1.1070, 1.7046,
         //};
-        double baseArray[9] = {
-            1.0, 0.956, 0.621,
-            1.0, -0.272, -0.647,
-            1.0, -1.106, 1.703,
-        };
-        //double baseArray[9] = {
-        //    1.0000,    1.0000,    1.0000,
-        //  0.9560,   -0.2720,   -1.1060,
-        //  0.6210,   -0.6470,    1.7030,
-        //};
-        Mat base = arrayToMat(baseArray, 3, 3);
-        return mulAndClip(ntscFrame, base, 0, 1);
+//        Mat base = arrayToMat(baseArray, 3, 3);
+        mulAndClip(ntscFrame, ntsc2rgb_baseMat, dst, 0, 255);
     }
 
 
@@ -194,9 +176,8 @@ namespace MHR {
 //		int nChannels = vid[0].channels(); // 3 ????
 
         // firstFrame
-        Mat frame = vid[0];
-        Mat rgbframe = convertTo(frame, CV_64FC3);
-        frame = rgb2ntsc(rgbframe);
+        Mat frame, rgbframe = convertTo(vid[0], CV_64FC3);
+        rgb2ntsc(rgbframe, frame);
 
         frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
 
@@ -224,7 +205,7 @@ namespace MHR {
             // Create a frame from the ith array in the stream
             frame = vid[i];
             rgbframe = convertTo(frame, CV_64FC3);
-            frame = rgb2ntsc(rgbframe);
+            rgb2ntsc(rgbframe, frame);
 
 //            printf("buildGDownStack: %d --> %d\n", i, endIndex);
 

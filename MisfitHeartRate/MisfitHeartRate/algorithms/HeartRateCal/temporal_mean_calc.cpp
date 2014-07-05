@@ -45,11 +45,11 @@ namespace MHR {
             else if (colourspace == "hsv")
                 cvtColor(rgbframe, colorframe, CV_RGB2HSV);
             else if (colourspace == "ntsc")
-                colorframe = rgb2ntsc(rgbframe);
+                rgb2ntsc(rgbframe, colorframe);
             else if (colourspace == "ycbcr")
                 cvtColor(rgbframe, colorframe, CV_RGB2YCrCb);
             else if (colourspace == "tsl")
-                colorframe = rgb2tsl(rgbframe);
+                rgb2tsl(rgbframe, colorframe);
             
             // Extract the right channel from the colour frame
             
