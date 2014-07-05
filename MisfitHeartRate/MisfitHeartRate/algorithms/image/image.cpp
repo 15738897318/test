@@ -20,21 +20,31 @@ namespace MHR {
 
     // multiply each pixel of a frame with a base matrix
     // and clip the result's values by range [lower_bound, upper_bound]
-    void mulAndClip(const Mat &frame, const Mat &base, Mat &dst,
+    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
                     double lower_bound, double upper_bound)
     {
         frame.convertTo(dst, CV_64FC3);
         int nChannel = dst.channels();
+        double maxChannelValue[3] = {0};
+        // mutiply and find max value in each channel
         MatIterator_<Vec3d> it = dst.begin<Vec3d>();
         for (int i = 0; i < dst.rows; ++i)
             for (int j = 0; j < dst.cols; ++j) {
                 Mat tmp = base * Mat(*it);
                 MatIterator_<double> tmp_it = tmp.begin<double>();
-                for (int channel = 0; channel < nChannel; ++channel) {
-                    *tmp_it = min(*tmp_it, upper_bound);
-                    *tmp_it++ = max(*tmp_it, lower_bound);
-                }
+                for (int channel = 0; channel < nChannel; ++channel)
+                    maxChannelValue[channel] = max(maxChannelValue[channel], *tmp_it++);
+//                    *tmp_it = min(*tmp_it, upper_bound);
+//                    *tmp_it++ = max(*tmp_it, lower_bound);
                 *it++ = Vec3d(tmp);
+            }
+        // clip
+        it = dst.begin<Vec3d>();
+        for (int i = 0; i < dst.rows; ++i)
+            for (int j = 0; j < dst.cols; ++j) {
+                for (int channel = 0; channel < nChannel; ++channel)
+                    (*it)[channel] *= upper_bound/maxChannelValue[channel];
+                ++it;
             }
     }
 
@@ -115,7 +125,7 @@ namespace MHR {
             0.211456, -0.522591, 0.311135,
         };*/
 //        Mat base = arrayToMat(baseArray, 3, 3);
-        mulAndClip(rgbFrame, rgb2ntsc_baseMat, dst, 0, 255);
+        mulAndClip(rgbFrame, dst, rgb2ntsc_baseMat, 0, 255);
     }
 
 
@@ -129,17 +139,16 @@ namespace MHR {
         //  1, -1.1070, 1.7046,
         //};
 //        Mat base = arrayToMat(baseArray, 3, 3);
-        mulAndClip(ntscFrame, ntsc2rgb_baseMat, dst, 0, 255);
+        mulAndClip(ntscFrame, dst, ntsc2rgb_baseMat, 0, 255);
     }
 
 
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
-    Mat blurDnClr(const Mat& src, int level) {
-        Mat ans = src.clone();
+    void blurDnClr(const Mat& src, Mat &dst, int level) {
+        dst = src.clone();
         for (int i = 0; i < level; ++i)
-            pyrDown(ans, ans, Size(ans.cols/2, ans.rows/2));
-        return ans;
+            pyrDown(dst, dst, Size(dst.cols/2, dst.rows/2));
     }
 
 
@@ -147,77 +156,16 @@ namespace MHR {
     // downsampling.  These arguments should be 1D or 2D matrices, and IM
     // must be larger (in both dimensions) than FILT.  The origin of filt
     // is assumed to be floor(size(filt)/2)+1.
-    Mat corrDn(const Mat &src, const Mat &filter, int rectRow, int rectCol)
+    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol)
     {
         Mat tmp;
         filter2D(src, tmp, -1, filter);
         int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
         printf("corrDn, (m, n) = (%d, %d)\n", m, n);
-        Mat ans = Mat::zeros(m, n, CV_64F);
+        dst = Mat::zeros(m, n, CV_64F);
         for (int i = 0, x = 0; i < m; ++i, x += rectRow)
             for (int j = 0, y = 0; j < n; ++j, y += rectCol)
-                ans.at<double>(i, j) = tmp.at<double>(x, y);
-        return ans;
+                dst.at<double>(i, j) = tmp.at<double>(x, y);
     }
-
-
-	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
-	// and select a specific band indicated by LEVEL.
-	// GDOWN_STACK: stack of one band of Gaussian pyramid of each frame
-	// the first dimension is the time axis
-	// the second dimension is the y axis of the video
-	// the third dimension is the x axis of the video
-	// the forth dimension is the color channel
-	Mat buildGDownStack(const vector<Mat>& vid, int startIndex, int endIndex, int level) {
-		// Extract video info
-//		int vidHeight = vid[0].rows;
-//		int vidWidth = vid[0].cols;
-//		int nChannels = vid[0].channels(); // 3 ????
-
-        // firstFrame
-        Mat frame, rgbframe = convertTo(vid[0], CV_64FC3);
-        rgb2ntsc(rgbframe, frame);
-
-        frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
-
-        // Blur and downsample the frame
-        Mat blurred = blurDnClr(frame, level);
-
-        printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
-
-        frameToFile(blurred, "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_blurred.jpg");
-
-        // create pyr stack
-        // Note that this stack is actually just a SINGLE level of the pyramid
-        int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1]};
-		Mat GDownStack = Mat(3, GdownSize, CV_64FC3, cvScalar(0));
-
-        printf("GdownSize: (%d, %d, %d)\n", GDownStack.size.p[0], GDownStack.size.p[1], GDownStack.size.p[2]);
-
-        // The first frame in the stack is saved
-        for (int i = 0; i < GDownStack.size.p[1]; ++i)
-            for (int j = 0; j < GDownStack.size.p[2]; ++j)
-                for (int t = 0; t < 3; ++t)
-                    GDownStack.at<Vec3d>(0, i, j)[t] = blurred.at<Vec3d>(i, j)[t];
-
-        for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
-            // Create a frame from the ith array in the stream
-            frame = vid[i];
-            rgbframe = convertTo(frame, CV_64FC3);
-            rgb2ntsc(rgbframe, frame);
-
-//            printf("buildGDownStack: %d --> %d\n", i, endIndex);
-
-            // Blur and downsample the frame
-            blurred = blurDnClr(frame, level);
-
-            // The kth element in the stack is saved
-            // Note that this stack is actually just a SINGLE level of the pyramid
-            for (int i = 0; i < GDownStack.size.p[1]; ++i)
-                for (int j = 0; j < GDownStack.size.p[2]; ++j)
-                    GDownStack.at<Vec3d>(k, i, j) = blurred.at<Vec3d>(i, j);
-        }
-        return GDownStack;
-	}
 }

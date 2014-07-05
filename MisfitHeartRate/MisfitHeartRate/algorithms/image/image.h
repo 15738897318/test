@@ -35,7 +35,7 @@ namespace MHR {
 
     // multiply each pixel of a frame with a base matrix
     // and clip the result's values by range [lower_bound, upper_bound]
-    void mulAndClip(const Mat &frame, const Mat &base, Mat &dst,
+    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
                     double lower_bound, double upper_bound);
 
 	// convert a RGB Mat to a TSL Mat
@@ -51,22 +51,13 @@ namespace MHR {
 
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
-    Mat blurDnClr(const Mat& src, int level);
+    void blurDnClr(const Mat& src, Mat &dst, int level);
 
     // Compute correlation of matrices IM with FILT, followed by
     // downsampling.  These arguments should be 1D or 2D matrices, and IM
     // must be larger (in both dimensions) than FILT.  The origin of filt
     // is assumed to be floor(size(filt)/2)+1.
-    Mat corrDn(const Mat &src, const Mat &filter, int rectRow, int rectCol);
-
-	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
-	// and select a specific band indicated by LEVEL.
-	// GDOWN_STACK: stack of one band of Gaussian pyramid of each frame
-	// the first dimension is the time axis
-	// the second dimension is the y axis of the video
-	// the third dimension is the x axis of the video
-	// the forth dimension is the color channel
-	Mat buildGDownStack(const vector<Mat>& vid, int startIndex, int endIndex, int level);
+    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol);
 }
 
 #endif /* defined(__MisfitHeartRate__image__) */
