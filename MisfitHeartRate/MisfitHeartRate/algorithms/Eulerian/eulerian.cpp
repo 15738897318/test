@@ -23,7 +23,7 @@ namespace MHR {
 		// Extract video info
 		int vidHeight = vid[0].rows;
 		int vidWidth = vid[1].cols;
-		int nChannels = _number_of_channels;		// should get from vid?
+//		int nChannels = _number_of_channels;		// should get from vid?
 		int frameRate = _frameRate;                 // Can not get it from vidIn!!!! :((
 		int len = (int)vid.size();
         
@@ -47,7 +47,7 @@ namespace MHR {
 		// compute Gaussian blur stack
 		// This stack actually is just a single level of the pyramid
 		printf("Spatial filtering...\n");
-		Mat GdownStack = buildGDownStack(vid, startIndex, endIndex, level);
+		Mat GdownStack = build_Gdown_Stack(vid, startIndex, endIndex, level);
 		printf("Finished\n");
         //////////////////////////////////////////
         Mat tmpGdownStack = Mat::zeros(GdownStack.size.p[1], GdownStack.size.p[2], CV_64FC3);
@@ -60,8 +60,10 @@ namespace MHR {
 		// Temporal filtering
 		printf("Temporal filtering...\n");
         //		Mat filteredStack = idealBandpassing(GdownStack, 1, freqBandLowEnd, freqBandHighEnd, samplingRate);
-        int filteredSize[3] = {GdownStack.size.p[0]-7, GdownStack.size.p[1], GdownStack.size.p[2]};
+        int firstFramesRemove = _eulerianTemporalFilterKernel_size/2;
+        int filteredSize[3] = {GdownStack.size.p[0] - firstFramesRemove, GdownStack.size.p[1], GdownStack.size.p[2]};
         Mat filteredStack(3, filteredSize, CV_64FC3, CvScalar(0));
+        
         Mat kernel = arrayToMat(_eulerianTemporalFilterKernel, 1, _eulerianTemporalFilterKernel_size);
         Mat tmp = Mat::zeros(1, GdownStack.size.p[0], CV_64FC3);
         for (int x = 0; x < GdownStack.size.p[1]; ++x)
@@ -70,8 +72,8 @@ namespace MHR {
 //                    for (int channel = 0; channel < 3; ++channel)
                     tmp.at<Vec3d>(0, t) = GdownStack.at<Vec3d>(t, x, y);
                 filter2D(tmp, tmp, -1, kernel);
-                for (int t = 7; t < GdownStack.size.p[0]; ++t)
-                    filteredStack.at<Vec3d>(t-7, x, y) = tmp.at<Vec3d>(0, t);
+                for (int t = firstFramesRemove; t < GdownStack.size.p[0]; ++t)
+                    filteredStack.at<Vec3d>(t - firstFramesRemove, x, y) = tmp.at<Vec3d>(0, t);
             }
 		printf("Finished\n");
         
@@ -140,14 +142,14 @@ namespace MHR {
             printf("Convert each frame from the filtered stream to movie frame: %d --> %d\n", i, endIndex);
             
 			// Clip the values of the frame by 0 and 1
-			for (int x = 0; x < frame.rows; ++x)
-				for (int y = 0; y < frame.cols; ++y)
-					for (int t = 0; t < nChannels; ++t) {
-						double tmp = frame.at<Vec3d>(x, y)[t];
-                        tmp = min(tmp, 255.0);
-                        tmp = max(tmp, 0.0);
-                        frame.at<Vec3d>(x, y)[t] = tmp;
-					}
+//			for (int x = 0; x < frame.rows; ++x)
+//				for (int y = 0; y < frame.cols; ++y)
+//					for (int t = 0; t < nChannels; ++t) {
+//						double tmp = frame.at<Vec3d>(x, y)[t];
+//                        tmp = min(tmp, 255.0);
+//                        tmp = max(tmp, 0.0);
+//                        frame.at<Vec3d>(x, y)[t] = tmp;
+//					}
             
             // test frame
             if (i == 0)

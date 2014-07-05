@@ -59,7 +59,7 @@ namespace MHR {
                     monoframe.at<double>(x, y) = colorframe.at<Vec3d>(x, y)[colour_channel];
 			
 			// Downsample the frame for ease of computation
-            monoframe = corrDn(monoframe, filt, 4, 4);
+            corrDn(monoframe, monoframe, filt, 4, 4);
 			
 			// Put the frame into the video stream
             monoframes.push_back(monoframe);

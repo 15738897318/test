@@ -12,9 +12,7 @@
 #include <string>
 #include <vector>
 #include "config.h"
-#include "image.h"
-//#import <opencv2/highgui/ios.h>
-//#import <opencv2/highgui/cap_ios.h>
+#include "build_Gdown_stack.h"
 
 
 namespace MHR {

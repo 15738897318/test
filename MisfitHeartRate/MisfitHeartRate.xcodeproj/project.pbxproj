@@ -19,6 +19,7 @@
 		DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */; };
 		DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */; };
 		DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */; };
+		DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */; };
 		DCB55F171957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
 		DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F181957CB3B0095A98E /* CoreGraphics.framework */; };
 		DCB55F1B1957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
@@ -89,6 +90,8 @@
 		DCAE52521966B45300A8AFB6 /* hr_signal_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_signal_calc.h; path = HeartRateCal/hr_signal_calc.h; sourceTree = "<group>"; };
 		DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = temporal_mean_calc.cpp; path = HeartRateCal/temporal_mean_calc.cpp; sourceTree = "<group>"; };
 		DCAE52551966CE5800A8AFB6 /* temporal_mean_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = temporal_mean_calc.h; path = HeartRateCal/temporal_mean_calc.h; sourceTree = "<group>"; };
+		DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = build_Gdown_stack.cpp; path = Eulerian/build_Gdown_stack.cpp; sourceTree = "<group>"; };
+		DCAE52581967B8BA00A8AFB6 /* build_Gdown_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = build_Gdown_stack.h; path = Eulerian/build_Gdown_stack.h; sourceTree = "<group>"; };
 		DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisfitHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCB55F181957CB3B0095A98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -231,6 +234,8 @@
 			children = (
 				DCAE524519657B7700A8AFB6 /* eulerian.h */,
 				DCAE524419657B7700A8AFB6 /* eulerian.cpp */,
+				DCAE52581967B8BA00A8AFB6 /* build_Gdown_stack.h */,
+				DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */,
 			);
 			name = Eulerian;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
+				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 				12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */,
 			);
