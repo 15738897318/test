@@ -16,6 +16,7 @@
 #include <opencv2/imgproc/types_c.h>
 #include "time.h"
 #include "matrix.h"
+#include "config.h"
 
 
 namespace MHR {
@@ -35,8 +36,8 @@ namespace MHR {
 
     // multiply each pixel of a frame with a base matrix
     // and clip the result's values by range [lower_bound, upper_bound]
-    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
-                    double lower_bound, double upper_bound);
+//    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
+//                    double lower_bound, double upper_bound);
 
 	// convert a RGB Mat to a TSL Mat
 	void rgb2tsl(const Mat& srcRGBmap, Mat &dst);
