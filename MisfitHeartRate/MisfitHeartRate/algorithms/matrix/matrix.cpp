@@ -68,7 +68,7 @@ namespace MHR {
         Mat frame;
         int c = 0;
         while(nFrames == -1 || c++ < nFrames) {
-            printf("c = %d\n", c);
+//            printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
                 break;
@@ -173,49 +173,6 @@ namespace MHR {
 	{
 		Mat ans = Mat::zeros(a.rows, a.cols, a.type());
 		multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
-		return ans;
-	}
-    
-    
-	// allcomb(A1, A2, A3, ..., AN) returns all combinations of the elements in A1, A2, ..., and AN.
-	// B is P-by-N matrix is which P is the product of the number of elements of the N inputs.
-	vector<vector<int>> allcomb(std::vector<vector<int>> a) {
-		int p = 1, n = int(a.size());
-		for (int i = 0; i < n; ++i)
-			p = p*int(a[i].size());
-        
-		// generate all combinations of set a
-		vector<vector<int>> ans;
-		int id = 0;
-		bool isPop = false;
-		vector<int> stackPos;
-		stackPos.push_back(0);
-		while (!stackPos.empty()) {
-			if (id == n) {
-				vector<int> newElement;
-				for (int i = 0; i < n; ++i)
-					newElement.push_back(a[i][stackPos[i]]);
-				ans.push_back(newElement);
-				stackPos.pop_back();
-				isPop = true;
-				--id;
-				continue;
-			}
-			int sz = int(a[id].size()), pos = stackPos[id];
-			if (isPop) {
-				++pos;
-				stackPos.pop_back();
-				if (pos == sz) --id;
-				else {
-					stackPos.push_back(pos);
-					isPop = false;
-				}
-			}
-			else {
-				++id;
-				stackPos.push_back(0);
-			}
-		}
 		return ans;
 	}
 }
