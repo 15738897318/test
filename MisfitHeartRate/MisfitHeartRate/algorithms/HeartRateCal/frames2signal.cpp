@@ -92,6 +92,8 @@ namespace MHR {
                 upper_range = prctile(arr, percentile_upper_range);
             }
             
+            printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
+            
             //now calc the avg of each frame while inogre the values outside the range
             double size = height * width;
             

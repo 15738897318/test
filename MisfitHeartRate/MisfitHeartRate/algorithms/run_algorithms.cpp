@@ -69,20 +69,22 @@ namespace MHR {
         vector<Mat> monoframes, debug_monoframes;
         vector<double> temporal_mean;
         
-        
+        int c = 0;
         while(1) {
+            printf("len before = %d\n", (int)vid.size());
             bool endOfFile = false;
             if (!isCalcMode) {
             /*-----------------------------------read M frames, add to odd frames (0)-----------------------------------*/
                 endOfFile = videoCaptureToVector(vidIn, vid, _framesBlock_size);
                 len = (int)vid.size();
+                printf("len after = %d\n", len);
             }
             if (endOfFile)
                 break;
             
-            printf("!!!!!!!!! len = %d\n", len);
-
-            /*-----------------------------------run_eulerian(): M-7 frames (1)-----------------------------------*/
+            printf("load block: %d\n", ++c);
+            
+            /*-----------------------------------run_eulerian(): M frames (1)-----------------------------------*/
             vector<Mat> eulerianVid = amplifySpatialGdownTemporalIdeal(vid, outDir,
                                                                        _eulerian_alpha, _eulerian_pyrLevel,
                                                                        _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
@@ -90,23 +92,23 @@ namespace MHR {
                                                                        );
             
             // Write the frame into the video as unsigned 8-bit integer array
-            for (int i = isCalcMode ? 0:7, sz = (int)eulerianVid.size(); i < sz; ++i) {
+            for (int i = isCalcMode ? 0:15, sz = (int)eulerianVid.size(); i < sz; ++i) {
 //              vidOut << frame;
                 vidOut << convertTo(eulerianVid[i], CV_8UC3);
             }
         
             /*-----------------------------------turn M-7 (1) frames to signals-----------------------------------*/
-            vector<double> tmp = temporal_mean_calc(vid, _overlap_ratio, _max_bpm, _cutoff_freq,
+            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
-            for (int i = 0, sz = (int)tmp.size(); i < sz; ++i)
+            for (int i = 0, sz = (int)tmp.size(); i < sz - _eulerianTemporalFilterKernel_size/2; ++i)
                 temporal_mean.push_back(tmp[i]);
             isCalcMode = false;
             
-            /*-----------------------------------delete first 15 frames (0)-----------------------------------*/
+            /*-----------------------------------keep last 15 frames (0)-----------------------------------*/
             // need to improve
             vector<Mat> newVid;
-            for (int i = _eulerianTemporalFilterKernel_size/2; i < len; ++i)
+            for (int i = len-_eulerianTemporalFilterKernel_size; i < len; ++i)
                 newVid.push_back(vid[i]);
             vid.clear();
             vid = newVid;
@@ -114,12 +116,17 @@ namespace MHR {
         vidOut.release();
         
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        printf("temporal_mean:\n");
+        for (int i = 0, sz = temporal_mean.size(); i < sz; ++i)
+            printf("%lf, ", temporal_mean[i]);
+        printf("\n");
         
         // Block 2: Heart-rate calculation
         // - Basis takes 15secs to generate an HR estimate
         // - Cardiio takes 30secs to generate an HR estimate
         hrResult hr_output = hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
                                             _overlap_ratio, _max_bpm, threshold_fraction);
+        
         // debug info
         String vidType = "mp4";
         printf("run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, \
