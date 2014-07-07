@@ -86,7 +86,7 @@ namespace MHR {
 //        g_primes(isnan(g_primes)) = -1/3;
 		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(cloneWithChannel(rbgmap, 1), sumChannels(rbgmap), g_primes);
-		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), g_primes);
+		subtract(g_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), g_primes);
 
 //        temp1 = zeros(size(g_primes));
 //        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
@@ -101,7 +101,7 @@ namespace MHR {
 				{
 					temp1.at<double>(i, j) = 1.0/4.0;
 				}
-				else if (g_primes.at<double>(i, j) > 0)
+				else if (g_primes.at<double>(i, j) < 0)
 				{
 					temp1.at<double>(i, j) = 3.0/4.0;
 				}
@@ -157,16 +157,18 @@ namespace MHR {
 //                tmp = base * Mat(dst.at<Vec3d>(i, j));
                 for (int channel = 0; channel < nChannel; ++channel)
                     tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
-                tmp = rgb2ntsc_baseMat * tmp;
+                tmp = rgb2ntsc_baseMat * tmp;                       // slow down program
                 for (int channel = 0; channel < nChannel; ++channel)
                     maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
                 dst.at<Vec3d>(i, j) = Vec3d(tmp);
             }
         // clip
+        for (int channel = 0; channel < nChannel; ++channel)
+            maxChannelValue[channel] = 255/maxChannelValue[channel];
         for (int i = 0; i < nRow; ++i)
             for (int j = 0; j < nCol; ++j) {
                 for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] *= 255/maxChannelValue[channel];
+                    dst.at<Vec3d>(i, j)[channel] *= maxChannelValue[channel];
             }
     }
 
@@ -200,10 +202,12 @@ namespace MHR {
                 dst.at<Vec3d>(i, j) = Vec3d(tmp);
             }
         // clip
+        for (int channel = 0; channel < nChannel; ++channel)
+            maxChannelValue[channel] = 255/maxChannelValue[channel];
         for (int i = 0; i < nRow; ++i)
             for (int j = 0; j < nCol; ++j) {
                 for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] *= 255/maxChannelValue[channel];
+                    dst.at<Vec3d>(i, j)[channel] *= maxChannelValue[channel];
             }
     }
 
