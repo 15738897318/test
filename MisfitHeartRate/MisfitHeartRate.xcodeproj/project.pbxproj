@@ -329,8 +329,8 @@
 		DCB55F4B1957CBB80095A98E /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */,
 				DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */,
+				DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */,
 				DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */,
 			);
 			name = MainView;

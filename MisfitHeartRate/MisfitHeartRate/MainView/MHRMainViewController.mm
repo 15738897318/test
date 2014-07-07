@@ -10,10 +10,18 @@
 #import "UIImageCVMatConverter.hpp"
 #import "matlab.h"
 
+const int CAMERA_WIDTH = 352;
+const int CAMERA_HEIGHT = 288;
+const int IMAGE_WIDTH = 256;
+const int IMAGE_HEIGHT = 256;
+const int WIDTH_PADDING = (CAMERA_WIDTH-IMAGE_WIDTH)/2;
+const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
+
 
 @interface MHRMainViewController ()
 {
     BOOL isCapturing;
+    cv::Rect cropArea;
 }
 
 @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -66,19 +74,26 @@
     _videoCamera.delegate = self;
 //    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
-    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
     _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+//    _videoCamera.imageWidth = 256;
+//    _videoCamera.imageHeight = 256;
     _videoCamera.defaultFPS = _frameRate;
     _videoCamera.rotateVideo = YES;
     _videoCamera.grayscaleMode = NO;
     [_videoCamera start];
+    
     isCapturing = NO;
+    cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
+    
+//    [self startButtonDidTap:self];
 }
 
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    _videoWriter.release();
 }
 
 
@@ -92,13 +107,9 @@
 - (IBAction)startButtonDidTap:(id)sender {
 //    test_ideal_bandpassing();
 //    testMathFunctions();
+//    test_fft();
 //    return;
-    
-    isCapturing = YES;
-    _startButton.enabled = NO;
-    _cameraSwitch.enabled = NO;
-    _statusLabel.text = @"Capturing....";
-    
+
     // create new directory for this session
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     _outPath = [paths objectAtIndex:0];
@@ -111,8 +122,17 @@
     
     // output new file to write input video
     _outFile = [_outPath stringByAppendingString:@"input.mp4"];
-    _videoWriter.open([_outFile UTF8String], CV_FOURCC('M','P','4','2'), _frameRate, cvSize(352, 288), true);
+    _videoWriter.open([_outFile UTF8String],
+                      CV_FOURCC('M','P','4','2'),
+                      _frameRate,
+                      cvSize(IMAGE_WIDTH, IMAGE_HEIGHT),
+                      true);
 //    [_videoCamera start];
+    
+    isCapturing = YES;
+    _startButton.enabled = NO;
+    _cameraSwitch.enabled = NO;
+    _statusLabel.text = @"Capturing....";
 
 //     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
@@ -153,10 +173,17 @@
 {
     if (isCapturing)
     {
-        frameToFile(image, [[_outPath stringByAppendingString:@"test_frame_frome_camera.jpg"] UTF8String]);
-        Mat image_copy;
-        cvtColor(image, image_copy, CV_BGRA2BGR);
-        _videoWriter << image_copy;
+        printf("image size = (%d, %d)\n", image.rows, image.cols);
+        Mat new_image = image.clone();
+        frameToFile(new_image, [[_outPath stringByAppendingString:@"test_frame_frome_camera_before_resize.jpg"] UTF8String]);
+    }
+    if (isCapturing && _videoWriter.isOpened())
+    {
+        Mat new_image = image(cropArea);
+        frameToFile(new_image, [[_outPath stringByAppendingString:@"test_frame_frome_camera.jpg"] UTF8String]);
+        cvtColor(new_image, new_image, CV_BGRA2BGR);
+        _videoWriter << new_image;
+//        printf("image after resize = (%d, %d)\n", new_image.rows, new_image.cols);
     }
     
     // invert image
