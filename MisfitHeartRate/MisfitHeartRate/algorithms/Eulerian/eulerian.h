@@ -13,6 +13,7 @@
 #include <vector>
 #include "config.h"
 #include "build_Gdown_stack.h"
+#include "matlab.h"
 
 
 namespace MHR {

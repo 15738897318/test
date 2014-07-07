@@ -141,33 +141,39 @@ namespace MHR {
     // WH: higher cutoff frequency of ideal band pass filter
     // SAMPLINGRATE: sampling rate of SRC
     void ideal_bandpassing(const Mat &src, Mat &dst, double wl, double wh, double samplingRate) {
-//        Mat padded;                             //expand input image to optimal size
-//        int m = getOptimalDFTSize(src.rows);
-//        int n = getOptimalDFTSize(src.cols);
-//        // on the border add zero values
-//        copyMakeBorder(src, padded, 0, m - src.rows, 0, n - src.cols, BORDER_CONSTANT, Scalar::all(0));
-//        
-//        Mat planes[] = {Mat_<double>(padded), Mat::zeros(padded.size(), CV_64F)};
-//        Mat complexI;
-//        merge(planes, 2, complexI);         // Add to the expanded another plane with zeros
-//        dft(complexI, complexI);            // this way the result may fit in the source matrix
-//        
-//        split(complexI, planes);            // planes[0] = Real(DFT(I)), planes[1] = Imaginary(DFT(I))
+        src.convertTo(dst, CV_32F);
+        int nTime = dst.size.p[0];
+        int nRow = dst.size.p[1];
+        int nCol = dst.size.p[2];
+
+        int f1 = ceil(wl * nTime/samplingRate);
+        int f2 = floor(wh * nTime/samplingRate);
+        int ind1 = 2*f1, ind2 = 2*f2 - 1;
         
         // FFT
-        src.convertTo(dst, CV_32F);
-//        dft(dst, dst, cv::DFT_SCALE|cv::DFT_COMPLEX_OUTPUT);
-        dft(dst, dst, cv::DFT_COMPLEX_OUTPUT);
-        // process
-        int src_size = src.size.p[0];
-        for (int i = 0; i < dst.size.p[0]; ++i)
-            if (i < src_size) {
-                double freq = i / double(src_size) * samplingRate;
-                if (!(wl < freq && freq < wh))
-                    dst.at<double>(i, 0) = 0;
+        Mat tmp = Mat::zeros(nTime, nRow, CV_32F), dft_out;
+        for (int k = 0; k < nCol; ++k) {
+            for (int i = 0; i < nTime; ++i)
+                for (int j = 0; j < nRow; ++j)
+                    tmp.at<float>(i, j) = dst.at<float>(i, j, k);
+            transpose(tmp, dft_out);
+            dft(dft_out, dft_out, DFT_ROWS);
+            // masking
+            for (int j = 0; j < nRow; ++j) {
+                for (int i = 0; i <= ind1; ++i)
+                    dft_out.at<float>(j, i) = 0;
+                for (int i = ind2; i < nTime; ++i)
+                    dft_out.at<float>(j, i) = 0;
             }
-        // IFFT
-        dft(dst, dst, cv::DFT_INVERSE|cv::DFT_REAL_OUTPUT);
-        dst.convertTo(dst, CV_64F);
+            // output
+            dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT);
+            transpose(dft_out, tmp);
+            for (int i = 0; i < nTime; ++i)
+                for (int j = 0; j < nRow; ++j)
+                    dst.at<float>(i, j, k) = tmp.at<float>(i, j);
+        }
+        
+        dst.convertTo(tmp, CV_64F);
+        dst = tmp.clone();
     }
 }
