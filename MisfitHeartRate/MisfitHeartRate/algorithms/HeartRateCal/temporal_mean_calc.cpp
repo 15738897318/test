@@ -29,40 +29,38 @@ namespace MHR {
         int endIndex = len-1;   // 1400
         
         // Convert colourspaces for each frame
-        Mat rgbframe, colorframe;
+        Mat frame;
+        Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
+        Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
         vector<Mat> monoframes;
 //        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
 //        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
         
         Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
-        
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
             printf("temporal_mean_calc: index = %i\n", i);
-            rgbframe = vid[i];
-            if (colourspace == "rgb")
-                colorframe = rgbframe;
-            else if (colourspace == "hsv")
-                cvtColor(rgbframe, colorframe, CV_RGB2HSV);
+            frame = vid[i];
+            if (colourspace == "hsv")
+                cvtColor(frame, frame, CV_RGB2HSV);
             else if (colourspace == "ntsc")
-                rgb2ntsc(rgbframe, colorframe);
+                rgb2ntsc(frame, frame);
             else if (colourspace == "ycbcr")
-                cvtColor(rgbframe, colorframe, CV_RGB2YCrCb);
+                cvtColor(frame, frame, CV_RGB2YCrCb);
             else if (colourspace == "tsl")
-                rgb2tsl(rgbframe, colorframe);
+                rgb2tsl(frame, frame);
             
             // Extract the right channel from the colour frame
-            
-            Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+            // if only 1 channel ---> don't use monoframe.
             for (int x = 0; x < vidHeight; ++x)
                 for (int y = 0; y < vidWidth; ++y)
-                    monoframe.at<double>(x, y) = colorframe.at<Vec3d>(x, y)[colour_channel];
+                    monoframe.at<double>(x, y) = frame.at<Vec3d>(x, y)[colour_channel];
 			
 			// Downsample the frame for ease of computation
-            corrDn(monoframe, monoframe, filt, 4, 4);
+            corrDn(monoframe, tmp_monoframe, filt, 4, 4);
 			
 			// Put the frame into the video stream
-            monoframes.push_back(monoframe);
+            monoframes.push_back(tmp_monoframe);
         }
         
         // Block 2 ==== Extract a signal stream & pre-process it
