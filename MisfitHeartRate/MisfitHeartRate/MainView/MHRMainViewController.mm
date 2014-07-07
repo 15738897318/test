@@ -13,21 +13,30 @@
 
 @interface MHRMainViewController ()
 {
-//    CvCapture *videoCapture;
+    BOOL isCapturing;
 }
 
-@property (strong, nonatomic) CvVideoCamera *videoCamera;
+@property (retain, nonatomic) CvVideoCamera *videoCamera;
+@property (assign, nonatomic) VideoWriter videoWriter;
+@property (strong, nonatomic) NSString *outPath;
+@property (strong, nonatomic) NSString *outFile;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UISwitch *cameraSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end
+
 
 @implementation MHRMainViewController
 
 @synthesize videoCamera = _videoCamera;
+@synthesize videoWriter = _videoWriter;
 @synthesize cameraSwitch = _cameraSwitch;
+@synthesize outPath = _outPath;
+@synthesize outFile = _outFile;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,12 +64,15 @@
    
     _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     _videoCamera.delegate = self;
-    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+//    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
     _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
     _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+    _videoCamera.defaultFPS = _frameRate;
     _videoCamera.rotateVideo = YES;
-    _videoCamera.defaultFPS = 30;
     _videoCamera.grayscaleMode = NO;
+    [_videoCamera start];
+    isCapturing = NO;
 }
 
 
@@ -78,55 +90,74 @@
 
 
 - (IBAction)startButtonDidTap:(id)sender {
+//    test_ideal_bandpassing();
 //    testMathFunctions();
 //    return;
     
-    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test0.mp4"];
-    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-    formater.dateFormat = @"-yyyy-MM-dd-HH-mm-ss";
+    isCapturing = YES;
+    _startButton.enabled = NO;
+    _cameraSwitch.enabled = NO;
+    _statusLabel.text = @"Capturing....";
+    
+    // create new directory for this session
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    NSString *tmp = @"Library/Documentation/";
-    NSString *outputPath = [paths objectAtIndex:0];
-    outputPath = [outputPath substringToIndex:([outputPath length] - [tmp length] + 1)];
-    outputPath = [outputPath stringByAppendingFormat:@"Documents/"];
-//                  [formater stringFromDate:[NSDate date]]];
-    [MHRUtilities createDirectory:outputPath];
+    _outPath = [paths objectAtIndex:0];
+    _outPath = [_outPath substringToIndex:([_outPath length] - [@"Library/Documentation/" length] + 1)];
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    formater.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
+    _outPath = [_outPath stringByAppendingFormat:@"Documents/%@/",
+                [formater stringFromDate:[NSDate date]]];
+    [MHRUtilities createDirectory:_outPath];
     
-    
+    // output new file to write input video
+    _outFile = [_outPath stringByAppendingString:@"input.mp4"];
+    _videoWriter.open([_outFile UTF8String], CV_FOURCC('M','P','4','2'), _frameRate, cvSize(352, 288), true);
+//    [_videoCamera start];
+
+//     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
-    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
-}
-
-
-- (void)updateImageView:(NSInteger)index vid:(vector<Mat>)vid
-{
-    if (index >= vid.size())
-        return;
-    self.imageView.image = [UIImageCVMatConverter UIImageFromCVMat:vid[index]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self updateImageView:index+1 vid:vid];
-    });
+//    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
 }
 
 
 - (IBAction)stopButtonDidTap:(id)sender {
-    _cameraSwitch.enabled = YES;
+    if (isCapturing)
+    {
+        isCapturing = NO;
+        _startButton.enabled = YES;
+        _cameraSwitch.enabled = YES;
+//        [_videoCamera stop];
+        _videoWriter.release();
+        _statusLabel.text = @"Calculating....";
+//        hrResult result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+//        _statusLabel.text = [NSString stringWithFormat:@"%f, %f", result.autocorr, result.pda];
+    }
+}
+
+
+- (IBAction)switchCamera:(id)sender {
     if (_cameraSwitch.isOn)
     {
-        [_videoCamera stop];
-        return;
+        _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+    }
+    else
+    {
+        _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     }
 }
 
 
 #pragma - Protocol CvVideoCameraDelegate
 
-- (void)processImage:(cv::Mat &)image
+- (void)processImage:(Mat &)image
 {
-    // Do some OpenCV stuff with the image
-    Mat image_copy;
-    cvtColor(image, image_copy, CV_BGRA2BGR);
+    if (isCapturing)
+    {
+        frameToFile(image, [[_outPath stringByAppendingString:@"test_frame_frome_camera.jpg"] UTF8String]);
+        Mat image_copy;
+        cvtColor(image, image_copy, CV_BGRA2BGR);
+        _videoWriter << image_copy;
+    }
     
     // invert image
 //    bitwise_not(image_copy, image_copy);
@@ -197,5 +228,16 @@
     
     //    [self updateImageView:0 vid:vid];
 }
+
+
+//- (void)updateImageView:(NSInteger)index vid:(vector<Mat>)vid
+//{
+//    if (index >= vid.size())
+//        return;
+//    self.imageView.image = [UIImageCVMatConverter UIImageFromCVMat:vid[index]];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self updateImageView:index+1 vid:vid];
+//    });
+//}
 
 @end

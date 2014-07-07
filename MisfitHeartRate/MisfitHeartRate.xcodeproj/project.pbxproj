@@ -204,8 +204,8 @@
 		DCAE6BA6195A794800B9FE9F /* math */ = {
 			isa = PBXGroup;
 			children = (
-				12B587E21963F48700BA19A5 /* matlab.cpp */,
 				12B587E31963F48700BA19A5 /* matlab.h */,
+				12B587E21963F48700BA19A5 /* matlab.cpp */,
 			);
 			name = math;
 			sourceTree = "<group>";
