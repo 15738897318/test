@@ -136,56 +136,38 @@ namespace MHR {
     }
     
     
-    // return Discrete Fourier Transform of a 2-2 Mat by dimension
-	Mat fft(const Mat &src, int dimension) {
-		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
-		if (dimension == 0) {
-			Mat tmp = Mat_<complex<double>>(1, src.rows);
-			for (int i = 0; i < src.cols; ++i) {
-				for (int j = 0; j < src.rows; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(j, i), 0);
-				dft(tmp, tmp);
-				for (int j = 0; j < src.rows; ++j)
-					ans.at<complex<double>>(j, i) = tmp.at<complex<double>>(1, j);
-			}
-		}
-		else {
-			Mat tmp = Mat_<complex<double>>(1, src.cols);
-			for (int i = 0; i < src.rows; ++i) {
-				for (int j = 0; j < src.cols; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(i, j), 0);
-				dft(tmp, tmp);
-				for (int j = 0; j < src.cols; ++j)
-					ans.at<complex<double>>(i, j) = tmp.at<complex<double>>(1, j), 0;
-			}
-		}
-		return ans;
-	}
-    
-    
-    // return Inverse Discrete Fourier Transform of a 2-2 Mat by dimension
-	Mat ifft(const Mat &src, int dimension) {
-		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
-		if (dimension == 0) {
-			Mat tmp = Mat_<complex<double>>(1, src.rows);
-			for (int i = 0; i < src.cols; ++i) {
-				for (int j = 0; j < src.rows; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(j, i), 0);
-				idft(tmp, tmp);
-				for (int j = 0; j < src.rows; ++j)
-					ans.at<complex<double>>(j, i) = tmp.at<complex<double>>(1, j);
-			}
-		}
-		else {
-			Mat tmp = Mat_<complex<double>>(1, src.cols);
-			for (int i = 0; i < src.rows; ++i) {
-				for (int j = 0; j < src.cols; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(i, j), 0);
-				idft(tmp, tmp);
-				for (int j = 0; j < src.cols; ++j)
-					ans.at<complex<double>>(i, j) = tmp.at<complex<double>>(1, j), 0;
-			}
-		}
-		return ans;
-	}
+    // Apply ideal band pass filter on SRC
+    // WL: lower cutoff frequency of ideal band pass filter
+    // WH: higher cutoff frequency of ideal band pass filter
+    // SAMPLINGRATE: sampling rate of SRC
+    void ideal_bandpassing(const Mat &src, Mat &dst, double wl, double wh, double samplingRate) {
+//        Mat padded;                             //expand input image to optimal size
+//        int m = getOptimalDFTSize(src.rows);
+//        int n = getOptimalDFTSize(src.cols);
+//        // on the border add zero values
+//        copyMakeBorder(src, padded, 0, m - src.rows, 0, n - src.cols, BORDER_CONSTANT, Scalar::all(0));
+//        
+//        Mat planes[] = {Mat_<double>(padded), Mat::zeros(padded.size(), CV_64F)};
+//        Mat complexI;
+//        merge(planes, 2, complexI);         // Add to the expanded another plane with zeros
+//        dft(complexI, complexI);            // this way the result may fit in the source matrix
+//        
+//        split(complexI, planes);            // planes[0] = Real(DFT(I)), planes[1] = Imaginary(DFT(I))
+        
+        // FFT
+        src.convertTo(dst, CV_32F);
+//        dft(dst, dst, cv::DFT_SCALE|cv::DFT_COMPLEX_OUTPUT);
+        dft(dst, dst, cv::DFT_COMPLEX_OUTPUT);
+        // process
+        int src_size = src.size.p[0];
+        for (int i = 0; i < dst.size.p[0]; ++i)
+            if (i < src_size) {
+                double freq = i / double(src_size) * samplingRate;
+                if (!(wl < freq && freq < wh))
+                    dst.at<double>(i, 0) = 0;
+            }
+        // IFFT
+        dft(dst, dst, cv::DFT_INVERSE|cv::DFT_REAL_OUTPUT);
+        dst.convertTo(dst, CV_64F);
+    }
 }

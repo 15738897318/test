@@ -44,15 +44,9 @@ namespace MHR {
         int frameRate = _frameRate;
         int len = (int)vid.size();
         
-//        printf("!!!!!!!!! len = %d\n", len);
-//        bool end = videoCaptureToVector(vidIn, vid, _framesBlock_size);
-//        printf("!!!!!!!!! end = %d\n", end);
-//        printf("!!!!!!!!! len = %d\n", (int)vid.size());
-//        return hrResult(-1, -1);
-        
         // Prepare the output video-writer
 //        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
-		VideoWriter vidOut(outFile, CV_FOURCC('M','J','P','G'), frameRate, cvSize(vidWidth, vidHeight), true);
+		VideoWriter vidOut(outFile, CV_FOURCC('M','P','4','2'), frameRate, cvSize(vidWidth, vidHeight), true);
 		if (!vidOut.isOpened()) {
 			printf("outFile %s is not opened!\n", outFile.c_str());
 			return hrResult(-1, -1);

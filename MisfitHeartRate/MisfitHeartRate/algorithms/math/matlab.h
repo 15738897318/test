@@ -42,11 +42,11 @@ namespace MHR {
     //filter function for frames2signal function
     vector<double> low_pass_filter(vector<double> arr);
     
-    // return Discrete Fourier Transform of a 2-2 Mat by dimension
-	Mat fft(const Mat &src, int dimension);
-    
-    // return Inverse Discrete Fourier Transform of a 2-2 Mat by dimension
-	Mat ifft(const Mat &src, int dimension);
+    // Apply ideal band pass filter on SRC
+    // WL: lower cutoff frequency of ideal band pass filter
+    // WH: higher cutoff frequency of ideal band pass filter
+    // SAMPLINGRATE: sampling rate of SRC
+    void ideal_bandpassing(const Mat &src, Mat &dst, double wl, double wh, double samplingRate);
 }
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

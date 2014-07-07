@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include "matlab.h"
 
 using namespace std;
 
@@ -24,6 +25,8 @@ namespace MHR {
     
     
     void testMathFunctions();
+    
+    void test_ideal_bandpassing();
 }
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */
