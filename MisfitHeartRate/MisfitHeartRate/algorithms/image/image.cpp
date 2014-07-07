@@ -233,4 +233,42 @@ namespace MHR {
             for (int j = 0, y = 0; j < n; ++j, y += rectCol)
                 dst.at<double>(i, j) = tmp.at<double>(x, y);
     }
+    
+    
+//    // ScaleRotateTranslate
+//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, double angle)
+//    {
+//        
+//    }
+    
+    
+//    // crop face
+//    void cropFace(const Mat &src, Mat &dst,
+//                  Point2d eye_left, Point2d eye_right,
+//                  Point2d offset_pct, Point2d dest_sz)
+//    {
+//        // calculate offsets in original image
+//        double offset_h = floor(float(offset_pct.x)*dest_sz.x);
+//        double offset_v = floor(float(offset_pct.y)*dest_sz.y);
+//        // get the direction
+//        Point2d eye_direction = Point2d(eye_right.x - eye_left.x, eye_right.y - eye_left.y);
+//        // calc rotation angle in radians
+//        double rotation = -atan2(eye_direction.y, eye_direction.x);
+//        // distance between them
+//        double dist = sqrt(pow(eye_left.x - eye_right.x, 2) + pow(eye_left.y - eye_right.y, 2));
+//        // calculate the reference eye-width
+//        double reference = dest_sz.x - 2.0*offset_h;
+//        // scale factor
+//        double scale = dist/reference;
+//        // rotate original around the left eye
+//        ScaleRotateTranslate(src, dst, eye_left, rotation);
+//        //crop the rotated image
+//        Point2d crop_xy = Point2d(eye_left.x - scale*offset_h, eye_left.y - scale*offset_v);
+//        Point2d crop_size = Point2d(dest_sz.x*scale, dest_sz.y*scale);
+//        image = image.crop((int(crop_xy[0]), int(crop_xy[1]), int(crop_xy[0]+crop_size[0]), int(crop_xy[1]+crop_size[1])))
+//        // resize it
+//        dst.resize(dst, dst, dest_sz, )
+//        image = image.resize(dest_sz, Image.ANTIALIAS)
+//        return image
+//    }
 }

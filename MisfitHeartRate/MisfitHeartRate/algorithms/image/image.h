@@ -59,6 +59,15 @@ namespace MHR {
     // must be larger (in both dimensions) than FILT.  The origin of filt
     // is assumed to be floor(size(filt)/2)+1.
     void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol);
+    
+//    // ScaleRotateTranslate
+//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, double angle);
+//    
+//    // crop face
+//    void cropFace(const Mat &src, Mat &dst,
+//                  Point2d eye_left = Point2d(0, 0), Point2d eye_right = Point2d(0, 0),
+//                  Point2d offset_pct = Point2d(0.2, 0.2), Point2d dest_sz = Point2d(70, 70));
+
 }
 
 #endif /* defined(__MisfitHeartRate__image__) */
