@@ -52,14 +52,11 @@ namespace MHR {
     bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames)
     {
         Mat frame;
-        int c = 0;
+        int c = dst.size(), old_c = c;
         while(nFrames == -1 || c++ < nFrames) {
-//            printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
-                return (c == 1);
-//            if (frame.rows > 256 || frame.cols > 256)
-//                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
+                return (c == old_c+1);
             dst.push_back(frame.clone());
         }
         return false;
