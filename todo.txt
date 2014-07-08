@@ -1,0 +1,24 @@
+- use 1 channel only (R in rgb (0) and S in TSL (1))
+- Remove temp files (images, videos) after calculate.
+- Use Doxygen to generate document files.
+
+
+- Bugs:
+	+ colorSpec matlab vs OpenCV ([0, 1] vs [0, 255]).
+	+ rgb2ntsc() print all 0.0 when run	 Spatial filtering (build GDownStack).
+	+ wrong output when run ntsc2rgb(filtered).
+	+ bug with 3-d Mat of openCV: GdownStack, filteredStack
+
+
+- Speed improve:
+	+ matlab.h functions
+	+ fft and ifft.
+	+ rgb2ntsc()
+	+ ntsc2rgb()
+	+ matToVector1D(Mat m)
+	+ mulAndClip()
+
+
+
+
+
