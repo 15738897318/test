@@ -8,7 +8,10 @@
 
 #import "MHRUtilities.h"
 
+
 @implementation MHRUtilities
+
+#pragma - Debug
 
 + (NSString *) report_memory
 {
@@ -29,6 +32,8 @@
 }
 
 
+#pragma - Files
+
 + (void)createDirectory:(NSString *)directoryPath
 {
     NSLog(@"Create directory: %@", directoryPath);
@@ -37,6 +42,58 @@
                                   withIntermediateDirectories:YES
                                                    attributes:nil
                                                         error:nil];
+}
+
+
+#pragma - Video Camera
+
++ (void)setTorchModeOn:(BOOL)isOn
+{
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch]) {
+        [device lockForConfiguration:nil];
+        if (isOn)
+        {
+            [device setTorchMode:AVCaptureTorchModeOn];
+        }
+        else
+        {
+            [device setTorchMode:AVCaptureTorchModeOff];
+        }
+        [device unlockForConfiguration];
+    }
+}
+
+
+#pragma - Colors
+
+UIColor* MFUIColorMakeFromRGBArray(NSArray* rgbArray)
+{
+    return MFRGB(
+                 [(NSNumber*)[rgbArray objectAtIndex:0] intValue],
+                 [(NSNumber*)[rgbArray objectAtIndex:1] intValue],
+                 [(NSNumber*)[rgbArray objectAtIndex:2] intValue]);
+}
+
+
+UIColor* MFUIColorMakeFromRGBAArray(NSArray* rgbaArray)
+{
+    return MFRGBA(
+                  [(NSNumber*)[rgbaArray objectAtIndex:0] intValue],
+                  [(NSNumber*)[rgbaArray objectAtIndex:1] intValue],
+                  [(NSNumber*)[rgbaArray objectAtIndex:2] intValue],
+                  [(NSNumber*)[rgbaArray objectAtIndex:3] floatValue]);
+}
+
+
++ (CALayer*)newRectangleLayer:(CGRect)frame pListKey:(NSString *)pListKey
+//CALayer* newRectangleLayer(CGRect frame)
+{
+    MHRAppDelegate* appDelegate = (MHRAppDelegate *)[UIApplication sharedApplication].delegate;
+    CALayer *rect = [CALayer layer];
+    rect.frame = frame;
+    rect.backgroundColor = MFUIColorMakeFromRGBAArray([[appDelegate getPlistSkinDict] objectForKey:pListKey]).CGColor;
+    return rect;
 }
 
 @end
