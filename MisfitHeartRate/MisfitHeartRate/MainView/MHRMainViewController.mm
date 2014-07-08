@@ -16,6 +16,8 @@ const int IMAGE_WIDTH = 256;
 const int IMAGE_HEIGHT = 256;
 const int WIDTH_PADDING = (CAMERA_WIDTH-IMAGE_WIDTH)/2;
 const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
+static NSString * const FACE_MESSAGE = @"Make sure your face fitted in the Aqua rectangle!";
+static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and the flash with your finger!";
 
 
 @interface MHRMainViewController ()
@@ -126,15 +128,13 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
                       _frameRate,
                       cvSize(IMAGE_WIDTH, IMAGE_HEIGHT),
                       true);
-//    [_videoCamera start];
     
     isCapturing = YES;
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
-    _faceLabel.text = @"Capturing....";
-
-     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
+    
+//     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+//    run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
 //    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
 }
 
@@ -146,9 +146,43 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
         isCapturing = NO;
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
+        [self drawCameraCaptureRect:@"MHRWhiteColor"];
         _videoWriter.release();
-//        hrResult result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-//        _faceLabel.text = [NSString stringWithFormat:@"%f, %f", result.autocorr, result.pda];
+        [_videoCamera stop];
+        
+        __block hrResult result(-1, -1);
+        if (!_cameraSwitch.isOn)
+        {
+            _fingerLabel.text = @"";
+        }
+        _faceLabel.text = @"Processing....";
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+            result = run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
+//          result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+//          result = run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // show result
+                MHRResultViewController *resultView = [[MHRResultViewController alloc] init];
+                resultView.autocorrResult = result.autocorr;
+                resultView.pdaResult = result.pda;
+                [self.navigationController pushViewController:resultView animated:YES];
+                // update UI
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                if (_cameraSwitch.isOn)
+                {
+                    [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
+                    _faceLabel.text = FACE_MESSAGE;
+                }
+                else
+                {
+                    _fingerLabel.text = FINGER_MESSAGE;
+                    _faceLabel.text = @"";
+                }
+                [_videoCamera start];
+            });
+        });
     }
 }
 
@@ -159,7 +193,7 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
     {
         // front camera - face capturing
         [MHRUtilities setTorchModeOn:NO];
-        _faceLabel.text = @"Make sure your face fitted in the Aqua rectangle!";
+        _faceLabel.text = FACE_MESSAGE;
         _fingerLabel.text = @"";
         [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
         [_videoCamera stop];
@@ -171,7 +205,7 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
         // back camera - finger capturing
         [MHRUtilities setTorchModeOn:YES];
         _faceLabel.text = @"";
-        _fingerLabel.text = @"Completely cover the back-camera and the flash with your finger";
+        _fingerLabel.text = FINGER_MESSAGE;
         [self drawCameraCaptureRect:@"MHRWhiteColor"];
         [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
@@ -213,64 +247,6 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 
 
 #pragma - Test Image/Video
-- (void) testImageVideo
-{
-    /*----------------read image file----------------*/
-    //    NSString *imageFile = [resourcePath stringByAppendingPathComponent:@"test.jpg"];
-    //    Mat frame = imread([imageFile UTF8String], CV_LOAD_IMAGE_COLOR);
-    //    if(!frame.data)                              // Check for invalid input
-    //    {
-    //        NSLog(@"Could not open or find the image: %@", imageFile);
-    //        return;
-    //    }
-    //    NSLog(@"Load image....");
-    //    [self.imageView setImage:[UIImageCVMatConverter UIImageFromCVMat:frame]];
-    //    NSLog(@"Save image....");
-    //    NSString *imageOut = [outputPath stringByAppendingString:@"test_out.jpg"];
-    //    imwrite([imageOut UTF8String], frame);
-    //    NSLog(@"Done!");
-    /*------------------------------------------------*/
-    
-    
-    //    Mat frame;
-    //    VideoCapture videoCapture([filePath UTF8String]);
-    //    if (!videoCapture.isOpened())
-    //    {
-    //        NSLog(@"Error when reading %@", filePath);
-    //    }
-    //
-    //    vector<Mat> vid = videoCaptureToVector(videoCapture);
-    //
-    //    int nFrame = videoCapture.get(CV_CAP_PROP_FRAME_COUNT);
-    //    NSLog(@"nFrame = %i", nFrame);
-    //    NSLog(@"Frame rate = %f", videoCapture.get(CV_CAP_PROP_FPS));
-    //
-    //    NSLog(@"width = %f, height = %f",
-    //          videoCapture.get(CV_CAP_PROP_FRAME_WIDTH),
-    //          videoCapture.get(CV_CAP_PROP_FRAME_HEIGHT));
-    //
-    //    NSString *vidOut = [outputPath stringByAppendingString:@"vidOut.mp4"];
-    //    VideoWriter vidWriter([vidOut UTF8String], CV_FOURCC('M','J','P','G'), 30, cvSize(vid[0].cols, vid[0].rows), true);
-    //    for (int i = 0, sz = vid.size(); i < sz; ++i) {
-    //        vidWriter << vid[i];
-    //    }
-    //    vidWriter.release();
-    
-    //    CvVideoWriter *writer = cvCreateVideoWriter(
-    //        [vidOut UTF8String], CV_FOURCC('M', 'J', 'P', 'G'), 30,
-    //        cvSize(vid[0].cols, vid[0].rows)
-    //    );
-    //    for (int i = 0, sz = vid.size(); i < sz; ++i) {
-    //        IplImage tmp = vid[i];
-    //        cvWriteFrame(writer, &tmp);
-    //        cvWriteFrame(writer, &tmp );
-    //    }
-    //    cvReleaseVideoWriter( &writer );
-    
-    //    [self updateImageView:0 vid:vid];
-}
-
-
 //- (void)updateImageView:(NSInteger)index vid:(vector<Mat>)vid
 //{
 //    if (index >= vid.size())

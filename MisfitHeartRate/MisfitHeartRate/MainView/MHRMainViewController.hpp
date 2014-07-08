@@ -16,6 +16,8 @@
 #import <opencv2/highgui/highgui_c.h>
 #import <time.h>
 #import "MHRUtilities.h"
+#import "MHRResultViewController.h"
+#import "MBProgressHUD.h"
 #import "run_algorithms.h"
 
 using namespace cv;
