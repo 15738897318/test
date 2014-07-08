@@ -98,7 +98,7 @@ namespace MHR {
             double size = height * width;
             
             //this is the debug vector<Mat>
-            vector<Mat> debug_monoframes(monoframes);
+            debug_monoframes = vector<Mat>(monoframes);
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
                 int cnt = 0; //number of not-NaN-pixels
