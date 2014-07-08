@@ -16,7 +16,7 @@ using namespace cv;
 namespace MHR {
     const double NaN = -1e9;
     
-    const int _framesBlock_size = 150;
+    const int _framesBlock_size = 128;
 
     /*--------------for run_eulerian()--------------*/
     const double _eulerian_alpha = 50;          // Eulerian magnifier, standard < 50
@@ -31,7 +31,7 @@ namespace MHR {
     const int _number_of_channels = 3;
     const int _Gpyr_filter_length = 5;
     const int _startFrame = 0;
-    const int _endFrame = - 10; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
+    const int _endFrame = 0; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
 
     // filter_bandpassing:
     const int _eulerianTemporalFilterKernel_size = 15;
@@ -45,7 +45,7 @@ namespace MHR {
     const double _cutoff_freq = 5;           // Hz
     const double _time_lag = 3;              // seconds
     const String _colourspace = "tsl";
-    const int _channels_to_process = 1;     // If only 1 channel: 2 for tsl, 1 for rgb
+    const int _channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
 
     // heartRate_calc: Native params of the algorithm
     const int _flagDebug = 0;
