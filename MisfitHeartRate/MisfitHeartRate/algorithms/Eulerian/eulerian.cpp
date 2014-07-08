@@ -31,7 +31,7 @@ namespace MHR {
         printf("frameRate = %d, len = %d\n", frameRate, len);
         
         frameToFile(vid[0], outDir + "test_frame_in.jpg");
-        
+      
 		samplingRate = frameRate;
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
         
@@ -108,7 +108,7 @@ namespace MHR {
                 frameToFile(filtered, outDir + "test_filtered_afterResize.jpg");
             
 			// Extract the ith frame in the video stream
-            frame = vid[i];
+            frame = vid[i].clone();
 			// Convert the extracted frame to RGB (double-precision) image
             frame.convertTo(rgbframe, CV_64FC3);
             
@@ -132,11 +132,11 @@ namespace MHR {
             // test frame
             if (i == 0)
                 frameToFile(frame, outDir + "test_processed_frame_out.jpg");
-            ans.push_back(frame.clone());
+            ans.push_back(frame);
 		}
 		printf("Finished\n");
 
         clock_t t2 = clock();
-        printf("amplifySpatialGdownTemporalIdeal() time = %f\n", ((float)t2 - (float)t1)/1000.0);
+        printf("amplifySpatialGdownTemporalIdeal() time = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
 	}
 }
