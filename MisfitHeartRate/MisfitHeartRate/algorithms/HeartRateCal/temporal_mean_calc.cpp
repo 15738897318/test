@@ -10,7 +10,7 @@
 
 
 namespace MHR {
-    vector<double> temporal_mean_calc(vector<Mat> &vid, double overlap_ratio,
+    vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
                                       double max_bpm, double cutoff_freq,
                                       int colour_channel, String colourspace,
                                       double &lower_range, double &upper_range, bool isCalcMode)
@@ -40,7 +40,7 @@ namespace MHR {
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
             printf("temporal_mean_calc: index = %i\n", i);
-            frame = vid[i];
+            frame = vid[i].clone();
             if (colourspace == "hsv")
                 cvtColor(frame, frame, CV_RGB2HSV);
             else if (colourspace == "ntsc")
