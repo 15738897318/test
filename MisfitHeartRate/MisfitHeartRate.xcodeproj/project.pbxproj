@@ -48,6 +48,7 @@
 		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
 		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
+		DCB5ACBA196B988300DF758D /* eulerian_old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB5ACB8196B988300DF758D /* eulerian_old.cpp */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
 		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
@@ -125,6 +126,8 @@
 		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
 		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
 		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
+		DCB5ACB8196B988300DF758D /* eulerian_old.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eulerian_old.cpp; path = Eulerian/eulerian_old.cpp; sourceTree = "<group>"; };
+		DCB5ACB9196B988300DF758D /* eulerian_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eulerian_old.h; path = Eulerian/eulerian_old.h; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
 		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 			children = (
 				DCAE524519657B7700A8AFB6 /* eulerian.h */,
 				DCAE524419657B7700A8AFB6 /* eulerian.cpp */,
+				DCB5ACB9196B988300DF758D /* eulerian_old.h */,
+				DCB5ACB8196B988300DF758D /* eulerian_old.cpp */,
 				DCAE52581967B8BA00A8AFB6 /* build_Gdown_stack.h */,
 				DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */,
 			);
@@ -468,6 +473,7 @@
 				DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */,
 				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
+				DCB5ACBA196B988300DF758D /* eulerian_old.cpp in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
 				12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */,
