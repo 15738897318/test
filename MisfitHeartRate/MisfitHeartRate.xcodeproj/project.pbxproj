@@ -16,6 +16,7 @@
 		DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */; };
 		DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCADC18C196BA7D200AFCDE5 /* MHRResultViewController.xib */; };
 		DCADC191196BB46200AFCDE5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC190196BB46200AFCDE5 /* MBProgressHUD.m */; };
+		DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCADC196196BE1DB00AFCDE5 /* filter_bandpassing.cpp */; };
 		DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE523E196579BC00A8AFB6 /* matrix.cpp */; };
 		DCAE524319657AF300A8AFB6 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
 		DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
@@ -52,12 +53,12 @@
 		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
 		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
-		DCB5ACBA196B988300DF758D /* eulerian_old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB5ACB8196B988300DF758D /* eulerian_old.cpp */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
 		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
 		DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */; };
 		DCC56C7E1962A927009122FB /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
+		DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		DCADC18C196BA7D200AFCDE5 /* MHRResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRResultViewController.xib; path = MisfitHeartRate/ResultView/MHRResultViewController.xib; sourceTree = SOURCE_ROOT; };
 		DCADC18F196BB46200AFCDE5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Utilities/MBProgressHUD.h; sourceTree = "<group>"; };
 		DCADC190196BB46200AFCDE5 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Utilities/MBProgressHUD.m; sourceTree = "<group>"; };
+		DCADC193196BE00000AFCDE5 /* filter_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filter_bandpassing.h; path = Eulerian/filter_bandpassing.h; sourceTree = "<group>"; };
+		DCADC196196BE1DB00AFCDE5 /* filter_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = filter_bandpassing.cpp; path = Eulerian/filter_bandpassing.cpp; sourceTree = "<group>"; };
 		DCAE523E196579BC00A8AFB6 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		DCAE523F196579BC00A8AFB6 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
 		DCAE524119657AF300A8AFB6 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = image/image.cpp; sourceTree = "<group>"; };
@@ -136,8 +139,6 @@
 		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
 		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
 		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
-		DCB5ACB8196B988300DF758D /* eulerian_old.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eulerian_old.cpp; path = Eulerian/eulerian_old.cpp; sourceTree = "<group>"; };
-		DCB5ACB9196B988300DF758D /* eulerian_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eulerian_old.h; path = Eulerian/eulerian_old.h; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
 		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
@@ -145,6 +146,8 @@
 		DCBDEA2619617A8E005F6298 /* UIImageCVMatConverter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIImageCVMatConverter.hpp; path = Utilities/UIImageCVMatConverter.hpp; sourceTree = "<group>"; };
 		DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UIImageCVMatConverter.mm; path = Utilities/UIImageCVMatConverter.mm; sourceTree = "<group>"; };
 		DCC56C7D1962A927009122FB /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ideal_bandpassing.cpp; path = Eulerian/ideal_bandpassing.cpp; sourceTree = "<group>"; };
+		DCCA86C5196BE4D8002B6B5E /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ideal_bandpassing.h; path = Eulerian/ideal_bandpassing.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,10 +261,12 @@
 			children = (
 				DCAE524519657B7700A8AFB6 /* eulerian.h */,
 				DCAE524419657B7700A8AFB6 /* eulerian.cpp */,
-				DCB5ACB9196B988300DF758D /* eulerian_old.h */,
-				DCB5ACB8196B988300DF758D /* eulerian_old.cpp */,
 				DCAE52581967B8BA00A8AFB6 /* build_Gdown_stack.h */,
 				DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */,
+				DCADC193196BE00000AFCDE5 /* filter_bandpassing.h */,
+				DCADC196196BE1DB00AFCDE5 /* filter_bandpassing.cpp */,
+				DCCA86C5196BE4D8002B6B5E /* ideal_bandpassing.h */,
+				DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */,
 			);
 			name = Eulerian;
 			sourceTree = "<group>";
@@ -499,8 +504,8 @@
 			files = (
 				DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */,
 				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
+				DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
-				DCB5ACBA196B988300DF758D /* eulerian_old.cpp in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
@@ -513,6 +518,7 @@
 				DCADC191196BB46200AFCDE5 /* MBProgressHUD.m in Sources */,
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
+				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,

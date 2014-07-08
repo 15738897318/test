@@ -12,14 +12,14 @@
 namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
-	vector<Mat> amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, String outDir,
-                                                 double alpha, int level,
-                                                 double freqBandLowEnd, double freqBandHighEnd,
-                                                 double samplingRate, double chromAttenuation)
+    void amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, vector<Mat> &ans,
+                                          String outDir, double alpha, int level,
+                                          double freqBandLowEnd, double freqBandHighEnd,
+                                          double samplingRate, double chromAttenuation)
 	{
         clock_t t1 = clock();
-        vector<Mat> ans;
-        
+
+        ans.clear();        
 		// Extract video info
 		int vidHeight = vid[0].rows;
 		int vidWidth = vid[1].cols;
@@ -60,7 +60,8 @@ namespace MHR {
 		// Temporal filtering
 		printf("Temporal filtering...\n");
         Mat filteredStack;
-        ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
+//        ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
+        filter_bandpassing(GdownStack, filteredStack);
 		printf("Finished\n");
         
 		// amplify
@@ -86,22 +87,22 @@ namespace MHR {
         
 		// output video
 		// Convert each frame from the filtered stream to movie frame
-        Mat frame, rgbframe;
+        Mat frame, rgbframe, filtered;
+        Mat tmp_filtered = Mat::zeros(filteredStack.size.p[1], filteredStack.size.p[2], CV_64FC3);
 		for (int i = startIndex, k = 0; i <= endIndex && k < filteredStack.size.p[0]; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
 			// by removing the singleton dimensions of the kth filtered array
 			// since the filtered stack is just a selected level of the Gaussian pyramid
-			Mat filtered = Mat::zeros(filteredStack.size.p[1], filteredStack.size.p[2], CV_64FC3);
 			for (int x = 0; x < filteredStack.size.p[1]; ++x)
 				for (int y = 0; y < filteredStack.size.p[2]; ++y)
-					filtered.at<Vec3d>(x, y) = filteredStack.at<Vec3d>(k, x, y);
+					tmp_filtered.at<Vec3d>(x, y) = filteredStack.at<Vec3d>(k, x, y);
             
             printf("filteredStack size = (%d, %d)\n", filteredStack.size.p[1], filteredStack.size.p[2]);
             if (i == 0)
-                frameToFile(filtered, outDir + "test_filtered_beforeResize.jpg");
+                frameToFile(tmp_filtered, outDir + "test_filtered_beforeResize.jpg");
             
 			// Format the image to the right size
-			resize(filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
+			resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
             
             if (i == 0)
                 frameToFile(filtered, outDir + "test_filtered_afterResize.jpg");
@@ -137,6 +138,5 @@ namespace MHR {
 
         clock_t t2 = clock();
         printf("amplifySpatialGdownTemporalIdeal() time = %f\n", ((float)t2 - (float)t1)/1000.0);
-        return ans;
 	}
 }

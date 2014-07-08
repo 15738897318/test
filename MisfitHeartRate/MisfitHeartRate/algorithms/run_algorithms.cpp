@@ -59,8 +59,9 @@ namespace MHR {
         
         double lower_range, upper_range;
         bool isCalcMode = true;
-        vector<Mat> monoframes, debug_monoframes;
+        vector<Mat> monoframes, debug_monoframes, eulerianVid;
         vector<double> temporal_mean;
+        Mat tmp_eulerianVid, tmp_eulerianVid2;
         
         int c = 0;
         while(1) {
@@ -79,39 +80,47 @@ namespace MHR {
             if (c > 1) break;
             
             /*-----------------------------------run_eulerian(): M frames (1)-----------------------------------*/
-            vector<Mat> eulerianVid = amplifySpatialGdownTemporalIdeal(vid, outDir,
-                                                                       _eulerian_alpha, _eulerian_pyrLevel,
-                                                                       _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
-                                                                       _eulerian_frameRate, _eulerian_chromaMagnifier
-                                                                       );
+            amplifySpatialGdownTemporalIdeal(vid, eulerianVid,
+                                             outDir, _eulerian_alpha, _eulerian_pyrLevel,
+                                             _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
+                                             _eulerian_frameRate, _eulerian_chromaMagnifier);
+            int eulerianLen = (int)eulerianVid.size();
             
-            /*-----------------------------------turn M-7 (1) frames to signals-----------------------------------*/
+            /*---------------------------------turn eulerianLen (1) frames to signals-----------------------------------*/
             vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
-            for (int i = 0, sz = (int)tmp.size(); i < sz - _eulerianTemporalFilterKernel_size/2; ++i)
+            for (int i = 0; i < eulerianLen; ++i)
                 temporal_mean.push_back(tmp[i]);
-            isCalcMode = false;
  
             /*-----------------------------------keep last 15 frames (0)-----------------------------------*/
             // need to improve
             vector<Mat> newVid;
-            for (int i = len-_eulerianTemporalFilterKernel_size; i < len; ++i)
+            int startPos = len;
+            if (eulerianLen != len)
+                startPos -= _eulerianTemporalFilterKernel_size;
+            for (int i = startPos; i < len; ++i)
                 newVid.push_back(vid[i]);
             vid.clear();
             vid = newVid;
             
             /*-----------------------------------write frames to file-----------------------------------*/
-            for (int i = isCalcMode ? 0:15, sz = (int)eulerianVid.size(); i < sz; ++i) {
-                eulerianVid[i].convertTo(eulerianVid[i], CV_8UC3);
-                vidOut << eulerianVid[i];
+            for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
+                printf("%d\n", i);
+                printf("rows = %d, cols = %d, types = %d\n",
+                       eulerianVid[i].rows, eulerianVid[i].cols, eulerianVid[i].type());
+//                if (i < 20) continue;
+                tmp_eulerianVid = eulerianVid[i].clone();
+                tmp_eulerianVid.convertTo(tmp_eulerianVid2, CV_8UC3);
+                vidOut << tmp_eulerianVid2;
             }
+            isCalcMode = false;
         }
         vidOut.release();
         
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         printf("temporal_mean:\n");
-        for (int i = 0, sz = temporal_mean.size(); i < sz; ++i)
+        for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
             printf("%lf, ", temporal_mean[i]);
         printf("\n");
         

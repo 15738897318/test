@@ -12,17 +12,19 @@
 #include <string>
 #include <vector>
 #include "config.h"
-#include "build_Gdown_stack.h"
 #include "matlab.h"
+#include "build_Gdown_stack.h"
+#include "ideal_bandpassing.h"
+#include "filter_bandpassing.h"
 
 
 namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
-	vector<Mat> amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, String outDir,
-                                                 double alpha, int level,
-                                                 double freqBandLowEnd, double freqBandHighEnd,
-                                                 double samplingRate, double chromAttenuation);
+    void amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, vector<Mat> &ans,
+                                          String outDir, double alpha, int level,
+                                          double freqBandLowEnd, double freqBandHighEnd,
+                                          double samplingRate, double chromAttenuation);
 }
 
 #endif /* defined(__MisfitHeartRate__eulerian__) */
