@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OHRAppDelegate : UIResponder <UIApplicationDelegate>
+@interface MHRAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -18,5 +18,6 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (NSDictionary*)getPlistSkinDict;
 
 @end

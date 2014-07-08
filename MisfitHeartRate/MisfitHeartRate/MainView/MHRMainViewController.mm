@@ -33,7 +33,8 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UISwitch *cameraSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *faceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fingerLabel;
 
 @end
 
@@ -60,7 +61,6 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test.mp4"];
     NSLog(@"filePath = %@", filePath);
@@ -72,12 +72,9 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
    
     _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     _videoCamera.delegate = self;
-//    _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
     _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
     _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-//    _videoCamera.imageWidth = 256;
-//    _videoCamera.imageHeight = 256;
     _videoCamera.defaultFPS = _frameRate;
     _videoCamera.rotateVideo = YES;
     _videoCamera.grayscaleMode = NO;
@@ -86,6 +83,7 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
     isCapturing = NO;
     cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
     
+    [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
 //    [self startButtonDidTap:self];
 }
 
@@ -104,7 +102,8 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 }
 
 
-- (IBAction)startButtonDidTap:(id)sender {
+- (IBAction)startButtonDidTap:(id)sender
+{
 //    test_ideal_bandpassing();
 //    testMathFunctions();
 //    test_fft();
@@ -132,38 +131,69 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
     isCapturing = YES;
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
-    _statusLabel.text = @"Capturing....";
+    _faceLabel.text = @"Capturing....";
 
-//     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//    run_algorithms([resourcePath UTF8String], "test0.mp4", [outputPath UTF8String]);
+     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
 //    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
 }
 
 
-- (IBAction)stopButtonDidTap:(id)sender {
+- (IBAction)stopButtonDidTap:(id)sender
+{
     if (isCapturing)
     {
         isCapturing = NO;
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
-//        [_videoCamera stop];
         _videoWriter.release();
-        _statusLabel.text = @"Calculating....";
 //        hrResult result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-//        _statusLabel.text = [NSString stringWithFormat:@"%f, %f", result.autocorr, result.pda];
+//        _faceLabel.text = [NSString stringWithFormat:@"%f, %f", result.autocorr, result.pda];
     }
 }
 
 
-- (IBAction)switchCamera:(id)sender {
+- (IBAction)switchCamera:(id)sender
+{
     if (_cameraSwitch.isOn)
     {
+        // front camera - face capturing
+        [MHRUtilities setTorchModeOn:NO];
+        _faceLabel.text = @"Make sure your face fitted in the Aqua rectangle!";
+        _fingerLabel.text = @"";
+        [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
+        [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+        [_videoCamera start];
     }
     else
     {
+        // back camera - finger capturing
+        [MHRUtilities setTorchModeOn:YES];
+        _faceLabel.text = @"";
+        _fingerLabel.text = @"Completely cover the back-camera and the flash with your finger";
+        [self drawCameraCaptureRect:@"MHRWhiteColor"];
+        [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+//        [_videoCamera start];
     }
+}
+
+
+- (void)drawCameraCaptureRect:(NSString *)colorKey
+{
+    int x0 = self.imageView.frame.origin.x;
+    int y0 = self.imageView.frame.origin.y;
+    int x1 = x0 + self.imageView.frame.size.width;
+    int y1 = y0 + self.imageView.frame.size.height;
+    int dx = (CAMERA_HEIGHT - IMAGE_HEIGHT)/2;
+    int dy = (CAMERA_WIDTH - IMAGE_WIDTH)/2;
+    // horizontal lines
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy, IMAGE_WIDTH, 5) pListKey:colorKey]];
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y1 - dy, IMAGE_WIDTH, 5) pListKey:colorKey]];
+    // vertical lines
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy, 5, IMAGE_HEIGHT) pListKey:colorKey]];
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x1 - dx, y0 + dy, 5, IMAGE_HEIGHT+5) pListKey:colorKey]];
 }
 
 
@@ -171,12 +201,6 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 
 - (void)processImage:(Mat &)image
 {
-    if (isCapturing)
-    {
-        printf("image size = (%d, %d)\n", image.rows, image.cols);
-        Mat new_image = image.clone();
-        frameToFile(new_image, [[_outPath stringByAppendingString:@"test_frame_frome_camera_before_resize.jpg"] UTF8String]);
-    }
     if (isCapturing && _videoWriter.isOpened())
     {
         Mat new_image = image(cropArea);
@@ -185,16 +209,6 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
         _videoWriter << new_image;
 //        printf("image after resize = (%d, %d)\n", new_image.rows, new_image.cols);
     }
-    
-    // invert image
-//    bitwise_not(image_copy, image_copy);
-//    cvtColor(image_copy, image, CV_BGR2BGRA);
-    
-//    NSLog(@"channels = %i", image.channels());
-//    for (int i = 0; i < image.rows; ++i) {
-//        for (int j = 0; j < image.cols; ++j)
-//            NSLog(@"p(%i, %i) = %i, %i, %i, %i", i, j, image.at<Vec3b>(i, j)[0], image.at<Vec3b>(i, j)[1], image.at<Vec3b>(i, j)[2], image.at<Vec3b>(i, j)[3]);
-//    }
 }
 
 

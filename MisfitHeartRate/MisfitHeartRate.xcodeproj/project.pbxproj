@@ -12,6 +12,9 @@
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
+		DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */; };
+		DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */; };
+		DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCADC18C196BA7D200AFCDE5 /* MHRResultViewController.xib */; };
 		DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE523E196579BC00A8AFB6 /* matrix.cpp */; };
 		DCAE524319657AF300A8AFB6 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
 		DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
@@ -78,6 +81,10 @@
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
 		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
 		DCA50B8C1964179200F99D33 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = frames2signal.h; path = HeartRateCal/frames2signal.h; sourceTree = "<group>"; };
+		DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MisfitHeartRate-Skin.plist"; sourceTree = "<group>"; };
+		DCADC18A196BA7D200AFCDE5 /* MHRResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRResultViewController.h; path = MisfitHeartRate/ResultView/MHRResultViewController.h; sourceTree = SOURCE_ROOT; };
+		DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRResultViewController.m; path = MisfitHeartRate/ResultView/MHRResultViewController.m; sourceTree = SOURCE_ROOT; };
+		DCADC18C196BA7D200AFCDE5 /* MHRResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRResultViewController.xib; path = MisfitHeartRate/ResultView/MHRResultViewController.xib; sourceTree = SOURCE_ROOT; };
 		DCAE523E196579BC00A8AFB6 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		DCAE523F196579BC00A8AFB6 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
 		DCAE524119657AF300A8AFB6 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = image/image.cpp; sourceTree = "<group>"; };
@@ -171,6 +178,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCADC189196BA7A700AFCDE5 /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				DCADC18A196BA7D200AFCDE5 /* MHRResultViewController.h */,
+				DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */,
+				DCADC18C196BA7D200AFCDE5 /* MHRResultViewController.xib */,
+			);
+			name = ResultView;
+			path = algorithms;
+			sourceTree = "<group>";
+		};
 		DCAE6B9D195A789800B9FE9F /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +310,7 @@
 				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCBDEA1D196124D3005F6298 /* Utilities */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
+				DCADC189196BA7A700AFCDE5 /* ResultView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
 				DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */,
 				DCB55F2D1957CB3B0095A98E /* Images.xcassets */,
@@ -306,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB55F201957CB3B0095A98E /* MisfitHeartRate-Info.plist */,
+				DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */,
 				DCB55F211957CB3B0095A98E /* InfoPlist.strings */,
 				DCB55F241957CB3B0095A98E /* main.m */,
 				DCB55F261957CB3B0095A98E /* MisfitHeartRate-Prefix.pch */,
@@ -334,8 +354,8 @@
 		DCB55F4B1957CBB80095A98E /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */,
 				DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */,
+				DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */,
 				DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */,
 			);
 			name = MainView;
@@ -442,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */,
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
@@ -450,6 +471,7 @@
 				DCC56C7E1962A927009122FB /* test.jpg in Resources */,
 				DCB55F731957E0EF0095A98E /* test.avi in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
+				DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */,
 				DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */,
 				DCB55F671957CDCD0095A98E /* test.mp4 in Resources */,
 			);
@@ -475,6 +497,7 @@
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
 				DCB5ACBA196B988300DF758D /* eulerian_old.cpp in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
+				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
 				12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,

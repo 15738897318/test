@@ -9,11 +9,18 @@
 #import "MHRAppDelegate.hpp"
 #import "MHRMainViewController.hpp"
 
-@implementation OHRAppDelegate
+
+NSString *const kSkinPListFileName = @"MisfitHeartRate-Skin";
+
+
+@implementation MHRAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+NSDictionary *pListSkinDict;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,6 +32,18 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+- (NSDictionary*)getPlistSkinDict
+{
+    if (pListSkinDict == nil)
+    {
+        NSString *pList = [[NSBundle mainBundle] pathForResource:kSkinPListFileName ofType:@"plist"];
+        pListSkinDict = [[NSDictionary alloc] initWithContentsOfFile:pList];
+    }
+    return pListSkinDict;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
