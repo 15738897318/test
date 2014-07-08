@@ -30,6 +30,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @property (assign, nonatomic) VideoWriter videoWriter;
 @property (strong, nonatomic) NSString *outPath;
 @property (strong, nonatomic) NSString *outFile;
+@property (assign, nonatomic) NSInteger nFrames;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
@@ -48,6 +49,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @synthesize cameraSwitch = _cameraSwitch;
 @synthesize outPath = _outPath;
 @synthesize outFile = _outFile;
+@synthesize nFrames = _nFrames;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -132,6 +134,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     isCapturing = YES;
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
+    _nFrames = 0;
     
 //     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //    run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
@@ -147,8 +150,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
         [self drawCameraCaptureRect:@"MHRWhiteColor"];
-        _videoWriter.release();
         [_videoCamera stop];
+        _videoWriter.release();
         
         __block hrResult result(-1, -1);
         if (!_cameraSwitch.isOn)
@@ -158,9 +161,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _faceLabel.text = @"Processing....";
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-            result = run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
-//          result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+            printf("nFrames = %d\n", _nFrames);
+            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+//              NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+//              result = run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
 //          result = run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // show result
@@ -235,8 +239,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (void)processImage:(Mat &)image
 {
-    if (isCapturing && _videoWriter.isOpened())
+    if (isCapturing && (&_videoWriter != nullptr) && _videoWriter.isOpened())
     {
+        ++_nFrames;
         Mat new_image = image(cropArea);
         frameToFile(new_image, [[_outPath stringByAppendingString:@"test_frame_frome_camera.jpg"] UTF8String]);
         cvtColor(new_image, new_image, CV_BGRA2BGR);

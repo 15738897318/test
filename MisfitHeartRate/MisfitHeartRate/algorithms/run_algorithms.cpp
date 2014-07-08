@@ -77,7 +77,6 @@ namespace MHR {
                 break;
             
             printf("load block: %d\n", ++c);
-            if (c > 1) break;
             
             /*-----------------------------------run_eulerian(): M frames (1)-----------------------------------*/
             amplifySpatialGdownTemporalIdeal(vid, eulerianVid,
@@ -106,10 +105,6 @@ namespace MHR {
             
             /*-----------------------------------write frames to file-----------------------------------*/
             for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
-                printf("%d\n", i);
-                printf("rows = %d, cols = %d, types = %d\n",
-                       eulerianVid[i].rows, eulerianVid[i].cols, eulerianVid[i].type());
-//                if (i < 20) continue;
                 tmp_eulerianVid = eulerianVid[i].clone();
                 tmp_eulerianVid.convertTo(tmp_eulerianVid2, CV_8UC3);
                 vidOut << tmp_eulerianVid2;
