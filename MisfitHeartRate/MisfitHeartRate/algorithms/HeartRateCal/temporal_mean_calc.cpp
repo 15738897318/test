@@ -15,6 +15,8 @@ namespace MHR {
                                       int colour_channel, String colourspace,
                                       double &lower_range, double &upper_range, bool isCalcMode)
     {
+        clock_t t1 = clock();
+        
         String conversion_method = frames2signalConversionMethod;
         
         // Block 1 ==== Load the video & convert it to the desired colour-space
@@ -62,6 +64,9 @@ namespace MHR {
 			// Put the frame into the video stream
             monoframes.push_back(tmp_monoframe);
         }
+        
+        clock_t t2 = clock();
+        printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
         
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal

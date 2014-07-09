@@ -126,12 +126,18 @@ namespace MHR {
     
     //filter function for frames2signal function
     vector<double> low_pass_filter(vector<double> arr){
+        clock_t t1 = clock();
+        
         Mat src = vectorToMat(arr);
         Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
         Mat dst;
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
         vector<double> ans = matToVector1D(dst);
         for(int i=0; i<7; ++i) if(!ans.empty()) ans.pop_back();
+        
+        clock_t t2 = clock();
+        printf("low_pass_filter() runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
+        
         return ans;
     }
 }

@@ -12,6 +12,8 @@
 #include <iostream>
 #include <vector>
 #include "matlab.h"
+#include "ideal_bandpassing.h"
+#include "image.h"
 
 using namespace std;
 
@@ -27,6 +29,8 @@ namespace MHR {
     void testMathFunctions();
     
     void test_ideal_bandpassing();
+    
+    void test_rgb2ntsc();
 }
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */

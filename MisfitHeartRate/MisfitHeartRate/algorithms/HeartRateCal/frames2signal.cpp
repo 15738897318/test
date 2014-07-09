@@ -15,6 +15,8 @@ namespace MHR {
                                  double &lower_range, double &upper_range, bool isCalcMode,
                                  vector<Mat>& debug_monoframes)
     {
+        clock_t t1 = clock();
+        
         //=== Block 1. Convert the frame stream into a 1-D signal
         
         vector<double> temporal_mean;
@@ -119,6 +121,9 @@ namespace MHR {
             }
             
         }// end of mode-balance
+        
+        clock_t t2 = clock();
+        printf("frames2signal() - Block 1 runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
         
         //=== Block 2. Low-pass-filter the signal stream to remove unwanted noises
         vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);

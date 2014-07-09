@@ -55,25 +55,12 @@ namespace MHR {
             frame = vid[i];
             frame.convertTo(rgbframe, CV_64FC3);
             
-            printf("build_Gdown_Stack: %d --> %d: before rgb2ntsc()\n", i, endIndex);
-            clock_t t1 = clock();
             rgb2ntsc(rgbframe, frame);
-            double timeRun = ((float)clock() - (float)t1)/CLOCKS_PER_SEC;
-            printf("build_Gdown_Stack: %d --> %d: after rgb2ntsc(), runTime = %lf\n", i, endIndex, timeRun);
             
+            clock_t t1 = clock();
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);
-            
-            
-            ////////////////////////////////////////////////////////////////////////////////////
-            t1 = clock();
-            rgb2tsl(rgbframe, frame);
-            timeRun = ((float)clock() - (float)t1)/CLOCKS_PER_SEC;
-            printf("rgb2tsl() runTime = %lf\n", timeRun);
-            ////////////////////////////////////////////////////////////////////////////////////
-
-            
-            printf("build_Gdown_Stack: %d --> %d: after blurDnClr()\n", i, endIndex);
+            printf("build_Gdown_Stack: %d --> %d: blurDnClr() runtime = %lf\n", i, endIndex, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
             
             // The kth element in the stack is saved
             // Note that this stack is actually just a SINGLE level of the pyramid

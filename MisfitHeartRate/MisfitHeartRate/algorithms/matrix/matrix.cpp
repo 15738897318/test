@@ -52,7 +52,7 @@ namespace MHR {
     bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames)
     {
         Mat frame;
-        int c = dst.size(), old_c = c;
+        int c = (int)dst.size(), old_c = c;
         while(nFrames == -1 || c++ < nFrames) {
             src >> frame;
             if (frame.empty())
