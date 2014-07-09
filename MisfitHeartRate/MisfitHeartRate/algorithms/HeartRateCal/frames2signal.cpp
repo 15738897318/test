@@ -125,8 +125,17 @@ namespace MHR {
         clock_t t2 = clock();
         printf("frames2signal() - Block 1 runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
         
+        if (DEBUG_MODE) {
+            printf("temporal_mean_before_low_pass_filter:\n");
+            for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
+                printf("%lf, ", temporal_mean[i]);
+            printf("\n");
+        }
+        
+        return temporal_mean;
+        
         //=== Block 2. Low-pass-filter the signal stream to remove unwanted noises
-        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
-        return temporal_mean_filt;
+//        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
+//        return temporal_mean_filt;
     }
 }
