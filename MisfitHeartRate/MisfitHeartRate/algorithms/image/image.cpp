@@ -139,36 +139,16 @@ namespace MHR {
     // ref: http://en.wikipedia.org/wiki/YIQ
     //      http://www.mathworks.com/help/images/ref/rgb2ntsc.html
     void rgb2ntsc(const Mat& rgbFrame, Mat &dst) {
-        /*double baseArray[9] = {
-            0.299, 0.587, 0.114,
-            0.595716, -0.274453, -0.321263,
-            0.211456, -0.522591, 0.311135,
-        };*/
-//        Mat base = arrayToMat(baseArray, 3, 3);
-//        mulAndClip(rgbFrame, dst, rgb2ntsc_baseMat, 0, 255);
         rgbFrame.convertTo(dst, CV_64FC3);
         int nRow = dst.rows, nCol = dst.cols;
         int nChannel = _number_of_channels;
-        double maxChannelValue[_number_of_channels] = {0.0000001};
-        // mutiply and find max value in each channel
         Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
         for (int i = 0; i < nRow; ++i)
             for (int j = 0; j < nCol; ++j) {
-//                tmp = base * Mat(dst.at<Vec3d>(i, j));
                 for (int channel = 0; channel < nChannel; ++channel)
                     tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
-                tmp = rgb2ntsc_baseMat * tmp;                       // slow down program
-                for (int channel = 0; channel < nChannel; ++channel)
-                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
+                tmp = rgb2ntsc_baseMat * tmp;    // slow down the program
                 dst.at<Vec3d>(i, j) = Vec3d(tmp);
-            }
-        // clip
-        for (int channel = 0; channel < nChannel; ++channel)
-            maxChannelValue[channel] = 255/maxChannelValue[channel];
-        for (int i = 0; i < nRow; ++i)
-            for (int j = 0; j < nCol; ++j) {
-                for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] *= maxChannelValue[channel];
             }
     }
 
@@ -203,7 +183,7 @@ namespace MHR {
             }
         // clip
         for (int channel = 0; channel < nChannel; ++channel)
-            maxChannelValue[channel] = 255/maxChannelValue[channel];
+            maxChannelValue[channel] = 255.0/maxChannelValue[channel];
         for (int i = 0; i < nRow; ++i)
             for (int j = 0; j < nCol; ++j) {
                 for (int channel = 0; channel < nChannel; ++channel)
