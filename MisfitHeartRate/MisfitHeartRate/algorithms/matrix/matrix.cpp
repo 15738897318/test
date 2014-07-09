@@ -62,34 +62,6 @@ namespace MHR {
         return false;
     }
     
-    
-	// sum all channels in one pixcel
-	// default output type is double - CV_64F
-	Mat sumChannels(const Mat &src)
-	{
-		int nRow = src.rows, nCol = src.cols;
-		int nChannel = src.channels();
-		Mat sum = Mat::zeros(nRow, nCol, CV_64F);
-		for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-				for (int k = 0; k < nChannel; ++k)
-					sum.at<double>(i, j) += src.at<Vec3d>(i, j)[k];
-		return sum;
-	}
-    
-    
-	// create a new Mat with only one channel from old Mat
-	// default output type is double - CV_64F
-	Mat cloneWithChannel(const Mat &src, int channel)
-	{
-		int nRow = src.rows, nCol = src.cols;
-		Mat ans = Mat::zeros(nRow, nCol, CV_64F);
-		for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-				ans.at<double>(i, j) = src.at<Vec3d>(i, j)[channel];
-		return ans;
-	}
-	
 	
 	// atan2 of 2 Mats which have same size
 	// default intput/output type is double - CV_64F
