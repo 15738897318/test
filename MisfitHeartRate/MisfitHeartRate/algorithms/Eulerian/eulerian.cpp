@@ -23,7 +23,7 @@ namespace MHR {
 		// Extract video info
 		int vidHeight = vid[0].rows;
 		int vidWidth = vid[1].cols;
-//		int nChannels = _number_of_channels;		// should get from vid?
+		int nChannel = _number_of_channels;		// should get from vid?
 		int frameRate = _frameRate;                 // Can not get it from vidIn!!!! :((
 		int len = (int)vid.size();
         
@@ -64,14 +64,24 @@ namespace MHR {
 //        filter_bandpassing(GdownStack, filteredStack);
 		printf("Finished\n");
         
+        Mat base_B = (Mat_<double>(3, 3) <<
+                      alpha, 0, 0,
+                      0, alpha*chromAttenuation, 0,
+                      0, 0, alpha*chromAttenuation);
+        Mat base_C = (ntsc2rgb_baseMat * base_B) * rgb2ntsc_baseMat;
+        
 		// amplify
-		for (int i = 0; i < filteredStack.size.p[0]; ++i)
-			for (int j = 0; j < filteredStack.size.p[1]; ++j)
-				for (int k = 0; k < filteredStack.size.p[2]; ++k) {
-					filteredStack.at<Vec3d>(i, j, k)[0] *= alpha;
-					filteredStack.at<Vec3d>(i, j, k)[1] *= alpha*chromAttenuation;
-					filteredStack.at<Vec3d>(i, j, k)[2] *= alpha*chromAttenuation;
-				}
+        Mat tmp = Mat::zeros(nChannel, filteredStack.size.p[2], CV_64F);
+		for (int t = 0; t < filteredStack.size.p[0]; ++t)
+            for (int i = 0; i < filteredStack.size.p[1]; ++i) {
+                for (int j = 0; j < filteredStack.size.p[2]; ++j)
+                    for (int channel = 0; channel < nChannel; ++channel)
+                        tmp.at<double>(channel, j) = filteredStack.at<Vec3d>(t, i, j)[channel];
+                tmp = base_C * tmp;
+                for (int j = 0; j < filteredStack.size.p[2]; ++j)
+                    for (int channel = 0; channel < nChannel; ++channel)
+                        filteredStack.at<Vec3d>(t, i, j)[channel] = tmp.at<double>(channel, j);
+            }
         //////////////////////////////////////////
         Mat tmpFilteredStack = Mat::zeros(GdownStack.size.p[1], GdownStack.size.p[2], CV_64FC3);
         for (int i = 0; i < filteredStack.size.p[1]; ++i)
@@ -111,11 +121,12 @@ namespace MHR {
             vid[i].convertTo(rgbframe, CV_64FC3);
             
 			// Add the filtered frame to the original frame
-            ntsc2rgb(filtered, rgbFiltered);
-            filtered = rgbFiltered + rgbframe;
+//            ntsc2rgb(filtered, rgbFiltered);
+//            filtered = rgbFiltered + rgbframe;
+            filtered = filtered + rgbframe;
             
             if (i == 0) {
-                frameToFile(rgbFiltered, outDir + "test_filtered_before_Add.jpg");
+//                frameToFile(rgbFiltered, outDir + "test_filtered_before_Add.jpg");
                 frameToFile(filtered, outDir + "test_processed_frame.jpg");
             }
             

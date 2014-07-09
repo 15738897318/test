@@ -18,15 +18,11 @@ namespace MHR {
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
 	Mat build_Gdown_Stack(const vector<Mat>& vid, int startIndex, int endIndex, int level) {
-		// Extract video info
-        //		int vidHeight = vid[0].rows;
-        //		int vidWidth = vid[0].cols;
-        //		int nChannels = vid[0].channels(); // 3 ????
-        
         // firstFrame
         Mat frame, rgbframe;
-        vid[0].convertTo(rgbframe, CV_64FC3);
-        rgb2ntsc(rgbframe, frame);
+//        vid[0].convertTo(rgbframe, CV_64FC3);
+//        rgb2ntsc(rgbframe, frame);
+        vid[0].convertTo(frame, CV_64FC3);
         
         frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
         
