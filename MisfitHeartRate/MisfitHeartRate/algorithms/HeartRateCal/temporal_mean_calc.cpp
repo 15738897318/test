@@ -62,7 +62,7 @@ namespace MHR {
             corrDn(monoframe, tmp_monoframe, filt, 4, 4);
 			
 			// Put the frame into the video stream
-            monoframes.push_back(tmp_monoframe);
+            monoframes.push_back(tmp_monoframe.clone());
         }
         
         clock_t t2 = clock();
