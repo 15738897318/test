@@ -89,6 +89,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     
     [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
 //    [self startButtonDidTap:self];
+    
+//    test_ideal_bandpassing();
+//    testMathFunctions();
+//    test_fft();
+    test_rgb2ntsc();
 }
 
 
@@ -108,11 +113,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (IBAction)startButtonDidTap:(id)sender
 {
-//    test_ideal_bandpassing();
-//    testMathFunctions();
-//    test_fft();
-//    return;
-
     // create new directory for this session
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     _outPath = [paths objectAtIndex:0];
@@ -161,10 +161,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _faceLabel.text = @"Processing....";
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            printf("nFrames = %d\n", _nFrames);
-            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-//              NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//              result = run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
+            printf("nFrames = %d\n", (int)_nFrames);
+//            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+            result = run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
 //          result = run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // show result

@@ -16,7 +16,7 @@ using namespace cv;
 namespace MHR {
     const double NaN = -1e9;
     
-    const int _framesBlock_size = 128;
+    const int _framesBlock_size = 64;
 
     /*--------------for run_eulerian()--------------*/
     const double _eulerian_alpha = 50;          // Eulerian magnifier, standard < 50

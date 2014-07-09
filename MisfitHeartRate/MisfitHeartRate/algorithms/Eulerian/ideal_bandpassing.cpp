@@ -25,12 +25,11 @@ namespace MHR {
         int ind1 = 2*f1, ind2 = 2*f2 - 1;
         
         // FFT
-        Mat tmp = Mat::zeros(nTime, nRow, CV_32F), dft_out;
+        Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
         for (int k = 0; k < nCol; ++k) {
             for (int i = 0; i < nTime; ++i)
                 for (int j = 0; j < nRow; ++j)
-                    tmp.at<float>(i, j) = dst.at<float>(i, j, k);
-            transpose(tmp, dft_out);
+                    dft_out.at<float>(j, i) = dst.at<float>(i, j, k);
             dft(dft_out, dft_out, DFT_ROWS);
             // masking
             for (int j = 0; j < nRow; ++j) {
@@ -41,12 +40,23 @@ namespace MHR {
             }
             // output
             dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT);
-            transpose(dft_out, tmp);
             for (int i = 0; i < nTime; ++i)
                 for (int j = 0; j < nRow; ++j)
-                    dst.at<float>(i, j, k) = tmp.at<float>(i, j);
+                    dst.at<float>(i, j, k) = dft_out.at<float>(j, i);
         }
         
+//        printf("ind1 = %i, ind2 = %i\n", ind1, ind2);
+//        printf("dft_out: rows = %i, cols = %i\n", dft_out.rows, dft_out.cols);
+//        for (int i = 0; i < nTime; ++i) {
+//            printf("%i --->     ", i);
+//            for (int j = 0; j < nRow; ++j)
+//                printf("%lf, ", dft_out.at<float>(j, i));
+//            printf("\n");
+//        }
+//        printf("\n\n\n\n");
+        
+        
+        Mat tmp;
         dst.convertTo(tmp, CV_64F);
         dst = tmp.clone();
     }

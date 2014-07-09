@@ -60,8 +60,8 @@ namespace MHR {
 		// Temporal filtering
 		printf("Temporal filtering...\n");
         Mat filteredStack;
-//        ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
-        filter_bandpassing(GdownStack, filteredStack);
+        ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
+//        filter_bandpassing(GdownStack, filteredStack);
 		printf("Finished\n");
         
 		// amplify
@@ -87,7 +87,7 @@ namespace MHR {
         
 		// output video
 		// Convert each frame from the filtered stream to movie frame
-        Mat frame, rgbframe, filtered;
+        Mat rgbframe, filtered, rgbFiltered;
         Mat tmp_filtered = Mat::zeros(filteredStack.size.p[1], filteredStack.size.p[2], CV_64FC3);
 		for (int i = startIndex, k = 0; i <= endIndex && k < filteredStack.size.p[0]; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
@@ -105,34 +105,24 @@ namespace MHR {
 			resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
             
             if (i == 0)
-                frameToFile(filtered, outDir + "test_filtered_afterResize.jpg");
+                frameToFile(filtered, outDir + "test_filtered_after_Resize.jpg");
             
-			// Extract the ith frame in the video stream
-            frame = vid[i].clone();
-			// Convert the extracted frame to RGB (double-precision) image
-            frame.convertTo(rgbframe, CV_64FC3);
-            
-			// Convert the image from RGB colour-space to NTSC colour-space
-            rgb2ntsc(rgbframe, frame);
+			// Convert the ith frame in the video stream to RGB (double-precision) image
+            vid[i].convertTo(rgbframe, CV_64FC3);
             
 			// Add the filtered frame to the original frame
-			filtered = filtered + frame;
+            ntsc2rgb(filtered, rgbFiltered);
+            filtered = rgbFiltered + rgbframe;
             
-            if (i == 0)
-                frameToFile(filtered, outDir + "test_filtered_afterAdd.jpg");
-            
-			// Convert the colour-space from NTSC back to RGB
-			ntsc2rgb(filtered, frame);
-            
-            if (i == 0)
-                frameToFile(filtered, outDir + "test_filtered_ntsc2rgb.jpg");
+            if (i == 0) {
+                frameToFile(rgbFiltered, outDir + "test_filtered_before_Add.jpg");
+                frameToFile(filtered, outDir + "test_processed_frame.jpg");
+            }
             
             printf("Convert each frame from the filtered stream to movie frame: %d --> %d\n", i, endIndex);
-            
-            // test frame
-            if (i == 0)
-                frameToFile(frame, outDir + "test_processed_frame_out.jpg");
-            ans.push_back(frame);
+            ans.push_back(filtered.clone());
+//            vid[i] = filtered.clone();
+//            vid[i].Mat::~Mat();
 		}
 		printf("Finished\n");
 
