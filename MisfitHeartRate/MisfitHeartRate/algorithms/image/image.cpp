@@ -70,23 +70,45 @@ namespace MHR {
 
 
 	// convert a RGB Mat to a TSL Mat
-	void rgb2tsl(const Mat& srcRGBmap, Mat &dst)
+    // rgbmap is a CV_64F Mat
+	void rgb2tsl(const Mat& rbgmap, Mat &dst)
 	{
-		int nRow = srcRGBmap.rows;
-		int nCol = srcRGBmap.cols;
-		Mat rbgmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
+//        clock_t t1 = clock();
+        
+		int nRow = rbgmap.rows;
+		int nCol = rbgmap.cols;
+        int nChannel = rbgmap.channels();
+//		Mat rbgmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
+        
+        Mat rgb_sumchannels = Mat::zeros(nRow, nCol, CV_64F);
+        Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F)};
+        for (int i = 0; i < nRow; ++i)
+			for (int j = 0; j < nCol; ++j)
+                for (int channel = 0; channel < nChannel; ++channel) {
+                    rgb_sumchannels.at<double>(i, j) += rbgmap.at<Vec3d>(i, j)[channel];
+                    rgb_channel[channel].at<double>(i, j) = rbgmap.at<Vec3d>(i, j)[channel];
+                }
+
+//        printf("rgb2tsl() - Block 0 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+//        t1 = clock();
 
 //        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
 //        r_primes(isnan(r_primes)) = -1/3;
 		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
-		divide(cloneWithChannel(rbgmap, 0), sumChannels(rbgmap), r_primes);
-		subtract(r_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), r_primes);
+		divide(rgb_channel[0], rgb_sumchannels, r_primes);
+		r_primes = r_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
+        
+//        printf("rgb2tsl() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+//        t1 = clock();
 
 //        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
 //        g_primes(isnan(g_primes)) = -1/3;
 		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
-		divide(cloneWithChannel(rbgmap, 1), sumChannels(rbgmap), g_primes);
-		subtract(g_primes, Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0)), g_primes);
+		divide(rgb_channel[1], rgb_sumchannels, g_primes);
+		g_primes = g_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
+        
+//        printf("rgb2tsl() - Block 2 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+//        t1 = clock();
 
 //        temp1 = zeros(size(g_primes));
 //        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
@@ -109,22 +131,33 @@ namespace MHR {
 				{
 					temp2.at<double>(i, j) = 0;
 				}
+        
+//        printf("rgb2tsl() - Block 3 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+//        t1 = clock();
 
         dst = Mat::zeros(nRow, nCol, CV_64FC3);
 //        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
 		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
 		multiply(tmp0, temp2, tmp0);
-		add(tmp0, temp1, tmp0);
+		tmp0 = tmp0 + temp1;
+        
+//        printf("rgb2tsl() - Block 4 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+//        t1 = clock();
+        
 //        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
 		Mat tmp1 = powMat(r_primes, 2);
-		add(tmp1, powMat(g_primes, 2), tmp1);
+		tmp1 = tmp1 + powMat(g_primes, 2);
 		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
 		pow(tmp1, 0.5, tmp1);
+        
+//        printf("rgb2tsl() - Block 5 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+//        t1 = clock();
+        
 //        tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
-		Mat tmp2 = add(multiply(cloneWithChannel(rbgmap, 0), 0.299),
-					   multiply(cloneWithChannel(rbgmap, 1), 0.587));
-		add(tmp2, multiply(cloneWithChannel(rbgmap, 2), 0.114), tmp2);
+		Mat tmp2 = add(multiply(rgb_channel[0], 0.299),
+					   multiply(rgb_channel[1], 0.587));
+		tmp2 = tmp2 + multiply(rgb_channel[2], 0.114);
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
 			{
@@ -132,6 +165,8 @@ namespace MHR {
 				dst.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
 				dst.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
 			}
+        
+//        printf("rgb2tsl() - Block 6 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 	}
 
 
