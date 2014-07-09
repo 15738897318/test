@@ -157,37 +157,22 @@ namespace MHR {
     // ref: http://en.wikipedia.org/wiki/YIQ
     //      http://www.mathworks.com/help/images/ref/ntsc2rgb.html
     void ntsc2rgb(const Mat& ntscFrame, Mat &dst)  {
-        //double baseArray[9] = {
-        //  1, 0.9563, 0.6210,
-        //  1, -0.2721, -0.6474,
-        //  1, -1.1070, 1.7046,
-        //};
-//        Mat base = arrayToMat(baseArray, 3, 3);
-//        mulAndClip(ntscFrame, dst, ntsc2rgb_baseMat, 0, 255);
-        
         ntscFrame.convertTo(dst, CV_64FC3);
         int nRow = dst.rows, nCol = dst.cols;
         int nChannel = _number_of_channels;
-        double maxChannelValue[_number_of_channels] = {0.0000001};
-        // mutiply and find max value in each channel
         Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
         for (int i = 0; i < nRow; ++i)
             for (int j = 0; j < nCol; ++j) {
-//                tmp = base * Mat(dst.at<Vec3d>(i, j));
                 for (int channel = 0; channel < nChannel; ++channel)
                     tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
                 tmp = ntsc2rgb_baseMat * tmp;
+                // find max channel value in a pixel
+                double max_channel = 1;
                 for (int channel = 0; channel < nChannel; ++channel)
-                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
-                dst.at<Vec3d>(i, j) = Vec3d(tmp);
-            }
-        // clip
-        for (int channel = 0; channel < nChannel; ++channel)
-            maxChannelValue[channel] = 255.0/maxChannelValue[channel];
-        for (int i = 0; i < nRow; ++i)
-            for (int j = 0; j < nCol; ++j) {
+                    max_channel = max(max_channel, tmp.at<double>(channel, 0));
+                // clip each pixel by max channel value of that pixel, if that max > 1
                 for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] *= maxChannelValue[channel];
+                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, 0) / max_channel;
             }
     }
 
