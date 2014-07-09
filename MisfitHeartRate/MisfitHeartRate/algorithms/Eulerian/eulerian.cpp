@@ -49,13 +49,6 @@ namespace MHR {
 		printf("Spatial filtering...\n");
 		Mat GdownStack = build_Gdown_Stack(vid, startIndex, endIndex, level);
 		printf("Finished\n");
-        //////////////////////////////////////////
-        Mat tmpGdownStack = Mat::zeros(GdownStack.size.p[1], GdownStack.size.p[2], CV_64FC3);
-        for (int i = 0; i < GdownStack.size.p[1]; ++i)
-            for (int j = 0; j < GdownStack.size.p[2]; ++j)
-                tmpGdownStack.at<Vec3d>(i, j) = GdownStack.at<Vec3d>(0, i, j);
-        frameToFile(tmpGdownStack, outDir + "test_GdownStack.jpg");
-        //////////////////////////////////////////
         
 		// Temporal filtering
 		printf("Temporal filtering...\n");
@@ -82,13 +75,6 @@ namespace MHR {
                     for (int channel = 0; channel < nChannel; ++channel)
                         filteredStack.at<Vec3d>(t, i, j)[channel] = tmp.at<double>(channel, j);
             }
-        //////////////////////////////////////////
-        Mat tmpFilteredStack = Mat::zeros(GdownStack.size.p[1], GdownStack.size.p[2], CV_64FC3);
-        for (int i = 0; i < filteredStack.size.p[1]; ++i)
-            for (int j = 0; j < filteredStack.size.p[2]; ++j)
-                tmpFilteredStack.at<Vec3d>(i, j) = filteredStack.at<Vec3d>(0, i, j);
-        frameToFile(tmpFilteredStack, outDir + "test_FilteredStack.jpg");
-        //////////////////////////////////////////
         
 		// =================
         
@@ -107,15 +93,8 @@ namespace MHR {
 				for (int y = 0; y < filteredStack.size.p[2]; ++y)
 					tmp_filtered.at<Vec3d>(x, y) = filteredStack.at<Vec3d>(k, x, y);
             
-            printf("filteredStack size = (%d, %d)\n", filteredStack.size.p[1], filteredStack.size.p[2]);
-            if (i == 0)
-                frameToFile(tmp_filtered, outDir + "test_filtered_beforeResize.jpg");
-            
 			// Format the image to the right size
 			resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
-            
-            if (i == 0)
-                frameToFile(filtered, outDir + "test_filtered_after_Resize.jpg");
             
 			// Convert the ith frame in the video stream to RGB (double-precision) image
             vid[i].convertTo(rgbframe, CV_64FC3);
@@ -125,19 +104,17 @@ namespace MHR {
 //            filtered = rgbFiltered + rgbframe;
             filtered = filtered + rgbframe;
             
-            if (i == 0) {
-//                frameToFile(rgbFiltered, outDir + "test_filtered_before_Add.jpg");
-                frameToFile(filtered, outDir + "test_processed_frame.jpg");
+            if (DEBUG_MODE) {
+                if (i == 0)
+                    frameToFile(filtered, outDir + "test_processed_frame.jpg");
+//                printf("Convert each frame from the filtered stream to movie frame: %d --> %d\n", i, endIndex);
             }
             
-            printf("Convert each frame from the filtered stream to movie frame: %d --> %d\n", i, endIndex);
             ans.push_back(filtered.clone());
 //            vid[i] = filtered.clone();
 //            vid[i].Mat::~Mat();
 		}
-		printf("Finished\n");
-
-        clock_t t2 = clock();
-        printf("amplifySpatialGdownTemporalIdeal() time = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
+        if (DEBUG_MODE)
+            printf("amplifySpatialGdownTemporalIdeal() time = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 	}
 }

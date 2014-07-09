@@ -12,8 +12,13 @@
 using namespace std;
 using namespace cv;
 
-
 namespace MHR {
+#ifdef DEBUG
+    const int DEBUG_MODE = 1;
+#else
+    const int DEBUG_MODE = 0;
+#endif
+    
     const double NaN = -1e9;
     
     const int _framesBlock_size = 64;
