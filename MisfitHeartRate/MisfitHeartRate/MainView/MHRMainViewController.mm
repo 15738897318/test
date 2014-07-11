@@ -32,6 +32,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @property (strong, nonatomic) NSString *outPath;
 @property (strong, nonatomic) NSString *outFile;
 @property (assign, nonatomic) NSInteger nFrames;
+@property (assign, nonatomic) NSInteger recordTime;
+@property (strong, nonatomic) NSTimer *recordTimer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UISwitch *cameraSwitch;
@@ -39,8 +41,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @property (weak, nonatomic) IBOutlet UILabel *fingerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fingerSwitchLabel;
 @property (weak, nonatomic) IBOutlet UILabel *faceSwitchLabel;
+@property (weak, nonatomic) IBOutlet UILabel *recordTimeLabel;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *startButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *stopButton;
+
 
 @end
 
@@ -53,6 +57,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @synthesize outPath = _outPath;
 @synthesize outFile = _outFile;
 @synthesize nFrames = _nFrames;
+@synthesize recordTime = _recordTime;
+@synthesize recordTimer = _recordTimer;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -150,10 +156,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _cameraSwitch.enabled = NO;
     _nFrames = 0;
     _faceLabel.text = @"Recording....";
-    
-//     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//    run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
-//    run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
+    _recordTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                    target:self
+                                                  selector:@selector(updateRecordTime:)
+                                                  userInfo:nil
+                                                   repeats:YES];
 }
 
 
@@ -167,6 +174,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self drawCameraCaptureRect:@"MHRWhiteColor"];
     [_videoCamera stop];
     _videoWriter.release();
+    [_recordTimer invalidate];
+    _recordTimer = nil;
+    _recordTimeLabel.text = @"0.00";
     
     __block hrResult result(-1, -1);
     if (!_cameraSwitch.isOn)
@@ -232,6 +242,13 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 }
 
 
+- (void)updateRecordTime:(id)sender
+{
+    ++_recordTime;
+    _recordTimeLabel.text = [NSString stringWithFormat:@"%.2f", (double)_recordTime];
+}
+
+
 - (void)drawCameraCaptureRect:(NSString *)colorKey
 {
     int x0 = self.imageView.frame.origin.x;
@@ -262,6 +279,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [_fingerSwitchLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
     [_faceSwitchLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
     [_cameraSwitch adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
+    [_recordTimeLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
     if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
     {
         _cameraSwitch.frameX -= 20;
