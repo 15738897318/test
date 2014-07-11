@@ -41,7 +41,6 @@ namespace MHR {
         Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
-            printf("temporal_mean_calc: index = %i\n", i);
             frame = vid[i].clone();
             if (colourspace == "hsv")
                 cvtColor(frame, frame, CV_RGB2HSV);
@@ -65,13 +64,11 @@ namespace MHR {
             monoframes.push_back(tmp_monoframe.clone());
         }
         
-        clock_t t2 = clock();
-        printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
+        printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-        vector<Mat> debug_monoframes;
         return frames2signal(monoframes, conversion_method, frameRate, cutoff_freq,
-                             lower_range, upper_range, isCalcMode, debug_monoframes);
+                             lower_range, upper_range, isCalcMode);
     }
 }

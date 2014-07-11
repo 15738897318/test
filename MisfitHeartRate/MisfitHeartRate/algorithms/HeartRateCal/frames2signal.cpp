@@ -12,8 +12,7 @@
 namespace MHR {
     vector<double> frames2signal(const vector<Mat>& monoframes, String conversion_method,
                                  double fr, double cutoff_freq,
-                                 double &lower_range, double &upper_range, bool isCalcMode,
-                                 vector<Mat>& debug_monoframes)
+                                 double &lower_range, double &upper_range, bool isCalcMode)
     {
         clock_t t1 = clock();
         
@@ -92,15 +91,13 @@ namespace MHR {
                 //convert the percentile range into pixel-value range
                 lower_range = prctile(arr, percentile_lower_range);
                 upper_range = prctile(arr, percentile_upper_range);
+                printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             }
-            
-            printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             
             //now calc the avg of each frame while inogre the values outside the range
             double size = height * width;
             
             //this is the debug vector<Mat>
-            debug_monoframes = vector<Mat>(monoframes);
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
                 int cnt = 0; //number of not-NaN-pixels
@@ -109,7 +106,6 @@ namespace MHR {
                         double val=monoframes[i].at<double>(x,y);
                         if(val<lower_range - 1e-9 || val>upper_range + 1e-9){
                             val=0;
-                            debug_monoframes[i].at<double>(x,y)=NaN; //set 0 for rejected pixels
                         }else ++cnt;
                         sum+=val;
                     }
@@ -122,15 +118,7 @@ namespace MHR {
             
         }// end of mode-balance
         
-        clock_t t2 = clock();
-        printf("frames2signal() - Block 1 runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
-        
-        if (DEBUG_MODE) {
-            printf("temporal_mean_before_low_pass_filter:\n");
-            for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
-                printf("%lf, ", temporal_mean[i]);
-            printf("\n");
-        }
+        printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return temporal_mean;
         
