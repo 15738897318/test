@@ -10,6 +10,7 @@
 #import "UIImageCVMatConverter.hpp"
 #import "matlab.h"
 
+const int IOS6_Y_DELTA = 60;
 const int CAMERA_WIDTH = 352;
 const int CAMERA_HEIGHT = 288;
 const int IMAGE_WIDTH = 256;
@@ -33,11 +34,13 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @property (assign, nonatomic) NSInteger nFrames;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UISwitch *cameraSwitch;
-@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 @property (weak, nonatomic) IBOutlet UILabel *faceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fingerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fingerSwitchLabel;
+@property (weak, nonatomic) IBOutlet UILabel *faceSwitchLabel;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *startButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 
 @end
 
@@ -79,6 +82,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
     _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
     _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+//    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
     _videoCamera.defaultFPS = _frameRate;
     _videoCamera.rotateVideo = YES;
     _videoCamera.grayscaleMode = NO;
@@ -87,7 +91,16 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     isCapturing = NO;
     cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
     
+    // add start and stop button
+    _startButton = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self action:@selector(startButtonDidTap:)];
+    _stopButton = [[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopButtonDidTap:)];
+    self.navigationItem.leftBarButtonItem = _startButton;
+    self.navigationItem.rightBarButtonItem = _stopButton;
+    // draw Aqua rectangle
     [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
+    // update Layout (iOS6 vs iOS7)
+    [self updateLayout];
+
 //    [self startButtonDidTap:self];
     
 //    test_ideal_bandpassing();
@@ -132,6 +145,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                       true);
     
     isCapturing = YES;
+//    self.navigationItem.leftBarButtonItem.enabled = NO;
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
     _nFrames = 0;
@@ -226,12 +240,32 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     int y1 = y0 + self.imageView.frame.size.height;
     int dx = (CAMERA_HEIGHT - IMAGE_HEIGHT)/2;
     int dy = (CAMERA_WIDTH - IMAGE_WIDTH)/2;
+    int yDelta = 0;
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+        yDelta = -IOS6_Y_DELTA;
+    }
+
     // horizontal lines
-    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy, IMAGE_WIDTH, 5) pListKey:colorKey]];
-    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y1 - dy, IMAGE_WIDTH, 5) pListKey:colorKey]];
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy + yDelta, IMAGE_WIDTH, 5) pListKey:colorKey]];
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y1 - dy + yDelta, IMAGE_WIDTH, 5) pListKey:colorKey]];
     // vertical lines
-    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy, 5, IMAGE_HEIGHT) pListKey:colorKey]];
-    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x1 - dx, y0 + dy, 5, IMAGE_HEIGHT+5) pListKey:colorKey]];
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy + yDelta, 5, IMAGE_HEIGHT) pListKey:colorKey]];
+    [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x1 - dx, y0 + dy + yDelta, 5, IMAGE_HEIGHT+5) pListKey:colorKey]];
+}
+
+
+- (void)updateLayout
+{
+    [_faceLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
+    [_fingerLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
+    [_fingerSwitchLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
+    [_faceSwitchLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
+    [_cameraSwitch adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+        _cameraSwitch.frameX -= 20;
+    }
 }
 
 
