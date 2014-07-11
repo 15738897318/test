@@ -17,7 +17,8 @@ namespace MHR {
 	// the second dimension is the y axis of the video
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
-	Mat build_Gdown_Stack(const vector<Mat>& vid, int startIndex, int endIndex, int level) {
+	void build_Gdown_Stack(const vector<Mat>& vid, Mat &GDownStack, int startIndex, int endIndex, int level) {
+        clock_t t1 = clock();
         // firstFrame
         Mat frame, rgbframe;
 //        vid[0].convertTo(rgbframe, CV_64FC3);
@@ -37,7 +38,7 @@ namespace MHR {
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
         int GdownSize[] = {endIndex - startIndex + 1, blurred.size.p[0], blurred.size.p[1]};
-		Mat GDownStack = Mat(3, GdownSize, CV_64FC3, cvScalar(0));
+		GDownStack = Mat(3, GdownSize, CV_64FC3, cvScalar(0));
         
         printf("GdownSize: (%d, %d, %d)\n", GDownStack.size.p[0], GDownStack.size.p[1], GDownStack.size.p[2]);
         
@@ -53,10 +54,8 @@ namespace MHR {
             
             rgb2ntsc(rgbframe, frame);
             
-            clock_t t1 = clock();
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);
-            printf("build_Gdown_Stack: %d --> %d: blurDnClr() runtime = %lf\n", i, endIndex, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
             
             // The kth element in the stack is saved
             // Note that this stack is actually just a SINGLE level of the pyramid
@@ -64,6 +63,7 @@ namespace MHR {
                 for (int j = 0; j < GDownStack.size.p[2]; ++j)
                     GDownStack.at<Vec3d>(k, i, j) = blurred.at<Vec3d>(i, j);
         }
-        return GDownStack;
+        
+        printf("build_Gdown_Stack() runtime = %lf\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 	}
 }

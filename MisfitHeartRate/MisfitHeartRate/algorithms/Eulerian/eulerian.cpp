@@ -47,7 +47,8 @@ namespace MHR {
 		// compute Gaussian blur stack
 		// This stack actually is just a single level of the pyramid
 		printf("Spatial filtering...\n");
-		Mat GdownStack = build_Gdown_Stack(vid, startIndex, endIndex, level);
+		Mat GdownStack;
+        build_Gdown_Stack(vid, GdownStack, startIndex, endIndex, level);
 		printf("Finished\n");
         
 		// Temporal filtering
