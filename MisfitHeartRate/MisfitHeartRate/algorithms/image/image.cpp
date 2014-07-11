@@ -173,52 +173,48 @@ namespace MHR {
     // convert a RGB Mat to a NTSC Mat
     // ref: http://en.wikipedia.org/wiki/YIQ
     //      http://www.mathworks.com/help/images/ref/rgb2ntsc.html
-    void rgb2ntsc(const Mat& rgbFrame, Mat &dst) {
-        clock_t t1 = clock();
-        
-        rgbFrame.convertTo(dst, CV_64FC3);
-        int nRow = dst.rows, nCol = dst.cols;
-        int nChannel = _number_of_channels;
-        
-        Mat tmp = Mat::zeros(3, nCol, CV_64F);
-        for (int i = 0; i < nRow; ++i) {
-            for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel)
-                    tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
-            tmp = rgb2ntsc_baseMat * tmp;    // slow down the program
-            for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
-        }
-        
-        printf("rgb2ntsc() runtime = %lf\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
-    }
+//    void rgb2ntsc(const Mat& rgbFrame, Mat &dst) {
+//        rgbFrame.convertTo(dst, CV_64FC3);
+//        int nRow = dst.rows, nCol = dst.cols;
+//        int nChannel = _number_of_channels;
+//        
+//        Mat tmp = Mat::zeros(3, nCol, CV_64F);
+//        for (int i = 0; i < nRow; ++i) {
+//            for (int j = 0; j < nCol; ++j)
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
+//            tmp = rgb2ntsc_baseMat * tmp;    // slow down the program
+//            for (int j = 0; j < nCol; ++j)
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
+//        }
+//    }
 
 
     // convert a RGB Mat to a NTSC Mat
     // ref: http://en.wikipedia.org/wiki/YIQ
     //      http://www.mathworks.com/help/images/ref/ntsc2rgb.html
-    void ntsc2rgb(const Mat& ntscFrame, Mat &dst)  {
-        ntscFrame.convertTo(dst, CV_64FC3);
-        int nRow = dst.rows, nCol = dst.cols;
-        int nChannel = _number_of_channels;
-        Mat tmp = Mat::zeros(3, nCol, CV_64F);
-        for (int i = 0; i < nRow; ++i) {
-            for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel)
-                    tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
-            tmp = ntsc2rgb_baseMat * tmp;    // slow down the program
-            for (int j = 0; j < nCol; ++j) {
-                // find max channel value in a pixel
-                double max_channel = 1;
-                for (int channel = 0; channel < nChannel; ++channel)
-                    max_channel = max(max_channel, tmp.at<double>(channel, j));
-                // clip each pixel by max channel value of that pixel, if that max > 1
-                for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j) / max_channel;
-            }
-        }
-    }
+//    void ntsc2rgb(const Mat& ntscFrame, Mat &dst)  {
+//        ntscFrame.convertTo(dst, CV_64FC3);
+//        int nRow = dst.rows, nCol = dst.cols;
+//        int nChannel = _number_of_channels;
+//        Mat tmp = Mat::zeros(3, nCol, CV_64F);
+//        for (int i = 0; i < nRow; ++i) {
+//            for (int j = 0; j < nCol; ++j)
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
+//            tmp = ntsc2rgb_baseMat * tmp;    // slow down the program
+//            for (int j = 0; j < nCol; ++j) {
+//                // find max channel value in a pixel
+//                double max_channel = 1;
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    max_channel = max(max_channel, tmp.at<double>(channel, j));
+//                // clip each pixel by max channel value of that pixel, if that max > 1
+//                for (int channel = 0; channel < nChannel; ++channel)
+//                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j) / max_channel;
+//            }
+//        }
+//    }
 
 
     // Blur and downsample an image.  The blurring is done with
@@ -240,7 +236,7 @@ namespace MHR {
         filter2D(src, tmp, -1, filter);
         int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
-        printf("corrDn, (m, n) = (%d, %d)\n", m, n);
+//        printf("corrDn, (m, n) = (%d, %d)\n", m, n);
         dst = Mat::zeros(m, n, CV_64F);
         for (int i = 0, x = 0; i < m; ++i, x += rectRow)
             for (int j = 0, y = 0; j < n; ++j, y += rectCol)

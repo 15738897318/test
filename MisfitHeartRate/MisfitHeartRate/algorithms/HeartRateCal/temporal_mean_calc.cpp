@@ -44,8 +44,8 @@ namespace MHR {
             frame = vid[i].clone();
             if (colourspace == "hsv")
                 cvtColor(frame, frame, CV_RGB2HSV);
-            else if (colourspace == "ntsc")
-                rgb2ntsc(frame, frame);
+//            else if (colourspace == "ntsc")
+//                rgb2ntsc(frame, frame);
             else if (colourspace == "ycbcr")
                 cvtColor(frame, frame, CV_RGB2YCrCb);
             else if (colourspace == "tsl")

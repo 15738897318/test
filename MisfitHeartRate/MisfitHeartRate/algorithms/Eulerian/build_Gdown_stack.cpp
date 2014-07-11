@@ -52,7 +52,7 @@ namespace MHR {
             frame = vid[i];
             frame.convertTo(rgbframe, CV_64FC3);
             
-            rgb2ntsc(rgbframe, frame);
+//            rgb2ntsc(rgbframe, frame);
             
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);
