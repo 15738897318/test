@@ -1,5 +1,9 @@
-- Add timer to MainView
-- Bug with UI in MainViewController.
+- Load video in right order (BGR ---> RGB).
+- Change CV_64 --> CV_32 and test the result.
+- Access a image in optimize order: http://docs.opencv.org/doc/tutorials/core/how_to_scan_images/how_to_scan_images.html
+- Change input video resolution.
+- Update % progess when run_algorithms().
+
 - change names of functions:
 	+ eulerian
 	+ temporal_mean_calc
@@ -20,6 +24,5 @@
 	+ matToVector1D(Mat m):		convert to passing (params) by reference
 
 
-
-
-
+(CAMERA_HEIGHT - IMAGE_WIDTH)/2
+(CAMERA_WIDTH - IMAGE_HEIGHT)/2

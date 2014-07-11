@@ -21,9 +21,9 @@ namespace MHR {
         clock_t t1 = clock();
         // firstFrame
         Mat frame, rgbframe;
-//        vid[0].convertTo(rgbframe, CV_64FC3);
-//        rgb2ntsc(rgbframe, frame);
-        vid[0].convertTo(frame, CV_64FC3);
+        vid[0].convertTo(rgbframe, CV_64FC3);
+        rgb2ntsc(rgbframe, frame);
+//        vid[0].convertTo(frame, CV_64FC3);
         
         frameToFile(vid[0], "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/test_frame_rgb2ntsc.jpg");
         
@@ -51,8 +51,9 @@ namespace MHR {
             // Create a frame from the ith array in the stream
             frame = vid[i];
             frame.convertTo(rgbframe, CV_64FC3);
-            
-//            rgb2ntsc(rgbframe, frame);
+//            frame.convertTo(frame, CV_64FC3);
+    
+            rgb2ntsc(rgbframe, frame);
             
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);

@@ -108,6 +108,7 @@ namespace MHR {
             /*-----------------------------------write frames to file-----------------------------------*/
             for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
                 eulerianVid[i].convertTo(tmp_eulerianVid, CV_8UC3);
+                cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
                 vidOut << tmp_eulerianVid;
             }
             isCalcMode = false;
