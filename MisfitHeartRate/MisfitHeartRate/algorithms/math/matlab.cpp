@@ -128,15 +128,32 @@ namespace MHR {
     vector<double> low_pass_filter(vector<double> arr){
         clock_t t1 = clock();
         
+        // assign values in all NaN positions to 0
+        vector<int> nAnPositions;
+        int n = (int)arr.size();
+        for (int i = 0; i < n; ++i)
+            if (abs(arr[i] - NaN) < 1e-11) {
+                arr[i] = 0;
+                nAnPositions.push_back(i);
+            }
+        
+        // apply low pass filter
         Mat src = vectorToMat(arr);
         Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
         Mat dst;
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
         vector<double> ans = matToVector1D(dst);
-        for(int i=0; i<7; ++i) if(!ans.empty()) ans.pop_back();
         
-        clock_t t2 = clock();
-        printf("low_pass_filter() runtime = %f\n", ((float)t2 - (float)t1)/CLOCKS_PER_SEC);
+        // assign values in all old NaN positions to NaN
+        for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
+            ans[nAnPositions[i]] = NaN;
+        
+        // remove last 7 elements when use FilterBandPassing
+        if (_isUseFilterBandPassing)
+            for(int i=0; i<7; ++i)
+                if(!ans.empty()) ans.pop_back();
+        
+        printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return ans;
     }

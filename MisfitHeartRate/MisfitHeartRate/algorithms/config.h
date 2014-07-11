@@ -39,6 +39,7 @@ namespace MHR {
     const int _endFrame = 0; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
 
     // filter_bandpassing:
+    const bool _isUseFilterBandPassing = false;     // use ideal bandpassing
     const int _eulerianTemporalFilterKernel_size = 15;
     const double _eulerianTemporalFilterKernel[] = {0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594, 0.1704, 0.1594,0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034};
 
