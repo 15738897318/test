@@ -12,6 +12,7 @@
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
+		DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */; };
 		DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */; };
 		DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */; };
 		DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCADC18C196BA7D200AFCDE5 /* MHRResultViewController.xib */; };
@@ -85,6 +86,8 @@
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
 		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
 		DCA50B8C1964179200F99D33 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = frames2signal.h; path = HeartRateCal/frames2signal.h; sourceTree = "<group>"; };
+		DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Position.h"; path = "Utilities/UIView+Position.h"; sourceTree = "<group>"; };
+		DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Position.m"; path = "Utilities/UIView+Position.m"; sourceTree = "<group>"; };
 		DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MisfitHeartRate-Skin.plist"; sourceTree = "<group>"; };
 		DCADC18A196BA7D200AFCDE5 /* MHRResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRResultViewController.h; path = MisfitHeartRate/ResultView/MHRResultViewController.h; sourceTree = SOURCE_ROOT; };
 		DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRResultViewController.m; path = MisfitHeartRate/ResultView/MHRResultViewController.m; sourceTree = SOURCE_ROOT; };
@@ -398,6 +401,8 @@
 				DCADC190196BB46200AFCDE5 /* MBProgressHUD.m */,
 				DCBDEA2619617A8E005F6298 /* UIImageCVMatConverter.hpp */,
 				DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */,
+				DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */,
+				DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 				DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
+				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
 				12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */,
@@ -656,7 +662,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = MisfitHeartRate;
 				WRAPPER_EXTENSION = app;
 			};
@@ -674,7 +680,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = MisfitHeartRate;
 				WRAPPER_EXTENSION = app;
 			};
