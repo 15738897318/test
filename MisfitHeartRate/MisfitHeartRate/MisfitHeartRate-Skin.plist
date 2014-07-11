@@ -16,5 +16,12 @@
 		<integer>255</integer>
 		<integer>1</integer>
 	</array>
+	<key>MHRTransparentColor</key>
+	<array>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+	</array>
 </dict>
 </plist>

@@ -13,8 +13,8 @@
 const int IOS6_Y_DELTA = 60;
 const int CAMERA_WIDTH = 352;
 const int CAMERA_HEIGHT = 288;
-const int IMAGE_WIDTH = 256;
-const int IMAGE_HEIGHT = 256;
+const int IMAGE_WIDTH = 128;
+const int IMAGE_HEIGHT = 128;
 const int WIDTH_PADDING = (CAMERA_WIDTH-IMAGE_WIDTH)/2;
 const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 static NSString * const FACE_MESSAGE = @"Make sure your face fitted in the Aqua rectangle!";
@@ -44,7 +44,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @property (weak, nonatomic) IBOutlet UILabel *recordTimeLabel;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *startButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *stopButton;
-
 
 @end
 
@@ -103,12 +102,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     self.navigationItem.leftBarButtonItem = _startButton;
     self.navigationItem.rightBarButtonItem = _stopButton;
     // draw Aqua rectangle
-    [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
+    [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
     // update Layout (iOS6 vs iOS7)
     [self updateLayout];
 
-//    [self startButtonDidTap:self];
-    
 //    test_ideal_bandpassing();
 //    testMathFunctions();
 //    test_fft();
@@ -171,12 +168,12 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     isCapturing = NO;
     _startButton.enabled = YES;
     _cameraSwitch.enabled = YES;
-    [self drawCameraCaptureRect:@"MHRWhiteColor"];
+    [self drawFaceCaptureRect:@"MHRWhiteColor"];
     [_videoCamera stop];
     _videoWriter.release();
+    // stop timer
     [_recordTimer invalidate];
     _recordTimer = nil;
-    _recordTimeLabel.text = @"0.00";
     
     __block hrResult result(-1, -1);
     if (!_cameraSwitch.isOn)
@@ -199,17 +196,19 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             [self.navigationController pushViewController:resultView animated:YES];
             // update UI
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            if (_cameraSwitch.isOn)
-            {
-                [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
-                _faceLabel.text = FACE_MESSAGE;
-            }
-            else
-            {
-                _fingerLabel.text = FINGER_MESSAGE;
-                _faceLabel.text = @"";
-            }
-            [_videoCamera start];
+            [self switchCamera:self];
+//            if (_cameraSwitch.isOn)
+//            {
+//                [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+//                _faceLabel.text = FACE_MESSAGE;
+//            }
+//            else
+//            {
+//                _fingerLabel.text = FINGER_MESSAGE;
+//                _faceLabel.text = @"";
+//            }
+//            [_videoCamera start];
+//            _recordTimeLabel.text = @"0";
         });
     });
 }
@@ -223,7 +222,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         [MHRUtilities setTorchModeOn:NO];
         _faceLabel.text = FACE_MESSAGE;
         _fingerLabel.text = @"";
-        [self drawCameraCaptureRect:@"MHRCameraCaptureRect"];
+        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
         [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
         [_videoCamera start];
@@ -234,7 +233,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         [MHRUtilities setTorchModeOn:YES];
         _faceLabel.text = @"";
         _fingerLabel.text = FINGER_MESSAGE;
-        [self drawCameraCaptureRect:@"MHRWhiteColor"];
+        [self drawFaceCaptureRect:@"MHRWhiteColor"];
         [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
         [_videoCamera start];
@@ -245,24 +244,28 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 - (void)updateRecordTime:(id)sender
 {
     ++_recordTime;
-    _recordTimeLabel.text = [NSString stringWithFormat:@"%.2f", (double)_recordTime];
+    _recordTimeLabel.text = [NSString stringWithFormat:@"%i", _recordTime];
+    if (_recordTime == 60)
+    {
+        [self stopButtonDidTap:self];
+    }
 }
 
 
-- (void)drawCameraCaptureRect:(NSString *)colorKey
+- (void)drawFaceCaptureRect:(NSString *)colorKey
 {
-    int x0 = self.imageView.frame.origin.x;
-    int y0 = self.imageView.frame.origin.y;
-    int x1 = x0 + self.imageView.frame.size.width;
-    int y1 = y0 + self.imageView.frame.size.height;
-    int dx = (CAMERA_HEIGHT - IMAGE_HEIGHT)/2;
-    int dy = (CAMERA_WIDTH - IMAGE_WIDTH)/2;
+    int x0 = self.imageView.frameX;
+    int y0 = self.imageView.frameY;
+    int x1 = x0 + self.imageView.frameWidth;
+    int y1 = y0 + self.imageView.frameHeight;
+    int dx = (CAMERA_HEIGHT - IMAGE_WIDTH)/2;
+    int dy = (CAMERA_WIDTH - IMAGE_HEIGHT)/2;
     int yDelta = 0;
     if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
     {
         yDelta = -IOS6_Y_DELTA;
     }
-
+    
     // horizontal lines
     [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy + yDelta, IMAGE_WIDTH, 5) pListKey:colorKey]];
     [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y1 - dy + yDelta, IMAGE_WIDTH, 5) pListKey:colorKey]];
