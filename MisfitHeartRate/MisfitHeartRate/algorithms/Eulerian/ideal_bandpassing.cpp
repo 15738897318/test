@@ -25,24 +25,26 @@ namespace MHR {
         int ind1 = 2*f1, ind2 = 2*f2 - 1;
         
         // FFT
-        Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
-        for (int k = 0; k < nCol; ++k) {
-            for (int i = 0; i < nTime; ++i)
-                for (int j = 0; j < nRow; ++j)
-                    dft_out.at<float>(j, i) = dst.at<float>(i, j, k);
-            dft(dft_out, dft_out, DFT_ROWS);
-            // masking
-            for (int j = 0; j < nRow; ++j) {
-                for (int i = 0; i <= ind1; ++i)
-                    dft_out.at<float>(j, i) = 0;
-                for (int i = ind2; i < nTime; ++i)
-                    dft_out.at<float>(j, i) = 0;
+        Mat dft_out = Mat::zeros(nRow, nTime, CV_32F), tmp_dft;
+        for (int channel = 0; channel < _number_of_channels; ++channel) {
+            for (int k = 0; k < nCol; ++k) {
+                for (int i = 0; i < nTime; ++i)
+                    for (int j = 0; j < nRow; ++j)
+                        dft_out.at<float>(j, i) = dst.at<Vec3f>(i, j, k)[channel];
+                dft(dft_out, tmp_dft, DFT_ROWS);
+                // masking
+                for (int j = 0; j < nRow; ++j) {
+                    for (int i = 0; i <= ind1; ++i)
+                        dft_out.at<float>(j, i) = 0;
+                    for (int i = ind2; i < nTime; ++i)
+                        dft_out.at<float>(j, i) = 0;
+                }
+                // output
+                dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT);
+                for (int i = 0; i < nTime; ++i)
+                    for (int j = 0; j < nRow; ++j)
+                        dst.at<Vec3f>(i, j, k)[channel] = dft_out.at<float>(j, i);
             }
-            // output
-            dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT);
-            for (int i = 0; i < nTime; ++i)
-                for (int j = 0; j < nRow; ++j)
-                    dst.at<float>(i, j, k) = dft_out.at<float>(j, i);
         }
         
 //        printf("ind1 = %i, ind2 = %i\n", ind1, ind2);
@@ -55,9 +57,8 @@ namespace MHR {
 //        }
 //        printf("\n\n\n\n");
         
-        
         Mat tmp;
-        dst.convertTo(tmp, CV_64F);
+        dst.convertTo(tmp, CV_64FC3);
         dst = tmp.clone();
     }
 }
