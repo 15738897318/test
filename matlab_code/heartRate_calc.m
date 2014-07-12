@@ -73,7 +73,7 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 				colorframe = rgb2tsl(rgbframe); %Double MxNx3 array
         end
         
-		if getRaw & debug
+		if getRaw && debug
 			colorframes(:, :, :, k) = colorframe; %Double MxNx3xT array
 			monoframes(:, :, k) = squeeze(colorframe(:, :, colour_channel)); %Double MxNxT array
 		
@@ -106,12 +106,21 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
     minPeakDistance = round(60 / max_bpm * fr); %Int
 	
 	% Calculate heart-rate using peak-detection on the signal
-	[avg_hr_pda, debug_pda] = hr_calc_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
+	[avg_hr_simple_pda, heartBeats_pda, debug_beats_pda] = hb_counter_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
 	%Double
 	
 	% Calculate heart-rate using peak-detection on the signal
-	[avg_hr_autocorr, debug_autocorr] = hr_calc_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance);
+	[avg_hr_simple_autocorr, heartBeats_autocorr, debug_beats_autocorr] = hb_counter_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
 	%Double
+	
+	%=== v1: Heart-rates as the simple average of the heart-beats detected
+	heartRate_pda = avg_hr_simple_pda;
+	heartRate_autocorr = avg_hr_simple_autocorr;
+	
+	%=== v2: Perform more sophisticated heart-rate calculations based on the detected heart-beats
+	[heartRate_pda, debug_hr_pda] = hr_calculator(heartBeats_pda, fr);
+	[heartRate_autocorr, debug_hr_autocorr] = hr_calculator(heartBeats_autocorr, fr);
+	
 	
 	
 	%% ============ Function output and summary
@@ -121,26 +130,26 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	disp(length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60);
 	
 	disp('Average heart-rate (PDA): ');
-	disp(avg_hr_pda);
+	disp(heartRate_pda);
 	
 	disp('Average heart-rate (ACF): ');
-	disp(avg_hr_autocorr);
+	disp(heartRate_autocorr);
 	
 	disp('Reference heart-rate (Basis): ');
 	disp(ref_reading);
 	
 	% Output of the function
-	hr_array = [ref_reading, colour_channel, avg_hr_autocorr, avg_hr_pda];
+	hr_array = [ref_reading, colour_channel, heartRate_autocorr, heartRate_pda];
+	
+	
 	
 	
 	%% ============ Debug
 	if debug
-		heartBeats_autocorr = debug_autocorr.heartBeats;
-		heartRates_autocorr = debug_autocorr.heartRates;
-		autocorrelation = debug_autocorr.autocorrelation;
+		heartRates_autocorr = debug_beats_autocorr.heartRates;
+		autocorrelation = debug_beats_autocorr.autocorrelation;
 		
-		heartBeats_pda = debug_pda.heartBeats;
-		heartRates_pda = debug_pda.heartRates;
+		heartRates_pda = debug_beats_pda.heartRates;
 		
 		% Calculate the time & freq vectors
 		time_vector = linspace(0, length(temporal_mean) / fr, length(temporal_mean));
@@ -189,8 +198,8 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 		xlim([min(time_vector) max(time_vector)])
 		xlabel('Time (sec)')
 		ylabel('Locally-averaged heart-rate (BPM)')
-		title(sprintf(['Average heart-rate: ' num2str(avg_hr_autocorr) ' BPM & ' ...
-									  num2str(avg_hr_pda) ' BPM' ...
+		title(sprintf(['Average heart-rate: ' num2str(heartRate_autocorr) ' BPM & ' ...
+									  num2str(avg_hr_simple_pda) ' BPM' ...
 					   '\n Reference: ' num2str(ref_reading) ' BPM']));
 		legend('show')
 	

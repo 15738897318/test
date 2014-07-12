@@ -1,5 +1,8 @@
-function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance)
-
+function [avg_hr, heartBeats, debug] = hb_counter_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold)
+	%Only 1 window
+	%window_size = length(temporal_mean) - firstSample;
+	
+	
 	% Step 1: Calculate the window-based autocorrelation of the signal stream
 	windowStart = firstSample; %Int
 	autocorrelation = []; %Double vector
@@ -12,7 +15,7 @@ function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, wind
 		
 		% Define the segment length
 		% a. Shine-step-counting style
-		[max_peak_strengths, max_peak_locs] = findpeaks(local_autocorr, 'MINPEAKDISTANCE', minPeakDistance);
+		[~, max_peak_locs] = findpeaks(local_autocorr, 'MINPEAKDISTANCE', minPeakDistance);
 		%[Double vector, Int vector]
 		
 		if isempty(max_peak_locs)
@@ -49,15 +52,19 @@ function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, wind
 		% Define the segment length
 		% a. Shine-step-counting style
 		if isempty(max_peak_locs)
-			segment_length = window_size;
+			segment_length = window_size; %Int
+			
+			heartRates(windowStart : windowStart + segment_length - 1) = zeros(1, segment_length);
 		else
-			[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', minPeakDistance);
+			[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold); %Int vector
 			
 			if isempty(min_peak_locs)
-				segment_length = round((max(max_peak_locs) + window_size) / 2);
+				segment_length = round((max(max_peak_locs) + window_size) / 2); %Int
 			else
-				segment_length = round((max(min_peak_locs) + max(max_peak_locs)) / 2);
+				segment_length = round((max(min_peak_locs) + max(max_peak_locs)) / 2); %Int
 			end
+			
+			heartRates(windowStart : windowStart + segment_length - 1) = ones(1, segment_length) * length(max_peak_locs) / sum(isfinite(segment)) * fr;
 		end
 		
 		% b. Equal-step progression
@@ -65,9 +72,6 @@ function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, wind
 		
 		% Record all beats in the window, even if there are duplicates
 		heartBeats = [heartBeats; [max_peak_strengths', (windowStart - 1 + max_peak_locs)']];		
-		
-		% Calculate the HR for this window
-		heartRates(windowStart : windowStart + segment_length - 1) = ones(1, segment_length) * length(max_peak_locs) / segment_length * fr;
 		
 		% Define the start of the next window
 		windowStart = windowStart + round((1 - overlap_ratio) * segment_length);
@@ -91,6 +95,5 @@ function [avg_hr, debug] = hr_calc_autocorr(temporal_mean, fr, firstSample, wind
 		avg_hr = 0;
 	end
 	
-	debug.heartBeats = heartBeats;
 	debug.heartRates = heartRates;
 	debug.autocorrelation = autocorrelation;

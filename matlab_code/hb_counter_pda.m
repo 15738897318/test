@@ -1,4 +1,4 @@
-function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold)
+function [avg_hr, heartBeats, debug] = hb_counter_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold)
 	
 	% Perform peak counting for each window
 	windowStart = firstSample; %Int
@@ -16,6 +16,8 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 		% a. Shine-step-counting style
 		if isempty(max_peak_locs)
 			segment_length = window_size; %Int
+			
+			heartRates(windowStart : windowStart + segment_length - 1) = zeros(1, segment_length);
 		else
 			[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold); %Int vector
 			
@@ -24,6 +26,8 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 			else
 				segment_length = round((max(min_peak_locs) + max(max_peak_locs)) / 2); %Int
 			end
+			
+			heartRates(windowStart : windowStart + segment_length - 1) = ones(1, segment_length) * length(max_peak_locs) / sum(isfinite(segment)) * fr;
 		end
 		
 		% b. Equal-step progression
@@ -31,9 +35,6 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 		
 		% Record all beats in the window, even if there are duplicates
 		heartBeats = [heartBeats; [max_peak_strengths, (windowStart - 1 + max_peak_locs)]];		
-		
-		% Calculate the HR for this window
-		heartRates(windowStart : windowStart + segment_length - 1) = ones(1, segment_length) * length(max_peak_locs) / segment_length * fr;
 		
 		% Define the start of the next window
 		windowStart = windowStart + round((1 - overlap_ratio) * segment_length);
@@ -57,5 +58,4 @@ function [avg_hr, debug] = hr_calc_pda(temporal_mean, fr, firstSample, window_si
 		avg_hr = 0; %Double
 	end
 	
-	debug.heartBeats = heartBeats;
 	debug.heartRates = heartRates;
