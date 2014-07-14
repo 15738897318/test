@@ -18,6 +18,7 @@ namespace MHR {
 #else
     const int DEBUG_MODE = 0;
 #endif
+    const String _outputPath = "/var/mobile/Applications/C9BB0B7F-1D88-4EF1-8A5E-3F30C45F00B3/Documents/";
     
     const double NaN = -1e9;
     

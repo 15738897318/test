@@ -87,13 +87,6 @@ namespace MHR {
                                              _eulerian_frameRate, _eulerian_chromaMagnifier);
             int eulerianLen = (int)eulerianVid.size();
             
-            /*---------------------------------turn eulerianLen (1) frames to signals-----------------------------------*/
-            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
-                                                    _channels_to_process, _colourspace,
-                                                    lower_range, upper_range, isCalcMode);
-            for (int i = 0; i < eulerianLen; ++i)
-                temporal_mean.push_back(tmp[i]);
- 
             /*-----------------------------------keep last 15 frames (0)-----------------------------------*/
             // need to improve
             vector<Mat> newVid;
@@ -111,8 +104,16 @@ namespace MHR {
                 cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
                 vidOut << tmp_eulerianVid;
             }
-            isCalcMode = false;
             
+            /*---------------------------------turn eulerianLen (1) frames to signals-----------------------------------*/
+            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
+                                                    _channels_to_process, _colourspace,
+                                                    lower_range, upper_range, isCalcMode);
+            for (int i = 0; i < eulerianLen; ++i)
+                temporal_mean.push_back(tmp[i]);
+            
+            isCalcMode = false;
+
             printf("block %d runtime = %f\n", blockCount, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         }
         vidOut.release();
