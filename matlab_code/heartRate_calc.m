@@ -106,22 +106,26 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
     minPeakDistance = round(60 / max_bpm * fr); %Int
 	
 	% Calculate heart-rate using peak-detection on the signal
-	[avg_hr_simple_pda, heartBeats_pda, debug_beats_pda] = hb_counter_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
+	[heartBeats_pda, avg_hr_simple_pda, debug_beats_pda] = hb_counter_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
 	%Double
 	
 	% Calculate heart-rate using peak-detection on the signal
-	[avg_hr_simple_autocorr, heartBeats_autocorr, debug_beats_autocorr] = hb_counter_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
+	[heartBeats_autocorr, avg_hr_simple_autocorr, debug_beats_autocorr] = hb_counter_autocorr(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold);
 	%Double
 	
 	%=== v1: Heart-rates as the simple average of the heart-beats detected
-	heartRate_pda = avg_hr_simple_pda;
-	heartRate_autocorr = avg_hr_simple_autocorr;
+	hr_pda = avg_hr_simple_pda;
+	hr_autocorr = avg_hr_simple_autocorr;
 	
 	%=== v2: Perform more sophisticated heart-rate calculations based on the detected heart-beats
 	[heartRate_pda, debug_hr_pda] = hr_calculator(heartBeats_pda, fr);
 	[heartRate_autocorr, debug_hr_autocorr] = hr_calculator(heartBeats_autocorr, fr);
 	
+	hr_pda = heartRate_pda.average;
+	hr_autocorr = heartRate_autocorr.average;
 	
+	hr_pda = round(hr_pda);
+	hr_autocorr = round(hr_autocorr);
 	
 	%% ============ Function output and summary
 	% Display the average rate using total peak counts on the full stream
@@ -130,16 +134,16 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 	disp(length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60);
 	
 	disp('Average heart-rate (PDA): ');
-	disp(heartRate_pda);
+	disp(hr_pda);
 	
 	disp('Average heart-rate (ACF): ');
-	disp(heartRate_autocorr);
+	disp(hr_autocorr);
 	
 	disp('Reference heart-rate (Basis): ');
 	disp(ref_reading);
 	
 	% Output of the function
-	hr_array = [ref_reading, colour_channel, heartRate_autocorr, heartRate_pda];
+	hr_array = [ref_reading, colour_channel, hr_autocorr, hr_pda];
 	
 	
 	
@@ -198,8 +202,8 @@ function hr_array = heartRate_calc(vidFile, window_size_in_sec, overlap_ratio, m
 		xlim([min(time_vector) max(time_vector)])
 		xlabel('Time (sec)')
 		ylabel('Locally-averaged heart-rate (BPM)')
-		title(sprintf(['Average heart-rate: ' num2str(heartRate_autocorr) ' BPM & ' ...
-									  num2str(avg_hr_simple_pda) ' BPM' ...
+		title(sprintf(['Average heart-rate: ' num2str(hr_autocorr) ' BPM & ' ...
+									  num2str(hr_pda) ' BPM' ...
 					   '\n Reference: ' num2str(ref_reading) ' BPM']));
 		legend('show')
 	

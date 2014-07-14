@@ -1,4 +1,4 @@
-function [avg_hr, heartBeats, debug] = hb_counter_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold)
+function [heartBeats, avg_hr, debug] = hb_counter_pda(temporal_mean, fr, firstSample, window_size, overlap_ratio, minPeakDistance, threshold)
 	
 	% Perform peak counting for each window
 	windowStart = firstSample; %Int
@@ -50,7 +50,7 @@ function [avg_hr, heartBeats, debug] = hb_counter_pda(temporal_mean, fr, firstSa
 		number_of_relevant_frames = length(heartRates(firstSample : end)) - sum(~isfinite(temporal_mean(firstSample : end))); %Int
 		if number_of_relevant_frames ~= 0
 			relevant_time = number_of_relevant_frames / (fr * 60); %Double
-			avg_hr = round(size(heartBeats, 1) / relevant_time); %Double
+			avg_hr = size(heartBeats, 1) / relevant_time; %Double
 		else
 			avg_hr = 0;
 		end

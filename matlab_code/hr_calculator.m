@@ -27,9 +27,10 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	count_signal(min_peak_locs(min_peak_strengths < factor * base_threshold)) = -1;
 	
 	%Calculate the heart-rate from the new beat count
-	heartRate = sum(abs(count_signal)) / (length(count_signal) + 1 / centre_mode) * frameRate * 60;
+	heartRate.average = sum(abs(count_signal)) / (length(count_signal) + 1 / centre_mode) * frameRate * 60;
 	
-	debug.mode_heartRate = centre_mode * frameRate * 60;
+	heartRate.mode = centre_mode * frameRate * 60;
+	
 	debug.count_signal = count_signal;
 	debug.score_signal = score_signal;
 	
