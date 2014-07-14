@@ -31,6 +31,8 @@ namespace MHR {
     void test_ideal_bandpassing();
     
     void test_rgb2ntsc();
+    
+    void test_openCV();
 }
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */
