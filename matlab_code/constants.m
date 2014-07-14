@@ -1,3 +1,6 @@
+eulerian_filter_length = 31;
+beat_filter_length = 15;
+
 %%------- Eulerian-magnification parameters
 
 % Control params for the algorithm
@@ -8,16 +11,23 @@ max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
 chroma_magnifier = 1; %Standard: 1
 
+C_matrix = [1, 0.9563, 0.6210; 1, -0.2721, -0.6474; 1, -1.1070, 1.7046] * ...
+			alpha * [1, 0, 0; 0, chroma_magnifier, 0; 0, 0, chroma_magnifier] * ...
+			[0.299, 0.587, 0.114; 0.595716, -0.274453, -0.321263; 0.211456, -0.522591, 0.311135];
+
 
 % Native params of the algorithm
 number_of_channels = 3;
 Gpyr_filter_length = 5;
 startFrame = 1;
-endFrame = - 10; %Positive number to get definite end-frame, negative number to get end-frame relative to stream length
+endFrame = 0; %Positive number to get definite end-frame, negative number to get end-frame relative to stream length
 
 % filter_bandpassing:
-eulerianTemporalFilterKernel = [0.0034; 0.0087; 0.0244; 0.0529; 0.0909; 0.1300; 0.1594; 0.1704; 0.1594; 0.1300; 0.0909; 0.0529; 0.0244; 0.0087; 0.0034];
+%H = design(fdesign.bandpass('N,Fc1,Fc2,Ast1,Ap,Ast2', eulerian_filter_length - 1, (min_hr/ 60) / (frame_rate / 2), (max_hr/ 60) / (frame_rate / 2), 60, 0.5, 60), 'ALLFIR');
+%eulerianTemporalFilterKernel = H(1).Numerator; % / sum(H(1).Numerator);
 
+%Same as above, filter_length = 31
+%eulerianTemporalFilterKernel = [-0.0083; -0.0183; -0.0234; -0.0209; -0.0115; -0.0010;  0.0003; -0.0155; -0.0461; -0.0759; -0.0824; -0.0487;  0.0249;  0.1173;  0.1942;  0.2241;  0.1942;  0.1173;  0.0249; -0.0487; -0.0824; -0.0759; -0.0461; -0.0155;  0.0003; -0.0010; -0.0115; -0.0209; -0.0234; -0.0183; -0.0083];
 
 %%------- HR calculation parameters
 
@@ -25,7 +35,7 @@ eulerianTemporalFilterKernel = [0.0034; 0.0087; 0.0244; 0.0529; 0.0909; 0.1300; 
 window_size_in_sec = 10;
 overlap_ratio = 0;
 max_bpm = 200; %BPM
-cutoff_freq = 5; %Hz
+cutoff_freq = 2.5; %Hz
 time_lag = 3; %seconds
 
 colourspace = 'tsl';
@@ -33,7 +43,7 @@ channels_to_process = 1 : 3; %If only 1 channel: 2 for tsl, 1 for rgb
 
 
 % heartRate_calc: Native params of the algorithm
-flagDebug = 0;
+flagDebug = 1;
 flagGetRaw = 0;
 
 startIndex = 1; %400	%Int
@@ -52,15 +62,20 @@ frame_downsampling_filt = [0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.008
 						   0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085];
 
 
-% frames2signal: Native params for the 'mode-balance' conversion method in 
+% frames2signal: 
+%Native params for the 'trimmed-mean' conversion method
+trimmed_size = 30;
+
+%Native params for the 'mode-balance' conversion method
 training_time_range = [0.5, 3]; %seconds %Double
-number_of_bins = 50; %50 * round(fr * training_time);
+number_of_bins = 50; %50 * round(frame_rate * training_time);
 pct_reach_below_mode = 45; %Percent %Double
 pct_reach_above_mode = 45; %Percent %Double
 
 % frames2signal: Filtering kernel for the beat signal
-%H = design(fdesign.lowpass('N,Fp,Fst', 14, cutoff_freq / fr, 1.1 * cutoff_freq / fr), 'ALLFIR');
+%H = design(fdesign.lowpass('N,Fp,Fst', beat_filter_length - 1, cutoff_freq / (frame_rate / 2), 1.1 * cutoff_freq / (frame_rate / 2)), 'ALLFIR');
 %beatSignalFilterKernel = H(2).Numerator / sum(H(2).Numerator);
 
-%Same as above, with cutoff_freq / fr = 5 / 30
+%Same as above, with cutoff_freq / frame_rate = 3 / 30, filter_length = 15
+beatSignalFilterKernel = [-0.0447, -0.0389, -0.0106, 0.0378, 0.0975, 0.1554, 0.1973, 0.2125, 0.1973	0.1554, 0.0975, 0.0378, -0.0106, -0.0389, -0.0447];
 beatSignalFilterKernel = [-0.0265, -0.0076, 0.0217, 0.0580, 0.0956, 0.1285, 0.1509, 0.1589, 0.1509, 0.1285, 0.0956, 0.0580, 0.0217, -0.0076, -0.0265];

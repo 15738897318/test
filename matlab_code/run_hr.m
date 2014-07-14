@@ -3,6 +3,27 @@
 % - Cardiio takes 30secs to generate an HR estimate
 
 
+%Finger
+file_template = '2014-06-10-Dung-Finger_crop-ideal-from-0.5-to-4-alpha-50-level-4-chromAtn-1.avi';
+file_template = '2014-06-10-Dung-Finger_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1.avi';
+file_template = '2014-06-12-Loc-Finger_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1';
+file_template = '2014-06-12-Trung-Finger_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1';
+file_template = '2014-06-16-Dung-Finger_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1';
+file_template = '2014-06-16-Nam-Finger_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1';
+file_template = '2014-06-17-Loc-Finger_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1';
+%Face
+file_template = '2014-06-10-Hoang-Face_crop-ideal-from-0.5-to-4-alpha-50-level-6-chromAtn-1.avi';
+file_template = '2014-06-10-Hoang-Face_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1.avi';
+file_template = '2014-06-17-Loc-Face_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1.avi';
+
+
+file_template = 'test1*.avi';
+%file_template = 'finger - 2014-07-11-14-41-54-ideal-from-0.5-to-4-alpha-50-level-6-chromAtn-1*.avi';
+%file_template = '2014-06-10-Self-Face_crop*';
+file_template = '2014*Face*.avi';
+
+task_desc = 'Params testing with the new hr_calculator';
+
 install;
 
 window_size_in_sec = 10;
@@ -14,10 +35,9 @@ time_lag = 3; %seconds
 results_file = 'hr_results.csv';
 
 src_folder = '/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
-file_template = 'test*.avi'; %'*alpha-50*level-4*.avi';%'2014-06-10-Self-Finger_crop-ideal-from-0.66667-to-1-alpha-20-level-6-chromAtn-2.avi'%
 
 colourspace = 'tsl';
-channels_to_process = 1 : 3;
+channels_to_process = 1:3;
 
 file_list = dir([src_folder file_template]);
 
@@ -89,3 +109,4 @@ for file_ind = 1 : length(file_list)
 end
 
 fclose(fileID);
+display(task_desc);

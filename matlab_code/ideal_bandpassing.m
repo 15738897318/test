@@ -28,7 +28,7 @@ function filtered = ideal_bandpassing(input, dim, wl, wh, samplingRate)
     
     Freq = 1 : n;
     Freq = (Freq - 1) / n * samplingRate;
-    mask = (Freq > wl) & (Freq < wh);
+    mask = ((Freq > wl) & (Freq < wh)) | ((Freq > max(Freq) - wh) & (Freq < max(Freq) - wl));
     
     Dimensions(1) = 1;
     mask = mask(:);
