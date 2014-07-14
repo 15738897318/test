@@ -42,14 +42,6 @@ namespace MHR {
 	// convert a RGB Mat to a TSL Mat
 	void rgb2tsl(const Mat& srcRGBmap, Mat &dst);
 
-	// convert a RGB Mat to a NTSC Mat
-    // ref: http://en.wikipedia.org/wiki/YIQ
-	void rgb2ntsc(const Mat& rgbFrame, Mat &dst);
-
-	// convert a RGB Mat to a NTSC Mat
-    // ref: http://en.wikipedia.org/wiki/YIQ
-	void ntsc2rgb(const Mat& ntscFrame, Mat &dst);
-
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     void blurDnClr(const Mat& src, Mat &dst, int level);

@@ -172,58 +172,6 @@ namespace MHR {
 	}
 
 
-    // convert a RGB Mat to a NTSC Mat
-    // ref: http://en.wikipedia.org/wiki/YIQ
-    //      http://www.mathworks.com/help/images/ref/rgb2ntsc.html
-    void rgb2ntsc(const Mat& rgbFrame, Mat &dst) {
-        rgbFrame.convertTo(dst, CV_64FC3);
-        int nRow = dst.rows, nCol = dst.cols;
-        int nChannel = _number_of_channels;
-        
-        Mat tmp = Mat::zeros(3, nCol, CV_64F);
-        for (int i = 0; i < nRow; ++i) {
-            for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel)
-                    tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
-            tmp = rgb2ntsc_baseMat * tmp;    // slow down the program
-            for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
-        }
-    }
-
-
-    // convert a RGB Mat to a NTSC Mat
-    // ref: http://en.wikipedia.org/wiki/YIQ
-    //      http://www.mathworks.com/help/images/ref/ntsc2rgb.html
-    void ntsc2rgb(const Mat& ntscFrame, Mat &dst)  {
-        ntscFrame.convertTo(dst, CV_64FC3);
-        int nRow = dst.rows, nCol = dst.cols;
-        int nChannel = _number_of_channels;
-        Mat tmp = Mat::zeros(3, nCol, CV_64F);
-        for (int i = 0; i < nRow; ++i) {
-            for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel)
-                    tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
-            tmp = ntsc2rgb_baseMat * tmp;    // slow down the program
-            for (int j = 0; j < nCol; ++j) {
-                double max_channel = 255;
-                for (int channel = 0; channel < nChannel; ++channel) {
-                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
-                    // find max channel value in a pixel
-                    max_channel = max(max_channel, tmp.at<double>(channel, j));
-                }
-                // clip each pixel by max channel value of that pixel, if that max > 1
-                if (max_channel > 255) {
-                    max_channel = 255.0 / max_channel;
-                    for (int channel = 0; channel < nChannel; ++channel)
-                        dst.at<Vec3d>(i, j)[channel] *= max_channel;
-                }
-            }
-        }
-    }
-
-
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
     void blurDnClr(const Mat& src, Mat &dst, int level) {

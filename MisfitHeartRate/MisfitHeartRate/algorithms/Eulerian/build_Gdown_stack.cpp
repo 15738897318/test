@@ -19,14 +19,13 @@ namespace MHR {
 	// the forth dimension is the color channel
 	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level) {
         clock_t t1 = clock();
-        // firstFrame
-        Mat frame, rgbframe;
-        vid[0].convertTo(rgbframe, CV_64FC3);
-        rgb2ntsc(rgbframe, frame);
-//        vid[0].convertTo(frame, CV_64FC3);
         
         frameToFile(vid[0], _outputPath + "test_frame_rgb2ntsc.jpg");
         
+        // firstFrame
+        Mat frame;
+        vid[0].convertTo(frame, CV_64FC3);
+ 
         // Blur and downsample the frame
         Mat blurred;
         blurDnClr(frame, blurred, level);
@@ -47,12 +46,8 @@ namespace MHR {
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
-            frame = vid[i];
-            frame.convertTo(rgbframe, CV_64FC3);
-//            frame.convertTo(frame, CV_64FC3);
+            vid[i].convertTo(frame, CV_64FC3);
     
-            rgb2ntsc(rgbframe, frame);
-            
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);
             
