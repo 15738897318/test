@@ -47,26 +47,28 @@ namespace MHR {
 		// compute Gaussian blur stack
 		// This stack actually is just a single level of the pyramid
 		printf("Spatial filtering...\n");
-		Mat GdownStack;
+		vector<Mat> GdownStack;
         build_Gdown_Stack(vid, GdownStack, startIndex, endIndex, level);
 		printf("Finished\n");
         
 		// Temporal filtering
 		printf("Temporal filtering...\n");
-        Mat filteredStack;
+        vector<Mat> filteredStack;
         ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
 //        filter_bandpassing(GdownStack, filteredStack);
 		printf("Finished\n");
         
-
         
 		// amplify
-        for (int i = 0; i < filteredStack.size.p[0]; ++i)
-			for (int j = 0; j < filteredStack.size.p[1]; ++j)
-				for (int k = 0; k < filteredStack.size.p[2]; ++k) {
-					filteredStack.at<Vec3d>(i, j, k)[0] *= alpha;
-					filteredStack.at<Vec3d>(i, j, k)[1] *= alpha*chromAttenuation;
-					filteredStack.at<Vec3d>(i, j, k)[2] *= alpha*chromAttenuation;
+        int nTime = (int)filteredStack.size();
+        int nRow = filteredStack[0].rows;
+        int nCol = filteredStack[0].cols;
+        for (int i = 0; i < nTime; ++i)
+			for (int j = 0; j < nRow; ++j)
+				for (int k = 0; k < nCol; ++k) {
+					filteredStack[i].at<Vec3d>(j, k)[0] *= alpha;
+					filteredStack[i].at<Vec3d>(j, k)[1] *= alpha*chromAttenuation;
+					filteredStack[i].at<Vec3d>(j, k)[2] *= alpha*chromAttenuation;
 				}
 //        Mat base_B = (Mat_<double>(3, 3) <<
 //                      alpha, 0, 0,
@@ -93,14 +95,14 @@ namespace MHR {
 		// output video
 		// Convert each frame from the filtered stream to movie frame
         Mat rgbframe, filtered, rgbFiltered, ntscframe;
-        Mat tmp_filtered = Mat::zeros(filteredStack.size.p[1], filteredStack.size.p[2], CV_64FC3);
-		for (int i = startIndex, k = 0; i <= endIndex && k < filteredStack.size.p[0]; ++i, ++k) {
+        Mat tmp_filtered = Mat::zeros(nRow, nCol, CV_64FC3);
+		for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
 			// Reconstruct the frame from pyramid stack
 			// by removing the singleton dimensions of the kth filtered array
 			// since the filtered stack is just a selected level of the Gaussian pyramid
-			for (int x = 0; x < filteredStack.size.p[1]; ++x)
-				for (int y = 0; y < filteredStack.size.p[2]; ++y)
-					tmp_filtered.at<Vec3d>(x, y) = filteredStack.at<Vec3d>(k, x, y);
+			for (int x = 0; x < nRow; ++x)
+				for (int y = 0; y < nCol; ++y)
+					tmp_filtered.at<Vec3d>(x, y) = filteredStack[k].at<Vec3d>(x, y);
             
 			// Format the image to the right size
 			resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
