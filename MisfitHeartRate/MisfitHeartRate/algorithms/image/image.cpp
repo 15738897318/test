@@ -14,6 +14,8 @@ namespace MHR {
     bool frameToFile(const Mat& frame, const String& outFile)
     {
         printf("Save a frame to %s\n", outFile.c_str());
+//        Mat tmp = frame.clone();
+//        cvtColor(tmp, tmp, CV_RGB2BGR);
         return imwrite(outFile, frame);
     }
 
@@ -205,13 +207,18 @@ namespace MHR {
                     tmp.at<double>(channel, j) = dst.at<Vec3d>(i, j)[channel];
             tmp = ntsc2rgb_baseMat * tmp;    // slow down the program
             for (int j = 0; j < nCol; ++j) {
-                // find max channel value in a pixel
-                double max_channel = 1;
-                for (int channel = 0; channel < nChannel; ++channel)
+                double max_channel = 255;
+                for (int channel = 0; channel < nChannel; ++channel) {
+                    dst.at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
+                    // find max channel value in a pixel
                     max_channel = max(max_channel, tmp.at<double>(channel, j));
+                }
                 // clip each pixel by max channel value of that pixel, if that max > 1
-                for (int channel = 0; channel < nChannel; ++channel)
-                    dst.at<Vec3d>(i, j)[channel] = 255.0 * tmp.at<double>(channel, j) / max_channel;
+                if (max_channel > 255) {
+                    max_channel = 255.0 / max_channel;
+                    for (int channel = 0; channel < nChannel; ++channel)
+                        dst.at<Vec3d>(i, j)[channel] *= max_channel;
+                }
             }
         }
     }
