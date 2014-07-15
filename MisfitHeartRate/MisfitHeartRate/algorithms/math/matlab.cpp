@@ -12,7 +12,9 @@
 namespace MHR {
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
-    void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
+    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
+                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
+    {
         max_peak_strengths.clear(); max_peak_locs.clear();
         
         vector<pair<double,int>> peak_list;
@@ -39,7 +41,7 @@ namespace MHR {
 
 
     // unique_stable with vector<pair<double,int>>
-    vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr){
+    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
         set<int> mys;
         
         vector<pair<double,int>> res;
@@ -53,7 +55,7 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-    vector<double> conv(vector<double> seg1, vector<double> seg2){
+    vector<double> conv(const vector<double> &seg1, const vector<double> &seg2) {
         
         Mat src = vectorToMat(seg1);
         Mat dst;
@@ -66,7 +68,12 @@ namespace MHR {
 
     
     // [counts, centres] = hist(arr, nbins)
-    void hist( vector<double> arr, int nbins, vector<int> &counts, vector<double> &centers){
+    void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers) {
+        if (&arr == &centers) {
+            throw invalid_argument("hist() error: &arr == &centers");
+            return;
+        }
+        
         counts.clear();
         centers.clear();
         
@@ -93,7 +100,7 @@ namespace MHR {
 
     
     // invprctile
-    double invprctile(vector<double> arr, double x){
+    double invprctile(const vector<double> &arr, double x) {
         int cnt = 0;
         for(int i=0; i<(int) arr.size(); ++i)
             if(arr[i] < x + 1e-9) ++cnt;
@@ -102,7 +109,7 @@ namespace MHR {
 
     
     //prctile
-    double prctile(vector<double> arr, double percent){
+    double prctile(vector<double> arr, double percent) {
         sort(arr.begin(), arr.end());
         int n = (int) arr.size();
         double idx = percent * n / 100;
@@ -125,7 +132,7 @@ namespace MHR {
 
     
     //filter function for frames2signal function
-    vector<double> low_pass_filter(vector<double> arr){
+    vector<double> low_pass_filter(vector<double> arr) {
         clock_t t1 = clock();
         
         // assign values in all NaN positions to 0
