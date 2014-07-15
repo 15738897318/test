@@ -24,15 +24,6 @@ namespace MHR {
         vector<double> heartRates;
         vector<double> autocorrelation;
     };
-    
-    
-    void testMathFunctions();
-    
-    void test_ideal_bandpassing();
-    
-    void test_rgb2ntsc();
-    
-    void test_openCV();
 }
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */

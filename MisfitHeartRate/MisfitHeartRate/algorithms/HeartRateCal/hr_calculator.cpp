@@ -45,8 +45,8 @@ namespace MHR {
 		}
         
 		//Convolve the count_signal with the kernel to generate a score_signal
-        vector<double> score_signal;
-		filter2D(count_signal, score_signal, -1, kernel, Point(-1,-1), 0, BORDER_CONSTANT);
+        vector<double> score_signal = conv(count_signal, kernel);
+//		filter2D(count_signal, score_signal, -1, kernel, Point(-1,-1), 0, BORDER_CONSTANT);
 		for (int i = 0, sz = (int)score_signal.size(); i < sz; ++i)
 			score_signal[i] = -score_signal[i];
         

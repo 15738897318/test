@@ -54,6 +54,7 @@
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
 		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
 		DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D111975049E00793884 /* hr_calculator.cpp */; };
+		DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D14197531CC00793884 /* testFunctions.cpp */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
 		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
@@ -144,6 +145,8 @@
 		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
 		DCB91D111975049E00793884 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calculator.cpp; path = HeartRateCal/hr_calculator.cpp; sourceTree = "<group>"; };
 		DCB91D121975049F00793884 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calculator.h; path = HeartRateCal/hr_calculator.h; sourceTree = "<group>"; };
+		DCB91D14197531CC00793884 /* testFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testFunctions.cpp; sourceTree = "<group>"; };
+		DCB91D15197531CC00793884 /* testFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testFunctions.h; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
 		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				12B587EB19651DD700BA19A5 /* config.h */,
 				DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */,
 				DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */,
+				DCB91D15197531CC00793884 /* testFunctions.h */,
+				DCB91D14197531CC00793884 /* testFunctions.cpp */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
 				DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
+				DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
 				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,

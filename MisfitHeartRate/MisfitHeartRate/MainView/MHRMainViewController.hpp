@@ -20,6 +20,7 @@
 #import "MHRResultViewController.h"
 #import "MBProgressHUD.h"
 #import "run_algorithms.h"
+#import "testFunctions.h"
 
 using namespace cv;
 using namespace MHR;

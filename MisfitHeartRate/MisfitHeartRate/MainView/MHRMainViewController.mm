@@ -110,6 +110,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 //    test_openCV();
 //    test_ideal_bandpassing();
 //    testMathFunctions();
+    test_hr_cal_autocorr();
+    test_hr_calc_pda();
 //    test_fft();
 //    test_rgb2ntsc();
 
