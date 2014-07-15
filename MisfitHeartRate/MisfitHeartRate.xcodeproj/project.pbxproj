@@ -49,7 +49,6 @@
 		DCB55F5F1957CC4C0095A98E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F581957CC4C0095A98E /* CoreMedia.framework */; };
 		DCB55F601957CC4C0095A98E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F591957CC4C0095A98E /* CoreVideo.framework */; };
 		DCB55F621957CC6E0095A98E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F611957CC6E0095A98E /* QuartzCore.framework */; };
-		DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */; };
 		DCB55F671957CDCD0095A98E /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F651957CDCD0095A98E /* test.mp4 */; };
 		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
@@ -62,7 +61,6 @@
 		DCC56C7E1962A927009122FB /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
 		DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */; };
 		DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCCA86C7196C0259002B6B5E /* test2.mp4 */; };
-		DCCA86CA196C0259002B6B5E /* 2014-06-13-Self-Finger_crop.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCCA86C8196C0259002B6B5E /* 2014-06-13-Self-Finger_crop.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,7 +137,6 @@
 		DCB55F581957CC4C0095A98E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DCB55F591957CC4C0095A98E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		DCB55F611957CC6E0095A98E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "2014-06-10-Self-Face_crop.mp4"; sourceTree = "<group>"; };
 		DCB55F651957CDCD0095A98E /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 		DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRMainViewController.hpp; path = MisfitHeartRate/MainView/MHRMainViewController.hpp; sourceTree = SOURCE_ROOT; };
 		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
@@ -157,7 +154,6 @@
 		DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ideal_bandpassing.cpp; path = Eulerian/ideal_bandpassing.cpp; sourceTree = "<group>"; };
 		DCCA86C5196BE4D8002B6B5E /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ideal_bandpassing.h; path = Eulerian/ideal_bandpassing.h; sourceTree = "<group>"; };
 		DCCA86C7196C0259002B6B5E /* test2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.mp4; sourceTree = "<group>"; };
-		DCCA86C8196C0259002B6B5E /* 2014-06-13-Self-Finger_crop.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "2014-06-13-Self-Finger_crop.mp4"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,8 +387,6 @@
 				DCB55F721957E0EF0095A98E /* test.avi */,
 				DCC56C7D1962A927009122FB /* test.jpg */,
 				DCBDEA2119614C43005F6298 /* small.mp4 */,
-				DCB55F641957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 */,
-				DCCA86C8196C0259002B6B5E /* 2014-06-13-Self-Finger_crop.mp4 */,
 			);
 			path = resources;
 			sourceTree = SOURCE_ROOT;
@@ -499,9 +493,7 @@
 				DCB55F731957E0EF0095A98E /* test.avi in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
 				DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */,
-				DCB55F661957CDCD0095A98E /* 2014-06-10-Self-Face_crop.mp4 in Resources */,
 				DCB55F671957CDCD0095A98E /* test.mp4 in Resources */,
-				DCCA86CA196C0259002B6B5E /* 2014-06-13-Self-Finger_crop.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
