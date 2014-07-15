@@ -40,7 +40,7 @@ namespace MHR {
 //                    double lower_bound, double upper_bound);
 
 	// convert a RGB Mat to a TSL Mat
-	void rgb2tsl(const Mat& srcRGBmap, Mat &dst);
+	void rgb2tsl(const Mat& rgbmap, Mat &dst);
 
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')

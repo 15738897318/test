@@ -18,7 +18,7 @@ namespace MHR {
 #else
     const int DEBUG_MODE = 0;
 #endif
-    const String _outputPath = "/var/mobile/Applications/C9BB0B7F-1D88-4EF1-8A5E-3F30C45F00B3/Documents/";
+    const String _outputPath = "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/";
     
     const double NaN = -1e9;
     
@@ -49,7 +49,7 @@ namespace MHR {
     const double _window_size_in_sec = 10;
     const double _overlap_ratio = 0;
     const double _max_bpm = 200;             // BPM
-    const double _cutoff_freq = 5;           // Hz
+    const double _cutoff_freq = 2.5;         // Hz
     const double _time_lag = 3;              // seconds
     const String _colourspace = "tsl";
     const int _channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
@@ -62,8 +62,8 @@ namespace MHR {
     const int _startIndex = 1;  //400
     const int _endIndex = 0;    //1400	>= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
 
-    const double peakStrengthThreshold_fraction = 0;
-    const String frames2signalConversionMethod = "mode-balance";
+    const double _peakStrengthThreshold_fraction = 0;
+    const String _frames2signalConversionMethod = "mode-balance";
 
     const int _frame_downsampling_filt_rows = 7;
     const int _frame_downsampling_filt_cols = 7;

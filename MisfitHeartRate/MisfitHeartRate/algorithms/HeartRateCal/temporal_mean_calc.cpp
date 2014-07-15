@@ -17,7 +17,7 @@ namespace MHR {
     {
         clock_t t1 = clock();
         
-        String conversion_method = frames2signalConversionMethod;
+        String conversion_method = _frames2signalConversionMethod;
         
         // Block 1 ==== Load the video & convert it to the desired colour-space
         // Extract video info
@@ -31,21 +31,16 @@ namespace MHR {
         int endIndex = len-1;   // 1400
         
         // Convert colourspaces for each frame
-        Mat frame;
-        Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
-        Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
-        vector<Mat> monoframes;
-//        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
-//        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
-        
         Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
+        Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
+        Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+        vector<Mat> monoframes;
+
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
-            frame = vid[i].clone();
+            vid[i].convertTo(frame, CV_64FC3);
             if (colourspace == "hsv")
                 cvtColor(frame, frame, CV_RGB2HSV);
-//            else if (colourspace == "ntsc")
-//                rgb2ntsc(frame, frame);
             else if (colourspace == "ycbcr")
                 cvtColor(frame, frame, CV_RGB2YCrCb);
             else if (colourspace == "tsl")

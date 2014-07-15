@@ -73,22 +73,22 @@ namespace MHR {
 
 	// convert a RGB Mat to a TSL Mat
     // rgbmap is a CV_64F Mat
-	void rgb2tsl(const Mat& rbgmap, Mat &dst)
+	void rgb2tsl(const Mat& rgbmap, Mat &dst)
 	{
 //        clock_t t1 = clock();
         
-		int nRow = rbgmap.rows;
-		int nCol = rbgmap.cols;
-        int nChannel = rbgmap.channels();
-//		Mat rbgmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
+		int nRow = rgbmap.rows;
+		int nCol = rgbmap.cols;
+        int nChannel = rgbmap.channels();
+//		Mat rgbmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
         
         Mat rgb_sumchannels = Mat::zeros(nRow, nCol, CV_64F);
         Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F)};
         for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
                 for (int channel = 0; channel < nChannel; ++channel) {
-                    rgb_sumchannels.at<double>(i, j) += rbgmap.at<Vec3d>(i, j)[channel];
-                    rgb_channel[channel].at<double>(i, j) = rbgmap.at<Vec3d>(i, j)[channel];
+                    rgb_sumchannels.at<double>(i, j) += rgbmap.at<Vec3d>(i, j)[channel];
+                    rgb_channel[channel].at<double>(i, j) = rgbmap.at<Vec3d>(i, j)[channel];
                 }
 
 //        printf("rgb2tsl() - Block 0 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
