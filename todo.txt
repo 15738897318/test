@@ -23,3 +23,9 @@
 
 (CAMERA_HEIGHT - IMAGE_WIDTH)/2
 (CAMERA_WIDTH - IMAGE_HEIGHT)/2
+
+
+hist(arr, _number_of_bins_heartRate, counts, centres);
+arr = ????
+_number_of_bins_heartRate = ???
+- sort heartBeatPositions

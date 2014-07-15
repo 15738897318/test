@@ -53,6 +53,7 @@ namespace MHR {
     const double _time_lag = 3;              // seconds
     const String _colourspace = "tsl";
     const int _channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
+    const int _number_of_bins_heartRate = -1;
 
     // heartRate_calc: Native params of the algorithm
     const int _flagDebug = 0;
