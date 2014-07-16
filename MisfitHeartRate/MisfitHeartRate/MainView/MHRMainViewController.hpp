@@ -28,5 +28,4 @@ using namespace MHR;
 
 @interface MHRMainViewController : UIViewController <CvVideoCameraDelegate>
 
-
 @end

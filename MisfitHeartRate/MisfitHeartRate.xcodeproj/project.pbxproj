@@ -33,14 +33,12 @@
 		DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F211957CB3B0095A98E /* InfoPlist.strings */; };
 		DCB55F251957CB3B0095A98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F241957CB3B0095A98E /* main.m */; };
 		DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */; };
-		DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F2A1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld */; };
 		DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F2D1957CB3B0095A98E /* Images.xcassets */; };
 		DCB55F351957CB3B0095A98E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F341957CB3B0095A98E /* XCTest.framework */; };
 		DCB55F361957CB3B0095A98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F161957CB3B0095A98E /* Foundation.framework */; };
 		DCB55F371957CB3B0095A98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1A1957CB3B0095A98E /* UIKit.framework */; };
 		DCB55F381957CB3B0095A98E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F1C1957CB3B0095A98E /* CoreData.framework */; };
 		DCB55F401957CB3B0095A98E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F3E1957CB3B0095A98E /* InfoPlist.strings */; };
-		DCB55F421957CB3B0095A98E /* MisfitHeartRateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F411957CB3B0095A98E /* MisfitHeartRateTests.m */; };
 		DCB55F521957CC170095A98E /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F511957CC170095A98E /* opencv2.framework */; };
 		DCB55F5A1957CC4C0095A98E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F531957CC4C0095A98E /* Accelerate.framework */; };
 		DCB55F5B1957CC4C0095A98E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */; };
@@ -55,6 +53,48 @@
 		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
 		DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D111975049E00793884 /* hr_calculator.cpp */; };
 		DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D14197531CC00793884 /* testFunctions.cpp */; };
+		DCB91D1D19762E9900793884 /* videoHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */; };
+		DCB91D2119762FD900793884 /* MisfitHeartRateTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */; };
+		DCB91D221976328400793884 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F511957CC170095A98E /* opencv2.framework */; };
+		DCB91D23197632D000793884 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F531957CC4C0095A98E /* Accelerate.framework */; };
+		DCB91D24197632D000793884 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */; };
+		DCB91D25197632D000793884 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F551957CC4C0095A98E /* AVFoundation.framework */; };
+		DCB91D26197632D000793884 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F181957CB3B0095A98E /* CoreGraphics.framework */; };
+		DCB91D27197632D000793884 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F591957CC4C0095A98E /* CoreVideo.framework */; };
+		DCB91D28197632D900793884 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F611957CC6E0095A98E /* QuartzCore.framework */; };
+		DCB91D29197632E300793884 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F571957CC4C0095A98E /* CoreImage.framework */; };
+		DCB91D2A19763C7B00793884 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
+		DCB91D2B19763CB500793884 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */; };
+		DCB91D2C19763CB700793884 /* hr_calc_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */; };
+		DCB91D2D19763CB900793884 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
+		DCB91D2E19763CBD00793884 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
+		DCB91D2F19763CBF00793884 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */; };
+		DCB91D3019763CC100793884 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D111975049E00793884 /* hr_calculator.cpp */; };
+		DCB91D3219763CD300793884 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
+		DCB91D3319763CDA00793884 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
+		DCB91D3419763CE000793884 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */; };
+		DCB91D3519763CE100793884 /* testFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D14197531CC00793884 /* testFunctions.cpp */; };
+		DCB91D3619763CE700793884 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
+		DCB91D3719763CE900793884 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */; };
+		DCB91D3819763CEB00793884 /* filter_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCADC196196BE1DB00AFCDE5 /* filter_bandpassing.cpp */; };
+		DCB91D3919763CED00793884 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */; };
+		DCB91D3A19763D1100793884 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE523E196579BC00A8AFB6 /* matrix.cpp */; };
+		DCB91D3B19763D4700793884 /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
+		DCB91D3C19763D4C00793884 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
+		DCB91D3D19763D4E00793884 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC190196BB46200AFCDE5 /* MBProgressHUD.m */; };
+		DCB91D3E19763D5000793884 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */; };
+		DCB91D3F19763D5200793884 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */; };
+		DCB91D4019763D5F00793884 /* MHRAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */; };
+		DCB91D4219763D6700793884 /* MisfitHeartRate-Skin.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */; };
+		DCB91D4319763D7800793884 /* videoHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */; };
+		DCB91D4419763D8E00793884 /* test2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCCA86C7196C0259002B6B5E /* test2.mp4 */; };
+		DCB91D4519763D8E00793884 /* test1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCAE524819669B4900A8AFB6 /* test1.mp4 */; };
+		DCB91D4619763D8E00793884 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
+		DCB91D4719763D8E00793884 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F651957CDCD0095A98E /* test.mp4 */; };
+		DCB91D4819763D8E00793884 /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
+		DCB91D4919763D8E00793884 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
+		DCB91D4A19763D8E00793884 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
+		DCB91D4B19763DE100793884 /* MHRResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
 		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
@@ -62,6 +102,10 @@
 		DCC56C7E1962A927009122FB /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
 		DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */; };
 		DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCCA86C7196C0259002B6B5E /* test2.mp4 */; };
+		DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */; };
+		DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */; };
+		DCF4B78C19764DC2006B5F4F /* ideal_bandpassing_test_0.out in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */; };
+		DCF4B78D19764DC9006B5F4F /* ideal_bandpassing_test_0.in in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,13 +166,11 @@
 		DCB55F261957CB3B0095A98E /* MisfitHeartRate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MisfitHeartRate-Prefix.pch"; path = "../MisfitHeartRate/MisfitHeartRate-Prefix.pch"; sourceTree = "<group>"; };
 		DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = MHRAppDelegate.hpp; path = ../MisfitHeartRate/MHRAppDelegate.hpp; sourceTree = "<group>"; };
 		DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRAppDelegate.mm; path = ../MisfitHeartRate/MHRAppDelegate.mm; sourceTree = "<group>"; };
-		DCB55F2B1957CB3B0095A98E /* opticalHeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = opticalHeartRate.xcdatamodel; sourceTree = "<group>"; };
 		DCB55F2D1957CB3B0095A98E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../MisfitHeartRate/Images.xcassets; sourceTree = "<group>"; };
 		DCB55F331957CB3B0095A98E /* MisfitHeartRateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MisfitHeartRateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F341957CB3B0095A98E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DCB55F3D1957CB3B0095A98E /* MisfitHeartRateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MisfitHeartRateTests-Info.plist"; sourceTree = "<group>"; };
 		DCB55F3F1957CB3B0095A98E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DCB55F411957CB3B0095A98E /* MisfitHeartRateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MisfitHeartRateTests.m; path = ../MisfitHeartRateTests/MisfitHeartRateTests.m; sourceTree = "<group>"; };
 		DCB55F511957CC170095A98E /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = frameworks/opencv2.framework; sourceTree = "<group>"; };
 		DCB55F531957CC4C0095A98E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -147,6 +189,8 @@
 		DCB91D121975049F00793884 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calculator.h; path = HeartRateCal/hr_calculator.h; sourceTree = "<group>"; };
 		DCB91D14197531CC00793884 /* testFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testFunctions.cpp; sourceTree = "<group>"; };
 		DCB91D15197531CC00793884 /* testFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testFunctions.h; sourceTree = "<group>"; };
+		DCB91D1C19762E9900793884 /* videoHeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = videoHeartRate.xcdatamodel; sourceTree = "<group>"; };
+		DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MisfitHeartRateTests.mm; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
 		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
@@ -157,6 +201,8 @@
 		DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ideal_bandpassing.cpp; path = Eulerian/ideal_bandpassing.cpp; sourceTree = "<group>"; };
 		DCCA86C5196BE4D8002B6B5E /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ideal_bandpassing.h; path = Eulerian/ideal_bandpassing.h; sourceTree = "<group>"; };
 		DCCA86C7196C0259002B6B5E /* test2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.mp4; sourceTree = "<group>"; };
+		DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideal_bandpassing_test_0.out; path = MisfitHeartRateTests/ideal_bandpassing_test_0.out; sourceTree = SOURCE_ROOT; };
+		DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideal_bandpassing_test_0.in; path = MisfitHeartRateTests/ideal_bandpassing_test_0.in; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +229,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB91D29197632E300793884 /* CoreImage.framework in Frameworks */,
+				DCB91D28197632D900793884 /* QuartzCore.framework in Frameworks */,
+				DCB91D23197632D000793884 /* Accelerate.framework in Frameworks */,
+				DCB91D24197632D000793884 /* AssetsLibrary.framework in Frameworks */,
+				DCB91D25197632D000793884 /* AVFoundation.framework in Frameworks */,
+				DCB91D26197632D000793884 /* CoreGraphics.framework in Frameworks */,
+				DCB91D27197632D000793884 /* CoreVideo.framework in Frameworks */,
+				DCB91D221976328400793884 /* opencv2.framework in Frameworks */,
 				DCB55F351957CB3B0095A98E /* XCTest.framework in Frameworks */,
 				DCB55F381957CB3B0095A98E /* CoreData.framework in Frameworks */,
 				DCB55F371957CB3B0095A98E /* UIKit.framework in Frameworks */,
@@ -334,8 +388,8 @@
 				DCADC189196BA7A700AFCDE5 /* ResultView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
 				DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */,
+				DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */,
 				DCB55F2D1957CB3B0095A98E /* Images.xcassets */,
-				DCB55F2A1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld */,
 				DCB55F1F1957CB3B0095A98E /* Supporting Files */,
 			);
 			name = MisfitlHeartRate;
@@ -357,7 +411,7 @@
 		DCB55F3B1957CB3B0095A98E /* MisfitHeartRateTests */ = {
 			isa = PBXGroup;
 			children = (
-				DCB55F411957CB3B0095A98E /* MisfitHeartRateTests.m */,
+				DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */,
 				DCB55F3C1957CB3B0095A98E /* Supporting Files */,
 			);
 			path = MisfitHeartRateTests;
@@ -385,6 +439,7 @@
 		DCB55F631957CDCD0095A98E /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCF4B78719764D7F006B5F4F /* tests */,
 				DCCA86C7196C0259002B6B5E /* test2.mp4 */,
 				DCAE524819669B4900A8AFB6 /* test1.mp4 */,
 				DCBDEA2419614ED6005F6298 /* test0.mp4 */,
@@ -409,6 +464,15 @@
 				DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		DCF4B78719764D7F006B5F4F /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */,
+				DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */,
+			);
+			name = tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,7 +546,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
 				DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */,
+				DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
 				DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */,
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
@@ -501,7 +567,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB91D4219763D6700793884 /* MisfitHeartRate-Skin.plist in Resources */,
+				DCB91D4A19763D8E00793884 /* small.mp4 in Resources */,
+				DCB91D4719763D8E00793884 /* test.mp4 in Resources */,
+				DCB91D4519763D8E00793884 /* test1.mp4 in Resources */,
+				DCB91D4819763D8E00793884 /* test.avi in Resources */,
 				DCB55F401957CB3B0095A98E /* InfoPlist.strings in Resources */,
+				DCB91D4619763D8E00793884 /* test0.mp4 in Resources */,
+				DCB91D4419763D8E00793884 /* test2.mp4 in Resources */,
+				DCF4B78D19764DC9006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
+				DCF4B78C19764DC2006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
+				DCB91D4919763D8E00793884 /* test.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,10 +589,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */,
-				DCB55F2C1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld in Sources */,
 				DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
 				DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */,
+				DCB91D1D19762E9900793884 /* videoHeartRate.xcdatamodeld in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
 				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,
@@ -544,7 +620,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCB55F421957CB3B0095A98E /* MisfitHeartRateTests.m in Sources */,
+				DCB91D3E19763D5000793884 /* UIImageCVMatConverter.mm in Sources */,
+				DCB91D3F19763D5200793884 /* UIView+Position.m in Sources */,
+				DCB91D4319763D7800793884 /* videoHeartRate.xcdatamodeld in Sources */,
+				DCB91D2C19763CB700793884 /* hr_calc_pda.cpp in Sources */,
+				DCB91D3719763CE900793884 /* build_Gdown_stack.cpp in Sources */,
+				DCB91D3819763CEB00793884 /* filter_bandpassing.cpp in Sources */,
+				DCB91D3219763CD300793884 /* matlab.cpp in Sources */,
+				DCB91D3619763CE700793884 /* eulerian.cpp in Sources */,
+				DCB91D4019763D5F00793884 /* MHRAppDelegate.mm in Sources */,
+				DCB91D3419763CE000793884 /* run_algorithms.cpp in Sources */,
+				DCB91D3C19763D4C00793884 /* MHRUtilities.m in Sources */,
+				DCB91D3D19763D4E00793884 /* MBProgressHUD.m in Sources */,
+				DCB91D3519763CE100793884 /* testFunctions.cpp in Sources */,
+				DCB91D3B19763D4700793884 /* MHRMainViewController.mm in Sources */,
+				DCB91D2F19763CBF00793884 /* temporal_mean_calc.cpp in Sources */,
+				DCB91D2119762FD900793884 /* MisfitHeartRateTests.mm in Sources */,
+				DCB91D2D19763CB900793884 /* hrDebug.cpp in Sources */,
+				DCB91D3A19763D1100793884 /* matrix.cpp in Sources */,
+				DCB91D2A19763C7B00793884 /* hr_calc_autocorr.cpp in Sources */,
+				DCB91D3019763CC100793884 /* hr_calculator.cpp in Sources */,
+				DCB91D4B19763DE100793884 /* MHRResultViewController.m in Sources */,
+				DCB91D3319763CDA00793884 /* image.cpp in Sources */,
+				DCB91D2E19763CBD00793884 /* frames2signal.cpp in Sources */,
+				DCB91D3919763CED00793884 /* ideal_bandpassing.cpp in Sources */,
+				DCB91D2B19763CB500793884 /* hr_signal_calc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,18 +788,21 @@
 		DCB55F491957CB3B0095A98E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "videoHeartRateTests/videoHeartRate-Prefix.pch";
+				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "videoHeartRateTests/MisfitHeartRateTests-Info.plist";
+				INFOPLIST_FILE = "MisfitHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -708,14 +811,17 @@
 		DCB55F4A1957CB3B0095A98E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "videoHeartRateTests/videoHeartRate-Prefix.pch";
-				INFOPLIST_FILE = "videoHeartRateTests/MisfitHeartRateTests-Info.plist";
+				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
+				INFOPLIST_FILE = "MisfitHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -754,13 +860,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		DCB55F2A1957CB3B0095A98E /* opticalHeartRate.xcdatamodeld */ = {
+		DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				DCB55F2B1957CB3B0095A98E /* opticalHeartRate.xcdatamodel */,
+				DCB91D1C19762E9900793884 /* videoHeartRate.xcdatamodel */,
 			);
-			currentVersion = DCB55F2B1957CB3B0095A98E /* opticalHeartRate.xcdatamodel */;
-			path = opticalHeartRate.xcdatamodeld;
+			currentVersion = DCB91D1C19762E9900793884 /* videoHeartRate.xcdatamodel */;
+			path = videoHeartRate.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
