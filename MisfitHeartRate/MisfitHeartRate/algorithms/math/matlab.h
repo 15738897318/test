@@ -42,6 +42,8 @@ namespace MHR {
 
     //filter function for frames2signal function
     vector<double> low_pass_filter(vector<double> arr);
+    
+    double diff_percent(double a, double b);
 }
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

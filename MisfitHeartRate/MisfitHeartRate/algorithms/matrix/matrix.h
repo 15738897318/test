@@ -53,6 +53,14 @@ namespace MHR {
 	
 	// return mat .* x
 	Mat multiply(const Mat &a, double x);
+    
+    Mat read2DMatFromFile(FILE* &file, int rows, int cols);
+    
+    vector<double> readVectorFromFile(FILE* &file, int n);
+
+    int readInt(FILE* &file);
+    
+    double readDouble(FILE* &file);
 }
 
 #endif /* defined(__MisfitHeartRate__matrix__) */

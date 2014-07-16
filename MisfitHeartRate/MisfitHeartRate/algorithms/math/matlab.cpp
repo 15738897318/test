@@ -164,4 +164,10 @@ namespace MHR {
         
         return ans;
     }
+    
+    
+    double diff_percent(double a, double b)
+    {
+        return abs(a-b)/abs(b)*100;
+    }
 }
