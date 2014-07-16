@@ -1,18 +1,18 @@
 //
-//  opticalHeartRateTests.m
-//  opticalHeartRateTests
+//  MHRHeartRateCalTests.m
+//  MisfitHeartRate
 //
-//  Created by Bao Nguyen on 6/23/14.
+//  Created by Bao Nguyen on 7/16/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface opticalHeartRateTests : XCTestCase
+@interface MHRHeartRateCalTests : XCTestCase
 
 @end
 
-@implementation opticalHeartRateTests
+@implementation MHRHeartRateCalTests
 
 - (void)setUp
 {

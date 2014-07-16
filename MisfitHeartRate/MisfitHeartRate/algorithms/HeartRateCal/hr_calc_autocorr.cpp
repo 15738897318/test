@@ -19,13 +19,13 @@ namespace MHR {
         vector<double> autocorrelation;
         
         ////////////////////////////////////////////////////////////////////////////////
-        double min_value = temporal_mean[0];
-        for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
-            min_value = min(min_value, temporal_mean[i]);
-        printf("min_value = %lf\n", min_value);
-        if (min_value < 0)
-            for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
-                temporal_mean[i] -= min_value;
+//        double min_value = temporal_mean[0];
+//        for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
+//            min_value = min(min_value, temporal_mean[i]);
+//        printf("min_value = %lf\n", min_value);
+//        if (min_value < 0)
+//            for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
+//                temporal_mean[i] -= min_value;
         
 //        printf("\n\ntemporal_mean:\n");
 //        for (int i = 0; i < (int)temporal_mean.size(); ++i)
@@ -47,9 +47,9 @@ namespace MHR {
                 segment.push_back(temporal_mean[i]);
             
             //calc mean and get segment = segment - mean
-//            double sum = accumulate(segment.begin(), segment.end(), 0);
-//            double mean = sum/segment.size();
-//            for(int i=0; i<(int) segment.size(); ++i) segment[i]-=mean;
+            double sum = accumulate(segment.begin(), segment.end(), 0);
+            double mean = sum/segment.size();
+            for(int i=0; i<(int) segment.size(); ++i) segment[i]-=mean;
             //get the reverse vector of segment
             vector<double> rev_segment=segment;
             reverse(rev_segment.begin(), rev_segment.end());
@@ -120,6 +120,7 @@ namespace MHR {
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
                                       + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
                 }
+                for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
             }
             
             // b. Equal_step progression

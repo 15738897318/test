@@ -458,11 +458,6 @@
 				CLASSPREFIX = MHR;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = misfit;
-				TargetAttributes = {
-					DCB55F321957CB3B0095A98E = {
-						TestTargetID = DCB55F121957CB3B0095A98E;
-					};
-				};
 			};
 			buildConfigurationList = DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "MisfitHeartRate" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -693,21 +688,19 @@
 		DCB55F491957CB3B0095A98E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/opticalHeartRate.app/opticalHeartRate";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "opticalHeartRate/opticalHeartRate-Prefix.pch";
+				GCC_PREFIX_HEADER = "videoHeartRateTests/videoHeartRate-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "opticalHeartRateTests/MisfitHeartRateTests-Info.plist";
+				INFOPLIST_FILE = "videoHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -715,17 +708,15 @@
 		DCB55F4A1957CB3B0095A98E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/opticalHeartRate.app/opticalHeartRate";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "opticalHeartRate/opticalHeartRate-Prefix.pch";
-				INFOPLIST_FILE = "opticalHeartRateTests/MisfitHeartRateTests-Info.plist";
+				GCC_PREFIX_HEADER = "videoHeartRateTests/videoHeartRate-Prefix.pch";
+				INFOPLIST_FILE = "videoHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
