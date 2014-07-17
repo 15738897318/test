@@ -176,8 +176,11 @@ namespace MHR {
     // filter kernel specified by FILT (default = 'binom5')
     void blurDnClr(const Mat& src, Mat &dst, int level) {
         dst = src.clone();
-        for (int i = 0; i < level; ++i)
-            pyrDown(dst, dst, Size(dst.cols/2, dst.rows/2));
+        for (int i = 0; i < level; ++i) {
+            int nRow = dst.rows/2 + int(dst.rows%2 > 0);
+            int nCol = dst.cols/2 + int(dst.cols%2 > 0);
+            pyrDown(dst, dst, Size(nCol, nRow));
+        }
     }
 
 
