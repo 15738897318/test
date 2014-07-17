@@ -20,57 +20,6 @@ namespace MHR {
     }
 
 
-    // multiply each pixel of a frame with a base matrix
-    // and clip the result's values by range [lower_bound, upper_bound]
-//    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
-//                    double lower_bound, double upper_bound)
-//    {
-//        frame.convertTo(dst, CV_64FC3);
-//        int nChannel = _number_of_channels;
-//        double maxChannelValue[_number_of_channels] = {0.0000001};
-//        // mutiply and find max value in each channel
-////        Mat tmp;
-////        MatIterator_<Vec3d> it = dst.begin<Vec3d>();
-////        MatIterator_<double> tmp_it;
-////        for (int i = 0; i < dst.rows; ++i)
-////            for (int j = 0; j < dst.cols; ++j) {
-////                tmp = base * Mat(*it);
-////                tmp_it = tmp.begin<double>();
-////                for (int channel = 0; channel < nChannel; ++channel)
-////                    maxChannelValue[channel] = max(maxChannelValue[channel], *tmp_it++);
-////                *it++ = Vec3d(tmp);
-////            }
-////        // clip
-////        it = dst.begin<Vec3d>();
-////        for (int i = 0; i < dst.rows; ++i)
-////            for (int j = 0; j < dst.cols; ++j) {
-////                for (int channel = 0; channel < nChannel; ++channel)
-////                    (*it)[channel] *= upper_bound/maxChannelValue[channel];
-////                ++it;
-////            }
-//        
-//        // use .at<>
-//        // mutiply and find max value in each channel
-//        Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
-//        for (int i = 0; i < dst.rows; ++i)
-//            for (int j = 0; j < dst.cols; ++j) {
-////                tmp = base * Mat(dst.at<Vec3d>(i, j));
-//                for (int channel = 0; channel < nChannel; ++channel)
-//                    tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
-//                tmp = base * tmp;
-//                for (int channel = 0; channel < nChannel; ++channel)
-//                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
-//                dst.at<Vec3d>(i, j) = Vec3d(tmp);
-//            }
-//        // clip
-//        for (int i = 0; i < dst.rows; ++i)
-//            for (int j = 0; j < dst.cols; ++j) {
-//                for (int channel = 0; channel < nChannel; ++channel)
-//                    dst.at<Vec3d>(i, j)[channel] *= upper_bound/maxChannelValue[channel];
-//            }
-//    }
-
-
 	// convert a RGB Mat to a TSL Mat
     // rgbmap is a CV_64F Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst)

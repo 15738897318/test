@@ -55,15 +55,21 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-    vector<double> conv(const vector<double> &signal, vector<double> kernel) {
-
-        Mat src = vectorToMat(signal);
-        Mat dst;
-        Mat mkernel = vectorToMat(kernel);
-        
-        printf("BORDER_CONSTANT = %d\n", BORDER_CONSTANT);
-        filter2D(src, dst, -1, mkernel, Point(-1,-1), 0 , BORDER_CONSTANT);
-        return matToVector1D(dst);
+//    vector<double> conv(vector<double> signal, vector<double> kernel) {
+//        Mat src = vectorToMat(signal);
+//        Mat dst;
+////        reverse(kernel.begin(), kernel.end());
+//        Mat mkernel = vectorToMat(kernel);
+//
+////        transpose(src, src);
+////        transpose(mkernel, mkernel);
+//
+////        corrDn(src, dst, mkernel, 1, 1);
+////        return matToVector1D(dst);
+//        
+////        filter2D(src, dst, -1, mkernel);
+//        filter2D(src, dst, -1, mkernel, Point(-1,-1), 0 , BORDER_CONSTANT);
+//        return matToVector1D(dst);
         
         //////////////////////
 //        reverse(kernel.begin(), kernel.end());
@@ -90,6 +96,28 @@ namespace MHR {
 //        for (int i = a; i < len - b; ++i)
 //            tmp.push_back(ans[i]);
 //        return tmp;
+//    }
+    
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
+        int m = (int)signal.size(), n = (int)kernel.size();
+        // padding of zeors
+        for(int i=m;i<=m+n-1;i++)
+            signal.push_back(0);
+        for(int i=n;i<=m+n-1;i++)
+            kernel.push_back(0);
+        
+        /* convolution operation */
+        vector<double> ans;
+        for(int i=0;i<m+n-1;i++)
+        {
+            ans.push_back(0);
+            for(int j=0;j<=i;j++)
+                ans[i]=ans[i]+(signal[j]*kernel[i-j]);
+        }
+        
+        for (int i = 0; i < n-1; ++i)
+            ans.pop_back();
+        return ans;
     }
 
     

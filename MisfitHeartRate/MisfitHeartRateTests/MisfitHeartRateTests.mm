@@ -234,23 +234,59 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 
 - (void)test_unique_stable
 {
+    FILE *file = fopen(String(resourcePath + "unique_stable_test.in").c_str(), "r");
+    int n = readInt(file);
+    vector<pair<double,int> > arr;
+    for (int i = 0; i < n; ++i) {
+        arr.push_back(make_pair<double, int>(0.0, 0));
+        arr[i].first = readDouble(file);
+        arr[i].second = readInt(file);
+    }
+    fclose(file);
     
+    vector<pair<double,int>> output = unique_stable(arr);
+    n = (int)output.size();
+//    printf("output.size() = %d\n", n);
+//    for (int i = 0; i < (int)output.size(); ++i)
+//        printf("%lf\n", output[i]);
+    
+    file = fopen(String(resourcePath + "unique_stable_test.out").c_str(), "r");
+    int m = readInt(file);
+    if (n != m) {
+        XCTFail(@"wrong output.size() - expected: %d, found: %d", m, n);
+        fclose(file);
+        return;
+    }
+    for (int i = 0; i < n; ++i) {
+        double a = readDouble(file);
+        int b = readInt(file);
+        if (diff_percent(a, output[i].first) > EPSILON_PERCENT || diff_percent(b, output[i].second) > EPSILON_PERCENT) {
+            XCTFail(@"wrong output - expected: (%lf, %d), found: (%lf, %d)", a, b, output[i].first, output[i].second);
+        }
+    }
+    fclose(file);
+
 }
 
 
-- (void)test_conv
+- (void)test_corr_linear
 {
-    FILE *file = fopen(String(resourcePath + "conv_test.in").c_str(), "r");
+    FILE *file = fopen(String(resourcePath + "corr_linear_test.in").c_str(), "r");
     int n1 = readInt(file);
     vector<double> seg1 = readVectorFromFile(file, n1);
     int n2 = readInt(file);
     vector<double> seg2 = readVectorFromFile(file, n2);
     fclose(file);
     
-    vector<double> output = conv(seg1, seg2);
-    printf("output.size() = %d\n", (int)output.size());
+    vector<double> output = corr_linear(seg1, seg2);
+
+    int n = (int)output.size();
+    if (n != n1) {
+        XCTFail(@"wrong output.size() - expected: %d, found: %d", n1, n);
+        return;
+    }
    
-    file = fopen(String(resourcePath + "conv_test.out").c_str(), "r");
+    file = fopen(String(resourcePath + "corr_linear_test.out").c_str(), "r");
     double max_percent = 0, max_correct_ans = 0, max_ans = 0;
     for (int i = 0; i < n1; ++i) {
         double correct_ans = readDouble(file);
@@ -456,12 +492,12 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     FILE *file = fopen(String(resourcePath + "corrDn_test.in").c_str(), "r");
     int nRow = readInt(file), nCol = readInt(file);
     Mat src =  read2DMatFromFile(file, nRow, nCol);
-    int rectRow = readInt(file), rectCol = readInt(file);
-    Mat filter =  read2DMatFromFile(file, rectRow, rectCol);
+    int filterRow = readInt(file), filterCol = readInt(file);
+    Mat filter =  read2DMatFromFile(file, filterRow, filterCol);
     fclose(file);
     
     Mat output;
-    corrDn(src, output, filter, rectRow, rectCol);
+    corrDn(src, output, filter, 1, 1);
     for (int i = 0; i < output.rows; ++i) {
         for (int j = 0; j < output.cols; ++j)
             printf("%lf, ", output.at<double>(i, j));
