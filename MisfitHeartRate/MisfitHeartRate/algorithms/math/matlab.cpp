@@ -156,9 +156,8 @@ namespace MHR {
             ans[nAnPositions[i]] = NaN;
         
         // remove last 7 elements when use FilterBandPassing
-        if (_isUseFilterBandPassing)
-            for(int i=0; i<7; ++i)
-                if(!ans.empty()) ans.pop_back();
+        for(int i = 0; i < 7; ++i)
+            if(!ans.empty()) ans.pop_back();
         
         printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
