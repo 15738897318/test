@@ -18,6 +18,9 @@ namespace MHR {
 #else
     const int DEBUG_MODE = 0;
 #endif
+    
+    #define ELEMENT_COUNT(X) (sizeof(X) / sizeof((X)[0]))
+    
     const String _outputPath = "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/";
     
     const double NaN = -1e9;

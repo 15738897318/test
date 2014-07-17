@@ -11,6 +11,8 @@
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
+		DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */; };
+		DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */; };
 		DC85FF4B19768AC5004081B2 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2B19768AC5004081B2 /* add_test.in */; };
 		DC85FF4C19768AC5004081B2 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2B19768AC5004081B2 /* add_test.in */; };
 		DC85FF4D19768AC5004081B2 /* add_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2C19768AC5004081B2 /* add_test.out */; };
@@ -192,6 +194,8 @@
 		12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calc_autocorr.cpp; path = HeartRateCal/hr_calc_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calc_autocorr.h; path = HeartRateCal/hr_calc_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
+		DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.in; path = MisfitHeartRateTests/corr_linear_test.in; sourceTree = SOURCE_ROOT; };
+		DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.out; path = MisfitHeartRateTests/corr_linear_test.out; sourceTree = SOURCE_ROOT; };
 		DC85FF2B19768AC5004081B2 /* add_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = add_test.in; path = MisfitHeartRateTests/add_test.in; sourceTree = SOURCE_ROOT; };
 		DC85FF2C19768AC5004081B2 /* add_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = add_test.out; path = MisfitHeartRateTests/add_test.out; sourceTree = SOURCE_ROOT; };
 		DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atan2Mat_test.in; path = MisfitHeartRateTests/atan2Mat_test.in; sourceTree = SOURCE_ROOT; };
@@ -565,6 +569,8 @@
 		DCF4B78719764D7F006B5F4F /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */,
+				DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */,
 				DC85FF2B19768AC5004081B2 /* add_test.in */,
 				DC85FF2C19768AC5004081B2 /* add_test.out */,
 				DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */,
@@ -683,12 +689,14 @@
 				DC85FF5519768AC5004081B2 /* blurDnClr_test.out in Resources */,
 				DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
 				DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */,
+				DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */,
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DC85FF5F19768AC5004081B2 /* findpeaks_test.in in Resources */,
 				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
 				DC85FF7D19768AC5004081B2 /* powMat_test.out in Resources */,
 				DC85FF8519768AC5004081B2 /* rgb2tsl_test.out in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
+				DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */,
 				DC85FF7119768AC5004081B2 /* low_pass_filter_test.out in Resources */,
 				DC85FF8319768AC5004081B2 /* rgb2tsl_test.in in Resources */,
 				DC85FF5B19768AC5004081B2 /* corrDn_test.in in Resources */,

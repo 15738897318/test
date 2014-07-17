@@ -15,7 +15,7 @@ using namespace std;
 using namespace cv;
 
 //const double EPSILON = 1e-5;
-const double EPSILON_PERCENT = 0.1;
+const double EPSILON_PERCENT = 1.5;
 String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/2926CAAB-4B49-49FE-903E-82908E53D35A/MisfitHeartRate.app/";
 
 
@@ -142,18 +142,23 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     Mat output = multiply(src1, src2);
     
     file = fopen(String(resourcePath + "multiply_test.out").c_str(), "r");
+    double max_percent = 0;
+    double max_correct_ans = 0, max_ans = 0;
     for (int i = 0; i < nRow; ++i)
         for (int j = 0; j < nCol; ++j) {
             double correct_ans = readDouble(file);
             double ans = output.at<double>(i, j);
-            if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
+            double tmp = diff_percent(ans, correct_ans);
+            if (tmp > max_percent)
             {
-                XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
-                fclose(file);
-                return;
+                max_percent = tmp;
+                max_correct_ans = correct_ans;
+                max_ans = ans;
             }
         }
     fclose(file);
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
 }
 
 
@@ -229,33 +234,74 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 
 - (void)test_unique_stable
 {
+    FILE *file = fopen(String(resourcePath + "unique_stable_test.in").c_str(), "r");
+    int n = readInt(file);
+    vector<pair<double,int> > arr;
+    for (int i = 0; i < n; ++i) {
+        arr.push_back(make_pair<double, int>(0.0, 0));
+        arr[i].first = readDouble(file);
+        arr[i].second = readInt(file);
+    }
+    fclose(file);
     
+    vector<pair<double,int>> output = unique_stable(arr);
+    n = (int)output.size();
+//    printf("output.size() = %d\n", n);
+//    for (int i = 0; i < (int)output.size(); ++i)
+//        printf("%lf\n", output[i]);
+    
+    file = fopen(String(resourcePath + "unique_stable_test.out").c_str(), "r");
+    int m = readInt(file);
+    if (n != m) {
+        XCTFail(@"wrong output.size() - expected: %d, found: %d", m, n);
+        fclose(file);
+        return;
+    }
+    for (int i = 0; i < n; ++i) {
+        double a = readDouble(file);
+        int b = readInt(file);
+        if (diff_percent(a, output[i].first) > EPSILON_PERCENT || diff_percent(b, output[i].second) > EPSILON_PERCENT) {
+            XCTFail(@"wrong output - expected: (%lf, %d), found: (%lf, %d)", a, b, output[i].first, output[i].second);
+        }
+    }
+    fclose(file);
+
 }
 
 
-- (void)test_conv
+- (void)test_corr_linear
 {
-    FILE *file = fopen(String(resourcePath + "conv_test.in").c_str(), "r");
+    FILE *file = fopen(String(resourcePath + "corr_linear_test.in").c_str(), "r");
     int n1 = readInt(file);
     vector<double> seg1 = readVectorFromFile(file, n1);
     int n2 = readInt(file);
     vector<double> seg2 = readVectorFromFile(file, n2);
     fclose(file);
     
-    vector<double> output = conv(seg1, seg2);
+    vector<double> output = corr_linear(seg1, seg2);
+
+    int n = (int)output.size();
+    if (n != n1) {
+        XCTFail(@"wrong output.size() - expected: %d, found: %d", n1, n);
+        return;
+    }
    
-    file = fopen(String(resourcePath + "conv_test.out").c_str(), "r");
+    file = fopen(String(resourcePath + "corr_linear_test.out").c_str(), "r");
+    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
     for (int i = 0; i < n1; ++i) {
         double correct_ans = readDouble(file);
         double ans = output[i];
-        if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
+        double tmp = diff_percent(ans, correct_ans);
+        if (tmp > max_percent)
         {
-            XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
-            fclose(file);
-            return;
+            max_percent = tmp;
+            max_correct_ans = correct_ans;
+            max_ans = ans;
         }
     }
     fclose(file);
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
 }
 
 
@@ -446,26 +492,35 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     FILE *file = fopen(String(resourcePath + "corrDn_test.in").c_str(), "r");
     int nRow = readInt(file), nCol = readInt(file);
     Mat src =  read2DMatFromFile(file, nRow, nCol);
-    int rectRow = readInt(file), rectCol = readInt(file);
-    Mat filter =  read2DMatFromFile(file, rectRow, rectCol);
+    int filterRow = readInt(file), filterCol = readInt(file);
+    Mat filter =  read2DMatFromFile(file, filterRow, filterCol);
     fclose(file);
     
     Mat output;
-    corrDn(src, output, filter, rectRow, rectCol);
+    corrDn(src, output, filter, 1, 1);
+    for (int i = 0; i < output.rows; ++i) {
+        for (int j = 0; j < output.cols; ++j)
+            printf("%lf, ", output.at<double>(i, j));
+        printf("\n");
+    }
     
     file = fopen(String(resourcePath + "corrDn_test.out").c_str(), "r");
+    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
     for (int i = 0; i < nRow; ++i)
         for (int j = 0; j < nCol; ++j) {
             double correct_ans = readDouble(file);
             double ans = output.at<double>(i, j);
-            if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
+            double tmp = diff_percent(ans, correct_ans);
+            if (tmp > max_percent)
             {
-                XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
-                fclose(file);
-                return;
+                max_percent = tmp;
+                max_correct_ans = correct_ans;
+                max_ans = ans;
             }
         }
     fclose(file);
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
 }
 
 
@@ -478,15 +533,29 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     vector<Mat> monoframes;
     for (int i = 0; i < nFrame; ++i)
         monoframes.push_back(tmp.clone());
-    for (int col = 0; col < nCol; ++col)
-        for (int i = 0; i < nFrame; ++i)
-            for (int row = 0; row < nRow; ++row)
+    for (int i = 0; i < nFrame; ++i)
+        for (int row = 0; row < nRow; ++row)
+            for (int col = 0; col < nCol; ++col)
                 monoframes[i].at<double>(row, col) = readDouble(file);
     fclose(file);
     
-    double fr = 300, cutoff_freq = 10;
-    double lower_range = 0, upper_range = 10;
-    vector<double> output = frames2signal(monoframes, "tsl", fr, cutoff_freq, lower_range, upper_range, false);
+    
+    ///////////
+//    for (int col = 0; col < nCol; ++col) {
+//        for (int i = 0; i < nFrame; ++i) {
+//            for (int row = 0; row < nRow; ++row)
+//                printf("%lf ", monoframes[i].at<double>(row, col));
+//            printf("\n");
+//        }
+//        printf("\n\n\n");
+//    }
+    //////////
+    
+    
+    double fr = 1, cutoff_freq = 0;
+    double lower_range, upper_range;
+    vector<double> output = frames2signal(monoframes, "mode-balance", fr, cutoff_freq, lower_range, upper_range, true);
+    output = low_pass_filter(output);
     int nSignal = (int)output.size();
     
     file = fopen(String(resourcePath + "frames2signal_test.out").c_str(), "r");

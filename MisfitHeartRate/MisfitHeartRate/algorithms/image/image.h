@@ -34,11 +34,6 @@ namespace MHR {
     // print a frame to file
     bool frameToFile(const Mat& frame, const String& outFile);
 
-    // multiply each pixel of a frame with a base matrix
-    // and clip the result's values by range [lower_bound, upper_bound]
-//    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
-//                    double lower_bound, double upper_bound);
-
 	// convert a RGB Mat to a TSL Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst);
 

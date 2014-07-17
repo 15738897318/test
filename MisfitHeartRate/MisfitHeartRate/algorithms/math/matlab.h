@@ -29,8 +29,10 @@ namespace MHR {
     vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
 
     // conv(seg1, seg2, 'same')
-    vector<double> conv(const vector<double> &seg1, const vector<double> &seg2);
-
+//    vector<double> conv(vector<double> signal, vector<double> kernel);
+    
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel);
+    
     // [counts, centres] = hist(arr, nbins)
     void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers);
 

@@ -55,15 +55,69 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-    vector<double> conv(const vector<double> &seg1, const vector<double> &seg2) {
+//    vector<double> conv(vector<double> signal, vector<double> kernel) {
+//        Mat src = vectorToMat(signal);
+//        Mat dst;
+////        reverse(kernel.begin(), kernel.end());
+//        Mat mkernel = vectorToMat(kernel);
+//
+////        transpose(src, src);
+////        transpose(mkernel, mkernel);
+//
+////        corrDn(src, dst, mkernel, 1, 1);
+////        return matToVector1D(dst);
+//        
+////        filter2D(src, dst, -1, mkernel);
+//        filter2D(src, dst, -1, mkernel, Point(-1,-1), 0 , BORDER_CONSTANT);
+//        return matToVector1D(dst);
         
-        Mat src = vectorToMat(seg1);
-        Mat dst;
-        Mat kernel = vectorToMat(seg2);
+        //////////////////////
+//        reverse(kernel.begin(), kernel.end());
+//        
+//        int signalLen = (int)signal.size();
+//        int kernelLen = (int)kernel.size();
+//        vector<double> ans;
+//        for (int n = 0; n < signalLen + kernelLen - 1; n++)
+//        {
+//            int kmin, kmax, k;
+//            ans.push_back(0);
+//            kmin = (n >= kernelLen - 1) ? n - (kernelLen - 1) : 0;
+//            kmax = (n < signalLen - 1) ? n : signalLen - 1;
+//            for (k = kmin; k <= kmax; k++)
+//            {
+//                ans[n] += signal[k] * kernel[n - k];
+//            }
+//        }
+//
+//        int len = (int)ans.size();
+//        int a = (kernelLen-1)/2, b = kernelLen-1-a;
+//        printf("a = %d, b = %d\n", a, b);
+//        vector<double> tmp;
+//        for (int i = a; i < len - b; ++i)
+//            tmp.push_back(ans[i]);
+//        return tmp;
+//    }
+    
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
+        int m = (int)signal.size(), n = (int)kernel.size();
+        // padding of zeors
+        for(int i=m;i<=m+n-1;i++)
+            signal.push_back(0);
+        for(int i=n;i<=m+n-1;i++)
+            kernel.push_back(0);
         
-        filter2D(src, dst, -1, kernel, Point(-1,-1), 0 , BORDER_CONSTANT);
-        return matToVector1D(dst);
+        /* convolution operation */
+        vector<double> ans;
+        for(int i=0;i<m+n-1;i++)
+        {
+            ans.push_back(0);
+            for(int j=0;j<=i;j++)
+                ans[i]=ans[i]+(signal[j]*kernel[i-j]);
+        }
         
+        for (int i = 0; i < n-1; ++i)
+            ans.pop_back();
+        return ans;
     }
 
     
@@ -116,7 +170,8 @@ namespace MHR {
         int int_idx = (int) (idx+1e-9);
         if(fabs(idx - int_idx)<1e-9){
             // idx is a whole number
-            if(int_idx==0) return NaN;
+//            if(int_idx==0) return NaN;
+            if(int_idx==0) return arr[0];
             int next_int = int_idx;
             if(next_int < n) next_int++;
             return (arr[int_idx-1] + arr[next_int-1])/2;
@@ -156,9 +211,8 @@ namespace MHR {
             ans[nAnPositions[i]] = NaN;
         
         // remove last 7 elements when use FilterBandPassing
-        if (_isUseFilterBandPassing)
-            for(int i=0; i<7; ++i)
-                if(!ans.empty()) ans.pop_back();
+        for(int i = 0; i < 7; ++i)
+            if(!ans.empty()) ans.pop_back();
         
         printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         

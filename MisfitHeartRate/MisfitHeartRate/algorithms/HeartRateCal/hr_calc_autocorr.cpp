@@ -55,7 +55,7 @@ namespace MHR {
             reverse(rev_segment.begin(), rev_segment.end());
             
             //Calculate the autocorrelation for the current window
-            vector<double> local_autocorr = conv(segment, rev_segment);
+            vector<double> local_autocorr = corr_linear(segment, rev_segment);
             
             //Define the segment length
             
