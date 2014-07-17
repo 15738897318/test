@@ -11,9 +11,6 @@
 
 #include <iostream>
 #include <vector>
-#include "matlab.h"
-#include "ideal_bandpassing.h"
-#include "image.h"
 
 using namespace std;
 
@@ -24,6 +21,9 @@ namespace MHR {
         vector<double> heartRates;
         vector<double> autocorrelation;
     };
+    
+    
+    void testMathFunctions();
 }
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */

@@ -12,9 +12,7 @@
 namespace MHR {
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
-    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
-                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
-    {
+    void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
         max_peak_strengths.clear(); max_peak_locs.clear();
         
         vector<pair<double,int>> peak_list;
@@ -41,7 +39,7 @@ namespace MHR {
 
 
     // unique_stable with vector<pair<double,int>>
-    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
+    vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr){
         set<int> mys;
         
         vector<pair<double,int>> res;
@@ -55,7 +53,7 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-    vector<double> conv(const vector<double> &seg1, const vector<double> &seg2) {
+    vector<double> conv(vector<double> seg1, vector<double> seg2){
         
         Mat src = vectorToMat(seg1);
         Mat dst;
@@ -68,12 +66,7 @@ namespace MHR {
 
     
     // [counts, centres] = hist(arr, nbins)
-    void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers) {
-        if (&arr == &centers) {
-            throw invalid_argument("hist() error: &arr == &centers");
-            return;
-        }
-        
+    void hist( vector<double> arr, int nbins, vector<int> &counts, vector<double> &centers){
         counts.clear();
         centers.clear();
         
@@ -100,7 +93,7 @@ namespace MHR {
 
     
     // invprctile
-    double invprctile(const vector<double> &arr, double x) {
+    double invprctile(vector<double> arr, double x){
         int cnt = 0;
         for(int i=0; i<(int) arr.size(); ++i)
             if(arr[i] < x + 1e-9) ++cnt;
@@ -109,7 +102,7 @@ namespace MHR {
 
     
     //prctile
-    double prctile(vector<double> arr, double percent) {
+    double prctile(vector<double> arr, double percent){
         sort(arr.begin(), arr.end());
         int n = (int) arr.size();
         double idx = percent * n / 100;
@@ -132,42 +125,67 @@ namespace MHR {
 
     
     //filter function for frames2signal function
-    vector<double> low_pass_filter(vector<double> arr) {
-        clock_t t1 = clock();
-        
-        // assign values in all NaN positions to 0
-        vector<int> nAnPositions;
-        int n = (int)arr.size();
-        for (int i = 0; i < n; ++i)
-            if (abs(arr[i] - NaN) < 1e-11) {
-                arr[i] = 0;
-                nAnPositions.push_back(i);
-            }
-        
-        // apply low pass filter
+    vector<double> low_pass_filter(vector<double> arr){
         Mat src = vectorToMat(arr);
         Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
         Mat dst;
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
         vector<double> ans = matToVector1D(dst);
-        
-        // assign values in all old NaN positions to NaN
-        for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
-            ans[nAnPositions[i]] = NaN;
-        
-        // remove last 7 elements when use FilterBandPassing
-        if (_isUseFilterBandPassing)
-            for(int i=0; i<7; ++i)
-                if(!ans.empty()) ans.pop_back();
-        
-        printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
-        
+        for(int i=0; i<7; ++i) if(!ans.empty()) ans.pop_back();
         return ans;
     }
     
     
-    double diff_percent(double a, double b)
-    {
-        return abs(a-b)/abs(b)*100;
-    }
+    // return Discrete Fourier Transform of a 2-2 Mat by dimension
+	Mat fft(const Mat &src, int dimension) {
+		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
+		if (dimension == 0) {
+			Mat tmp = Mat_<complex<double>>(1, src.rows);
+			for (int i = 0; i < src.cols; ++i) {
+				for (int j = 0; j < src.rows; ++j)
+					tmp.at<complex<double>>(1, j) = (src.at<double>(j, i), 0);
+				dft(tmp, tmp);
+				for (int j = 0; j < src.rows; ++j)
+					ans.at<complex<double>>(j, i) = tmp.at<complex<double>>(1, j);
+			}
+		}
+		else {
+			Mat tmp = Mat_<complex<double>>(1, src.cols);
+			for (int i = 0; i < src.rows; ++i) {
+				for (int j = 0; j < src.cols; ++j)
+					tmp.at<complex<double>>(1, j) = (src.at<double>(i, j), 0);
+				dft(tmp, tmp);
+				for (int j = 0; j < src.cols; ++j)
+					ans.at<complex<double>>(i, j) = tmp.at<complex<double>>(1, j), 0;
+			}
+		}
+		return ans;
+	}
+    
+    
+    // return Inverse Discrete Fourier Transform of a 2-2 Mat by dimension
+	Mat ifft(const Mat &src, int dimension) {
+		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
+		if (dimension == 0) {
+			Mat tmp = Mat_<complex<double>>(1, src.rows);
+			for (int i = 0; i < src.cols; ++i) {
+				for (int j = 0; j < src.rows; ++j)
+					tmp.at<complex<double>>(1, j) = (src.at<double>(j, i), 0);
+				idft(tmp, tmp);
+				for (int j = 0; j < src.rows; ++j)
+					ans.at<complex<double>>(j, i) = tmp.at<complex<double>>(1, j);
+			}
+		}
+		else {
+			Mat tmp = Mat_<complex<double>>(1, src.cols);
+			for (int i = 0; i < src.rows; ++i) {
+				for (int j = 0; j < src.cols; ++j)
+					tmp.at<complex<double>>(1, j) = (src.at<double>(i, j), 0);
+				idft(tmp, tmp);
+				for (int j = 0; j < src.cols; ++j)
+					ans.at<complex<double>>(i, j) = tmp.at<complex<double>>(1, j), 0;
+			}
+		}
+		return ans;
+	}
 }

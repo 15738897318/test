@@ -1,6 +1,6 @@
 //
 //  MHRAppDelegate.m
-//  videoHeartRate
+//  opticalHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
@@ -9,18 +9,11 @@
 #import "MHRAppDelegate.hpp"
 #import "MHRMainViewController.hpp"
 
-
-NSString *const kSkinPListFileName = @"MisfitHeartRate-Skin";
-
-
-@implementation MHRAppDelegate
+@implementation OHRAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-NSDictionary *pListSkinDict;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -32,18 +25,6 @@ NSDictionary *pListSkinDict;
     [self.window makeKeyAndVisible];
     return YES;
 }
-
-
-- (NSDictionary*)getPlistSkinDict
-{
-    if (pListSkinDict == nil)
-    {
-        NSString *pList = [[NSBundle mainBundle] pathForResource:kSkinPListFileName ofType:@"plist"];
-        pListSkinDict = [[NSDictionary alloc] initWithContentsOfFile:pList];
-    }
-    return pListSkinDict;
-}
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -112,7 +93,7 @@ NSDictionary *pListSkinDict;
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"videoHeartRate" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"opticalHeartRate" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -125,7 +106,7 @@ NSDictionary *pListSkinDict;
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"videoHeartRate.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"opticalHeartRate.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

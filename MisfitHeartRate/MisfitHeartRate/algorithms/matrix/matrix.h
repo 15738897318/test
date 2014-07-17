@@ -11,8 +11,6 @@
 
 #include <iostream>
 #include <vector>
-#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/types_c.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
@@ -36,6 +34,14 @@ namespace MHR {
     // read frames from a VideoCapture to a vector<Mat>
     // return true if endOfFile
     bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames = -1);
+    
+	// sum all channels in one pixcel
+	// default output type is double - CV_64F
+	Mat sumChannels(const Mat &src);
+	
+	// create a new Mat with only one channel from old Mat
+	// default output type is double - CV_64F
+	Mat cloneWithChannel(const Mat &src, int channel);
 	
 	// atan2 of 2 Mats which have same size
 	// default intput/output type is double - CV_64F
@@ -53,14 +59,6 @@ namespace MHR {
 	
 	// return mat .* x
 	Mat multiply(const Mat &a, double x);
-    
-    Mat read2DMatFromFile(FILE* &file, int rows, int cols);
-    
-    vector<double> readVectorFromFile(FILE* &file, int n);
-
-    int readInt(FILE* &file);
-    
-    double readDouble(FILE* &file);
 }
 
 #endif /* defined(__MisfitHeartRate__matrix__) */

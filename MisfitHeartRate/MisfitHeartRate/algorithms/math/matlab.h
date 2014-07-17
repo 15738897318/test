@@ -22,20 +22,19 @@ using namespace cv;
 namespace MHR {
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
-    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
-                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs);
-    
+    void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs);
+
     // unique_stable with vector<pair<double,int>>
-    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
+    vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr);
 
     // conv(seg1, seg2, 'same')
-    vector<double> conv(const vector<double> &seg1, const vector<double> &seg2);
+    vector<double> conv(vector<double> seg1, vector<double> seg2);
 
     // [counts, centres] = hist(arr, nbins)
-    void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers);
+    void hist( vector<double> arr, int nbins, vector<int> &counts, vector<double> &centers);
 
     // invprctile
-    double invprctile(const vector<double> &arr, double x);
+    double invprctile(vector<double> arr, double x);
 
     //prctile
     double prctile(vector<double> arr, double percent);
@@ -43,7 +42,11 @@ namespace MHR {
     //filter function for frames2signal function
     vector<double> low_pass_filter(vector<double> arr);
     
-    double diff_percent(double a, double b);
+    // return Discrete Fourier Transform of a 2-2 Mat by dimension
+	Mat fft(const Mat &src, int dimension);
+    
+    // return Inverse Discrete Fourier Transform of a 2-2 Mat by dimension
+	Mat ifft(const Mat &src, int dimension);
 }
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

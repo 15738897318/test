@@ -1,15 +1,15 @@
 function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	
 	%Calculate the instantaneous heart-rates
-	heartRate_inst = 1 ./ diff(heartBeats(:, 2)); % Find OpenCV equivalent
+	heartRate_inst = 1 ./ diff(heartBeats(:, 2));
 	
 	%Find the mode of the instantaneous heart-rates
-	[counts, centres] = hist(heartRate_inst, 5); % OpenCV: hist
+	[counts, centres] = hist(heartRate_inst, 5);
 	[~, argmax] = max(counts); %Int
 	centre_mode = centres(argmax); %Double
 	
 	%Create a convolution kernel from the found frequency
-	kernel = fspecial('gaussian', [1, ceil(2 / centre_mode)], 1 / (4 * centre_mode)); % Perform mathematical calculation
+	kernel = fspecial('gaussian', [1, ceil(2 / centre_mode)], 1 / (4 * centre_mode));
 	kernel = kernel / max(kernel);
 	base_threshold = 2 * kernel(ceil(1 / (4 * centre_mode)));
 	
@@ -18,11 +18,11 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	count_signal(heartBeats(:, 2) - min(heartBeats(:, 2)) + 1) = 1;
 	
 	%Convolve the count_signal with the kernel to generate a score_signal
-	score_signal = filter(kernel, 1, count_signal); % OpenCV: filter2D
+	score_signal = conv(count_signal, fliplr(kernel), 'same');
 	
 	%Decide if the any beats are missing and fill them in if need be
 	factor = 1.5;
-	[min_peak_strengths, min_peak_locs] = findpeaks(-score_signal); % Already implemented
+	[min_peak_strengths, min_peak_locs] = findpeaks(-score_signal);
 	min_peak_strengths = -min_peak_strengths;
 	count_signal(min_peak_locs(min_peak_strengths < factor * base_threshold)) = -1;
 	

@@ -12,8 +12,6 @@
 namespace MHR {
     hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir)
     {
-        clock_t t1 = clock();
-        
         String inFile = srcDir + "/" + fileName;
 		printf("Processing file: %s\n", inFile.c_str());
         
@@ -46,27 +44,32 @@ namespace MHR {
         int frameRate = _frameRate;
         int len = (int)vid.size();
         
+//        printf("!!!!!!!!! len = %d\n", len);
+//        bool end = videoCaptureToVector(vidIn, vid, _framesBlock_size);
+//        printf("!!!!!!!!! end = %d\n", end);
+//        printf("!!!!!!!!! len = %d\n", (int)vid.size());
+//        return hrResult(-1, -1);
+        
         // Prepare the output video-writer
 //        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
-		VideoWriter vidOut(outFile, CV_FOURCC('M','P','4','2'), frameRate, cvSize(vidWidth, vidHeight), true);
+		VideoWriter vidOut(outFile, CV_FOURCC('M','J','P','G'), frameRate, cvSize(vidWidth, vidHeight), true);
 		if (!vidOut.isOpened()) {
 			printf("outFile %s is not opened!\n", outFile.c_str());
 			return hrResult(-1, -1);
 		}
         
         // Block 1: turn frames to signals
-        double threshold_fraction = 0, lower_range, upper_range;
+        double threshold_fraction = 0;
         int window_size = round(_window_size_in_sec * frameRate);
         int firstSample = round(frameRate * _time_lag);
-        int blockCount = 0;
-        bool isCalcMode = true;
-        vector<Mat> monoframes, debug_monoframes, eulerianVid;
-        vector<double> temporal_mean;
-        Mat tmp_eulerianVid;
         
+        double lower_range, upper_range;
+        bool isCalcMode = true;
+        vector<Mat> monoframes, debug_monoframes;
+        vector<double> temporal_mean;
+        
+        int c = 0;
         while(1) {
-            clock_t t1 = clock();
-            
             printf("len before = %d\n", (int)vid.size());
             bool endOfFile = false;
             if (!isCalcMode) {
@@ -78,77 +81,59 @@ namespace MHR {
             if (endOfFile)
                 break;
             
-            printf("load block: %d\n", ++blockCount);
+            printf("load block: %d\n", ++c);
+            if (c > 1) break;
             
             /*-----------------------------------run_eulerian(): M frames (1)-----------------------------------*/
-            amplifySpatialGdownTemporalIdeal(vid, eulerianVid,
-                                             outDir, _eulerian_alpha, _eulerian_pyrLevel,
-                                             _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
-                                             _eulerian_frameRate, _eulerian_chromaMagnifier);
-            int eulerianLen = (int)eulerianVid.size();
+            vector<Mat> eulerianVid = amplifySpatialGdownTemporalIdeal(vid, outDir,
+                                                                       _eulerian_alpha, _eulerian_pyrLevel,
+                                                                       _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
+                                                                       _eulerian_frameRate, _eulerian_chromaMagnifier
+                                                                       );
             
+            /*-----------------------------------turn M-7 (1) frames to signals-----------------------------------*/
+            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
+                                                    _channels_to_process, _colourspace,
+                                                    lower_range, upper_range, isCalcMode);
+            for (int i = 0, sz = (int)tmp.size(); i < sz - _eulerianTemporalFilterKernel_size/2; ++i)
+                temporal_mean.push_back(tmp[i]);
+            isCalcMode = false;
+ 
             /*-----------------------------------keep last 15 frames (0)-----------------------------------*/
             // need to improve
             vector<Mat> newVid;
-            int startPos = len;
-            if (eulerianLen != len)
-                startPos -= _eulerianTemporalFilterKernel_size;
-            for (int i = startPos; i < len; ++i)
+            for (int i = len-_eulerianTemporalFilterKernel_size; i < len; ++i)
                 newVid.push_back(vid[i]);
             vid.clear();
             vid = newVid;
             
             /*-----------------------------------write frames to file-----------------------------------*/
-            for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
-                eulerianVid[i].convertTo(tmp_eulerianVid, CV_8UC3);
-                cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
-                vidOut << tmp_eulerianVid;
+            for (int i = isCalcMode ? 0:15, sz = (int)eulerianVid.size(); i < sz; ++i) {
+                eulerianVid[i].convertTo(eulerianVid[i], CV_8UC3);
+                vidOut << eulerianVid[i];
             }
-            
-            /*---------------------------------turn eulerianLen (1) frames to signals-----------------------------------*/
-            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
-                                                    _channels_to_process, _colourspace,
-                                                    lower_range, upper_range, isCalcMode);
-            for (int i = 0; i < eulerianLen; ++i)
-                temporal_mean.push_back(tmp[i]);
-            
-            isCalcMode = false;
-
-            printf("block %d runtime = %f\n", blockCount, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         }
         vidOut.release();
         
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        // Low-pass-filter the signal stream to remove unwanted noises
-        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
+        printf("temporal_mean:\n");
+        for (int i = 0, sz = temporal_mean.size(); i < sz; ++i)
+            printf("%lf, ", temporal_mean[i]);
+        printf("\n");
         
         // Block 2: Heart-rate calculation
         // - Basis takes 15secs to generate an HR estimate
         // - Cardiio takes 30secs to generate an HR estimate
-        hrResult hr_output = hr_signal_calc(temporal_mean_filt, firstSample, window_size, frameRate,
+        hrResult hr_output = hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
                                             _overlap_ratio, _max_bpm, threshold_fraction);
         
-        if (DEBUG_MODE) {
-            String resultFilePath = outDir + "result.txt";
-            FILE *resultFile = fopen(resultFilePath.c_str(), "w");
-            fprintf(resultFile, "temporal_mean_before_low_pass_filter:\n");
-            for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
-                fprintf(resultFile, "%lf, ", temporal_mean[i]);
-            fprintf(resultFile, "\n\ntemporal_mean:\n");
-            for (int i = 0, sz = (int)temporal_mean_filt.size(); i < sz; ++i)
-                fprintf(resultFile, "%lf, ", temporal_mean_filt[i]);
-            fprintf(resultFile, "\n\n\n");
-            String vidType = "mp4";
-            fprintf(resultFile, "run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, \
+        // debug info
+        String vidType = "mp4";
+        printf("run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, \
 alpha = %lf, level = %lf, chromAtn = %lf)\n",
-                   vidType.c_str(), _colourspace.c_str(), _eulerian_minHR, _eulerian_maxHR,
-                   _eulerian_alpha, _eulerian_pyrLevel, _eulerian_chromaMagnifier);
-            fprintf(resultFile, "Heart Rate result {autocorr, pda} = {%lf, %lf}\n", hr_output.autocorr, hr_output.pda);
-            fclose(resultFile);
-            printf("run_algorithm() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
-        }
-        
+               vidType.c_str(), _colourspace.c_str(), _eulerian_minHR, _eulerian_maxHR,
+               _eulerian_alpha, _eulerian_pyrLevel, _eulerian_chromaMagnifier);
+        printf("Heart Rate result {autocorr, pda} = {%lf, %lf}\n", hr_output.autocorr, hr_output.pda);
         return hr_output;
     }
 }
