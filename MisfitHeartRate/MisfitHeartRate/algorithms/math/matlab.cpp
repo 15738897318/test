@@ -55,15 +55,41 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-    vector<double> conv(const vector<double> &seg1, const vector<double> &seg2) {
-        
-        Mat src = vectorToMat(seg1);
+    vector<double> conv(const vector<double> &signal, vector<double> kernel) {
+
+        Mat src = vectorToMat(signal);
         Mat dst;
-        Mat kernel = vectorToMat(seg2);
+        Mat mkernel = vectorToMat(kernel);
         
-        filter2D(src, dst, -1, kernel, Point(-1,-1), 0 , BORDER_CONSTANT);
+        printf("BORDER_CONSTANT = %d\n", BORDER_CONSTANT);
+        filter2D(src, dst, -1, mkernel, Point(-1,-1), 0 , BORDER_CONSTANT);
         return matToVector1D(dst);
         
+        //////////////////////
+//        reverse(kernel.begin(), kernel.end());
+//        
+//        int signalLen = (int)signal.size();
+//        int kernelLen = (int)kernel.size();
+//        vector<double> ans;
+//        for (int n = 0; n < signalLen + kernelLen - 1; n++)
+//        {
+//            int kmin, kmax, k;
+//            ans.push_back(0);
+//            kmin = (n >= kernelLen - 1) ? n - (kernelLen - 1) : 0;
+//            kmax = (n < signalLen - 1) ? n : signalLen - 1;
+//            for (k = kmin; k <= kmax; k++)
+//            {
+//                ans[n] += signal[k] * kernel[n - k];
+//            }
+//        }
+//
+//        int len = (int)ans.size();
+//        int a = (kernelLen-1)/2, b = kernelLen-1-a;
+//        printf("a = %d, b = %d\n", a, b);
+//        vector<double> tmp;
+//        for (int i = a; i < len - b; ++i)
+//            tmp.push_back(ans[i]);
+//        return tmp;
     }
 
     
@@ -116,7 +142,8 @@ namespace MHR {
         int int_idx = (int) (idx+1e-9);
         if(fabs(idx - int_idx)<1e-9){
             // idx is a whole number
-            if(int_idx==0) return NaN;
+//            if(int_idx==0) return NaN;
+            if(int_idx==0) return arr[0];
             int next_int = int_idx;
             if(next_int < n) next_int++;
             return (arr[int_idx-1] + arr[next_int-1])/2;
