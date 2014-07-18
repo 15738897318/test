@@ -19,7 +19,7 @@ function filtered = filter_bandpassing(input, dim) %Input is a TxMxNxC array
 			filtered(:, :, i, j) = conv2(input_shifted(:, :, i, j), filter_kernel, 'same');
 		end
 	end
-    filtered = filtered(floor(length(filter_kernel) / 2) : end, :, :, :);
+    filtered = filtered(ceil(length(filter_kernel) / 2) : end, :, :, :);
     
     %shift_vect = zeros(1, size(size(filtered), 2));
     %shift_vect(1) = -floor(length(filter_kernel) / 2);

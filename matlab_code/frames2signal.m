@@ -9,7 +9,7 @@ function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_meth
 			temporal_mean = squeeze(nanmean(nanmean(monoframes, 1), 2));
 			
 		case 'trimmed-mean'	
-			temporal_mean = squeeze(mean(reshape(monoframes, [size(monoframes, 1) * size(monoframes, 2), size(monoframes, 3)]), 30, 1));
+			temporal_mean = squeeze(trimmean(reshape(monoframes, [size(monoframes, 1) * size(monoframes, 2), size(monoframes, 3)]), trimmed_size, 1));
 		
 		case 'mode-balance'
 			% Selection parameters
@@ -54,4 +54,4 @@ function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_meth
 	filter_kernel = beatSignalFilterKernel;
     
     temporal_mean_filt = filter(filter_kernel, 1, temporal_mean);  %Double 1-D vector
-	temporal_mean_filt = temporal_mean_filt(floor(length(filter_kernel) / 2) : end);
+	temporal_mean_filt = temporal_mean_filt((length(filter_kernel) - floor(length(filter_kernel) / 2)) : end);

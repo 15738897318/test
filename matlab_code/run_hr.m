@@ -19,10 +19,10 @@ file_template = '2014-06-17-Loc-Face_crop-ideal-from-0.5-to-4-alpha-30-level-6-c
 
 file_template = 'test1*.avi';
 %file_template = 'finger - 2014-07-11-14-41-54-ideal-from-0.5-to-4-alpha-50-level-6-chromAtn-1*.avi';
-%file_template = '2014-06-10-Self-Face_crop*';
-file_template = '2014*Face*.avi';
+file_template = '2014-06-10-Self-Face_crop*';
+%file_template = '2014*.avi';
 
-task_desc = 'Params testing with the new hr_calculator';
+task_desc = 'Params testing with the corrected correlation function';
 
 install;
 
@@ -34,7 +34,7 @@ time_lag = 3; %seconds
 
 results_file = 'hr_results.csv';
 
-src_folder = '/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
+src_folder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
 
 colourspace = 'tsl';
 channels_to_process = 1:3;

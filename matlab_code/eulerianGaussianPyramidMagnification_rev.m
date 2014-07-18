@@ -56,7 +56,7 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
     % compute Gaussian blur stack
     % This stack actually is just a single level of the pyramid
     disp('Spatial filtering...')
-    Gdown_stack = build_GDown_stack(vidFile, startIndex, endIndex, level); % TxMxNxC array
+    Gdown_stack = build_GDown_stack_rev(vidFile, startIndex, endIndex, level); % TxMxNxC array
     disp('Finished')
     
     % Temporal filtering
@@ -66,9 +66,18 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
     disp('Finished')
     
     %% amplify
-    filtered_stack(:, :, :, 1) = filtered_stack(:, :, :, 1) .* alpha;
-    filtered_stack(:, :, :, 2) = filtered_stack(:, :, :, 2) .* alpha .* chromAttenuation;
-    filtered_stack(:, :, :, 3) = filtered_stack(:, :, :, 3) .* alpha .* chromAttenuation;
+    filtered_stack = permute(filtered_stack, [1, 4, 2, 3]);
+    for i = 1 : size(filtered_stack, 3)
+    	for j = 1 : size(filtered_stack, 4)
+    		temp_array = squeeze(filtered_stack(:, :, i, j));
+    		
+    		temp_array = temp_array * C_matrix';
+    		
+    		filtered_stack(:, :, i, j) = temp_array;
+    	end
+    end
+    filtered_stack = permute(filtered_stack, [1, 3, 4, 2]);
+    
 	%% =================
 
     %% Render on the input video
@@ -99,16 +108,12 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
 			[rgbframe, ~] = frame2im(temp);
 			% Convert the RGB image to double-precision image
 			rgbframe = im2double(rgbframe);
-			% Convert the image from RGB colour-space to NTSC colour-space
-			%frame = rgb2ntsc(rgbframe);
 			
 			frame = rgbframe;
-			filtered = ntsc2rgb(filtered);
 			% Add the filtered frame to the original frame
 			filtered = filtered + frame;
 		
 			% Convert the colour-space from NTSC back to RGB
-			%frame = ntsc2rgb(filtered);
 			frame = filtered;
 			
 			% Clip the values of the frame by 0 and 1

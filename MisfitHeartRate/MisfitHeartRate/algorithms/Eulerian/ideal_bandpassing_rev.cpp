@@ -25,7 +25,7 @@ namespace MHR {
         int ind1 = 2*f1, ind2 = 2*f2 - 1;
         
         // FFT
-        Mat dft_out = Mat::zeros(nRow, nTime, CV_32F), dft_out;
+        Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
         for (int k = 0; k < nCol; ++k) {
             for (int i = 0; i < nTime; ++i)
                 for (int j = 0; j < nRow; ++j)
