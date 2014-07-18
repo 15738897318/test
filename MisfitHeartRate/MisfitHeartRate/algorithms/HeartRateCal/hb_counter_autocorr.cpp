@@ -162,6 +162,7 @@ namespace MHR {
         vector<int> locations;
         for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
             locations.push_back(heartBeats[i].second);
+        sort(locations.begin(), locations.end());
         return locations;
     }
 }
