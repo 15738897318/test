@@ -11,7 +11,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		segment = temporal_mean(windowStart : windowStart + window_size - 1); %Double vector
 	
 		% Calculate the autocorrelation for the current window
-		local_autocorr = conv(segment - mean(segment), fliplr(segment - mean(segment)), 'same'); %Double vector
+		local_autocorr = filter(segment - mean(segment), 1, segment - mean(segment)); %Double vector
 		
 		% Define the segment length
 		% a. Shine-step-counting style
