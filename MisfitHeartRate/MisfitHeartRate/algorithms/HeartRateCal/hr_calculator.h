@@ -28,9 +28,9 @@ using namespace std;
 
 
 namespace MHR {
-	void hr_calculator(const vector<int> &heartBeatPositions, mTYPE frameRate, vector<mTYPE> &ans);
+	void hr_calculator(const vector<int> &heartBeatPositions, double frameRate, vector<double> &ans);
     
-	void gaussianFilter(int length, mTYPE sigma, vector<mTYPE> &ans);
+	void gaussianFilter(int length, double sigma, vector<double> &ans);
 }
 
 #endif /* defined(__MisfitHeartRate__hr_calculator__) */

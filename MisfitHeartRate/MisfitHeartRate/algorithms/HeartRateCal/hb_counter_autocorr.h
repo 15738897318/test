@@ -31,8 +31,8 @@ using namespace cv;
 
 
 namespace MHR {
-    vector<int> hb_counter_autocorr(vector<mTYPE> temporal_mean, mTYPE fr, int firstSample,
-                            int window_size, mTYPE overlap_ratio, mTYPE minPeakDistance, hrDebug& debug);
+    vector<int> hb_counter_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+                            int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug);
 }
 
 #endif /* defined(__MisfitHeartRate__hb_counter_autocorr__) */

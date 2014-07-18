@@ -11,14 +11,14 @@
 
 namespace MHR {
 	// return a vector of integer from a to b with specific step
-	void hr_calculator(const vector<int> &heartBeatPositions, mTYPE frameRate, vector<mTYPE> &ans) {
+	void hr_calculator(const vector<int> &heartBeatPositions, double frameRate, vector<double> &ans) {
 		//Calculate the instantaneous heart-rates
-		vector<mTYPE> heartRate_inst;
+		vector<double> heartRate_inst;
 		for (int i = 1, sz = (int)heartBeatPositions.size(); i < sz; ++i)
 			heartRate_inst.push_back( 1.0 / (heartBeatPositions[i] - heartBeatPositions[i-1]) );
         
 		//Find the mode
-		vector<mTYPE> centres;
+		vector<double> centres;
 		vector<int> counts;
         
 		hist(heartRate_inst, _number_of_bins_heartRate, counts, centres);
@@ -26,15 +26,15 @@ namespace MHR {
 		int argmax = 0;
 		for(int i = 0, sz = (int)counts.size(); i < sz; ++i)
 			if(counts[i] > counts[argmax]) argmax = i;
-		mTYPE centre_mode = centres[argmax];
+		double centre_mode = centres[argmax];
         
 		//Create a convolution kernel from the found frequency
-		vector<mTYPE> kernel;
+		vector<double> kernel;
 		gaussianFilter(cvCeil(2.0 / centre_mode), 1.0 / (4.0 * centre_mode), kernel);
-		mTYPE threshold = 2.0 * kernel[cvCeil(1.0 / (4.0 * centre_mode)) - 1];
+		double threshold = 2.0 * kernel[cvCeil(1.0 / (4.0 * centre_mode)) - 1];
         
 		//Create a heart-beat count signal
-		vector<mTYPE> count_signal;
+		vector<double> count_signal;
 		int temp = heartBeatPositions[heartBeatPositions.size() - 1] - heartBeatPositions[0] + 1;
 		for (int i = 0; i < temp; ++i) {
 			count_signal.push_back(0);
@@ -45,13 +45,13 @@ namespace MHR {
 		}
         
 		//Convolve the count_signal with the kernel to generate a score_signal
-        vector<mTYPE> score_signal = corr_linear(count_signal, kernel);
+        vector<double> score_signal = corr_linear(count_signal, kernel);
 //		filter2D(count_signal, score_signal, -1, kernel, Point(-1,-1), 0, BORDER_CONSTANT);
 		for (int i = 0, sz = (int)score_signal.size(); i < sz; ++i)
 			score_signal[i] = -score_signal[i];
         
 		//Decide if the any beats are missing and fill them in if need be
-		vector<mTYPE> min_peak_strengths;
+		vector<double> min_peak_strengths;
 		vector<int> min_peak_locs;
 		findpeaks(score_signal, 0, 0, min_peak_strengths, min_peak_locs);
 		for (int i = 0, sz = (int)min_peak_strengths.size(); i < sz; ++i)
@@ -60,7 +60,7 @@ namespace MHR {
         for (int i = 0, sz = (int)score_signal.size(); i < sz; ++i)
 			score_signal[i] = -score_signal[i];
         
-		mTYPE factor = 1.5;
+		double factor = 1.5;
 		threshold *= factor;
 		for (int i = 0, len = (int)min_peak_locs.size(); i < len; ++i) {
 			if (min_peak_strengths[i] < threshold) {
@@ -76,7 +76,7 @@ namespace MHR {
 		for (int i = 0; i < len; ++i)
 			ans[0] += abs(count_signal[i]);
         printf("sum = %lf\n", ans[0]);
-		ans[0] /= (mTYPE(len) + 1.0/centre_mode);
+		ans[0] /= (double(len) + 1.0/centre_mode);
         ans[0] *= frameRate * 60;
         
 		ans.push_back(centre_mode * frameRate * 60);
@@ -84,13 +84,13 @@ namespace MHR {
     
     
 	// Generate a vector of Gaussian values of a desired length and properties
-	void gaussianFilter(int length, mTYPE sigma, vector<mTYPE> &ans) {
+	void gaussianFilter(int length, double sigma, vector<double> &ans) {
 		ans.clear();
-        Mat kernel = getGaussianKernel(length, sigma, mCV_F);
+        Mat kernel = getGaussianKernel(length, sigma, CV_64F);
         for (int i = 0; i < kernel.size.p[0]; ++i)
             for (int j = 0; j < kernel.size.p[1]; ++j)
-                ans.push_back(kernel.at<mTYPE>(i, j));
-        mTYPE max_value = *max_element(ans.begin(), ans.end());
+                ans.push_back(kernel.at<double>(i, j));
+        double max_value = *max_element(ans.begin(), ans.end());
         for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
             ans[i] /= max_value;
 	}

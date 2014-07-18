@@ -1,9 +1,8 @@
-- To test (read code):
-	+ hr_pda
-	+ hr_cal_autocorr
-
 - Bugs:
 	+ Eulerian output video.
+	+ Test corrDn.
+	+ frame2signal():
+		+ first_tranning_frames_start
 
 
 - Speed improve:
@@ -23,3 +22,10 @@
 	+ eulerian
 	+ temporal_mean_calc
 	+ frame2signal
+
+
+(CAMERA_HEIGHT - IMAGE_WIDTH)/2
+(CAMERA_WIDTH - IMAGE_HEIGHT)/2
+
+
+- sort heartBeatPositions

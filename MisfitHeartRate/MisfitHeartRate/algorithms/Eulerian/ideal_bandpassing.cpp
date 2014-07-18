@@ -14,7 +14,7 @@ namespace MHR {
     // WL: lower cutoff frequency of ideal band pass filter
     // WH: higher cutoff frequency of ideal band pass filter
     // SAMPLINGRATE: sampling rate of SRC
-    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, mTYPE wl, mTYPE wh, mTYPE samplingRate) {
+    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double wl, double wh, double samplingRate) {
 //        src: T*M*N*C;
 //        new src: vector<M*N*C>
         
@@ -61,6 +61,6 @@ namespace MHR {
         }
         
         for (int i = 0; i < nTime; ++i)
-            dst[i].convertTo(dst[i], mCV_FC3);
+            dst[i].convertTo(dst[i], CV_64FC3);
     }
 }

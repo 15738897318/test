@@ -24,7 +24,7 @@ namespace MHR {
         
         // firstFrame
         Mat frame;
-        vid[0].convertTo(frame, mCV_FC3);
+        vid[0].convertTo(frame, CV_64FC3);
  
         // Blur and downsample the frame
         Mat blurred;
@@ -46,7 +46,7 @@ namespace MHR {
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
-            vid[i].convertTo(frame, mCV_FC3);
+            vid[i].convertTo(frame, CV_64FC3);
     
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);

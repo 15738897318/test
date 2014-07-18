@@ -20,12 +20,12 @@
 
 
 namespace MHR {
-    const Mat rgb2ntsc_baseMat = (Mat_<mTYPE>(3, 3) <<
+    const Mat rgb2ntsc_baseMat = (Mat_<double>(3, 3) <<
                                   0.299, 0.587, 0.114,
                                   0.596, -0.274, -0.322,
                                   0.211, -0.523, 0.312);
 
-    const Mat ntsc2rgb_baseMat = (Mat_<mTYPE>(3, 3) <<
+    const Mat ntsc2rgb_baseMat = (Mat_<double>(3, 3) <<
                                   1.0, 0.956, 0.621,
                                   1.0, -0.272, -0.647,
                                   1.0, -1.106, 1.703);
@@ -48,7 +48,7 @@ namespace MHR {
     void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol);
     
 //    // ScaleRotateTranslate
-//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, mTYPE angle);
+//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, double angle);
 //    
 //    // crop face
 //    void cropFace(const Mat &src, Mat &dst,

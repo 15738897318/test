@@ -1,12 +1,12 @@
 //
-//  MHRResultViewController.mm
+//  MHRResultViewController.m
 //  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/8/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#import "MHRResultViewController.hpp"
+#import "MHRResultViewController.h"
 
 @interface MHRResultViewController ()
 

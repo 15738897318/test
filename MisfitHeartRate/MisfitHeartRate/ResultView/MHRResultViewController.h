@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "config.h"
-
-using namespace MHR;
 
 @interface MHRResultViewController : UIViewController
 
-@property (assign, nonatomic) mTYPE autocorrResult;
-@property (assign, nonatomic) mTYPE pdaResult;
+@property (assign, nonatomic) double autocorrResult;
+@property (assign, nonatomic) double pdaResult;
 
 @end

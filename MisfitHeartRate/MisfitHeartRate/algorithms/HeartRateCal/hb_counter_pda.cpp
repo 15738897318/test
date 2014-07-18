@@ -10,19 +10,19 @@
 
 
 namespace MHR {
-    vector<int> hb_counter_pda(vector<mTYPE> temporal_mean, mTYPE fr, int firstSample, int window_size,
-                       mTYPE overlap_ratio, mTYPE minPeakDistance, mTYPE threshold, hrDebug& debug)
+    vector<int> hb_counter_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
+                       double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug)
     {
         //Perform peak counting for each window
         int windowStart = firstSample;
         
-        vector<pair<mTYPE, int>> heartBeats;
-        vector<mTYPE> heartRates;
+        vector<pair<double, int>> heartBeats;
+        vector<double> heartRates;
         while(windowStart <= (int) temporal_mean.size() - window_size){
             
             //Window to perform peak-couting in
-            vector<mTYPE> segment;
-            vector<mTYPE> max_peak_strengths, min_peak_strengths;
+            vector<double> segment;
+            vector<double> max_peak_strengths, min_peak_strengths;
             vector<int> max_peak_locs, min_peak_locs;
             int segment_length;
             
@@ -53,11 +53,11 @@ namespace MHR {
             
             // Record all beats in the window, even if there are duplicates
             for(int i=0; i<(int) max_peak_locs.size(); ++i)
-                heartBeats.push_back(pair<mTYPE, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
+                heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
         
             // Calculate the HR for this window
             
-            mTYPE rate = (mTYPE) max_peak_locs.size() / segment_length * fr;
+            double rate = (double) max_peak_locs.size() / segment_length * fr;
             for(int i=windowStart; i<windowStart+segment_length; ++i) heartRates.push_back(rate);
             
             windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
@@ -69,15 +69,15 @@ namespace MHR {
         
         //Calc the avg HR for the whole stream
         
-        mTYPE avg_hr=0;
+        double avg_hr=0;
         if(!heartBeats.empty()){
-            //avg_hr = round((mTYPE)heartBeats.size() / ((mTYPE)heartRates.size() - firstSample) * fr * 60);
+            //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
             int cnt=0;
             for(int i=firstSample; i<(int)temporal_mean.size(); ++i)
                 if(temporal_mean[i] != NaN) ++cnt;
             if(cnt==0) avg_hr = 0;
             else
-                avg_hr = round((mTYPE)heartBeats.size() / cnt * fr * 60);
+                avg_hr = round((double)heartBeats.size() / cnt * fr * 60);
         };
         
         debug.avg_hr = avg_hr;
