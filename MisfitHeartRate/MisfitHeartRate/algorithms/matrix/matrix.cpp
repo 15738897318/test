@@ -52,47 +52,21 @@ namespace MHR {
     bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames)
     {
         Mat frame;
-        int c = 0;
+        int c = (int)dst.size(), old_c = c;
         while(nFrames == -1 || c++ < nFrames) {
-//            printf("c = %d\n", c);
             src >> frame;
             if (frame.empty())
-                return (c == 1);
-//            if (frame.rows > 256 || frame.cols > 256)
-//                pyrDown(frame, frame, Size(frame.cols/2, frame.rows/2));
+                return (c == old_c+1);
+            
+            if (c == old_c+1)
+                printf("nChannel = %d\n", frame.channels());
+            
+            cvtColor(frame, frame, CV_BGR2RGB);
             dst.push_back(frame.clone());
         }
         return false;
     }
     
-    
-	// sum all channels in one pixcel
-	// default output type is double - CV_64F
-	Mat sumChannels(const Mat &src)
-	{
-		int nRow = src.rows, nCol = src.cols;
-		int nChannel = src.channels();
-		Mat sum = Mat::zeros(nRow, nCol, CV_64F);
-		for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-				for (int k = 0; k < nChannel; ++k)
-					sum.at<double>(i, j) += src.at<Vec3d>(i, j)[k];
-		return sum;
-	}
-    
-    
-	// create a new Mat with only one channel from old Mat
-	// default output type is double - CV_64F
-	Mat cloneWithChannel(const Mat &src, int channel)
-	{
-		int nRow = src.rows, nCol = src.cols;
-		Mat ans = Mat::zeros(nRow, nCol, CV_64F);
-		for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-				ans.at<double>(i, j) = src.at<Vec3d>(i, j)[channel];
-		return ans;
-	}
-	
 	
 	// atan2 of 2 Mats which have same size
 	// default intput/output type is double - CV_64F
@@ -142,4 +116,40 @@ namespace MHR {
 		multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
 		return ans;
 	}
+    
+    Mat read2DMatFromFile(FILE* &file, int rows, int cols)
+    {
+        Mat ans = Mat::zeros(rows, cols, CV_64F);
+        for (int i = 0; i < rows; ++i)
+            for (int j = 0; j < cols; ++j)
+                fscanf(file, "%lf", &ans.at<double>(i, j));
+        return ans;
+    }
+    
+    vector<double> readVectorFromFile(FILE* &file, int n)
+    {
+        vector<double> ans;
+        double value;
+        for (int i = 0; i < n; ++i) {
+            fscanf(file, "%lf", &value);
+            ans.push_back(value);
+        }
+        return ans;
+    }
+    
+    
+    int readInt(FILE* &file)
+    {
+        int value;
+        fscanf(file, "%d", &value);
+        return value;
+    }
+    
+    
+    double readDouble(FILE* &file)
+    {
+        double value;
+        fscanf(file, "%lf", &value);
+        return value;
+    }
 }

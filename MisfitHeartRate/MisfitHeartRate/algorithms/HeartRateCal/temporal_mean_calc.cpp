@@ -10,12 +10,14 @@
 
 
 namespace MHR {
-    vector<double> temporal_mean_calc(vector<Mat> &vid, double overlap_ratio,
+    vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
                                       double max_bpm, double cutoff_freq,
                                       int colour_channel, String colourspace,
                                       double &lower_range, double &upper_range, bool isCalcMode)
     {
-        String conversion_method = frames2signalConversionMethod;
+        clock_t t1 = clock();
+        
+        String conversion_method = _frames2signalConversionMethod;
         
         // Block 1 ==== Load the video & convert it to the desired colour-space
         // Extract video info
@@ -29,46 +31,39 @@ namespace MHR {
         int endIndex = len-1;   // 1400
         
         // Convert colourspaces for each frame
-        Mat rgbframe, colorframe;
-        vector<Mat> monoframes;
-//        int monoframesSize[] = {vidHeight, vidWidth, endIndex-startIndex+1};
-//        Mat monoframes = Mat(3, monoframesSize, CV_64F, CvScalar(0));
-        
         Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
-        
+        Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
+        Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+        vector<Mat> monoframes;
+
         for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
         {
-            printf("temporal_mean_calc: index = %i\n", i);
-            rgbframe = vid[i];
-            if (colourspace == "rgb")
-                colorframe = rgbframe;
-            else if (colourspace == "hsv")
-                cvtColor(rgbframe, colorframe, CV_RGB2HSV);
-            else if (colourspace == "ntsc")
-                rgb2ntsc(rgbframe, colorframe);
+            vid[i].convertTo(frame, CV_64FC3);
+            if (colourspace == "hsv")
+                cvtColor(frame, frame, CV_RGB2HSV);
             else if (colourspace == "ycbcr")
-                cvtColor(rgbframe, colorframe, CV_RGB2YCrCb);
+                cvtColor(frame, frame, CV_RGB2YCrCb);
             else if (colourspace == "tsl")
-                rgb2tsl(rgbframe, colorframe);
+                rgb2tsl(frame, frame);
             
             // Extract the right channel from the colour frame
-            
-            Mat monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+            // if only 1 channel ---> don't use monoframe.
             for (int x = 0; x < vidHeight; ++x)
                 for (int y = 0; y < vidWidth; ++y)
-                    monoframe.at<double>(x, y) = colorframe.at<Vec3d>(x, y)[colour_channel];
+                    monoframe.at<double>(x, y) = frame.at<Vec3d>(x, y)[colour_channel];
 			
 			// Downsample the frame for ease of computation
-            corrDn(monoframe, monoframe, filt, 4, 4);
+            corrDn(monoframe, tmp_monoframe, filt, 4, 4);
 			
 			// Put the frame into the video stream
-            monoframes.push_back(monoframe);
+            monoframes.push_back(tmp_monoframe.clone());
         }
+        
+        printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-        vector<Mat> debug_monoframes;
         return frames2signal(monoframes, conversion_method, frameRate, cutoff_freq,
-                             lower_range, upper_range, isCalcMode, debug_monoframes);
+                             lower_range, upper_range, isCalcMode);
     }
 }
