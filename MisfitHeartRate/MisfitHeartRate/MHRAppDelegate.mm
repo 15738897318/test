@@ -1,6 +1,6 @@
 //
 //  MHRAppDelegate.m
-//  opticalHeartRate
+//  videoHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
@@ -9,11 +9,18 @@
 #import "MHRAppDelegate.hpp"
 #import "MHRMainViewController.hpp"
 
-@implementation OHRAppDelegate
+
+NSString *const kSkinPListFileName = @"MisfitHeartRate-Skin";
+
+
+@implementation MHRAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+NSDictionary *pListSkinDict;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,6 +32,18 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+- (NSDictionary*)getPlistSkinDict
+{
+    if (pListSkinDict == nil)
+    {
+        NSString *pList = [[NSBundle mainBundle] pathForResource:kSkinPListFileName ofType:@"plist"];
+        pListSkinDict = [[NSDictionary alloc] initWithContentsOfFile:pList];
+    }
+    return pListSkinDict;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -93,7 +112,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"opticalHeartRate" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"videoHeartRate" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -106,7 +125,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"opticalHeartRate.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"videoHeartRate.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

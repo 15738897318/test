@@ -28,7 +28,8 @@ using namespace cv;
 
 
 namespace MHR {
-    double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug);
+    double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
+                       double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug);
 }
 
 #endif /* defined(__MisfitHeartRate__hr_calc_pda__) */

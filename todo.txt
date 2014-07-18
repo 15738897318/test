@@ -1,0 +1,31 @@
+- Bugs:
+	+ Eulerian output video.
+	+ Test corrDn.
+	+ frame2signal():
+		+ first_tranning_frames_start
+
+
+- Speed improve:
+	+ matlab.h functions:			convert to passing (params) by reference
+	+ matToVector1D(Mat m):		convert to passing (params) by reference
+	+ Change CV_64 --> CV_32 and test the result.
+	+ use 1 channel only (R in rgb (0) and S in TSL (1))
+	+ Access a image in optimize order: http://docs.opencv.org/doc/tutorials/core/how_to_scan_images/how_to_scan_images.html
+
+
+- Remove temp files (images, videos) after calculate.
+- Update % progess when run_algorithms().
+- Use Doxygen to generate document files.
+
+
+- change names of functions:
+	+ eulerian
+	+ temporal_mean_calc
+	+ frame2signal
+
+
+(CAMERA_HEIGHT - IMAGE_WIDTH)/2
+(CAMERA_WIDTH - IMAGE_HEIGHT)/2
+
+
+- sort heartBeatPositions

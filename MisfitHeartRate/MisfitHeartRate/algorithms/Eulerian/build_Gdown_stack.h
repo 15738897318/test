@@ -20,7 +20,7 @@ namespace MHR {
 	// the second dimension is the y axis of the video
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
-	Mat build_Gdown_Stack(const vector<Mat>& vid, int startIndex, int endIndex, int level);
+	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level);
 
 }
 

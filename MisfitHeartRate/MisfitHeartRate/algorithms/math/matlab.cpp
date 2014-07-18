@@ -12,7 +12,9 @@
 namespace MHR {
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
-    void findpeaks(vector<double> segment, double minPeakDistance, double threshold, vector<double> &max_peak_strengths, vector<int> &max_peak_locs){
+    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
+                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
+    {
         max_peak_strengths.clear(); max_peak_locs.clear();
         
         vector<pair<double,int>> peak_list;
@@ -39,7 +41,7 @@ namespace MHR {
 
 
     // unique_stable with vector<pair<double,int>>
-    vector<pair<double,int>> unique_stable(vector<pair<double,int>> arr){
+    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
         set<int> mys;
         
         vector<pair<double,int>> res;
@@ -53,20 +55,79 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-    vector<double> conv(vector<double> seg1, vector<double> seg2){
+//    vector<double> conv(vector<double> signal, vector<double> kernel) {
+//        Mat src = vectorToMat(signal);
+//        Mat dst;
+////        reverse(kernel.begin(), kernel.end());
+//        Mat mkernel = vectorToMat(kernel);
+//
+////        transpose(src, src);
+////        transpose(mkernel, mkernel);
+//
+////        corrDn(src, dst, mkernel, 1, 1);
+////        return matToVector1D(dst);
+//        
+////        filter2D(src, dst, -1, mkernel);
+//        filter2D(src, dst, -1, mkernel, Point(-1,-1), 0 , BORDER_CONSTANT);
+//        return matToVector1D(dst);
         
-        Mat src = vectorToMat(seg1);
-        Mat dst;
-        Mat kernel = vectorToMat(seg2);
+        //////////////////////
+//        reverse(kernel.begin(), kernel.end());
+//        
+//        int signalLen = (int)signal.size();
+//        int kernelLen = (int)kernel.size();
+//        vector<double> ans;
+//        for (int n = 0; n < signalLen + kernelLen - 1; n++)
+//        {
+//            int kmin, kmax, k;
+//            ans.push_back(0);
+//            kmin = (n >= kernelLen - 1) ? n - (kernelLen - 1) : 0;
+//            kmax = (n < signalLen - 1) ? n : signalLen - 1;
+//            for (k = kmin; k <= kmax; k++)
+//            {
+//                ans[n] += signal[k] * kernel[n - k];
+//            }
+//        }
+//
+//        int len = (int)ans.size();
+//        int a = (kernelLen-1)/2, b = kernelLen-1-a;
+//        printf("a = %d, b = %d\n", a, b);
+//        vector<double> tmp;
+//        for (int i = a; i < len - b; ++i)
+//            tmp.push_back(ans[i]);
+//        return tmp;
+//    }
+    
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
+        int m = (int)signal.size(), n = (int)kernel.size();
+        // padding of zeors
+        for(int i=m;i<=m+n-1;i++)
+            signal.push_back(0);
+        for(int i=n;i<=m+n-1;i++)
+            kernel.push_back(0);
         
-        filter2D(src, dst, -1, kernel, Point(-1,-1), 0 , BORDER_CONSTANT);
-        return matToVector1D(dst);
+        /* convolution operation */
+        vector<double> ans;
+        for(int i=0;i<m+n-1;i++)
+        {
+            ans.push_back(0);
+            for(int j=0;j<=i;j++)
+                ans[i]=ans[i]+(signal[j]*kernel[i-j]);
+        }
         
+        for (int i = 0; i < n-1; ++i)
+            ans.pop_back();
+        return ans;
     }
 
     
     // [counts, centres] = hist(arr, nbins)
-    void hist( vector<double> arr, int nbins, vector<int> &counts, vector<double> &centers){
+    void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers) {
+        if (&arr == &centers) {
+            throw invalid_argument("hist() error: &arr == &centers");
+            return;
+        }
+        
         counts.clear();
         centers.clear();
         
@@ -93,7 +154,7 @@ namespace MHR {
 
     
     // invprctile
-    double invprctile(vector<double> arr, double x){
+    double invprctile(const vector<double> &arr, double x) {
         int cnt = 0;
         for(int i=0; i<(int) arr.size(); ++i)
             if(arr[i] < x + 1e-9) ++cnt;
@@ -102,14 +163,15 @@ namespace MHR {
 
     
     //prctile
-    double prctile(vector<double> arr, double percent){
+    double prctile(vector<double> arr, double percent) {
         sort(arr.begin(), arr.end());
         int n = (int) arr.size();
         double idx = percent * n / 100;
         int int_idx = (int) (idx+1e-9);
         if(fabs(idx - int_idx)<1e-9){
             // idx is a whole number
-            if(int_idx==0) return NaN;
+//            if(int_idx==0) return NaN;
+            if(int_idx==0) return arr[0];
             int next_int = int_idx;
             if(next_int < n) next_int++;
             return (arr[int_idx-1] + arr[next_int-1])/2;
@@ -125,67 +187,41 @@ namespace MHR {
 
     
     //filter function for frames2signal function
-    vector<double> low_pass_filter(vector<double> arr){
+    vector<double> low_pass_filter(vector<double> arr) {
+        clock_t t1 = clock();
+        
+        // assign values in all NaN positions to 0
+        vector<int> nAnPositions;
+        int n = (int)arr.size();
+        for (int i = 0; i < n; ++i)
+            if (abs(arr[i] - NaN) < 1e-11) {
+                arr[i] = 0;
+                nAnPositions.push_back(i);
+            }
+        
+        // apply low pass filter
         Mat src = vectorToMat(arr);
         Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
         Mat dst;
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
         vector<double> ans = matToVector1D(dst);
-        for(int i=0; i<7; ++i) if(!ans.empty()) ans.pop_back();
+        
+        // assign values in all old NaN positions to NaN
+        for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
+            ans[nAnPositions[i]] = NaN;
+        
+        // remove last 7 elements when use FilterBandPassing
+        for(int i = 0; i < 7; ++i)
+            if(!ans.empty()) ans.pop_back();
+        
+        printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+        
         return ans;
     }
     
     
-    // return Discrete Fourier Transform of a 2-2 Mat by dimension
-	Mat fft(const Mat &src, int dimension) {
-		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
-		if (dimension == 0) {
-			Mat tmp = Mat_<complex<double>>(1, src.rows);
-			for (int i = 0; i < src.cols; ++i) {
-				for (int j = 0; j < src.rows; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(j, i), 0);
-				dft(tmp, tmp);
-				for (int j = 0; j < src.rows; ++j)
-					ans.at<complex<double>>(j, i) = tmp.at<complex<double>>(1, j);
-			}
-		}
-		else {
-			Mat tmp = Mat_<complex<double>>(1, src.cols);
-			for (int i = 0; i < src.rows; ++i) {
-				for (int j = 0; j < src.cols; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(i, j), 0);
-				dft(tmp, tmp);
-				for (int j = 0; j < src.cols; ++j)
-					ans.at<complex<double>>(i, j) = tmp.at<complex<double>>(1, j), 0;
-			}
-		}
-		return ans;
-	}
-    
-    
-    // return Inverse Discrete Fourier Transform of a 2-2 Mat by dimension
-	Mat ifft(const Mat &src, int dimension) {
-		Mat ans = Mat_<complex<double> > (src.rows, src.cols);
-		if (dimension == 0) {
-			Mat tmp = Mat_<complex<double>>(1, src.rows);
-			for (int i = 0; i < src.cols; ++i) {
-				for (int j = 0; j < src.rows; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(j, i), 0);
-				idft(tmp, tmp);
-				for (int j = 0; j < src.rows; ++j)
-					ans.at<complex<double>>(j, i) = tmp.at<complex<double>>(1, j);
-			}
-		}
-		else {
-			Mat tmp = Mat_<complex<double>>(1, src.cols);
-			for (int i = 0; i < src.rows; ++i) {
-				for (int j = 0; j < src.cols; ++j)
-					tmp.at<complex<double>>(1, j) = (src.at<double>(i, j), 0);
-				idft(tmp, tmp);
-				for (int j = 0; j < src.cols; ++j)
-					ans.at<complex<double>>(i, j) = tmp.at<complex<double>>(1, j), 0;
-			}
-		}
-		return ans;
-	}
+    double diff_percent(double a, double b)
+    {
+        return abs(a-b)/abs(b)*100;
+    }
 }

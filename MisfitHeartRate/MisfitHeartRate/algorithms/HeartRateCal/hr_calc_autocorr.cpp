@@ -10,12 +10,30 @@
 
 
 namespace MHR {
-    double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug){
+    double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+                            int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug)
+    {
         // Step 1: calc the window-based autocorrelation of the signal stream
         
         int windowStart = firstSample;
         vector<double> autocorrelation;
         
+        ////////////////////////////////////////////////////////////////////////////////
+//        double min_value = temporal_mean[0];
+//        for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
+//            min_value = min(min_value, temporal_mean[i]);
+//        printf("min_value = %lf\n", min_value);
+//        if (min_value < 0)
+//            for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
+//                temporal_mean[i] -= min_value;
+        
+//        printf("\n\ntemporal_mean:\n");
+//        for (int i = 0; i < (int)temporal_mean.size(); ++i)
+//            printf("%lf, ", temporal_mean[i]);
+//        printf("\n\n");
+
+        ////////////////////////////////////////////////////////////////////////////////
+
         while(windowStart <= (int) temporal_mean.size() - window_size){
             
             vector<double> segment;
@@ -25,9 +43,8 @@ namespace MHR {
             int segment_length;
             
             //Window to calculate the autocorrelation
-            for(int i=windowStart; i<windowStart+window_size; ++i) segment.push_back(temporal_mean[i]);
-            
-
+            for(int i=windowStart; i<windowStart+window_size; ++i)
+                segment.push_back(temporal_mean[i]);
             
             //calc mean and get segment = segment - mean
             double sum = accumulate(segment.begin(), segment.end(), 0);
@@ -38,7 +55,7 @@ namespace MHR {
             reverse(rev_segment.begin(), rev_segment.end());
             
             //Calculate the autocorrelation for the current window
-            vector<double> local_autocorr = conv(segment, rev_segment);
+            vector<double> local_autocorr = corr_linear(segment, rev_segment);
             
             //Define the segment length
             
@@ -57,13 +74,18 @@ namespace MHR {
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
                                       + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
                 }
+                for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
             }
+            
+//            for (int i = 0; i < (int)local_autocorr.size(); ++i)
+//                printf("%lf, ", local_autocorr[i]);
+//            printf("\n\n\n");
             
             // b. Equal-step progression
             // segment_length = window_size
             
             for(int i=0; i<(int)local_autocorr.size(); ++i) autocorrelation.push_back(local_autocorr[i]);
-            
+
             // Define the start of the next window
             windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
             
@@ -73,7 +95,6 @@ namespace MHR {
         windowStart = firstSample;
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
-        
         while(windowStart <= (int) autocorrelation.size() - window_size){
             
             vector<double> segment;
@@ -99,6 +120,7 @@ namespace MHR {
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
                                       + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
                 }
+                for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
             }
             
             // b. Equal_step progression
@@ -134,7 +156,7 @@ namespace MHR {
         }
         
         debug.heartBeats = heartBeats;
-        debug.heartRates=heartRates;
+        debug.heartRates = heartRates;
         debug.autocorrelation = autocorrelation;
         
         return avg_hr;
