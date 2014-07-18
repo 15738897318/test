@@ -14,8 +14,8 @@ using namespace MHR;
 using namespace std;
 using namespace cv;
 
-//const double EPSILON = 1e-5;
-const double EPSILON_PERCENT = 1.5;
+const double EPSILON = 1e-4;
+const double EPSILON_PERCENT = 2.8;
 String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/2926CAAB-4B49-49FE-903E-82908E53D35A/MisfitHeartRate.app/";
 
 
@@ -581,71 +581,52 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 
 
 - (void)test_ideal_bandpassing {
-//    FILE *file = fopen(String(resourcePath + "ideal_bandpassing_test_0").c_str(), "r");
-//    int nTime = readInt(file);
-//    int nRow = readInt(file), nCol = readInt(file);
-//    double samplingRate = readDouble(file);
-//    double wl = readDouble(file), wh = readDouble(file);
-//    
-//    Mat tmp = Mat::zeros(nRow, nCol, CV_64FC3);
-//    
-//    
-//    vector<double> array[2][3];
-//
-//    double value = -1;
-//    for (int col = 0; col < nCol; ++col)
-//        for (int channel = 0; channel < 3; ++channel)
-//            for (int t = 0; t < nTime; ++t)
-//                for (int row = 0; row < nRow; ++row) {
-//                    fscanf(inFile, "%lf", &value);
-//                    printf("%lf, ", value);
-//                    array[col][channel].push_back(value);
-//                }
-//    fclose(inFile);
-//
-////        int input_size[] = {nTime, nRow, nCol};
-//    vector<Mat> input;
-//    Mat tmp = Mat::zeros(nRow, nCol, CV_64FC3);
-//    for (int i = 0; i < nTime; ++i)
-//        input.push_back(tmp.clone());
-//    for (int t = 0; t < nTime; ++t)
-//        for (int row = 0; row < nRow; ++row)
-//            for (int col = 0; col < nCol; ++col)
-//                for (int channel = 0; channel < 3; ++channel)
-//                    input[t].at<Vec3d>(row, col)[channel] = array[col][channel][t*nRow + row];
-////            input[k].at<Vec3d>(i, 0)[0] = array_0_0[k*nRow + i];
-////            input[k].at<Vec3d>(i, 1)[0] = array_1_0[k*nRow + i];
-////            input[k].at<Vec3d>(i, 0)[1] = array_0_1[k*nRow + i];
-////            input[k].at<Vec3d>(i, 1)[1] = array_1_1[k*nRow + i];
-////            input[k].at<Vec3d>(i, 0)[2] = array_0_2[k*nRow + i];
-////            input[k].at<Vec3d>(i, 1)[2] = array_1_2[k*nRow + i];
-//    
-//    vector<Mat> output;
-//    ideal_bandpassing(input, output, wl, wh, samplingRate);
-//    
-//    String resultFilePath = resourcePath + "ideal_bandpassing_test_0.out";
-//    FILE *resultFile = fopen(resultFilePath.c_str(), "r");
-////    printf("Output vector<Mat>: size() = %i, nRow = %i, nCol = %i\n", (int)input.size(), nRow, nCol);
-//    double ans, correct_ans;
-//    for (int channel = 0; channel < 3; ++channel)
-//        for (int col = 0; col < nCol; ++col) {
-//            for (int t = 0; t < nTime; ++t) {
-//                for (int row = 0; row < nRow; ++row) {
-//                    fscanf(resultFile, "%lf", &correct_ans);
-//                    ans = output[t].at<Vec3d>(row, col)[channel];
-//                    if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
-//                    {
-//                        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf at time = %d, row = %d, col = %d, channel = %d", correct_ans, ans, diff_percent(ans, correct_ans), t, row, col, channel);
-//                        fclose(resultFile);
-//                        return;
-//                    }
-////                    printf("%lf, ", output[time].at<Vec3d>(row, col)[channel]);
-//                }
-////                printf("\n");
-//            }
-////            printf("\n\n\n");
-//        }
-//    fclose(resultFile);
+    FILE *file = fopen(String(resourcePath + "ideal_bandpassing_test_0.in").c_str(), "r");
+    int nTime = readInt(file);
+    int nRow = readInt(file), nCol = readInt(file);
+    double samplingRate = readDouble(file);
+    double wl = readDouble(file), wh = readDouble(file);
+    
+    vector<Mat> input;
+    Mat tmp = Mat::zeros(nRow, nCol, CV_64FC3);
+    for (int i = 0; i < nTime; ++i)
+        input.push_back(tmp.clone());
+    for (int channel = 0; channel < 3; ++channel)
+        for (int col = 0; col < nCol; ++col)
+            for (int t = 0; t < nTime; ++t)
+                for (int row = 0; row < nRow; ++row)
+                    input[t].at<Vec3d>(row, col)[channel] = readDouble(file);
+    fclose(file);
+    
+    vector<Mat> output;
+    ideal_bandpassing(input, output, wl, wh, samplingRate);
+    
+    file = fopen(String(resourcePath + "ideal_bandpassing_test_0.out").c_str(), "r");
+//    printf("Output vector<Mat>: size() = %i, nRow = %i, nCol = %i\n", (int)input.size(), nRow, nCol);
+    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
+    for (int channel = 0; channel < 3; ++channel)
+        for (int col = 0; col < nCol; ++col) {
+            for (int t = 0; t < nTime; ++t) {
+                for (int row = 0; row < nRow; ++row) {
+                    double correct_ans = readDouble(file);
+                    double ans = output[t].at<Vec3d>(row, col)[channel];
+//                    double tmp = diff_percent(ans, correct_ans);
+                    double tmp = (abs(ans-correct_ans) > EPSILON)*100;
+                    if (tmp > max_percent)
+                    {
+                        max_percent = tmp;
+                        max_correct_ans = correct_ans;
+                        max_ans = ans;
+                    }
+                    printf("%lf, ", output[t].at<Vec3d>(row, col)[channel]);
+                }
+                printf("\n");
+            }
+            printf("\n\n\n");
+        }
+    fclose(file);
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
 }
 
 
