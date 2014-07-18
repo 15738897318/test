@@ -12,11 +12,20 @@
 using namespace std;
 using namespace cv;
 
-
 namespace MHR {
+#ifdef DEBUG
+    const int DEBUG_MODE = 1;
+#else
+    const int DEBUG_MODE = 0;
+#endif
+    
+    #define ELEMENT_COUNT(X) (sizeof(X) / sizeof((X)[0]))
+    
+    const String _outputPath = "/var/mobile/Applications/40BBE745-97D5-4BEA-B486-AB77BCE9B3B2/Documents/";
+    
     const double NaN = -1e9;
     
-    const int _framesBlock_size = 150;
+    const int _framesBlock_size = 64;
 
     /*--------------for run_eulerian()--------------*/
     const double _eulerian_alpha = 50;          // Eulerian magnifier, standard < 50
@@ -31,9 +40,10 @@ namespace MHR {
     const int _number_of_channels = 3;
     const int _Gpyr_filter_length = 5;
     const int _startFrame = 0;
-    const int _endFrame = - 10; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
+    const int _endFrame = 0; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
 
     // filter_bandpassing:
+    const bool _isUseFilterBandPassing = false;     // use ideal bandpassing
     const int _eulerianTemporalFilterKernel_size = 15;
     const double _eulerianTemporalFilterKernel[] = {0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594, 0.1704, 0.1594,0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034};
 
@@ -42,10 +52,11 @@ namespace MHR {
     const double _window_size_in_sec = 10;
     const double _overlap_ratio = 0;
     const double _max_bpm = 200;             // BPM
-    const double _cutoff_freq = 5;           // Hz
+    const double _cutoff_freq = 2.5;         // Hz
     const double _time_lag = 3;              // seconds
     const String _colourspace = "tsl";
-    const int _channels_to_process = 1;     // If only 1 channel: 2 for tsl, 1 for rgb
+    const int _channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
+    const int _number_of_bins_heartRate = 5;
 
     // heartRate_calc: Native params of the algorithm
     const int _flagDebug = 0;
@@ -54,8 +65,8 @@ namespace MHR {
     const int _startIndex = 1;  //400
     const int _endIndex = 0;    //1400	>= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
 
-    const double peakStrengthThreshold_fraction = 0;
-    const String frames2signalConversionMethod = "mode-balance";
+    const double _peakStrengthThreshold_fraction = 0;
+    const String _frames2signalConversionMethod = "mode-balance";
 
     const int _frame_downsampling_filt_rows = 7;
     const int _frame_downsampling_filt_cols = 7;
