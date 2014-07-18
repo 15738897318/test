@@ -1,16 +1,16 @@
 //
-//  hr_calc_autocorr.cpp
+//  hb_counter_autocorr.cpp
 //  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#include "hr_calc_autocorr.h"
+#include "hb_counter_autocorr.h"
 
 
 namespace MHR {
-    double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+    vector<int> hb_counter_autocorr(vector<double> temporal_mean, double fr, int firstSample,
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug)
     {
         // Step 1: calc the window-based autocorrelation of the signal stream
@@ -155,10 +155,13 @@ namespace MHR {
                 avg_hr = round((double)heartBeats.size() / cnt * fr * 60);
         }
         
+        debug.avg_hr = avg_hr;
         debug.heartBeats = heartBeats;
         debug.heartRates = heartRates;
-        debug.autocorrelation = autocorrelation;
         
-        return avg_hr;
+        vector<int> locations;
+        for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
+            locations.push_back(heartBeats[i].second);
+        return locations;
     }
 }

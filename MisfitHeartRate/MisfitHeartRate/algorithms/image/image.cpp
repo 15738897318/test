@@ -145,9 +145,15 @@ namespace MHR {
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
 //        printf("corrDn, (m, n) = (%d, %d)\n", m, n);
         dst = Mat::zeros(m, n, CV_64F);
-        for (int i = 0, x = 0; i < m; ++i, x += rectRow)
-            for (int j = 0, y = 0; j < n; ++j, y += rectCol)
+        int last_i = -1, last_j = -1;
+        for (int i = 0, x = 0; x < src.rows; ++i, x += rectRow)
+            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol) {
                 dst.at<double>(i, j) = tmp.at<double>(x, y);
+                last_i = max(last_i, i);
+                last_j = max(last_j, j);
+            }
+        if (last_i+1 != m && last_j+1 != n)
+            printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
     }
     
     

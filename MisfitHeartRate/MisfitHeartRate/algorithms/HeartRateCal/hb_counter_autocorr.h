@@ -1,13 +1,13 @@
 //
-//  hr_calc_autocorr.h
+//  hb_counter_autocorr.h
 //  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__hr_calc_autocorr__
-#define __MisfitHeartRate__hr_calc_autocorr__
+#ifndef __MisfitHeartRate__hb_counter_autocorr__
+#define __MisfitHeartRate__hb_counter_autocorr__
 
 #include <iostream>
 #include <string>
@@ -31,8 +31,8 @@ using namespace cv;
 
 
 namespace MHR {
-    double hr_calc_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+    vector<int> hb_counter_autocorr(vector<double> temporal_mean, double fr, int firstSample,
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug);
 }
 
-#endif /* defined(__MisfitHeartRate__hr_calc_autocorr__) */
+#endif /* defined(__MisfitHeartRate__hb_counter_autocorr__) */

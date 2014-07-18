@@ -1,16 +1,16 @@
 //
-//  hr_calc_pda.cpp
+//  hb_counter_pda.cpp
 //  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#include "hr_calc_pda.h"
+#include "hb_counter_pda.h"
 
 
 namespace MHR {
-    double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
+    vector<int> hb_counter_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
                        double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug)
     {
         //Perform peak counting for each window
@@ -80,9 +80,13 @@ namespace MHR {
                 avg_hr = round((double)heartBeats.size() / cnt * fr * 60);
         };
         
+        debug.avg_hr = avg_hr;
         debug.heartBeats = heartBeats;
-        debug.heartRates=heartRates;
+        debug.heartRates = heartRates;
         
-        return avg_hr;
+        vector<int> locations;
+        for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
+            locations.push_back(heartBeats[i].second);
+        return locations;
     }
 }

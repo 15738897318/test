@@ -31,7 +31,7 @@ namespace MHR {
 		//Create a convolution kernel from the found frequency
 		vector<double> kernel;
 		gaussianFilter(cvCeil(2.0 / centre_mode), 1.0 / (4.0 * centre_mode), kernel);
-		double threshold = 2.0 * kernel[cvCeil(1.0 / (4.0 * centre_mode))];
+		double threshold = 2.0 * kernel[cvCeil(1.0 / (4.0 * centre_mode)) - 1];
         
 		//Create a heart-beat count signal
 		vector<double> count_signal;
@@ -57,6 +57,9 @@ namespace MHR {
 		for (int i = 0, sz = (int)min_peak_strengths.size(); i < sz; ++i)
 			min_peak_strengths[i] = -min_peak_strengths[i];
         
+        for (int i = 0, sz = (int)score_signal.size(); i < sz; ++i)
+			score_signal[i] = -score_signal[i];
+        
 		double factor = 1.5;
 		threshold *= factor;
 		for (int i = 0, len = (int)min_peak_locs.size(); i < len; ++i) {
@@ -72,7 +75,9 @@ namespace MHR {
 		int len = (int)count_signal.size();
 		for (int i = 0; i < len; ++i)
 			ans[0] += abs(count_signal[i]);
-		ans[0] /= (double(len) + 1.0/centre_mode) * frameRate * 60;
+        printf("sum = %lf\n", ans[0]);
+		ans[0] /= (double(len) + 1.0/centre_mode);
+        ans[0] *= frameRate * 60;
         
 		ans.push_back(centre_mode * frameRate * 60);
 	}
@@ -81,16 +86,12 @@ namespace MHR {
 	// Generate a vector of Gaussian values of a desired length and properties
 	void gaussianFilter(int length, double sigma, vector<double> &ans) {
 		ans.clear();
-        
-		// Generate the exponents
-		int temp = cvCeil(length / 2.0);
-		double multiplier = -1.0 / (2.0 * sigma * sigma);
-		for (int i = 0; i < length; ++i) {
-			ans.push_back(i - temp);
-			ans[i] *= ans[i] * multiplier;
-		}
-        
-		// Perform the exponentiation
-		exp(ans, ans);
+        Mat kernel = getGaussianKernel(length, sigma, CV_64F);
+        for (int i = 0; i < kernel.size.p[0]; ++i)
+            for (int j = 0; j < kernel.size.p[1]; ++j)
+                ans.push_back(kernel.at<double>(i, j));
+        double max_value = *max_element(ans.begin(), ans.end());
+        for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
+            ans[i] /= max_value;
 	}
 }

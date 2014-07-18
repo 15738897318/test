@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */; };
+		12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */; };
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
-		12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
+		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
 		DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */; };
 		DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */; };
+		DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C919790E16003E0FF5 /* hr_calculator_test.in */; };
+		DC5351CC19790E16003E0FF5 /* hr_calculator_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */; };
 		DC85FF4B19768AC5004081B2 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2B19768AC5004081B2 /* add_test.in */; };
 		DC85FF4C19768AC5004081B2 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2B19768AC5004081B2 /* add_test.in */; };
 		DC85FF4D19768AC5004081B2 /* add_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2C19768AC5004081B2 /* add_test.out */; };
@@ -129,9 +131,9 @@
 		DCB91D27197632D000793884 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F591957CC4C0095A98E /* CoreVideo.framework */; };
 		DCB91D28197632D900793884 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F611957CC6E0095A98E /* QuartzCore.framework */; };
 		DCB91D29197632E300793884 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F571957CC4C0095A98E /* CoreImage.framework */; };
-		DCB91D2A19763C7B00793884 /* hr_calc_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */; };
+		DCB91D2A19763C7B00793884 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
 		DCB91D2B19763CB500793884 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */; };
-		DCB91D2C19763CB700793884 /* hr_calc_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */; };
+		DCB91D2C19763CB700793884 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */; };
 		DCB91D2D19763CB900793884 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		DCB91D2E19763CBD00793884 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
 		DCB91D2F19763CBF00793884 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */; };
@@ -185,17 +187,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calc_pda.cpp; path = HeartRateCal/hr_calc_pda.cpp; sourceTree = "<group>"; };
-		12B587D91963EBA300BA19A5 /* hr_calc_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calc_pda.h; path = HeartRateCal/hr_calc_pda.h; sourceTree = "<group>"; };
+		12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_pda.cpp; path = HeartRateCal/hb_counter_pda.cpp; sourceTree = "<group>"; };
+		12B587D91963EBA300BA19A5 /* hb_counter_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_pda.h; path = HeartRateCal/hb_counter_pda.h; sourceTree = "<group>"; };
 		12B587DB1963EC9100BA19A5 /* hrDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hrDebug.cpp; path = HeartRateCal/hrDebug.cpp; sourceTree = "<group>"; };
 		12B587DC1963EC9100BA19A5 /* hrDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hrDebug.h; path = HeartRateCal/hrDebug.h; sourceTree = "<group>"; };
 		12B587E21963F48700BA19A5 /* matlab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matlab.cpp; path = math/matlab.cpp; sourceTree = "<group>"; };
 		12B587E31963F48700BA19A5 /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = matlab.h; path = math/matlab.h; sourceTree = "<group>"; };
-		12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calc_autocorr.cpp; path = HeartRateCal/hr_calc_autocorr.cpp; sourceTree = "<group>"; };
-		12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calc_autocorr.h; path = HeartRateCal/hr_calc_autocorr.h; sourceTree = "<group>"; };
+		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
+		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
 		DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.in; path = MisfitHeartRateTests/corr_linear_test.in; sourceTree = SOURCE_ROOT; };
 		DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.out; path = MisfitHeartRateTests/corr_linear_test.out; sourceTree = SOURCE_ROOT; };
+		DC5351C919790E16003E0FF5 /* hr_calculator_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.in; path = MisfitHeartRateTests/hr_calculator_test.in; sourceTree = SOURCE_ROOT; };
+		DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.out; path = MisfitHeartRateTests/hr_calculator_test.out; sourceTree = SOURCE_ROOT; };
 		DC85FF2B19768AC5004081B2 /* add_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = add_test.in; path = MisfitHeartRateTests/add_test.in; sourceTree = SOURCE_ROOT; };
 		DC85FF2C19768AC5004081B2 /* add_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = add_test.out; path = MisfitHeartRateTests/add_test.out; sourceTree = SOURCE_ROOT; };
 		DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atan2Mat_test.in; path = MisfitHeartRateTests/atan2Mat_test.in; sourceTree = SOURCE_ROOT; };
@@ -405,20 +409,20 @@
 		DCAE6BAA195A80FF00B9FE9F /* HeartRateCal */ = {
 			isa = PBXGroup;
 			children = (
-				DCAE52521966B45300A8AFB6 /* hr_signal_calc.h */,
-				DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */,
-				12B587D91963EBA300BA19A5 /* hr_calc_pda.h */,
-				12B587D81963EBA300BA19A5 /* hr_calc_pda.cpp */,
-				12B587DC1963EC9100BA19A5 /* hrDebug.h */,
-				12B587DB1963EC9100BA19A5 /* hrDebug.cpp */,
-				12B587E61964017E00BA19A5 /* hr_calc_autocorr.h */,
-				12B587E51964017E00BA19A5 /* hr_calc_autocorr.cpp */,
 				DCA50B8C1964179200F99D33 /* frames2signal.h */,
 				DCA50B8B1964179200F99D33 /* frames2signal.cpp */,
 				DCAE52551966CE5800A8AFB6 /* temporal_mean_calc.h */,
 				DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */,
+				12B587DC1963EC9100BA19A5 /* hrDebug.h */,
+				12B587DB1963EC9100BA19A5 /* hrDebug.cpp */,
 				DCB91D121975049F00793884 /* hr_calculator.h */,
 				DCB91D111975049E00793884 /* hr_calculator.cpp */,
+				DCAE52521966B45300A8AFB6 /* hr_signal_calc.h */,
+				DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */,
+				12B587D91963EBA300BA19A5 /* hb_counter_pda.h */,
+				12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */,
+				12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */,
+				12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */,
 			);
 			name = HeartRateCal;
 			sourceTree = "<group>";
@@ -569,6 +573,8 @@
 		DCF4B78719764D7F006B5F4F /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				DC5351C919790E16003E0FF5 /* hr_calculator_test.in */,
+				DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */,
 				DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */,
 				DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */,
 				DC85FF2B19768AC5004081B2 /* add_test.in */,
@@ -686,12 +692,14 @@
 				DC85FF6B19768AC5004081B2 /* invprctile_test.in in Resources */,
 				DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
 				DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */,
+				DC5351CC19790E16003E0FF5 /* hr_calculator_test.out in Resources */,
 				DC85FF5519768AC5004081B2 /* blurDnClr_test.out in Resources */,
 				DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
 				DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */,
 				DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */,
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DC85FF5F19768AC5004081B2 /* findpeaks_test.in in Resources */,
+				DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */,
 				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
 				DC85FF7D19768AC5004081B2 /* powMat_test.out in Resources */,
 				DC85FF8519768AC5004081B2 /* rgb2tsl_test.out in Resources */,
@@ -797,7 +805,7 @@
 				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
-				12B587DA1963EBA300BA19A5 /* hr_calc_pda.cpp in Sources */,
+				12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
@@ -807,7 +815,7 @@
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
-				12B587E71964017E00BA19A5 /* hr_calc_autocorr.cpp in Sources */,
+				12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,
 				DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */,
@@ -823,7 +831,7 @@
 				DCB91D3E19763D5000793884 /* UIImageCVMatConverter.mm in Sources */,
 				DCB91D3F19763D5200793884 /* UIView+Position.m in Sources */,
 				DCB91D4319763D7800793884 /* videoHeartRate.xcdatamodeld in Sources */,
-				DCB91D2C19763CB700793884 /* hr_calc_pda.cpp in Sources */,
+				DCB91D2C19763CB700793884 /* hb_counter_pda.cpp in Sources */,
 				DCB91D3719763CE900793884 /* build_Gdown_stack.cpp in Sources */,
 				DCB91D3819763CEB00793884 /* filter_bandpassing.cpp in Sources */,
 				DCB91D3219763CD300793884 /* matlab.cpp in Sources */,
@@ -838,7 +846,7 @@
 				DCB91D2119762FD900793884 /* MisfitHeartRateTests.mm in Sources */,
 				DCB91D2D19763CB900793884 /* hrDebug.cpp in Sources */,
 				DCB91D3A19763D1100793884 /* matrix.cpp in Sources */,
-				DCB91D2A19763C7B00793884 /* hr_calc_autocorr.cpp in Sources */,
+				DCB91D2A19763C7B00793884 /* hb_counter_autocorr.cpp in Sources */,
 				DCB91D3019763CC100793884 /* hr_calculator.cpp in Sources */,
 				DCB91D4B19763DE100793884 /* MHRResultViewController.m in Sources */,
 				DCB91D3319763CDA00793884 /* image.cpp in Sources */,

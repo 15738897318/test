@@ -1,13 +1,6 @@
-[hist] :  - wrong centers - expected: 0.106700, found: 0.094780, percent = 11.171509
-[hr_calc_autocorr] :  - wrong output - expected: 9.000000, found: 18.000000, percent = 100.000000
-
-
-
-test again:
-+ corrDn
-+ ideal_band_passing
+to test:
 + hr_pda
-
++ hr_cal_autocorr
 
 
 
@@ -17,4 +10,3 @@ test again:
 [multiply_num] :  - wrong output - expected: -0.009800, found: -0.009828, percent = 0.285714
 [powMat] :  - wrong output - expected: 0.005500, found: 0.005523, percent = 0.415262
 [rgb2tsl] :  - wrong output - expected: 0.033500, found: 0.033443, percent = 0.169625
-[conv] :  - wrong output - expected: 0.850900, found: 0.974514, percent = 14.527410

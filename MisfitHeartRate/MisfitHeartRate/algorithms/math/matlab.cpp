@@ -20,7 +20,7 @@ namespace MHR {
         vector<pair<double,int>> peak_list;
         
         for(int i=1; i<(int) segment.size()-1; ++i){
-            if(segment[i] - segment[i-1] > threshold && segment[i] - segment[i+1] > threshold)
+            if(segment[i] - segment[i-1] >= threshold && segment[i] - segment[i+1] > threshold)
                 peak_list.push_back(pair<double,int> (-segment[i], i));
         }
         
@@ -142,7 +142,8 @@ namespace MHR {
         
         counts.resize(nbins,0);
         centers.resize(nbins,0);
-        for(int i=0; i<nbins; ++i) centers[i] = bin_length * i + bin_length / 2;
+        for(int i=0; i<nbins; ++i)
+            centers[i] = bin_length * i + bin_length / 2.0 + minv;
         
         for(int i=0; i<(int) arr.size(); ++i){
             double v=arr[i]-minv;

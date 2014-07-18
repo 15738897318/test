@@ -1,13 +1,13 @@
 //
-//  hr_calc_pda.h
+//  hb_counter_pda.h
 //  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__hr_calc_pda__
-#define __MisfitHeartRate__hr_calc_pda__
+#ifndef __MisfitHeartRate__hb_counter_pda__
+#define __MisfitHeartRate__hb_counter_pda__
 
 #include <iostream>
 #include <string>
@@ -28,8 +28,8 @@ using namespace cv;
 
 
 namespace MHR {
-    double hr_calc_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
+    vector<int> hb_counter_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
                        double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug);
 }
 
-#endif /* defined(__MisfitHeartRate__hr_calc_pda__) */
+#endif /* defined(__MisfitHeartRate__hb_counter_pda__) */

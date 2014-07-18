@@ -22,8 +22,8 @@
 #include "image.h"
 #include "matrix.h"
 #include "frames2signal.h"
-#include "hr_calc_pda.h"
-#include "hr_calc_autocorr.h"
+#include "hb_counter_pda.h"
+#include "hb_counter_autocorr.h"
 #include "hr_signal_calc.h"
 
 

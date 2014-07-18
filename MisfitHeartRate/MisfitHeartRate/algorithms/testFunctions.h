@@ -14,8 +14,8 @@
 #include "matlab.h"
 #include "ideal_bandpassing.h"
 #include "image.h"
-#include "hr_calc_autocorr.h"
-#include "hr_calc_pda.h"
+#include "hb_counter_autocorr.h"
+#include "hb_counter_pda.h"
 
 using namespace std;
 
@@ -31,7 +31,7 @@ namespace MHR {
     
     void test_hr_cal_autocorr();
     
-    void test_hr_calc_pda();
+    void test_hb_counter_pda();
 }
 
 #endif /* defined(__MisfitHeartRate__testFunctions__) */
