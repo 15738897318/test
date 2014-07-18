@@ -28,18 +28,18 @@
 namespace MHR {
     struct hrResult
     {
-        double autocorr;        // avg_hr_autocorr
-        double pda;             // avg_hr_pda
+        mTYPE autocorr;        // avg_hr_autocorr
+        mTYPE pda;             // avg_hr_pda
         
-        hrResult(double autocorr, double pda);
+        hrResult(mTYPE autocorr, mTYPE pda);
         
         void operator = (const hrResult &other);
     };
     
     
-    hrResult hr_signal_calc(vector<double> &temporal_mean, int firstSample, int window_size,
-                            double frameRate, double overlap_ratio,
-                            double max_bpm, double threshold_fraction);
+    hrResult hr_signal_calc(vector<mTYPE> &temporal_mean, int firstSample, int window_size,
+                            mTYPE frameRate, mTYPE overlap_ratio,
+                            mTYPE max_bpm, mTYPE threshold_fraction);
 }
 
 #endif /* defined(__MisfitHeartRate__hr_signal_calc__) */

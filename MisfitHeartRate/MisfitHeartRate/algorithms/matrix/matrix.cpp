@@ -20,29 +20,29 @@ namespace MHR {
     
     
     // import data from a array to a Mat
-    Mat arrayToMat(const double a[], int rows, int cols) {
-		Mat ans = Mat::zeros(rows, cols, CV_64F);
+    Mat arrayToMat(const mTYPE a[], int rows, int cols) {
+		Mat ans = Mat::zeros(rows, cols, mCV_F);
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j)
-                ans.at<double>(i, j) = a[i*cols + j];
+                ans.at<mTYPE>(i, j) = a[i*cols + j];
         return ans;
     }
     
     
     // vector to Mat
-    Mat vectorToMat(const vector<double>& arr){
+    Mat vectorToMat(const vector<mTYPE>& arr){
         int sz = (int)arr.size();
-        Mat ans = Mat::zeros(1, sz, CV_64F);
+        Mat ans = Mat::zeros(1, sz, mCV_F);
         for(int i = 0; i < sz; ++i)
-            ans.at<double>(0, i) = arr[i];
+            ans.at<mTYPE>(0, i) = arr[i];
         return ans;
     }
     
     // Mat to vector 1D (just get the first row)
-    vector<double> matToVector1D(const Mat &m) {
-        vector<double> arr;
+    vector<mTYPE> matToVector1D(const Mat &m) {
+        vector<mTYPE> arr;
         for(int i = 0; i < m.cols; ++i)
-            arr.push_back(m.at<double>(0, i));
+            arr.push_back(m.at<mTYPE>(0, i));
         return arr;
     }
 
@@ -69,23 +69,23 @@ namespace MHR {
     
 	
 	// atan2 of 2 Mats which have same size
-	// default intput/output type is double - CV_64F
+	// default intput/output type is mTYPE - mCV_F
 	Mat atan2Mat(const Mat &src1, const Mat &src2)
 	{
 		int nRow = src1.rows, nCol = src1.cols;
-		Mat ans = Mat::zeros(nRow, nCol, CV_64F);
+		Mat ans = Mat::zeros(nRow, nCol, mCV_F);
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
-				ans.at<double>(i, j) += atan2(src1.at<double>(i, j), src2.at<double>(i, j));
+				ans.at<mTYPE>(i, j) += atan2(src1.at<mTYPE>(i, j), src2.at<mTYPE>(i, j));
 		return ans;
 	}
 	
 	
 	// return src.^n
-	// default intput/output type is double - CV_64F
-	Mat powMat(const Mat &src, double n)
+	// default intput/output type is mTYPE - mCV_F
+	Mat powMat(const Mat &src, mTYPE n)
 	{
-		Mat ans = Mat::zeros(src.rows, src.cols, CV_64F);
+		Mat ans = Mat::zeros(src.rows, src.cols, mCV_F);
 		pow(src, n, ans);
 		return ans;
 	}
@@ -110,26 +110,26 @@ namespace MHR {
 	
 	
 	// return mat .* x
-	Mat multiply(const Mat &a, double x)
+	Mat multiply(const Mat &a, mTYPE x)
 	{
 		Mat ans = Mat::zeros(a.rows, a.cols, a.type());
-		multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
+		multiply(a, Mat(a.rows, a.cols, mCV_F, x), ans);
 		return ans;
 	}
     
     Mat read2DMatFromFile(FILE* &file, int rows, int cols)
     {
-        Mat ans = Mat::zeros(rows, cols, CV_64F);
+        Mat ans = Mat::zeros(rows, cols, mCV_F);
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < cols; ++j)
-                fscanf(file, "%lf", &ans.at<double>(i, j));
+                fscanf(file, "%lf", &ans.at<mTYPE>(i, j));
         return ans;
     }
     
-    vector<double> readVectorFromFile(FILE* &file, int n)
+    vector<mTYPE> readVectorFromFile(FILE* &file, int n)
     {
-        vector<double> ans;
-        double value;
+        vector<mTYPE> ans;
+        mTYPE value;
         for (int i = 0; i < n; ++i) {
             fscanf(file, "%lf", &value);
             ans.push_back(value);
@@ -146,9 +146,9 @@ namespace MHR {
     }
     
     
-    double readDouble(FILE* &file)
+    mTYPE readmTYPE(FILE* &file)
     {
-        double value;
+        mTYPE value;
         fscanf(file, "%lf", &value);
         return value;
     }

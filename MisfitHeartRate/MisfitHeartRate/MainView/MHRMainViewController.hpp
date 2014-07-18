@@ -1,5 +1,5 @@
 //
-//  MHRMainViewController.h
+//  MHRMainViewController.hpp
 //  videoHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
@@ -17,7 +17,7 @@
 #import <time.h>
 #import "MHRUtilities.h"
 #import "UIView+Position.h"
-#import "MHRResultViewController.h"
+#import "MHRResultViewController.hpp"
 #import "MBProgressHUD.h"
 #import "run_algorithms.h"
 #import "testFunctions.h"

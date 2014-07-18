@@ -20,7 +20,7 @@ namespace MHR {
     // WL: lower cutoff frequency of ideal band pass filter
     // WH: higher cutoff frequency of ideal band pass filter
     // SAMPLINGRATE: sampling rate of SRC
-    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double wl, double wh, double samplingRate);
+    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, mTYPE wl, mTYPE wh, mTYPE samplingRate);
 }
 
 #endif /* defined(__MisfitHeartRate__ideal_bandpassing__) */

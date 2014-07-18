@@ -13,8 +13,8 @@ namespace MHR {
     void testMathFunctions()
     {
 //        int sizeArr[] = {30, 40, 100};
-//        Mat img = Mat(3, sizeArr, CV_64F, CvScalar(0));
-//        double v = 0, delta = 1;
+//        Mat img = Mat(3, sizeArr, mCV_F, CvScalar(0));
+//        mTYPE v = 0, delta = 1;
 //        for(int i=0; i<100; ++i){
 //            if(v==10){
 //                delta=-1;
@@ -22,14 +22,14 @@ namespace MHR {
 //                delta=1;
 //            }
 //            v+=delta;
-//            for(int x=0; x<30; ++x) for(int y=0; y<40; ++y) img.at<double>(x,y,i)=v;
+//            for(int x=0; x<30; ++x) for(int y=0; y<40; ++y) img.at<mTYPE>(x,y,i)=v;
 //        }
 //        Mat debugImg;
-//        vector<double> ans = frames2signal(img, "mode-balance", 30, 0, debugImg);
+//        vector<mTYPE> ans = frames2signal(img, "mode-balance", 30, 0, debugImg);
 //        for(int i=0; i<(int) ans.size(); ++i) cout<<ans[i]<<' '; cout<<endl;
 
 
-//        vector<double> arr;
+//        vector<mTYPE> arr;
 //        for(int i=0; i<100; ++i){
 //        arr.push_back(1.0*(rand()%10000)/(rand()%100));
 //        }
@@ -40,46 +40,46 @@ namespace MHR {
 //        for(int i=0; i<100-1;++i) cout<<arr[i]<<", "; cout<<arr[99]<<"]"<<endl;
 
 
-//        vector<double>seg1{1, 7, 3, 89, 5, 16, 5};
-//        vector<double> seg2{0.1, 1.38, 0.76};
-//        vector<double> ans = conv(seg1,seg2);
+//        vector<mTYPE>seg1{1, 7, 3, 89, 5, 16, 5};
+//        vector<mTYPE> seg2{0.1, 1.38, 0.76};
+//        vector<mTYPE> ans = conv(seg1,seg2);
 //        cout<<(int)ans.size()<<endl;
 //        for(int i=0; i<(int)ans.size(); ++i) cout<<ans[i]<<' '; cout<<endl;
 
 
-//        vector<double> arr;
+//        vector<mTYPE> arr;
 //        srand(time(NULL));
 //        for(int i=1; i<=100; ++i) arr.push_back(i);
 //        for(int i=1; i<=100; ++i){
-//        double per=(rand()%10001)/100.0;
+//        mTYPE per=(rand()%10001)/100.0;
 //        cout<<i<<' '<<per<<' '<<prctile(arr, per)<<' '<<invprctile(arr, prctile(arr,per))<<endl;
 //        }
 
 
 //        invprctile checking
-//        vector<double> arr {5,1,3,2.2,3.1,5.6,10};
+//        vector<mTYPE> arr {5,1,3,2.2,3.1,5.6,10};
 //        cout<<invprctile(arr, 10)<<endl;
 //        cout<<invprctile(arr, 0)<<endl;
 //        cout<<invprctile(arr, 1)<<endl;
 
 
 //        srand(time(NULL));
-//        vector<double> data {0,2,9,2,5,8,7,3,1,9,4,3,5,8,10,0,1,2,9,5,10};
+//        vector<mTYPE> data {0,2,9,2,5,8,7,3,1,9,4,3,5,8,10,0,1,2,9,5,10};
 //        vector<int> counts;
-//        vector<double> centers;
+//        vector<mTYPE> centers;
 //        hist(data, 10, counts, centers);
 //        cout<<counts.size()<<endl;
 //        for(int i=0; i<(int) counts.size(); ++i) cout<<centers[i]<<' '<<counts[i]<<endl;
 
 
-//        vector<double> segment;
-//        for(double x=0; x<=100; x+=0.01)
+//        vector<mTYPE> segment;
+//        for(mTYPE x=0; x<=100; x+=0.01)
 //            segment.push_back(sin(x*acos(-1)));
 //        printf("input: \n");
 //        for (int i = 0; i < (int)segment.size(); ++i)
 //            printf("%lf\n", segment[i]);
 //
-//        vector<double> strengths;
+//        vector<mTYPE> strengths;
 //        vector<int> locs;
 //        findpeaks(segment, 300, 0, strengths, locs);
 //        printf("%d\n",(int)strengths.size());
@@ -92,7 +92,7 @@ namespace MHR {
     
 //    void test_rgb2ntsc() {
 //        int nRow = 10, nCol = 10;
-//        double test_array_0[] = {
+//        mTYPE test_array_0[] = {
 //            0.8147, 0.1576, 0.6557, 0.7060, 0.4387, 0.2760, 0.7513, 0.8407, 0.3517, 0.0759,
 //            0.9058, 0.9706, 0.0357, 0.0318, 0.3816, 0.6797, 0.2551, 0.2543, 0.8308, 0.0540,
 //            0.1270, 0.9572, 0.8491, 0.2769, 0.7655, 0.6551, 0.5060, 0.8143, 0.5853, 0.5308,
@@ -104,7 +104,7 @@ namespace MHR {
 //            0.9575, 0.7922, 0.6555, 0.9502, 0.7094, 0.5853, 0.1493, 0.6160, 0.3804, 0.0119,
 //            0.9649, 0.9595, 0.1712, 0.0344, 0.7547, 0.2238, 0.2575, 0.4733, 0.5678, 0.3371};
 //
-//        double test_array_1[] = {
+//        mTYPE test_array_1[] = {
 //            0.1622, 0.4505, 0.1067, 0.4314, 0.8530, 0.4173, 0.7803, 0.2348, 0.5470, 0.9294,
 //            0.7943, 0.0838, 0.9619, 0.9106, 0.6221, 0.0497, 0.3897, 0.3532, 0.2963, 0.7757,
 //            0.3112, 0.2290, 0.0046, 0.1818, 0.3510, 0.9027, 0.2417, 0.8212, 0.7447, 0.4868,
@@ -116,7 +116,7 @@ namespace MHR {
 //            0.6892, 0.0782, 0.2599, 0.5499, 0.1839, 0.3692, 0.5752, 0.6477, 0.7802, 0.8176,
 //            0.7482, 0.4427, 0.8001, 0.1450, 0.2400, 0.1112, 0.0598, 0.4509, 0.0811, 0.7948};
 //
-//        double test_array_2[] = {
+//        mTYPE test_array_2[] = {
 //            0.6443, 0.2077, 0.3111, 0.5949, 0.0855, 0.9631, 0.0377, 0.1068, 0.0305, 0.1829,
 //            0.3786, 0.3012, 0.9234, 0.2622, 0.2625, 0.5468, 0.8852, 0.6538, 0.7441, 0.2399,
 //            0.8116, 0.4709, 0.4302, 0.6028, 0.8010, 0.5211, 0.9133, 0.4942, 0.5000, 0.8865,
@@ -128,18 +128,18 @@ namespace MHR {
 //            0.6225, 0.2277, 0.2581, 0.4242, 0.2373, 0.3674, 0.1366, 0.6987, 0.8055, 0.5005,
 //            0.5870, 0.4357, 0.4087, 0.5079, 0.4588, 0.9880, 0.7212, 0.1978, 0.5767, 0.4711};
 //
-//        Mat input = Mat::zeros(nRow, nCol, CV_64FC3);
+//        Mat input = Mat::zeros(nRow, nCol, mCV_FC3);
 //        for (int i = 0; i < nRow; ++i)
 //            for (int j = 0; j < nCol; ++j) {
-//                input.at<Vec3d>(i, j)[0] = test_array_0[i*nCol + j];
-//                input.at<Vec3d>(i, j)[1] = test_array_1[i*nCol + j];
-//                input.at<Vec3d>(i, j)[2] = test_array_2[i*nCol + j];
+//                input.at<mVEC>(i, j)[0] = test_array_0[i*nCol + j];
+//                input.at<mVEC>(i, j)[1] = test_array_1[i*nCol + j];
+//                input.at<mVEC>(i, j)[2] = test_array_2[i*nCol + j];
 //            }
 //        printf("Input mat:\n");
 //        for (int channel = 0; channel < 3; ++channel) {
 //            for (int i = 0; i < input.rows; ++i) {
 //                for (int j = 0; j < input.cols; ++j)
-//                    printf("%lf, ", input.at<Vec3d>(i, j)[channel]);
+//                    printf("%lf, ", input.at<mVEC>(i, j)[channel]);
 //                printf("\n");
 //            }
 //            printf("\n\n\n\n\n");
@@ -151,7 +151,7 @@ namespace MHR {
 //        for (int channel = 0; channel < 3; ++channel) {
 //            for (int i = 0; i < output.rows; ++i) {
 //                for (int j = 0; j < output.cols; ++j)
-//                    printf("%lf, ", output.at<Vec3d>(i, j)[channel]);
+//                    printf("%lf, ", output.at<mVEC>(i, j)[channel]);
 //                printf("\n");
 //            }
 //            printf("\n\n\n\n\n");
@@ -162,7 +162,7 @@ namespace MHR {
 //        for (int channel = 0; channel < 3; ++channel) {
 //            for (int i = 0; i < input.rows; ++i) {
 //                for (int j = 0; j < input.cols; ++j)
-//                    printf("%lf, ", input.at<Vec3d>(i, j)[channel]);
+//                    printf("%lf, ", input.at<mVEC>(i, j)[channel]);
 //                printf("\n");
 //            }
 //            printf("\n\n\n\n\n");
@@ -185,12 +185,12 @@ namespace MHR {
         int n = 100;
 //        int m = 200;
 //        int array_size[] = {100, 200, 10};
-//        Mat a = Mat(3, array_size, CV_64FC3, cv::Scalar(0));
+//        Mat a = Mat(3, array_size, mCV_FC3, cv::Scalar(0));
 //        Mat b = Mat(3, array_size, CV_32FC3, cv::Scalar(0));
-//        Mat a = Mat::ones(n, m, CV_64FC3);
+//        Mat a = Mat::ones(n, m, mCV_FC3);
 //        Mat b = Mat::ones(n, m, CV_32FC3);
 //        a.convertTo(b, CV_32FC3);
-//        b.convertTo(b, CV_64FC3);
+//        b.convertTo(b, mCV_FC3);
         
         vector<int> a;
         vector<int> b;

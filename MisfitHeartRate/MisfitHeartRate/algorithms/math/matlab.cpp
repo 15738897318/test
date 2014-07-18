@@ -10,18 +10,18 @@
 
 
 namespace MHR {
-    // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
+    // findpeaks in vector<mTYPE> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
-    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
-                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
+    void findpeaks(const vector<mTYPE> &segment, mTYPE minPeakDistance, mTYPE threshold,
+                   vector<mTYPE> &max_peak_strengths, vector<int> &max_peak_locs)
     {
         max_peak_strengths.clear(); max_peak_locs.clear();
         
-        vector<pair<double,int>> peak_list;
+        vector<pair<mTYPE,int>> peak_list;
         
         for(int i=1; i<(int) segment.size()-1; ++i){
             if(segment[i] - segment[i-1] >= threshold && segment[i] - segment[i+1] > threshold)
-                peak_list.push_back(pair<double,int> (-segment[i], i));
+                peak_list.push_back(pair<mTYPE,int> (-segment[i], i));
         }
         
         sort(peak_list.begin(), peak_list.end());
@@ -40,11 +40,11 @@ namespace MHR {
     }
 
 
-    // unique_stable with vector<pair<double,int>>
-    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
+    // unique_stable with vector<pair<mTYPE,int>>
+    vector<pair<mTYPE,int>> unique_stable(const vector<pair<mTYPE,int>> &arr) {
         set<int> mys;
         
-        vector<pair<double,int>> res;
+        vector<pair<mTYPE,int>> res;
         for(int i=0; i<(int) arr.size(); ++i){
             if(mys.count(arr[i].second)>0) continue;
             res.push_back(arr[i]);
@@ -55,7 +55,7 @@ namespace MHR {
 
     
     // conv(seg1, seg2, 'same')
-//    vector<double> conv(vector<double> signal, vector<double> kernel) {
+//    vector<mTYPE> conv(vector<mTYPE> signal, vector<mTYPE> kernel) {
 //        Mat src = vectorToMat(signal);
 //        Mat dst;
 ////        reverse(kernel.begin(), kernel.end());
@@ -76,7 +76,7 @@ namespace MHR {
 //        
 //        int signalLen = (int)signal.size();
 //        int kernelLen = (int)kernel.size();
-//        vector<double> ans;
+//        vector<mTYPE> ans;
 //        for (int n = 0; n < signalLen + kernelLen - 1; n++)
 //        {
 //            int kmin, kmax, k;
@@ -92,13 +92,13 @@ namespace MHR {
 //        int len = (int)ans.size();
 //        int a = (kernelLen-1)/2, b = kernelLen-1-a;
 //        printf("a = %d, b = %d\n", a, b);
-//        vector<double> tmp;
+//        vector<mTYPE> tmp;
 //        for (int i = a; i < len - b; ++i)
 //            tmp.push_back(ans[i]);
 //        return tmp;
 //    }
     
-    vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
+    vector<mTYPE> corr_linear(vector<mTYPE> signal, vector<mTYPE> kernel) {
         int m = (int)signal.size(), n = (int)kernel.size();
         // padding of zeors
         for(int i=m;i<=m+n-1;i++)
@@ -107,7 +107,7 @@ namespace MHR {
             kernel.push_back(0);
         
         /* convolution operation */
-        vector<double> ans;
+        vector<mTYPE> ans;
         for(int i=0;i<m+n-1;i++)
         {
             ans.push_back(0);
@@ -122,7 +122,7 @@ namespace MHR {
 
     
     // [counts, centres] = hist(arr, nbins)
-    void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers) {
+    void hist(const vector<mTYPE> &arr, int nbins, vector<int> &counts, vector<mTYPE> &centers) {
         if (&arr == &centers) {
             throw invalid_argument("hist() error: &arr == &centers");
             return;
@@ -131,14 +131,14 @@ namespace MHR {
         counts.clear();
         centers.clear();
         
-        double minv=arr[0], maxv=arr[0];
+        mTYPE minv=arr[0], maxv=arr[0];
         for(int i=0; i<(int)arr.size(); ++i){
             minv=min(minv,arr[i]);
             maxv=max(maxv,arr[i]);
         }
         
-        double length = maxv-minv;
-        double bin_length = length/nbins;
+        mTYPE length = maxv-minv;
+        mTYPE bin_length = length/nbins;
         
         counts.resize(nbins,0);
         centers.resize(nbins,0);
@@ -146,7 +146,7 @@ namespace MHR {
             centers[i] = bin_length * i + bin_length / 2.0 + minv;
         
         for(int i=0; i<(int) arr.size(); ++i){
-            double v=arr[i]-minv;
+            mTYPE v=arr[i]-minv;
             int p = (int)((v - 1e-9)/bin_length);
             ++counts[p];
         }
@@ -155,7 +155,7 @@ namespace MHR {
 
     
     // invprctile
-    double invprctile(const vector<double> &arr, double x) {
+    mTYPE invprctile(const vector<mTYPE> &arr, mTYPE x) {
         int cnt = 0;
         for(int i=0; i<(int) arr.size(); ++i)
             if(arr[i] < x + 1e-9) ++cnt;
@@ -164,10 +164,10 @@ namespace MHR {
 
     
     //prctile
-    double prctile(vector<double> arr, double percent) {
+    mTYPE prctile(vector<mTYPE> arr, mTYPE percent) {
         sort(arr.begin(), arr.end());
         int n = (int) arr.size();
-        double idx = percent * n / 100;
+        mTYPE idx = percent * n / 100;
         int int_idx = (int) (idx+1e-9);
         if(fabs(idx - int_idx)<1e-9){
             // idx is a whole number
@@ -179,8 +179,8 @@ namespace MHR {
         }else{
             int ceil_int = (int)(ceil(idx));
             int floor_int = (int)(floor(idx));
-            double vfloor = arr[floor_int-1];
-            double vceil = arr[ceil_int-1];
+            mTYPE vfloor = arr[floor_int-1];
+            mTYPE vceil = arr[ceil_int-1];
             return vfloor + (idx - floor_int)/(ceil_int-floor_int) * (vceil - vfloor);
             
         }
@@ -188,7 +188,7 @@ namespace MHR {
 
     
     //filter function for frames2signal function
-    vector<double> low_pass_filter(vector<double> arr) {
+    vector<mTYPE> low_pass_filter(vector<mTYPE> arr) {
         clock_t t1 = clock();
         
         // assign values in all NaN positions to 0
@@ -205,7 +205,7 @@ namespace MHR {
         Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
         Mat dst;
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
-        vector<double> ans = matToVector1D(dst);
+        vector<mTYPE> ans = matToVector1D(dst);
         
         // assign values in all old NaN positions to NaN
         for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
@@ -221,7 +221,7 @@ namespace MHR {
     }
     
     
-    double diff_percent(double a, double b)
+    mTYPE diff_percent(mTYPE a, mTYPE b)
     {
         return abs(a-b)/abs(b)*100;
     }

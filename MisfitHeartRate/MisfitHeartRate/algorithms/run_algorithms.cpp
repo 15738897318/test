@@ -55,13 +55,13 @@ namespace MHR {
 		}
         
         // Block 1: turn frames to signals
-        double threshold_fraction = 0, lower_range, upper_range;
+        mTYPE threshold_fraction = 0, lower_range, upper_range;
         int window_size = round(_window_size_in_sec * frameRate);
         int firstSample = round(frameRate * _time_lag);
         int blockCount = 0;
         bool isCalcMode = true;
         vector<Mat> monoframes, debug_monoframes, eulerianVid;
-        vector<double> temporal_mean;
+        vector<mTYPE> temporal_mean;
         Mat tmp_eulerianVid;
         
         while(1) {
@@ -106,7 +106,7 @@ namespace MHR {
             }
             
             /*---------------------------------turn eulerianLen (1) frames to signals-----------------------------------*/
-            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
+            vector<mTYPE> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
             for (int i = 0; i < eulerianLen; ++i)
@@ -119,9 +119,9 @@ namespace MHR {
         vidOut.release();
         
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         // Low-pass-filter the signal stream to remove unwanted noises
-        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
+        vector<mTYPE> temporal_mean_filt = low_pass_filter(temporal_mean);
         
         // Block 2: Heart-rate calculation
         // - Basis takes 15secs to generate an HR estimate

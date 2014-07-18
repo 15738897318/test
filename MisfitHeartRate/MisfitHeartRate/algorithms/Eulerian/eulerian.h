@@ -22,9 +22,9 @@ namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
     void amplifySpatialGdownTemporalIdeal(const vector<Mat> &vid, vector<Mat> &ans,
-                                          String outDir, double alpha, int level,
-                                          double freqBandLowEnd, double freqBandHighEnd,
-                                          double samplingRate, double chromAttenuation);
+                                          String outDir, mTYPE alpha, int level,
+                                          mTYPE freqBandLowEnd, mTYPE freqBandHighEnd,
+                                          mTYPE samplingRate, mTYPE chromAttenuation);
 }
 
 #endif /* defined(__MisfitHeartRate__eulerian__) */

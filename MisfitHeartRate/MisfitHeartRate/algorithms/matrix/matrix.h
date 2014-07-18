@@ -15,6 +15,7 @@
 #include <opencv2/imgproc/types_c.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include "config.h"
 
 using namespace cv;
 using namespace std;
@@ -25,25 +26,25 @@ namespace MHR {
 	vector<int> vectorRange(int a, int b, int step = 1);
     
     // import data from a array to a Mat
-    Mat arrayToMat(const double a[], int rows, int cols);
+    Mat arrayToMat(const mTYPE a[], int rows, int cols);
     
     // data from vector 1D to Mat
-    Mat vectorToMat(const vector<double>& arr);
+    Mat vectorToMat(const vector<mTYPE>& arr);
     
     // data from Mat to vector 1D
-    vector<double> matToVector1D(const Mat &m);
+    vector<mTYPE> matToVector1D(const Mat &m);
     
     // read frames from a VideoCapture to a vector<Mat>
     // return true if endOfFile
     bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames = -1);
 	
 	// atan2 of 2 Mats which have same size
-	// default intput/output type is double - CV_64F
+	// default intput/output type is mTYPE - mCV_F
 	Mat atan2Mat(const Mat &src1, const Mat &src2);
 	
 	// return src.^n
-	// default intput/output type is double - CV_64F
-	Mat powMat(const Mat &src, double n);
+	// default intput/output type is mTYPE - mCV_F
+	Mat powMat(const Mat &src, mTYPE n);
 	
 	// return a + b
 	Mat add(const Mat &a, const Mat &b);
@@ -52,15 +53,15 @@ namespace MHR {
 	Mat multiply(const Mat &a, const Mat &b);
 	
 	// return mat .* x
-	Mat multiply(const Mat &a, double x);
+	Mat multiply(const Mat &a, mTYPE x);
     
     Mat read2DMatFromFile(FILE* &file, int rows, int cols);
     
-    vector<double> readVectorFromFile(FILE* &file, int n);
+    vector<mTYPE> readVectorFromFile(FILE* &file, int n);
 
     int readInt(FILE* &file);
     
-    double readDouble(FILE* &file);
+    mTYPE readmTYPE(FILE* &file);
 }
 
 #endif /* defined(__MisfitHeartRate__matrix__) */

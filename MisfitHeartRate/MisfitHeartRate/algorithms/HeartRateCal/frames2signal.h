@@ -28,9 +28,9 @@ using namespace std;
 
 
 namespace MHR {
-    vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
-                                 double fr, double cutoff_freq,
-                                 double &lower_range, double &upper_range, bool isCalcMode);
+    vector<mTYPE> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
+                                 mTYPE fr, mTYPE cutoff_freq,
+                                 mTYPE &lower_range, mTYPE &upper_range, bool isCalcMode);
 }
 
 #endif /* defined(__MisfitHeartRate__frame2signal__) */
