@@ -26,7 +26,7 @@ namespace MHR {
     const double NaN = -1e9;
     
     const int _framesBlock_size = 64;
-    const int _minVidLength = 15;        // seconds
+    const int _minVidLength = 30;        // seconds
 
     /*--------------for run_eulerian()--------------*/
     const double _eulerian_alpha = 50;          // Eulerian magnifier, standard < 50

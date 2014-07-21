@@ -145,7 +145,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
     _nFrames = 0;
-    _faceLabel.text = @"Recording....";
+    _faceLabel.text = [NSString stringWithFormat:@"Recording.... (keep at least %d seconds)", _minVidLength ];
     _recordTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                     target:self
                                                   selector:@selector(updateRecordTime:)

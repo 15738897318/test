@@ -18,7 +18,7 @@
 #import "UIView+Position.h"
 #import "MBProgressHUD.h"
 #import "MHRUtilities.h"
-#import "MHRResultViewController.h"
+#import "MHRResultViewController.hpp"
 #import "run_algorithms.h"
 #import "testFunctions.h"
 
