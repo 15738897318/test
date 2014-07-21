@@ -11,6 +11,10 @@
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
+		DC1D6668197CFACD00A55980 /* hr_signal_calc_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */; };
+		DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */; };
+		DC1D666C197D011A00A55980 /* corr_linear_test_1.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666A197D011A00A55980 /* corr_linear_test_1.in */; };
+		DC1D666D197D011A00A55980 /* corr_linear_test_1.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666B197D011A00A55980 /* corr_linear_test_1.out */; };
 		DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */; };
 		DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */; };
 		DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C919790E16003E0FF5 /* hr_calculator_test.in */; };
@@ -196,6 +200,10 @@
 		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
+		DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.in; path = MisfitHeartRateTests/hr_signal_calc_test.in; sourceTree = SOURCE_ROOT; };
+		DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.out; path = MisfitHeartRateTests/hr_signal_calc_test.out; sourceTree = SOURCE_ROOT; };
+		DC1D666A197D011A00A55980 /* corr_linear_test_1.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.in; path = MisfitHeartRateTests/corr_linear_test_1.in; sourceTree = SOURCE_ROOT; };
+		DC1D666B197D011A00A55980 /* corr_linear_test_1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.out; path = MisfitHeartRateTests/corr_linear_test_1.out; sourceTree = SOURCE_ROOT; };
 		DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.in; path = MisfitHeartRateTests/corr_linear_test.in; sourceTree = SOURCE_ROOT; };
 		DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.out; path = MisfitHeartRateTests/corr_linear_test.out; sourceTree = SOURCE_ROOT; };
 		DC5351C919790E16003E0FF5 /* hr_calculator_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.in; path = MisfitHeartRateTests/hr_calculator_test.in; sourceTree = SOURCE_ROOT; };
@@ -573,6 +581,10 @@
 		DCF4B78719764D7F006B5F4F /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				DC1D666A197D011A00A55980 /* corr_linear_test_1.in */,
+				DC1D666B197D011A00A55980 /* corr_linear_test_1.out */,
+				DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */,
+				DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */,
 				DC5351C919790E16003E0FF5 /* hr_calculator_test.in */,
 				DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */,
 				DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */,
@@ -693,12 +705,14 @@
 				DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
 				DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */,
 				DC5351CC19790E16003E0FF5 /* hr_calculator_test.out in Resources */,
+				DC1D666C197D011A00A55980 /* corr_linear_test_1.in in Resources */,
 				DC85FF5519768AC5004081B2 /* blurDnClr_test.out in Resources */,
 				DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
 				DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */,
 				DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */,
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DC85FF5F19768AC5004081B2 /* findpeaks_test.in in Resources */,
+				DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */,
 				DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */,
 				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
 				DC85FF7D19768AC5004081B2 /* powMat_test.out in Resources */,
@@ -713,6 +727,7 @@
 				DC85FF8919768AC5004081B2 /* unique_stable_test.out in Resources */,
 				DC85FF7B19768AC5004081B2 /* powMat_test.in in Resources */,
 				DC85FF8719768AC5004081B2 /* unique_stable_test.in in Resources */,
+				DC1D6668197CFACD00A55980 /* hr_signal_calc_test.in in Resources */,
 				DC85FF5D19768AC5004081B2 /* corrDn_test.out in Resources */,
 				DC85FF6F19768AC5004081B2 /* low_pass_filter_test.in in Resources */,
 				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
@@ -728,6 +743,7 @@
 				DC85FF6D19768AC5004081B2 /* invprctile_test.out in Resources */,
 				DC85FF7319768AC5004081B2 /* multiply_num_test.in in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
+				DC1D666D197D011A00A55980 /* corr_linear_test_1.out in Resources */,
 				DC85FF7F19768AC5004081B2 /* prctile_test.in in Resources */,
 				DC85FF6119768AC5004081B2 /* findpeaks_test.out in Resources */,
 				DC85FF7719768AC5004081B2 /* multiply_test.in in Resources */,

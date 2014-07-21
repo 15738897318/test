@@ -678,36 +678,38 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     vector<double> input;
     for(double x=0; x<=100; x+=0.01)
         input.push_back(sin(x*acos(-1)));
-    double correct_ans = 9.0;
     
     int length = (int)input.size();
     printf("input.size() = %d\n", length);
-    //        for (int i = 0; i < length; ++i)
-    //            printf("%lf, ", input[i]);
-    //        printf("\n\n");
-    
-    //    vector<double> strengths;
-    //    vector<int> locs;
-    //    findpeaks(input, 0, 0, strengths, locs);
-    //    printf("strengths.size() = %d\n",(int)strengths.size());
-    //
-    //    hrDebug debug;
-    //    double ans = hb_counter_autocorr(input, 30.0, 0, 100, 0.0, 0.0, debug);
-    //    printf("hb_counter_autocorr = %lf\n", ans);
-    //    printf("debug.heartBeats.size() = %d\n", (int)debug.heartBeats.size());
-    //    printf("debug.heartRates.size() = %d\n", (int)debug.heartRates.size());
-    //    printf("debug.autocorrelation.size() = %d\n", (int)debug.autocorrelation.size());
-    //
-    //    if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
-    //    {
-    //        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
-    //        return;
-    //    }
-    
-    //    printf("\n\nautocorrelation:\n");
-    //    for (int i = 0; i < (int)debug.autocorrelation.size(); ++i)
-    //        printf("%lf, ", debug.autocorrelation[i]);
-    //    printf("\n\n");
+    for (int i = 0; i < length; ++i)
+        printf("%lf, ", input[i]);
+    printf("\n\n");
+
+    vector<double> strengths;
+    vector<int> locs;
+    findpeaks(input, 0, 0, strengths, locs);
+    printf("strengths.size() = %d\n",(int)strengths.size());
+
+    hrDebug debug;
+    vector<int> locations = hb_counter_autocorr(input, 30.0, 0, 100, 0.0, 0.0, debug);
+    printf("hb_counter_autocorr locations:\n");
+    for (int i = 0; i < (int)locations.size(); ++i)
+        printf("%d\n", locations[i]);
+    printf("\n\n");
+    printf("debug.heartBeats.size() = %d\n", (int)debug.heartBeats.size());
+    printf("debug.heartRates.size() = %d\n", (int)debug.heartRates.size());
+    printf("debug.autocorrelation.size() = %d\n", (int)debug.autocorrelation.size());
+
+//    if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
+//    {
+//        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
+//        return;
+//    }
+//
+//    printf("\n\nautocorrelation:\n");
+//    for (int i = 0; i < (int)debug.autocorrelation.size(); ++i)
+//        printf("%lf, ", debug.autocorrelation[i]);
+//    printf("\n\n");
 }
 
 
@@ -746,6 +748,46 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 //        for (int i = 0; i < (int)debug.autocorrelation.size(); ++i)
 //            printf("%lf, ", debug.autocorrelation[i]);
 //        printf("\n\n");
+}
+
+
+- (void)test_hr_signal_calc
+{
+    FILE *file = fopen(String(resourcePath + "hr_signal_calc_test.in").c_str(), "r");
+    int n = readInt(file);
+    vector<double> temporal_mean;
+    for (int i = 0; i < n; ++i)
+        temporal_mean.push_back(readDouble(file));
+    int firstSample = readInt(file);
+    int window_size = readInt(file);
+    double frameRate = readDouble(file);
+    double overlap_ratio = readDouble(file);
+    double max_bpm = readDouble(file);
+    double threshold_fraction = readDouble(file);
+    fclose(file);
+    
+    hrResult output = hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
+                                     overlap_ratio, max_bpm, threshold_fraction);
+    
+    printf("avg_hr_autocorr = %lf, avg_hr_pda = %lf\n", output.autocorr, output.pda);
+    
+//    file = fopen(String(resourcePath + "hr_signal_calc_test.out").c_str(), "r");
+//    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
+//    for (int i = 0; i < 2; ++i)
+//    {
+//        double correct_ans = readDouble(file);
+//        double ans = output[i];
+//        double tmp = diff_percent(ans, correct_ans);
+//        if (tmp > max_percent)
+//        {
+//            max_percent = tmp;
+//            max_correct_ans = correct_ans;
+//            max_ans = ans;
+//        }
+//    }
+//    fclose(file);
+//    if (max_percent > EPSILON_PERCENT)
+//        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
 }
 
 
