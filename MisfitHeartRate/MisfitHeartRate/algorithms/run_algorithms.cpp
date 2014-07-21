@@ -75,8 +75,8 @@ namespace MHR {
             if (!isCalcMode) {
             /*-----------------------------------read M frames, add to odd frames (0)-----------------------------------*/
                 endOfFile = videoCaptureToVector(vidIn, vid, _framesBlock_size);
-                if (DEBUG_MODE) len = (int)vid.size();
-                printf("len after = %d\n", len);
+                len = (int)vid.size();
+                if (DEBUG_MODE) printf("len after = %d\n", len);
             }
             if (endOfFile)
                 break;
