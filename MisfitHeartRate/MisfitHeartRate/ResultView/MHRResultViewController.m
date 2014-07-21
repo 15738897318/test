@@ -35,8 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.autocorrLabel.text = [NSString stringWithFormat:@"%.4f", _autocorrResult];
-    self.pdaLabel.text = [NSString stringWithFormat:@"%.4f", _pdaResult];
+    self.autocorrLabel.text = [NSString stringWithFormat:@"%.0f", _autocorrResult];
+    self.pdaLabel.text = [NSString stringWithFormat:@"%.0f", _pdaResult];
 }
 
 
