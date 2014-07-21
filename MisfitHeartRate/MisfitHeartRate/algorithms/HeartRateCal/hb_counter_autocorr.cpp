@@ -10,29 +10,14 @@
 
 
 namespace MHR {
-    vector<int> hb_counter_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+    vector<int> hb_counter_autocorr(vector<double> &temporal_mean, double fr, int firstSample,
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug)
     {
         // Step 1: calc the window-based autocorrelation of the signal stream
         
         int windowStart = firstSample;
         vector<double> autocorrelation;
-        
-        ////////////////////////////////////////////////////////////////////////////////
-//        double min_value = temporal_mean[0];
-//        for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
-//            min_value = min(min_value, temporal_mean[i]);
-//        printf("min_value = %lf\n", min_value);
-//        if (min_value < 0)
-//            for (int i = 1, sz = (int)temporal_mean.size(); i < sz; ++i)
-//                temporal_mean[i] -= min_value;
-        
-//        printf("\n\ntemporal_mean:\n");
-//        for (int i = 0; i < (int)temporal_mean.size(); ++i)
-//            printf("%lf, ", temporal_mean[i]);
-//        printf("\n\n");
-
-        ////////////////////////////////////////////////////////////////////////////////
+        double lastSegmentEndVal = 0;
 
         while(windowStart <= (int) temporal_mean.size() - window_size){
             
@@ -56,6 +41,8 @@ namespace MHR {
             
             //Calculate the autocorrelation for the current window
             vector<double> local_autocorr = corr_linear(segment, rev_segment);
+            for(int i = 0, sz = (int)local_autocorr.size(); i < sz; ++i)
+                local_autocorr[i] -= local_autocorr[0] - lastSegmentEndVal;
             
             //Define the segment length
             
@@ -77,9 +64,6 @@ namespace MHR {
                 for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
             }
             
-//            for (int i = 0; i < (int)local_autocorr.size(); ++i)
-//                printf("%lf, ", local_autocorr[i]);
-//            printf("\n\n\n");
             
             // b. Equal-step progression
             // segment_length = window_size
@@ -88,7 +72,7 @@ namespace MHR {
 
             // Define the start of the next window
             windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
-            
+            lastSegmentEndVal = autocorrelation[windowStart - 1];
         }
         
         // Step 2: perform peak-counting on the autocorrelation stream

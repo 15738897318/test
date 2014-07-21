@@ -31,7 +31,7 @@ using namespace cv;
 
 
 namespace MHR {
-    vector<int> hb_counter_autocorr(vector<double> temporal_mean, double fr, int firstSample,
+    vector<int> hb_counter_autocorr(vector<double> &temporal_mean, double fr, int firstSample,
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug);
 }
 
