@@ -17,6 +17,7 @@ namespace MHR {
         
         int windowStart = firstSample;
         vector<double> autocorrelation;
+        double lastSegmentEndVal = 0;
         
         ////////////////////////////////////////////////////////////////////////////////
 //        double min_value = temporal_mean[0];
@@ -56,6 +57,7 @@ namespace MHR {
             
             //Calculate the autocorrelation for the current window
             vector<double> local_autocorr = corr_linear(segment, rev_segment);
+            for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] -= local_autocorr[0] - lastSegmentEndVal;
             
             //Define the segment length
             
@@ -88,7 +90,7 @@ namespace MHR {
 
             // Define the start of the next window
             windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
-            
+            lastSegmentEndVal = autocorrelation[windowStart - 1];
         }
         
         // Step 2: perform peak-counting on the autocorrelation stream
