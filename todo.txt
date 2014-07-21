@@ -1,5 +1,8 @@
 - Bugs:
 	+ Eulerian output video.
+	+ Test corrDn.
+	+ frame2signal():
+		+ first_tranning_frames_start
 
 
 - Speed improve:
@@ -23,3 +26,6 @@
 
 (CAMERA_HEIGHT - IMAGE_WIDTH)/2
 (CAMERA_WIDTH - IMAGE_HEIGHT)/2
+
+
+- sort heartBeatPositions

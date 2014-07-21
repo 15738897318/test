@@ -1,0 +1,12 @@
+to test:
++ hr_pda
++ hr_cal_autocorr
+
+
+
+--------------------------
+[invprctile] :  - wrong output - expected: 44.576200, found: 44.000000, percent = 1.292618
+[multiply] :  - wrong output - expected: 0.015400, found: 0.015384, percent = 0.103636
+[multiply_num] :  - wrong output - expected: -0.009800, found: -0.009828, percent = 0.285714
+[powMat] :  - wrong output - expected: 0.005500, found: 0.005523, percent = 0.415262
+[rgb2tsl] :  - wrong output - expected: 0.033500, found: 0.033443, percent = 0.169625

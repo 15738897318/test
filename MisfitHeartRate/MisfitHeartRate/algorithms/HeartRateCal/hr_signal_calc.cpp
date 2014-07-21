@@ -37,17 +37,25 @@ namespace MHR {
         
         // Calculate heart-rate using peak-detection on the signal
         hrDebug debug_pda;
-        double avg_hr_pda = hr_calc_pda(temporal_mean, frameRate, firstSample,
-                                        window_size, overlap_ratio,
-                                        minPeakDistance, threshold,
-                                        debug_pda);
+        vector<int> hb_locations_pda = hb_counter_pda(temporal_mean, frameRate, firstSample,
+                                                      window_size, overlap_ratio,
+                                                      minPeakDistance, threshold,
+                                                      debug_pda);
+        vector<double> ans_pda;
+        hr_calculator(hb_locations_pda, frameRate, ans_pda);
+        double avg_hr_pda = ans_pda[0];     // average heart rate
         
         // Calculate heart-rate using peak-detection on the signal
         hrDebug debug_autocorr;
-        double avg_hr_autocorr = hr_calc_autocorr(temporal_mean, frameRate, firstSample,
-                                                  window_size, overlap_ratio,
-                                                  minPeakDistance,
-                                                  debug_autocorr);
+        vector<int> hb_locations_autocorr = hb_counter_autocorr(temporal_mean, frameRate, firstSample,
+                                                                window_size, overlap_ratio,
+                                                                minPeakDistance,
+                                                                debug_autocorr);
+        vector<double> ans_autocorr;
+        hr_calculator(hb_locations_autocorr, frameRate, ans_autocorr);
+        double avg_hr_autocorr = ans_autocorr[0];     // average heart rate
+        
+
         clock_t t2 = clock();
         printf("hr_signal_calc() time = %f\n", ((float)t2 - (float)t1)/1000.0);
         return hrResult(avg_hr_autocorr, avg_hr_pda);

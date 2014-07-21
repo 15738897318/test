@@ -10,7 +10,7 @@
 
 
 namespace MHR {
-    vector<double> frames2signal(const vector<Mat>& monoframes, String conversion_method,
+    vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
                                  double fr, double cutoff_freq,
                                  double &lower_range, double &upper_range, bool isCalcMode)
     {
@@ -19,8 +19,8 @@ namespace MHR {
         //=== Block 1. Convert the frame stream into a 1-D signal
         
         vector<double> temporal_mean;
-        int height = monoframes[0].size.p[0];
-        int width = monoframes[0].size.p[1];
+        int height = monoframes[0].rows;
+        int width = monoframes[0].cols;
         int total_frames = (int)monoframes.size();
         
         if(conversion_method == "simple-mean"){
@@ -49,25 +49,25 @@ namespace MHR {
             }
             
         }else if(conversion_method == "mode-balance"){
-            
-            // Selection parameters
-//            double training_time = _training_time_end - _training_time_start;
-            double lower_pct_range = _pct_reach_below_mode;
-            double upper_pct_range = _pct_reach_above_mode;
-            
-            int first_tranning_frames_start = min( (int)round(fr * _training_time_start), total_frames );
-            int first_tranning_frames_end = min( (int)round(fr * _training_time_end), total_frames );
-//            int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
 
-            // this arr stores values of pixels from first trainning frames
-            vector<double> arr;
-            for(int i = first_tranning_frames_start; i < first_tranning_frames_end; ++i)
-                for(int x=0; x<height; ++x)
-                    for(int y=0; y<width; ++y)
-                        arr.push_back(monoframes[i].at<double>(x,y));
-            
             if (isCalcMode)
             {
+                // Selection parameters
+//                double training_time = _training_time_end - _training_time_start;
+                double lower_pct_range = _pct_reach_below_mode;
+                double upper_pct_range = _pct_reach_above_mode;
+                
+                int first_tranning_frames_start = min( (int)round(fr * _training_time_start), total_frames );
+                int first_tranning_frames_end = min( (int)round(fr * _training_time_end), total_frames) - 1;
+//                int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
+                
+                // this arr stores values of pixels from first trainning frames
+                vector<double> arr;
+                for(int i = first_tranning_frames_start; i <= first_tranning_frames_end; ++i)
+                    for(int y=0; y<width; ++y)
+                        for(int x=0; x<height; ++x)
+                            arr.push_back(monoframes[i].at<double>(x,y));
+                
                 //find the mode
                 vector<double> centres;
                 vector<int> counts;
@@ -95,8 +95,7 @@ namespace MHR {
             }
             
             //now calc the avg of each frame while inogre the values outside the range
-            double size = height * width;
-            
+//            double size = height * width;
             //this is the debug vector<Mat>
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
@@ -113,10 +112,11 @@ namespace MHR {
                 if(cnt==0) //push NaN for all-NaN-frames
                     temporal_mean.push_back(NaN);
                 else
-                    temporal_mean.push_back(sum/size);
+//                    temporal_mean.push_back(sum/size);
+                    temporal_mean.push_back(sum/cnt);
             }
             
-        }// end of mode-balance
+        }
         
         printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         

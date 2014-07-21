@@ -20,75 +20,24 @@ namespace MHR {
     }
 
 
-    // multiply each pixel of a frame with a base matrix
-    // and clip the result's values by range [lower_bound, upper_bound]
-//    void mulAndClip(const Mat &frame, Mat &dst, const Mat &base,
-//                    double lower_bound, double upper_bound)
-//    {
-//        frame.convertTo(dst, CV_64FC3);
-//        int nChannel = _number_of_channels;
-//        double maxChannelValue[_number_of_channels] = {0.0000001};
-//        // mutiply and find max value in each channel
-////        Mat tmp;
-////        MatIterator_<Vec3d> it = dst.begin<Vec3d>();
-////        MatIterator_<double> tmp_it;
-////        for (int i = 0; i < dst.rows; ++i)
-////            for (int j = 0; j < dst.cols; ++j) {
-////                tmp = base * Mat(*it);
-////                tmp_it = tmp.begin<double>();
-////                for (int channel = 0; channel < nChannel; ++channel)
-////                    maxChannelValue[channel] = max(maxChannelValue[channel], *tmp_it++);
-////                *it++ = Vec3d(tmp);
-////            }
-////        // clip
-////        it = dst.begin<Vec3d>();
-////        for (int i = 0; i < dst.rows; ++i)
-////            for (int j = 0; j < dst.cols; ++j) {
-////                for (int channel = 0; channel < nChannel; ++channel)
-////                    (*it)[channel] *= upper_bound/maxChannelValue[channel];
-////                ++it;
-////            }
-//        
-//        // use .at<>
-//        // mutiply and find max value in each channel
-//        Mat tmp = Mat::zeros(nChannel, 1, CV_64F);
-//        for (int i = 0; i < dst.rows; ++i)
-//            for (int j = 0; j < dst.cols; ++j) {
-////                tmp = base * Mat(dst.at<Vec3d>(i, j));
-//                for (int channel = 0; channel < nChannel; ++channel)
-//                    tmp.at<double>(channel, 0) = dst.at<Vec3d>(i, j)[channel];
-//                tmp = base * tmp;
-//                for (int channel = 0; channel < nChannel; ++channel)
-//                    maxChannelValue[channel] = max(maxChannelValue[channel], tmp.at<double>(channel, 0));
-//                dst.at<Vec3d>(i, j) = Vec3d(tmp);
-//            }
-//        // clip
-//        for (int i = 0; i < dst.rows; ++i)
-//            for (int j = 0; j < dst.cols; ++j) {
-//                for (int channel = 0; channel < nChannel; ++channel)
-//                    dst.at<Vec3d>(i, j)[channel] *= upper_bound/maxChannelValue[channel];
-//            }
-//    }
-
-
 	// convert a RGB Mat to a TSL Mat
     // rgbmap is a CV_64F Mat
-	void rgb2tsl(const Mat& rbgmap, Mat &dst)
+	void rgb2tsl(const Mat& rgbmap, Mat &dst)
 	{
 //        clock_t t1 = clock();
         
-		int nRow = rbgmap.rows;
-		int nCol = rbgmap.cols;
-        int nChannel = rbgmap.channels();
-//		Mat rbgmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
+		int nRow = rgbmap.rows;
+		int nCol = rgbmap.cols;
+        int nChannel = rgbmap.channels();
+//		Mat rgbmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
         
         Mat rgb_sumchannels = Mat::zeros(nRow, nCol, CV_64F);
         Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F)};
         for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
                 for (int channel = 0; channel < nChannel; ++channel) {
-                    rgb_sumchannels.at<double>(i, j) += rbgmap.at<Vec3d>(i, j)[channel];
-                    rgb_channel[channel].at<double>(i, j) = rbgmap.at<Vec3d>(i, j)[channel];
+                    rgb_sumchannels.at<double>(i, j) += rgbmap.at<Vec3d>(i, j)[channel];
+                    rgb_channel[channel].at<double>(i, j) = rgbmap.at<Vec3d>(i, j)[channel];
                 }
 
 //        printf("rgb2tsl() - Block 0 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
@@ -176,8 +125,11 @@ namespace MHR {
     // filter kernel specified by FILT (default = 'binom5')
     void blurDnClr(const Mat& src, Mat &dst, int level) {
         dst = src.clone();
-        for (int i = 0; i < level; ++i)
-            pyrDown(dst, dst, Size(dst.cols/2, dst.rows/2));
+        for (int i = 0; i < level; ++i) {
+            int nRow = dst.rows/2 + int(dst.rows%2 > 0);
+            int nCol = dst.cols/2 + int(dst.cols%2 > 0);
+            pyrDown(dst, dst, Size(nCol, nRow));
+        }
     }
 
 
@@ -193,9 +145,15 @@ namespace MHR {
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
 //        printf("corrDn, (m, n) = (%d, %d)\n", m, n);
         dst = Mat::zeros(m, n, CV_64F);
-        for (int i = 0, x = 0; i < m; ++i, x += rectRow)
-            for (int j = 0, y = 0; j < n; ++j, y += rectCol)
+        int last_i = -1, last_j = -1;
+        for (int i = 0, x = 0; x < src.rows; ++i, x += rectRow)
+            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol) {
                 dst.at<double>(i, j) = tmp.at<double>(x, y);
+                last_i = max(last_i, i);
+                last_j = max(last_j, j);
+            }
+        if (last_i+1 != m && last_j+1 != n)
+            printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
     }
     
     

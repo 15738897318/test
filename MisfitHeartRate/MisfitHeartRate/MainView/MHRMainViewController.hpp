@@ -1,6 +1,6 @@
 //
 //  MHRMainViewController.h
-//  opticalHeartRate
+//  videoHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
@@ -20,12 +20,12 @@
 #import "MHRResultViewController.h"
 #import "MBProgressHUD.h"
 #import "run_algorithms.h"
+#import "testFunctions.h"
 
 using namespace cv;
 using namespace MHR;
 
 
 @interface MHRMainViewController : UIViewController <CvVideoCameraDelegate>
-
 
 @end

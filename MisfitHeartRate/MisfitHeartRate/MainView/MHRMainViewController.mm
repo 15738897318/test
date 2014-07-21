@@ -1,6 +1,6 @@
 //
 //  MHRMainViewController.m
-//  opticalHeartRate
+//  videoHeartRate
 //
 //  Created by Bao Nguyen on 6/23/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
@@ -72,16 +72,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString *filePath = [resourcePath stringByAppendingPathComponent:@"test.mp4"];
-    NSLog(@"filePath = %@", filePath);
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:filePath])
-    {
-        NSLog(@"file is not exists!");
-    }
-   
+    [super viewDidLoad];  
     _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     _videoCamera.delegate = self;
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
@@ -105,14 +96,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
     // update Layout (iOS6 vs iOS7)
     [self updateLayout];
-
-    
-//    test_openCV();
-//    test_ideal_bandpassing();
-//    testMathFunctions();
-//    test_fft();
-//    test_rgb2ntsc();
-
 }
 
 

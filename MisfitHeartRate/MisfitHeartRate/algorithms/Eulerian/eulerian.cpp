@@ -84,7 +84,7 @@ namespace MHR {
         
 		// Render on the input video
 		printf("Rendering...\n");
-        
+        printf("startIndex = %d, endIndex = %d, nTime = %d\n", startIndex, endIndex, nTime);
 		// output video
 		// Convert each frame from the filtered stream to movie frame
         Mat frame, filtered;

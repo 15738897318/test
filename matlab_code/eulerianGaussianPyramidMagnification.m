@@ -61,8 +61,8 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
     
     % Temporal filtering
     disp('Temporal filtering...')
-    %filtered_stack = ideal_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
-    filtered_stack = filter_bandpassing(Gdown_stack, 1);
+    filtered_stack = ideal_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
+    %filtered_stack = filter_bandpassing(Gdown_stack, 1);
     disp('Finished')
     
     %% amplify
@@ -100,14 +100,17 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
 			% Convert the RGB image to double-precision image
 			rgbframe = im2double(rgbframe);
 			% Convert the image from RGB colour-space to NTSC colour-space
-			frame = rgb2ntsc(rgbframe);
-		
+			%frame = rgb2ntsc(rgbframe);
+			
+			frame = rgbframe;
+			filtered = ntsc2rgb(filtered);
 			% Add the filtered frame to the original frame
 			filtered = filtered + frame;
 		
 			% Convert the colour-space from NTSC back to RGB
-			frame = ntsc2rgb(filtered);
-		
+			%frame = ntsc2rgb(filtered);
+			frame = filtered;
+			
 			% Clip the values of the frame by 0 and 1
 			frame(frame > 1) = 1;
 			frame(frame < 0) = 0;

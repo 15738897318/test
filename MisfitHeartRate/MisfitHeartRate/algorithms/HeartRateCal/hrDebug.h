@@ -20,19 +20,11 @@ using namespace std;
 
 namespace MHR {
     struct hrDebug {
+        double avg_hr;
         vector<pair<double,int>> heartBeats;
         vector<double> heartRates;
         vector<double> autocorrelation;
     };
-    
-    
-    void testMathFunctions();
-    
-    void test_ideal_bandpassing();
-    
-    void test_rgb2ntsc();
-    
-    void test_openCV();
 }
 
 #endif /* defined(__MisfitHeartRate__hrDebug__) */
