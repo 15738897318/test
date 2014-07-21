@@ -6,12 +6,14 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 	% Step 1: Calculate the window-based autocorrelation of the signal stream
 	windowStart = firstSample; %Int
 	autocorrelation = []; %Double vector
+	last_segment_end_value = 0; %Double
 	while windowStart <= (length(temporal_mean) - window_size)
 		% Window to calculate the autocorrelation for
 		segment = temporal_mean(windowStart : windowStart + window_size - 1); %Double vector
 	
 		% Calculate the autocorrelation for the current window
 		local_autocorr = filter(segment - mean(segment), 1, segment - mean(segment)); %Double vector
+		local_autocorr = local_autocorr - local_autocorr(1) + last_segment_end_value;
 		
 		% Define the segment length
 		% a. Shine-step-counting style
@@ -38,6 +40,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		
 		% Define the start of the next window
 		windowStart = windowStart + round((1 - overlap_ratio) * segment_length);
+		last_segment_end_value = autocorrelation(windowStart - 1);
 	end
 	
 	% Step 2: perform peak-counting on the autocorrelation stream
