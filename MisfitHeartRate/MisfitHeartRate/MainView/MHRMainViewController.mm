@@ -180,7 +180,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     __block hrResult result(-1, -1);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        printf("nFrames = %d\n", (int)_nFrames);
+        if (DEBUG_MODE) printf("nFrames = %d\n", (int)_nFrames);
         result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
 //            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);

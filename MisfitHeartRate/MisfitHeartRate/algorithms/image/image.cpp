@@ -13,7 +13,6 @@ namespace MHR {
     // print a frame to file
     bool frameToFile(const Mat& frame, const String& outFile)
     {
-        printf("Save a frame to %s\n", outFile.c_str());
 //        Mat tmp = frame.clone();
 //        cvtColor(tmp, tmp, CV_RGB2BGR);
         return imwrite(outFile, frame);

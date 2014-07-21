@@ -34,7 +34,9 @@ namespace MHR {
         int f1 = ceil(wl * nTime/samplingRate);
         int f2 = floor(wh * nTime/samplingRate);
         int ind1 = 2*f1, ind2 = 2*f2 - 1;
-        printf("ind1 = %d, ind2 = %d, nTime = %d\n", ind1, ind2, nTime);
+        
+        if (DEBUG_MODE)
+            printf("ind1 = %d, ind2 = %d, nTime = %d\n", ind1, ind2, nTime);
         
         // FFT
         Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);

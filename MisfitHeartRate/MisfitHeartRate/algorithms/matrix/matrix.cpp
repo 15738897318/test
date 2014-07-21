@@ -58,9 +58,6 @@ namespace MHR {
             if (frame.empty())
                 return (c == old_c+1);
             
-            if (c == old_c+1)
-                printf("nChannel = %d\n", frame.channels());
-            
             cvtColor(frame, frame, CV_BGR2RGB);
             dst.push_back(frame.clone());
         }
