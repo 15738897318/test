@@ -75,7 +75,6 @@ namespace MHR {
 		int len = (int)count_signal.size();
 		for (int i = 0; i < len; ++i)
 			ans[0] += abs(count_signal[i]);
-        printf("sum = %lf\n", ans[0]);
 		ans[0] /= (double(len) + 1.0/centre_mode);
         ans[0] *= frameRate * 60;
         

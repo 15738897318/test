@@ -24,8 +24,10 @@
 	+ frame2signal
 
 
-(CAMERA_HEIGHT - IMAGE_WIDTH)/2
-(CAMERA_WIDTH - IMAGE_HEIGHT)/2
+------------------------------
+Comments:
+	+ We should focus on finger for now. At least the demo should run smoothly and correctly with this mode first.
 
-
-- sort heartBeatPositions
+Nice to have:
+	+ Will be nice to have auto start, stop for finger. E.g.: it detects when I put my finger on the camera and auto start. Same for stop. This will impress people, and Cardiio does not have this.
+	+ Less important: Use a short name, acronym for the app
