@@ -10,6 +10,17 @@
 
 
 namespace MHR {
+    // get mean value of a double vector
+    double mean(const vector<double> &a)
+    {
+        double sum = 0;
+        int n = (int)a.size();
+        for (int i = 0; i < n; ++i)
+            sum += a[i];
+        return sum/double(n);
+    }
+
+    
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
     void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
@@ -100,23 +111,32 @@ namespace MHR {
     
     vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
         int m = (int)signal.size(), n = (int)kernel.size();
+        
+        // -meanValue
+        double meanValue = mean(signal);
+        for (int i = 0; i < m; ++i) signal[i] -= meanValue;
+        meanValue = mean(kernel);
+        for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
+
         // padding of zeors
-        for(int i=m;i<=m+n-1;i++)
-            signal.push_back(0);
-        for(int i=n;i<=m+n-1;i++)
-            kernel.push_back(0);
+        for(int i = m; i < m+n-1; i++) signal.push_back(0);
+        for(int i = n; i < m+n-1; i++) kernel.push_back(0);
         
         /* convolution operation */
         vector<double> ans;
-        for(int i=0;i<m+n-1;i++)
+        for(int i = 0; i < m+n-1; i++)
         {
             ans.push_back(0);
-            for(int j=0;j<=i;j++)
-                ans[i]=ans[i]+(signal[j]*kernel[i-j]);
+            for(int j = 0; j <= i; j++)
+                ans[i] += signal[j]*kernel[i-j];
         }
         
         for (int i = 0; i < n-1; ++i)
             ans.pop_back();
+        double minValue = *min_element(ans.begin(), ans.end());
+        if (minValue < 0)
+            for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
+                ans[i] -= minValue;
         return ans;
     }
 

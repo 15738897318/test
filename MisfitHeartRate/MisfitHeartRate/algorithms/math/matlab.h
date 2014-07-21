@@ -20,6 +20,9 @@ using namespace cv;
 
 
 namespace MHR {
+    // get mean value of a double vector
+    double mean(const vector<double> &a);
+    
     // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
     // complexity: O(n^2), n = number of peaks
     void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
