@@ -59,7 +59,8 @@ namespace MHR {
             monoframes.push_back(tmp_monoframe.clone());
         }
         
-        printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+        if (DEBUG_MODE)
+            printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal

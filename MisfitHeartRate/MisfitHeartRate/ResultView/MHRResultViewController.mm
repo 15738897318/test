@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#import "MHRResultViewController.h"
+#import "MHRResultViewController.hpp"
 
 @interface MHRResultViewController ()
 
@@ -37,6 +37,10 @@
     [super viewDidLoad];
     self.autocorrLabel.text = [NSString stringWithFormat:@"%.0f", _autocorrResult];
     self.pdaLabel.text = [NSString stringWithFormat:@"%.0f", _pdaResult];
+    if (_autocorrResult < 0 || _pdaResult < 0) {
+        NSString *message = [NSString stringWithFormat:@"Recording was stopped too early! Try recording again for at least %d seconds.", MHR::_minVidLength];
+        [UIAlertView alertViewWithTitle:@"Error" message:message cancelButtonTitle:@"OK"];
+    }
 }
 
 

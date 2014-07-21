@@ -27,10 +27,11 @@ namespace MHR {
 		int frameRate = _frameRate;             // Can not get it from vidIn!!!! :((
 		int len = (int)vid.size();
         
-        printf("width = %d, height = %d\n", vidWidth, vidHeight);
-        printf("frameRate = %d, len = %d\n", frameRate, len);
-        
-        frameToFile(vid[0], outDir + "test_frame_in.jpg");
+        if (DEBUG_MODE) {
+            printf("width = %d, height = %d\n", vidWidth, vidHeight);
+            printf("frameRate = %d, len = %d\n", frameRate, len);
+            frameToFile(vid[0], outDir + "test_frame_in.jpg");
+        }
       
 		samplingRate = frameRate;
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
@@ -46,17 +47,17 @@ namespace MHR {
 		// ================= Core part of the algo described in literature
 		// compute Gaussian blur stack
 		// This stack actually is just a single level of the pyramid
-		printf("Spatial filtering...\n");
+        if (DEBUG_MODE) printf("Spatial filtering...\n");
 		vector<Mat> GdownStack;
         build_Gdown_Stack(vid, GdownStack, startIndex, endIndex, level);
-		printf("Finished\n");
+		if (DEBUG_MODE) printf("Finished\n");
         
 		// Temporal filtering
-		printf("Temporal filtering...\n");
+		if (DEBUG_MODE) printf("Temporal filtering...\n");
         vector<Mat> filteredStack;
         ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
 //        filter_bandpassing(GdownStack, filteredStack);
-		printf("Finished\n");
+		if (DEBUG_MODE) printf("Finished\n");
         
         
 		// amplify
@@ -83,8 +84,7 @@ namespace MHR {
 		// =================
         
 		// Render on the input video
-		printf("Rendering...\n");
-        printf("startIndex = %d, endIndex = %d, nTime = %d\n", startIndex, endIndex, nTime);
+		if (DEBUG_MODE) printf("Rendering...\n");
 		// output video
 		// Convert each frame from the filtered stream to movie frame
         Mat frame, filtered;

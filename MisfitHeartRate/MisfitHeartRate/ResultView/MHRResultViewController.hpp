@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIAlertView+Block.h"
+#import "config.h"
 
 @interface MHRResultViewController : UIViewController
 

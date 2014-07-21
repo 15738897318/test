@@ -15,10 +15,10 @@
 #import <opencv2/highgui/highgui.hpp>
 #import <opencv2/highgui/highgui_c.h>
 #import <time.h>
-#import "MHRUtilities.h"
 #import "UIView+Position.h"
-#import "MHRResultViewController.h"
 #import "MBProgressHUD.h"
+#import "MHRUtilities.h"
+#import "MHRResultViewController.hpp"
 #import "run_algorithms.h"
 #import "testFunctions.h"
 

@@ -55,9 +55,9 @@ namespace MHR {
         hr_calculator(hb_locations_autocorr, frameRate, ans_autocorr);
         double avg_hr_autocorr = ans_autocorr[0];     // average heart rate
         
-
-        clock_t t2 = clock();
-        printf("hr_signal_calc() time = %f\n", ((float)t2 - (float)t1)/1000.0);
+        
+        if (DEBUG_MODE)
+            printf("hr_signal_calc() time = %f\n", ((float)clock() - (float)t1)/1000.0);
         return hrResult(avg_hr_autocorr, avg_hr_pda);
     }
 }

@@ -91,7 +91,9 @@ namespace MHR {
                 //convert the percentile range into pixel-value range
                 lower_range = prctile(arr, percentile_lower_range);
                 upper_range = prctile(arr, percentile_upper_range);
-                printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
+
+                if (DEBUG_MODE)
+                    printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             }
             
             //now calc the avg of each frame while inogre the values outside the range
@@ -118,7 +120,8 @@ namespace MHR {
             
         }
         
-        printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+        if (DEBUG_MODE)
+            printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return temporal_mean;
         

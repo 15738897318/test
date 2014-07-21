@@ -14,7 +14,7 @@ using namespace cv;
 
 namespace MHR {
 #ifdef DEBUG
-    const int DEBUG_MODE = 1;
+    const int DEBUG_MODE = 0;
 #else
     const int DEBUG_MODE = 0;
 #endif
@@ -26,6 +26,7 @@ namespace MHR {
     const double NaN = -1e9;
     
     const int _framesBlock_size = 64;
+    const int _minVidLength = 30;        // seconds
 
     /*--------------for run_eulerian()--------------*/
     const double _eulerian_alpha = 50;          // Eulerian magnifier, standard < 50
