@@ -37,6 +37,8 @@
     [super viewDidLoad];
     self.autocorrLabel.text = [NSString stringWithFormat:@"%.0f", _autocorrResult];
     self.pdaLabel.text = [NSString stringWithFormat:@"%.0f", _pdaResult];
+    if (_autocorrResult < 0 || _pdaResult < 0)
+        [UIAlertView alertViewWithTitle:@"Error" message:@"Recording was stopped too early! Try recording again for at least 15 seconds" cancelButtonTitle:@"OK"];
 }
 
 

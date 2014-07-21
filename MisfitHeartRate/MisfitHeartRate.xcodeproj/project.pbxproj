@@ -167,6 +167,7 @@
 		DCB91D4919763D8E00793884 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
 		DCB91D4A19763D8E00793884 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCB91D4B19763DE100793884 /* MHRResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.m */; };
+		DCB9B339197D2F04004DC746 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB9B338197D2F04004DC746 /* UIAlertView+Block.m */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
 		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
@@ -303,6 +304,9 @@
 		DCB91D15197531CC00793884 /* testFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testFunctions.h; sourceTree = "<group>"; };
 		DCB91D1C19762E9900793884 /* videoHeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = videoHeartRate.xcdatamodel; sourceTree = "<group>"; };
 		DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MisfitHeartRateTests.mm; sourceTree = "<group>"; };
+		DCB9B336197D2F04004DC746 /* BlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockAdditions.h; path = Utilities/BlockAdditions.h; sourceTree = "<group>"; };
+		DCB9B337197D2F04004DC746 /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+Block.h"; path = "Utilities/UIAlertView+Block.h"; sourceTree = "<group>"; };
+		DCB9B338197D2F04004DC746 /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+Block.m"; path = "Utilities/UIAlertView+Block.m"; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
 		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
@@ -566,6 +570,9 @@
 		DCBDEA1D196124D3005F6298 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DCB9B336197D2F04004DC746 /* BlockAdditions.h */,
+				DCB9B337197D2F04004DC746 /* UIAlertView+Block.h */,
+				DCB9B338197D2F04004DC746 /* UIAlertView+Block.m */,
 				DCBDEA1E196124F3005F6298 /* MHRUtilities.h */,
 				DCBDEA1F196124F3005F6298 /* MHRUtilities.m */,
 				DCADC18F196BB46200AFCDE5 /* MBProgressHUD.h */,
@@ -821,6 +828,7 @@
 				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.m in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
+				DCB9B339197D2F04004DC746 /* UIAlertView+Block.m in Sources */,
 				12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
