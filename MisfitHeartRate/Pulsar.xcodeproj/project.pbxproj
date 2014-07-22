@@ -268,7 +268,7 @@
 		DCAE52551966CE5800A8AFB6 /* temporal_mean_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = temporal_mean_calc.h; path = HeartRateCal/temporal_mean_calc.h; sourceTree = "<group>"; };
 		DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = build_Gdown_stack.cpp; path = Eulerian/build_Gdown_stack.cpp; sourceTree = "<group>"; };
 		DCAE52581967B8BA00A8AFB6 /* build_Gdown_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = build_Gdown_stack.h; path = Eulerian/build_Gdown_stack.h; sourceTree = "<group>"; };
-		DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisfitHeartRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCB55F131957CB3B0095A98E /* Pulsar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulsar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCB55F181957CB3B0095A98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DCB55F1A1957CB3B0095A98E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -467,7 +467,7 @@
 		DCB55F141957CB3B0095A98E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */,
+				DCB55F131957CB3B0095A98E /* Pulsar.app */,
 				DCB55F331957CB3B0095A98E /* MisfitHeartRateTests.xctest */,
 			);
 			name = Products;
@@ -651,7 +651,7 @@
 			);
 			name = MisfitHeartRate;
 			productName = opticalHeartRate;
-			productReference = DCB55F131957CB3B0095A98E /* MisfitHeartRate.app */;
+			productReference = DCB55F131957CB3B0095A98E /* Pulsar.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DCB55F321957CB3B0095A98E /* MisfitHeartRateTests */ = {
@@ -680,9 +680,9 @@
 			attributes = {
 				CLASSPREFIX = MHR;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = misfit;
+				ORGANIZATIONNAME = "Misfit Wearables Corporation";
 			};
-			buildConfigurationList = DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "MisfitHeartRate" */;
+			buildConfigurationList = DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "Pulsar" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -994,7 +994,7 @@
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = MisfitHeartRate;
+				PRODUCT_NAME = Pulsar;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1012,7 +1012,7 @@
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = MisfitHeartRate;
+				PRODUCT_NAME = Pulsar;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1062,7 +1062,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "MisfitHeartRate" */ = {
+		DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "Pulsar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCB55F431957CB3B0095A98E /* Debug */,
