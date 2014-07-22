@@ -4,9 +4,10 @@ function [heartBeats, avg_hr, debug] = hb_counter_pda(temporal_mean, fr, firstSa
 	windowStart = firstSample; %Int
 	heartBeats = []; %Tx2 array: col 1 == double, col 2 == int
 	heartRates = []; %Double vector
-	while windowStart <= (length(temporal_mean) - window_size)
+	while windowStart < length(temporal_mean)
 		% Window to perform peak-counting in
-		segment = temporal_mean(windowStart : windowStart + window_size - 1); %Double vector
+		windowEnd = min(windowStart + window_size - 1, length(temporal_mean));
+		segment = temporal_mean(windowStart : windowEnd); %Double vector
 		
 		% Count the number of peaks in this window
 		[max_peak_strengths, max_peak_locs] = findpeaks(segment, 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold);
@@ -15,7 +16,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_pda(temporal_mean, fr, firstSa
 		% Define the segment length
 		% a. Shine-step-counting style
 		if isempty(max_peak_locs)
-			segment_length = window_size; %Int
+			segment_length = length(segment); %Int
 			
 			heartRates(windowStart : windowStart + segment_length - 1) = zeros(1, segment_length);
 		else
@@ -31,7 +32,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_pda(temporal_mean, fr, firstSa
 		end
 		
 		% b. Equal-step progression
-		%segment_length = window_size;
+		%segment_length = length(segment);
 		
 		% Record all beats in the window, even if there are duplicates
 		heartBeats = [heartBeats; [max_peak_strengths, (windowStart - 1 + max_peak_locs)]];		
