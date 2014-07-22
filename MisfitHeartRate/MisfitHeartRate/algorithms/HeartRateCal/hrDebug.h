@@ -1,13 +1,13 @@
 //
 //  hrDebug.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __Pulsar__hrDebug__
-#define __Pulsar__hrDebug__
+#ifndef __MisfitHeartRate__hrDebug__
+#define __MisfitHeartRate__hrDebug__
 
 #include <iostream>
 #include <vector>
@@ -27,4 +27,4 @@ namespace MHR {
     };
 }
 
-#endif /* defined(__Pulsar__hrDebug__) */
+#endif /* defined(__MisfitHeartRate__hrDebug__) */

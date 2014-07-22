@@ -1,6 +1,6 @@
 //
-//  PulsarTests.m
-//  Pulsar
+//  MisfitHeartRateTests.m
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/16/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
@@ -16,15 +16,15 @@ using namespace cv;
 
 const double EPSILON = 1e-4;
 const double EPSILON_PERCENT = 2.8;
-String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/2926CAAB-4B49-49FE-903E-82908E53D35A/Pulsar.app/";
+String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/2926CAAB-4B49-49FE-903E-82908E53D35A/MisfitHeartRate.app/";
 
 
-@interface PulsarTests : XCTestCase
+@interface MisfitHeartRateTests : XCTestCase
 
 @end
 
 
-@implementation PulsarTests
+@implementation MisfitHeartRateTests
 
 - (void)setUp
 {

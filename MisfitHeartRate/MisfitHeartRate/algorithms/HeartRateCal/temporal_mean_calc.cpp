@@ -1,6 +1,6 @@
 //
 //  temporal_mean_calc.cpp
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/4/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

@@ -1,13 +1,13 @@
 //
 //  temporal_mean_calc.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/4/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __Pulsar__temporal_mean_calc__
-#define __Pulsar__temporal_mean_calc__
+#ifndef __MisfitHeartRate__temporal_mean_calc__
+#define __MisfitHeartRate__temporal_mean_calc__
 
 #include <iostream>
 
@@ -34,4 +34,4 @@ namespace MHR {
                                       double &lower_range, double &upper_range, bool isCalcMode);
 }
 
-#endif /* defined(__Pulsar__temporal_mean_calc__) */
+#endif /* defined(__MisfitHeartRate__temporal_mean_calc__) */

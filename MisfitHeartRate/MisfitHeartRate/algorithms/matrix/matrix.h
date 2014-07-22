@@ -1,13 +1,13 @@
 //
 //  matrix.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __Pulsar__matrix__
-#define __Pulsar__matrix__
+#ifndef __MisfitHeartRate__matrix__
+#define __MisfitHeartRate__matrix__
 
 #include <iostream>
 #include <vector>
@@ -63,4 +63,4 @@ namespace MHR {
     double readDouble(FILE* &file);
 }
 
-#endif /* defined(__Pulsar__matrix__) */
+#endif /* defined(__MisfitHeartRate__matrix__) */

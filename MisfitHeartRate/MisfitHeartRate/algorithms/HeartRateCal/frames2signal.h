@@ -1,13 +1,13 @@
 //
 //  frames2signal.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 
 
-#ifndef __Pulsar__frames2signal__
-#define __Pulsar__frames2signal__
+#ifndef __MisfitHeartRate__frames2signal__
+#define __MisfitHeartRate__frames2signal__
 
 #include <iostream>
 #include <vector>
@@ -33,4 +33,4 @@ namespace MHR {
                                  double &lower_range, double &upper_range, bool isCalcMode);
 }
 
-#endif /* defined(__Pulsar__frame2signal__) */
+#endif /* defined(__MisfitHeartRate__frame2signal__) */

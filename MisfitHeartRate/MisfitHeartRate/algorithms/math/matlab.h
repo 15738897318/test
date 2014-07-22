@@ -1,13 +1,13 @@
 //
 //  matlab.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __Pulsar__matlab__
-#define __Pulsar__matlab__
+#ifndef __MisfitHeartRate__matlab__
+#define __MisfitHeartRate__matlab__
 
 #include <iostream>
 #include <vector>
@@ -51,4 +51,4 @@ namespace MHR {
     double diff_percent(double a, double b);
 }
 
-#endif /* defined(__Pulsar__matlab__) */
+#endif /* defined(__MisfitHeartRate__matlab__) */

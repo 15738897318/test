@@ -1,13 +1,13 @@
 //
 //  build_Gdown_stack.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/5/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __Pulsar__build_Gdown_stack__
-#define __Pulsar__build_Gdown_stack__
+#ifndef __MisfitHeartRate__build_Gdown_stack__
+#define __MisfitHeartRate__build_Gdown_stack__
 
 #include "image.h"
 
@@ -24,4 +24,4 @@ namespace MHR {
 
 }
 
-#endif /* defined(__Pulsar__build_Gdown_stack__) */
+#endif /* defined(__MisfitHeartRate__build_Gdown_stack__) */

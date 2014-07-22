@@ -1,6 +1,6 @@
 //
 //  MHRResultViewController.h
-//  Pulsar
+//  MisfitHeartRate
 //
 //  Created by Bao Nguyen on 7/8/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
