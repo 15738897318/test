@@ -1,13 +1,13 @@
 //
 //  config.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Thanh Le on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef MisfitHeartRate_config_h
-#define MisfitHeartRate_config_h
+#ifndef Pulsar_config_h
+#define Pulsar_config_h
 
 using namespace std;
 using namespace cv;

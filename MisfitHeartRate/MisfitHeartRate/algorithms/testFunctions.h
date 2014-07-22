@@ -1,13 +1,13 @@
 //
 //  testFunctions.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/15/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__testFunctions__
-#define __MisfitHeartRate__testFunctions__
+#ifndef __Pulsar__testFunctions__
+#define __Pulsar__testFunctions__
 
 #include <iostream>
 #include <vector>
@@ -34,4 +34,4 @@ namespace MHR {
     void test_hb_counter_pda();
 }
 
-#endif /* defined(__MisfitHeartRate__testFunctions__) */
+#endif /* defined(__Pulsar__testFunctions__) */

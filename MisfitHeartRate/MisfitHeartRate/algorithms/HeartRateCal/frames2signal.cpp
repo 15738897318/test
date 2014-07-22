@@ -1,6 +1,6 @@
 //
 //  frames2signal.cpp
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  UIView+Position.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/11/14.
 //  Copyleft 2010 Bynomial.

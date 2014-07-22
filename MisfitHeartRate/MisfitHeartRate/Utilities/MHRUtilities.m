@@ -1,6 +1,6 @@
 //
 //  MHRUtilities.m
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 6/30/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

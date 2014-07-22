@@ -1,6 +1,6 @@
 //
 //  hr_signal_calc.cpp
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/4/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

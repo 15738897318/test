@@ -1,6 +1,6 @@
 //
 //  hr_calculator.cpp
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Tuan-Anh Tran on 7/14/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

@@ -1,13 +1,13 @@
 //
 //  eulerian.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__eulerian__
-#define __MisfitHeartRate__eulerian__
+#ifndef __Pulsar__eulerian__
+#define __Pulsar__eulerian__
 
 #include <string>
 #include <vector>
@@ -27,4 +27,4 @@ namespace MHR {
                                           double samplingRate, double chromAttenuation);
 }
 
-#endif /* defined(__MisfitHeartRate__eulerian__) */
+#endif /* defined(__Pulsar__eulerian__) */

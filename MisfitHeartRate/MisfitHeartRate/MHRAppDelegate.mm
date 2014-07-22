@@ -1,6 +1,6 @@
 //
 //  MHRAppDelegate.m
-//  videoHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 6/23/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
@@ -10,7 +10,7 @@
 #import "MHRMainViewController.hpp"
 
 
-NSString *const kSkinPListFileName = @"MisfitHeartRate-Skin";
+NSString *const kSkinPListFileName = @"Pulsar-Skin";
 
 
 @implementation MHRAppDelegate
@@ -112,7 +112,7 @@ NSDictionary *pListSkinDict;
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"videoHeartRate" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Pulsar" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -125,7 +125,7 @@ NSDictionary *pListSkinDict;
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"videoHeartRate.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Pulsar.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

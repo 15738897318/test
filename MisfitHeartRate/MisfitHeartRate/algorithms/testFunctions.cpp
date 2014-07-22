@@ -1,6 +1,6 @@
 //
 //  testFunctions.cpp
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/15/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

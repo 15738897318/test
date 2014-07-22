@@ -1,6 +1,6 @@
 //
 //  build_Gdown_stack.cpp
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/5/14.
 //  Copyright (c) 2014 misfit. All rights reserved.

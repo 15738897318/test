@@ -1,13 +1,13 @@
 //
 //  hr_signal_calc.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/4/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__hr_signal_calc__
-#define __MisfitHeartRate__hr_signal_calc__
+#ifndef __Pulsar__hr_signal_calc__
+#define __Pulsar__hr_signal_calc__
 
 #include <iostream>
 #include <string>
@@ -42,4 +42,4 @@ namespace MHR {
                             double max_bpm, double threshold_fraction);
 }
 
-#endif /* defined(__MisfitHeartRate__hr_signal_calc__) */
+#endif /* defined(__Pulsar__hr_signal_calc__) */

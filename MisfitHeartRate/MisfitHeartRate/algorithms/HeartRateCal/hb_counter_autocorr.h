@@ -1,13 +1,13 @@
 //
 //  hb_counter_autocorr.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Thanh Le on 7/2/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__hb_counter_autocorr__
-#define __MisfitHeartRate__hb_counter_autocorr__
+#ifndef __Pulsar__hb_counter_autocorr__
+#define __Pulsar__hb_counter_autocorr__
 
 #include <iostream>
 #include <string>
@@ -35,4 +35,4 @@ namespace MHR {
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug);
 }
 
-#endif /* defined(__MisfitHeartRate__hb_counter_autocorr__) */
+#endif /* defined(__Pulsar__hb_counter_autocorr__) */

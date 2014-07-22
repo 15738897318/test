@@ -1,13 +1,13 @@
 //
 //  image.h
-//  MisfitHeartRate
+//  Pulsar
 //
 //  Created by Bao Nguyen on 7/3/14.
 //  Copyright (c) 2014 misfit. All rights reserved.
 //
 
-#ifndef __MisfitHeartRate__image__
-#define __MisfitHeartRate__image__
+#ifndef __Pulsar__image__
+#define __Pulsar__image__
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgproc/imgproc_c.h>
@@ -57,4 +57,4 @@ namespace MHR {
 
 }
 
-#endif /* defined(__MisfitHeartRate__image__) */
+#endif /* defined(__Pulsar__image__) */

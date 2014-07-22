@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCB55F121957CB3B0095A98E"
-            BuildableName = "MisfitHeartRate.app"
+            BuildableName = "Pulsar.app"
             BlueprintName = "MisfitHeartRate"
-            ReferencedContainer = "container:MisfitHeartRate.xcodeproj">
+            ReferencedContainer = "container:Pulsar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCB55F121957CB3B0095A98E"
-            BuildableName = "MisfitHeartRate.app"
+            BuildableName = "Pulsar.app"
             BlueprintName = "MisfitHeartRate"
-            ReferencedContainer = "container:MisfitHeartRate.xcodeproj">
+            ReferencedContainer = "container:Pulsar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
