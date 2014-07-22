@@ -18,7 +18,7 @@ namespace MHR {
         
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
-        while(windowStart <= (int) temporal_mean.size() - window_size){
+        while(windowStart < (int)temporal_mean.size() - 1){
             
             //Window to perform peak-couting in
             vector<double> segment;
@@ -26,7 +26,9 @@ namespace MHR {
             vector<int> max_peak_locs, min_peak_locs;
             int segment_length;
             
-            for(int i=windowStart; i<windowStart+window_size; ++i) segment.push_back(temporal_mean[i]);
+            int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
+            for(int i = windowStart; i < windowEnd; ++i)
+                segment.push_back(temporal_mean[i]);
             
             //Count the number of peaks in this window
             findpeaks(segment, minPeakDistance, threshold, max_peak_strengths, max_peak_locs);
@@ -34,7 +36,7 @@ namespace MHR {
             //Define the segment length
             // a. Shine-step-counting style
             if(max_peak_locs.empty()){
-                segment_length = window_size;
+                segment_length = (int)segment.size();
             }else{
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
                 findpeaks(segment, minPeakDistance, threshold, min_peak_strengths, min_peak_locs);
