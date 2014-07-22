@@ -19,7 +19,7 @@ namespace MHR {
         vector<double> autocorrelation;
         double lastSegmentEndVal = 0;
 
-        while(windowStart <= (int) temporal_mean.size() - window_size){
+        while(windowStart < (int)temporal_mean.size() - 1){
             
             vector<double> segment;
             vector<double> max_peak_strengths, min_peak_strengths;
@@ -28,7 +28,8 @@ namespace MHR {
             int segment_length;
             
             //Window to calculate the autocorrelation
-            for(int i=windowStart; i<windowStart+window_size; ++i)
+            int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
+            for(int i = windowStart; i < windowEnd; ++i)
                 segment.push_back(temporal_mean[i]);
             
             //calc mean and get segment = segment - mean
@@ -50,7 +51,7 @@ namespace MHR {
             findpeaks(local_autocorr, minPeakDistance, 0, max_peak_strengths, max_peak_locs);
             
             if(max_peak_locs.empty()){
-                segment_length = window_size;
+                segment_length = (int)segment.size();
             }else{
                 for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
                 findpeaks(local_autocorr, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
@@ -79,14 +80,16 @@ namespace MHR {
         windowStart = firstSample;
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
-        while(windowStart <= (int) autocorrelation.size() - window_size){
+        while(windowStart < (int)autocorrelation.size() - 1){
             
             vector<double> segment;
             vector<double> max_peak_strengths, min_peak_strengths;
             vector<int> max_peak_locs, min_peak_locs;
             int segment_length;
             
-            for(int i=windowStart; i<windowStart+window_size; ++i) segment.push_back(autocorrelation[i]);
+            int windowEnd = min(windowStart + window_size, (int)autocorrelation.size());
+            for(int i = windowStart; i < windowEnd; ++i)
+                segment.push_back(autocorrelation[i]);
             
             //Count the number of peaks in this window
             findpeaks(segment, minPeakDistance, 0, max_peak_strengths, max_peak_locs);
@@ -94,7 +97,7 @@ namespace MHR {
             //Define the segment length
             // a. Shine-step-counting style
             if(max_peak_locs.empty()){
-                segment_length = window_size;
+                segment_length = (int)segment.size();
             }else{
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
                 findpeaks(segment, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
