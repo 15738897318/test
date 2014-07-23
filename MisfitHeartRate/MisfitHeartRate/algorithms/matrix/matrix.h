@@ -25,7 +25,7 @@ namespace MHR {
 	vector<int> vectorRange(int a, int b, int step = 1);
     
     // import data from a array to a Mat
-    Mat arrayToMat(const double a[], int rows, int cols);
+//    Mat arrayToMat(const double *a, int rows, int cols);
     
     // data from vector 1D to Mat
     Mat vectorToMat(const vector<double>& arr);

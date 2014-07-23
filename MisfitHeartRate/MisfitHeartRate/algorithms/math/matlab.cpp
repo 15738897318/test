@@ -177,9 +177,8 @@ namespace MHR {
             }
         
         // apply low pass filter
-        Mat src = vectorToMat(arr);
-        Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
-        Mat dst;
+        Mat src = vectorToMat(arr), dst;
+        Mat filt = _beatSignalFilterKernel.clone();
         filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
         vector<double> ans = matToVector1D(dst);
         

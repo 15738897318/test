@@ -31,7 +31,7 @@ namespace MHR {
         int endIndex = len-1;   // 1400
         
         // Convert colourspaces for each frame
-        Mat filt = arrayToMat(_frame_downsampling_filt, _frame_downsampling_filt_rows, _frame_downsampling_filt_cols);
+        Mat filt = _frame_downsampling_filt.clone();
         Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
         Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
         vector<Mat> monoframes;

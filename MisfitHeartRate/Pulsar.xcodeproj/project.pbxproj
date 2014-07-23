@@ -83,6 +83,7 @@
 		DC85FF8819768AC5004081B2 /* unique_stable_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4919768AC5004081B2 /* unique_stable_test.in */; };
 		DC85FF8919768AC5004081B2 /* unique_stable_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4A19768AC5004081B2 /* unique_stable_test.out */; };
 		DC85FF8A19768AC5004081B2 /* unique_stable_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4A19768AC5004081B2 /* unique_stable_test.out */; };
+		DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC9D58C6197FB062002C6BB8 /* config.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
 		DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */; };
 		DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */; };
@@ -241,6 +242,9 @@
 		DC85FF4819768AC5004081B2 /* rgb2tsl_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rgb2tsl_test.out; path = MisfitHeartRateTests/rgb2tsl_test.out; sourceTree = SOURCE_ROOT; };
 		DC85FF4919768AC5004081B2 /* unique_stable_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = unique_stable_test.in; path = MisfitHeartRateTests/unique_stable_test.in; sourceTree = SOURCE_ROOT; };
 		DC85FF4A19768AC5004081B2 /* unique_stable_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = unique_stable_test.out; path = MisfitHeartRateTests/unique_stable_test.out; sourceTree = SOURCE_ROOT; };
+		DC9D58C6197FB062002C6BB8 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
+		DC9D58CC197FB15B002C6BB8 /* finger_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finger_params.h; sourceTree = "<group>"; };
+		DC9D58CF197FB166002C6BB8 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
 		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
 		DCA50B8C1964179200F99D33 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = frames2signal.h; path = HeartRateCal/frames2signal.h; sourceTree = "<group>"; };
 		DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Position.h"; path = "Utilities/UIView+Position.h"; sourceTree = "<group>"; };
@@ -383,6 +387,9 @@
 				DCAE6BA5195A791B00B9FE9F /* image */,
 				DCAE6BA0195A789800B9FE9F /* matrix */,
 				12B587EB19651DD700BA19A5 /* config.h */,
+				DC9D58C6197FB062002C6BB8 /* config.cpp */,
+				DC9D58CF197FB166002C6BB8 /* face_params.h */,
+				DC9D58CC197FB15B002C6BB8 /* finger_params.h */,
 				DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */,
 				DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */,
 				DCB91D15197531CC00793884 /* testFunctions.h */,
@@ -836,6 +843,7 @@
 				DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */,
 				DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */,
 				DCADC191196BB46200AFCDE5 /* MBProgressHUD.m in Sources */,
+				DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */,
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
