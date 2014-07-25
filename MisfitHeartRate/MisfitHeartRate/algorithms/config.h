@@ -11,10 +11,10 @@
 
 #include "face_params.h"
 #include "finger_params.h"
-//#include "params.cpp"
 
 using namespace std;
 using namespace cv;
+
 
 namespace MHR {
 #ifdef DEBUG

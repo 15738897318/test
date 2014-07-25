@@ -688,6 +688,11 @@
 				CLASSPREFIX = MHR;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Misfit Wearables Corporation";
+				TargetAttributes = {
+					DCB55F321957CB3B0095A98E = {
+						TestTargetID = DCB55F121957CB3B0095A98E;
+					};
+				};
 			};
 			buildConfigurationList = DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "Pulsar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1028,6 +1033,7 @@
 		DCB55F491957CB3B0095A98E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pulsar.app/Pulsar";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1044,6 +1050,7 @@
 				);
 				INFOPLIST_FILE = "MisfitHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1051,6 +1058,7 @@
 		DCB55F4A1957CB3B0095A98E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pulsar.app/Pulsar";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1063,6 +1071,7 @@
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

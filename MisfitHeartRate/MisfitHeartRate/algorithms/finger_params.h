@@ -25,7 +25,6 @@ namespace MHR {
     const double _finger_eulerian_chromaMagnifier = 1; // Standard: 1
     
     // Native params of the algorithm
-    const int _finger_frameRate = 30;
     const int _finger_number_of_channels = 3;
     const int _finger_Gpyr_filter_length = 5;
     const int _finger_startFrame = 0;

@@ -25,7 +25,6 @@ namespace MHR {
     const double _face_eulerian_chromaMagnifier = 1; // Standard: 1
     
     // Native params of the algorithm
-    const int _face_frameRate = 30;
     const int _face_number_of_channels = 3;
     const int _face_Gpyr_filter_length = 5;
     const int _face_startFrame = 0;
