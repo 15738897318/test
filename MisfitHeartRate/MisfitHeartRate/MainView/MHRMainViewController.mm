@@ -72,7 +72,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];  
+    [super viewDidLoad];
+    
+    setFaceParams();
+    
     _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     _videoCamera.delegate = self;
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
@@ -96,7 +99,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
     // update Layout (iOS6 vs iOS7)
     [self updateLayout];
-    setFaceParams();
+
     
 //    test_openCV();
 }
@@ -183,11 +186,12 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     __block hrResult result(-1, -1);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        if (DEBUG_MODE) printf("nFrames = %d\n", (int)_nFrames);
+        if (DEBUG_MODE)
+            printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
         
         if (_nFrames >= _minVidLength*_frameRate)
             result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-    
+        
 //        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //        result = run_algorithms([resourcePath UTF8String], "test-15s.mp4", [_outPath UTF8String]);
         
