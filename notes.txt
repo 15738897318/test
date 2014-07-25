@@ -1,16 +1,7 @@
+to test:
++ hr_pda
++ hr_cal_autocorr
 
-----------
-filter2D
-convertTo
-* + - /
-add, subtract, divide, multiply, atan2, pow
-pyrDown
-getGaussianKernel		- CV_32F or CV_64F
-resize
-
------
-dft
-cvtColor		- 		8-bit unsigned, 16-bit unsigned ( CV_16UC... ), or single-precision floating-point.
 
 
 --------------------------

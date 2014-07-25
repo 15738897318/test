@@ -20,10 +20,10 @@ using namespace std;
 
 namespace MHR {
     struct hrDebug {
-        mTYPE avg_hr;
-        vector<pair<mTYPE,int>> heartBeats;
-        vector<mTYPE> heartRates;
-        vector<mTYPE> autocorrelation;
+        double avg_hr;
+        vector<pair<double,int>> heartBeats;
+        vector<double> heartRates;
+        vector<double> autocorrelation;
     };
 }
 

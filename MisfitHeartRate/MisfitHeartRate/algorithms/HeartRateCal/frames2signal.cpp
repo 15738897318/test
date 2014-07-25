@@ -10,27 +10,27 @@
 
 
 namespace MHR {
-    vector<mTYPE> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
-                                 mTYPE fr, mTYPE cutoff_freq,
-                                 mTYPE &lower_range, mTYPE &upper_range, bool isCalcMode)
+    vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
+                                 double fr, double cutoff_freq,
+                                 double &lower_range, double &upper_range, bool isCalcMode)
     {
         clock_t t1 = clock();
         
         //=== Block 1. Convert the frame stream into a 1-D signal
         
-        vector<mTYPE> temporal_mean;
+        vector<double> temporal_mean;
         int height = monoframes[0].rows;
         int width = monoframes[0].cols;
         int total_frames = (int)monoframes.size();
         
         if(conversion_method == "simple-mean"){
 
-            mTYPE size = height * width;
+            double size = height * width;
             for(int i=0; i<total_frames; ++i){
-                mTYPE sum = 0;
+                double sum = 0;
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y)
-                        sum+=monoframes[i].at<mTYPE>(x,y);
+                        sum+=monoframes[i].at<double>(x,y);
                 temporal_mean.push_back(sum/size);
             }
             
@@ -39,12 +39,12 @@ namespace MHR {
             //Set the trimmed size here
             int trimmed_size = _trimmed_size;
             
-            mTYPE size = (height - trimmed_size * 2) * (width - trimmed_size * 2);
+            double size = (height - trimmed_size * 2) * (width - trimmed_size * 2);
             for(int i=0; i<total_frames; ++i){
-                mTYPE sum = 0;
+                double sum = 0;
                 for(int x=trimmed_size; x<height-trimmed_size; ++x)
                     for(int y=trimmed_size; y<width-trimmed_size; ++y)
-                        sum+=monoframes[i].at<mTYPE>(x,y);
+                        sum+=monoframes[i].at<double>(x,y);
                 temporal_mean.push_back(sum/size);
             }
             
@@ -53,36 +53,36 @@ namespace MHR {
             if (isCalcMode)
             {
                 // Selection parameters
-//                mTYPE training_time = _training_time_end - _training_time_start;
-                mTYPE lower_pct_range = _pct_reach_below_mode;
-                mTYPE upper_pct_range = _pct_reach_above_mode;
+//                double training_time = _training_time_end - _training_time_start;
+                double lower_pct_range = _pct_reach_below_mode;
+                double upper_pct_range = _pct_reach_above_mode;
                 
                 int first_tranning_frames_start = min( (int)round(fr * _training_time_start), total_frames );
                 int first_tranning_frames_end = min( (int)round(fr * _training_time_end), total_frames) - 1;
 //                int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
                 
                 // this arr stores values of pixels from first trainning frames
-                vector<mTYPE> arr;
+                vector<double> arr;
                 for(int i = first_tranning_frames_start; i <= first_tranning_frames_end; ++i)
                     for(int y=0; y<width; ++y)
                         for(int x=0; x<height; ++x)
-                            arr.push_back(monoframes[i].at<mTYPE>(x,y));
+                            arr.push_back(monoframes[i].at<double>(x,y));
                 
                 //find the mode
-                vector<mTYPE> centres;
+                vector<double> centres;
                 vector<int> counts;
                 
                 hist(arr, _number_of_bins, counts, centres);
                 
                 int argmax=0;
                 for(int i=0; i<(int)counts.size(); ++i) if(counts[i]>counts[argmax]) argmax = i;
-                mTYPE centre_mode = centres[argmax];
+                double centre_mode = centres[argmax];
                 
                 // find the percentile range centred on the mode
-                mTYPE percentile_of_centre_mode = invprctile(arr, centre_mode);
-                mTYPE percentile_lower_range = max(mTYPE(0.0), percentile_of_centre_mode - lower_pct_range);
-                mTYPE percentile_upper_range = min(mTYPE(100.0), percentile_of_centre_mode + upper_pct_range);
-                // correct the percentile range fo                for (int col = 0; col < nCol; ++col)r the boundary cases
+                double percentile_of_centre_mode = invprctile(arr, centre_mode);
+                double percentile_lower_range = max(0.0, percentile_of_centre_mode - lower_pct_range);
+                double percentile_upper_range = min(100.0, percentile_of_centre_mode + upper_pct_range);
+                // correct the percentile range for the boundary cases
                 if(percentile_upper_range == 100)
                     percentile_lower_range = 100 - (lower_pct_range + upper_pct_range);
                 if(percentile_lower_range == 0)
@@ -91,18 +91,20 @@ namespace MHR {
                 //convert the percentile range into pixel-value range
                 lower_range = prctile(arr, percentile_lower_range);
                 upper_range = prctile(arr, percentile_upper_range);
-                printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
+
+                if (DEBUG_MODE)
+                    printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             }
             
             //now calc the avg of each frame while inogre the values outside the range
-//            mTYPE size = height * width;
+//            double size = height * width;
             //this is the debug vector<Mat>
             for(int i=0; i<total_frames; ++i){
-                mTYPE sum = 0;
+                double sum = 0;
                 int cnt = 0; //number of not-NaN-pixels
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y){
-                        mTYPE val=monoframes[i].at<mTYPE>(x,y);
+                        double val=monoframes[i].at<double>(x,y);
                         if(val<lower_range - 1e-9 || val>upper_range + 1e-9){
                             val=0;
                         }else ++cnt;
@@ -118,12 +120,13 @@ namespace MHR {
             
         }
         
-        printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+        if (DEBUG_MODE)
+            printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return temporal_mean;
         
         //=== Block 2. Low-pass-filter the signal stream to remove unwanted noises
-//        vector<mTYPE> temporal_mean_filt = low_pass_filter(temporal_mean);
+//        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
 //        return temporal_mean_filt;
     }
 }

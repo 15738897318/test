@@ -28,10 +28,10 @@
 
 
 namespace MHR {
-    vector<mTYPE> temporal_mean_calc(const vector<Mat> &vid, mTYPE overlap_ratio,
-                                      mTYPE max_bpm, mTYPE cutoff_freq,
+    vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
+                                      double max_bpm, double cutoff_freq,
                                       int colour_channel, String colourspace,
-                                      mTYPE &lower_range, mTYPE &upper_range, bool isCalcMode);
+                                      double &lower_range, double &upper_range, bool isCalcMode);
 }
 
 #endif /* defined(__MisfitHeartRate__temporal_mean_calc__) */

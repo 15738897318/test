@@ -23,9 +23,15 @@ using namespace std;
 namespace MHR {
     void testMathFunctions();
     
+    void test_ideal_bandpassing();
+    
     void test_rgb2ntsc();
     
-    void test_openCV();    
+    void test_openCV();
+    
+    void test_hr_cal_autocorr();
+    
+    void test_hb_counter_pda();
 }
 
 #endif /* defined(__MisfitHeartRate__testFunctions__) */

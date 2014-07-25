@@ -13,7 +13,6 @@ namespace MHR {
     // print a frame to file
     bool frameToFile(const Mat& frame, const String& outFile)
     {
-        printf("Save a frame to %s\n", outFile.c_str());
 //        Mat tmp = frame.clone();
 //        cvtColor(tmp, tmp, CV_RGB2BGR);
         return imwrite(outFile, frame);
@@ -21,7 +20,7 @@ namespace MHR {
 
 
 	// convert a RGB Mat to a TSL Mat
-    // rgbmap is a mCV_F Mat
+    // rgbmap is a CV_64F Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst)
 	{
 //        clock_t t1 = clock();
@@ -29,15 +28,15 @@ namespace MHR {
 		int nRow = rgbmap.rows;
 		int nCol = rgbmap.cols;
         int nChannel = rgbmap.channels();
-//		Mat rgbmap(nRow, nCol, mCV_FC3, srcRGBmap.data);
+//		Mat rgbmap(nRow, nCol, CV_64FC3, srcRGBmap.data);
         
-        Mat rgb_sumchannels = Mat::zeros(nRow, nCol, mCV_F);
-        Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, mCV_F), Mat::zeros(nRow, nCol, mCV_F), Mat::zeros(nRow, nCol, mCV_F)};
+        Mat rgb_sumchannels = Mat::zeros(nRow, nCol, CV_64F);
+        Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F)};
         for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
                 for (int channel = 0; channel < nChannel; ++channel) {
-                    rgb_sumchannels.at<mTYPE>(i, j) += rgbmap.at<mVEC>(i, j)[channel];
-                    rgb_channel[channel].at<mTYPE>(i, j) = rgbmap.at<mVEC>(i, j)[channel];
+                    rgb_sumchannels.at<double>(i, j) += rgbmap.at<Vec3d>(i, j)[channel];
+                    rgb_channel[channel].at<double>(i, j) = rgbmap.at<Vec3d>(i, j)[channel];
                 }
 
 //        printf("rgb2tsl() - Block 0 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
@@ -45,18 +44,18 @@ namespace MHR {
 
 //        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
 //        r_primes(isnan(r_primes)) = -1/3;
-		Mat r_primes = Mat::zeros(nRow, nCol, mCV_F);
+		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(rgb_channel[0], rgb_sumchannels, r_primes);
-		r_primes = r_primes - Mat(nRow, nCol, mCV_F, cvScalar(1.0/3.0));
+		r_primes = r_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
         
 //        printf("rgb2tsl() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 //        t1 = clock();
 
 //        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
 //        g_primes(isnan(g_primes)) = -1/3;
-		Mat g_primes = Mat::zeros(nRow, nCol, mCV_F);
+		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(rgb_channel[1], rgb_sumchannels, g_primes);
-		g_primes = g_primes - Mat(nRow, nCol, mCV_F, cvScalar(1.0/3.0));
+		g_primes = g_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
         
 //        printf("rgb2tsl() - Block 2 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 //        t1 = clock();
@@ -66,30 +65,30 @@ namespace MHR {
 //        temp1(bsxfun(@lt, g_primes, 0)) = 3/4;
 //        temp2 = ones(size(g_primes));
 //        temp2(bsxfun(@eq, g_primes, 0)) = 0;
-		Mat temp1 = Mat::zeros(nRow, nCol, mCV_F);
-		Mat temp2 = Mat::ones(nRow, nCol, mCV_F);
+		Mat temp1 = Mat::zeros(nRow, nCol, CV_64F);
+		Mat temp2 = Mat::ones(nRow, nCol, CV_64F);
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
-				if (g_primes.at<mTYPE>(i, j) > 0)
+				if (g_primes.at<double>(i, j) > 0)
 				{
-					temp1.at<mTYPE>(i, j) = 1.0/4.0;
+					temp1.at<double>(i, j) = 1.0/4.0;
 				}
-				else if (g_primes.at<mTYPE>(i, j) < 0)
+				else if (g_primes.at<double>(i, j) < 0)
 				{
-					temp1.at<mTYPE>(i, j) = 3.0/4.0;
+					temp1.at<double>(i, j) = 3.0/4.0;
 				}
 				else
 				{
-					temp2.at<mTYPE>(i, j) = 0;
+					temp2.at<double>(i, j) = 0;
 				}
         
 //        printf("rgb2tsl() - Block 3 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 //        t1 = clock();
 
-        dst = Mat::zeros(nRow, nCol, mCV_FC3);
+        dst = Mat::zeros(nRow, nCol, CV_64FC3);
 //        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
-		multiply(tmp0, Mat(nRow, nCol, mCV_F, cvScalar(1.0/(2*M_PI))), tmp0);
+		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
 		multiply(tmp0, temp2, tmp0);
 		tmp0 = tmp0 + temp1;
         
@@ -99,7 +98,7 @@ namespace MHR {
 //        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
 		Mat tmp1 = powMat(r_primes, 2);
 		tmp1 = tmp1 + powMat(g_primes, 2);
-		multiply(tmp1, Mat(nRow, nCol, mCV_F, cvScalar(9.0/5.0)), tmp1);
+		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
 		pow(tmp1, 0.5, tmp1);
         
 //        printf("rgb2tsl() - Block 5 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
@@ -112,9 +111,9 @@ namespace MHR {
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
 			{
-				dst.at<mVEC>(i, j)[0] = tmp0.at<mTYPE>(i, j);
-				dst.at<mVEC>(i, j)[1] = tmp1.at<mTYPE>(i, j);
-				dst.at<mVEC>(i, j)[2] = tmp2.at<mTYPE>(i, j);
+				dst.at<Vec3d>(i, j)[0] = tmp0.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
+				dst.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
 			}
         
 //        printf("rgb2tsl() - Block 6 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
@@ -144,11 +143,11 @@ namespace MHR {
         int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
 //        printf("corrDn, (m, n) = (%d, %d)\n", m, n);
-        dst = Mat::zeros(m, n, mCV_F);
+        dst = Mat::zeros(m, n, CV_64F);
         int last_i = -1, last_j = -1;
         for (int i = 0, x = 0; x < src.rows; ++i, x += rectRow)
             for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol) {
-                dst.at<mTYPE>(i, j) = tmp.at<mTYPE>(x, y);
+                dst.at<double>(i, j) = tmp.at<double>(x, y);
                 last_i = max(last_i, i);
                 last_j = max(last_j, j);
             }
@@ -158,7 +157,7 @@ namespace MHR {
     
     
 //    // ScaleRotateTranslate
-//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, mTYPE angle)
+//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, double angle)
 //    {
 //        
 //    }
@@ -170,18 +169,18 @@ namespace MHR {
 //                  Point2d offset_pct, Point2d dest_sz)
 //    {
 //        // calculate offsets in original image
-//        mTYPE offset_h = floor(float(offset_pct.x)*dest_sz.x);
-//        mTYPE offset_v = floor(float(offset_pct.y)*dest_sz.y);
+//        double offset_h = floor(float(offset_pct.x)*dest_sz.x);
+//        double offset_v = floor(float(offset_pct.y)*dest_sz.y);
 //        // get the direction
 //        Point2d eye_direction = Point2d(eye_right.x - eye_left.x, eye_right.y - eye_left.y);
 //        // calc rotation angle in radians
-//        mTYPE rotation = -atan2(eye_direction.y, eye_direction.x);
+//        double rotation = -atan2(eye_direction.y, eye_direction.x);
 //        // distance between them
-//        mTYPE dist = sqrt(pow(eye_left.x - eye_right.x, 2) + pow(eye_left.y - eye_right.y, 2));
+//        double dist = sqrt(pow(eye_left.x - eye_right.x, 2) + pow(eye_left.y - eye_right.y, 2));
 //        // calculate the reference eye-width
-//        mTYPE reference = dest_sz.x - 2.0*offset_h;
+//        double reference = dest_sz.x - 2.0*offset_h;
 //        // scale factor
-//        mTYPE scale = dist/reference;
+//        double scale = dist/reference;
 //        // rotate original around the left eye
 //        ScaleRotateTranslate(src, dst, eye_left, rotation);
 //        //crop the rotated image

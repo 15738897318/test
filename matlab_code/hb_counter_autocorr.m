@@ -6,12 +6,15 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 	% Step 1: Calculate the window-based autocorrelation of the signal stream
 	windowStart = firstSample; %Int
 	autocorrelation = []; %Double vector
-	while windowStart <= (length(temporal_mean) - window_size)
+	last_segment_end_value = 0; %Double
+	while windowStart < length(temporal_mean)
 		% Window to calculate the autocorrelation for
-		segment = temporal_mean(windowStart : windowStart + window_size - 1); %Double vector
+		windowEnd = min(windowStart + window_size - 1, length(temporal_mean));
+		segment = temporal_mean(windowStart : windowEnd); %Double vector
 	
 		% Calculate the autocorrelation for the current window
 		local_autocorr = filter(segment - mean(segment), 1, segment - mean(segment)); %Double vector
+		local_autocorr = local_autocorr - local_autocorr(1) + last_segment_end_value;
 		
 		% Define the segment length
 		% a. Shine-step-counting style
@@ -19,7 +22,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		%[Double vector, Int vector]
 		
 		if isempty(max_peak_locs)
-			segment_length = window_size; %Int
+			segment_length = length(segment); %Int
 		else
 			[~, min_peak_locs] = findpeaks(-local_autocorr, 'MINPEAKDISTANCE', minPeakDistance); %Int vector
 			
@@ -31,28 +34,30 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		end
 		
 		% b. Equal-step progression
-		%segment_length = window_size;
+		%segment_length = length(segment);
 		
 		% Record the autocorrelation for the current window
 		autocorrelation(windowStart : windowStart + length(local_autocorr) - 1) = local_autocorr;
 		
 		% Define the start of the next window
 		windowStart = windowStart + round((1 - overlap_ratio) * segment_length);
+		last_segment_end_value = autocorrelation(windowStart - 1);
 	end
 	
 	% Step 2: perform peak-counting on the autocorrelation stream
 	windowStart = firstSample;
 	heartBeats = []; %Tx2 array: col 1 == double, col 2 == int
 	heartRates = []; %Double vector
-	while windowStart <= (length(autocorrelation) - window_size)
-		segment = autocorrelation(windowStart : windowStart + window_size - 1);
+	while windowStart < length(autocorrelation)
+		windowEnd = min(windowStart + window_size - 1, length(autocorrelation));
+		segment = autocorrelation(windowStart : windowEnd);
 	
 		[max_peak_strengths, max_peak_locs] = findpeaks(segment, 'MINPEAKDISTANCE', minPeakDistance);
 		
 		% Define the segment length
 		% a. Shine-step-counting style
 		if isempty(max_peak_locs)
-			segment_length = window_size; %Int
+			segment_length = length(segment); %Int
 			
 			heartRates(windowStart : windowStart + segment_length - 1) = zeros(1, segment_length);
 		else
@@ -68,7 +73,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		end
 		
 		% b. Equal-step progression
-		%segment_length = window_size;
+		%segment_length = length(segment);
 		
 		% Record all beats in the window, even if there are duplicates
 		heartBeats = [heartBeats; [max_peak_strengths', (windowStart - 1 + max_peak_locs)']];		

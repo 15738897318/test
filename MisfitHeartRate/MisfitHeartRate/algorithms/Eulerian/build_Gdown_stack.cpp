@@ -20,20 +20,20 @@ namespace MHR {
 	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level) {
         clock_t t1 = clock();
         
-        frameToFile(vid[0], _outputPath + "test_frame_rgb2ntsc.jpg");
-        
         // firstFrame
         Mat frame;
-        vid[0].convertTo(frame, mCV_FC3);
+        vid[0].convertTo(frame, CV_64FC3);
  
         // Blur and downsample the frame
         Mat blurred;
         blurDnClr(frame, blurred, level);
         int nRow = blurred.size.p[0], nCol = blurred.size.p[1];
 //        int nTime = endIndex - startIndex + 1;
-        
-        printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
-        frameToFile(blurred, _outputPath + "test_frame_blurred.jpg");
+
+        if (DEBUG_MODE) {
+            printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
+            frameToFile(blurred, _outputPath + "test_frame_blurred.jpg");
+        }
         
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
@@ -46,7 +46,7 @@ namespace MHR {
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
-            vid[i].convertTo(frame, mCV_FC3);
+            vid[i].convertTo(frame, CV_64FC3);
     
             // Blur and downsample the frame
             blurDnClr(frame, blurred, level);
@@ -58,6 +58,7 @@ namespace MHR {
                     GDownStack.push_back(blurred.clone());
         }
         
-        printf("build_Gdown_Stack() runtime = %lf\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+        if (DEBUG_MODE)
+            printf("build_Gdown_Stack() runtime = %lf\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 	}
 }

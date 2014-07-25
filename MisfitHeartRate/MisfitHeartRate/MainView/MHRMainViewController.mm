@@ -72,7 +72,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];  
+    [super viewDidLoad];
+    
+    setFaceParams();
+    
     _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     _videoCamera.delegate = self;
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
@@ -96,6 +99,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
     // update Layout (iOS6 vs iOS7)
     [self updateLayout];
+
+    
+//    test_openCV();
 }
 
 
@@ -103,6 +109,13 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 {
     [super viewDidDisappear:animated];
     _videoWriter.release();
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self switchCamera:self];
 }
 
 
@@ -138,7 +151,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
     _nFrames = 0;
-    _faceLabel.text = @"Recording....";
+    _faceLabel.text = [NSString stringWithFormat:@"Recording.... (keep at least %d seconds)", _minVidLength ];
     _recordTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                     target:self
                                                   selector:@selector(updateRecordTime:)
@@ -155,26 +168,33 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _startButton.enabled = YES;
     _cameraSwitch.enabled = YES;
     [self drawFaceCaptureRect:@"MHRWhiteColor"];
+    // stop camera capturing
     [_videoCamera stop];
     _videoWriter.release();
     // stop timer
     [_recordTimer invalidate];
     _recordTimer = nil;
+    _recordTime = 0;
+    [MHRUtilities setTorchModeOn:NO];
     
-    __block hrResult result(-1, -1);
     if (!_cameraSwitch.isOn)
     {
         _fingerLabel.text = @"";
     }
     _faceLabel.text = @"Processing....";
+    
+    __block hrResult result(-1, -1);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        printf("nFrames = %d\n", (int)_nFrames);
-//        result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
-//            result = run_algorithms([resourcePath UTF8String], "test0.mp4", [_outPath UTF8String]);
-//          result = run_algorithms([resourcePath UTF8String], "2014-06-10-Self-Face_crop.mp4", [outputPath UTF8String]);
+        if (DEBUG_MODE)
+            printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
+        
+        if (_nFrames >= _minVidLength*_frameRate)
+            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+        
+//        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+//        result = run_algorithms([resourcePath UTF8String], "test-15s.mp4", [_outPath UTF8String]);
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             // show result
             MHRResultViewController *resultView = [[MHRResultViewController alloc] init];
@@ -183,19 +203,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             [self.navigationController pushViewController:resultView animated:YES];
             // update UI
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self switchCamera:self];
-//            if (_cameraSwitch.isOn)
-//            {
-//                [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
-//                _faceLabel.text = FACE_MESSAGE;
-//            }
-//            else
-//            {
-//                _fingerLabel.text = FINGER_MESSAGE;
-//                _faceLabel.text = @"";
-//            }
-//            [_videoCamera start];
-//            _recordTimeLabel.text = @"0";
+//            [self switchCamera:self];
+            _recordTimeLabel.text = @"0";
         });
     });
 }
@@ -213,6 +222,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
         [_videoCamera start];
+        setFaceParams();
     }
     else
     {
@@ -224,6 +234,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         [_videoCamera stop];
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
         [_videoCamera start];
+        setFingerParams();
     }
 }
 
@@ -232,7 +243,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 {
     ++_recordTime;
     _recordTimeLabel.text = [NSString stringWithFormat:@"%i", (int)_recordTime];
-    if (_recordTime == 60)
+    if (_recordTime >= _maxVidLength)
     {
         [self stopButtonDidTap:self];
     }

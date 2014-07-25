@@ -15,7 +15,9 @@ namespace MHR {
         clock_t t1 = clock();
         
         String inFile = srcDir + "/" + fileName;
-		printf("Processing file: %s\n", inFile.c_str());
+        
+        if (DEBUG_MODE)
+            printf("Processing file: %s\n", inFile.c_str());
         
         // Get the filename-only part of the full path
 		String vidName = inFile.substr(inFile.find_last_of('/') + 1);
@@ -27,13 +29,13 @@ namespace MHR {
         + "-level-" + to_string(_eulerian_pyrLevel)
         + "-chromAtn-" + to_string(_eulerian_chromaMagnifier)
         + ".mp4";
-        printf("outFile = %s\n", outFile.c_str());
+        if (DEBUG_MODE) printf("outFile = %s\n", outFile.c_str());
         
 		// Read video
 		VideoCapture vidIn(inFile);
         if (!vidIn.isOpened())
         {
-            printf("%s is not opened!\n", inFile.c_str());
+            if (DEBUG_MODE) printf("%s is not opened!\n", inFile.c_str());
             return hrResult(-1, -1);
         }
         
@@ -48,37 +50,38 @@ namespace MHR {
         
         // Prepare the output video-writer
 //        VideoWriter vidOut(outFile, -1, frameRate, cvSize(vidWidth, vidHeight), true);
-		VideoWriter vidOut(outFile, CV_FOURCC('M','P','4','2'), frameRate, cvSize(vidWidth, vidHeight), true);
-		if (!vidOut.isOpened()) {
-			printf("outFile %s is not opened!\n", outFile.c_str());
-			return hrResult(-1, -1);
-		}
+        
+        VideoWriter vidOut(outFile, CV_FOURCC('M','P','4','2'), frameRate, cvSize(vidWidth, vidHeight), true);
+        if (!vidOut.isOpened()) {
+            if (DEBUG_MODE) printf("outFile %s is not opened!\n", outFile.c_str());
+            return hrResult(-1, -1);
+        }
         
         // Block 1: turn frames to signals
-        mTYPE threshold_fraction = 0, lower_range, upper_range;
+        double threshold_fraction = 0, lower_range, upper_range;
         int window_size = round(_window_size_in_sec * frameRate);
         int firstSample = round(frameRate * _time_lag);
         int blockCount = 0;
         bool isCalcMode = true;
         vector<Mat> monoframes, debug_monoframes, eulerianVid;
-        vector<mTYPE> temporal_mean;
+        vector<double> temporal_mean;
         Mat tmp_eulerianVid;
         
         while(1) {
             clock_t t1 = clock();
             
-            printf("len before = %d\n", (int)vid.size());
+            if (DEBUG_MODE) printf("len before = %d\n", (int)vid.size());
             bool endOfFile = false;
             if (!isCalcMode) {
             /*-----------------------------------read M frames, add to odd frames (0)-----------------------------------*/
                 endOfFile = videoCaptureToVector(vidIn, vid, _framesBlock_size);
                 len = (int)vid.size();
-                printf("len after = %d\n", len);
+                if (DEBUG_MODE) printf("len after = %d\n", len);
             }
             if (endOfFile)
                 break;
             
-            printf("load block: %d\n", ++blockCount);
+            if (DEBUG_MODE) printf("load block: %d\n", ++blockCount);
             
             /*-----------------------------------run_eulerian(): M frames (1)-----------------------------------*/
             amplifySpatialGdownTemporalIdeal(vid, eulerianVid,
@@ -99,14 +102,17 @@ namespace MHR {
             vid = newVid;
             
             /*-----------------------------------write frames to file-----------------------------------*/
-            for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
-                eulerianVid[i].convertTo(tmp_eulerianVid, CV_8UC3);
-                cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
-                vidOut << tmp_eulerianVid;
+            if (DEBUG_MODE) {
+                for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
+                    eulerianVid[i].convertTo(tmp_eulerianVid, CV_8UC3);
+                    cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
+                    vidOut << tmp_eulerianVid;
+                }
             }
             
             /*---------------------------------turn eulerianLen (1) frames to signals-----------------------------------*/
-            vector<mTYPE> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
+            
+            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
             for (int i = 0; i < eulerianLen; ++i)
@@ -114,14 +120,15 @@ namespace MHR {
             
             isCalcMode = false;
 
-            printf("block %d runtime = %f\n", blockCount, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
+            if (DEBUG_MODE)
+                printf("block %d runtime = %f\n", blockCount, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         }
         vidOut.release();
         
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
         // Low-pass-filter the signal stream to remove unwanted noises
-        vector<mTYPE> temporal_mean_filt = low_pass_filter(temporal_mean);
+        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
         
         // Block 2: Heart-rate calculation
         // - Basis takes 15secs to generate an HR estimate

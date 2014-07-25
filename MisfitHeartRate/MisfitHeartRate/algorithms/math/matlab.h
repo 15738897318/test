@@ -20,32 +20,35 @@ using namespace cv;
 
 
 namespace MHR {
-    // findpeaks in vector<mTYPE> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
-    // complexity: O(n^2), n = number of peaks
-    void findpeaks(const vector<mTYPE> &segment, mTYPE minPeakDistance, mTYPE threshold,
-                   vector<mTYPE> &max_peak_strengths, vector<int> &max_peak_locs);
+    // get mean value of a double vector
+    double mean(const vector<double> &a);
     
-    // unique_stable with vector<pair<mTYPE,int>>
-    vector<pair<mTYPE,int>> unique_stable(const vector<pair<mTYPE,int>> &arr);
+    // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
+    // complexity: O(n^2), n = number of peaks
+    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
+                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs);
+    
+    // unique_stable with vector<pair<double,int>>
+    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
 
     // conv(seg1, seg2, 'same')
-//    vector<mTYPE> conv(vector<mTYPE> signal, vector<mTYPE> kernel);
+//    vector<double> conv(vector<double> signal, vector<double> kernel);
     
-    vector<mTYPE> corr_linear(vector<mTYPE> signal, vector<mTYPE> kernel);
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel);
     
     // [counts, centres] = hist(arr, nbins)
-    void hist(const vector<mTYPE> &arr, int nbins, vector<int> &counts, vector<mTYPE> &centers);
+    void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers);
 
     // invprctile
-    mTYPE invprctile(const vector<mTYPE> &arr, mTYPE x);
+    double invprctile(const vector<double> &arr, double x);
 
     //prctile
-    mTYPE prctile(vector<mTYPE> arr, mTYPE percent);
+    double prctile(vector<double> arr, double percent);
 
     //filter function for frames2signal function
-    vector<mTYPE> low_pass_filter(vector<mTYPE> arr);
+    vector<double> low_pass_filter(vector<double> arr);
     
-    mTYPE diff_percent(mTYPE a, mTYPE b);
+    double diff_percent(double a, double b);
 }
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

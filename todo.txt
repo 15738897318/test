@@ -1,9 +1,8 @@
-- To test (read code):
-	+ hr_pda
-	+ hr_cal_autocorr
-
 - Bugs:
 	+ Eulerian output video.
+	+ Test corrDn.
+	+ frame2signal():
+		+ first_tranning_frames_start
 
 
 - Speed improve:
@@ -23,3 +22,13 @@
 	+ eulerian
 	+ temporal_mean_calc
 	+ frame2signal
+
+
+------------------------------
+Comments:
+	+ We should focus on finger for now. At least the demo should run smoothly and correctly with this mode first.
+
+Nice to have:
+	+ Will be nice to have auto start, stop for finger. E.g.: it detects when I put my finger on the camera and auto start. Same for stop. This will impress people, and Cardiio does not have this.
+	+ Less important: Use a short name, acronym for the app
+	+ Turn off display window when using finger capturing.
