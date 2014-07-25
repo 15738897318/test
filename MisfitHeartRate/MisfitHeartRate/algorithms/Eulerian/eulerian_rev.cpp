@@ -87,20 +87,9 @@ namespace MHR {
 				}
 			}
 		else {
-			for (int t = 0; t < nTime; ++t) {
-				for (int i = 0; i < nRow; ++i) {
-					for (int j = 0; j < nCol; ++j)
-						for (int channel = 0; channel < nChannels; ++channel)
-							tmp.at<double>(channel, j) = filteredStack[t].at<double>(i, j);
-					
-					tmp = alpha * tmp; // Only correct for chromAtn == 1
-					
-					for (int j = 0; j < nCol; ++j)
-						for (int channel = 0; channel < nChannels; ++channel)
-							filteredStack[t].at<double>(i, j) = tmp.at<double>(channel, j);
-					}
-				}
-        	}
+			for (int t = 0; t < nTime; ++t)
+				filteredStack[t] = multiply(filteredStack[t], alpha);
+        }
         
 		// =================
         
@@ -109,22 +98,15 @@ namespace MHR {
 		// output video
 		// Convert each frame from the filtered stream to movie frame
         Mat frame, filtered;
-        if (THREE_CHAN_MODE | DEBUG_MODE)
-        	Mat tmp_filtered = Mat::zeros(nRow, nCol, CV_64FC3);
-        else
-        	Mat tmp_filtered = Mat::zeros(nRow, nCol, CV_64F);
         	
-		if (THREE_CHAN_MODE | DEBUG_MODE) {
+		if (THREE_CHAN_MODE | DEBUG_MODE) {		
 			for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
             	// Reconstruct the frame from pyramid stack
 				// by removing the singleton dimensions of the kth filtered array
 				// since the filtered stack is just a selected level of the Gaussian pyramid
-				for (int x = 0; x < nRow; ++x)
-					for (int y = 0; y < nCol; ++y)
-						tmp_filtered.at<Vec3d>(x, y) = filteredStack[k].at<Vec3d>(x, y);
 			
 				// Format the image to the right size
-				resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
+				resize(filteredStack[k], filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
 			
 				// Convert the ith frame in the video stream to RGB (double-precision) image
 				vid[i].convertTo(frame, CV_64FC3);
@@ -143,18 +125,16 @@ namespace MHR {
 							filtered.at<Vec3d>(i, j)[channel] = tmp;
 						}
 					} 
-				} 
+			}
+		} 
         else {
             for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
             	// Reconstruct the frame from pyramid stack
 				// by removing the singleton dimensions of the kth filtered array
 				// since the filtered stack is just a selected level of the Gaussian pyramid
-				for (int x = 0; x < nRow; ++x)
-					for (int y = 0; y < nCol; ++y)
-						tmp_filtered.at<double>(x, y) = filteredStack[k].at<double>(x, y);
 			
 				// Format the image to the right size
-				resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
+				resize(filteredStack[k], filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
 			
 				// Convert the ith frame in the video stream to RGB (double-precision) image
 				vid[i].convertTo(frame, CV_64F);
@@ -164,16 +144,13 @@ namespace MHR {
             	
 				for (int i = 0; i < vidHeight; ++i)
 					for (int j = 0; j < vidWidth; ++j) {
-						for (int channel = 0; channel < nChannels; ++channel) {
-							double tmp = filtered.at<double>(i, j);
-							
-							tmp = min(tmp, 255.0);
-							tmp = max(tmp, 0.0);
-							
-							filtered.at<double>(i, j) = tmp;
-						}
-					}
-            	}
+						double tmp = filtered.at<double>(i, j);
+						
+						tmp = min(tmp, 255.0);
+						tmp = max(tmp, 0.0);
+						
+						filtered.at<double>(i, j) = tmp;
+            		}
             }
             ans.push_back(filtered.clone());
 		}

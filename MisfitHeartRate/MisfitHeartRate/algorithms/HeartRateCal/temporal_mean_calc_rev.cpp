@@ -57,10 +57,9 @@ namespace MHR {
 			
 				// Put the frame into the video stream
 				monoframes.push_back(tmp_monoframe.clone());
-				}
 			}
-        else
-        	{
+		}
+        else {
         	for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
 				vid[i].convertTo(frame, CV_64F);
 			
@@ -70,7 +69,7 @@ namespace MHR {
 				// Put the frame into the video stream
 				monoframes.push_back(tmp_monoframe.clone());
 				}
-        	}
+        }
         
         if (DEBUG_MODE)
             printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
