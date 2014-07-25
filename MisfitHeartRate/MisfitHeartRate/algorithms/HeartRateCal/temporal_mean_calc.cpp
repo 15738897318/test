@@ -28,35 +28,47 @@ namespace MHR {
         
         // Define the indices of the frames to be processed
         int startIndex = 0;     // 400
-        int endIndex = len-1;   // 1400
+        int endIndex = len;   // 1400
         
         // Convert colourspaces for each frame
         Mat filt = _frame_downsampling_filt.clone();
         Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
         Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
         vector<Mat> monoframes;
-
-        for (int i = startIndex, k = 0; i <= endIndex; ++i, ++k)
-        {
-            vid[i].convertTo(frame, CV_64FC3);
-            if (colourspace == "hsv")
-                cvtColor(frame, frame, CV_RGB2HSV);
-            else if (colourspace == "ycbcr")
-                cvtColor(frame, frame, CV_RGB2YCrCb);
-            else if (colourspace == "tsl")
-                rgb2tsl(frame, frame);
-            
-            // Extract the right channel from the colour frame
-            // if only 1 channel ---> don't use monoframe.
-            for (int x = 0; x < vidHeight; ++x)
-                for (int y = 0; y < vidWidth; ++y)
-                    monoframe.at<double>(x, y) = frame.at<Vec3d>(x, y)[colour_channel];
+        
+        if (THREE_CHAN_MODE) {
+			for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+				vid[i].convertTo(frame, CV_64FC3);
+				if (colourspace == "hsv")
+					cvtColor(frame, frame, CV_RGB2HSV);
+				else if (colourspace == "ycbcr")
+					cvtColor(frame, frame, CV_RGB2YCrCb);
+				else if (colourspace == "tsl")
+					rgb2tsl(frame, frame);
 			
-			// Downsample the frame for ease of computation
-            corrDn(monoframe, tmp_monoframe, filt, 4, 4);
+				// Extract the right channel from the colour frame
+				// if only 1 channel ---> don't use monoframe.
+				for (int x = 0; x < vidHeight; ++x)
+					for (int y = 0; y < vidWidth; ++y)
+						monoframe.at<double>(x, y) = frame.at<Vec3d>(x, y)[colour_channel];
 			
-			// Put the frame into the video stream
-            monoframes.push_back(tmp_monoframe.clone());
+				// Downsample the frame for ease of computation
+				corrDn(monoframe, tmp_monoframe, filt, 4, 4);
+			
+				// Put the frame into the video stream
+				monoframes.push_back(tmp_monoframe.clone());
+			}
+		}
+        else {
+        	for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+				vid[i].convertTo(frame, CV_64F);
+			
+				// Downsample the frame for ease of computation
+				corrDn(frame, tmp_monoframe, filt, 4, 4);
+			
+				// Put the frame into the video stream
+				monoframes.push_back(tmp_monoframe.clone());
+            }
         }
         
         if (DEBUG_MODE)

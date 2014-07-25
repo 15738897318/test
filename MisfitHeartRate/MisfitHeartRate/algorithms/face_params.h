@@ -43,7 +43,7 @@ namespace MHR {
     const double _face_max_bpm = 200;             // BPM
     const double _face_cutoff_freq = 2.5;         // Hz
     const double _face_time_lag = 3;              // seconds
-    const String _face_colourspace = "tsl";
+    const String _face_colourspace = "rgb";
     const int _face_channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
     const int _face_number_of_bins_heartRate = 5;
     

@@ -17,6 +17,22 @@ namespace MHR {
 //        cvtColor(tmp, tmp, CV_RGB2BGR);
         return imwrite(outFile, frame);
     }
+    
+
+    void frameChannelToFile(const Mat& frame, const String& outFile, int channel)
+    {
+        printf("Write frame[%d] to file %s\n", channel, outFile.c_str());
+        FILE *file = fopen(outFile.c_str(), "w");
+        for (int i = 0; i < frame.rows; ++i) {
+            for (int j = 0; j < frame.cols; ++j)
+                if (THREE_CHAN_MODE)
+                    fprintf(file, "%lf, ", frame.at<Vec3d>(i, j)[channel]);
+                else
+                    fprintf(file, "%lf, ", frame.at<double>(i, j));
+            fprintf(file, "\n");
+        }
+        fclose(file);
+    }
 
 
 	// convert a RGB Mat to a TSL Mat

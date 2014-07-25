@@ -11,6 +11,7 @@
 
 #include "config.h"
 #include "matlab.h"
+#include "image.h"
 
 using namespace cv;
 using namespace std;

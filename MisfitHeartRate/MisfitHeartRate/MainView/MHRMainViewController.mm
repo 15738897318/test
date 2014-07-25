@@ -189,11 +189,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         if (DEBUG_MODE)
             printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
         
-        if (_nFrames >= _minVidLength*_frameRate)
-            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+//        if (_nFrames >= _minVidLength*_frameRate)
+//            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
         
-//        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//        result = run_algorithms([resourcePath UTF8String], "test-15s.mp4", [_outPath UTF8String]);
+        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+        result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // show result

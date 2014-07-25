@@ -20,13 +20,13 @@ namespace MHR {
     
     
     // import data from a array to a Mat
-//    Mat arrayToMat(const double *a, int rows, int cols) {
-//		Mat ans = Mat::zeros(rows, cols, CV_64F);
-//        for (int i = 0; i < rows; ++i)
-//            for (int j = 0; j < cols; ++j)
-//                ans.at<double>(i, j) = a[i*cols + j];
-//        return ans;
-//    }
+    Mat arrayToMat(const double a[], int rows, int cols) {
+		Mat ans = Mat::zeros(rows, cols, CV_64F);
+        for (int i = 0; i < rows; ++i)
+            for (int j = 0; j < cols; ++j)
+                ans.at<double>(i, j) = a[i*cols + j];
+        return ans;
+    }
     
     
     // vector to Mat
@@ -59,7 +59,25 @@ namespace MHR {
                 return (c == old_c+1);
             
             cvtColor(frame, frame, CV_BGR2RGB);
-            dst.push_back(frame.clone());
+            
+            if (THREE_CHAN_MODE)
+            	dst.push_back(frame.clone());
+            else {
+				/*-----------------if using 1-chan mode, then do the colour conversion here (0)-----------------*/
+				frame.convertTo(frame, CV_64FC3);
+				if (_colourspace == "hsv")
+					cvtColor(frame, frame, CV_RGB2HSV);
+				else if (_colourspace == "ycbcr")
+					cvtColor(frame, frame, CV_RGB2YCrCb);
+//				else if (_colourspace == "tsl")
+//					rgb2tsl(frame, frame);
+				
+				Mat tmp = Mat::zeros(frame.rows, frame.cols, CV_64F);
+				for (int i = 0; i < frame.rows; ++i)
+					for (int j = 0; j < frame.cols; ++j)
+						tmp.at<double>(i, j) = frame.at<Vec3d>(i, j)[_channels_to_process];
+				dst.push_back(tmp.clone());
+            }
         }
         return false;
     }
@@ -110,7 +128,7 @@ namespace MHR {
 	Mat multiply(const Mat &a, double x)
 	{
 		Mat ans = Mat::zeros(a.rows, a.cols, a.type());
-		multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
+        multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
 		return ans;
 	}
     
