@@ -59,12 +59,14 @@ namespace MHR {
 //        filter_bandpassing(GdownStack, filteredStack);
 		if (DEBUG_MODE) printf("Finished\n");
         
+        if (DEBUG_MODE)
+            frameChannelToFile(filteredStack[0], _outputPath + "3_filteredStack[0]_ideal_bandpassed.txt", _channels_to_process);
         
 		// amplify
         int nTime = (int)filteredStack.size();
         int nRow = filteredStack[0].rows;
         int nCol = filteredStack[0].cols;
-        if (THREE_CHAN_MODE | DEBUG_MODE) {
+        if (THREE_CHAN_MODE) {
 			Mat base_B = (Mat_<double>(3, 3) <<
 						  alpha, 0, 0,
 						  0, alpha*chromAttenuation, 0,
@@ -88,11 +90,15 @@ namespace MHR {
         }
 		else {
 			for (int t = 0; t < nTime; ++t)
-				filteredStack[t] = multiply(filteredStack[t], alpha);
+//				filteredStack[t] = multiply(filteredStack[t], alpha);
+                
+                for (int i = 0; i < nRow; ++i)
+                    for (int j = 0; j < nCol; ++j)
+                        filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);
         }
         
         if (DEBUG_MODE)
-            frameChannelToFile(filteredStack[0], _outputPath + "filteredStack[0]_ideal_bandpassing.txt", _channels_to_process);
+            frameChannelToFile(filteredStack[0], _outputPath + "4_filteredStack[0]_amplified.txt", _channels_to_process);
         
 		// =================
         
@@ -195,7 +201,7 @@ namespace MHR {
 
         if (DEBUG_MODE) {
             printf("eulerianGaussianPyramidMagnification() time = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
-            frameChannelToFile(ans[0], _outputPath + "ans[0]_eulerianGaussianPyramidMagnification.txt", _channels_to_process);
+            frameChannelToFile(ans[0], _outputPath + "5_ans[0]_eulerianGaussianPyramidMagnification.txt", _channels_to_process);
         }
 	}
 }

@@ -76,6 +76,16 @@ namespace MHR {
             lastSegmentEndVal = autocorrelation[windowStart - 1];
         }
         
+        if (DEBUG_MODE) {
+            const String outFile = _outputPath + "6_autocorrelation.txt";
+            
+            printf("Write autocorrelation to file %s\n", outFile.c_str());
+            FILE *file = fopen(outFile.c_str(), "w");
+            for (int i = 0; i < autocorrelation.size(); ++i)
+                fprintf(file, "%lf, ", autocorrelation[i]);
+            fclose(file);
+        }
+        
         // Step 2: perform peak-counting on the autocorrelation stream
         windowStart = firstSample;
         vector<pair<double, int>> heartBeats;

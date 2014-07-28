@@ -128,7 +128,7 @@ namespace MHR {
 	Mat multiply(const Mat &a, double x)
 	{
 		Mat ans = Mat::zeros(a.rows, a.cols, a.type());
-        multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans);
+        multiply(a, Mat(a.rows, a.cols, CV_64F, x), ans, 1, -1);
 		return ans;
 	}
     
