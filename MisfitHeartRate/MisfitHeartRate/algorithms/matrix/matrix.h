@@ -62,6 +62,8 @@ namespace MHR {
     int readInt(FILE* &file);
     
     double readDouble(FILE* &file);
+    
+    void writeVector(const vector<double>& src, const String& outFile, bool append = false);
 }
 
 #endif /* defined(__MisfitHeartRate__matrix__) */

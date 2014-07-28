@@ -167,4 +167,20 @@ namespace MHR {
         fscanf(file, "%lf", &value);
         return value;
     }
+    
+    
+    void writeVector(const vector<double>& src, const String& outFile, bool append)
+    {
+        printf("Write vector to file %s\n", outFile.c_str());
+        FILE *file;
+        if (append) file = fopen(outFile.c_str(), "a");
+        else file = fopen(outFile.c_str(), "w");
+        int n = (int)src.size();
+        fprintf(file, "\n");
+        fprintf(file, "size = %d\n", n);
+        for (int i = 0; i < n; ++i)
+            fprintf(file, "%lf, ", src[i]);
+        fprintf(file, "\n");
+        fclose(file);
+    }
 }

@@ -18,6 +18,7 @@ namespace MHR {
         int windowStart = firstSample;
         vector<double> autocorrelation;
         double lastSegmentEndVal = 0;
+        bool isFirstSegment = true;
 
         while(windowStart < (int)temporal_mean.size() - 1){
             
@@ -69,21 +70,28 @@ namespace MHR {
             // b. Equal-step progression
             // segment_length = window_size
             
-            for(int i=0; i<(int)local_autocorr.size(); ++i) autocorrelation.push_back(local_autocorr[i]);
+            // c. autocorrelation
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            if (isFirstSegment) {
+                for (int i = 0; i < windowStart-1; ++i)
+                    autocorrelation.push_back(0);
+                isFirstSegment = false;
+            }
+            for(int i = 0, sz = min((int)local_autocorr.size(), windowUpdate); i < sz; ++i)
+                autocorrelation.push_back(local_autocorr[i]);
 
             // Define the start of the next window
-            windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
-            lastSegmentEndVal = autocorrelation[windowStart - 1];
+            windowStart = windowStart + windowUpdate;
+            lastSegmentEndVal = autocorrelation[(int)autocorrelation.size() - 1];
         }
         
         if (DEBUG_MODE) {
-            const String outFile = _outputPath + "6_autocorrelation.txt";
-            
-            printf("Write autocorrelation to file %s\n", outFile.c_str());
-            FILE *file = fopen(outFile.c_str(), "w");
-            for (int i = 0; i < autocorrelation.size(); ++i)
-                fprintf(file, "%lf, ", autocorrelation[i]);
+            String path = _outputPath + "6_autocorrelation.txt";
+            FILE *file = fopen(path.c_str(), "w");
+            fprintf(file, "fr = %lf\nfirstSample = %d\nwindow_size = %d\n", fr, firstSample, window_size);
+            fprintf(file, "overlap_ratio = %lf\nminPeakDistance = %lf\n", overlap_ratio, minPeakDistance);
             fclose(file);
+            writeVector(autocorrelation, _outputPath + "6_autocorrelation.txt", true);
         }
         
         // Step 2: perform peak-counting on the autocorrelation stream
@@ -128,11 +136,12 @@ namespace MHR {
                 heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
             
             // Calculate the HR for this window
-            
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
             double rate = (double) max_peak_locs.size() / segment_length * fr;
-            for(int i=windowStart; i<windowStart+segment_length; ++i) heartRates.push_back(rate);
+            for(int i = windowStart; i < windowStart+windowUpdate; ++i)
+                heartRates.push_back(rate);
             
-            windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            windowStart = windowStart + windowUpdate;
             
         }
         

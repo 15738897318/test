@@ -47,7 +47,7 @@ namespace MHR {
                     segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
                                       + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
                 }
-
+                for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
             }
             
             // b. Equal_step progression
@@ -58,12 +58,12 @@ namespace MHR {
                 heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
         
             // Calculate the HR for this window
-            
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
             double rate = (double) max_peak_locs.size() / segment_length * fr;
-            for(int i=windowStart; i<windowStart+segment_length; ++i) heartRates.push_back(rate);
+            for(int i = windowStart; i < windowStart+windowUpdate; ++i)
+                heartRates.push_back(rate);
             
-            windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
-            
+            windowStart = windowStart + windowUpdate;
         }
         
         //Prune the beats counted to include only unique ones
