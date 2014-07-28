@@ -16,7 +16,7 @@ using namespace cv;
 
 const double EPSILON = 1e-4;
 const double EPSILON_PERCENT = 2.8;
-String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/2926CAAB-4B49-49FE-903E-82908E53D35A/MisfitHeartRate.app/";
+String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/7CD329BE-D62D-4B46-BBCB-7512C37724D4/Pulsar.app/";
 
 
 @interface MisfitHeartRateTests : XCTestCase
@@ -50,6 +50,43 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     {
         XCTFail(@"File %@ is not exists!", filePath);
     }
+}
+
+
+- (void)testOpenCV
+{
+    int n = 10, m = 10;
+    Mat a = Mat::zeros(n, m, CV_8U);
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < m; ++j)
+            a.at<unsigned char>(i, j) = ((i+100)*(j+100))%256;
+    
+    
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j)
+            printf("%d, ", a.at<unsigned char>(i, j));
+        printf("\n");
+    }
+    printf("\n");
+    
+    Mat b;
+    a.convertTo(b, CV_64F);
+    
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j)
+            printf("%lf, ", b.at<double>(i, j));
+        printf("\n");
+    }
+    printf("\n");
+    
+    
+    b.convertTo(b, CV_32F);
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j)
+            printf("%lf, ", b.at<float>(i, j));
+        printf("\n");
+    }
+    printf("\n");
 }
 
 
@@ -675,41 +712,76 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 
 - (void)test_hb_counter_autocorr
 {
-    vector<double> input;
-    for(double x=0; x<=100; x+=0.01)
-        input.push_back(sin(x*acos(-1)));
+//    vector<double> input;
+//    for(double x=0; x<=100; x+=0.01)
+//        input.push_back(sin(x*acos(-1)));
+//    
+//    int length = (int)input.size();
+//    printf("input.size() = %d\n", length);
+//    for (int i = 0; i < length; ++i)
+//        printf("%lf, ", input[i]);
+//    printf("\n\n");
+//
+//    vector<double> strengths;
+//    vector<int> locs;
+//    findpeaks(input, 0, 0, strengths, locs);
+//    printf("strengths.size() = %d\n",(int)strengths.size());
+//
+//    hrDebug debug;
+//    vector<int> locations = hb_counter_autocorr(input, 30.0, 0, 100, 0.0, 0.0, debug);
+//    printf("hb_counter_autocorr locations:\n");
+//    for (int i = 0; i < (int)locations.size(); ++i)
+//        printf("%d\n", locations[i]);
+//    printf("\n\n");
+//    printf("debug.heartBeats.size() = %d\n", (int)debug.heartBeats.size());
+//    printf("debug.heartRates.size() = %d\n", (int)debug.heartRates.size());
+//    printf("debug.autocorrelation.size() = %d\n", (int)debug.autocorrelation.size());
+
+    FILE *file = fopen(String(resourcePath + "hb_counter_autocorr_test.in").c_str(), "r");
+    int n = readInt(file);
+    vector<double> temporal_mean;
+    for (int i = 0; i < n; ++i) {
+        double x = readDouble(file);
+        temporal_mean.push_back(x);
+//        printf("%lf\n", x);
+    }
+    double frameRate = readDouble(file);
+    int firstSample = readInt(file);
+    int window_size = readInt(file);
+    double overlap_ratio = readDouble(file);
+    double minPeakDistance = readDouble(file);
+//    double threshold = readDouble(file);
+    fclose(file);
     
-    int length = (int)input.size();
-    printf("input.size() = %d\n", length);
-    for (int i = 0; i < length; ++i)
-        printf("%lf, ", input[i]);
-    printf("\n\n");
-
-    vector<double> strengths;
-    vector<int> locs;
-    findpeaks(input, 0, 0, strengths, locs);
-    printf("strengths.size() = %d\n",(int)strengths.size());
-
     hrDebug debug;
-    vector<int> locations = hb_counter_autocorr(input, 30.0, 0, 100, 0.0, 0.0, debug);
-    printf("hb_counter_autocorr locations:\n");
-    for (int i = 0; i < (int)locations.size(); ++i)
-        printf("%d\n", locations[i]);
-    printf("\n\n");
-    printf("debug.heartBeats.size() = %d\n", (int)debug.heartBeats.size());
-    printf("debug.heartRates.size() = %d\n", (int)debug.heartRates.size());
-    printf("debug.autocorrelation.size() = %d\n", (int)debug.autocorrelation.size());
-
-//    if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
-//    {
-//        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
+    vector<int> output = hb_counter_autocorr(temporal_mean, frameRate, firstSample, window_size,
+                                             overlap_ratio, minPeakDistance, debug);
+    n = output.size();
+    
+//    file = fopen(String(resourcePath + "hb_counter_autocorr_test.out").c_str(), "r");
+//    int m = readInt(file);
+//    if (m != n) {
+//        XCTFail(@"wrong output.size() - expected: %d, found: %d", m, n);
+//        fclose(file);
 //        return;
 //    }
-//
-//    printf("\n\nautocorrelation:\n");
-//    for (int i = 0; i < (int)debug.autocorrelation.size(); ++i)
-//        printf("%lf, ", debug.autocorrelation[i]);
-//    printf("\n\n");
+//    
+//    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
+//    for (int i = 0; i < n; ++i)
+//    {
+//        double correct_ans = readDouble(file);
+//        double ans = output[i];
+//        double tmp = diff_percent(ans, correct_ans);
+//        if (tmp > max_percent)
+//        {
+//            max_percent = tmp;
+//            max_correct_ans = correct_ans;
+//            max_ans = ans;
+//        }
+//    }
+//    fclose(file);
+//    if (max_percent > EPSILON_PERCENT)
+//        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
 }
 
 
@@ -788,6 +860,38 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 //    fclose(file);
 //    if (max_percent > EPSILON_PERCENT)
 //        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
+}
+
+
+- (void)test_amplify
+{
+    int n = 10;
+    double a[] = {
+        0.1622,    0.4505,    0.1067,    0.4314,    0.8530,    0.4173,    0.7803,    0.2348,    0.5470,    0.9294,
+        0.7943,    0.0838,    0.9619,    0.9106,    0.6221,    0.0497,    0.3897,    0.3532,    0.2963,    0.7757,
+        0.3112,    0.2290,    0.0046,    0.1818,    0.3510,    0.9027,    0.2417,    0.8212,    0.7447,    0.4868
+    };
+    
+    
+    // amplify
+    double alpha = 50;
+    double chromAttenuation = 1;
+    Mat base_B = (Mat_<double>(3, 3) <<
+                  alpha, 0, 0,
+                  0, alpha*chromAttenuation, 0,
+                  0, 0, alpha*chromAttenuation);
+    Mat base_C = (ntsc2rgb_baseMat * base_B) * rgb2ntsc_baseMat;
+    Mat tmp = Mat::zeros(3, n, CV_64F);
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < n; ++j)
+            tmp.at<double>(i ,j) = a[i*n + j];
+    tmp = base_C * tmp;
+    
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < n; ++j)
+            printf("%lf, ", tmp.at<double>(i ,j));
+        printf("\n");
+    }
 }
 
 

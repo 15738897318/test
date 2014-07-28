@@ -66,10 +66,10 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
     disp('Finished')
     
     %% amplify
-    filtered_stack = permute(filtered_stack, [1, 4, 2, 3]);
+    filtered_stack = permute(filtered_stack, [1, 4, 2, 3]);     % TxCxMxN
     for i = 1 : size(filtered_stack, 3)
     	for j = 1 : size(filtered_stack, 4)
-    		temp_array = squeeze(filtered_stack(:, :, i, j));
+    		temp_array = squeeze(filtered_stack(:, :, i, j));     % TxC
     		
     		temp_array = temp_array * C_matrix';
     		
@@ -94,37 +94,37 @@ function eulerianGaussianPyramidMagnification(vidFile, outDir, ...
         k = k + 1;
         
         if k <= size(filtered_stack, 1)
-			% Reconstruct the frame from pyramid stack		
-			% by removing the singleton dimensions of the kth filtered array
-			% since the filtered stack is just a selected level of the Gaussian pyramid
-			filtered = squeeze(filtered_stack(k, :, :, :));
-		
-			% Format the image to the right size
-			filtered = imresize(filtered, [vidHeight vidWidth]); %Bicubic interpolation
-		
-			% Extract the ith frame in the video stream
-			temp.cdata = read(vid, i);
-			% Convert the extracted frame to RGB image
-			[rgbframe, ~] = frame2im(temp);
-			% Convert the RGB image to double-precision image
-			rgbframe = im2double(rgbframe);
-			
-			frame = rgbframe;
-			% Add the filtered frame to the original frame
-			filtered = filtered + frame;
-		
-			% Convert the colour-space from NTSC back to RGB
-			frame = filtered;
-			
-			% Clip the values of the frame by 0 and 1
-			frame(frame > 1) = 1;
-			frame(frame < 0) = 0;
-		
-			% Write the frame into the video as unsigned 8-bit integer array
-			writeVideo(vidOut, im2uint8(frame));
-		else
-			break;
-		end
+            % Reconstruct the frame from pyramid stack		
+            % by removing the singleton dimensions of the kth filtered array
+            % since the filtered stack is just a selected level of the Gaussian pyramid
+            filtered = squeeze(filtered_stack(k, :, :, :));
+
+            % Format the image to the right size
+            filtered = imresize(filtered, [vidHeight vidWidth]); %Bicubic interpolation
+
+            % Extract the ith frame in the video stream
+            temp.cdata = read(vid, i);
+            % Convert the extracted frame to RGB image
+            [rgbframe, ~] = frame2im(temp);
+            % Convert the RGB image to double-precision image
+            rgbframe = im2double(rgbframe);
+
+            frame = rgbframe;
+            % Add the filtered frame to the original frame
+            filtered = filtered + frame;
+
+            % Convert the colour-space from NTSC back to RGB
+            frame = filtered;
+
+            % Clip the values of the frame by 0 and 1
+            frame(frame > 1) = 1;
+            frame(frame < 0) = 0;
+
+            % Write the frame into the video as unsigned 8-bit integer array
+            writeVideo(vidOut, im2uint8(frame));
+        else
+        	break;
+        end
     end
 
     disp('Finished')

@@ -14,7 +14,7 @@ namespace MHR {
                        double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug)
     {
         //Perform peak counting for each window
-        int windowStart = firstSample;
+        int windowStart = firstSample - 1;
         
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
@@ -75,7 +75,7 @@ namespace MHR {
         if(!heartBeats.empty()){
             //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
             int cnt=0;
-            for(int i=firstSample; i<(int)temporal_mean.size(); ++i)
+            for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
                 if(temporal_mean[i] != NaN) ++cnt;
             if(cnt==0) avg_hr = 0;
             else

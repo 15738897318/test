@@ -22,7 +22,7 @@ namespace MHR {
         ans.clear();        
 		// Extract video info
 		int vidHeight = vid[0].rows;
-		int vidWidth = vid[1].cols;
+		int vidWidth = vid[0].cols;
 		int nChannels = _number_of_channels;		// should get from vid?
 		int frameRate = _frameRate;             // Can not get it from vidIn!!!! :((
 		int len = (int)vid.size();
@@ -91,7 +91,6 @@ namespace MHR {
 		else {
 			for (int t = 0; t < nTime; ++t)
 //				filteredStack[t] = multiply(filteredStack[t], alpha);
-                
                 for (int i = 0; i < nRow; ++i)
                     for (int j = 0; j < nCol; ++j)
                         filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);

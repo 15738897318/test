@@ -16,12 +16,24 @@ namespace MHR {
     {
         Mat frame;
         int c = (int)dst.size(), old_c = c;
+        bool first = true;
+        
         while(nFrames == -1 || c++ < nFrames) {
             src >> frame;
             if (frame.empty())
                 return (c == old_c+1);
             
             cvtColor(frame, frame, CV_BGR2RGB);
+            
+            
+            if (DEBUG_MODE > 0 && first) {
+                Mat tmp;
+                frame.convertTo(tmp, CV_64FC3);
+                frameChannelToFile(tmp, _outputPath + "0_frame[0]_videoCaptureToVector.txt", 0);
+                frameChannelToFile(tmp, _outputPath + "0_frame[1]_videoCaptureToVector.txt", 1);
+                frameChannelToFile(tmp, _outputPath + "0_frame[2]_videoCaptureToVector.txt", 2);
+                first = false;
+            }
             
             if (THREE_CHAN_MODE)
             	dst.push_back(frame.clone());
@@ -42,6 +54,10 @@ namespace MHR {
 				dst.push_back(tmp.clone());
             }
         }
+
+        
+        
+        
         return false;
     }
     

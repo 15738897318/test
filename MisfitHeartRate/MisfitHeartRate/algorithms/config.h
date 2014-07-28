@@ -22,11 +22,12 @@ namespace MHR {
 #else
     const int DEBUG_MODE = 0;
 #endif
-    const int THREE_CHAN_MODE = 0;
-    const int WRITE_EULERIAN_VID_MODE = 0;
+    const int THREE_CHAN_MODE = 1;
+    const int WRITE_EULERIAN_VID_MODE = 1;
 
     
-    const String _outputPath = "/var/mobile/Applications/8548E62D-F908-4C34-8761-490FC5A04E8D/Documents/";
+    const String _outputPath = "/var/mobile/Applications/41B73EF8-1D00-401D-8F78-F5B4D5A9C398/Documents/";
+//    const String _outputPath = "/var/mobile/Applications/8548E62D-F908-4C34-8761-490FC5A04E8D/Documents/";
     
     const double NaN = -1e9;
     
