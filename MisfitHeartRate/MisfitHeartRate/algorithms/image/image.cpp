@@ -10,31 +10,6 @@
 
 
 namespace MHR {
-    // print a frame to file
-    bool frameToFile(const Mat& frame, const String& outFile)
-    {
-//        Mat tmp = frame.clone();
-//        cvtColor(tmp, tmp, CV_RGB2BGR);
-        return imwrite(outFile, frame);
-    }
-    
-
-    void frameChannelToFile(const Mat& frame, const String& outFile, int channel)
-    {
-        printf("Write frame[%d] to file %s\n", channel, outFile.c_str());
-        FILE *file = fopen(outFile.c_str(), "w");
-        for (int i = 0; i < frame.rows; ++i) {
-            for (int j = 0; j < frame.cols; ++j)
-                if (THREE_CHAN_MODE)
-                    fprintf(file, "%lf, ", frame.at<Vec3d>(i, j)[channel]);
-                else
-                    fprintf(file, "%lf, ", frame.at<double>(i, j));
-            fprintf(file, "\n");
-        }
-        fclose(file);
-    }
-
-
 	// convert a RGB Mat to a TSL Mat
     // rgbmap is a CV_64F Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst)
@@ -167,8 +142,9 @@ namespace MHR {
                 last_i = max(last_i, i);
                 last_j = max(last_j, j);
             }
-        if (last_i+1 != m && last_j+1 != n)
-            printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
+        if (DEBUG_MODE)
+            if (last_i+1 != m && last_j+1 != n)
+                printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
     }
     
     

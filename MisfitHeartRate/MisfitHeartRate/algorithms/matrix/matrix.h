@@ -33,10 +33,6 @@ namespace MHR {
     
     // data from Mat to vector 1D
     vector<double> matToVector1D(const Mat &m);
-    
-    // read frames from a VideoCapture to a vector<Mat>
-    // return true if endOfFile
-    bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames = -1);
 	
 	// atan2 of 2 Mats which have same size
 	// default intput/output type is double - CV_64F
@@ -54,16 +50,6 @@ namespace MHR {
 	
 	// return mat .* x
 	Mat multiply(const Mat &a, double x);
-    
-    Mat read2DMatFromFile(FILE* &file, int rows, int cols);
-    
-    vector<double> readVectorFromFile(FILE* &file, int n);
-
-    int readInt(FILE* &file);
-    
-    double readDouble(FILE* &file);
-    
-    void writeVector(const vector<double>& src, const String& outFile, bool append = false);
 }
 
 #endif /* defined(__MisfitHeartRate__matrix__) */

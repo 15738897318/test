@@ -15,6 +15,7 @@
 		DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */; };
 		DC1D666C197D011A00A55980 /* corr_linear_test_1.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666A197D011A00A55980 /* corr_linear_test_1.in */; };
 		DC1D666D197D011A00A55980 /* corr_linear_test_1.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666B197D011A00A55980 /* corr_linear_test_1.out */; };
+		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
 		DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */; };
 		DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */; };
 		DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C919790E16003E0FF5 /* hr_calculator_test.in */; };
@@ -206,6 +207,8 @@
 		DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.out; path = MisfitHeartRateTests/hr_signal_calc_test.out; sourceTree = SOURCE_ROOT; };
 		DC1D666A197D011A00A55980 /* corr_linear_test_1.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.in; path = MisfitHeartRateTests/corr_linear_test_1.in; sourceTree = SOURCE_ROOT; };
 		DC1D666B197D011A00A55980 /* corr_linear_test_1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.out; path = MisfitHeartRateTests/corr_linear_test_1.out; sourceTree = SOURCE_ROOT; };
+		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
+		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
 		DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.in; path = MisfitHeartRateTests/corr_linear_test.in; sourceTree = SOURCE_ROOT; };
 		DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.out; path = MisfitHeartRateTests/corr_linear_test.out; sourceTree = SOURCE_ROOT; };
 		DC5351C919790E16003E0FF5 /* hr_calculator_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.in; path = MisfitHeartRateTests/hr_calculator_test.in; sourceTree = SOURCE_ROOT; };
@@ -367,6 +370,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC23396F19863C5800D5F520 /* files */ = {
+			isa = PBXGroup;
+			children = (
+				DC23397119863C8500D5F520 /* files.h */,
+				DC23397019863C8500D5F520 /* files.cpp */,
+			);
+			name = files;
+			sourceTree = "<group>";
+		};
 		DCADC189196BA7A700AFCDE5 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +398,7 @@
 				DCAE6BA6195A794800B9FE9F /* math */,
 				DCAE6BA5195A791B00B9FE9F /* image */,
 				DCAE6BA0195A789800B9FE9F /* matrix */,
+				DC23396F19863C5800D5F520 /* files */,
 				12B587EB19651DD700BA19A5 /* config.h */,
 				DC9D58C6197FB062002C6BB8 /* config.cpp */,
 				DC9D58CF197FB166002C6BB8 /* face_params.h */,
@@ -852,6 +865,7 @@
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
+				DC23397219863C8500D5F520 /* files.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,
