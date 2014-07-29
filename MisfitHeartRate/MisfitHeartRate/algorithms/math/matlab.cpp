@@ -65,14 +65,16 @@ namespace MHR {
     }
 
     
-    vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean) {
         int m = (int)signal.size(), n = (int)kernel.size();
         
         // -meanValue
-        double meanValue = mean(signal);
-        for (int i = 0; i < m; ++i) signal[i] -= meanValue;
-        meanValue = mean(kernel);
-        for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
+        if (subtractMean) {
+            double meanValue = mean(signal);
+            for (int i = 0; i < m; ++i) signal[i] -= meanValue;
+            meanValue = mean(kernel);
+            for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
+        }
 
         // padding of zeors
         for(int i = m; i < m+n-1; i++) signal.push_back(0);
@@ -89,10 +91,14 @@ namespace MHR {
         
         for (int i = 0; i < n-1; ++i)
             ans.pop_back();
-        double minValue = *min_element(ans.begin(), ans.end());
-        if (minValue < 0)
-            for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
-                ans[i] -= minValue;
+        
+        if (subtractMean) {
+            double minValue = *min_element(ans.begin(), ans.end());
+            if (minValue < 0)
+                for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
+                    ans[i] -= minValue;
+        }
+        
         return ans;
     }
 
@@ -175,20 +181,31 @@ namespace MHR {
                 arr[i] = 0;
                 nAnPositions.push_back(i);
             }
+
+//        // apply low pass filter
+//        Mat src = vectorToMat(arr), dst;
+//        Mat filt = _beatSignalFilterKernel.clone();
+//        filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
+//        vector<double> ans = matToVector1D(dst);
         
-        // apply low pass filter
-        Mat src = vectorToMat(arr), dst;
-        Mat filt = _beatSignalFilterKernel.clone();
-        filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
-        vector<double> ans = matToVector1D(dst);
-        
+        // using corr_linear()
+        vector<double> kernel;
+        for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
+            for (int j = 0; j < _beatSignalFilterKernel.size.p[1]; ++j)
+                kernel.push_back(_beatSignalFilterKernel.at<double>(i, j));
+        vector<double> ans = corr_linear(arr, kernel, false);
+
         // assign values in all old NaN positions to NaN
         for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
             ans[nAnPositions[i]] = NaN;
         
-        // remove last 7 elements when use FilterBandPassing
-        for(int i = 0; i < 7; ++i)
-            if(!ans.empty()) ans.pop_back();
+        // remove last _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
+        // (using only with filter2D)
+//        for(int i = 0; i < _beatSignalFilterKernel_size/2; ++i)
+//            if(!ans.empty()) ans.pop_back();
+
+        // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
+        ans = vector<double>(ans.begin() + _beatSignalFilterKernel_size/2, ans.end());
         
         if (DEBUG_MODE)
             printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
