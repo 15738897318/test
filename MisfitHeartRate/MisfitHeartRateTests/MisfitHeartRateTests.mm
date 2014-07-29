@@ -712,38 +712,12 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 
 - (void)test_hb_counter_autocorr
 {
-//    vector<double> input;
-//    for(double x=0; x<=100; x+=0.01)
-//        input.push_back(sin(x*acos(-1)));
-//    
-//    int length = (int)input.size();
-//    printf("input.size() = %d\n", length);
-//    for (int i = 0; i < length; ++i)
-//        printf("%lf, ", input[i]);
-//    printf("\n\n");
-//
-//    vector<double> strengths;
-//    vector<int> locs;
-//    findpeaks(input, 0, 0, strengths, locs);
-//    printf("strengths.size() = %d\n",(int)strengths.size());
-//
-//    hrDebug debug;
-//    vector<int> locations = hb_counter_autocorr(input, 30.0, 0, 100, 0.0, 0.0, debug);
-//    printf("hb_counter_autocorr locations:\n");
-//    for (int i = 0; i < (int)locations.size(); ++i)
-//        printf("%d\n", locations[i]);
-//    printf("\n\n");
-//    printf("debug.heartBeats.size() = %d\n", (int)debug.heartBeats.size());
-//    printf("debug.heartRates.size() = %d\n", (int)debug.heartRates.size());
-//    printf("debug.autocorrelation.size() = %d\n", (int)debug.autocorrelation.size());
-
     FILE *file = fopen(String(resourcePath + "hb_counter_autocorr_test.in").c_str(), "r");
     int n = readInt(file);
     vector<double> temporal_mean;
     for (int i = 0; i < n; ++i) {
         double x = readDouble(file);
         temporal_mean.push_back(x);
-//        printf("%lf\n", x);
     }
     double frameRate = readDouble(file);
     int firstSample = readInt(file);
@@ -756,70 +730,163 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
     hrDebug debug;
     vector<int> output = hb_counter_autocorr(temporal_mean, frameRate, firstSample, window_size,
                                              overlap_ratio, minPeakDistance, debug);
-    n = output.size();
     
-//    file = fopen(String(resourcePath + "hb_counter_autocorr_test.out").c_str(), "r");
-//    int m = readInt(file);
-//    if (m != n) {
-//        XCTFail(@"wrong output.size() - expected: %d, found: %d", m, n);
-//        fclose(file);
-//        return;
-//    }
-//    
-//    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
-//    for (int i = 0; i < n; ++i)
-//    {
-//        double correct_ans = readDouble(file);
-//        double ans = output[i];
-//        double tmp = diff_percent(ans, correct_ans);
-//        if (tmp > max_percent)
-//        {
-//            max_percent = tmp;
-//            max_correct_ans = correct_ans;
-//            max_ans = ans;
-//        }
-//    }
-//    fclose(file);
-//    if (max_percent > EPSILON_PERCENT)
-//        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
+    file = fopen(String(resourcePath + "hb_counter_autocorr_test.out").c_str(), "r");
+    n = (int)output.size();
+    int m = readInt(file);
+    if (m != n) {
+        XCTFail(@"wrong output.size() - expected: %d, found: %d", m, n);
+        return;
+    }
+    
+    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        int correct_ans = readInt(file);
+        int ans = output[i];
+        double tmp = diff_percent(ans, correct_ans);
+        if (tmp > max_percent)
+        {
+            max_percent = tmp;
+            max_correct_ans = correct_ans;
+            max_ans = ans;
+        }
+    }
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    n = (int)debug.heartBeats.size();
+    m = readInt(file);
+    if (m != n) {
+        XCTFail(@"wrong heartBeats.size() - expected: %d, found: %d", m, n);
+        return;
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        double tmp = max(diff_percent(debug.heartBeats[i].first, readDouble(file)),
+                         diff_percent(debug.heartBeats[i].second, readInt(file)));
+        max_percent = max(max_percent, tmp);
+    }
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - percent = %lf", max_percent);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    n = (int)debug.heartRates.size();
+    m = readInt(file);
+    if (m != n) {
+        XCTFail(@"wrong heartRates.size() - expected: %d, found: %d", m, n);
+        return;
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        double correct_ans = readDouble(file);
+        double ans = debug.heartRates[i];
+        printf("debug.heartRates[%d] = %lf\n", i, ans);
+        double tmp = diff_percent(ans, correct_ans);
+        if (tmp > max_percent)
+        {
+            max_percent = tmp;
+            max_correct_ans = correct_ans;
+            max_ans = ans;
+        }
+    }
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
+    fclose(file);
 }
 
 
 - (void)test_hb_counter_pda
 {
-    vector<double> input;
-    for(double x=0; x<=100; x+=0.01)
-        input.push_back(sin(x*acos(-1)));
-    double correct_ans = 9.0;
+    FILE *file = fopen(String(resourcePath + "hb_counter_pda_test.in").c_str(), "r");
+    int n = readInt(file);
+    vector<double> temporal_mean;
+    for (int i = 0; i < n; ++i) {
+        double x = readDouble(file);
+        temporal_mean.push_back(x);
+    }
+    double frameRate = readDouble(file);
+    int firstSample = readInt(file);
+    int window_size = readInt(file);
+    double overlap_ratio = readDouble(file);
+    double minPeakDistance = readDouble(file);
+    double threshold = readDouble(file);
+    fclose(file);
     
-    int length = (int)input.size();
-    printf("input.size() = %d\n", length);
-//        for (int i = 0; i < length; ++i)
-//            printf("%lf, ", input[i]);
-//        printf("\n\n");
+    hrDebug debug;
+    vector<int> output = hb_counter_pda(temporal_mean, frameRate, firstSample, window_size,
+                                        overlap_ratio, minPeakDistance, threshold, debug);
     
-//    vector<double> strengths;
-//    vector<int> locs;
-//    findpeaks(input, 0, 0, strengths, locs);
-//    printf("strengths.size() = %d\n",(int)strengths.size());
-//    
-//    hrDebug debug;
-//    double ans = hb_counter_pda(input, 30.0, 0, 120, 0.0, 0.0, 0, debug);
-//    printf("hb_counter_pda = %lf\n", ans);
-//    printf("debug.heartBeats.size() = %d\n", (int)debug.heartBeats.size());
-//    printf("debug.heartRates.size() = %d\n", (int)debug.heartRates.size());
-//    printf("debug.autocorrelation.size() = %d\n", (int)debug.autocorrelation.size());
-//    
-//    if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
-//    {
-//        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
-//        return;
-//    }
-
-//        printf("\n\nautocorrelation:\n");
-//        for (int i = 0; i < (int)debug.autocorrelation.size(); ++i)
-//            printf("%lf, ", debug.autocorrelation[i]);
-//        printf("\n\n");
+    file = fopen(String(resourcePath + "hb_counter_pda_test.out").c_str(), "r");
+    n = (int)output.size();
+    int m = readInt(file);
+    if (m != n) {
+        XCTFail(@"wrong output.size() - expected: %d, found: %d", m, n);
+        return;
+    }
+    
+    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        int correct_ans = readInt(file);
+        int ans = output[i]+1;
+        double tmp = diff_percent(ans, correct_ans);
+        if (tmp > max_percent)
+        {
+            max_percent = tmp;
+            max_correct_ans = correct_ans;
+            max_ans = ans;
+        }
+    }
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    n = (int)debug.heartBeats.size();
+    m = readInt(file);
+    if (m != n) {
+        XCTFail(@"wrong heartBeats.size() - expected: %d, found: %d", m, n);
+        return;
+    }
+    max_percent = 0;
+    sort(debug.heartBeats.begin(), debug.heartBeats.end());
+    for (int i = 0; i < n; ++i)
+    {
+        double a = readDouble(file);
+        int b = readInt(file);
+        double fr = debug.heartBeats[n-1-i].first;
+        int sc = debug.heartBeats[n-1-i].second + 1;
+        printf("(%lf, %d) ----- (%lf, %d)\n", a, b, fr, sc);
+        double tmp = max(diff_percent(fr, a),
+                         diff_percent(sc, b));
+        max_percent = max(max_percent, tmp);
+    }
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - percent = %lf", max_percent);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    n = (int)debug.heartRates.size();
+    m = readInt(file);
+    if (m != n) {
+        XCTFail(@"wrong heartRates.size() - expected: %d, found: %d", m, n);
+        return;
+    }
+    max_percent = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        double correct_ans = readDouble(file);
+        double ans = debug.heartRates[i];
+        if (abs(correct_ans - 0) < 1e-9 && abs(ans - 0) < 1e-9)
+            continue;
+//        printf("debug.heartRates[%d] = %lf, correct_ans = %lf\n", i, ans, correct_ans);
+        double tmp = diff_percent(ans, correct_ans);
+        if (tmp > max_percent)
+        {
+            max_percent = tmp;
+            max_correct_ans = correct_ans;
+            max_ans = ans;
+        }
+    }
+    if (max_percent > EPSILON_PERCENT)
+        XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", max_correct_ans, max_ans, max_percent);
+    fclose(file);
 }
 
 
