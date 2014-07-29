@@ -25,9 +25,9 @@ namespace MHR {
         // firstFrame
         Mat frame;
         if (THREE_CHAN_MODE)
-        	vid[0].convertTo(frame, CV_64FC3);
+        	vid[startIndex].convertTo(frame, CV_64FC3);
         else
-        	vid[0].convertTo(frame, CV_64F);
+        	vid[startIndex].convertTo(frame, CV_64F);
  
         // Blur and downsample the frame
         Mat blurred;
@@ -36,6 +36,7 @@ namespace MHR {
         
         if (DEBUG_MODE) {
             printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
+            frameChannelToFile(frame, _outputPath + "1_vid[0]_build_Gdown_Stack.txt", _channels_to_process);
             frameChannelToFile(blurred, _outputPath + "1_GDownStack[0]_build_Gdown_Stack.txt", _channels_to_process);
 //            frameToFile(blurred, _outputPath + "test_frame_blurred.jpg");
         }
@@ -45,9 +46,7 @@ namespace MHR {
         GDownStack.clear();
         
         // The first frame in the stack is saved
-//        for (int i = 0; i < nRow; ++i)
-//            for (int j = 0; j < nCol; ++j)
-            GDownStack.push_back(blurred.clone());
+        GDownStack.push_back(blurred.clone());
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
@@ -61,9 +60,7 @@ namespace MHR {
             
             // The kth element in the stack is saved
             // Note that this stack is actually just a SINGLE level of the pyramid
-//            for (int i = 0; i < nRow; ++i)
-//                for (int j = 0; j < nCol; ++j)
-                    GDownStack.push_back(blurred.clone());
+            GDownStack.push_back(blurred.clone());
         }
         
         if (DEBUG_MODE)

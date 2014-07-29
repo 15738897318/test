@@ -76,8 +76,8 @@ namespace MHR {
     const int _finger_trimmed_size = 30;
     
     //mode-balance
-    const double _finger_training_time_start = 0.5;    // seconds
-    const double _finger_training_time_end = 3;        // seconds
+    const double _finger_training_time_start = 0;    // seconds
+    const double _finger_training_time_end = 0.2;        // seconds
     const int _finger_number_of_bins = 50;             // 50 * round(fr * training_time);
     const double _finger_pct_reach_below_mode = 45;    // Percent
     const double _finger_pct_reach_above_mode = 45;    // Percent

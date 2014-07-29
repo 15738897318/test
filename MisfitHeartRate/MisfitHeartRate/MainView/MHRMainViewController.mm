@@ -102,6 +102,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     
 //    test_openCV();
+    test_findpeak();
 }
 
 
@@ -194,6 +195,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         
         NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
         result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
+//        result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // show result

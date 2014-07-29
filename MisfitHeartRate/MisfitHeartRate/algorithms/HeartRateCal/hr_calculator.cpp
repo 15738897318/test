@@ -13,6 +13,7 @@ namespace MHR {
 	// return a vector of integer from a to b with specific step
 	void hr_calculator(const vector<int> &heartBeatPositions, double frameRate, vector<double> &ans) {
 		//Calculate the instantaneous heart-rates
+        printf("%d\n", (int)heartBeatPositions.size());
 		vector<double> heartRate_inst;
 		for (int i = 1, sz = (int)heartBeatPositions.size(); i < sz; ++i)
 			heartRate_inst.push_back( 1.0 / (heartBeatPositions[i] - heartBeatPositions[i-1]) );
@@ -45,14 +46,16 @@ namespace MHR {
 		}
         
 		//Convolve the count_signal with the kernel to generate a score_signal
-        vector<double> score_signal = corr_linear(count_signal, kernel);
+        vector<double> score_signal = corr_linear(count_signal, kernel, false);
 //		filter2D(count_signal, score_signal, -1, kernel, Point(-1,-1), 0, BORDER_CONSTANT);
-		for (int i = 0, sz = (int)score_signal.size(); i < sz; ++i)
-			score_signal[i] = -score_signal[i];
         
 		//Decide if the any beats are missing and fill them in if need be
 		vector<double> min_peak_strengths;
 		vector<int> min_peak_locs;
+        
+        for (int i = 0, sz = (int)score_signal.size(); i < sz; ++i)
+			score_signal[i] = -score_signal[i];
+
 		findpeaks(score_signal, 0, 0, min_peak_strengths, min_peak_locs);
 		for (int i = 0, sz = (int)min_peak_strengths.size(); i < sz; ++i)
 			min_peak_strengths[i] = -min_peak_strengths[i];

@@ -112,6 +112,16 @@ namespace MHR {
                 }
             }
             
+            
+            
+//            int eulerianLen = (int)vid.size();
+//            eulerianVid.clear();
+//            for (int i = 0; i < (int)vid.size(); ++i)
+//                eulerianVid.push_back(vid[i]);
+//            vid.clear();
+            
+            
+            
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
             
             vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
@@ -122,9 +132,10 @@ namespace MHR {
             
             isCalcMode = false;
 
-//            if (DEBUG_MODE)
+            if (DEBUG_MODE) {
                 printf("block %d runtime = %f\n", blockCount++, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
                 printf("_colourspace = %s\n", _colourspace.c_str());
+            }
         }
         vidOut.release();
                 

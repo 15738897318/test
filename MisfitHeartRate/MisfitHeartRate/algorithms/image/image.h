@@ -32,12 +32,6 @@ namespace MHR {
                                   1.0000, 0.9562, 0.6214,
                                   1.0000, -0.2727, -0.6468,
                                   1.0000, -1.1037, 1.7006);
-    
-    
-    // print a frame to file
-    bool frameToFile(const Mat& frame, const String& outFile);
-    
-    void frameChannelToFile(const Mat& frame, const String& outFile, int channel);
 
 	// convert a RGB Mat to a TSL Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst);

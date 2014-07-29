@@ -11,10 +11,16 @@
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
+		DC022323198661C200021E74 /* hb_counter_autocorr_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC022321198661C200021E74 /* hb_counter_autocorr_test.in */; };
+		DC022324198661C200021E74 /* hb_counter_autocorr_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC022322198661C200021E74 /* hb_counter_autocorr_test.out */; };
+		DC02232719878CC900021E74 /* hb_counter_pda_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC02232519878CC900021E74 /* hb_counter_pda_test.in */; };
+		DC02232819878CC900021E74 /* hb_counter_pda_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC02232619878CC900021E74 /* hb_counter_pda_test.out */; };
 		DC1D6668197CFACD00A55980 /* hr_signal_calc_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */; };
 		DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */; };
 		DC1D666C197D011A00A55980 /* corr_linear_test_1.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666A197D011A00A55980 /* corr_linear_test_1.in */; };
 		DC1D666D197D011A00A55980 /* corr_linear_test_1.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666B197D011A00A55980 /* corr_linear_test_1.out */; };
+		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
+		DC2339741986435100D5F520 /* eulerianVid.avi in Resources */ = {isa = PBXBuildFile; fileRef = DC2339731986435100D5F520 /* eulerianVid.avi */; };
 		DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */; };
 		DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */; };
 		DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C919790E16003E0FF5 /* hr_calculator_test.in */; };
@@ -202,10 +208,17 @@
 		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
+		DC022321198661C200021E74 /* hb_counter_autocorr_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hb_counter_autocorr_test.in; path = MisfitHeartRateTests/hb_counter_autocorr_test.in; sourceTree = SOURCE_ROOT; };
+		DC022322198661C200021E74 /* hb_counter_autocorr_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hb_counter_autocorr_test.out; path = MisfitHeartRateTests/hb_counter_autocorr_test.out; sourceTree = SOURCE_ROOT; };
+		DC02232519878CC900021E74 /* hb_counter_pda_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hb_counter_pda_test.in; path = MisfitHeartRateTests/hb_counter_pda_test.in; sourceTree = SOURCE_ROOT; };
+		DC02232619878CC900021E74 /* hb_counter_pda_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hb_counter_pda_test.out; path = MisfitHeartRateTests/hb_counter_pda_test.out; sourceTree = SOURCE_ROOT; };
 		DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.in; path = MisfitHeartRateTests/hr_signal_calc_test.in; sourceTree = SOURCE_ROOT; };
 		DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.out; path = MisfitHeartRateTests/hr_signal_calc_test.out; sourceTree = SOURCE_ROOT; };
 		DC1D666A197D011A00A55980 /* corr_linear_test_1.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.in; path = MisfitHeartRateTests/corr_linear_test_1.in; sourceTree = SOURCE_ROOT; };
 		DC1D666B197D011A00A55980 /* corr_linear_test_1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.out; path = MisfitHeartRateTests/corr_linear_test_1.out; sourceTree = SOURCE_ROOT; };
+		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
+		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
+		DC2339731986435100D5F520 /* eulerianVid.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = eulerianVid.avi; sourceTree = "<group>"; };
 		DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.in; path = MisfitHeartRateTests/corr_linear_test.in; sourceTree = SOURCE_ROOT; };
 		DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.out; path = MisfitHeartRateTests/corr_linear_test.out; sourceTree = SOURCE_ROOT; };
 		DC5351C919790E16003E0FF5 /* hr_calculator_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.in; path = MisfitHeartRateTests/hr_calculator_test.in; sourceTree = SOURCE_ROOT; };
@@ -367,6 +380,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC23396F19863C5800D5F520 /* files */ = {
+			isa = PBXGroup;
+			children = (
+				DC23397119863C8500D5F520 /* files.h */,
+				DC23397019863C8500D5F520 /* files.cpp */,
+			);
+			name = files;
+			sourceTree = "<group>";
+		};
 		DCADC189196BA7A700AFCDE5 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +408,7 @@
 				DCAE6BA6195A794800B9FE9F /* math */,
 				DCAE6BA5195A791B00B9FE9F /* image */,
 				DCAE6BA0195A789800B9FE9F /* matrix */,
+				DC23396F19863C5800D5F520 /* files */,
 				12B587EB19651DD700BA19A5 /* config.h */,
 				DC9D58C6197FB062002C6BB8 /* config.cpp */,
 				DC9D58CF197FB166002C6BB8 /* face_params.h */,
@@ -570,6 +593,7 @@
 				DCB55F721957E0EF0095A98E /* test.avi */,
 				DCC56C7D1962A927009122FB /* test.jpg */,
 				DCBDEA2119614C43005F6298 /* small.mp4 */,
+				DC2339731986435100D5F520 /* eulerianVid.avi */,
 			);
 			path = resources;
 			sourceTree = SOURCE_ROOT;
@@ -595,6 +619,10 @@
 		DCF4B78719764D7F006B5F4F /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				DC02232519878CC900021E74 /* hb_counter_pda_test.in */,
+				DC02232619878CC900021E74 /* hb_counter_pda_test.out */,
+				DC022321198661C200021E74 /* hb_counter_autocorr_test.in */,
+				DC022322198661C200021E74 /* hb_counter_autocorr_test.out */,
 				DC1D666A197D011A00A55980 /* corr_linear_test_1.in */,
 				DC1D666B197D011A00A55980 /* corr_linear_test_1.out */,
 				DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */,
@@ -719,6 +747,7 @@
 			files = (
 				DC85FF5119768AC5004081B2 /* atan2Mat_test.out in Resources */,
 				DC85FF7519768AC5004081B2 /* multiply_num_test.out in Resources */,
+				DC02232819878CC900021E74 /* hb_counter_pda_test.out in Resources */,
 				DC85FF6519768AC5004081B2 /* frames2signal_test.out in Resources */,
 				DC85FF6B19768AC5004081B2 /* invprctile_test.in in Resources */,
 				DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
@@ -731,10 +760,12 @@
 				DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */,
 				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
 				DC85FF5F19768AC5004081B2 /* findpeaks_test.in in Resources */,
+				DC022323198661C200021E74 /* hb_counter_autocorr_test.in in Resources */,
 				DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */,
 				DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */,
 				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
 				DC85FF7D19768AC5004081B2 /* powMat_test.out in Resources */,
+				DC02232719878CC900021E74 /* hb_counter_pda_test.in in Resources */,
 				DC85FF8519768AC5004081B2 /* rgb2tsl_test.out in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
 				DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */,
@@ -754,6 +785,7 @@
 				DC85FF4B19768AC5004081B2 /* add_test.in in Resources */,
 				DC85FF7919768AC5004081B2 /* multiply_test.out in Resources */,
 				DC85FF4D19768AC5004081B2 /* add_test.out in Resources */,
+				DC022324198661C200021E74 /* hb_counter_autocorr_test.out in Resources */,
 				DC85FF8119768AC5004081B2 /* prctile_test.out in Resources */,
 				DC85FF4F19768AC5004081B2 /* atan2Mat_test.in in Resources */,
 				DC85FF6919768AC5004081B2 /* hist_test.out in Resources */,
@@ -767,6 +799,7 @@
 				DC85FF6119768AC5004081B2 /* findpeaks_test.out in Resources */,
 				DC85FF7719768AC5004081B2 /* multiply_test.in in Resources */,
 				DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */,
+				DC2339741986435100D5F520 /* eulerianVid.avi in Resources */,
 				DC85FF5319768AC5004081B2 /* blurDnClr_test.in in Resources */,
 				DC85FF6719768AC5004081B2 /* hist_test.in in Resources */,
 				DC85FF6319768AC5004081B2 /* frames2signal_test.in in Resources */,
@@ -852,6 +885,7 @@
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
+				DC23397219863C8500D5F520 /* files.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,

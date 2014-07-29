@@ -43,7 +43,7 @@ namespace MHR {
     const double _face_max_bpm = 200;             // BPM
     const double _face_cutoff_freq = 2.5;         // Hz
     const double _face_time_lag = 3;              // seconds
-    const String _face_colourspace = "rgb";
+    const String _face_colourspace = "tsl";
     const int _face_channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
     const int _face_number_of_bins_heartRate = 5;
     
@@ -75,8 +75,8 @@ namespace MHR {
     const int _face_trimmed_size = 30;
     
     //mode-balance
-    const double _face_training_time_start = 0.5;    // seconds
-    const double _face_training_time_end = 3;        // seconds
+    const double _face_training_time_start = 0;    // seconds
+    const double _face_training_time_end = 0.2;        // seconds
     const int _face_number_of_bins = 50;             // 50 * round(fr * training_time);
     const double _face_pct_reach_below_mode = 45;    // Percent
     const double _face_pct_reach_above_mode = 45;    // Percent

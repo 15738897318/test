@@ -14,11 +14,11 @@ namespace MHR {
                        double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug)
     {
         //Perform peak counting for each window
-        int windowStart = firstSample;
-        
+        int windowStart = firstSample - 1;
+        bool isFirstSegment = true;
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
-        while(windowStart < (int)temporal_mean.size() - 1){
+        while(windowStart < (int)temporal_mean.size() - 1) {
             
             //Window to perform peak-couting in
             vector<double> segment;
@@ -41,11 +41,11 @@ namespace MHR {
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
                 findpeaks(segment, minPeakDistance, threshold, min_peak_strengths, min_peak_locs);
                 if(min_peak_locs.empty()){
-                    segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size + 1) / 2 ; //round
-                    segment_length = min(segment_length, window_size);
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size)/2.0 + 1); //round
+                    segment_length = min(segment_length, (int)segment.size());
                 }else{
-                    segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
-                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end())
+                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()))/2.0 + 1) ; //round
                 }
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
             }
@@ -59,7 +59,18 @@ namespace MHR {
         
             // Calculate the HR for this window
             int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
-            double rate = (double) max_peak_locs.size() / segment_length * fr;
+            if (isFirstSegment) {
+                for (int i = 0; i < windowStart; ++i)
+                    heartRates.push_back(0);
+                isFirstSegment = false;
+            }
+            
+            int count = 0;
+            for (int i = 0, sz = (int)segment.size(); i < sz; ++i)
+                if (segment[i] > NaN && segment[i] < INFINITY)
+                    ++count;
+            double rate = (double) max_peak_locs.size() / count * fr;
+        
             for(int i = windowStart; i < windowStart+windowUpdate; ++i)
                 heartRates.push_back(rate);
             
@@ -75,7 +86,7 @@ namespace MHR {
         if(!heartBeats.empty()){
             //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
             int cnt=0;
-            for(int i=firstSample; i<(int)temporal_mean.size(); ++i)
+            for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
                 if(temporal_mean[i] != NaN) ++cnt;
             if(cnt==0) avg_hr = 0;
             else
@@ -90,6 +101,7 @@ namespace MHR {
         for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
             locations.push_back(heartBeats[i].second);
         sort(locations.begin(), locations.end());
+        
         return locations;
     }
 }
