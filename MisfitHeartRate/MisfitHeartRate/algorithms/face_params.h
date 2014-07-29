@@ -75,8 +75,8 @@ namespace MHR {
     const int _face_trimmed_size = 30;
     
     //mode-balance
-    const double _face_training_time_start = 0.5;    // seconds
-    const double _face_training_time_end = 3;        // seconds
+    const double _face_training_time_start = 0;    // seconds
+    const double _face_training_time_end = 0.2;        // seconds
     const int _face_number_of_bins = 50;             // 50 * round(fr * training_time);
     const double _face_pct_reach_below_mode = 45;    // Percent
     const double _face_pct_reach_above_mode = 45;    // Percent
