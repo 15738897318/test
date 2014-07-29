@@ -158,7 +158,6 @@ namespace MHR {
             fclose(resultFile);
             printf("run_algorithm() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         }
-        printf("run_algorithm() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return hr_output;
     }
