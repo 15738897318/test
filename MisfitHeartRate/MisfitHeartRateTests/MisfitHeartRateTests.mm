@@ -16,7 +16,8 @@ using namespace cv;
 
 const double EPSILON = 1e-4;
 const double EPSILON_PERCENT = 2.8;
-String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/7CD329BE-D62D-4B46-BBCB-7512C37724D4/Pulsar.app/";
+String resourcePath = "get simulator's resource path in setUp() function";
+///Users/baonguyen/Library/Application Support/iPhone Simulator/7.1-64/Applications/7CD329BE-D62D-4B46-BBCB-7512C37724D4/Pulsar.app/";
 
 
 @interface MisfitHeartRateTests : XCTestCase
@@ -29,8 +30,8 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 - (void)setUp
 {
     [super setUp];
-//    NSString *path = [[NSBundle mainBundle] resourcePath];
-
+    resourcePath = [[[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/"] UTF8String];
+    printf("path = %s\n", resourcePath.c_str());
 }
 
 - (void)tearDown
@@ -44,7 +45,7 @@ String resourcePath = "/Users/baonguyen/Library/Application Support/iPhone Simul
 {
     NSString *fileName = @"ideal_bandpassing_test_0.out";
     NSString *filePath = [[NSString stringWithUTF8String:resourcePath.c_str()]
-                          stringByAppendingPathComponent:fileName];
+                          stringByAppendingString:fileName];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:filePath])
     {
