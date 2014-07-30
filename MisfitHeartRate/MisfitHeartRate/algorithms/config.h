@@ -18,11 +18,11 @@ using namespace cv;
 
 namespace MHR {
 #ifdef DEBUG
-    const int DEBUG_MODE = 1;
+    const int DEBUG_MODE = 0;
 #else
     const int DEBUG_MODE = 0;
 #endif
-    const int THREE_CHAN_MODE = 1;
+    const int THREE_CHAN_MODE = 0;
     const int WRITE_EULERIAN_VID_MODE = 0;
 
     
