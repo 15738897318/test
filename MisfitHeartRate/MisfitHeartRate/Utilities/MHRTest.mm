@@ -33,6 +33,9 @@
     for (NSString *fileName in directoryContent) {
         if ([fileName hasSuffix:@".mp4"]) {
             NSLog(@"File %@", fileName);
+            
+            usleep(1000); //Delay the operation a bit to allow garbage collector to clear the memory
+            
             MHR::hrResult result = MHR::run_algorithms([inPath UTF8String], [fileName UTF8String], [outPath UTF8String]);
             fprintf(outFile, "%s, %lf, %lf\n", [fileName UTF8String], result.autocorr, result.pda);
         }
