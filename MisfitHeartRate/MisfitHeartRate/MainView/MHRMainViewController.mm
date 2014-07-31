@@ -101,8 +101,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self updateLayout];
 
     
-//    test_openCV();
-    test_findpeak();
+//    test_findpeak();
+    [MHRTest test_run_algorithm];
 }
 
 
