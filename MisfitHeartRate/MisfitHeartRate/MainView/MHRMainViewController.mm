@@ -158,6 +158,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                                                   selector:@selector(updateRecordTime:)
                                                   userInfo:nil
                                                    repeats:YES];
+    
+    
+//    CascadeClassifier face_cascade = CascadeClassifier("haarcascade_frontalface_default.xml");
+//    FeatureEvaluator f;
 }
 
 
