@@ -28,7 +28,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 }
 
 @property (retain, nonatomic) CvVideoCamera *videoCamera;
-@property (assign, nonatomic) VideoWriter videoWriter;
 @property (strong, nonatomic) NSString *outPath;
 @property (strong, nonatomic) NSString *outFile;
 @property (assign, nonatomic) NSInteger nFrames;
@@ -51,7 +50,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 @implementation MHRMainViewController
 
 @synthesize videoCamera = _videoCamera;
-@synthesize videoWriter = _videoWriter;
 @synthesize cameraSwitch = _cameraSwitch;
 @synthesize outPath = _outPath;
 @synthesize outFile = _outFile;
@@ -109,7 +107,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    _videoWriter.release();
 }
 
 
@@ -142,11 +139,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     
     // output new file to write input video
     _outFile = [_outPath stringByAppendingString:@"input.mp4"];
-    _videoWriter.open([_outFile UTF8String],
-                      CV_FOURCC('M','P','4','2'),
-                      _frameRate,
-                      cvSize(IMAGE_WIDTH, IMAGE_HEIGHT),
-                      true);
     
     isCapturing = YES;
 //    self.navigationItem.leftBarButtonItem.enabled = NO;
@@ -172,7 +164,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self drawFaceCaptureRect:@"MHRWhiteColor"];
     // stop camera capturing
     [_videoCamera stop];
-    _videoWriter.release();
     // stop timer
     [_recordTimer invalidate];
     _recordTimer = nil;
@@ -187,7 +178,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     
     // write _nFrames to file
     FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
-    fprintf(file, "%d\n", _nFrames);
+    fprintf(file, "%d\n", (int)_nFrames);
     fclose(file);
     
     // heartRate cal
@@ -303,12 +294,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (void)processImage:(Mat &)image
 {
-    if (isCapturing && (&_videoWriter != nullptr) && _videoWriter.isOpened())
+    if (isCapturing)
     {
         Mat new_image = image(cropArea);
         cvtColor(new_image, new_image, CV_BGRA2BGR);
         imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
-        _videoWriter << new_image;
         ++_nFrames;
     }
 }
