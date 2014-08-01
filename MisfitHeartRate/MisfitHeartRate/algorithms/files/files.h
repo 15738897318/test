@@ -15,7 +15,7 @@
 namespace MHR {
     // read frames from a VideoCapture to a vector<Mat>
     // return true if endOfFile
-    bool videoCaptureToVector(VideoCapture &src, vector<Mat> &dst, int nFrames = -1);
+    void readFrame(const String& srcFile, vector<Mat> &dst);
     
     Mat read2DMatFromFile(FILE* &file, int rows, int cols);
     

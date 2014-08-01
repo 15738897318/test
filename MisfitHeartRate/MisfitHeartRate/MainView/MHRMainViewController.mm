@@ -185,6 +185,12 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     }
     _faceLabel.text = @"Processing....";
     
+    // write _nFrames to file
+    FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
+    fprintf(file, "%d\n", _nFrames);
+    fclose(file);
+    
+    // heartRate cal
     __block hrResult result(-1, -1);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -196,8 +202,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         if (_nFrames >= _minVidLength*_frameRate)
             result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
 
-        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-        result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
+//        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+//        result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
 //        result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -299,26 +305,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 {
     if (isCapturing && (&_videoWriter != nullptr) && _videoWriter.isOpened())
     {
-        ++_nFrames;
         Mat new_image = image(cropArea);
-        
         cvtColor(new_image, new_image, CV_BGRA2BGR);
+        imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
         _videoWriter << new_image;
-        
-//        if (DEBUG_MODE && _nFrames == 1) {
-//            Mat tmp = Mat::zeros(new_image.rows, new_image.cols, CV_64F);
-//            for (int i = 0; i < new_image.rows; ++i)
-//                for (int j = 0; j < new_image.cols; ++j)
-//                    tmp.at<double>(i, j) = (double)new_image.at<Vec3b>(i, j)[0];
-//            Mat tmp2 = tmp.clone();
-//            rgb2tsl(tmp2, tmp);
-//            
-//            imwrite([_outPath UTF8String] + string("/test_before.png"), tmp);
-//            for (NSInteger i = 0; i < new_image.channels(); ++i) {
-//                NSString *fileName = [_outPath stringByAppendingFormat:@"frame[0][%i]_camera_after_cvtColor.txt", i];
-//                frameChannelToFile(new_image, [fileName UTF8String], i);
-//            }
-//        }
+        ++_nFrames;
     }
 }
 
