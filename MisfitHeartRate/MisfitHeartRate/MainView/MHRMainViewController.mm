@@ -138,6 +138,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _outPath = [_outPath stringByAppendingFormat:@"Documents/%@/",
                 [formater stringFromDate:[NSDate date]]];
     [MHRUtilities createDirectory:_outPath];
+    _outputPath = [_outPath UTF8String] + String("/");
     
     // output new file to write input video
     _outFile = [_outPath stringByAppendingString:@"input.mp4"];
@@ -189,10 +190,12 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         if (DEBUG_MODE)
             printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
+
+//        [self testRawVideo];
         
-//        if (_nFrames >= _minVidLength*_frameRate)
-//            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-        
+        if (_nFrames >= _minVidLength*_frameRate)
+            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
+
         NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
         result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
 //        result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
@@ -298,10 +301,24 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     {
         ++_nFrames;
         Mat new_image = image(cropArea);
-//        frameToFile(new_image, [[_outPath stringByAppendingString:@"test_frame_frome_camera.jpg"] UTF8String]);
+        
         cvtColor(new_image, new_image, CV_BGRA2BGR);
         _videoWriter << new_image;
-//        printf("image after resize = (%d, %d)\n", new_image.rows, new_image.cols);
+        
+//        if (DEBUG_MODE && _nFrames == 1) {
+//            Mat tmp = Mat::zeros(new_image.rows, new_image.cols, CV_64F);
+//            for (int i = 0; i < new_image.rows; ++i)
+//                for (int j = 0; j < new_image.cols; ++j)
+//                    tmp.at<double>(i, j) = (double)new_image.at<Vec3b>(i, j)[0];
+//            Mat tmp2 = tmp.clone();
+//            rgb2tsl(tmp2, tmp);
+//            
+//            imwrite([_outPath UTF8String] + string("/test_before.png"), tmp);
+//            for (NSInteger i = 0; i < new_image.channels(); ++i) {
+//                NSString *fileName = [_outPath stringByAppendingFormat:@"frame[0][%i]_camera_after_cvtColor.txt", i];
+//                frameChannelToFile(new_image, [fileName UTF8String], i);
+//            }
+//        }
     }
 }
 
@@ -315,6 +332,22 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [self updateImageView:index+1 vid:vid];
 //    });
+//}
+
+
+#pragma - Test write raw video
+//- (void)testRawVideo
+//{
+//    String fileName = [_outPath UTF8String] + string("/input.mp4");
+//    VideoCapture vidIn(fileName.c_str());
+//    vector<Mat> dst;
+//    videoCaptureToVector(vidIn, dst, 4);
+//    
+//    Mat tmp = imread([_outPath UTF8String] + string("/test_before.png"));
+//    for (int i = 0; i < tmp.channels(); ++i) {
+//        String fileName = [_outPath UTF8String] + string("/test_after[") + to_string(i) + "].txt";
+//        frameChannelToFile(tmp, fileName, i);
+//    }
 //}
 
 @end
