@@ -102,7 +102,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     
 //    test_findpeak();
-    [MHRTest test_run_algorithm];
+//    [MHRTest test_run_algorithm];
 }
 
 
