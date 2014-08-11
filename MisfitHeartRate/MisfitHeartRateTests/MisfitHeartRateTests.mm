@@ -994,7 +994,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];
     formater.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
     outPath = [outPath stringByAppendingFormat:@"Documents/%@/",
-                [formater stringFromDate:[NSDate date]]];
+               [formater stringFromDate:[NSDate date]]];
     [MHRUtilities createDirectory:outPath];
     NSLog(@"output path = %@", outPath);
     
@@ -1006,12 +1006,16 @@ String resourcePath = "get simulator's resource path in setUp() function";
     NSLog(@"input path = %@", inPath);
     NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:inPath error:NULL];
     for (NSString *fileName in directoryContent) {
-        if ([fileName hasSuffix:@".mp4"])
+        if ([fileName hasSuffix:@".mp4"]) {
             NSLog(@"File %@", fileName);
-        hrResult result = run_algorithms([inPath UTF8String], [fileName UTF8String], [outPath UTF8String]);
-        fprintf(outFile, "%s, %lf, %lf\n", [fileName UTF8String], result.autocorr, result.pda);
+            
+            usleep(1000); //Delay the operation a bit to allow garbage collector to clear the memory
+            
+            MHR::hrResult result = MHR::run_algorithms([inPath UTF8String], [fileName UTF8String], [outPath UTF8String]);
+            fprintf(outFile, "%s, %lf, %lf\n", [fileName UTF8String], result.autocorr, result.pda);
+        }
     }
-
+    
     fclose(outFile);
 }
 

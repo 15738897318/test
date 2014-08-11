@@ -12,6 +12,8 @@
 namespace MHR {
     bool _FACE_MODE = true;
     
+    String _outputPath = "NULL";
+    
     /*--------------for run_eulerian()--------------*/
     double _eulerian_alpha = -1;          // Eulerian magnifier, standard < 50
     double _eulerian_pyrLevel = -1;        // Standard: 4, but updated by the real frame size
