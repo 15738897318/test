@@ -90,6 +90,17 @@ namespace MHR {
                                               -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
                                               0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
                                               0.0956, 0.0580, 0.0217, -0.0076, -0.0265);
+    
+    
+    /*---------------for face auto start--------------*/
+    const int _THRESHOLD_NO_FACE_FRAMES_MIN = 2;
+    const int _THRESHOLD_FACE_FRAMES_MIN = 2;
+    const int _THRESHOLD_FACE_FRAMES_FOR_START = 5;
+    
+    const int _ROI_RATIO_UPPER = 1.5;
+    const int _ROI_RATIO_LOWER = 0.8;
+    
+    
 }
 
 #endif /* defined(__Pulsar__face_params__) */

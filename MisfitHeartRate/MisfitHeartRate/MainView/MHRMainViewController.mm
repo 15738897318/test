@@ -25,6 +25,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 {
     BOOL isCapturing;
     cv::Rect cropArea;
+    MHRResultViewController *resultView;
+	hrResult currentResult;
+    auto_start *autoStart;
 }
 
 @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -73,13 +76,15 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [super viewDidLoad];
     
     setFaceParams();
+    currentResult = hrResult(55, 55);
+    autoStart = [[auto_start alloc] init];
     
     _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     _videoCamera.delegate = self;
     _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
     _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
     _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-//    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
+    //    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
     _videoCamera.defaultFPS = _frameRate;
     _videoCamera.rotateVideo = YES;
     _videoCamera.grayscaleMode = NO;
@@ -97,10 +102,55 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
     // update Layout (iOS6 vs iOS7)
     [self updateLayout];
-
     
-//    test_findpeak();
-//    [MHRTest test_run_algorithm];
+    
+    // On a different thread, run the face / finger detector
+    // This is to allow the main thread to still remain available to catch the physical button touch
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+		int startButtonActivate = 0;
+		
+		if (_cameraSwitch.isOn)
+		{
+			// Create the upper & lower bounds for the face-detection area
+			int ROI_x;
+			int ROI_y;
+			int ROI_width;
+			int ROI_height;
+            
+			ROI_x = cropArea.x - (int)((double)cropArea.width * (_ROI_RATIO_UPPER - 1)) / 2;
+			ROI_y = cropArea.y - (int)((double)cropArea.height * (_ROI_RATIO_UPPER - 1)) / 2;
+			ROI_width = (int)((double)cropArea.width * _ROI_RATIO_UPPER);
+			ROI_height = (int)((double)cropArea.height * _ROI_RATIO_UPPER);
+			cv::Rect ROI_upper = cv::Rect(ROI_x, ROI_y, ROI_width, ROI_height);
+            
+			ROI_x = cropArea.x - (int)((double)cropArea.width * (_ROI_RATIO_LOWER - 1)) / 2;
+			ROI_y = cropArea.y - (int)((double)cropArea.height * (_ROI_RATIO_LOWER - 1)) / 2;
+			ROI_width = (int)((double)cropArea.width * _ROI_RATIO_LOWER);
+			ROI_height = (int)((double)cropArea.height * _ROI_RATIO_LOWER);
+			cv::Rect ROI_lower = cv::Rect(ROI_x, ROI_y, ROI_width, ROI_height);
+            
+			startButtonActivate = [autoStart autoStartForFace:ROI_upper lowerBound:ROI_lower];
+		}
+		else
+		{
+			startButtonActivate = [autoStart autoStartForFinger];
+		}
+		
+		// If the right conditions are detected, then 'touch' the Start button programmatically
+		// This is done back in the main queue
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if (startButtonActivate > 0)
+			{
+				if (!isCapturing)
+				{
+                    [self startButtonDidTap:self];
+				}
+			}
+		});
+    });
+    
+    //    test_findpeak();
+    //    [MHRTest test_run_algorithm];
 }
 
 
@@ -126,6 +176,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
 - (IBAction)startButtonDidTap:(id)sender
 {
+    //mark that the button has been touched, stop the auto face detection
+    [autoStart manualStartButtonClick];
+    
     // create new directory for this session
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     _outPath = [paths objectAtIndex:0];
@@ -141,7 +194,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     _outFile = [_outPath stringByAppendingString:@"input.mp4"];
     
     isCapturing = YES;
-//    self.navigationItem.leftBarButtonItem.enabled = NO;
+    //    self.navigationItem.leftBarButtonItem.enabled = NO;
     _startButton.enabled = NO;
     _cameraSwitch.enabled = NO;
     _nFrames = 0;
@@ -151,6 +204,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                                                   selector:@selector(updateRecordTime:)
                                                   userInfo:nil
                                                    repeats:YES];
+    
+
 }
 
 
@@ -183,32 +238,47 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     
     // heartRate cal
     __block hrResult result(-1, -1);
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         if (DEBUG_MODE)
             printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
-
-//        [self testRawVideo];
         
+        //        [self testRawVideo];
         if (_nFrames >= _minVidLength*_frameRate)
-            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String]);
-
-//        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//        result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
-//        result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
+            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
+        
+        //        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+        //        result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
+        //        result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // show result
-            MHRResultViewController *resultView = [[MHRResultViewController alloc] init];
-            resultView.autocorrResult = result.autocorr;
-            resultView.pdaResult = result.pda;
-            [self.navigationController pushViewController:resultView animated:YES];
+            resultView = [[MHRResultViewController alloc] init];
+            
+            // Timer to refresh the ResultView
+            
+            [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
+            
+            //            resultView.autocorrResult = result.autocorr;
+            //            resultView.pdaResult = result.pda;
+            //            [self.navigationController pushViewController:resultView animated:YES];
+            
             // update UI
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            [self switchCamera:self];
+            //            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
             _recordTimeLabel.text = @"0";
         });
     });
+}
+
+
+- (void)updateUI
+{
+    resultView.autocorrResult = currentResult.autocorr;
+	resultView.pdaResult = currentResult.pda;
+	[self.navigationController pushViewController:resultView animated:YES];
+	[MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 
@@ -222,6 +292,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _fingerLabel.text = @"";
         [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
         [_videoCamera stop];
+        
+        // Set the camera to show camera capture onto the screen
+        _videoCamera.ParentView = self.imageView;
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
         [_videoCamera start];
         setFaceParams();
@@ -234,6 +307,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _fingerLabel.text = FINGER_MESSAGE;
         [self drawFaceCaptureRect:@"MHRWhiteColor"];
         [_videoCamera stop];
+        
+        // Set the camera to hide camera capture from the screen
+        _videoCamera.ParentView = nil;
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
         [_videoCamera start];
         setFingerParams();
@@ -323,7 +399,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 //    VideoCapture vidIn(fileName.c_str());
 //    vector<Mat> dst;
 //    videoCaptureToVector(vidIn, dst, 4);
-//    
+//
 //    Mat tmp = imread([_outPath UTF8String] + string("/test_before.png"));
 //    for (int i = 0; i < tmp.channels(); ++i) {
 //        String fileName = [_outPath UTF8String] + string("/test_after[") + to_string(i) + "].txt";
