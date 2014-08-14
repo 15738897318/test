@@ -27,7 +27,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         cv::Rect cropArea, ROI_upper, ROI_lower;
         MHRResultViewController *resultView;
         hrResult currentResult;
-        auto_start *autoStart;
         int framesWithFace; // Count the number of frames having a face in the region of interest
         int framesWithNoFace; // Count the number of frames NOT having a face in the region of interest
     }
@@ -80,7 +79,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         
         setFaceParams();
         currentResult = hrResult(55, 55);
-        autoStart = [[auto_start alloc] init];
         isCapturing = NO;
         cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
         
@@ -93,6 +91,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         ROI_x = cropArea.x - (int)((double)cropArea.width * (_ROI_RATIO_UPPER - 1)) / 2;
         ROI_y = cropArea.y - (int)((double)cropArea.height * (_ROI_RATIO_UPPER - 1)) / 2;
         ROI_width = (int)((double)cropArea.width * _ROI_RATIO_UPPER);
+        NSLog(@"%lf",_ROI_RATIO_UPPER);
         ROI_height = (int)((double)cropArea.height * _ROI_RATIO_UPPER);
         ROI_upper = cv::Rect(ROI_x, ROI_y, ROI_width, ROI_height);
         
@@ -105,6 +104,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         framesWithFace = framesWithNoFace = 0;
         
         _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
+        //_videoCamera = [[CvVideoCamera alloc] init];
         _videoCamera.delegate = self;
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
         _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
@@ -160,8 +160,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     - (IBAction)startButtonDidTap:(id)sender
     {
-        //mark that the button has been touched, stop the auto face detection
-//        [autoStart manualStartButtonClick];
         
         // create new directory for this session
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
@@ -278,7 +276,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             [_videoCamera stop];
             
             // Set the camera to show camera capture onto the screen
-            _videoCamera.ParentView = self.imageView;
+            // _videoCamera.ParentView = self.imageView;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
             [_videoCamera start];
             setFaceParams();
@@ -365,16 +363,49 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         }
         else
         {
+            
+            
             // Cut the frame down to the upper bound of ROI
-            Mat frame_ROI = image(ROI_upper);
+            Mat frame_ROI = image(ROI_upper).clone();
+            
+            transpose(frame_ROI, frame_ROI);
+            for(int i=0; i<frame_ROI.rows/2; ++i) for(int j=0; j<frame_ROI.cols*4; ++j)
+                swap(frame_ROI.at<unsigned char>(i,j), frame_ROI.at<unsigned char>(frame_ROI.rows-i-1,j));
             
             //detectFrontalFaces(frame_ROI, faces);
             
-            NSArray *faces = [autoStart detectFrontalFaces:frame_ROI];
+            NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
+            
+            //return;
+            
+            
+            //============
+            
+//            Mat frame_gray;
+//            cvtColor(frame_ROI, frame_gray, CV_BGR2GRAY);
+//            equalizeHist(frame_gray, frame_gray);
+//            
+//            UIImage *uiImage = [autoStart imageWithCVMat:frame_gray];
+//            
+//            static int cnt = 0;
+//            ++cnt;
+//            
+//            if(10<=cnt && cnt<=20){
+//            // Create paths to output images
+//            NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent: [NSString stringWithFormat: @"Documents/Test%d.png",cnt]];
+//            
+//            // Write image to PNG
+//            [UIImagePNGRepresentation(uiImage) writeToFile:pngPath atomically:YES];
+//                NSLog(@"File printed");
+//            }
+            
+            
+            
+            
             
             // If this iteration detects valid faces
             // - Increment the framesWithFace variable
-            int assessmentResult = [autoStart assessFaces:faces withLowerBound:ROI_lower];
+            int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
             if (assessmentResult == 1)
             {
                 framesWithFace += 1;
@@ -388,6 +419,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
             {
                 framesWithFace = 0;
+                framesWithNoFace = 0;
             }
             
             // If a face is detected in more than M frames, then reset the no-face streak
@@ -399,8 +431,13 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
             {
                 // tap the startButton
-                [self startButtonDidTap:self];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self startButtonDidTap:self];
+                });
             }
+            NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
+            
+            frame_ROI.deallocate();
         }
         
     }

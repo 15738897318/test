@@ -150,11 +150,11 @@ using namespace cv;
 
 
     /** @function detectFrontalFaces */
-    - (NSArray*) detectFrontalFaces:(cv::Mat) frame
+    + (NSArray*) detectFrontalFaces:(cv::Mat*) frame
     {
         Mat frame_gray;
 
-        cvtColor(frame, frame_gray, CV_BGR2GRAY);
+        cvtColor(*frame, frame_gray, CV_BGR2GRAY);
         equalizeHist(frame_gray, frame_gray);
 
         //-- Detect faces
@@ -166,20 +166,54 @@ using namespace cv;
                                                   context:context
                                                   options:opts];
 
-        NSData *frame_in = [self NsDataFromCvMat:frame_gray];
-        CIImage *ciImage = [CIImage imageWithData:frame_in];
-        
-        
+        UIImage *uiImage = [self imageWithCVMat:frame_gray];
+        CIImage *ciImage = [CIImage imageWithCGImage:uiImage.CGImage];
         opts = @{};
         NSArray *features = [detector featuresInImage:ciImage options:opts];
+        NSLog(@"features = %d", features.count);
+        
+        frame_gray.deallocate();
         return features;
+        
     }
 
-
+    + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
+        {
+            NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize() * cvMat.total()];
+            
+            CGColorSpaceRef colorSpace;
+            
+            if (cvMat.elemSize() == 1) {
+                colorSpace = CGColorSpaceCreateDeviceGray();
+            } else {
+                colorSpace = CGColorSpaceCreateDeviceRGB();
+            }
+            
+            CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
+            
+            CGImageRef imageRef = CGImageCreate(cvMat.cols,                                     // Width
+                                                cvMat.rows,                                     // Height
+                                                8,                                              // Bits per component
+                                                8 * cvMat.elemSize(),                           // Bits per pixel
+                                                cvMat.step[0],                                  // Bytes per row
+                                                colorSpace,                                     // Colorspace
+                                                kCGImageAlphaNone | kCGBitmapByteOrderDefault,  // Bitmap info flags
+                                                provider,                                       // CGDataProviderRef
+                                                NULL,                                           // Decode
+                                                false,                                          // Should interpolate
+                                                kCGRenderingIntentDefault);                     // Intent
+            
+            UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];
+            CGImageRelease(imageRef);
+            CGDataProviderRelease(provider);
+            CGColorSpaceRelease(colorSpace);
+            
+            return image;
+        }
 
     /** @function assessFaces */
     //int assessFaces(std::vector<Rect> faces, cv::Rect ROI_lower)
-    - (int) assessFaces:(NSArray *)faces withLowerBound:(cv::Rect)ROI_lower
+    + (int) assessFaces:(NSArray *)faces withLowerBound:(cv::Rect)ROI_lower
     {
         // There must be at least one face in the detected faces that is bigger than the minimum size of the ROI
         for(int i = 0; i < faces.count; i++) {
@@ -196,26 +230,25 @@ using namespace cv;
 
 
     /** @function NsDataFromCvMat */
-    - (NSData*) NsDataFromCvMat:(Mat)image
-    {
-        int matRows = image.rows;
-        
-        int matCols = image.cols;
-        
-        NSMutableData* data = [[NSMutableData alloc] init];
-        
-        unsigned char *pix;
-        
-        for (int i = 0; i < matRows; i++)
-        {
-            for (int j = 0; j < matCols; j++)
-            {
-//                pix = &image->data[i * matCols + j];
-                pix = image.at<unsigned char>(i,j);
-                [data appendBytes:(void*)pix length:1];
-                
-            }
-        }
-        return data;
-    }
++ (NSMutableData*) NsDataFromCvMat:(cv::Mat*)image
+{
+	int matRows = image->rows;
+	int matCols = image->cols;
+	
+	NSMutableData* data = [[NSMutableData alloc] init];
+	
+	unsigned char *pix;
+	
+	for (int i = 0; i < matRows; i++)
+	{
+		for (int j = 0; j < matCols; j++)
+		{
+			pix = &image->data[i * matCols + j];
+			[data appendBytes:(void*)pix length:1];
+            
+		}
+	}
+	return data;
+}
+
 @end
