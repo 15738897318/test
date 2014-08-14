@@ -91,7 +91,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         ROI_x = cropArea.x - (int)((double)cropArea.width * (_ROI_RATIO_UPPER - 1)) / 2;
         ROI_y = cropArea.y - (int)((double)cropArea.height * (_ROI_RATIO_UPPER - 1)) / 2;
         ROI_width = (int)((double)cropArea.width * _ROI_RATIO_UPPER);
-        NSLog(@"%lf",_ROI_RATIO_UPPER);
         ROI_height = (int)((double)cropArea.height * _ROI_RATIO_UPPER);
         ROI_upper = cv::Rect(ROI_x, ROI_y, ROI_width, ROI_height);
         
@@ -160,6 +159,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     - (IBAction)startButtonDidTap:(id)sender
     {
+        if(isCapturing) return;
+        isCapturing = TRUE;
+        static int touchCount = 0;
+        touchCount ++;
+        NSLog(@"%d",touchCount);
         
         // create new directory for this session
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
@@ -240,14 +244,20 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                 
                 // Timer to refresh the ResultView
                 
-                [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
+                //[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
                 
-                //            resultView.autocorrResult = result.autocorr;
-                //            resultView.pdaResult = result.pda;
-                //            [self.navigationController pushViewController:resultView animated:YES];
+                            resultView.autocorrResult = result.autocorr;
+                            resultView.pdaResult = result.pda;
+                            [self.navigationController pushViewController:resultView animated:YES];
+                
                 
                 // update UI
-                //            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                //Reset counters of mainView
+                framesWithFace = 0;
+                framesWithNoFace = 0;
+                isCapturing = false;
                 
                 _recordTimeLabel.text = @"0";
             });
@@ -257,9 +267,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     - (void)updateUI
     {
-        resultView.autocorrResult = currentResult.autocorr;
-        resultView.pdaResult = currentResult.pda;
-        [self.navigationController pushViewController:resultView animated:YES];
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
 
@@ -358,86 +366,92 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             ++_nFrames;
-            
+            NSLog(@"%d",_nFrames);
             
         }
         else
         {
+            static Mat tmp;
+            static int cnt = 0;
+            cnt = (cnt + 1) % 3;
+            if(cnt) return;
+            tmp = image(ROI_upper).clone();
             
-            
-            // Cut the frame down to the upper bound of ROI
-            Mat frame_ROI = image(ROI_upper).clone();
-            
-            transpose(frame_ROI, frame_ROI);
-            for(int i=0; i<frame_ROI.rows/2; ++i) for(int j=0; j<frame_ROI.cols*4; ++j)
-                swap(frame_ROI.at<unsigned char>(i,j), frame_ROI.at<unsigned char>(frame_ROI.rows-i-1,j));
-            
-            //detectFrontalFaces(frame_ROI, faces);
-            
-            NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
-            
-            //return;
-            
-            
-            //============
-            
-//            Mat frame_gray;
-//            cvtColor(frame_ROI, frame_gray, CV_BGR2GRAY);
-//            equalizeHist(frame_gray, frame_gray);
-//            
-//            UIImage *uiImage = [autoStart imageWithCVMat:frame_gray];
-//            
-//            static int cnt = 0;
-//            ++cnt;
-//            
-//            if(10<=cnt && cnt<=20){
-//            // Create paths to output images
-//            NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent: [NSString stringWithFormat: @"Documents/Test%d.png",cnt]];
-//            
-//            // Write image to PNG
-//            [UIImagePNGRepresentation(uiImage) writeToFile:pngPath atomically:YES];
-//                NSLog(@"File printed");
-//            }
-            
-            
-            
-            
-            
-            // If this iteration detects valid faces
-            // - Increment the framesWithFace variable
-            int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
-            if (assessmentResult == 1)
-            {
-                framesWithFace += 1;
-            }
-            else
-            {
-                framesWithNoFace += 1;
-            }
-            
-            // If a face is not detected in N frames, then reset the face-detected streak
-            if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
-            {
-                framesWithFace = 0;
-                framesWithNoFace = 0;
-            }
-            
-            // If a face is detected in more than M frames, then reset the no-face streak
-            if (framesWithFace > _THRESHOLD_FACE_FRAMES_MIN)
-            {
-                framesWithNoFace = 0;
-            }
-            
-            if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
-            {
-                // tap the startButton
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self startButtonDidTap:self];
-                });
-            }
-            NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
-            
-            frame_ROI.deallocate();
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                // Cut the frame down to the upper bound of ROI
+                Mat frame_ROI = tmp;
+                
+                transpose(frame_ROI, frame_ROI);
+                for(int i=0; i<frame_ROI.rows/2; ++i) for(int j=0; j<frame_ROI.cols*4; ++j)
+                    swap(frame_ROI.at<unsigned char>(i,j), frame_ROI.at<unsigned char>(frame_ROI.rows-i-1,j));
+                
+                if(isCapturing) return;
+                
+                NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
+                
+                //return;
+                
+                
+                //============
+                
+                //            Mat frame_gray;
+                //            cvtColor(frame_ROI, frame_gray, CV_BGR2GRAY);
+                //            equalizeHist(frame_gray, frame_gray);
+                //
+                //            UIImage *uiImage = [autoStart imageWithCVMat:frame_gray];
+                //
+                //            static int cnt = 0;
+                //            ++cnt;
+                //
+                //            if(10<=cnt && cnt<=20){
+                //            // Create paths to output images
+                //            NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent: [NSString stringWithFormat: @"Documents/Test%d.png",cnt]];
+                //
+                //            // Write image to PNG
+                //            [UIImagePNGRepresentation(uiImage) writeToFile:pngPath atomically:YES];
+                //                NSLog(@"File printed");
+                //            }
+                
+                
+                
+                if(isCapturing) return;
+                
+                // If this iteration detects valid faces
+                // - Increment the framesWithFace variable
+                int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
+                faces = nil;
+                if (assessmentResult == 1)
+                {
+                    framesWithFace += 1;
+                }
+                else
+                {
+                    framesWithNoFace += 1;
+                }
+                
+                // If a face is not detected in N frames, then reset the face-detected streak
+                if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
+                {
+                    framesWithFace = 0;
+                    framesWithNoFace = 0;
+                }
+                
+                // If a face is detected in more than M frames, then reset the no-face streak
+                if (framesWithFace > _THRESHOLD_FACE_FRAMES_MIN)
+                {
+                    framesWithNoFace = 0;
+                }
+                
+                if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
+                {
+                    // tap the startButton
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self startButtonDidTap:self];
+                    });
+                    
+                }
+                // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
+            });
         }
         
     }
