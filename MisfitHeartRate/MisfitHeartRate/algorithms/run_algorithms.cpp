@@ -152,18 +152,22 @@ namespace MHR {
                                           _overlap_ratio, _max_bpm, threshold_fraction);
             
             printf("%lf %lf\n",currHrResult.autocorr,currHrResult.pda);
+            
+            hrGlobalResult = currHrResult;
         }
         vidOut.release();
                 
-        // Low-pass-filter the signal stream to remove unwanted noises
-        temporal_mean_filt = low_pass_filter(temporal_mean);
-        
-        // Block 2: Heart-rate calculation
-        // - Basis takes 15secs to generate an HR estimate
-        // - Cardiio takes 30secs to generate an HR estimate
-        hrResult hr_output = hr_signal_calc(temporal_mean_filt, firstSample, window_size, frameRate,
-                                            _overlap_ratio, _max_bpm, threshold_fraction);
-        
+//        // Low-pass-filter the signal stream to remove unwanted noises
+//        temporal_mean_filt = low_pass_filter(temporal_mean);
+//        
+//        // Block 2: Heart-rate calculation
+//        // - Basis takes 15secs to generate an HR estimate
+//        // - Cardiio takes 30secs to generate an HR estimate
+//        hrResult hr_output = hr_signal_calc(temporal_mean_filt, firstSample, window_size, frameRate,
+//                                            _overlap_ratio, _max_bpm, threshold_fraction);
+
+        //Reuse the 'last' current Result
+        hrResult hr_output = currHrResult;
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         if (DEBUG_MODE) {

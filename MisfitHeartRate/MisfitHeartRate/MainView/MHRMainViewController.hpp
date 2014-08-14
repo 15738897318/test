@@ -23,6 +23,7 @@
 #import "testFunctions.h"
 #import "MHRTest.hpp"
 #import "auto_start.hpp"
+#import "globals.h"
 
 using namespace cv;
 using namespace MHR;
