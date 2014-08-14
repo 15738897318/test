@@ -10,7 +10,7 @@
 
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir)
+    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult)
     {
         clock_t t1 = clock();
         
@@ -75,6 +75,7 @@ namespace MHR {
         bool isCalcMode = true;
         vector<Mat> monoframes, debug_monoframes, eulerianVid;
         vector<double> temporal_mean;
+        vector<double> temporal_mean_filt;
         Mat tmp_eulerianVid;
         
         while(1) {
@@ -138,11 +139,24 @@ namespace MHR {
             }
             
             if (currentFrame == nFrames - 1) break;
+            
+            /*-----------------Perform HR calculation for the frames processed so far-----------------*/
+            
+			// Low-pass-filter the signal stream to remove unwanted noises
+			temporal_mean_filt = low_pass_filter(temporal_mean);
+            
+			// Block 2: Heart-rate calculation
+			// - Basis takes 15secs to generate an HR estimate
+			// - Cardiio takes 30secs to generate an HR estimate
+			currHrResult = hr_signal_calc(temporal_mean_filt, firstSample, window_size, frameRate,
+                                          _overlap_ratio, _max_bpm, threshold_fraction);
+            
+            printf("%lf %lf\n",currHrResult.autocorr,currHrResult.pda);
         }
         vidOut.release();
                 
         // Low-pass-filter the signal stream to remove unwanted noises
-        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
+        temporal_mean_filt = low_pass_filter(temporal_mean);
         
         // Block 2: Heart-rate calculation
         // - Basis takes 15secs to generate an HR estimate
