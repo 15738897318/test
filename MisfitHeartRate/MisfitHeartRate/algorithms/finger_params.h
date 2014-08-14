@@ -44,8 +44,8 @@ namespace MHR {
     const double _finger_max_bpm = 200;             // BPM
     const double _finger_cutoff_freq = 2.5;         // Hz
     const double _finger_time_lag = 3;              // seconds
-    const String _finger_colourspace = "tsl";
-    const int _finger_channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
+    const String _finger_colourspace = "rgb";
+    const int _finger_channels_to_process = 0;     // If only 1 channel: 1 for tsl, 0 for rgb
     const int _finger_number_of_bins_heartRate = 5;
     
     // heartRate_calc: Native params of the algorithm

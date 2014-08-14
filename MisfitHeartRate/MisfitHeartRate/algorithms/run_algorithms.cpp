@@ -10,7 +10,7 @@
 
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir)
+    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult)
     {
         clock_t t1 = clock();
         
@@ -30,18 +30,26 @@ namespace MHR {
 							+ ".mp4";
         if (DEBUG_MODE) printf("outFile = %s\n", outFile.c_str());
         
-		// Read video
-		VideoCapture vidIn(inFile);
-        if (!vidIn.isOpened())
+		// Read first frames
+        int nFrames = 0;
+        FILE *file = fopen((srcDir + string("/input_frames.txt")).c_str(), "r");
+        if (file) fscanf(file, "%d", &nFrames);
+        fclose(file);
+        if (nFrames == 0)
         {
-            if (DEBUG_MODE) printf("%s is not opened!\n", inFile.c_str());
+            if (DEBUG_MODE) printf("nFrames == 0\n");
             return hrResult(-1, -1);
         }
         
-        /*-----------------read the first block of M frames to extract video params---------------*/
-        vector<Mat> vid;
-        videoCaptureToVector(vidIn, vid, _framesBlock_size);
         
+        /*-----------------read the first block of M frames to extract video params---------------*/
+        int currentFrame = -1;
+        vector<Mat> vid;
+        for (int i = 0; i < min(_framesBlock_size, nFrames); ++i) {
+            ++currentFrame;
+            readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
+        }
+
         // Extract video info
         int vidHeight = vid[0].rows;
         int vidWidth = vid[0].cols;
@@ -58,7 +66,7 @@ namespace MHR {
             }
         }
         
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Block 1: turn frames to signals
         double threshold_fraction = 0, lower_range, upper_range;
         int window_size = round(_window_size_in_sec * frameRate);
@@ -67,23 +75,27 @@ namespace MHR {
         bool isCalcMode = true;
         vector<Mat> monoframes, debug_monoframes, eulerianVid;
         vector<double> temporal_mean;
+        vector<double> temporal_mean_filt;
         Mat tmp_eulerianVid;
         
         while(1) {
             clock_t t1 = clock();
             
-            if (DEBUG_MODE) printf("len before = %d\n", (int)vid.size());
-            bool endOfFile = false;
-            
             /*-----------------read M frames, add to odd frames (0)-----------------*/
+            if (DEBUG_MODE) {
+                printf("load block: %d\n", blockCount);
+                printf("len before = %d\n", (int)vid.size());
+            }
             if (!isCalcMode) {
-                endOfFile = videoCaptureToVector(vidIn, vid, _framesBlock_size);
+                for (int i = 0; i < _framesBlock_size; ++i) {
+                    ++currentFrame;
+                    readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
+                    if (currentFrame == nFrames - 1) break;
+                }
+                
                 len = (int)vid.size();
                 if (DEBUG_MODE) printf("len after = %d\n", len);
             }
-            if (endOfFile) break;
-            
-            if (DEBUG_MODE) printf("load block: %d\n", blockCount);
             
             /*-----------------run_eulerian(): M frames (1)-----------------*/
             eulerianGaussianPyramidMagnification(vid, eulerianVid,
@@ -112,18 +124,7 @@ namespace MHR {
                 }
             }
             
-            
-            
-//            int eulerianLen = (int)vid.size();
-//            eulerianVid.clear();
-//            for (int i = 0; i < (int)vid.size(); ++i)
-//                eulerianVid.push_back(vid[i]);
-//            vid.clear();
-            
-            
-            
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
-            
             vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
@@ -136,11 +137,24 @@ namespace MHR {
                 printf("block %d runtime = %f\n", blockCount++, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
                 printf("_colourspace = %s\n", _colourspace.c_str());
             }
+            
+            if (currentFrame == nFrames - 1) break;
+            
+            /*-----------------Perform HR calculation for the frames processed so far-----------------*/
+            
+			// Low-pass-filter the signal stream to remove unwanted noises
+			temporal_mean_filt = low_pass_filter(temporal_mean);
+            
+			// Block 2: Heart-rate calculation
+			// - Basis takes 15secs to generate an HR estimate
+			// - Cardiio takes 30secs to generate an HR estimate
+			currHrResult = hr_signal_calc(temporal_mean_filt, firstSample, window_size, frameRate,
+                                          _overlap_ratio, _max_bpm, threshold_fraction);
         }
         vidOut.release();
                 
         // Low-pass-filter the signal stream to remove unwanted noises
-        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
+        temporal_mean_filt = low_pass_filter(temporal_mean);
         
         // Block 2: Heart-rate calculation
         // - Basis takes 15secs to generate an HR estimate

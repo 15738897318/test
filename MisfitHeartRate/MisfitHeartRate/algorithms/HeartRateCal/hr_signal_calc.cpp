@@ -10,6 +10,7 @@
 
 
 namespace MHR {
+    hrResult::hrResult(){}
     hrResult::hrResult(double autocorr, double pda)
     {
         this->autocorr = autocorr;

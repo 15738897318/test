@@ -142,7 +142,14 @@ namespace MHR {
         }
         
         double length = maxv-minv;
-        double bin_length = length/nbins;
+        
+        double bin_length;
+        if (length > 0) {
+            bin_length = length / nbins;
+        }
+        else {
+            bin_length = 1.0;
+        }
         
         counts.resize(nbins,0);
         centers.resize(nbins,0);
