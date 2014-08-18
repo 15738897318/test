@@ -154,6 +154,9 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     - (IBAction)startButtonDidTap:(id)sender
     {
+        printf("DEBUG_MODE = %d\n", DEBUG_MODE);
+        printf("THREE_CHAN_MODE = %d\n", THREE_CHAN_MODE);
+        
         if(isCapturing) return;
         isCapturing = TRUE;
         static int touchCount = 0;
@@ -480,6 +483,26 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         
     }
 
+
+- (IBAction)settingsButtonDidTap:(id)sender {
+    MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
+    settingsView.delegate = self;
+    settingsView.debugModeOn = (DEBUG_MODE > 0);
+    settingsView.threeChanModeOn = (THREE_CHAN_MODE > 0);
+    [self.navigationController pushViewController:settingsView animated:YES];
+}
+
+
+- (void)debugModeChanged:(BOOL)mode
+{
+    DEBUG_MODE = int(mode);
+}
+
+
+- (void)threeChanModeChanged:(BOOL)mode
+{
+    THREE_CHAN_MODE = int(mode);
+}
 
     #pragma - Test Image/Video
     //- (void)updateImageView:(NSInteger)index vid:(vector<Mat>)vid

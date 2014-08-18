@@ -15,6 +15,8 @@
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
 		6195C5E319A1B96A00D975CD /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6195C5E119A1B96A00D975CD /* globals.cpp */; };
 		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
+		DC3E2D0419A208910012DAE9 /* MHRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */; };
+		DC3E2D0519A208910012DAE9 /* MHRSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */; };
 		DC45E5F41989003600C49D0A /* MHRTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC45E5F31989003600C49D0A /* MHRTest.mm */; };
 		DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC9D58C6197FB062002C6BB8 /* config.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
@@ -124,6 +126,9 @@
 		6195C5E219A1B96A00D975CD /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
 		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
+		DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRSettingsViewController.h; path = SettingsView/MHRSettingsViewController.h; sourceTree = "<group>"; };
+		DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRSettingsViewController.m; path = SettingsView/MHRSettingsViewController.m; sourceTree = "<group>"; };
+		DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRSettingsViewController.xib; path = SettingsView/MHRSettingsViewController.xib; sourceTree = "<group>"; };
 		DC45E5F21989003600C49D0A /* MHRTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRTest.hpp; path = Utilities/MHRTest.hpp; sourceTree = "<group>"; };
 		DC45E5F31989003600C49D0A /* MHRTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRTest.mm; path = Utilities/MHRTest.mm; sourceTree = "<group>"; };
 		DC9D58C6197FB062002C6BB8 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
@@ -250,6 +255,16 @@
 				DC23397019863C8500D5F520 /* files.cpp */,
 			);
 			name = files;
+			sourceTree = "<group>";
+		};
+		DC3E2D0019A208780012DAE9 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */,
+				DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */,
+				DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */,
+			);
+			name = SettingsView;
 			sourceTree = "<group>";
 		};
 		DCADC189196BA7A700AFCDE5 /* ResultView */ = {
@@ -399,6 +414,7 @@
 				DCBDEA1D196124D3005F6298 /* Utilities */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
 				DCADC189196BA7A700AFCDE5 /* ResultView */,
+				DC3E2D0019A208780012DAE9 /* SettingsView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
 				DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */,
 				DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */,
@@ -546,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */,
+				DC3E2D0519A208910012DAE9 /* MHRSettingsViewController.xib in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
 				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
@@ -582,6 +599,7 @@
 				12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
+				DC3E2D0419A208910012DAE9 /* MHRSettingsViewController.m in Sources */,
 				121C1D56199B5888003C9E47 /* auto_start.mm in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
 				DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */,
