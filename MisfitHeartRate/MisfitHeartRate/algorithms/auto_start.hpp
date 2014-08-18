@@ -8,16 +8,6 @@
 
 
 @interface auto_start:NSObject
-
-//    @property (retain, nonatomic) CvVideoCamera *videoCamera;
-
-//    - (void) manualStartButtonClick;
-//
-//    - (int) autoStartForFinger;
-//
-//    /** @function autoStartForFace */
-//    - (int) autoStartForFace:(cv::Rect)ROI_upper lowerBound:(cv::Rect)ROI_lower;
-
     /** @function detectFrontalFaces */
     + (NSArray*) detectFrontalFaces:(cv::Mat*) frame;
 

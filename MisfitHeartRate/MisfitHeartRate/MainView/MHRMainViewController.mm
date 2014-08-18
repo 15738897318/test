@@ -407,66 +407,75 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         }
         else
         {
-            static Mat tmp;
-            static int cnt = 0;
-            cnt = (cnt + 1) % 3;
-            if(cnt) return;
-            tmp = image(ROI_upper).clone();
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                // Cut the frame down to the upper bound of ROI
-                Mat frame_ROI = tmp;
+            if (_cameraSwitch.isOn)
+            {
+                static Mat tmp;
+                static int cnt = 0;
+                cnt = (cnt + 1) % 3;
+                if(cnt) return;
                 
-                // Rotate the frame to fit the orientation preferred by the detector
-                transpose(frame_ROI, frame_ROI);
-                for(int i=0; i<frame_ROI.rows / 2; ++i) for(int j = 0; j < frame_ROI.cols * 4; ++j)
-                    swap(frame_ROI.at<unsigned char>(i, j), frame_ROI.at<unsigned char>(frame_ROI.rows - i - 1, j));
+                tmp = image(ROI_upper).clone();
                 
-                // If the main thread is already running the capture algo, then dont do the face detection
-                if(isCapturing) return;
-                
-                // Face detection
-                NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
-                
-                // If in the meantime, the main thread already transitions into running the capture algo, then dont do the counting increment
-                if(isCapturing) return;
-                
-                // If this iteration detects valid faces
-                // - Increment the framesWithFace variable
-                int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
-                faces = nil;
-                if (assessmentResult == 1)
-                {
-                    framesWithFace += 1;
-                }
-                else
-                {
-                    framesWithNoFace += 1;
-                }
-                
-                // If a face is not detected in N frames, then reset the face-detected streak
-                if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
-                {
-                    framesWithFace = 0;
-                    framesWithNoFace = 0;
-                }
-                
-                // If a face is detected in more than M frames, then reset the no-face streak
-                if (framesWithFace > _THRESHOLD_FACE_FRAMES_MIN)
-                {
-                    framesWithNoFace = 0;
-                }
-                
-                if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
-                {
-                    // tap the startButton
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self startButtonDidTap:self];
-                    });
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    // Cut the frame down to the upper bound of ROI
+                    Mat frame_ROI = tmp;
                     
-                }
-                // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
-            });
+                    // Rotate the frame to fit the orientation preferred by the detector
+                    transpose(frame_ROI, frame_ROI);
+                    for(int i=0; i < frame_ROI.rows / 2; ++i) for(int j = 0; j < frame_ROI.cols * 4; ++j)
+                        swap(frame_ROI.at<unsigned char>(i, j), frame_ROI.at<unsigned char>(frame_ROI.rows - i - 1, j));
+                    
+                    // If the main thread is already running the capture algo, then dont do the face detection
+                    if(isCapturing) return;
+                    
+                    // Face detection
+                    NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
+                    
+                    // If in the meantime, the main thread already transitions into running the capture algo, then dont do the counting increment
+                    if(isCapturing) return;
+                    
+                    // If this iteration detects valid faces
+                    // - Increment the framesWithFace variable
+                    int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
+                    faces = nil;
+                    if (assessmentResult == 1)
+                    {
+                        framesWithFace += 1;
+                    }
+                    else
+                    {
+                        framesWithNoFace += 1;
+                    }
+                    
+                    // If a face is not detected in N frames, then reset the face-detected streak
+                    if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
+                    {
+                        framesWithFace = 0;
+                        framesWithNoFace = 0;
+                    }
+                    
+                    // If a face is detected in more than M frames, then reset the no-face streak
+                    if (framesWithFace > _THRESHOLD_FACE_FRAMES_MIN)
+                    {
+                        framesWithNoFace = 0;
+                    }
+                    
+                    if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
+                    {
+                        // tap the startButton
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self startButtonDidTap:self];
+                        });
+                        
+                    }
+                    // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
+                });
+            }
+            else
+            {
+                return;
+            }
+            
         }
         
     }
