@@ -57,7 +57,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     @synthesize videoCamera = _videoCamera;
     @synthesize cameraSwitch = _cameraSwitch;
     @synthesize outPath = _outPath;
-    @synthesize outFile = _outFile;
+//    @synthesize outFile = _outFile;
     @synthesize nFrames = _nFrames;
     @synthesize recordTime = _recordTime;
     @synthesize recordTimer = _recordTimer;
@@ -104,12 +104,11 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         framesWithFace = framesWithNoFace = 0;
         
         _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
-        //_videoCamera = [[CvVideoCamera alloc] init];
         _videoCamera.delegate = self;
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
         _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
         _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-        //    _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
+//        _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
         _videoCamera.defaultFPS = _frameRate;
         _videoCamera.rotateVideo = YES;
         _videoCamera.grayscaleMode = NO;
@@ -128,13 +127,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         // update Layout (iOS6 vs iOS7)
         [self updateLayout];
         
-        
-        // On a different thread, run the face / finger detector
-        // This is to allow the main thread to still remain available to catch the physical button touch
-       
-        
-        //    test_findpeak();
-        //    [MHRTest test_run_algorithm];
+//        test_findpeak();
+//        [MHRTest test_run_algorithm];
     }
 
 
@@ -153,7 +147,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     - (void)didReceiveMemoryWarning
     {
-        //[super didReceiveMmoryWarning];
+//        [super didReceiveMmoryWarning];
         // Dispose of any resources that can be recreated.
     }
 
@@ -170,18 +164,36 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
         _outPath = [paths objectAtIndex:0];
         _outPath = [_outPath substringToIndex:([_outPath length] - [@"Library/Documentation/" length] + 1)];
-        NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-        formater.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
-        _outPath = [_outPath stringByAppendingFormat:@"Documents/%@/",
-                    [formater stringFromDate:[NSDate date]]];
+        
+        // 
+        if (DEBUG_MODE)
+        {
+            NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+            formater.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
+            _outPath = [_outPath stringByAppendingFormat:@"Documents/%@/",
+                        [formater stringFromDate:[NSDate date]]];
+        }
+        else
+        {
+            _outPath = [_outPath stringByAppendingFormat:@"Documents/temp/"];
+            
+            // Clear the /temp folder in advance, before populating it with new PNG files
+            NSFileManager *fm = [NSFileManager defaultManager];
+            NSError *error = nil;
+            BOOL success = [fm removeItemAtPath:_outPath error:&error];
+            if (!success || error) {
+                // something went wrong
+            }
+        }
+        
         [MHRUtilities createDirectory:_outPath];
         _outputPath = [_outPath UTF8String] + String("/");
         
         // output new file to write input video
-        _outFile = [_outPath stringByAppendingString:@"input.mp4"];
+//        _outFile = [_outPath stringByAppendingString:@"input.mp4"];
         
         isCapturing = YES;
-        //    self.navigationItem.leftBarButtonItem.enabled = NO;
+//        self.navigationItem.leftBarButtonItem.enabled = NO;
         _startButton.enabled = NO;
         _cameraSwitch.enabled = NO;
         _nFrames = 0;
@@ -192,7 +204,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                                                       userInfo:nil
                                                        repeats:YES];
         
-
     }
 
 
@@ -204,8 +215,10 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
         [self drawFaceCaptureRect:@"MHRWhiteColor"];
+        
         // stop camera capturing
         [_videoCamera stop];
+        
         // stop timer
         [_recordTimer invalidate];
         _recordTimer = nil;
@@ -226,9 +239,14 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         // heartRate cal
         __block hrResult result(-1, -1);
         
+        // Show the waiting animation
         progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         progressHUD.mode = MBProgressHUDModeIndeterminate;
-        [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
+        
+        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
+        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
+        
+        // Initialise the result-storing variables
         hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
         hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
         
@@ -236,28 +254,23 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             if (DEBUG_MODE)
                 printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
             
-            //        [self testRawVideo];
+//            [self testRawVideo];
             if (_nFrames >= _minVidLength*_frameRate)
                 result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
             
-            //        NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-            //        result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
-            //        result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
+//            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+//            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
+//            result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 // show result
                 resultView = [[MHRResultViewController alloc] init];
-                
-                // Timer to refresh the ResultView
-                
-                
-                            resultView.autocorrResult = result.autocorr;
-                            resultView.pdaResult = result.pda;
-                            [self.navigationController pushViewController:resultView animated:YES];
-                
+                resultView.autocorrResult = result.autocorr;
+                resultView.pdaResult = result.pda;
+                [self.navigationController pushViewController:resultView animated:YES];
                 
                 // update UI
-                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 
                 //Reset counters of mainView
                 framesWithFace = 0;
@@ -273,12 +286,21 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     - (void)updateUI
     {
         double hr = hrGlobalResult.autocorr;
-        if(hr < 55) hr = 55 + arc4random() % ( 10 + 5 + 1 ) - 5;
-        else{
+        
+        // If the HR is smaller than 55, then show a randomised number based on 55
+        if (hr < 55)
+            hr = 55 + arc4random() % (10 + 5 + 1) - 5;
+        else
+        {
             double old_hr = hrOldGlobalResult.autocorr;
-            if(hr == old_hr){
-                hr = old_hr + arc4random() % ( 6 + 3 + 1 ) - 3;
-            }else{
+            
+            // If the new HR is same as the old HR, then show a randomised number based on the old HR
+            if (hr == old_hr)
+            {
+                hr = old_hr + arc4random() % (6 + 3 + 1) - 3;
+            }
+            else
+            {
                 hrOldGlobalResult.autocorr = hr;
             }
         }
@@ -298,7 +320,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             [_videoCamera stop];
             
             // Set the camera to show camera capture onto the screen
-            // _videoCamera.ParentView = self.imageView;
+            _videoCamera.ParentView = self.imageView;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
             [_videoCamera start];
             setFaceParams();
@@ -370,8 +392,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     }
 
 
-    #pragma - Protocol CvVideoCameraDelegate
 
+    #pragma - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
         if (isCapturing)
@@ -395,39 +417,18 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                 // Cut the frame down to the upper bound of ROI
                 Mat frame_ROI = tmp;
                 
+                // Rotate the frame to fit the orientation preferred by the detector
                 transpose(frame_ROI, frame_ROI);
-                for(int i=0; i<frame_ROI.rows/2; ++i) for(int j=0; j<frame_ROI.cols*4; ++j)
-                    swap(frame_ROI.at<unsigned char>(i,j), frame_ROI.at<unsigned char>(frame_ROI.rows-i-1,j));
+                for(int i=0; i<frame_ROI.rows / 2; ++i) for(int j = 0; j < frame_ROI.cols * 4; ++j)
+                    swap(frame_ROI.at<unsigned char>(i, j), frame_ROI.at<unsigned char>(frame_ROI.rows - i - 1, j));
                 
+                // If the main thread is already running the capture algo, then dont do the face detection
                 if(isCapturing) return;
                 
+                // Face detection
                 NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
                 
-                //return;
-                
-                
-                //============
-                
-                //            Mat frame_gray;
-                //            cvtColor(frame_ROI, frame_gray, CV_BGR2GRAY);
-                //            equalizeHist(frame_gray, frame_gray);
-                //
-                //            UIImage *uiImage = [autoStart imageWithCVMat:frame_gray];
-                //
-                //            static int cnt = 0;
-                //            ++cnt;
-                //
-                //            if(10<=cnt && cnt<=20){
-                //            // Create paths to output images
-                //            NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent: [NSString stringWithFormat: @"Documents/Test%d.png",cnt]];
-                //
-                //            // Write image to PNG
-                //            [UIImagePNGRepresentation(uiImage) writeToFile:pngPath atomically:YES];
-                //                NSLog(@"File printed");
-                //            }
-                
-                
-                
+                // If in the meantime, the main thread already transitions into running the capture algo, then dont do the counting increment
                 if(isCapturing) return;
                 
                 // If this iteration detects valid faces

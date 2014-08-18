@@ -13,6 +13,7 @@
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
+		6195C5E319A1B96A00D975CD /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6195C5E119A1B96A00D975CD /* globals.cpp */; };
 		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
 		DC45E5F41989003600C49D0A /* MHRTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC45E5F31989003600C49D0A /* MHRTest.mm */; };
 		DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC9D58C6197FB062002C6BB8 /* config.cpp */; };
@@ -119,6 +120,8 @@
 		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
+		6195C5E119A1B96A00D975CD /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		6195C5E219A1B96A00D975CD /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
 		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
 		DC45E5F21989003600C49D0A /* MHRTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRTest.hpp; path = Utilities/MHRTest.hpp; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 		DCB55F1E1957CB3B0095A98E /* MisfitlHeartRate */ = {
 			isa = PBXGroup;
 			children = (
+				6195C5E119A1B96A00D975CD /* globals.cpp */,
+				6195C5E219A1B96A00D975CD /* globals.h */,
 				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCBDEA1D196124D3005F6298 /* Utilities */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
@@ -588,6 +593,7 @@
 				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
 				DC23397219863C8500D5F520 /* files.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */,
+				6195C5E319A1B96A00D975CD /* globals.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,
 				DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */,

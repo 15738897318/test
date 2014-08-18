@@ -14,21 +14,21 @@ namespace MHR {
     {
         clock_t t1 = clock();
         
-        String inFile = srcDir + "/" + fileName;
-        if (DEBUG_MODE) printf("Processing file: %s\n", inFile.c_str());
-        
-        // Get the filename-only part of the full path
-		String vidName = inFile.substr(inFile.find_last_of('/') + 1);
-        
-		// Create the output file with full path
-        String outFile = outDir + vidName 
-							+ "-ideal-from-" + std::to_string(_eulerian_minHR/60.0)
-							+ "-to-" + to_string(_eulerian_maxHR/60.0)
-							+ "-alpha-" + to_string(_eulerian_alpha)
-							+ "-level-" + to_string(_eulerian_pyrLevel)
-							+ "-chromAtn-" + to_string(_eulerian_chromaMagnifier)
-							+ ".mp4";
-        if (DEBUG_MODE) printf("outFile = %s\n", outFile.c_str());
+//        String inFile = srcDir + "/" + fileName;
+//        if (DEBUG_MODE) printf("Processing file: %s\n", inFile.c_str());
+//        
+//        // Get the filename-only part of the full path
+//		String vidName = inFile.substr(inFile.find_last_of('/') + 1);
+//        
+//		// Create the output file with full path
+//        String outFile = outDir + vidName 
+//							+ "-ideal-from-" + std::to_string(_eulerian_minHR/60.0)
+//							+ "-to-" + to_string(_eulerian_maxHR/60.0)
+//							+ "-alpha-" + to_string(_eulerian_alpha)
+//							+ "-level-" + to_string(_eulerian_pyrLevel)
+//							+ "-chromAtn-" + to_string(_eulerian_chromaMagnifier)
+//							+ ".mp4";
+//        if (DEBUG_MODE) printf("outFile = %s\n", outFile.c_str());
         
 		// Read first frames
         int nFrames = 0;
@@ -51,20 +51,20 @@ namespace MHR {
         }
 
         // Extract video info
-        int vidHeight = vid[0].rows;
-        int vidWidth = vid[0].cols;
+//        int vidHeight = vid[0].rows;
+//        int vidWidth = vid[0].cols;
         int frameRate = _frameRate;
         int len = (int)vid.size();
         
         // Create an output video based on the input video's params
-    	VideoWriter vidOut;
-        if (DEBUG_MODE > 0 && WRITE_EULERIAN_VID_MODE > 0) {
-            vidOut.open(outFile, CV_FOURCC('M','P','4','2'), frameRate, cvSize(vidWidth, vidHeight), true);
-            if (!vidOut.isOpened()) {
-                 printf("outFile %s is not opened!\n", outFile.c_str());
-                return hrResult(-1, -1);
-            }
-        }
+//    	VideoWriter vidOut;
+//        if (DEBUG_MODE > 0 && WRITE_EULERIAN_VID_MODE > 0) {
+//            vidOut.open(outFile, CV_FOURCC('M','P','4','2'), frameRate, cvSize(vidWidth, vidHeight), true);
+//            if (!vidOut.isOpened()) {
+//                 printf("outFile %s is not opened!\n", outFile.c_str());
+//                return hrResult(-1, -1);
+//            }
+//        }
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Block 1: turn frames to signals
@@ -116,13 +116,13 @@ namespace MHR {
             vid = newVid;
             
             /*-----------------write frames to file in DEBUG_MODE, WRITE_EULERIAN_VID_MODE-----------------*/
-            if (DEBUG_MODE > 0 && WRITE_EULERIAN_VID_MODE > 0) {
-                for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
-                    eulerianVid[i].convertTo(tmp_eulerianVid, CV_8UC3);
-                    cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
-                    vidOut << tmp_eulerianVid;
-                }
-            }
+//            if (DEBUG_MODE > 0 && WRITE_EULERIAN_VID_MODE > 0) {
+//                for (int i = isCalcMode ? 0:(len-startPos); i < eulerianLen; ++i) {
+//                    eulerianVid[i].convertTo(tmp_eulerianVid, CV_8UC3);
+//                    cvtColor(tmp_eulerianVid, tmp_eulerianVid, CV_RGB2BGR);
+//                    vidOut << tmp_eulerianVid;
+//                }
+//            }
             
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
             vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
@@ -155,16 +155,7 @@ namespace MHR {
             
             hrGlobalResult = currHrResult;
         }
-        vidOut.release();
-                
-//        // Low-pass-filter the signal stream to remove unwanted noises
-//        temporal_mean_filt = low_pass_filter(temporal_mean);
-//        
-//        // Block 2: Heart-rate calculation
-//        // - Basis takes 15secs to generate an HR estimate
-//        // - Cardiio takes 30secs to generate an HR estimate
-//        hrResult hr_output = hr_signal_calc(temporal_mean_filt, firstSample, window_size, frameRate,
-//                                            _overlap_ratio, _max_bpm, threshold_fraction);
+//        vidOut.release();
 
         //Reuse the 'last' current Result
         hrResult hr_output = currHrResult;
