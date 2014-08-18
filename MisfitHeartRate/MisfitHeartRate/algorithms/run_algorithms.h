@@ -16,10 +16,10 @@
 #include <opencv2/highgui/highgui.hpp>
 #include "eulerian.h"
 #include "temporal_mean_calc.h"
+#include "globals.h"
 
 using namespace cv;
 using namespace std;
-
 
 namespace MHR {
     hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult);

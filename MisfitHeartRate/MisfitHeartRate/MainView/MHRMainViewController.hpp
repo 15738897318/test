@@ -19,15 +19,17 @@
 #import "MBProgressHUD.h"
 #import "MHRUtilities.h"
 #import "MHRResultViewController.hpp"
+#import "MHRSettingsViewController.h"
 #import "run_algorithms.h"
 #import "testFunctions.h"
 #import "MHRTest.hpp"
 #import "auto_start.hpp"
+#import "globals.h"
 
 using namespace cv;
 using namespace MHR;
 
 
-@interface MHRMainViewController : UIViewController <CvVideoCameraDelegate>
+@interface MHRMainViewController : UIViewController <CvVideoCameraDelegate, MHRSettingsViewDelegate>
 
 @end

@@ -10,6 +10,10 @@
 
 
 namespace MHR {
+    int DEBUG_MODE = 0;
+    int THREE_CHAN_MODE = 0;
+    int WRITE_EULERIAN_VID_MODE = 0;
+    
     bool _FACE_MODE = true;
     
     String _outputPath = "NULL";

@@ -7,20 +7,7 @@ using namespace cv;
 
 
 @implementation auto_start
-
-
-
-//    /**Global variables */
-//    String face_cascade_name = "haarcascade_frontalface_alt.xml";
-//    CascadeClassifier face_cascade;
-//
-//    String eyes_cascade_name = "haarcascade_eye_tree_eyeglasses.xml";
-//    CascadeClassifier eyes_cascade;
-//
     RNG rng(12345);
-
-
-
 
     /** @function detectFrontalFaces */
     + (NSArray*) detectFrontalFaces:(cv::Mat*) frame
@@ -47,6 +34,7 @@ using namespace cv;
         
     }
 
+    /** @function imageWithCVMat */
     + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat
         {
             NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize() * cvMat.total()];
@@ -82,7 +70,6 @@ using namespace cv;
         }
 
     /** @function assessFaces */
-    //int assessFaces(std::vector<Rect> faces, cv::Rect ROI_lower)
     + (int) assessFaces:(NSArray *)faces withLowerBound:(cv::Rect)ROI_lower
     {
         // There must be at least one face in the detected faces that is bigger than the minimum size of the ROI
