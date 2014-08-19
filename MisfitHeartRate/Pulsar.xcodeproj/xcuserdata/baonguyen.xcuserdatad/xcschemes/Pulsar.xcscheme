@@ -38,6 +38,16 @@
                ReferencedContainer = "container:MisfitHeartRate.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DCB55F321957CB3B0095A98E"
+               BuildableName = "MisfitHeartRateTests.xctest"
+               BlueprintName = "MisfitHeartRateTests"
+               ReferencedContainer = "container:Pulsar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

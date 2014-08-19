@@ -10,15 +10,6 @@
 
 
 namespace MHR {
-    // print a frame to file
-    bool frameToFile(const Mat& frame, const String& outFile)
-    {
-//        Mat tmp = frame.clone();
-//        cvtColor(tmp, tmp, CV_RGB2BGR);
-        return imwrite(outFile, frame);
-    }
-
-
 	// convert a RGB Mat to a TSL Mat
     // rgbmap is a CV_64F Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst)
@@ -151,8 +142,9 @@ namespace MHR {
                 last_i = max(last_i, i);
                 last_j = max(last_j, j);
             }
-        if (last_i+1 != m && last_j+1 != n)
-            printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
+        if (DEBUG_MODE)
+            if (last_i+1 != m && last_j+1 != n)
+                printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
     }
     
     

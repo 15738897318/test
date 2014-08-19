@@ -9,7 +9,7 @@
 #ifndef __MisfitHeartRate__build_Gdown_stack__
 #define __MisfitHeartRate__build_Gdown_stack__
 
-#include "image.h"
+#include "files.h"
 
 
 namespace MHR {

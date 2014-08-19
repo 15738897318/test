@@ -7,82 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121C1D56199B5888003C9E47 /* auto_start.mm in Sources */ = {isa = PBXBuildFile; fileRef = 121C1D55199B5888003C9E47 /* auto_start.mm */; };
+		121C1D5D199B632A003C9E47 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121C1D5C199B632A003C9E47 /* ImageIO.framework */; };
 		12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */; };
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
-		DC1D6668197CFACD00A55980 /* hr_signal_calc_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */; };
-		DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */; };
-		DC1D666C197D011A00A55980 /* corr_linear_test_1.in in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666A197D011A00A55980 /* corr_linear_test_1.in */; };
-		DC1D666D197D011A00A55980 /* corr_linear_test_1.out in Resources */ = {isa = PBXBuildFile; fileRef = DC1D666B197D011A00A55980 /* corr_linear_test_1.out */; };
-		DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */; };
-		DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */; };
-		DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC5351C919790E16003E0FF5 /* hr_calculator_test.in */; };
-		DC5351CC19790E16003E0FF5 /* hr_calculator_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */; };
-		DC85FF4B19768AC5004081B2 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2B19768AC5004081B2 /* add_test.in */; };
-		DC85FF4C19768AC5004081B2 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2B19768AC5004081B2 /* add_test.in */; };
-		DC85FF4D19768AC5004081B2 /* add_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2C19768AC5004081B2 /* add_test.out */; };
-		DC85FF4E19768AC5004081B2 /* add_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2C19768AC5004081B2 /* add_test.out */; };
-		DC85FF4F19768AC5004081B2 /* atan2Mat_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */; };
-		DC85FF5019768AC5004081B2 /* atan2Mat_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */; };
-		DC85FF5119768AC5004081B2 /* atan2Mat_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2E19768AC5004081B2 /* atan2Mat_test.out */; };
-		DC85FF5219768AC5004081B2 /* atan2Mat_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2E19768AC5004081B2 /* atan2Mat_test.out */; };
-		DC85FF5319768AC5004081B2 /* blurDnClr_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2F19768AC5004081B2 /* blurDnClr_test.in */; };
-		DC85FF5419768AC5004081B2 /* blurDnClr_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF2F19768AC5004081B2 /* blurDnClr_test.in */; };
-		DC85FF5519768AC5004081B2 /* blurDnClr_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3019768AC5004081B2 /* blurDnClr_test.out */; };
-		DC85FF5619768AC5004081B2 /* blurDnClr_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3019768AC5004081B2 /* blurDnClr_test.out */; };
-		DC85FF5719768AC5004081B2 /* conv_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3119768AC5004081B2 /* conv_test.in */; };
-		DC85FF5819768AC5004081B2 /* conv_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3119768AC5004081B2 /* conv_test.in */; };
-		DC85FF5919768AC5004081B2 /* conv_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3219768AC5004081B2 /* conv_test.out */; };
-		DC85FF5A19768AC5004081B2 /* conv_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3219768AC5004081B2 /* conv_test.out */; };
-		DC85FF5B19768AC5004081B2 /* corrDn_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3319768AC5004081B2 /* corrDn_test.in */; };
-		DC85FF5C19768AC5004081B2 /* corrDn_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3319768AC5004081B2 /* corrDn_test.in */; };
-		DC85FF5D19768AC5004081B2 /* corrDn_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3419768AC5004081B2 /* corrDn_test.out */; };
-		DC85FF5E19768AC5004081B2 /* corrDn_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3419768AC5004081B2 /* corrDn_test.out */; };
-		DC85FF5F19768AC5004081B2 /* findpeaks_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3519768AC5004081B2 /* findpeaks_test.in */; };
-		DC85FF6019768AC5004081B2 /* findpeaks_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3519768AC5004081B2 /* findpeaks_test.in */; };
-		DC85FF6119768AC5004081B2 /* findpeaks_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3619768AC5004081B2 /* findpeaks_test.out */; };
-		DC85FF6219768AC5004081B2 /* findpeaks_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3619768AC5004081B2 /* findpeaks_test.out */; };
-		DC85FF6319768AC5004081B2 /* frames2signal_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3719768AC5004081B2 /* frames2signal_test.in */; };
-		DC85FF6419768AC5004081B2 /* frames2signal_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3719768AC5004081B2 /* frames2signal_test.in */; };
-		DC85FF6519768AC5004081B2 /* frames2signal_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3819768AC5004081B2 /* frames2signal_test.out */; };
-		DC85FF6619768AC5004081B2 /* frames2signal_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3819768AC5004081B2 /* frames2signal_test.out */; };
-		DC85FF6719768AC5004081B2 /* hist_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3919768AC5004081B2 /* hist_test.in */; };
-		DC85FF6819768AC5004081B2 /* hist_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3919768AC5004081B2 /* hist_test.in */; };
-		DC85FF6919768AC5004081B2 /* hist_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3A19768AC5004081B2 /* hist_test.out */; };
-		DC85FF6A19768AC5004081B2 /* hist_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3A19768AC5004081B2 /* hist_test.out */; };
-		DC85FF6B19768AC5004081B2 /* invprctile_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3B19768AC5004081B2 /* invprctile_test.in */; };
-		DC85FF6C19768AC5004081B2 /* invprctile_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3B19768AC5004081B2 /* invprctile_test.in */; };
-		DC85FF6D19768AC5004081B2 /* invprctile_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3C19768AC5004081B2 /* invprctile_test.out */; };
-		DC85FF6E19768AC5004081B2 /* invprctile_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3C19768AC5004081B2 /* invprctile_test.out */; };
-		DC85FF6F19768AC5004081B2 /* low_pass_filter_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3D19768AC5004081B2 /* low_pass_filter_test.in */; };
-		DC85FF7019768AC5004081B2 /* low_pass_filter_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3D19768AC5004081B2 /* low_pass_filter_test.in */; };
-		DC85FF7119768AC5004081B2 /* low_pass_filter_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3E19768AC5004081B2 /* low_pass_filter_test.out */; };
-		DC85FF7219768AC5004081B2 /* low_pass_filter_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3E19768AC5004081B2 /* low_pass_filter_test.out */; };
-		DC85FF7319768AC5004081B2 /* multiply_num_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3F19768AC5004081B2 /* multiply_num_test.in */; };
-		DC85FF7419768AC5004081B2 /* multiply_num_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF3F19768AC5004081B2 /* multiply_num_test.in */; };
-		DC85FF7519768AC5004081B2 /* multiply_num_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4019768AC5004081B2 /* multiply_num_test.out */; };
-		DC85FF7619768AC5004081B2 /* multiply_num_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4019768AC5004081B2 /* multiply_num_test.out */; };
-		DC85FF7719768AC5004081B2 /* multiply_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4119768AC5004081B2 /* multiply_test.in */; };
-		DC85FF7819768AC5004081B2 /* multiply_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4119768AC5004081B2 /* multiply_test.in */; };
-		DC85FF7919768AC5004081B2 /* multiply_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4219768AC5004081B2 /* multiply_test.out */; };
-		DC85FF7A19768AC5004081B2 /* multiply_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4219768AC5004081B2 /* multiply_test.out */; };
-		DC85FF7B19768AC5004081B2 /* powMat_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4319768AC5004081B2 /* powMat_test.in */; };
-		DC85FF7C19768AC5004081B2 /* powMat_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4319768AC5004081B2 /* powMat_test.in */; };
-		DC85FF7D19768AC5004081B2 /* powMat_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4419768AC5004081B2 /* powMat_test.out */; };
-		DC85FF7E19768AC5004081B2 /* powMat_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4419768AC5004081B2 /* powMat_test.out */; };
-		DC85FF7F19768AC5004081B2 /* prctile_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4519768AC5004081B2 /* prctile_test.in */; };
-		DC85FF8019768AC5004081B2 /* prctile_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4519768AC5004081B2 /* prctile_test.in */; };
-		DC85FF8119768AC5004081B2 /* prctile_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4619768AC5004081B2 /* prctile_test.out */; };
-		DC85FF8219768AC5004081B2 /* prctile_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4619768AC5004081B2 /* prctile_test.out */; };
-		DC85FF8319768AC5004081B2 /* rgb2tsl_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4719768AC5004081B2 /* rgb2tsl_test.in */; };
-		DC85FF8419768AC5004081B2 /* rgb2tsl_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4719768AC5004081B2 /* rgb2tsl_test.in */; };
-		DC85FF8519768AC5004081B2 /* rgb2tsl_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4819768AC5004081B2 /* rgb2tsl_test.out */; };
-		DC85FF8619768AC5004081B2 /* rgb2tsl_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4819768AC5004081B2 /* rgb2tsl_test.out */; };
-		DC85FF8719768AC5004081B2 /* unique_stable_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4919768AC5004081B2 /* unique_stable_test.in */; };
-		DC85FF8819768AC5004081B2 /* unique_stable_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4919768AC5004081B2 /* unique_stable_test.in */; };
-		DC85FF8919768AC5004081B2 /* unique_stable_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4A19768AC5004081B2 /* unique_stable_test.out */; };
-		DC85FF8A19768AC5004081B2 /* unique_stable_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC85FF4A19768AC5004081B2 /* unique_stable_test.out */; };
+		6195C5E319A1B96A00D975CD /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6195C5E119A1B96A00D975CD /* globals.cpp */; };
+		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
+		DC3E2D0419A208910012DAE9 /* MHRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */; };
+		DC3E2D0519A208910012DAE9 /* MHRSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */; };
+		DC45E5F41989003600C49D0A /* MHRTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC45E5F31989003600C49D0A /* MHRTest.mm */; };
+		DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC9D58C6197FB062002C6BB8 /* config.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
 		DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */; };
 		DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */; };
@@ -93,7 +29,6 @@
 		DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE523E196579BC00A8AFB6 /* matrix.cpp */; };
 		DCAE524319657AF300A8AFB6 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
 		DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
-		DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCAE524819669B4900A8AFB6 /* test1.mp4 */; };
 		DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */; };
 		DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */; };
 		DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */; };
@@ -119,10 +54,8 @@
 		DCB55F5F1957CC4C0095A98E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F581957CC4C0095A98E /* CoreMedia.framework */; };
 		DCB55F601957CC4C0095A98E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F591957CC4C0095A98E /* CoreVideo.framework */; };
 		DCB55F621957CC6E0095A98E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F611957CC6E0095A98E /* QuartzCore.framework */; };
-		DCB55F671957CDCD0095A98E /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F651957CDCD0095A98E /* test.mp4 */; };
 		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
-		DCB55F731957E0EF0095A98E /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
 		DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D111975049E00793884 /* hr_calculator.cpp */; };
 		DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D14197531CC00793884 /* testFunctions.cpp */; };
 		DCB91D1D19762E9900793884 /* videoHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */; };
@@ -159,26 +92,11 @@
 		DCB91D4019763D5F00793884 /* MHRAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */; };
 		DCB91D4219763D6700793884 /* MisfitHeartRate-Skin.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCADC187196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist */; };
 		DCB91D4319763D7800793884 /* videoHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */; };
-		DCB91D4419763D8E00793884 /* test2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCCA86C7196C0259002B6B5E /* test2.mp4 */; };
-		DCB91D4519763D8E00793884 /* test1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCAE524819669B4900A8AFB6 /* test1.mp4 */; };
-		DCB91D4619763D8E00793884 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
-		DCB91D4719763D8E00793884 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F651957CDCD0095A98E /* test.mp4 */; };
-		DCB91D4819763D8E00793884 /* test.avi in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F721957E0EF0095A98E /* test.avi */; };
-		DCB91D4919763D8E00793884 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
-		DCB91D4A19763D8E00793884 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
 		DCB91D4B19763DE100793884 /* MHRResultViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCADC18B196BA7D200AFCDE5 /* MHRResultViewController.mm */; };
 		DCB9B339197D2F04004DC746 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB9B338197D2F04004DC746 /* UIAlertView+Block.m */; };
 		DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA1F196124F3005F6298 /* MHRUtilities.m */; };
-		DCBDEA2219614C43005F6298 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2119614C43005F6298 /* small.mp4 */; };
-		DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCBDEA2419614ED6005F6298 /* test0.mp4 */; };
 		DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */; };
-		DCC56C7E1962A927009122FB /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DCC56C7D1962A927009122FB /* test.jpg */; };
 		DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */; };
-		DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DCCA86C7196C0259002B6B5E /* test2.mp4 */; };
-		DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */; };
-		DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */; };
-		DCF4B78C19764DC2006B5F4F /* ideal_bandpassing_test_0.out in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */; };
-		DCF4B78D19764DC9006B5F4F /* ideal_bandpassing_test_0.in in Resources */ = {isa = PBXBuildFile; fileRef = DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +110,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		121C1D54199B5888003C9E47 /* auto_start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auto_start.hpp; sourceTree = "<group>"; };
+		121C1D55199B5888003C9E47 /* auto_start.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = auto_start.mm; sourceTree = "<group>"; };
+		121C1D5C199B632A003C9E47 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_pda.cpp; path = HeartRateCal/hb_counter_pda.cpp; sourceTree = "<group>"; };
 		12B587D91963EBA300BA19A5 /* hb_counter_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_pda.h; path = HeartRateCal/hb_counter_pda.h; sourceTree = "<group>"; };
 		12B587DB1963EC9100BA19A5 /* hrDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hrDebug.cpp; path = HeartRateCal/hrDebug.cpp; sourceTree = "<group>"; };
@@ -201,46 +122,18 @@
 		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
-		DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.in; path = MisfitHeartRateTests/hr_signal_calc_test.in; sourceTree = SOURCE_ROOT; };
-		DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_signal_calc_test.out; path = MisfitHeartRateTests/hr_signal_calc_test.out; sourceTree = SOURCE_ROOT; };
-		DC1D666A197D011A00A55980 /* corr_linear_test_1.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.in; path = MisfitHeartRateTests/corr_linear_test_1.in; sourceTree = SOURCE_ROOT; };
-		DC1D666B197D011A00A55980 /* corr_linear_test_1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test_1.out; path = MisfitHeartRateTests/corr_linear_test_1.out; sourceTree = SOURCE_ROOT; };
-		DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.in; path = MisfitHeartRateTests/corr_linear_test.in; sourceTree = SOURCE_ROOT; };
-		DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corr_linear_test.out; path = MisfitHeartRateTests/corr_linear_test.out; sourceTree = SOURCE_ROOT; };
-		DC5351C919790E16003E0FF5 /* hr_calculator_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.in; path = MisfitHeartRateTests/hr_calculator_test.in; sourceTree = SOURCE_ROOT; };
-		DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hr_calculator_test.out; path = MisfitHeartRateTests/hr_calculator_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF2B19768AC5004081B2 /* add_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = add_test.in; path = MisfitHeartRateTests/add_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF2C19768AC5004081B2 /* add_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = add_test.out; path = MisfitHeartRateTests/add_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atan2Mat_test.in; path = MisfitHeartRateTests/atan2Mat_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF2E19768AC5004081B2 /* atan2Mat_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atan2Mat_test.out; path = MisfitHeartRateTests/atan2Mat_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF2F19768AC5004081B2 /* blurDnClr_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = blurDnClr_test.in; path = MisfitHeartRateTests/blurDnClr_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3019768AC5004081B2 /* blurDnClr_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = blurDnClr_test.out; path = MisfitHeartRateTests/blurDnClr_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3119768AC5004081B2 /* conv_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = conv_test.in; path = MisfitHeartRateTests/conv_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3219768AC5004081B2 /* conv_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = conv_test.out; path = MisfitHeartRateTests/conv_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3319768AC5004081B2 /* corrDn_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corrDn_test.in; path = MisfitHeartRateTests/corrDn_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3419768AC5004081B2 /* corrDn_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corrDn_test.out; path = MisfitHeartRateTests/corrDn_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3519768AC5004081B2 /* findpeaks_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = findpeaks_test.in; path = MisfitHeartRateTests/findpeaks_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3619768AC5004081B2 /* findpeaks_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = findpeaks_test.out; path = MisfitHeartRateTests/findpeaks_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3719768AC5004081B2 /* frames2signal_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = frames2signal_test.in; path = MisfitHeartRateTests/frames2signal_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3819768AC5004081B2 /* frames2signal_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = frames2signal_test.out; path = MisfitHeartRateTests/frames2signal_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3919768AC5004081B2 /* hist_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hist_test.in; path = MisfitHeartRateTests/hist_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3A19768AC5004081B2 /* hist_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hist_test.out; path = MisfitHeartRateTests/hist_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3B19768AC5004081B2 /* invprctile_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = invprctile_test.in; path = MisfitHeartRateTests/invprctile_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3C19768AC5004081B2 /* invprctile_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = invprctile_test.out; path = MisfitHeartRateTests/invprctile_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3D19768AC5004081B2 /* low_pass_filter_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = low_pass_filter_test.in; path = MisfitHeartRateTests/low_pass_filter_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF3E19768AC5004081B2 /* low_pass_filter_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = low_pass_filter_test.out; path = MisfitHeartRateTests/low_pass_filter_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF3F19768AC5004081B2 /* multiply_num_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = multiply_num_test.in; path = MisfitHeartRateTests/multiply_num_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF4019768AC5004081B2 /* multiply_num_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = multiply_num_test.out; path = MisfitHeartRateTests/multiply_num_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF4119768AC5004081B2 /* multiply_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = multiply_test.in; path = MisfitHeartRateTests/multiply_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF4219768AC5004081B2 /* multiply_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = multiply_test.out; path = MisfitHeartRateTests/multiply_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF4319768AC5004081B2 /* powMat_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = powMat_test.in; path = MisfitHeartRateTests/powMat_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF4419768AC5004081B2 /* powMat_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = powMat_test.out; path = MisfitHeartRateTests/powMat_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF4519768AC5004081B2 /* prctile_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = prctile_test.in; path = MisfitHeartRateTests/prctile_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF4619768AC5004081B2 /* prctile_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = prctile_test.out; path = MisfitHeartRateTests/prctile_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF4719768AC5004081B2 /* rgb2tsl_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rgb2tsl_test.in; path = MisfitHeartRateTests/rgb2tsl_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF4819768AC5004081B2 /* rgb2tsl_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rgb2tsl_test.out; path = MisfitHeartRateTests/rgb2tsl_test.out; sourceTree = SOURCE_ROOT; };
-		DC85FF4919768AC5004081B2 /* unique_stable_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = unique_stable_test.in; path = MisfitHeartRateTests/unique_stable_test.in; sourceTree = SOURCE_ROOT; };
-		DC85FF4A19768AC5004081B2 /* unique_stable_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = unique_stable_test.out; path = MisfitHeartRateTests/unique_stable_test.out; sourceTree = SOURCE_ROOT; };
+		6195C5E119A1B96A00D975CD /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		6195C5E219A1B96A00D975CD /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
+		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
+		DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRSettingsViewController.h; path = SettingsView/MHRSettingsViewController.h; sourceTree = "<group>"; };
+		DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRSettingsViewController.m; path = SettingsView/MHRSettingsViewController.m; sourceTree = "<group>"; };
+		DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRSettingsViewController.xib; path = SettingsView/MHRSettingsViewController.xib; sourceTree = "<group>"; };
+		DC45E5F21989003600C49D0A /* MHRTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRTest.hpp; path = Utilities/MHRTest.hpp; sourceTree = "<group>"; };
+		DC45E5F31989003600C49D0A /* MHRTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRTest.mm; path = Utilities/MHRTest.mm; sourceTree = "<group>"; };
+		DC9D58C6197FB062002C6BB8 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
+		DC9D58CC197FB15B002C6BB8 /* finger_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finger_params.h; sourceTree = "<group>"; };
+		DC9D58CF197FB166002C6BB8 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
 		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
 		DCA50B8C1964179200F99D33 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = frames2signal.h; path = HeartRateCal/frames2signal.h; sourceTree = "<group>"; };
 		DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Position.h"; path = "Utilities/UIView+Position.h"; sourceTree = "<group>"; };
@@ -259,7 +152,6 @@
 		DCAE524219657AF300A8AFB6 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = image/image.h; sourceTree = "<group>"; };
 		DCAE524419657B7700A8AFB6 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eulerian.cpp; path = Eulerian/eulerian.cpp; sourceTree = "<group>"; };
 		DCAE524519657B7700A8AFB6 /* eulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eulerian.h; path = Eulerian/eulerian.h; sourceTree = "<group>"; };
-		DCAE524819669B4900A8AFB6 /* test1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test1.mp4; sourceTree = "<group>"; };
 		DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_algorithms.cpp; sourceTree = "<group>"; };
 		DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_algorithms.h; sourceTree = "<group>"; };
 		DCAE52511966B45300A8AFB6 /* hr_signal_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_signal_calc.cpp; path = HeartRateCal/hr_signal_calc.cpp; sourceTree = "<group>"; };
@@ -293,11 +185,9 @@
 		DCB55F581957CC4C0095A98E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DCB55F591957CC4C0095A98E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		DCB55F611957CC6E0095A98E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		DCB55F651957CDCD0095A98E /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 		DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRMainViewController.hpp; path = MisfitHeartRate/MainView/MHRMainViewController.hpp; sourceTree = SOURCE_ROOT; };
 		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
 		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
-		DCB55F721957E0EF0095A98E /* test.avi */ = {isa = PBXFileReference; lastKnownFileType = video.avi; path = test.avi; sourceTree = "<group>"; };
 		DCB91D111975049E00793884 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calculator.cpp; path = HeartRateCal/hr_calculator.cpp; sourceTree = "<group>"; };
 		DCB91D121975049F00793884 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calculator.h; path = HeartRateCal/hr_calculator.h; sourceTree = "<group>"; };
 		DCB91D14197531CC00793884 /* testFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testFunctions.cpp; sourceTree = "<group>"; };
@@ -309,16 +199,10 @@
 		DCB9B338197D2F04004DC746 /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+Block.m"; path = "Utilities/UIAlertView+Block.m"; sourceTree = "<group>"; };
 		DCBDEA1E196124F3005F6298 /* MHRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRUtilities.h; path = Utilities/MHRUtilities.h; sourceTree = "<group>"; };
 		DCBDEA1F196124F3005F6298 /* MHRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRUtilities.m; path = Utilities/MHRUtilities.m; sourceTree = "<group>"; };
-		DCBDEA2119614C43005F6298 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
-		DCBDEA2419614ED6005F6298 /* test0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test0.mp4; sourceTree = "<group>"; };
 		DCBDEA2619617A8E005F6298 /* UIImageCVMatConverter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIImageCVMatConverter.hpp; path = Utilities/UIImageCVMatConverter.hpp; sourceTree = "<group>"; };
 		DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UIImageCVMatConverter.mm; path = Utilities/UIImageCVMatConverter.mm; sourceTree = "<group>"; };
-		DCC56C7D1962A927009122FB /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ideal_bandpassing.cpp; path = Eulerian/ideal_bandpassing.cpp; sourceTree = "<group>"; };
 		DCCA86C5196BE4D8002B6B5E /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ideal_bandpassing.h; path = Eulerian/ideal_bandpassing.h; sourceTree = "<group>"; };
-		DCCA86C7196C0259002B6B5E /* test2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.mp4; sourceTree = "<group>"; };
-		DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideal_bandpassing_test_0.out; path = MisfitHeartRateTests/ideal_bandpassing_test_0.out; sourceTree = SOURCE_ROOT; };
-		DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideal_bandpassing_test_0.in; path = MisfitHeartRateTests/ideal_bandpassing_test_0.in; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,11 +210,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121C1D5D199B632A003C9E47 /* ImageIO.framework in Frameworks */,
+				DCB55F5E1957CC4C0095A98E /* CoreImage.framework in Frameworks */,
 				DCB55F621957CC6E0095A98E /* QuartzCore.framework in Frameworks */,
 				DCB55F5A1957CC4C0095A98E /* Accelerate.framework in Frameworks */,
 				DCB55F5B1957CC4C0095A98E /* AssetsLibrary.framework in Frameworks */,
 				DCB55F5C1957CC4C0095A98E /* AVFoundation.framework in Frameworks */,
-				DCB55F5E1957CC4C0095A98E /* CoreImage.framework in Frameworks */,
 				DCB55F5F1957CC4C0095A98E /* CoreMedia.framework in Frameworks */,
 				DCB55F601957CC4C0095A98E /* CoreVideo.framework in Frameworks */,
 				DCB55F191957CB3B0095A98E /* CoreGraphics.framework in Frameworks */,
@@ -363,6 +248,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC23396F19863C5800D5F520 /* files */ = {
+			isa = PBXGroup;
+			children = (
+				DC23397119863C8500D5F520 /* files.h */,
+				DC23397019863C8500D5F520 /* files.cpp */,
+			);
+			name = files;
+			sourceTree = "<group>";
+		};
+		DC3E2D0019A208780012DAE9 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */,
+				DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */,
+				DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */,
+			);
+			name = SettingsView;
+			sourceTree = "<group>";
+		};
 		DCADC189196BA7A700AFCDE5 /* ResultView */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,7 +286,11 @@
 				DCAE6BA6195A794800B9FE9F /* math */,
 				DCAE6BA5195A791B00B9FE9F /* image */,
 				DCAE6BA0195A789800B9FE9F /* matrix */,
+				DC23396F19863C5800D5F520 /* files */,
 				12B587EB19651DD700BA19A5 /* config.h */,
+				DC9D58C6197FB062002C6BB8 /* config.cpp */,
+				DC9D58CF197FB166002C6BB8 /* face_params.h */,
+				DC9D58CC197FB15B002C6BB8 /* finger_params.h */,
 				DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */,
 				DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */,
 				DCB91D15197531CC00793884 /* testFunctions.h */,
@@ -403,6 +311,8 @@
 		DCAE6BA5195A791B00B9FE9F /* image */ = {
 			isa = PBXGroup;
 			children = (
+				121C1D54199B5888003C9E47 /* auto_start.hpp */,
+				121C1D55199B5888003C9E47 /* auto_start.mm */,
 				DCAE524219657AF300A8AFB6 /* image.h */,
 				DCAE524119657AF300A8AFB6 /* image.cpp */,
 			);
@@ -476,6 +386,7 @@
 		DCB55F151957CB3B0095A98E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				121C1D5C199B632A003C9E47 /* ImageIO.framework */,
 				DCB55F611957CC6E0095A98E /* QuartzCore.framework */,
 				DCB55F531957CC4C0095A98E /* Accelerate.framework */,
 				DCB55F541957CC4C0095A98E /* AssetsLibrary.framework */,
@@ -497,11 +408,13 @@
 		DCB55F1E1957CB3B0095A98E /* MisfitlHeartRate */ = {
 			isa = PBXGroup;
 			children = (
-				DCB55F631957CDCD0095A98E /* resources */,
+				6195C5E119A1B96A00D975CD /* globals.cpp */,
+				6195C5E219A1B96A00D975CD /* globals.h */,
 				DCAE6B9D195A789800B9FE9F /* algorithms */,
 				DCBDEA1D196124D3005F6298 /* Utilities */,
 				DCB55F4B1957CBB80095A98E /* MainView */,
 				DCADC189196BA7A700AFCDE5 /* ResultView */,
+				DC3E2D0019A208780012DAE9 /* SettingsView */,
 				DCB55F271957CB3B0095A98E /* MHRAppDelegate.hpp */,
 				DCB55F281957CB3B0095A98E /* MHRAppDelegate.mm */,
 				DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */,
@@ -552,21 +465,6 @@
 			name = MainView;
 			sourceTree = "<group>";
 		};
-		DCB55F631957CDCD0095A98E /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				DCF4B78719764D7F006B5F4F /* tests */,
-				DCCA86C7196C0259002B6B5E /* test2.mp4 */,
-				DCAE524819669B4900A8AFB6 /* test1.mp4 */,
-				DCBDEA2419614ED6005F6298 /* test0.mp4 */,
-				DCB55F651957CDCD0095A98E /* test.mp4 */,
-				DCB55F721957E0EF0095A98E /* test.avi */,
-				DCC56C7D1962A927009122FB /* test.jpg */,
-				DCBDEA2119614C43005F6298 /* small.mp4 */,
-			);
-			path = resources;
-			sourceTree = SOURCE_ROOT;
-		};
 		DCBDEA1D196124D3005F6298 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,57 +479,10 @@
 				DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */,
 				DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */,
 				DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */,
+				DC45E5F21989003600C49D0A /* MHRTest.hpp */,
+				DC45E5F31989003600C49D0A /* MHRTest.mm */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		DCF4B78719764D7F006B5F4F /* tests */ = {
-			isa = PBXGroup;
-			children = (
-				DC1D666A197D011A00A55980 /* corr_linear_test_1.in */,
-				DC1D666B197D011A00A55980 /* corr_linear_test_1.out */,
-				DC1D6666197CFACD00A55980 /* hr_signal_calc_test.in */,
-				DC1D6667197CFACD00A55980 /* hr_signal_calc_test.out */,
-				DC5351C919790E16003E0FF5 /* hr_calculator_test.in */,
-				DC5351CA19790E16003E0FF5 /* hr_calculator_test.out */,
-				DC5351C51977F8E0003E0FF5 /* corr_linear_test.in */,
-				DC5351C61977F8E0003E0FF5 /* corr_linear_test.out */,
-				DC85FF2B19768AC5004081B2 /* add_test.in */,
-				DC85FF2C19768AC5004081B2 /* add_test.out */,
-				DC85FF2D19768AC5004081B2 /* atan2Mat_test.in */,
-				DC85FF2E19768AC5004081B2 /* atan2Mat_test.out */,
-				DC85FF2F19768AC5004081B2 /* blurDnClr_test.in */,
-				DC85FF3019768AC5004081B2 /* blurDnClr_test.out */,
-				DC85FF3119768AC5004081B2 /* conv_test.in */,
-				DC85FF3219768AC5004081B2 /* conv_test.out */,
-				DC85FF3319768AC5004081B2 /* corrDn_test.in */,
-				DC85FF3419768AC5004081B2 /* corrDn_test.out */,
-				DC85FF3519768AC5004081B2 /* findpeaks_test.in */,
-				DC85FF3619768AC5004081B2 /* findpeaks_test.out */,
-				DC85FF3719768AC5004081B2 /* frames2signal_test.in */,
-				DC85FF3819768AC5004081B2 /* frames2signal_test.out */,
-				DC85FF3919768AC5004081B2 /* hist_test.in */,
-				DC85FF3A19768AC5004081B2 /* hist_test.out */,
-				DC85FF3B19768AC5004081B2 /* invprctile_test.in */,
-				DC85FF3C19768AC5004081B2 /* invprctile_test.out */,
-				DC85FF3D19768AC5004081B2 /* low_pass_filter_test.in */,
-				DC85FF3E19768AC5004081B2 /* low_pass_filter_test.out */,
-				DC85FF3F19768AC5004081B2 /* multiply_num_test.in */,
-				DC85FF4019768AC5004081B2 /* multiply_num_test.out */,
-				DC85FF4119768AC5004081B2 /* multiply_test.in */,
-				DC85FF4219768AC5004081B2 /* multiply_test.out */,
-				DC85FF4319768AC5004081B2 /* powMat_test.in */,
-				DC85FF4419768AC5004081B2 /* powMat_test.out */,
-				DC85FF4519768AC5004081B2 /* prctile_test.in */,
-				DC85FF4619768AC5004081B2 /* prctile_test.out */,
-				DC85FF4719768AC5004081B2 /* rgb2tsl_test.in */,
-				DC85FF4819768AC5004081B2 /* rgb2tsl_test.out */,
-				DC85FF4919768AC5004081B2 /* unique_stable_test.in */,
-				DC85FF4A19768AC5004081B2 /* unique_stable_test.out */,
-				DCF4B78819764D96006B5F4F /* ideal_bandpassing_test_0.out */,
-				DCF4B78919764D96006B5F4F /* ideal_bandpassing_test_0.in */,
-			);
-			name = tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -681,6 +532,11 @@
 				CLASSPREFIX = MHR;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Misfit Wearables Corporation";
+				TargetAttributes = {
+					DCB55F321957CB3B0095A98E = {
+						TestTargetID = DCB55F121957CB3B0095A98E;
+					};
+				};
 			};
 			buildConfigurationList = DCB55F0E1957CB3B0095A98E /* Build configuration list for PBXProject "Pulsar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -705,60 +561,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC85FF5119768AC5004081B2 /* atan2Mat_test.out in Resources */,
-				DC85FF7519768AC5004081B2 /* multiply_num_test.out in Resources */,
-				DC85FF6519768AC5004081B2 /* frames2signal_test.out in Resources */,
-				DC85FF6B19768AC5004081B2 /* invprctile_test.in in Resources */,
-				DCF4B78A19764D96006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
 				DCADC188196B9C1B00AFCDE5 /* MisfitHeartRate-Skin.plist in Resources */,
-				DC5351CC19790E16003E0FF5 /* hr_calculator_test.out in Resources */,
-				DC1D666C197D011A00A55980 /* corr_linear_test_1.in in Resources */,
-				DC85FF5519768AC5004081B2 /* blurDnClr_test.out in Resources */,
-				DCF4B78B19764D96006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
-				DCCA86C9196C0259002B6B5E /* test2.mp4 in Resources */,
-				DC5351C81977F8E0003E0FF5 /* corr_linear_test.out in Resources */,
-				DCBDEA2519614ED6005F6298 /* test0.mp4 in Resources */,
-				DC85FF5F19768AC5004081B2 /* findpeaks_test.in in Resources */,
-				DC1D6669197CFACD00A55980 /* hr_signal_calc_test.out in Resources */,
-				DC5351CB19790E16003E0FF5 /* hr_calculator_test.in in Resources */,
-				DCAE524A19669B5000A8AFB6 /* test1.mp4 in Resources */,
-				DC85FF7D19768AC5004081B2 /* powMat_test.out in Resources */,
-				DC85FF8519768AC5004081B2 /* rgb2tsl_test.out in Resources */,
+				DC3E2D0519A208910012DAE9 /* MHRSettingsViewController.xib in Resources */,
 				DCB55F231957CB3B0095A98E /* InfoPlist.strings in Resources */,
-				DC5351C71977F8E0003E0FF5 /* corr_linear_test.in in Resources */,
-				DC85FF7119768AC5004081B2 /* low_pass_filter_test.out in Resources */,
-				DC85FF8319768AC5004081B2 /* rgb2tsl_test.in in Resources */,
-				DC85FF5B19768AC5004081B2 /* corrDn_test.in in Resources */,
-				DC85FF5719768AC5004081B2 /* conv_test.in in Resources */,
-				DC85FF5919768AC5004081B2 /* conv_test.out in Resources */,
-				DC85FF8919768AC5004081B2 /* unique_stable_test.out in Resources */,
-				DC85FF7B19768AC5004081B2 /* powMat_test.in in Resources */,
-				DC85FF8719768AC5004081B2 /* unique_stable_test.in in Resources */,
-				DC1D6668197CFACD00A55980 /* hr_signal_calc_test.in in Resources */,
-				DC85FF5D19768AC5004081B2 /* corrDn_test.out in Resources */,
-				DC85FF6F19768AC5004081B2 /* low_pass_filter_test.in in Resources */,
 				DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */,
-				DCBDEA2219614C43005F6298 /* small.mp4 in Resources */,
-				DC85FF4B19768AC5004081B2 /* add_test.in in Resources */,
-				DC85FF7919768AC5004081B2 /* multiply_test.out in Resources */,
-				DC85FF4D19768AC5004081B2 /* add_test.out in Resources */,
-				DC85FF8119768AC5004081B2 /* prctile_test.out in Resources */,
-				DC85FF4F19768AC5004081B2 /* atan2Mat_test.in in Resources */,
-				DC85FF6919768AC5004081B2 /* hist_test.out in Resources */,
-				DCC56C7E1962A927009122FB /* test.jpg in Resources */,
-				DCB55F731957E0EF0095A98E /* test.avi in Resources */,
-				DC85FF6D19768AC5004081B2 /* invprctile_test.out in Resources */,
-				DC85FF7319768AC5004081B2 /* multiply_num_test.in in Resources */,
 				DCB55F2E1957CB3B0095A98E /* Images.xcassets in Resources */,
-				DC1D666D197D011A00A55980 /* corr_linear_test_1.out in Resources */,
-				DC85FF7F19768AC5004081B2 /* prctile_test.in in Resources */,
-				DC85FF6119768AC5004081B2 /* findpeaks_test.out in Resources */,
-				DC85FF7719768AC5004081B2 /* multiply_test.in in Resources */,
 				DCADC18E196BA7D200AFCDE5 /* MHRResultViewController.xib in Resources */,
-				DC85FF5319768AC5004081B2 /* blurDnClr_test.in in Resources */,
-				DC85FF6719768AC5004081B2 /* hist_test.in in Resources */,
-				DC85FF6319768AC5004081B2 /* frames2signal_test.in in Resources */,
-				DCB55F671957CDCD0095A98E /* test.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,49 +574,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC85FF6819768AC5004081B2 /* hist_test.in in Resources */,
-				DC85FF7219768AC5004081B2 /* low_pass_filter_test.out in Resources */,
-				DC85FF5219768AC5004081B2 /* atan2Mat_test.out in Resources */,
-				DC85FF5019768AC5004081B2 /* atan2Mat_test.in in Resources */,
-				DC85FF5C19768AC5004081B2 /* corrDn_test.in in Resources */,
-				DC85FF4C19768AC5004081B2 /* add_test.in in Resources */,
 				DCB91D4219763D6700793884 /* MisfitHeartRate-Skin.plist in Resources */,
-				DC85FF7419768AC5004081B2 /* multiply_num_test.in in Resources */,
-				DC85FF6E19768AC5004081B2 /* invprctile_test.out in Resources */,
-				DC85FF5619768AC5004081B2 /* blurDnClr_test.out in Resources */,
-				DC85FF5A19768AC5004081B2 /* conv_test.out in Resources */,
-				DC85FF8419768AC5004081B2 /* rgb2tsl_test.in in Resources */,
-				DC85FF8A19768AC5004081B2 /* unique_stable_test.out in Resources */,
-				DC85FF6419768AC5004081B2 /* frames2signal_test.in in Resources */,
-				DCB91D4A19763D8E00793884 /* small.mp4 in Resources */,
-				DC85FF6C19768AC5004081B2 /* invprctile_test.in in Resources */,
-				DC85FF7C19768AC5004081B2 /* powMat_test.in in Resources */,
-				DC85FF7A19768AC5004081B2 /* multiply_test.out in Resources */,
-				DC85FF6019768AC5004081B2 /* findpeaks_test.in in Resources */,
-				DC85FF8219768AC5004081B2 /* prctile_test.out in Resources */,
-				DC85FF5819768AC5004081B2 /* conv_test.in in Resources */,
-				DC85FF7819768AC5004081B2 /* multiply_test.in in Resources */,
-				DC85FF7619768AC5004081B2 /* multiply_num_test.out in Resources */,
-				DCB91D4719763D8E00793884 /* test.mp4 in Resources */,
-				DC85FF4E19768AC5004081B2 /* add_test.out in Resources */,
-				DC85FF7019768AC5004081B2 /* low_pass_filter_test.in in Resources */,
-				DCB91D4519763D8E00793884 /* test1.mp4 in Resources */,
-				DC85FF6219768AC5004081B2 /* findpeaks_test.out in Resources */,
-				DC85FF5E19768AC5004081B2 /* corrDn_test.out in Resources */,
-				DCB91D4819763D8E00793884 /* test.avi in Resources */,
-				DC85FF6619768AC5004081B2 /* frames2signal_test.out in Resources */,
 				DCB55F401957CB3B0095A98E /* InfoPlist.strings in Resources */,
-				DC85FF8619768AC5004081B2 /* rgb2tsl_test.out in Resources */,
-				DC85FF6A19768AC5004081B2 /* hist_test.out in Resources */,
-				DCB91D4619763D8E00793884 /* test0.mp4 in Resources */,
-				DCB91D4419763D8E00793884 /* test2.mp4 in Resources */,
-				DCF4B78D19764DC9006B5F4F /* ideal_bandpassing_test_0.in in Resources */,
-				DC85FF8819768AC5004081B2 /* unique_stable_test.in in Resources */,
-				DC85FF7E19768AC5004081B2 /* powMat_test.out in Resources */,
-				DC85FF8019768AC5004081B2 /* prctile_test.in in Resources */,
-				DC85FF5419768AC5004081B2 /* blurDnClr_test.in in Resources */,
-				DCF4B78C19764DC2006B5F4F /* ideal_bandpassing_test_0.out in Resources */,
-				DCB91D4919763D8E00793884 /* test.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,17 +599,23 @@
 				12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
 				DCB55F251957CB3B0095A98E /* main.m in Sources */,
+				DC3E2D0419A208910012DAE9 /* MHRSettingsViewController.m in Sources */,
+				121C1D56199B5888003C9E47 /* auto_start.mm in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
 				DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */,
 				DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */,
 				DCADC191196BB46200AFCDE5 /* MBProgressHUD.m in Sources */,
+				DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */,
 				DCBDEA2819617A8E005F6298 /* UIImageCVMatConverter.mm in Sources */,
 				DCAE524319657AF300A8AFB6 /* image.cpp in Sources */,
 				DCADC197196BE1DB00AFCDE5 /* filter_bandpassing.cpp in Sources */,
+				DC23397219863C8500D5F520 /* files.cpp in Sources */,
 				12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */,
+				6195C5E319A1B96A00D975CD /* globals.cpp in Sources */,
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,
 				DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */,
+				DC45E5F41989003600C49D0A /* MHRTest.mm in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 				12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */,
 			);
@@ -995,6 +768,7 @@
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Pulsar;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1004,6 +778,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MISFIT WEARABLES CORPORATION";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
@@ -1013,6 +788,8 @@
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Pulsar;
+				PROVISIONING_PROFILE = "6C70245F-0E89-4DF6-AD51-A99FC5F1CB11";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1020,6 +797,7 @@
 		DCB55F491957CB3B0095A98E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pulsar.app/Pulsar";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1036,6 +814,7 @@
 				);
 				INFOPLIST_FILE = "MisfitHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1043,6 +822,7 @@
 		DCB55F4A1957CB3B0095A98E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pulsar.app/Pulsar";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1055,6 +835,7 @@
 				GCC_PREFIX_HEADER = "MisfitHeartRate/MisfitHeartRate-Prefix.pch";
 				INFOPLIST_FILE = "MisfitHeartRateTests/MisfitHeartRateTests-Info.plist";
 				PRODUCT_NAME = MisfitHeartRateTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

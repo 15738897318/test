@@ -34,7 +34,7 @@ namespace MHR {
     // conv(seg1, seg2, 'same')
 //    vector<double> conv(vector<double> signal, vector<double> kernel);
     
-    vector<double> corr_linear(vector<double> signal, vector<double> kernel);
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean = true);
     
     // [counts, centres] = hist(arr, nbins)
     void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers);

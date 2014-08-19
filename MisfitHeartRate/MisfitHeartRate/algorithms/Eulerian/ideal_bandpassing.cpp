@@ -22,12 +22,17 @@ namespace MHR {
         int nTime = (int)src.size();
         int nRow = src[0].rows;
         int nCol = src[0].cols;
-        // copy and convert data from src to dst (CV_32FC3)
+//        int nChannels = src[0].channels();
+        
+        // copy and convert data from src to dst (CV_32FC(nChannels))
         Mat tmp;
         dst.clear();
         for (int i = 0; i < nTime; ++i)
         {
-            src[i].convertTo(tmp, CV_32FC3);
+        	if (THREE_CHAN_MODE)
+            	src[i].convertTo(tmp, CV_32FC3);
+            else
+            	src[i].convertTo(tmp, CV_32F);
             dst.push_back(tmp.clone());
         }
         // masking indexes
@@ -43,26 +48,38 @@ namespace MHR {
         for (int channel = 0; channel < _number_of_channels; ++channel) {
             for (int col = 0; col < nCol; ++col) {
                 for (int time = 0; time < nTime; ++time)
-                    for (int j = 0; j < nRow; ++j)
-                        dft_out.at<float>(j, time) = dst[time].at<Vec3f>(j, col)[channel];
+                    for (int row = 0; row < nRow; ++row)
+                        if (THREE_CHAN_MODE)
+                        	dft_out.at<float>(row, time) = dst[time].at<Vec3f>(row, col)[channel];
+                        else
+                        	dft_out.at<float>(row, time) = dst[time].at<float>(row, col);
+                        	
                 dft(dft_out, dft_out, DFT_ROWS);
                 // masking
-                for (int j = 0; j < nRow; ++j) {
+                for (int row = 0; row < nRow; ++row) {
                     for (int time = 0; time <= ind1; ++time)
-                    for (int i = 0; i <= ind1; ++i)
-                        dft_out.at<float>(j, i) = 0;
-                    for (int i = ind2; i < nTime; ++i)
-                        dft_out.at<float>(j, i) = 0;
+                        dft_out.at<float>(row, time) = 0;
+                    for (int time = ind2; time < nTime; ++time)
+                        dft_out.at<float>(row, time) = 0;
                 }
                 // output
                 dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT + DFT_SCALE);
-                for (int i = 0; i < nTime; ++i)
-                    for (int j = 0; j < nRow; ++j)
-                        dst[i].at<Vec3f>(j, col)[channel] = dft_out.at<float>(j, i);
+                for (int time = 0; time < nTime; ++time)
+                    for (int row = 0; row < nRow; ++row)
+                        if (THREE_CHAN_MODE)
+                        	dst[time].at<Vec3f>(row, col)[channel] = dft_out.at<float>(row, time);
+                        else
+                        	dst[time].at<float>(row, col) = dft_out.at<float>(row, time);
             }
         }
         
         for (int i = 0; i < nTime; ++i)
-            dst[i].convertTo(dst[i], CV_64FC3);
+        	if (THREE_CHAN_MODE)
+            	dst[i].convertTo(dst[i], CV_64FC3);
+            else
+            	dst[i].convertTo(dst[i], CV_64F);
+        
+        if (DEBUG_MODE)
+            frameChannelToFile(dst[0], _outputPath + "2_dst[0]_ideal_bandpassing.txt", _channels_to_process);
     }
 }

@@ -15,7 +15,7 @@ namespace MHR {
         int firstFramesRemove = _eulerianTemporalFilterKernel_size/2;
         int filteredSize[3] = {GdownStack.size.p[0] - firstFramesRemove, GdownStack.size.p[1], GdownStack.size.p[2]};
         filteredStack = Mat(3, filteredSize, CV_64FC3, CvScalar(0));
-        Mat kernel = arrayToMat(_eulerianTemporalFilterKernel, 1, _eulerianTemporalFilterKernel_size);
+        Mat kernel = _eulerianTemporalFilterKernel.clone();
         Mat tmp = Mat::zeros(1, GdownStack.size.p[0], CV_64FC3);
         for (int x = 0; x < GdownStack.size.p[1]; ++x)
             for (int y = 0; y < GdownStack.size.p[2]; ++y) {
