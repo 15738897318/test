@@ -17,7 +17,6 @@
 		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
 		DC3E2D0419A208910012DAE9 /* MHRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */; };
 		DC3E2D0519A208910012DAE9 /* MHRSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */; };
-		DC45E5F41989003600C49D0A /* MHRTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC45E5F31989003600C49D0A /* MHRTest.mm */; };
 		DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC9D58C6197FB062002C6BB8 /* config.cpp */; };
 		DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCA50B8B1964179200F99D33 /* frames2signal.cpp */; };
 		DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */; };
@@ -56,7 +55,6 @@
 		DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */; };
 		DCB55F711957D3840095A98E /* MHRMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */; };
 		DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D111975049E00793884 /* hr_calculator.cpp */; };
-		DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D14197531CC00793884 /* testFunctions.cpp */; };
 		DCB91D1D19762E9900793884 /* videoHeartRate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D1B19762E9900793884 /* videoHeartRate.xcdatamodeld */; };
 		DCB91D2119762FD900793884 /* MisfitHeartRateTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */; };
 		DCB91D221976328400793884 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB55F511957CC170095A98E /* opencv2.framework */; };
@@ -77,7 +75,6 @@
 		DCB91D3219763CD300793884 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		DCB91D3319763CDA00793884 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524119657AF300A8AFB6 /* image.cpp */; };
 		DCB91D3419763CE000793884 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */; };
-		DCB91D3519763CE100793884 /* testFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCB91D14197531CC00793884 /* testFunctions.cpp */; };
 		DCB91D3619763CE700793884 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE524419657B7700A8AFB6 /* eulerian.cpp */; };
 		DCB91D3719763CE900793884 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */; };
 		DCB91D3919763CED00793884 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCCA86C4196BE4D8002B6B5E /* ideal_bandpassing.cpp */; };
@@ -127,8 +124,6 @@
 		DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRSettingsViewController.h; path = SettingsView/MHRSettingsViewController.h; sourceTree = "<group>"; };
 		DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRSettingsViewController.m; path = SettingsView/MHRSettingsViewController.m; sourceTree = "<group>"; };
 		DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRSettingsViewController.xib; path = SettingsView/MHRSettingsViewController.xib; sourceTree = "<group>"; };
-		DC45E5F21989003600C49D0A /* MHRTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRTest.hpp; path = Utilities/MHRTest.hpp; sourceTree = "<group>"; };
-		DC45E5F31989003600C49D0A /* MHRTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRTest.mm; path = Utilities/MHRTest.mm; sourceTree = "<group>"; };
 		DC9D58C6197FB062002C6BB8 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
 		DC9D58CC197FB15B002C6BB8 /* finger_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finger_params.h; sourceTree = "<group>"; };
 		DC9D58CF197FB166002C6BB8 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
@@ -186,8 +181,6 @@
 		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
 		DCB91D111975049E00793884 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calculator.cpp; path = HeartRateCal/hr_calculator.cpp; sourceTree = "<group>"; };
 		DCB91D121975049F00793884 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calculator.h; path = HeartRateCal/hr_calculator.h; sourceTree = "<group>"; };
-		DCB91D14197531CC00793884 /* testFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testFunctions.cpp; sourceTree = "<group>"; };
-		DCB91D15197531CC00793884 /* testFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testFunctions.h; sourceTree = "<group>"; };
 		DCB91D1C19762E9900793884 /* videoHeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = videoHeartRate.xcdatamodel; sourceTree = "<group>"; };
 		DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MisfitHeartRateTests.mm; sourceTree = "<group>"; };
 		DCB9B336197D2F04004DC746 /* BlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockAdditions.h; path = Utilities/BlockAdditions.h; sourceTree = "<group>"; };
@@ -289,8 +282,6 @@
 				DC9D58CC197FB15B002C6BB8 /* finger_params.h */,
 				DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */,
 				DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */,
-				DCB91D15197531CC00793884 /* testFunctions.h */,
-				DCB91D14197531CC00793884 /* testFunctions.cpp */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -473,8 +464,6 @@
 				DCBDEA2719617A8E005F6298 /* UIImageCVMatConverter.mm */,
 				DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */,
 				DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */,
-				DC45E5F21989003600C49D0A /* MHRTest.hpp */,
-				DC45E5F31989003600C49D0A /* MHRTest.mm */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -583,7 +572,6 @@
 				DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */,
 				DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
-				DCB91D16197531CC00793884 /* testFunctions.cpp in Sources */,
 				DCB91D1D19762E9900793884 /* videoHeartRate.xcdatamodeld in Sources */,
 				DCAE52531966B45300A8AFB6 /* hr_signal_calc.cpp in Sources */,
 				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
@@ -608,7 +596,6 @@
 				DCA50B8D1964179200F99D33 /* frames2signal.cpp in Sources */,
 				DCAE52591967B8BA00A8AFB6 /* build_Gdown_stack.cpp in Sources */,
 				DCB91D131975049F00793884 /* hr_calculator.cpp in Sources */,
-				DC45E5F41989003600C49D0A /* MHRTest.mm in Sources */,
 				DCB55F701957D3840095A98E /* MHRMainViewController.mm in Sources */,
 				12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */,
 			);
@@ -629,7 +616,6 @@
 				DCB91D3419763CE000793884 /* run_algorithms.cpp in Sources */,
 				DCB91D3C19763D4C00793884 /* MHRUtilities.m in Sources */,
 				DCB91D3D19763D4E00793884 /* MBProgressHUD.m in Sources */,
-				DCB91D3519763CE100793884 /* testFunctions.cpp in Sources */,
 				DCB91D3B19763D4700793884 /* MHRMainViewController.mm in Sources */,
 				DCB91D2F19763CBF00793884 /* temporal_mean_calc.cpp in Sources */,
 				DCB91D2119762FD900793884 /* MisfitHeartRateTests.mm in Sources */,
