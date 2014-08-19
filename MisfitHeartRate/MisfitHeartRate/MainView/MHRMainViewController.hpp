@@ -23,6 +23,8 @@
 #import "run_algorithms.h"
 #import "auto_start.hpp"
 #import "globals.h"
+#import "processingCumulative.h"
+#import "processingPerBlock.h"
 
 using namespace cv;
 using namespace MHR;

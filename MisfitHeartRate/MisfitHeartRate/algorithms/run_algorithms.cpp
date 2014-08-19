@@ -10,15 +10,16 @@
 
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult)
+    hrResult run_algorithms(const String &srcDir, const String &outDir,
+                            int fileStartIndex, int fileEndIndex, hrResult &currHrResult)
     {
         clock_t t1 = clock();
         
 		// Read first frames
-        int nFrames = 0;
-        FILE *file = fopen((srcDir + string("/input_frames.txt")).c_str(), "r");
-        if (file) fscanf(file, "%d", &nFrames);
-        fclose(file);
+        int nFrames = fileEndIndex - fileStartIndex + 1;
+//        FILE *file = fopen((srcDir + string("/input_frames.txt")).c_str(), "r");
+//        if (file) fscanf(file, "%d", &nFrames);
+//        fclose(file);
         if (nFrames == 0)
         {
             if (_DEBUG_MODE) printf("nFrames == 0\n");
@@ -31,7 +32,7 @@ namespace MHR {
         vector<Mat> vid;
         for (int i = 0; i < min(_framesBlock_size, nFrames); ++i) {
             ++currentFrame;
-            readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
+            readFrame(srcDir + string("/input_frame[") + to_string(fileStartIndex + i) + "].png", vid);
         }
 
         // Extract video info

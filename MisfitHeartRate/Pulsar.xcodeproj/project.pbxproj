@@ -14,6 +14,8 @@
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
 		6195C5E319A1B96A00D975CD /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6195C5E119A1B96A00D975CD /* globals.cpp */; };
+		93C5BD4F19A357C5002E8277 /* processingPerBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93C5BD4D19A357C5002E8277 /* processingPerBlock.cpp */; };
+		93C5BD5519A358FA002E8277 /* processingCumulative.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93C5BD5319A358FA002E8277 /* processingCumulative.cpp */; };
 		DC23397219863C8500D5F520 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC23397019863C8500D5F520 /* files.cpp */; };
 		DC3E2D0419A208910012DAE9 /* MHRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */; };
 		DC3E2D0519A208910012DAE9 /* MHRSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC3E2D0319A208910012DAE9 /* MHRSettingsViewController.xib */; };
@@ -119,6 +121,10 @@
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
 		6195C5E119A1B96A00D975CD /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
 		6195C5E219A1B96A00D975CD /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		93C5BD4D19A357C5002E8277 /* processingPerBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = processingPerBlock.cpp; sourceTree = "<group>"; };
+		93C5BD4E19A357C5002E8277 /* processingPerBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = processingPerBlock.h; sourceTree = "<group>"; };
+		93C5BD5319A358FA002E8277 /* processingCumulative.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = processingCumulative.cpp; sourceTree = "<group>"; };
+		93C5BD5419A358FA002E8277 /* processingCumulative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = processingCumulative.h; sourceTree = "<group>"; };
 		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
 		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
 		DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRSettingsViewController.h; path = SettingsView/MHRSettingsViewController.h; sourceTree = "<group>"; };
@@ -282,6 +288,10 @@
 				DC9D58CC197FB15B002C6BB8 /* finger_params.h */,
 				DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */,
 				DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */,
+				93C5BD4D19A357C5002E8277 /* processingPerBlock.cpp */,
+				93C5BD4E19A357C5002E8277 /* processingPerBlock.h */,
+				93C5BD5319A358FA002E8277 /* processingCumulative.cpp */,
+				93C5BD5419A358FA002E8277 /* processingCumulative.h */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -516,6 +526,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Misfit Wearables Corporation";
 				TargetAttributes = {
+					DCB55F121957CB3B0095A98E = {
+						DevelopmentTeam = WC64T22ANZ;
+					};
 					DCB55F321957CB3B0095A98E = {
 						TestTargetID = DCB55F121957CB3B0095A98E;
 					};
@@ -569,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C5BD4F19A357C5002E8277 /* processingPerBlock.cpp in Sources */,
 				DCAE52561966CE5800A8AFB6 /* temporal_mean_calc.cpp in Sources */,
 				DCCA86C6196BE4D8002B6B5E /* ideal_bandpassing.cpp in Sources */,
 				DCB55F291957CB3B0095A98E /* MHRAppDelegate.mm in Sources */,
@@ -577,6 +591,7 @@
 				DCA9CB6C196F89F7002AAC90 /* UIView+Position.m in Sources */,
 				DCADC18D196BA7D200AFCDE5 /* MHRResultViewController.mm in Sources */,
 				DCAE524619657B7700A8AFB6 /* eulerian.cpp in Sources */,
+				93C5BD5519A358FA002E8277 /* processingCumulative.cpp in Sources */,
 				DCB9B339197D2F04004DC746 /* UIAlertView+Block.m in Sources */,
 				12B587DA1963EBA300BA19A5 /* hb_counter_pda.cpp in Sources */,
 				12B587E41963F48700BA19A5 /* matlab.cpp in Sources */,
@@ -737,6 +752,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
@@ -746,6 +763,7 @@
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Pulsar;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -756,7 +774,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MISFIT WEARABLES CORPORATION";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
@@ -766,7 +785,7 @@
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Pulsar;
-				PROVISIONING_PROFILE = "6C70245F-0E89-4DF6-AD51-A99FC5F1CB11";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

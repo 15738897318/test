@@ -20,6 +20,7 @@ const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 static NSString * const FACE_MESSAGE = @"Make sure your face fitted in the Aqua rectangle!";
 static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and the flash with your finger!";
 
+static const int kBlockFrameSize = 128;
 
 @interface MHRMainViewController ()
     {
@@ -30,6 +31,15 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         int framesWithFace; // Count the number of frames having a face in the region of interest
         int framesWithNoFace; // Count the number of frames NOT having a face in the region of interest
         MBProgressHUD *progressHUD;
+        NSThread *readImageThread;
+        NSThread *processImageThread;
+        BOOL isStopThread;
+        
+        bool isCalcMode;
+        double lower_range;
+        double upper_range;
+        hrResult result;
+        std::vector<double> temporal_mean;
     }
 
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -67,6 +77,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
         if (self) {
             // Custom initialization
+            
         }
         return self;
     }
@@ -77,6 +88,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         [super viewDidLoad];
         
         setFaceParams();
+        [self setUpThreads];
+        
         currentResult = hrResult(55, 55);
         isCapturing = NO;
         cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
@@ -129,10 +142,55 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 //        [MHRTest test_run_algorithm];
     }
 
+    #pragma - Threads process
+    - (void)setUpThreads
+    {
+        isCalcMode = NO;
+        processImageThread = [[NSThread alloc] initWithTarget:self
+                                                     selector:@selector(runAlgorithm)
+                                                       object:nil];
+//        readImageThread = [[NSThread alloc] initWithTarget:self
+//                                                  selector:@selector(readImage)
+//                                                    object:nil];
+    }
+
+    - (void)runAlgorithm
+    {
+        // heartRate cal
+        __block int blockCount = 0;
+        isCalcMode = NO;
+
+//        while([[NSThread currentThread] isCancelled] == NO)
+//        {
+            while (!isStopThread)
+            {
+                int startIndex = blockCount * (int)_nFrames;
+                int endIndex = (blockCount + 1) * (int)_nFrames - 1;
+
+                if (_nFrames == (blockCount + 1) * kBlockFrameSize)
+                {
+                    // Run algorithm
+                    std::vector<double> temp;
+                    processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex, endIndex, isCalcMode, lower_range, upper_range, result, temp);
+                    processingCumulative(temporal_mean, temp, currentResult);
+                    NSLog(@"Result: %lf, %lf", result.autocorr, result.pda);
+                    blockCount ++;
+                }
+            }
+//        }
+    }
+
+    - (void)startThreads
+    {
+        _nFrames = 0;
+        isStopThread = NO;
+        [processImageThread start];
+    }
 
     -(void)viewDidDisappear:(BOOL)animated
     {
         [super viewDidDisappear:animated];
+        isStopThread = YES;
     }
 
 
@@ -201,82 +259,86 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                                                       selector:@selector(updateRecordTime:)
                                                       userInfo:nil
                                                        repeats:YES];
+        // Start thread
+        [self startThreads];
     }
 
 
     - (IBAction)stopButtonDidTap:(id)sender
     {
-        if (!isCapturing)
-            return;
-        isCapturing = NO;
-        _startButton.enabled = YES;
-        _cameraSwitch.enabled = YES;
-        [self drawFaceCaptureRect:@"MHRWhiteColor"];
+        isStopThread = YES;
         
-        // stop camera capturing
-        [_videoCamera stop];
-        
-        // stop timer
-        [_recordTimer invalidate];
-        _recordTimer = nil;
-        _recordTime = 0;
-        [MHRUtilities setTorchModeOn:NO];
-        
-        if (!_cameraSwitch.isOn)
-        {
-            _fingerLabel.text = @"";
-        }
-        _faceLabel.text = @"Processing....";
-        
-        // write _nFrames to file
-        FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
-        fprintf(file, "%d\n", (int)_nFrames);
-        fclose(file);
-        
-        // heartRate cal
-        __block hrResult result(-1, -1);
-        
-        // Show the waiting animation
-        progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        progressHUD.mode = MBProgressHUDModeIndeterminate;
-        
-        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
-        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
-        
-        // Initialise the result-storing variables
-        hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
-        hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            if (_DEBUG_MODE)
-                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
-            
-//            [self testRawVideo];
-            if (_nFrames >= _minVidLength*_frameRate)
-                result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
-            
-//            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
-//            result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // show result
-                resultView = [[MHRResultViewController alloc] init];
-                resultView.autocorrResult = result.autocorr;
-                resultView.pdaResult = result.pda;
-                [self.navigationController pushViewController:resultView animated:YES];
-                
-                // update UI
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                
-                //Reset counters of mainView
-                framesWithFace = 0;
-                framesWithNoFace = 0;
-                isCapturing = false;
-                
-                _recordTimeLabel.text = @"0";
-            });
-        });
+//        if (!isCapturing)
+//            return;
+//        isCapturing = NO;
+//        _startButton.enabled = YES;
+//        _cameraSwitch.enabled = YES;
+//        [self drawFaceCaptureRect:@"MHRWhiteColor"];
+//        
+//        // stop camera capturing
+//        [_videoCamera stop];
+//        
+//        // stop timer
+//        [_recordTimer invalidate];
+//        _recordTimer = nil;
+//        _recordTime = 0;
+//        [MHRUtilities setTorchModeOn:NO];
+//        
+//        if (!_cameraSwitch.isOn)
+//        {
+//            _fingerLabel.text = @"";
+//        }
+//        _faceLabel.text = @"Processing....";
+//        
+//        // write _nFrames to file
+//        FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
+//        fprintf(file, "%d\n", (int)_nFrames);
+//        fclose(file);
+//        
+//        // heartRate cal
+//        __block hrResult result(-1, -1);
+//        
+//        // Show the waiting animation
+//        progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        progressHUD.mode = MBProgressHUDModeIndeterminate;
+//        
+//        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
+//        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
+//        
+//        // Initialise the result-storing variables
+//        hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
+//        hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
+//        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+//            if (_DEBUG_MODE)
+//                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
+//            
+////            [self testRawVideo];
+//            if (_nFrames >= _minVidLength*_frameRate)
+//                result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
+//            
+////            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+////            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
+////            result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                // show result
+//                resultView = [[MHRResultViewController alloc] init];
+//                resultView.autocorrResult = result.autocorr;
+//                resultView.pdaResult = result.pda;
+//                [self.navigationController pushViewController:resultView animated:YES];
+//                
+//                // update UI
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                
+//                //Reset counters of mainView
+//                framesWithFace = 0;
+//                framesWithNoFace = 0;
+//                isCapturing = false;
+//                
+//                _recordTimeLabel.text = @"0";
+//            });
+//        });
     }
 
 
@@ -400,7 +462,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             ++_nFrames;
             NSLog(@"%ld",(long)_nFrames);
-            
         }
         else
         {
