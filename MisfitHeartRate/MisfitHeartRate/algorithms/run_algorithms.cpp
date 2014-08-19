@@ -21,7 +21,7 @@ namespace MHR {
         fclose(file);
         if (nFrames == 0)
         {
-            if (DEBUG_MODE) printf("nFrames == 0\n");
+            if (_DEBUG_MODE) printf("nFrames == 0\n");
             return hrResult(-1, -1);
         }
         
@@ -55,7 +55,7 @@ namespace MHR {
             clock_t t1 = clock();
             
             /*-----------------read M frames, add to odd frames (0)-----------------*/
-            if (DEBUG_MODE) {
+            if (_DEBUG_MODE) {
                 printf("load block: %d\n", blockCount);
                 printf("len before = %d\n", (int)vid.size());
             }
@@ -67,7 +67,7 @@ namespace MHR {
                 }
                 
                 len = (int)vid.size();
-                if (DEBUG_MODE) printf("len after = %d\n", len);
+                if (_DEBUG_MODE) printf("len after = %d\n", len);
             }
             
             /*-----------------run_eulerian(): M frames (1)-----------------*/
@@ -96,7 +96,7 @@ namespace MHR {
             
             isCalcMode = false;
 
-            if (DEBUG_MODE) {
+            if (_DEBUG_MODE) {
                 printf("block %d runtime = %f\n", blockCount++, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
                 printf("_colourspace = %s\n", _colourspace.c_str());
             }
@@ -124,7 +124,7 @@ namespace MHR {
         hrResult hr_output = currHrResult;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        if (DEBUG_MODE) {
+        if (_DEBUG_MODE) {
             String resultFilePath = outDir + "result.txt";
             FILE *resultFile = fopen(resultFilePath.c_str(), "w");
             fprintf(resultFile, "temporal_mean_before_low_pass_filter:\n");

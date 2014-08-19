@@ -230,7 +230,7 @@ namespace MHR {
         // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
         ans = vector<double>(ans.begin() + _beatSignalFilterKernel_size/2, ans.end());
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return ans;

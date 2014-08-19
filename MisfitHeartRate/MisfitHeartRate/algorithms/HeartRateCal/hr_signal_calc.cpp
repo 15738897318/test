@@ -57,7 +57,7 @@ namespace MHR {
         double avg_hr_autocorr = ans_autocorr[0];     // average heart rate
         
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             printf("hr_signal_calc() time = %f\n", ((float)clock() - (float)t1)/1000.0);
         return hrResult(avg_hr_autocorr, avg_hr_pda);
     }

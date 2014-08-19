@@ -10,9 +10,8 @@
 
 
 namespace MHR {
-    int DEBUG_MODE = 0;
-    int THREE_CHAN_MODE = 0;
-    int WRITE_EULERIAN_VID_MODE = 0;
+    int _DEBUG_MODE = 0;
+    int _THREE_CHAN_MODE = 0;
     
     bool _FACE_MODE = true;
     
@@ -87,7 +86,7 @@ namespace MHR {
 
     void setFaceParams()
     {
-        if (DEBUG_MODE) printf("setFaceParams()\n");
+        if (_DEBUG_MODE) printf("setFaceParams()\n");
         _FACE_MODE = true;
         
         _eulerian_alpha = _face_eulerian_alpha;
@@ -143,7 +142,7 @@ namespace MHR {
 
     void setFingerParams()
     {
-        if (DEBUG_MODE) printf("setFingerParams()\n");
+        if (_DEBUG_MODE) printf("setFingerParams()\n");
         _FACE_MODE = false;
         
         _eulerian_alpha = _finger_eulerian_alpha;

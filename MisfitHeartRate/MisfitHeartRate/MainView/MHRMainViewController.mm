@@ -152,8 +152,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     - (IBAction)startButtonDidTap:(id)sender
     {
-        printf("DEBUG_MODE = %d\n", DEBUG_MODE);
-        printf("THREE_CHAN_MODE = %d\n", THREE_CHAN_MODE);
+        printf("_DEBUG_MODE = %d\n", _DEBUG_MODE);
+        printf("_THREE_CHAN_MODE = %d\n", _THREE_CHAN_MODE);
         
         if(isCapturing) return;
         isCapturing = TRUE;
@@ -167,7 +167,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         _outPath = [_outPath substringToIndex:([_outPath length] - [@"Library/Documentation/" length] + 1)];
         
         // 
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
         {
             NSDateFormatter *formater = [[NSDateFormatter alloc] init];
             formater.dateFormat = @"yyyy-MM-dd-HH-mm-ss";
@@ -248,7 +248,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            if (DEBUG_MODE)
+            if (_DEBUG_MODE)
                 printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
             
 //            [self testRawVideo];
@@ -481,21 +481,21 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 - (IBAction)settingsButtonDidTap:(id)sender {
     MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
     settingsView.delegate = self;
-    settingsView.debugModeOn = (DEBUG_MODE > 0);
-    settingsView.threeChanModeOn = (THREE_CHAN_MODE > 0);
+    settingsView.debugModeOn = (_DEBUG_MODE > 0);
+    settingsView.threeChanModeOn = (_THREE_CHAN_MODE > 0);
     [self.navigationController pushViewController:settingsView animated:YES];
 }
 
 
 - (void)debugModeChanged:(BOOL)mode
 {
-    DEBUG_MODE = int(mode);
+    _DEBUG_MODE = int(mode);
 }
 
 
 - (void)threeChanModeChanged:(BOOL)mode
 {
-    THREE_CHAN_MODE = int(mode);
+    _THREE_CHAN_MODE = int(mode);
 }
 
 

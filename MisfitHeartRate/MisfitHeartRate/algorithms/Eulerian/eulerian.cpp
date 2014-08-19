@@ -27,7 +27,7 @@ namespace MHR {
 		int frameRate = _frameRate;             // Can not get it from vidIn!!!! :((
 		int len = (int)vid.size();
         
-        if (DEBUG_MODE) {
+        if (_DEBUG_MODE) {
             printf("width = %d, height = %d\n", vidWidth, vidHeight);
             printf("frameRate = %d, len = %d\n", frameRate, len);
 //            frameToFile(vid[0], outDir + "test_frame_in.jpg");
@@ -47,25 +47,25 @@ namespace MHR {
 		// ================= Core part of the algo described in literature
 		// compute Gaussian blur stack
 		// This stack actually is just a single level of the pyramid
-        if (DEBUG_MODE) printf("Spatial filtering...\n");
+        if (_DEBUG_MODE) printf("Spatial filtering...\n");
 		vector<Mat> GdownStack;
         build_Gdown_Stack(vid, GdownStack, startIndex, endIndex, level);
-		if (DEBUG_MODE) printf("Finished\n");
+		if (_DEBUG_MODE) printf("Finished\n");
         
 		// Temporal filtering
-		if (DEBUG_MODE) printf("Temporal filtering...\n");
+		if (_DEBUG_MODE) printf("Temporal filtering...\n");
         vector<Mat> filteredStack;
         ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
-		if (DEBUG_MODE) printf("Finished\n");
+		if (_DEBUG_MODE) printf("Finished\n");
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             frameChannelToFile(filteredStack[0], _outputPath + "3_filteredStack[0]_ideal_bandpassed.txt", _channels_to_process);
         
 		// amplify
         int nTime = (int)filteredStack.size();
         int nRow = filteredStack[0].rows;
         int nCol = filteredStack[0].cols;
-        if (THREE_CHAN_MODE) {
+        if (_THREE_CHAN_MODE) {
 			Mat base_B = (Mat_<double>(3, 3) <<
 						  alpha, 0, 0,
 						  0, alpha*chromAttenuation, 0,
@@ -95,17 +95,17 @@ namespace MHR {
                         filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);
         }
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             frameChannelToFile(filteredStack[0], _outputPath + "4_filteredStack[0]_amplified.txt", _channels_to_process);
         
 		// =================
         
 		// Render on the input video
-		if (DEBUG_MODE) printf("Rendering...\n");
+		if (_DEBUG_MODE) printf("Rendering...\n");
 		// output video
 		// Convert each frame from the filtered stream to movie frame
         Mat frame, filtered;
-        if (THREE_CHAN_MODE) {
+        if (_THREE_CHAN_MODE) {
 			for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
             	// Reconstruct the frame from pyramid stack
 				// by removing the singleton dimensions of the kth filtered array
@@ -162,7 +162,7 @@ namespace MHR {
             }
 		}
         
-        if (DEBUG_MODE) {
+        if (_DEBUG_MODE) {
             printf("eulerianGaussianPyramidMagnification() time = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
             frameChannelToFile(ans[0], _outputPath + "5_ans[0]_eulerianGaussianPyramidMagnification.txt", _channels_to_process);
         }

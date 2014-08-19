@@ -17,10 +17,8 @@ using namespace cv;
 
 
 namespace MHR {
-    extern int DEBUG_MODE;
-    extern int THREE_CHAN_MODE;
-    extern int WRITE_EULERIAN_VID_MODE;
-
+    extern int _DEBUG_MODE;
+    extern int _THREE_CHAN_MODE;
     
     extern String _outputPath;
     

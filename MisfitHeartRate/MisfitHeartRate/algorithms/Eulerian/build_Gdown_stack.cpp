@@ -24,7 +24,7 @@ namespace MHR {
         
         // firstFrame
         Mat frame;
-        if (THREE_CHAN_MODE)
+        if (_THREE_CHAN_MODE)
         	vid[startIndex].convertTo(frame, CV_64FC3);
         else
         	vid[startIndex].convertTo(frame, CV_64F);
@@ -34,7 +34,7 @@ namespace MHR {
         blurDnClr(frame, blurred, level);
 //        int nRow = blurred.size.p[0], nCol = blurred.size.p[1];
         
-        if (DEBUG_MODE) {
+        if (_DEBUG_MODE) {
             printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
             frameChannelToFile(frame, _outputPath + "1_vid[0]_build_Gdown_Stack.txt", _channels_to_process);
             frameChannelToFile(blurred, _outputPath + "1_GDownStack[0]_build_Gdown_Stack.txt", _channels_to_process);
@@ -50,7 +50,7 @@ namespace MHR {
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
-            if (THREE_CHAN_MODE)
+            if (_THREE_CHAN_MODE)
 				vid[i].convertTo(frame, CV_64FC3);
 			else
 				vid[i].convertTo(frame, CV_64F);
@@ -63,7 +63,7 @@ namespace MHR {
             GDownStack.push_back(blurred.clone());
         }
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             printf("build_Gdown_Stack() runtime = %lf\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
 	}
 }

@@ -28,7 +28,7 @@ namespace MHR {
         dst.clear();
         for (int i = 0; i < nTime; ++i)
         {
-        	if (THREE_CHAN_MODE)
+        	if (_THREE_CHAN_MODE)
             	src[i].convertTo(tmp, CV_32FC3);
             else
             	src[i].convertTo(tmp, CV_32F);
@@ -39,7 +39,7 @@ namespace MHR {
         int f2 = floor(wh * nTime/samplingRate);
         int ind1 = 2*f1, ind2 = 2*f2 - 1;
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             printf("ind1 = %d, ind2 = %d, nTime = %d\n", ind1, ind2, nTime);
         
         // FFT
@@ -48,7 +48,7 @@ namespace MHR {
             for (int col = 0; col < nCol; ++col) {
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
-                        if (THREE_CHAN_MODE)
+                        if (_THREE_CHAN_MODE)
                         	dft_out.at<float>(row, time) = dst[time].at<Vec3f>(row, col)[channel];
                         else
                         	dft_out.at<float>(row, time) = dst[time].at<float>(row, col);
@@ -65,7 +65,7 @@ namespace MHR {
                 dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT + DFT_SCALE);
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
-                        if (THREE_CHAN_MODE)
+                        if (_THREE_CHAN_MODE)
                         	dst[time].at<Vec3f>(row, col)[channel] = dft_out.at<float>(row, time);
                         else
                         	dst[time].at<float>(row, col) = dft_out.at<float>(row, time);
@@ -73,12 +73,12 @@ namespace MHR {
         }
         
         for (int i = 0; i < nTime; ++i)
-        	if (THREE_CHAN_MODE)
+        	if (_THREE_CHAN_MODE)
             	dst[i].convertTo(dst[i], CV_64FC3);
             else
             	dst[i].convertTo(dst[i], CV_64F);
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             frameChannelToFile(dst[0], _outputPath + "2_dst[0]_ideal_bandpassing.txt", _channels_to_process);
     }
 }

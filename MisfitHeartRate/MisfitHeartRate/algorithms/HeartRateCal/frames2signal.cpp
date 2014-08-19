@@ -91,7 +91,7 @@ namespace MHR {
                 lower_range = prctile(arr, percentile_lower_range);
                 upper_range = prctile(arr, percentile_upper_range);
 
-                if (DEBUG_MODE)
+                if (_DEBUG_MODE)
                     printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             }
             
@@ -118,7 +118,7 @@ namespace MHR {
             
         }
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return temporal_mean;

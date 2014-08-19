@@ -36,7 +36,7 @@ namespace MHR {
         Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
         vector<Mat> monoframes;
         
-        if (THREE_CHAN_MODE) {
+        if (_THREE_CHAN_MODE) {
 			for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
 				vid[i].convertTo(frame, CV_64FC3);
 				if (colourspace == "hsv")
@@ -71,7 +71,7 @@ namespace MHR {
             }
         }
         
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             printf("temporal_mean_calc() - Block 1 runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         // Block 2 ==== Extract a signal stream & pre-process it

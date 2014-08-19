@@ -119,7 +119,7 @@ namespace MHR {
                 last_i = max(last_i, i);
                 last_j = max(last_j, j);
             }
-        if (DEBUG_MODE)
+        if (_DEBUG_MODE)
             if (last_i+1 != m && last_j+1 != n)
                 printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
     }

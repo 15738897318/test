@@ -15,7 +15,7 @@ namespace MHR {
         Mat frame = imread(srcFile);
         cvtColor(frame, frame, CV_BGR2RGB);
         
-        if (THREE_CHAN_MODE)
+        if (_THREE_CHAN_MODE)
             dst.push_back(frame.clone());
         else {
             /*-----------------if using 1-chan mode, then do the colour conversion here (0)-----------------*/
@@ -107,7 +107,7 @@ namespace MHR {
         
         for (int i = 0; i < frame.rows; ++i) {
             for (int j = 0; j < frame.cols; ++j)
-                if (THREE_CHAN_MODE) {
+                if (_THREE_CHAN_MODE) {
                     if (frame.type() == CV_8UC4)
                         fprintf(file, "%d, ", (int)frame.at<Vec4b>(i, j)[channel]);
                     if (frame.type() == CV_8UC3)
