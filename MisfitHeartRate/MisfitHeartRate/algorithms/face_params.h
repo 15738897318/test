@@ -99,8 +99,6 @@ namespace MHR {
     
     const float _ROI_RATIO_UPPER = 1.5f;
     const float _ROI_RATIO_LOWER = 0.8f;
-    
-    
 }
 
 #endif /* defined(__Pulsar__face_params__) */

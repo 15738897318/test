@@ -30,9 +30,6 @@ namespace MHR {
     
     // unique_stable with vector<pair<double,int>>
     vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
-
-    // conv(seg1, seg2, 'same')
-//    vector<double> conv(vector<double> signal, vector<double> kernel);
     
     vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean = true);
     

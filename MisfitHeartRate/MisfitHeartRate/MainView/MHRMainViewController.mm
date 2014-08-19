@@ -34,7 +34,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
     @property (strong, nonatomic) NSString *outPath;
-    @property (strong, nonatomic) NSString *outFile;
     @property (assign, nonatomic) NSInteger nFrames;
     @property (assign, nonatomic) NSInteger recordTime;
     @property (strong, nonatomic) NSTimer *recordTimer;
@@ -57,7 +56,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     @synthesize videoCamera = _videoCamera;
     @synthesize cameraSwitch = _cameraSwitch;
     @synthesize outPath = _outPath;
-//    @synthesize outFile = _outFile;
     @synthesize nFrames = _nFrames;
     @synthesize recordTime = _recordTime;
     @synthesize recordTimer = _recordTimer;
@@ -192,9 +190,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
         [MHRUtilities createDirectory:_outPath];
         _outputPath = [_outPath UTF8String] + String("/");
         
-        // output new file to write input video
-//        _outFile = [_outPath stringByAppendingString:@"input.mp4"];
-        
         isCapturing = YES;
 //        self.navigationItem.leftBarButtonItem.enabled = NO;
         _startButton.enabled = NO;
@@ -206,7 +201,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
                                                       selector:@selector(updateRecordTime:)
                                                       userInfo:nil
                                                        repeats:YES];
-        
     }
 
 
@@ -405,7 +399,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             ++_nFrames;
-            NSLog(@"%d",_nFrames);
+            NSLog(@"%ld",(long)_nFrames);
             
         }
         else
@@ -504,31 +498,5 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
     THREE_CHAN_MODE = int(mode);
 }
 
-    #pragma - Test Image/Video
-    //- (void)updateImageView:(NSInteger)index vid:(vector<Mat>)vid
-    //{
-    //    if (index >= vid.size())
-    //        return;
-    //    self.imageView.image = [UIImageCVMatConverter UIImageFromCVMat:vid[index]];
-    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //        [self updateImageView:index+1 vid:vid];
-    //    });
-    //}
-
-
-    #pragma - Test write raw video
-    //- (void)testRawVideo
-    //{
-    //    String fileName = [_outPath UTF8String] + string("/input.mp4");
-    //    VideoCapture vidIn(fileName.c_str());
-    //    vector<Mat> dst;
-    //    videoCaptureToVector(vidIn, dst, 4);
-    //
-    //    Mat tmp = imread([_outPath UTF8String] + string("/test_before.png"));
-    //    for (int i = 0; i < tmp.channels(); ++i) {
-    //        String fileName = [_outPath UTF8String] + string("/test_after[") + to_string(i) + "].txt";
-    //        frameChannelToFile(tmp, fileName, i);
-    //    }
-    //}
 
 @end

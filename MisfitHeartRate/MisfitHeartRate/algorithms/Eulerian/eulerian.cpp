@@ -163,41 +163,6 @@ namespace MHR {
             }
 		}
         
-        
-        
-        
-//        Mat tmp_filtered = Mat::zeros(nRow, nCol, CV_64FC3);
-//		for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
-//			// Reconstruct the frame from pyramid stack
-//			// by removing the singleton dimensions of the kth filtered array
-//			// since the filtered stack is just a selected level of the Gaussian pyramid
-//			for (int x = 0; x < nRow; ++x)
-//				for (int y = 0; y < nCol; ++y)
-//					tmp_filtered.at<Vec3d>(x, y) = filteredStack[k].at<Vec3d>(x, y);
-//            
-//			// Format the image to the right size
-//			resize(tmp_filtered, filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
-//            
-//			// Convert the ith frame in the video stream to RGB (double-precision) image
-//            vid[i].convertTo(frame, CV_64FC3);
-//            
-//			// Add the filtered frame to the original frame
-//            filtered = filtered + frame;
-//            
-//            // clip the frame
-//            for (int i = 0; i < vidHeight; ++i)
-//                for (int j = 0; j < vidWidth; ++j) {
-//                    for (int channel = 0; channel < nChannel; ++channel) {
-//                        double tmp = filtered.at<Vec3d>(i, j)[channel];
-//                        tmp = min(tmp, 255.0);
-//                        tmp = max(tmp, 0.0);
-//                        filtered.at<Vec3d>(i, j)[channel] = tmp;
-//                    }
-//                }
-//            
-//            ans.push_back(filtered.clone());
-//		}
-
         if (DEBUG_MODE) {
             printf("eulerianGaussianPyramidMagnification() time = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
             frameChannelToFile(ans[0], _outputPath + "5_ans[0]_eulerianGaussianPyramidMagnification.txt", _channels_to_process);

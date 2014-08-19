@@ -17,14 +17,6 @@ using namespace cv;
 
 
 namespace MHR {
-//#ifdef DEBUG
-//    const int DEBUG_MODE = 0;
-//#else
-//    const int DEBUG_MODE = 0;
-//#endif
-//    const int THREE_CHAN_MODE = 0;
-//    const int WRITE_EULERIAN_VID_MODE = 0;
-    
     extern int DEBUG_MODE;
     extern int THREE_CHAN_MODE;
     extern int WRITE_EULERIAN_VID_MODE;

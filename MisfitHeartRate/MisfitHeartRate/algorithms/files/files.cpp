@@ -95,8 +95,6 @@ namespace MHR {
     // print a frame to file
     bool frameToFile(const Mat& frame, const String& outFile)
     {
-//        Mat tmp = frame.clone();
-//        cvtColor(tmp, tmp, CV_RGB2BGR);
         return imwrite(outFile, frame);
     }
     

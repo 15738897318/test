@@ -211,12 +211,6 @@ namespace MHR {
                 nAnPositions.push_back(i);
             }
 
-//        // apply low pass filter
-//        Mat src = vectorToMat(arr), dst;
-//        Mat filt = _beatSignalFilterKernel.clone();
-//        filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
-//        vector<double> ans = matToVector1D(dst);
-        
         // using corr_linear()
         vector<double> kernel;
         for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)

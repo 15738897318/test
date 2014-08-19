@@ -59,7 +59,6 @@ namespace MHR {
                 
                 int first_tranning_frames_start = min( (int)round(fr * _training_time_start), total_frames );
                 int first_tranning_frames_end = min( (int)round(fr * _training_time_end), total_frames) - 1;
-//                int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
                 
                 // this arr stores values of pixels from first trainning frames
                 vector<double> arr;
@@ -114,7 +113,6 @@ namespace MHR {
                 if(cnt==0) //push NaN for all-NaN-frames
                     temporal_mean.push_back(NaN);
                 else
-//                    temporal_mean.push_back(sum/size);
                     temporal_mean.push_back(sum/cnt);
             }
             
@@ -124,9 +122,5 @@ namespace MHR {
             printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return temporal_mean;
-        
-        //=== Block 2. Low-pass-filter the signal stream to remove unwanted noises
-//        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
-//        return temporal_mean_filt;
     }
 }

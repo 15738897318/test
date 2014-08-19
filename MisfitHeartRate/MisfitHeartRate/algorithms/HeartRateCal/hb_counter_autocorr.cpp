@@ -33,14 +33,6 @@ namespace MHR {
             for(int i = windowStart; i < windowEnd; ++i)
                 segment.push_back(temporal_mean[i]);
             
-            //calc mean and get segment = segment - mean
-//            double mean = mean(segment);
-//            for(int i=0; i<(int) segment.size(); ++i) segment[i]-=mean;
-            
-            //get the reverse vector of segment
-//            vector<double> rev_segment=segment;
-//            reverse(rev_segment.begin(), rev_segment.end());
-            
             //Calculate the autocorrelation for the current window
             vector<double> local_autocorr = corr_linear(segment, segment);
             double tmp = local_autocorr[0] - lastSegmentEndVal;
@@ -86,16 +78,8 @@ namespace MHR {
             windowStart = windowStart + windowUpdate;
             lastSegmentEndVal = autocorrelation[(int)autocorrelation.size() - 1];
         }
-               
-//        if (DEBUG_MODE) {
-//            String path = _outputPath + "6_autocorrelation.txt";
-//            FILE *file = fopen(path.c_str(), "w");
-//            fprintf(file, "fr = %lf\nfirstSample = %d\nwindow_size = %d\n", fr, firstSample, window_size);
-//            fprintf(file, "overlap_ratio = %lf\nminPeakDistance = %lf\n", overlap_ratio, minPeakDistance);
-//            fclose(file);
-//            writeVector(autocorrelation, _outputPath + "6_autocorrelation.txt", true);
-//        }
         
+
         // Step 2: perform peak-counting on the autocorrelation stream
         windowStart = firstSample-1;
         vector<pair<double, int>> heartBeats;
@@ -167,7 +151,6 @@ namespace MHR {
         
         double avg_hr=0;
         if(!heartBeats.empty()){
-            //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
             int cnt=0;
             for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
                 if(temporal_mean[i] != NaN) ++cnt;

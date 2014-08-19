@@ -26,9 +26,6 @@ namespace MHR {
                                   0.211, -0.523, 0.312);
 
     const Mat ntsc2rgb_baseMat = (Mat_<double>(3, 3) <<
-    //                              1.0, 0.956, 0.621,
-    //                              1.0, -0.272, -0.647,
-    //                              1.0, -1.106, 1.703);
                                   1.0000, 0.9562, 0.6214,
                                   1.0000, -0.2727, -0.6468,
                                   1.0000, -1.1037, 1.7006);
@@ -44,16 +41,7 @@ namespace MHR {
     // downsampling.  These arguments should be 1D or 2D matrices, and IM
     // must be larger (in both dimensions) than FILT.  The origin of filt
     // is assumed to be floor(size(filt)/2)+1.
-    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol);
-    
-//    // ScaleRotateTranslate
-//    void ScaleRotateTranslate(const Mat &src, Mat &dst, Point2d center, double angle);
-//    
-//    // crop face
-//    void cropFace(const Mat &src, Mat &dst,
-//                  Point2d eye_left = Point2d(0, 0), Point2d eye_right = Point2d(0, 0),
-//                  Point2d offset_pct = Point2d(0.2, 0.2), Point2d dest_sz = Point2d(70, 70));
-
+    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol);    
 }
 
 #endif /* defined(__MisfitHeartRate__image__) */

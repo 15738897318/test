@@ -22,7 +22,6 @@ namespace MHR {
         int nTime = (int)src.size();
         int nRow = src[0].rows;
         int nCol = src[0].cols;
-//        int nChannels = src[0].channels();
         
         // copy and convert data from src to dst (CV_32FC(nChannels))
         Mat tmp;

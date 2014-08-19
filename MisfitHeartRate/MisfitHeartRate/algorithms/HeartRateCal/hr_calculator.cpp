@@ -51,7 +51,6 @@ namespace MHR {
             
             //Convolve the count_signal with the kernel to generate a score_signal
             vector<double> score_signal = corr_linear(count_signal, kernel, false);
-    //		filter2D(count_signal, score_signal, -1, kernel, Point(-1,-1), 0, BORDER_CONSTANT);
             
             //Decide if the any beats are missing and fill them in if need be
             vector<double> min_peak_strengths;
