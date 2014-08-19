@@ -32,6 +32,8 @@ namespace MHR {
     void test_hr_cal_autocorr();
     
     void test_hb_counter_pda();
+    
+    void test_findpeak();
 }
 
 #endif /* defined(__MisfitHeartRate__testFunctions__) */

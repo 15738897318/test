@@ -30,7 +30,7 @@ namespace MHR {
     {
         double autocorr;        // avg_hr_autocorr
         double pda;             // avg_hr_pda
-        
+        hrResult();
         hrResult(double autocorr, double pda);
         
         void operator = (const hrResult &other);

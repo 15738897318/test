@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCB55F121957CB3B0095A98E"
-               BuildableName = "MisfitHeartRate.app"
+               BuildableName = "Pulsar.app"
                BlueprintName = "MisfitHeartRate"
                ReferencedContainer = "container:Pulsar.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCB55F121957CB3B0095A98E"
-            BuildableName = "MisfitHeartRate.app"
+            BuildableName = "Pulsar.app"
             BlueprintName = "MisfitHeartRate"
             ReferencedContainer = "container:Pulsar.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCB55F121957CB3B0095A98E"
-            BuildableName = "MisfitHeartRate.app"
+            BuildableName = "Pulsar.app"
             BlueprintName = "MisfitHeartRate"
             ReferencedContainer = "container:Pulsar.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCB55F121957CB3B0095A98E"
-            BuildableName = "MisfitHeartRate.app"
+            BuildableName = "Pulsar.app"
             BlueprintName = "MisfitHeartRate"
             ReferencedContainer = "container:Pulsar.xcodeproj">
          </BuildableReference>

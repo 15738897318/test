@@ -26,7 +26,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initializationa
     }
     return self;
 }
@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.pdaLabel.hidden = YES;
     self.autocorrLabel.text = [NSString stringWithFormat:@"%.0f", _autocorrResult];
     self.pdaLabel.text = [NSString stringWithFormat:@"%.0f", _pdaResult];
     if (_autocorrResult < 0 || _pdaResult < 0) {

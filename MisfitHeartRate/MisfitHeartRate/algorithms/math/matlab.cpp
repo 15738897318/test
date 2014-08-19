@@ -26,24 +26,46 @@ namespace MHR {
     void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
                    vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
     {
-        max_peak_strengths.clear(); max_peak_locs.clear();
+        max_peak_strengths.clear();
+        max_peak_locs.clear();
         
         vector<pair<double,int>> peak_list;
         
-        for(int i=1; i<(int) segment.size()-1; ++i){
-            if(segment[i] - segment[i-1] >= threshold && segment[i] - segment[i+1] > threshold)
+        int nSegment = (int)segment.size();
+        for (int i = 1; i < nSegment - 1; ++i) {
+            if ((segment[i] - segment[i-1] > threshold) &&
+                (segment[i] - segment[i+1] >= threshold))
+            {
                 peak_list.push_back(pair<double,int> (-segment[i], i));
+            }
         }
         
+        if (peak_list.empty())
+            return;
+        
+        // Code to sort the peaks by position. The first & last peaks should be such that between
+        // the peaks and the start / end of the segment there must be no 'straight line'
+        int nPeaks = (int)peak_list.size();
+        int n = peak_list[nPeaks - 1].second;
+        double minValue = segment[n], maxValue = segment[n];
+        for (int i = n+1; i < nSegment; ++i) {
+            minValue = min(minValue, segment[i]);
+            maxValue = max(maxValue, segment[i]);
+        }
+        if (maxValue == minValue)
+            peak_list.pop_back();
+        
+
         sort(peak_list.begin(), peak_list.end());
-        for(int i=0; i<(int) peak_list.size(); ++i){
+        for (int i = 0; i < nPeaks; ++i){
             int pos=peak_list[i].second;
             if(pos==-1) continue;
-            for(int j=0; j<(int) peak_list.size(); ++j) if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
-                peak_list[j].second=-1;
+            for (int j = 0; j < nPeaks; ++j)
+                if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
+                    peak_list[j].second=-1;
         }
         
-        for(int i=0; i<(int) peak_list.size(); ++i)
+        for (int i = 0; i < nPeaks; ++i)
             if(peak_list[i].second!=-1){
                 max_peak_locs.push_back(peak_list[i].second);
                 max_peak_strengths.push_back(segment[peak_list[i].second]);
@@ -65,14 +87,16 @@ namespace MHR {
     }
 
     
-    vector<double> corr_linear(vector<double> signal, vector<double> kernel) {
+    vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean) {
         int m = (int)signal.size(), n = (int)kernel.size();
         
         // -meanValue
-        double meanValue = mean(signal);
-        for (int i = 0; i < m; ++i) signal[i] -= meanValue;
-        meanValue = mean(kernel);
-        for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
+        if (subtractMean) {
+            double meanValue = mean(signal);
+            for (int i = 0; i < m; ++i) signal[i] -= meanValue;
+            meanValue = mean(kernel);
+            for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
+        }
 
         // padding of zeors
         for(int i = m; i < m+n-1; i++) signal.push_back(0);
@@ -89,10 +113,14 @@ namespace MHR {
         
         for (int i = 0; i < n-1; ++i)
             ans.pop_back();
-        double minValue = *min_element(ans.begin(), ans.end());
-        if (minValue < 0)
-            for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
-                ans[i] -= minValue;
+        
+        if (subtractMean) {
+            double minValue = *min_element(ans.begin(), ans.end());
+            if (minValue < 0)
+                for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
+                    ans[i] -= minValue;
+        }
+        
         return ans;
     }
 
@@ -114,7 +142,14 @@ namespace MHR {
         }
         
         double length = maxv-minv;
-        double bin_length = length/nbins;
+        
+        double bin_length;
+        if (length > 0) {
+            bin_length = length / nbins;
+        }
+        else {
+            bin_length = 1.0;
+        }
         
         counts.resize(nbins,0);
         centers.resize(nbins,0);
@@ -175,21 +210,31 @@ namespace MHR {
                 arr[i] = 0;
                 nAnPositions.push_back(i);
             }
+
+//        // apply low pass filter
+//        Mat src = vectorToMat(arr), dst;
+//        Mat filt = _beatSignalFilterKernel.clone();
+//        filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
+//        vector<double> ans = matToVector1D(dst);
         
-        // apply low pass filter
-        Mat src = vectorToMat(arr);
-        Mat filt = arrayToMat(_beatSignalFilterKernel, 1, _beatSignalFilterKernel_size);
-        Mat dst;
-        filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
-        vector<double> ans = matToVector1D(dst);
-        
+        // using corr_linear()
+        vector<double> kernel;
+        for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
+            for (int j = 0; j < _beatSignalFilterKernel.size.p[1]; ++j)
+                kernel.push_back(_beatSignalFilterKernel.at<double>(i, j));
+        vector<double> ans = corr_linear(arr, kernel, false);
+
         // assign values in all old NaN positions to NaN
         for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
             ans[nAnPositions[i]] = NaN;
         
-        // remove last 7 elements when use FilterBandPassing
-        for(int i = 0; i < 7; ++i)
-            if(!ans.empty()) ans.pop_back();
+        // remove last _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
+        // (using only with filter2D)
+//        for(int i = 0; i < _beatSignalFilterKernel_size/2; ++i)
+//            if(!ans.empty()) ans.pop_back();
+
+        // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
+        ans = vector<double>(ans.begin() + _beatSignalFilterKernel_size/2, ans.end());
         
         if (DEBUG_MODE)
             printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);

@@ -15,9 +15,10 @@ namespace MHR {
     {
         // Step 1: calc the window-based autocorrelation of the signal stream
         
-        int windowStart = firstSample;
+        int windowStart = firstSample-1;
         vector<double> autocorrelation;
         double lastSegmentEndVal = 0;
+        bool isFirstSegment = true;
 
         while(windowStart < (int)temporal_mean.size() - 1){
             
@@ -33,17 +34,18 @@ namespace MHR {
                 segment.push_back(temporal_mean[i]);
             
             //calc mean and get segment = segment - mean
-            double sum = accumulate(segment.begin(), segment.end(), 0);
-            double mean = sum/segment.size();
-            for(int i=0; i<(int) segment.size(); ++i) segment[i]-=mean;
+//            double mean = mean(segment);
+//            for(int i=0; i<(int) segment.size(); ++i) segment[i]-=mean;
+            
             //get the reverse vector of segment
-            vector<double> rev_segment=segment;
-            reverse(rev_segment.begin(), rev_segment.end());
+//            vector<double> rev_segment=segment;
+//            reverse(rev_segment.begin(), rev_segment.end());
             
             //Calculate the autocorrelation for the current window
-            vector<double> local_autocorr = corr_linear(segment, rev_segment);
+            vector<double> local_autocorr = corr_linear(segment, segment);
+            double tmp = local_autocorr[0] - lastSegmentEndVal;
             for(int i = 0, sz = (int)local_autocorr.size(); i < sz; ++i)
-                local_autocorr[i] -= local_autocorr[0] - lastSegmentEndVal;
+                local_autocorr[i] -= tmp;
             
             //Define the segment length
             
@@ -55,12 +57,13 @@ namespace MHR {
             }else{
                 for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
                 findpeaks(local_autocorr, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
+                
                 if(min_peak_locs.empty()){
-                    segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size + 1) / 2 ; //round
-                    segment_length = min(segment_length, window_size);
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size)/2.0 + 1); //round
+                    segment_length = min(segment_length, (int)segment.size());
                 }else{
-                    segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
-                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end())
+                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()))/2.0 + 1); //round
                 }
                 for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
             }
@@ -69,17 +72,35 @@ namespace MHR {
             // b. Equal-step progression
             // segment_length = window_size
             
-            for(int i=0; i<(int)local_autocorr.size(); ++i) autocorrelation.push_back(local_autocorr[i]);
+            // c. autocorrelation
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            if (isFirstSegment) {
+                for (int i = 0; i < windowStart; ++i)
+                    autocorrelation.push_back(0);
+                isFirstSegment = false;
+            }
+            for(int i = 0, sz = min((int)local_autocorr.size(), windowUpdate); i < sz; ++i)
+                autocorrelation.push_back(local_autocorr[i]);
 
             // Define the start of the next window
-            windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
-            lastSegmentEndVal = autocorrelation[windowStart - 1];
+            windowStart = windowStart + windowUpdate;
+            lastSegmentEndVal = autocorrelation[(int)autocorrelation.size() - 1];
         }
+               
+//        if (DEBUG_MODE) {
+//            String path = _outputPath + "6_autocorrelation.txt";
+//            FILE *file = fopen(path.c_str(), "w");
+//            fprintf(file, "fr = %lf\nfirstSample = %d\nwindow_size = %d\n", fr, firstSample, window_size);
+//            fprintf(file, "overlap_ratio = %lf\nminPeakDistance = %lf\n", overlap_ratio, minPeakDistance);
+//            fclose(file);
+//            writeVector(autocorrelation, _outputPath + "6_autocorrelation.txt", true);
+//        }
         
         // Step 2: perform peak-counting on the autocorrelation stream
-        windowStart = firstSample;
+        windowStart = firstSample-1;
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
+        isFirstSegment = true;
         while(windowStart < (int)autocorrelation.size() - 1){
             
             vector<double> segment;
@@ -102,10 +123,11 @@ namespace MHR {
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
                 findpeaks(segment, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
                 if(min_peak_locs.empty()){
-                    segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size + 1) / 2 ; //round
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size)/2.0 + 1); //round
+                    segment_length = min(segment_length, (int)segment.size());
                 }else{
-                    segment_length = ( *max_element(max_peak_locs.begin(), max_peak_locs.end())
-                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()) + 1) / 2 ; //round
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end())
+                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()))/2.0 + 1); //round
                 }
                 for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
             }
@@ -118,11 +140,23 @@ namespace MHR {
                 heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
             
             // Calculate the HR for this window
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            if (isFirstSegment) {
+                for (int i = 0; i < windowStart; ++i)
+                    heartRates.push_back(0);
+                isFirstSegment = false;
+            }
             
-            double rate = (double) max_peak_locs.size() / segment_length * fr;
-            for(int i=windowStart; i<windowStart+segment_length; ++i) heartRates.push_back(rate);
+            int count = 0;
+            for (int i = 0, sz = (int)segment.size(); i < sz; ++i)
+                if (segment[i] > NaN && segment[i] < INFINITY)
+                    ++count;
+            double rate = (double) max_peak_locs.size() / count * fr;
             
-            windowStart = windowStart + int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            for(int i = windowStart; i < windowStart+windowUpdate; ++i)
+                heartRates.push_back(rate);
+            
+            windowStart = windowStart + windowUpdate;
             
         }
         
@@ -135,7 +169,7 @@ namespace MHR {
         if(!heartBeats.empty()){
             //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
             int cnt=0;
-            for(int i=firstSample; i<(int)temporal_mean.size(); ++i)
+            for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
                 if(temporal_mean[i] != NaN) ++cnt;
             if(cnt==0) avg_hr = 0;
             else
@@ -150,6 +184,7 @@ namespace MHR {
         for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
             locations.push_back(heartBeats[i].second);
         sort(locations.begin(), locations.end());
+        
         return locations;
     }
 }
