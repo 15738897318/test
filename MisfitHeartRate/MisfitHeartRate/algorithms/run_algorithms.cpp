@@ -76,8 +76,7 @@ namespace MHR {
 												 _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
 												 _eulerian_frameRate, _eulerian_chromaMagnifier);
             
-            /*-----------------keep last 15 frames if using filter_bandpassing for Eulerian stage (0)-----------------*/
-            // need to improve
+            /*-----------------keep last 15 frames if not using ideal_bandpassing for Eulerian stage (0)-----------------*/
             vector<Mat> newVid;
             int eulerianLen = (int)eulerianVid.size();
             int startPos = len;

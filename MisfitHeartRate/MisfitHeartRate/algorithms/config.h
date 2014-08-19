@@ -47,7 +47,7 @@ namespace MHR {
     extern int _startFrame;
     extern int _endFrame; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
-    // filter_bandpassing:
+    // ideal bandpassing:
     extern bool _isUseFilterBandPassing;     // use ideal bandpassing
     extern int _eulerianTemporalFilterKernel_size;
     extern Mat _eulerianTemporalFilterKernel;

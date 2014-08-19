@@ -56,7 +56,6 @@ namespace MHR {
 		if (DEBUG_MODE) printf("Temporal filtering...\n");
         vector<Mat> filteredStack;
         ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
-//        filter_bandpassing(GdownStack, filteredStack);
 		if (DEBUG_MODE) printf("Finished\n");
         
         if (DEBUG_MODE)
