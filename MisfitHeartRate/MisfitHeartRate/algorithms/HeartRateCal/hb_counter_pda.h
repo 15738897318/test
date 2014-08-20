@@ -9,23 +9,12 @@
 #ifndef __MisfitHeartRate__hb_counter_pda__
 #define __MisfitHeartRate__hb_counter_pda__
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cmath>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/imgproc/imgproc_c.h>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/highgui/highgui_c.h>
-#include <opencv2/imgproc/types_c.h>
 #include "image.h"
-#include "hrDebug.h"
 #include "matlab.h"
-#include "config.h"
+#include "hr_structures.h"
 
 using namespace std;
 using namespace cv;
-
 
 namespace MHR {
     vector<int> hb_counter_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,

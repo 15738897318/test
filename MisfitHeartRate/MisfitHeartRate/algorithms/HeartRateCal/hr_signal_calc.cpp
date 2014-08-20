@@ -10,21 +10,6 @@
 
 
 namespace MHR {
-    hrResult::hrResult(){}
-    hrResult::hrResult(double autocorr, double pda)
-    {
-        this->autocorr = autocorr;
-        this->pda = pda;
-    }
-    
-    
-    void hrResult::operator = (const hrResult &other)
-    {
-        this->autocorr = other.autocorr;
-        this->pda = other.pda;
-    }
-    
-    
     hrResult hr_signal_calc(vector<double> &temporal_mean, int firstSample, int window_size,
                             double frameRate, double overlap_ratio,
                             double max_bpm, double threshold_fraction)
@@ -46,7 +31,7 @@ namespace MHR {
         hr_calculator(hb_locations_pda, frameRate, ans_pda);
         double avg_hr_pda = ans_pda[0];     // average heart rate
         
-        // Calculate heart-rate using peak-detection on the signal
+        // Calculate heart-rate using autocorr algorithm on the signal
         hrDebug debug_autocorr;
         vector<int> hb_locations_autocorr = hb_counter_autocorr(temporal_mean, frameRate, firstSample,
                                                                 window_size, overlap_ratio,
