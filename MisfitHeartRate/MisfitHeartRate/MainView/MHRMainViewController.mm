@@ -31,15 +31,16 @@ static const int kBlockFrameSize = 128;
         int framesWithFace; // Count the number of frames having a face in the region of interest
         int framesWithNoFace; // Count the number of frames NOT having a face in the region of interest
         MBProgressHUD *progressHUD;
-        NSThread *readImageThread;
-        NSThread *processImageThread;
-        BOOL isStopThread;
         
         bool isCalcMode;
         double lower_range;
         double upper_range;
         hrResult result;
         std::vector<double> temporal_mean;
+        NSMutableArray *frameIndexArray;
+        
+        NSOperationQueue *myQueue;
+        int blockCount;
     }
 
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -125,9 +126,6 @@ static const int kBlockFrameSize = 128;
         _videoCamera.grayscaleMode = NO;
         [_videoCamera start];
         
-        
-        
-        
         // add start and stop button
         _startButton = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self action:@selector(startButtonDidTap:)];
         _stopButton = [[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopButtonDidTap:)];
@@ -138,6 +136,10 @@ static const int kBlockFrameSize = 128;
         // update Layout (iOS6 vs iOS7)
         [self updateLayout];
         
+        frameIndexArray = [[NSMutableArray alloc] init];
+        myQueue = [[NSOperationQueue alloc] init];
+        blockCount = 0;
+        
 //        test_findpeak();
 //        [MHRTest test_run_algorithm];
     }
@@ -146,51 +148,42 @@ static const int kBlockFrameSize = 128;
     - (void)setUpThreads
     {
         isCalcMode = NO;
-        processImageThread = [[NSThread alloc] initWithTarget:self
-                                                     selector:@selector(runAlgorithm)
-                                                       object:nil];
-//        readImageThread = [[NSThread alloc] initWithTarget:self
-//                                                  selector:@selector(readImage)
-//                                                    object:nil];
     }
 
-    - (void)runAlgorithm
+    - (void)heartRateCalculation
     {
-        // heartRate cal
-        __block int blockCount = 0;
-        isCalcMode = NO;
-
-//        while([[NSThread currentThread] isCancelled] == NO)
-//        {
-            while (!isStopThread)
-            {
-                int startIndex = blockCount * (int)_nFrames;
-                int endIndex = (blockCount + 1) * (int)_nFrames - 1;
-
-                if (_nFrames == (blockCount + 1) * kBlockFrameSize)
-                {
-                    // Run algorithm
-                    std::vector<double> temp;
-                    processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex, endIndex, isCalcMode, lower_range, upper_range, result, temp);
-                    processingCumulative(temporal_mean, temp, currentResult);
-                    NSLog(@"Result: %lf, %lf", result.autocorr, result.pda);
-                    blockCount ++;
-                }
-            }
-//        }
+        int idx = blockCount * kBlockFrameSize;
+        NSNumber *startIndex = frameIndexArray[idx];
+        int value = (blockCount + 1) * kBlockFrameSize - 1;
+        NSNumber *endIndex = frameIndexArray[value];
+        
+        NSLog(@"start index: %@", startIndex);
+        NSLog(@"end index: %@", endIndex);
+        NSLog(@"block count: %d", blockCount);
+        blockCount ++;
+        
+        // Run algorithm
+        //isProcessing = YES;
+        std::vector<double> temp;
+        processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
+        processingCumulative(temporal_mean, temp, currentResult);
+        NSLog(@"Result: %lf, %lf", result.autocorr, result.pda);
+        //isProcessing = NO;
+        
     }
 
     - (void)startThreads
     {
         _nFrames = 0;
-        isStopThread = NO;
-        [processImageThread start];
+        
+        [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
+
+        //isProcessing = NO;
     }
 
     -(void)viewDidDisappear:(BOOL)animated
     {
         [super viewDidDisappear:animated];
-        isStopThread = YES;
     }
 
 
@@ -266,7 +259,7 @@ static const int kBlockFrameSize = 128;
 
     - (IBAction)stopButtonDidTap:(id)sender
     {
-        isStopThread = YES;
+        [myQueue cancelAllOperations];
         
 //        if (!isCapturing)
 //            return;
@@ -450,8 +443,6 @@ static const int kBlockFrameSize = 128;
         }
     }
 
-
-
     #pragma - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
@@ -461,7 +452,21 @@ static const int kBlockFrameSize = 128;
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             ++_nFrames;
+            
+            [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
+            
             NSLog(@"%ld",(long)_nFrames);
+            
+            // Add new block to queue
+            int upper = (blockCount + 1) * kBlockFrameSize;
+            int size = (int)frameIndexArray.count;
+            
+            if ( size >= upper)
+            {
+                [myQueue addOperationWithBlock: ^ {
+                    [self heartRateCalculation];
+                }];
+            }
         }
         else
         {
