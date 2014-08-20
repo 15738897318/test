@@ -17,8 +17,6 @@ namespace MHR {
     {
         clock_t t1 = clock();
         
-        String conversion_method = _frames2signalConversionMethod;
-        
         // Block 1 ==== Load the video & convert it to the desired colour-space
         // Extract video info
         int vidHeight = vid[0].rows;
@@ -38,6 +36,7 @@ namespace MHR {
         
         if (_THREE_CHAN_MODE) {
 			for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+                // convert each frame to right colourspace
 				vid[i].convertTo(frame, CV_64FC3);
 				if (colourspace == "hsv")
 					cvtColor(frame, frame, CV_RGB2HSV);
@@ -76,7 +75,7 @@ namespace MHR {
         
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-        return frames2signal(monoframes, conversion_method, frameRate, cutoff_freq,
+        return frames2signal(monoframes, _frames2signalConversionMethod, frameRate, cutoff_freq,
                              lower_range, upper_range, isCalcMode);
     }
 }

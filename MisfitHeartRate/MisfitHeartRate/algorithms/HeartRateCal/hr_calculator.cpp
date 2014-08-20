@@ -10,19 +10,17 @@
 
 
 namespace MHR {
-	// return a vector of integer from a to b with specific step
 	void hr_calculator(const vector<int> &heartBeatPositions, double frameRate, vector<double> &ans) {
-		//Calculate the instantaneous heart-rates
+
         ans.clear();
         
-        printf("Number of heart-beats counted: %d\n", (int)heartBeatPositions.size());
-		
         if ((int)heartBeatPositions.size() > 2) {
+            // Calculate the instantaneous heart-rates
             vector<double> heartRate_inst;
             for (int i = 1, sz = (int)heartBeatPositions.size(); i < sz; ++i)
                 heartRate_inst.push_back( 1.0 / (heartBeatPositions[i] - heartBeatPositions[i-1]) );
             
-            //Find the mode
+            // Find the mode of the instantaneous heart-rates
             vector<double> centres;
             vector<int> counts;
             
@@ -33,12 +31,12 @@ namespace MHR {
                 if(counts[i] > counts[argmax]) argmax = i;
             double centre_mode = centres[argmax];
             
-            //Create a convolution kernel from the found frequency
+            // Create a convolution kernel from the found frequency
             vector<double> kernel;
             gaussianFilter(cvCeil(2.0 / centre_mode), 1.0 / (4.0 * centre_mode), kernel);
             double threshold = 2.0 * kernel[cvCeil(1.0 / (4.0 * centre_mode)) - 1];
             
-            //Create a heart-beat count signal
+            // Create a heart-beat count signal
             vector<double> count_signal;
             int temp = heartBeatPositions[heartBeatPositions.size() - 1] - heartBeatPositions[0] + 1;
             for (int i = 0; i < temp; ++i) {
@@ -49,10 +47,10 @@ namespace MHR {
                 count_signal[temp] = 1;
             }
             
-            //Convolve the count_signal with the kernel to generate a score_signal
+            // Convolve the count_signal with the kernel to generate a score_signal
             vector<double> score_signal = corr_linear(count_signal, kernel, false);
             
-            //Decide if the any beats are missing and fill them in if need be
+            // Decide if the any beats are missing and fill them in if need be
             vector<double> min_peak_strengths;
             vector<int> min_peak_locs;
             
@@ -74,7 +72,7 @@ namespace MHR {
                 }
             }
         
-            //Calculate the heart-rate from the new beat count
+            // Calculate the heart-rate from the new beat count
             ans.push_back(0);
             int len = (int)count_signal.size();
             for (int i = 0; i < len; ++i)
