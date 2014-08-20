@@ -104,8 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		121C1D54199B5888003C9E47 /* auto_start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auto_start.hpp; sourceTree = "<group>"; };
-		121C1D55199B5888003C9E47 /* auto_start.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = auto_start.mm; sourceTree = "<group>"; };
+		121C1D54199B5888003C9E47 /* auto_start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = auto_start.hpp; path = Utilities/auto_start.hpp; sourceTree = "<group>"; };
+		121C1D55199B5888003C9E47 /* auto_start.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = auto_start.mm; path = Utilities/auto_start.mm; sourceTree = "<group>"; };
 		121C1D5C199B632A003C9E47 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_pda.cpp; path = HeartRateCal/hb_counter_pda.cpp; sourceTree = "<group>"; };
 		12B587D91963EBA300BA19A5 /* hb_counter_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_pda.h; path = HeartRateCal/hb_counter_pda.h; sourceTree = "<group>"; };
@@ -297,8 +297,6 @@
 		DCAE6BA5195A791B00B9FE9F /* image */ = {
 			isa = PBXGroup;
 			children = (
-				121C1D54199B5888003C9E47 /* auto_start.hpp */,
-				121C1D55199B5888003C9E47 /* auto_start.mm */,
 				DCAE524219657AF300A8AFB6 /* image.h */,
 				DCAE524119657AF300A8AFB6 /* image.cpp */,
 			);
@@ -452,6 +450,8 @@
 		DCBDEA1D196124D3005F6298 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				121C1D54199B5888003C9E47 /* auto_start.hpp */,
+				121C1D55199B5888003C9E47 /* auto_start.mm */,
 				DCB9B336197D2F04004DC746 /* BlockAdditions.h */,
 				DCB9B337197D2F04004DC746 /* UIAlertView+Block.h */,
 				DCB9B338197D2F04004DC746 /* UIAlertView+Block.m */,
