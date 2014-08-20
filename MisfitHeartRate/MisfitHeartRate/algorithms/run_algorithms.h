@@ -9,11 +9,6 @@
 #ifndef __MisfitHeartRate__run_algorithms__
 #define __MisfitHeartRate__run_algorithms__
 
-#include <iostream>
-#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/types_c.h>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include "eulerian.h"
 #include "temporal_mean_calc.h"
 #include "globals.h"
