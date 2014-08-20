@@ -77,8 +77,5 @@ namespace MHR {
             	dst[i].convertTo(dst[i], CV_64FC3);
             else
             	dst[i].convertTo(dst[i], CV_64F);
-        
-        if (_DEBUG_MODE)
-            frameChannelToFile(dst[0], _outputPath + "2_dst[0]_ideal_bandpassing.txt", _channels_to_process);
     }
 }

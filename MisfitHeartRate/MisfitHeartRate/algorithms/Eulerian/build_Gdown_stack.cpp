@@ -34,13 +34,6 @@ namespace MHR {
         blurDnClr(frame, blurred, level);
 //        int nRow = blurred.size.p[0], nCol = blurred.size.p[1];
         
-        if (_DEBUG_MODE) {
-            printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
-            frameChannelToFile(frame, _outputPath + "1_vid[0]_build_Gdown_Stack.txt", _channels_to_process);
-            frameChannelToFile(blurred, _outputPath + "1_GDownStack[0]_build_Gdown_Stack.txt", _channels_to_process);
-//            frameToFile(blurred, _outputPath + "test_frame_blurred.jpg");
-        }
-        
         // create pyr stack
         // Note that this stack is actually just a SINGLE level of the pyramid
         GDownStack.clear();

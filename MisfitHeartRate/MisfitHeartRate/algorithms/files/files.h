@@ -13,24 +13,37 @@
 #include "image.h"
 
 namespace MHR {
-    // read frames from a VideoCapture to a vector<Mat>
-    // return true if endOfFile
+    /**
+     *read frames from a file to a vector<Mat>
+     */
     void readFrame(const String& srcFile, vector<Mat> &dst);
-    
+
+    /**
+     *read a 2D Mat (<rows> * <cols>) from an opened file
+     */
     Mat read2DMatFromFile(FILE* &file, int rows, int cols);
-    
-    vector<double> readVectorFromFile(FILE* &file, int n);
-    
+
+    /**
+     *read an integer from an opened file
+     */
     int readInt(FILE* &file);
-    
+
+    /**
+     *read a double number from an opened file
+     */
     double readDouble(FILE* &file);
-    
+
+    /**
+     *read a vector<double> with n elements from an opened file
+     */
+    vector<double> readVectorFromFile(FILE* &file, int n);
+
+    /**
+     * write a vector<double> to a file,
+     * if append == true, then the function will append the vector at the end of the file,
+     * otherwise, it will overwrite the old file or create a new file
+     */
     void writeVector(const vector<double>& src, const String& outFile, bool append = false);
-    
-    // print a frame to file
-    bool frameToFile(const Mat& frame, const String& outFile);
-    
-    void frameChannelToFile(const Mat& frame, const String& outFile, int channel);
 }
 
 #endif /* defined(__Pulsar__files__) */

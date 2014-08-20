@@ -30,7 +30,6 @@ namespace MHR {
         if (_DEBUG_MODE) {
             printf("width = %d, height = %d\n", vidWidth, vidHeight);
             printf("frameRate = %d, len = %d\n", frameRate, len);
-//            frameToFile(vid[0], outDir + "test_frame_in.jpg");
         }
       
 		samplingRate = frameRate;
@@ -58,8 +57,6 @@ namespace MHR {
         ideal_bandpassing(GdownStack, filteredStack, freqBandLowEnd, freqBandHighEnd, samplingRate);
 		if (_DEBUG_MODE) printf("Finished\n");
         
-        if (_DEBUG_MODE)
-            frameChannelToFile(filteredStack[0], _outputPath + "3_filteredStack[0]_ideal_bandpassed.txt", _channels_to_process);
         
 		// amplify
         int nTime = (int)filteredStack.size();
@@ -95,8 +92,6 @@ namespace MHR {
                         filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);
         }
         
-        if (_DEBUG_MODE)
-            frameChannelToFile(filteredStack[0], _outputPath + "4_filteredStack[0]_amplified.txt", _channels_to_process);
         
 		// =================
         
@@ -164,7 +159,6 @@ namespace MHR {
         
         if (_DEBUG_MODE) {
             printf("eulerianGaussianPyramidMagnification() time = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
-            frameChannelToFile(ans[0], _outputPath + "5_ans[0]_eulerianGaussianPyramidMagnification.txt", _channels_to_process);
         }
 	}
 }
