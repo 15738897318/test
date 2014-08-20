@@ -29,14 +29,7 @@ namespace MHR {
     const int _face_Gpyr_filter_length = 5;
     const int _face_startFrame = 0;
     const int _face_endFrame = 0; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
-    
-    // ideal bandpassing:
-    const bool _face_isUseFilterBandPassing = false;     // use ideal bandpassing
-    const int _face_eulerianTemporalFilterKernel_size = 15;
-    const Mat _face_eulerianTemporalFilterKernel = (Mat_<double>(1, _face_eulerianTemporalFilterKernel_size) <<
-                                                   0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594, 0.1704,
-                                                   0.1594, 0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034);
-    
+        
     /*--------------for run_hr()--------------*/
     const double _face_window_size_in_sec = 10;
     const double _face_overlap_ratio = 0;

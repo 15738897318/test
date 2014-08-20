@@ -24,11 +24,11 @@ namespace MHR {
     
     const double NaN = -1e9;
     
-    const int _framesBlock_size = 128;
+    const int _framesBlock_size = 128;  // number of frames to be processed in each block
     const int _minVidLength = 15;       // seconds
     const int _maxVidLength = 30;       // seconds
     
-    extern bool _FACE_MODE;
+    extern bool _FACE_MODE;     // switch between Face mode and Finger mode
     
     /*--------------for run_eulerian()--------------*/
     extern double _eulerian_alpha;          // Eulerian magnifier, standard < 50
@@ -44,12 +44,6 @@ namespace MHR {
     extern int _Gpyr_filter_length;
     extern int _startFrame;
     extern int _endFrame; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
-    
-    // ideal bandpassing:
-    extern bool _isUseFilterBandPassing;     // use ideal bandpassing
-    extern int _eulerianTemporalFilterKernel_size;
-    extern Mat _eulerianTemporalFilterKernel;
-    
     
     /*--------------for run_hr()--------------*/
     extern double _window_size_in_sec;
@@ -96,7 +90,6 @@ namespace MHR {
     
     
     /*--------------change params functions--------------*/
-    
     void setFaceParams();
     void setFingerParams();
 }

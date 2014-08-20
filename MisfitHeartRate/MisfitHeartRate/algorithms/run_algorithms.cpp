@@ -51,16 +51,9 @@ namespace MHR {
 												 _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
 												 _eulerian_frameRate, _eulerian_chromaMagnifier);
             
-            /*-----------------keep last 15 frames if not using ideal_bandpassing for Eulerian stage (0)-----------------*/
+            /*-----------------remove old frames-----------------*/
             int eulerianLen = (int)eulerianVid.size();
-//            int startPos = len;
-//            if (eulerianLen != len)
-//                startPos -= _eulerianTemporalFilterKernel_size;
-//            vector<Mat> newVid;
-//            for (int i = startPos; i < len; ++i)
-//                newVid.push_back(vid[i]);
             vid.clear();
-//            vid = newVid;
             
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
             vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,

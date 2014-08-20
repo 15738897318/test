@@ -32,12 +32,6 @@ namespace MHR {
     int _startFrame = -1;
     int _endFrame = -1; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
-    // ideal bandpassing:
-    bool _isUseFilterBandPassing = -1;     // use ideal bandpassing
-    int _eulerianTemporalFilterKernel_size = -1;
-    Mat _eulerianTemporalFilterKernel;
-    
-    
     /*--------------for run_hr()--------------*/
     double _window_size_in_sec = -1;
     double _overlap_ratio = -1;
@@ -101,10 +95,6 @@ namespace MHR {
         _startFrame = _face_startFrame;
         _endFrame = _face_endFrame;
         
-        _isUseFilterBandPassing = _face_isUseFilterBandPassing;
-        _eulerianTemporalFilterKernel_size = _face_eulerianTemporalFilterKernel_size;
-        _eulerianTemporalFilterKernel = _face_eulerianTemporalFilterKernel.clone();
-        
         _window_size_in_sec = _face_window_size_in_sec;
         _overlap_ratio = _face_overlap_ratio;
         _max_bpm = _face_max_bpm;
@@ -156,10 +146,6 @@ namespace MHR {
         _Gpyr_filter_length = _finger_Gpyr_filter_length;
         _startFrame = _finger_startFrame;
         _endFrame = _finger_endFrame;
-        
-        _isUseFilterBandPassing = _finger_isUseFilterBandPassing;
-        _eulerianTemporalFilterKernel_size = _finger_eulerianTemporalFilterKernel_size;
-        _eulerianTemporalFilterKernel = _finger_eulerianTemporalFilterKernel.clone();
         
         _window_size_in_sec = _finger_window_size_in_sec;
         _overlap_ratio = _finger_overlap_ratio;

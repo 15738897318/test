@@ -30,14 +30,6 @@ namespace MHR {
     const int _finger_startFrame = 0;
     const int _finger_endFrame = 0; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
-    // ideal bandpassing:
-    const bool _finger_isUseFilterBandPassing = false;     // use ideal bandpassing
-    const int _finger_eulerianTemporalFilterKernel_size = 15;
-    const Mat _finger_eulerianTemporalFilterKernel = (Mat_<double>(1, _finger_eulerianTemporalFilterKernel_size) <<
-                                                    0.0034, 0.0087, 0.0244, 0.0529, 0.0909, 0.1300, 0.1594, 0.1704,
-                                                    0.1594, 0.1300, 0.0909, 0.0529, 0.0244, 0.0087, 0.0034);
-    
-    
     /*--------------for run_hr()--------------*/
     const double _finger_window_size_in_sec = 10;
     const double _finger_overlap_ratio = 0;
