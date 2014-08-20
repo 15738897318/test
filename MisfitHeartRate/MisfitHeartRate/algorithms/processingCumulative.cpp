@@ -21,8 +21,6 @@ namespace MHR
         int window_size = round(_window_size_in_sec * _frameRate);
         int firstSample = round(_frameRate * _time_lag);
         
-//        if (currentFrame == nFrames - 1) break;
-        
         /*-----------------Perform HR calculation for the frames processed so far-----------------*/
         
         // Low-pass-filter the signal stream to remove unwanted noises

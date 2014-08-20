@@ -149,7 +149,7 @@ static const int kBlockFrameSize = 128;
     #pragma - Threads process
     - (void)setUpThreads
     {
-        isCalcMode = NO;
+        isCalcMode = YES;
     }
 
     - (void)heartRateCalculation
@@ -176,16 +176,16 @@ static const int kBlockFrameSize = 128;
         processingCumulative(temporal_mean, temp, currentResult);
         NSLog(@"Result: %lf, %lf", currentResult.autocorr, currentResult.pda);
         //isProcessing = NO;
+        isCalcMode = NO;
         
     }
 
     - (void)startThreads
     {
         _nFrames = 0;
+        [frameIndexArray removeAllObjects];
+        isCalcMode = YES;
         
-        //[frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
-
-        //isProcessing = NO;
     }
 
     -(void)viewDidDisappear:(BOOL)animated
