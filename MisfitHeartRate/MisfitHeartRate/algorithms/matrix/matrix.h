@@ -22,30 +22,37 @@ using namespace std;
 
 
 namespace MHR {
-	// return a vector of integer from a to b with specific step
-	vector<int> vectorRange(int a, int b, int step = 1);
-    
-    // data from vector 1D to Mat
-    Mat vectorToMat(const vector<double>& arr);
-    
-    // data from Mat to vector 1D
-    vector<double> matToVector1D(const Mat &m);
+    /**
+     * input: two 2D Mats a, b which have the same size
+     * output: a new Mat which each element[i, j] = atan2(a[i, j], b[i, j])
+     * data type: CV_64F
+     */
+	Mat atan2Mat(const Mat &a, const Mat &b);
 	
-	// atan2 of 2 Mats which have same size
-	// default intput/output type is double - CV_64F
-	Mat atan2Mat(const Mat &src1, const Mat &src2);
-	
-	// return src.^n
-	// default intput/output type is double - CV_64F
+    
+    /**
+     * return the n-th power of src Mat (element-wise)
+     * data type: CV_64F
+     */
 	Mat powMat(const Mat &src, double n);
+
 	
-	// return a + b
+    /**
+     * return a + b
+     */
 	Mat add(const Mat &a, const Mat &b);
 	
-	// return a .* b
+    
+    /**
+     * return a * b (element-wise)
+     */
 	Mat multiply(const Mat &a, const Mat &b);
 	
-	// return mat .* x
+    
+    /**
+     * return a new Mat which each element[i, j] = a[i, j] * x
+     * data type: CV_64F
+     */
 	Mat multiply(const Mat &a, double x);
 }
 
