@@ -22,7 +22,7 @@ using namespace cv;
 using namespace std;
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult);
+    hrResult run_algorithms(const String &srcDir, const String &outDir, hrResult &currHrResult);
 }
 
 #endif /* defined(__MisfitHeartRate__run_algorithms__) */

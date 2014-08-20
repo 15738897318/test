@@ -10,7 +10,7 @@
 
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult)
+    hrResult run_algorithms(const String &srcDir, const String &outDir, hrResult &currHrResult)
     {
         clock_t t1 = clock();
         
@@ -58,6 +58,7 @@ namespace MHR {
             if (_DEBUG_MODE) {
                 printf("load block: %d\n", blockCount);
                 printf("len before = %d\n", (int)vid.size());
+                
             }
             if (!isCalcMode) {
                 for (int i = 0; i < _framesBlock_size; ++i) {

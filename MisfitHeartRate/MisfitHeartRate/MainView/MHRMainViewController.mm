@@ -253,7 +253,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             
 //            [self testRawVideo];
             if (_nFrames >= _minVidLength*_frameRate)
-                result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
+                result = run_algorithms([_outPath UTF8String], [_outPath UTF8String], currentResult);
             
 //            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 //            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
