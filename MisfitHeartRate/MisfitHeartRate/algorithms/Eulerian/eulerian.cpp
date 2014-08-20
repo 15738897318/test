@@ -10,8 +10,6 @@
 
 
 namespace MHR {
-	// Spatial Filtering: Gaussian blur and down sample
-	// Temporal Filtering: Ideal bandpass
     void eulerianGaussianPyramidMagnification(const vector<Mat> &vid, vector<Mat> &ans,
                                               String outDir, double alpha, int level,
                                               double freqBandLowEnd, double freqBandHighEnd,
@@ -23,15 +21,10 @@ namespace MHR {
 		// Extract video info
 		int vidHeight = vid[0].rows;
 		int vidWidth = vid[0].cols;
-		int nChannels = _number_of_channels;		// should get from vid?
-		int frameRate = _frameRate;             // Can not get it from vidIn!!!! :((
+		int nChannels = _number_of_channels;
+		int frameRate = _frameRate;
 		int len = (int)vid.size();
         
-        if (_DEBUG_MODE) {
-            printf("width = %d, height = %d\n", vidWidth, vidHeight);
-            printf("frameRate = %d, len = %d\n", frameRate, len);
-        }
-      
 		samplingRate = frameRate;
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
         
@@ -68,8 +61,9 @@ namespace MHR {
 						  0, alpha*chromAttenuation, 0,
 						  0, 0, alpha*chromAttenuation);
 			Mat base_C = (ntsc2rgb_baseMat * base_B) * rgb2ntsc_baseMat;
+            
+            // calculate filteredStack[t] = baseC * filteredStack[t]
 			Mat tmp = Mat::zeros(nChannels, nCol, CV_64F);
-        	
 			for (int t = 0; t < nTime; ++t) {
 				for (int i = 0; i < nRow; ++i) {
 					for (int j = 0; j < nCol; ++j)
@@ -86,7 +80,6 @@ namespace MHR {
         }
 		else {
 			for (int t = 0; t < nTime; ++t)
-//				filteredStack[t] = multiply(filteredStack[t], alpha);
                 for (int i = 0; i < nRow; ++i)
                     for (int j = 0; j < nCol; ++j)
                         filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);

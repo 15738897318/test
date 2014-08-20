@@ -10,18 +10,14 @@
 
 
 namespace MHR {
-    // Apply ideal band pass filter on SRC
-    // WL: lower cutoff frequency of ideal band pass filter
-    // WH: higher cutoff frequency of ideal band pass filter
-    // SAMPLINGRATE: sampling rate of SRC
     void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double wl, double wh, double samplingRate) {
 //        src: T*M*N*C;
-//        new src: vector<M*N*C>
         
         // extract src info
         int nTime = (int)src.size();
         int nRow = src[0].rows;
         int nCol = src[0].cols;
+//        int nChannel = (_THREE_CHAN_MODE) ? _number_of_channels : 1;
         
         // copy and convert data from src to dst (CV_32FC(nChannels))
         Mat tmp;
@@ -34,34 +30,37 @@ namespace MHR {
             	src[i].convertTo(tmp, CV_32F);
             dst.push_back(tmp.clone());
         }
+
         // masking indexes
         int f1 = ceil(wl * nTime/samplingRate);
         int f2 = floor(wh * nTime/samplingRate);
         int ind1 = 2*f1, ind2 = 2*f2 - 1;
         
-        if (_DEBUG_MODE)
-            printf("ind1 = %d, ind2 = %d, nTime = %d\n", ind1, ind2, nTime);
-        
-        // FFT
+        // FFT: http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dft
         Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
         for (int channel = 0; channel < _number_of_channels; ++channel) {
             for (int col = 0; col < nCol; ++col) {
+                // select only 1 channel in the dst's Mats
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
                         if (_THREE_CHAN_MODE)
                         	dft_out.at<float>(row, time) = dst[time].at<Vec3f>(row, col)[channel];
                         else
                         	dft_out.at<float>(row, time) = dst[time].at<float>(row, col);
-                        	
+                
+                // call FFT
                 dft(dft_out, dft_out, DFT_ROWS);
-                // masking
+                
+                // masking: all elements with time-index in ranges [0, ind1] and [ind2, nTime-1]
+                // will be set to 0
                 for (int row = 0; row < nRow; ++row) {
                     for (int time = 0; time <= ind1; ++time)
                         dft_out.at<float>(row, time) = 0;
                     for (int time = ind2; time < nTime; ++time)
                         dft_out.at<float>(row, time) = 0;
                 }
-                // output
+                
+                // assign values in dft_out to dst
                 dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT + DFT_SCALE);
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
@@ -72,6 +71,7 @@ namespace MHR {
             }
         }
         
+        // convert the dst Mat to CV_64FC3 or CV_64F
         for (int i = 0; i < nTime; ++i)
         	if (_THREE_CHAN_MODE)
             	dst[i].convertTo(dst[i], CV_64FC3);
