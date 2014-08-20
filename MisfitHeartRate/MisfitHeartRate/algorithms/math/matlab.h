@@ -73,6 +73,14 @@ namespace MHR {
      * ref: http://en.wikipedia.org/wiki/Low-pass_filter
      */
     vector<double> low_pass_filter(vector<double> arr);
+    
+    
+    /**
+     * Generate a vector of Gaussian values of a desired length and properties
+     * ref: http://www.mathworks.com/help/images/ref/fspecial.html
+     * ref: http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29
+     */
+    void gaussianFilter(int length, double sigma, vector<double> &ans);
 
 
     /**

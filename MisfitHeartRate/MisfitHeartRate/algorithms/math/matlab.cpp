@@ -232,6 +232,18 @@ namespace MHR {
     }
     
     
+	void gaussianFilter(int length, double sigma, vector<double> &ans) {
+		ans.clear();
+        Mat kernel = getGaussianKernel(length, sigma, CV_64F);
+        for (int i = 0; i < kernel.size.p[0]; ++i)
+            for (int j = 0; j < kernel.size.p[1]; ++j)
+                ans.push_back(kernel.at<double>(i, j));
+        double max_value = *max_element(ans.begin(), ans.end());
+        for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
+            ans[i] /= max_value;
+	}
+    
+    
     double diff_percent(double a, double b)
     {
         return abs(a-b)/abs(b)*100;
