@@ -138,6 +138,8 @@ static const int kBlockFrameSize = 128;
         
         frameIndexArray = [[NSMutableArray alloc] init];
         myQueue = [[NSOperationQueue alloc] init];
+        myQueue.maxConcurrentOperationCount = 1;
+        
         blockCount = 0;
         
 //        test_findpeak();
@@ -153,8 +155,13 @@ static const int kBlockFrameSize = 128;
     - (void)heartRateCalculation
     {
         int idx = blockCount * kBlockFrameSize;
+        if (idx >= frameIndexArray.count)
+        {
+            return;
+        }
+        
         NSNumber *startIndex = frameIndexArray[idx];
-        int value = (blockCount + 1) * kBlockFrameSize - 1;
+        int value = min((blockCount + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
         NSNumber *endIndex = frameIndexArray[value];
         
         NSLog(@"start index: %@", startIndex);
@@ -167,7 +174,7 @@ static const int kBlockFrameSize = 128;
         std::vector<double> temp;
         processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
         processingCumulative(temporal_mean, temp, currentResult);
-        NSLog(@"Result: %lf, %lf", result.autocorr, result.pda);
+        NSLog(@"Result: %lf, %lf", currentResult.autocorr, currentResult.pda);
         //isProcessing = NO;
         
     }
@@ -176,7 +183,7 @@ static const int kBlockFrameSize = 128;
     {
         _nFrames = 0;
         
-        [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
+        //[frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
 
         //isProcessing = NO;
     }
@@ -259,79 +266,72 @@ static const int kBlockFrameSize = 128;
 
     - (IBAction)stopButtonDidTap:(id)sender
     {
-        [myQueue cancelAllOperations];
+        if (!isCapturing)
+            return;
+        isCapturing = NO;
+        _startButton.enabled = YES;
+        _cameraSwitch.enabled = YES;
+        [self drawFaceCaptureRect:@"MHRWhiteColor"];
         
-//        if (!isCapturing)
-//            return;
-//        isCapturing = NO;
-//        _startButton.enabled = YES;
-//        _cameraSwitch.enabled = YES;
-//        [self drawFaceCaptureRect:@"MHRWhiteColor"];
-//        
-//        // stop camera capturing
-//        [_videoCamera stop];
-//        
-//        // stop timer
-//        [_recordTimer invalidate];
-//        _recordTimer = nil;
-//        _recordTime = 0;
-//        [MHRUtilities setTorchModeOn:NO];
-//        
-//        if (!_cameraSwitch.isOn)
-//        {
-//            _fingerLabel.text = @"";
-//        }
-//        _faceLabel.text = @"Processing....";
-//        
-//        // write _nFrames to file
-//        FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
-//        fprintf(file, "%d\n", (int)_nFrames);
-//        fclose(file);
-//        
-//        // heartRate cal
-//        __block hrResult result(-1, -1);
-//        
-//        // Show the waiting animation
-//        progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        progressHUD.mode = MBProgressHUDModeIndeterminate;
-//        
-//        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
-//        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
-//        
-//        // Initialise the result-storing variables
-//        hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
-//        hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
-//        
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-//            if (_DEBUG_MODE)
-//                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
-//            
-////            [self testRawVideo];
-//            if (_nFrames >= _minVidLength*_frameRate)
-//                result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
-//            
-////            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-////            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
-////            result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                // show result
-//                resultView = [[MHRResultViewController alloc] init];
-//                resultView.autocorrResult = result.autocorr;
-//                resultView.pdaResult = result.pda;
-//                [self.navigationController pushViewController:resultView animated:YES];
-//                
-//                // update UI
-//                [MBProgressHUD hideHUDForView:self.view animated:YES];
-//                
-//                //Reset counters of mainView
-//                framesWithFace = 0;
-//                framesWithNoFace = 0;
-//                isCapturing = false;
-//                
-//                _recordTimeLabel.text = @"0";
-//            });
-//        });
+        // stop camera capturing
+        [_videoCamera stop];
+        
+        // stop timer
+        [_recordTimer invalidate];
+        _recordTimer = nil;
+        _recordTime = 0;
+        [MHRUtilities setTorchModeOn:NO];
+        
+        if (!_cameraSwitch.isOn)
+        {
+            _fingerLabel.text = @"";
+        }
+        _faceLabel.text = @"Processing....";
+        
+        // write _nFrames to file
+        FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
+        fprintf(file, "%d\n", (int)_nFrames);
+        fclose(file);
+        
+        // heartRate cal
+        __block hrResult result(-1, -1);
+        
+        // Show the waiting animation
+        progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        progressHUD.mode = MBProgressHUDModeIndeterminate;
+        
+        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
+        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
+        
+        // Initialise the result-storing variables
+        hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
+        hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            while (myQueue.operationCount != 0);
+            
+            if (_DEBUG_MODE)
+                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // show result
+                [myQueue cancelAllOperations];
+                resultView = [[MHRResultViewController alloc] init];
+                resultView.autocorrResult = currentResult.autocorr;
+                resultView.pdaResult = currentResult.pda;
+                [self.navigationController pushViewController:resultView animated:YES];
+                
+                // update UI
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+                //Reset counters of mainView
+                framesWithFace = 0;
+                framesWithNoFace = 0;
+                isCapturing = false;
+                
+                _recordTimeLabel.text = @"0";
+            });
+        });
     }
 
 
@@ -451,9 +451,9 @@ static const int kBlockFrameSize = 128;
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
+            [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
-            [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             
             NSLog(@"%ld",(long)_nFrames);
             
