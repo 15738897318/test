@@ -9,12 +9,6 @@
 #ifndef __MisfitHeartRate__matrix__
 #define __MisfitHeartRate__matrix__
 
-#include <iostream>
-#include <vector>
-#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/types_c.h>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include "config.h"
 
 using namespace cv;

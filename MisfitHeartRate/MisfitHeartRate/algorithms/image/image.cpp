@@ -8,10 +8,7 @@
 
 #include "image.h"
 
-
 namespace MHR {
-	// convert a RGB Mat to a TSL Mat
-    // rgbmap is a CV_64F Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst)
 	{
 		int nRow = rgbmap.rows;
@@ -89,8 +86,6 @@ namespace MHR {
 	}
 
 
-    // Blur and downsample an image.  The blurring is done with
-    // filter kernel specified by FILT (default = 'binom5')
     void blurDnClr(const Mat& src, Mat &dst, int level) {
         dst = src.clone();
         for (int i = 0; i < level; ++i) {
@@ -101,26 +96,19 @@ namespace MHR {
     }
 
 
-    // Compute correlation of matrices IM with FILT, followed by
-    // downsampling.  These arguments should be 1D or 2D matrices, and IM
-    // must be larger (in both dimensions) than FILT.  The origin of filt
-    // is assumed to be floor(size(filt)/2)+1.
     void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol)
     {
         Mat tmp;
         filter2D(src, tmp, -1, filter);
+        
         int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
         int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
         dst = Mat::zeros(m, n, CV_64F);
-        int last_i = -1, last_j = -1;
+        
         for (int i = 0, x = 0; x < src.rows; ++i, x += rectRow)
-            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol) {
+            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol)
+            {
                 dst.at<double>(i, j) = tmp.at<double>(x, y);
-                last_i = max(last_i, i);
-                last_j = max(last_j, j);
             }
-        if (_DEBUG_MODE)
-            if (last_i+1 != m && last_j+1 != n)
-                printf("Error: last_i = %d, last_j = %d, m = %d, n = %d,", last_i, last_j, m, n);
     }
 }
