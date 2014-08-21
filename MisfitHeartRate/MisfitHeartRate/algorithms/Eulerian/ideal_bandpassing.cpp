@@ -17,7 +17,7 @@ namespace MHR {
         int nTime = (int)src.size();
         int nRow = src[0].rows;
         int nCol = src[0].cols;
-//        int nChannel = (_THREE_CHAN_MODE) ? _number_of_channels : 1;
+        int nChannel = (_THREE_CHAN_MODE) ? _number_of_channels : 1;
         
         // copy and convert data from src to dst (CV_32FC(nChannels))
         Mat tmp;
@@ -38,7 +38,7 @@ namespace MHR {
         
         // FFT: http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dft
         Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
-        for (int channel = 0; channel < _number_of_channels; ++channel) {
+        for (int channel = 0; channel < nChannel; ++channel) {
             for (int col = 0; col < nCol; ++col) {
                 // select only 1 channel in the dst's Mats
                 for (int time = 0; time < nTime; ++time)
