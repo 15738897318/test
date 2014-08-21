@@ -20,9 +20,12 @@ namespace MHR {
         return sum/double(n);
     }
 
-    
-    // findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
-    // complexity: O(n^2), n = number of peaks
+    //!
+    //! findpeaks in vector<double> segment, with minPeakDistance and threhold arg, return 2 vectors: max_peak_strengths, max_peak_locs
+    //! minPeakDistance: minimum distance between two peaks
+    //! threshold: The minimum value that a peak point should be larger than its two neighbors point
+    //! complexity: O(n^2), n = number of peaks
+    //!
     void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
                    vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
     {
@@ -72,8 +75,12 @@ namespace MHR {
             }
     }
 
-
-    // unique_stable with vector<pair<double,int>>
+    //!
+    //! unique_stable with vector<pair<double,int>>
+    //! remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.
+    //! all identical item will be removed just left the first appearing value.
+    //! the order will be reserve.
+    //!
     vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
         set<int> mys;
         
@@ -98,7 +105,7 @@ namespace MHR {
             for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
         }
 
-        // padding of zeros
+        // padding of zeors
         for(int i = m; i < m+n-1; i++) signal.push_back(0);
         for(int i = n; i < m+n-1; i++) kernel.push_back(0);
         
@@ -124,8 +131,11 @@ namespace MHR {
         return ans;
     }
 
-    
-    // [counts, centres] = hist(arr, nbins)
+    //!
+    //! [counts, centres] = hist(arr, nbins)
+    //! get the histogram of arr's value, the range from min value to max value of the arr will be divided into 'nbins' bins.
+    //! each bin will have a centres point and a count value denoting number of value in the array belong to that bin 's range
+    //!
     void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers) {
         if (&arr == &centers) {
             throw invalid_argument("hist() error: &arr == &centers");
@@ -166,6 +176,8 @@ namespace MHR {
 
     
     // invprctile
+    // get the invert percentile of arr with value x.
+    // return the percent of number of values in arr that smaller or equal x.
     double invprctile(const vector<double> &arr, double x) {
         int cnt = 0;
         for(int i=0; i<(int) arr.size(); ++i)
@@ -174,7 +186,8 @@ namespace MHR {
     }
 
     
-    //prctile
+    // prctile
+    // get the percentile of arr with a percent value.
     double prctile(vector<double> arr, double percent) {
         sort(arr.begin(), arr.end());
         int n = (int) arr.size();
@@ -182,7 +195,6 @@ namespace MHR {
         int int_idx = (int) (idx+1e-9);
         if(fabs(idx - int_idx)<1e-9){
             // idx is a whole number
-//            if(int_idx==0) return NaN;
             if(int_idx==0) return arr[0];
             int next_int = int_idx;
             if(next_int < n) next_int++;
@@ -197,8 +209,9 @@ namespace MHR {
         }
     }
 
-    
-    //filter function for frames2signal function
+    //!
+    //! filter function for frames2signal function
+    //!
     vector<double> low_pass_filter(vector<double> arr) {
         clock_t t1 = clock();
         
@@ -211,6 +224,12 @@ namespace MHR {
                 nAnPositions.push_back(i);
             }
 
+//        // apply low pass filter
+//        Mat src = vectorToMat(arr), dst;
+//        Mat filt = _beatSignalFilterKernel.clone();
+//        filter2D(src, dst, -1, filt, Point(-1,-1), 0, BORDER_CONSTANT);
+//        vector<double> ans = matToVector1D(dst);
+        
         // using corr_linear()
         vector<double> kernel;
         for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
@@ -222,26 +241,19 @@ namespace MHR {
         for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
             ans[nAnPositions[i]] = NaN;
         
+        // remove last _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
+        // (using only with filter2D)
+//        for(int i = 0; i < _beatSignalFilterKernel_size/2; ++i)
+//            if(!ans.empty()) ans.pop_back();
+
         // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
         ans = vector<double>(ans.begin() + _beatSignalFilterKernel_size/2, ans.end());
         
-        if (_DEBUG_MODE)
+        if (DEBUG_MODE)
             printf("low_pass_filter() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return ans;
     }
-    
-    
-	void gaussianFilter(int length, double sigma, vector<double> &ans) {
-		ans.clear();
-        Mat kernel = getGaussianKernel(length, sigma, CV_64F);
-        for (int i = 0; i < kernel.size.p[0]; ++i)
-            for (int j = 0; j < kernel.size.p[1]; ++j)
-                ans.push_back(kernel.at<double>(i, j));
-        double max_value = *max_element(ans.begin(), ans.end());
-        for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
-            ans[i] /= max_value;
-	}
     
     
     double diff_percent(double a, double b)

@@ -10,6 +10,12 @@
 
 
 namespace MHR {
+    //!
+    //! The function will convert the array of frames into an array of signal value (type double)
+    //! note that the frame is mono channel.
+    //! fr: frame rate
+    //! conversion_method: we have 3 method for converting a frame into a double value
+    //!
     vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
                                  double fr, double cutoff_freq,
                                  double &lower_range, double &upper_range, bool isCalcMode)
@@ -23,8 +29,13 @@ namespace MHR {
         int width = monoframes[0].cols;
         int total_frames = (int)monoframes.size();
         
+        
+        
         if(conversion_method == "simple-mean"){
-
+            //!
+            //! mode : 'simple-mean'
+            //! get the mean of all pixel's value in the picture frame
+            //!
             double size = height * width;
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
@@ -38,7 +49,10 @@ namespace MHR {
             
             //Set the trimmed size here
             int trimmed_size = _trimmed_size;
-            
+            //!
+            //! mode : 'trimmed-mean'
+            //! get the mean of all pixel's value in a smaller rectangle inside the picture frame
+            //!
             double size = (height - trimmed_size * 2) * (width - trimmed_size * 2);
             for(int i=0; i<total_frames; ++i){
                 double sum = 0;
@@ -49,7 +63,10 @@ namespace MHR {
             }
             
         }else if(conversion_method == "mode-balance"){
-
+            //!
+            //! this method will calculate the histogram of pixel's value from the first_tranning_frames_start to first_tranning_frames_end. Then get the bin that has the most number of value, get the centre of that bin as a centre value, then use the prctile function to get the percentile of that centre value.
+            //! Finally we calculate the mean of values that have the inverted percentile in the range from (centre value's percentile - lower_pct_range) to (centre value's percentile + upper_pct_range).
+            //!
             if (isCalcMode)
             {
                 // Selection parameters
@@ -59,6 +76,7 @@ namespace MHR {
                 
                 int first_tranning_frames_start = min( (int)round(fr * _training_time_start), total_frames );
                 int first_tranning_frames_end = min( (int)round(fr * _training_time_end), total_frames) - 1;
+//                int first_tranning_frames = min( (int)round(fr * training_time), total_frames );
                 
                 // this arr stores values of pixels from first trainning frames
                 vector<double> arr;
@@ -91,7 +109,7 @@ namespace MHR {
                 lower_range = prctile(arr, percentile_lower_range);
                 upper_range = prctile(arr, percentile_upper_range);
 
-                if (_DEBUG_MODE)
+                if (DEBUG_MODE)
                     printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
             }
             
@@ -113,14 +131,19 @@ namespace MHR {
                 if(cnt==0) //push NaN for all-NaN-frames
                     temporal_mean.push_back(NaN);
                 else
+//                    temporal_mean.push_back(sum/size);
                     temporal_mean.push_back(sum/cnt);
             }
             
         }
         
-        if (_DEBUG_MODE)
+        if (DEBUG_MODE)
             printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
         
         return temporal_mean;
+        
+        //=== Block 2. Low-pass-filter the signal stream to remove unwanted noises
+//        vector<double> temporal_mean_filt = low_pass_filter(temporal_mean);
+//        return temporal_mean_filt;
     }
 }

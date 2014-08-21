@@ -10,6 +10,21 @@
 
 
 namespace MHR {
+    
+    /*!
+     hb_counter_autocorr
+     
+     This function will convert the signal array (after using the frame2signal function) to an autocorelation array and then convert to an array of heart beats' position
+     The function will shift a window with size 'window_size' from 'firstSample' position to calculate the heart beats in that window.
+     fr: the frame rate.
+     overlap_ratio: the ratio of the next window will be identical with the current window, at default this ratio value is 0
+     minPeakDistance, threshold: these arguments are for the findPeaks function.
+     
+     This function is different from the hb_counter_pda function, instead of calculating the heart beats directly from the signal array, we will first convert the signal array to an autocorrelation array ( http://en.wikipedia.org/wiki/Autocorrelation ) then use this array to calculate the heart beats
+     
+     */
+
+    
     vector<int> hb_counter_autocorr(vector<double> &temporal_mean, double fr, int firstSample,
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug)
     {
