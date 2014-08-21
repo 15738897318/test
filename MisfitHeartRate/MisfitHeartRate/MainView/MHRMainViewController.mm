@@ -186,7 +186,7 @@ static const int kBlockFrameSize = 128;
         [frameIndexArray removeAllObjects];
         temporal_mean.clear();
         isCalcMode = YES;
-        
+        blockCount = 0;
     }
 
     -(void)viewDidDisappear:(BOOL)animated
