@@ -12,16 +12,16 @@
 #include "files.h"
 
 namespace MHR {
-	/*
-	 * Apply Gaussian pyramid decomposition on <vid> from <startIndex> to <endIndex>,
-	 * and select a specific band indicated by <level>.
-	 * <GDownStack> is stack of one band of Gaussian pyramid of each frame:
-     * <vid> and <GDownStack> structure:
-	 *  + the first dimension is the time axis
-	 *  + the second dimension is the y axis of the video's frames
-	 *  + the third dimension is the x axis of the video's frames
-	 *  + the forth dimension is the color channel
-     * data type: CV_64FC3 or CV_64F
+	/**
+	 * Apply Gaussian pyramid decomposition on \a vid from \a startIndex to \a endIndex,
+	 * and select a specific band indicated by \a level. \n
+	 * \return \a GDownStack is stack of one band of Gaussian pyramid of each frame
+     * \param vid,GDownStack:
+	 *  + the first dimension is the time axis \n
+	 *  + the second dimension is the y axis of the video's frames \n
+	 *  + the third dimension is the x axis of the video's frames \n
+	 *  + the forth dimension is the color channel \n
+     * Data type: CV_64FC3 or CV_64F
 	 */
 	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level);
 }
