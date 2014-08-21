@@ -184,6 +184,7 @@ static const int kBlockFrameSize = 128;
     {
         _nFrames = 0;
         [frameIndexArray removeAllObjects];
+        temporal_mean.clear();
         isCalcMode = YES;
         
     }
