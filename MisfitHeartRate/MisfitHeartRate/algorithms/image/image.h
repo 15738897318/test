@@ -13,7 +13,7 @@
 
 namespace MHR {
     /**
-     * From RGB to YIQ: http://en.wikipedia.org/wiki/YIQ
+     * From RGB to YIQ: \ref: http://en.wikipedia.org/wiki/YIQ
      */
     const Mat rgb2ntsc_baseMat = (Mat_<double>(3, 3) <<
                                   0.299, 0.587, 0.114,
@@ -22,7 +22,7 @@ namespace MHR {
 
     
     /**
-     * From YIQ to RGB: http://en.wikipedia.org/wiki/YIQ
+     * From YIQ to RGB: \ref: http://en.wikipedia.org/wiki/YIQ
      */
     const Mat ntsc2rgb_baseMat = (Mat_<double>(3, 3) <<
                                   1.0000, 0.9562, 0.6214,
@@ -31,30 +31,29 @@ namespace MHR {
 
     
     /**
-     * convert a RGB frame to a TSL frame
-     * data type: CV_64FC3
-     * ref: http://en.wikipedia.org/wiki/TSL_color_space
+     * convert a RGB frame to a TSL frame \n
+     * Data type: CV_64FC3 \n
+     * \ref: http://en.wikipedia.org/wiki/TSL_color_space
      */
 	void rgb2tsl(const Mat& rgbmap, Mat &dst);
 
     
     /**
      * Blur and downsample an image. The blurring is done with
-     * filter kernel specified by FILT (default = 'binom5')
-     * ref: https://github.com/diego898/matlab-utils/blob/master/toolbox/EVM_Matlab/blurDnClr.m
-     *      http://docs.opencv.org/doc/tutorials/imgproc/pyramids/pyramids.html
+     * filter kernel specified by FILT (default = 'binom5') \n
+     * \ref: https://github.com/diego898/matlab-utils/blob/master/toolbox/EVM_Matlab/blurDnClr.m \n
+     * \ref: http://docs.opencv.org/doc/tutorials/imgproc/pyramids/pyramids.html \n
      */
     void blurDnClr(const Mat& src, Mat &dst, int level);
 
     
     /**
-     * Compute correlation of matrices <src> with <filter>, followed by downsampling.
-     * These arguments should be 1D or 2D matrices,
-     * and <src> must be larger (in both dimensions) than <filter>.
-     * The origin of <filter> is assumed to be floor(size(<filter>)/2)+1.
-     * output <dst> data types: CV_64F
-     * ref: http://www.mathworks.com/matlabcentral/fileexchange/43909-separable-steerable-pyramid-toolbox/content/sepspyr/deps/matlabPyrTools-1.3/mpt_corrDn.m
-     *      http://docs.opencv.org/modules/imgproc/doc/filtering.html#void%20filter2D%28InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20InputArray%20kernel,%20Point%20anchor,%20double%20delta,%20int%20borderType%29
+     * Compute correlation of 2D matrices \a src with \a filter, followed by downsampling. \n
+     * \ref: http://www.mathworks.com/matlabcentral/fileexchange/43909-separable-steerable-pyramid-toolbox/content/sepspyr/deps/matlabPyrTools-1.3/mpt_corrDn.m \n
+     * \ref: http://docs.opencv.org/modules/imgproc/doc/filtering.html#void%20filter2D%28InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20InputArray%20kernel,%20Point%20anchor,%20double%20delta,%20int%20borderType%29 \n
+     * \param src must be larger (in both dimensions) than \a filter. \n
+     * \param filter is assumed to be floor(size(\a filter)/2)+1. \n
+     * \return \a dst's data types: CV_64F
      */
     void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol);    
 }

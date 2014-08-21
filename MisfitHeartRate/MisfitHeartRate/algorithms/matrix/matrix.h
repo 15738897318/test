@@ -17,35 +17,35 @@ using namespace std;
 
 namespace MHR {
     /**
-     * input: two 2D Mats a, b which have the same size
-     * output: a new Mat which each element[i, j] = atan2(a[i, j], b[i, j])
-     * data type: CV_64F
+     * \param a,b which have the same size \n
+     * \return a new Mat which each element[i, j] = atan2(a[i, j], b[i, j]) \n
+     * Data type: CV_64F
      */
 	Mat atan2Mat(const Mat &a, const Mat &b);
 	
     
     /**
-     * return the n-th power of src Mat (element-wise)
-     * data type: CV_64F
+     * \return the \a n-th power of \a src (element-wise) \n
+     * Data type: CV_64F
      */
 	Mat powMat(const Mat &src, double n);
 
 	
     /**
-     * return a + b
+     * \return a + b
      */
 	Mat add(const Mat &a, const Mat &b);
 	
     
     /**
-     * return a * b (element-wise)
+     * \return a * b (element-wise)
      */
 	Mat multiply(const Mat &a, const Mat &b);
 	
     
     /**
-     * return a new Mat which each element[i, j] = a[i, j] * x
-     * data type: CV_64F
+     * \return a new Mat which each element[i, j] = a[i, j] * x \n
+     * Data type: CV_64F
      */
 	Mat multiply(const Mat &a, double x);
 }

@@ -14,13 +14,13 @@
 
 namespace MHR {
     /**
-     *read frames from a file to a vector<Mat>
+     *read frames from a file to a a Mat vector
      */
     void readFrame(const String& srcFile, vector<Mat> &dst);
 
     
     /**
-     *read a 2D Mat (<rows> * <cols>) from an opened file
+     *read a 2D Mat (\a rows * \a cols) from an opened file
      */
     Mat read2DMatFromFile(FILE* &file, int rows, int cols);
 
@@ -38,14 +38,14 @@ namespace MHR {
 
     
     /**
-     *read a vector<double> with n elements from an opened file
+     *read a vector<double> with \a n elements from an opened file
      */
     vector<double> readVectorFromFile(FILE* &file, int n);
 
     
     /**
-     * write a vector<double> to a file,
-     * if append == true, then the function will append the vector at the end of the file,
+     * write a vector<double> to a file. \n
+     * \param append if == true, then the function will append the vector at the end of the file,
      * otherwise, it will overwrite the old file or create a new file
      */
     void writeVector(const vector<double>& src, const String& outFile, bool append = false);

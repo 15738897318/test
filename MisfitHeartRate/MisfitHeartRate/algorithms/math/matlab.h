@@ -18,73 +18,82 @@ using namespace cv;
 
 namespace MHR {
     /**
-     * return the mean value of a double vector
+     * \return the mean value of a double vector
      */
     double mean(const vector<double> &a);
 
 
-    /**
-     * find peaks in vector <segment>,
-     * with <minPeakDistance>: the minimum distance between 2 adjacent peaks,
-     * and <threhold>: the minimum height-different between a peak and its 2 adjacent points.
-     * return 2 vectors: <max_peak_strengths> and <max_peak_locs> (locations).
-     * complexity: O(n^2) with n = number of peaks
-     */
+    //!
+    //! findpeaks in \a segment, with \a minPeakDistance and \a threshold,\n
+    //! complexity O(n^2) with n = number of peaks
+    //! \param segment a vector of signals
+    //! \param minPeakDistance minimum distance between two peaks
+    //! \param threshold the minimum value that a peak point should be larger than its two neighbors point
+    //! \return \a max_peak_strengths
+    //! \return \a max_peak_locs
+    //!
     void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
                    vector<double> &max_peak_strengths, vector<int> &max_peak_locs);
 
 
-    /**
-     *return a vector in which all elements (from the original vector) have unique second values.
-     */
+    /*!
+     remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.\n
+     all identical item will be removed just left the first appearing value.\n
+     the order will be reserve.
+    */
     vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
 
 
-    /**
-     * return 1D convolution operation of 2 vectors signal and kernel
-     * ref: http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf
-     * if subtractMean == true, then before all calculations,
-     * each elements of the signal vector will be subtracted by mean(signal),
-     * and each elements of the kernel vector will be subtracted by mean(kernel).
+    /*!
+     * \ref: http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf
+     * \return 1D convolution operation of 2 vectors signal and kernel
+     * \param subtractMean if is true, then before all calculations,
+     * each elements of the signal vector will be subtracted by mean(\a signal),
+     * and each elements of the kernel vector will be subtracted by mean(\a kernel).
      */
     vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean = true);
 
     
-    /**
-     * sorts all elements of <arr> vector number of bins specified by <nbins>,
-     * return <counts>: number of elements in each bin,
-     * and <centers>: the center value of each bin
-     * ref: http://www.mathworks.com/help/matlab/ref/hist.html
-     */
+    //!
+    //! \ref: http://www.mathworks.com/help/matlab/ref/hist.html
+    //! \return \a counts: number of elements in each bin,
+    //! \return \a centers: the center value of each bin
+    //! get the histogram of arr's value, the range from min value to max value of the arr will be divided into \a nbins bins,
+    //! each bin will have a centres point and a count value denoting number of value in the array belong to that bin's range
+    //!
     void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers);
 
 
-    // invprctile
+    //!
+    //! get the invert percentile of arr with value x.
+    //! \return the percent of number of values in arr that smaller or equal x.
+    //!
     double invprctile(const vector<double> &arr, double x);
 
 
-    // prctile
+    //!
+    //! get the percentile of arr with a percent value.
+    //!
     double prctile(vector<double> arr, double percent);
 
 
     /**
-     * filter function for frames2signal function,
-     * apply low pass filter on vector <arr>.
-     * ref: http://en.wikipedia.org/wiki/Low-pass_filter
+     * filter function for frames2signal function, apply low pass filter on vector \a arr.
+     * \ref: http://en.wikipedia.org/wiki/Low-pass_filter
      */
     vector<double> low_pass_filter(vector<double> arr);
     
     
     /**
-     * Generate a vector of Gaussian values of a desired length and properties
-     * ref: http://www.mathworks.com/help/images/ref/fspecial.html
-     * ref: http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29
+     * Generate a vector of Gaussian values of a desired length and properties\n
+     * \ref: http://www.mathworks.com/help/images/ref/fspecial.html \n
+     * \ref: http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29 \n
      */
     void gaussianFilter(int length, double sigma, vector<double> &ans);
 
 
     /**
-     * return 100*|a-b|/b
+     * \return 100*|a-b|/b
      */
     double diff_percent(double a, double b);
 }
