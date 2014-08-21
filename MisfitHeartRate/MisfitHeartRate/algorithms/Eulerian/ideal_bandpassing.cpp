@@ -22,7 +22,7 @@ namespace MHR {
         int nTime = (int)src.size();
         int nRow = src[0].rows;
         int nCol = src[0].cols;
-//        int nChannels = src[0].channels();
+        int nChannel = (THREE_CHAN_MODE > 0) ? _number_of_channels : 1;
         
         // copy and convert data from src to dst (CV_32FC(nChannels))
         Mat tmp;
@@ -45,15 +45,16 @@ namespace MHR {
         
         // FFT
         Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
-        for (int channel = 0; channel < _number_of_channels; ++channel) {
+        
+        for (int channel = 0; channel < nChannel; ++channel) {
             for (int col = 0; col < nCol; ++col) {
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
                         if (THREE_CHAN_MODE)
-                        	dft_out.at<float>(row, time) = dst[time].at<Vec3f>(row, col)[channel];
+                            dft_out.at<float>(row, time) = dst[time].at<Vec3f>(row, col)[channel];
                         else
-                        	dft_out.at<float>(row, time) = dst[time].at<float>(row, col);
-                        	
+                            dft_out.at<float>(row, time) = dst[time].at<float>(row, col);
+                
                 dft(dft_out, dft_out, DFT_ROWS);
                 // masking
                 for (int row = 0; row < nRow; ++row) {
@@ -67,11 +68,12 @@ namespace MHR {
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
                         if (THREE_CHAN_MODE)
-                        	dst[time].at<Vec3f>(row, col)[channel] = dft_out.at<float>(row, time);
+                            dst[time].at<Vec3f>(row, col)[channel] = dft_out.at<float>(row, time);
                         else
-                        	dst[time].at<float>(row, col) = dft_out.at<float>(row, time);
+                            dst[time].at<float>(row, col) = dft_out.at<float>(row, time);
             }
         }
+        
         
         for (int i = 0; i < nTime; ++i)
         	if (THREE_CHAN_MODE)

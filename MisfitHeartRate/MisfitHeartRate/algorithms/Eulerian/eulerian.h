@@ -15,7 +15,6 @@
 #include "matlab.h"
 #include "build_Gdown_stack.h"
 #include "ideal_bandpassing.h"
-#include "filter_bandpassing.h"
 
 
 namespace MHR {
