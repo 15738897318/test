@@ -9,18 +9,7 @@
 #include "hb_counter_pda.h"
 
 
-namespace MHR {
-    /*!
-     hb_counter_pda
-     
-     This function will convert the signal array (after using the frame2signal function) to an array of heart beats' position
-     The function will shift a window with size 'window_size' from 'firstSample' position to calculate the heart beats in that window.
-     fr: the frame rate.
-     overlap_ratio: the ratio of the next window will be identical with the current window, at default this ratio value is 0
-     minPeakDistance, threshold: these arguments are for the findPeaks function.
-     
-    */
-    
+namespace MHR {   
     vector<int> hb_counter_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
                        double overlap_ratio, double minPeakDistance, double threshold, hrDebug& debug)
     {

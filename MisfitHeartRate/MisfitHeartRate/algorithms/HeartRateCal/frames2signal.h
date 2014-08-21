@@ -9,25 +9,21 @@
 #ifndef __MisfitHeartRate__frames2signal__
 #define __MisfitHeartRate__frames2signal__
 
-#include <iostream>
-#include <vector>
-#include <cstring>
-#include <string>
-#include <string.h>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/imgproc/imgproc_c.h>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/highgui/highgui_c.h>
-#include <opencv2/imgproc/types_c.h>
-#include "matrix.h"
 #include "matlab.h"
-#include "config.h"
 
 using namespace cv;
 using namespace std;
 
-
 namespace MHR {
+    //!
+    //! The function will convert the array of frames into an array of signal value (type double)
+    //! note that the frame is mono channel.
+    //! \param fr video's frame rate
+    //! \param conversion_method we have 3 method for converting a frame into a double value:
+    //! + simple-mean
+    //! + trimmed-mean
+    //! + mode-balance
+    //!
     vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
                                  double fr, double cutoff_freq,
                                  double &lower_range, double &upper_range, bool isCalcMode);

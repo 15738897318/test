@@ -19,14 +19,14 @@
 namespace MHR {
     /**
      * Convert frames of <vid> to signals.
-     * <vid>: CV_64FC3 or CV_64F
-     * <overlap_ratio>:
-     * <max_bpm>:
-     * <colour_channel>: if in _THREE_CHAN_MODE, then convert all frames of <vid> to
+     * \param vid data type is CV_64FC3 or CV_64F
+     * \param overlap_ratio overlap ratio between 2 consecutive segments
+     * \param max_bpm maximum heart rate detectable (use in determining minPeaksDistance in findpeaks())
+     * \param colour_channel if in _THREE_CHAN_MODE, then convert all frames of \a vid to
      *  monoframes by select only one channel of each frame.
-     * <colourspace>: if in _THREE_CHAN_MODE, then convert colourspace of
-     *  all frames of <vid> to "hsv", "ycbcr" or "tsl" before converting them to monoframes
-     * <cutoff_freq>, <lower_range>, <upper_range>, <isCalcMode>: see frame2signal()
+     * \param colourspace if in _THREE_CHAN_MODE, then convert colourspace of
+     *  all frames of \a vid to "hsv", "ycbcr" or "tsl" before converting them to monoframes
+     * \param cutoff_freq,lower_range,upper_range>,isCalcMode: see frames2signal()
      */
     vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
                                       double max_bpm, double cutoff_freq,

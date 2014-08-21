@@ -16,8 +16,8 @@ using namespace std;
 
 namespace MHR {
     /**
-     * Calculate the heart-rate from a list of heart-beat positions.
-     * <ans>:
+     * Calculate the heart-rate from a list of heart-beat positions. \n
+     * \param ans
      *  + the first number is average heart-rate
      *  + the second number is mode of the instantaneous heart-rates multiply with frameRate*60
      */

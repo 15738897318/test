@@ -15,8 +15,8 @@
 
 namespace MHR {
     /**
-     * Return the average heart-rate calculated by autocorr algorithm and pda algorithm.
-     * params: see hb_counter_pda() or hb_counter_autocorr().
+     * Return the average heart-rate calculated by autocorr algorithm and pda algorithm. \n
+     * \param: see hb_counter_pda() or hb_counter_autocorr().
      */
     hrResult hr_signal_calc(vector<double> &temporal_mean, int firstSample, int window_size,
                             double frameRate, double overlap_ratio,
