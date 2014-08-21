@@ -261,9 +261,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             if (_nFrames >= _minVidLength*_frameRate)
                 result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
             
-//            NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-//            result = run_algorithms([resourcePath UTF8String], "test1.mp4", [_outPath UTF8String]);
-//            result = run_algorithms([resourcePath UTF8String], "eulerianVid.avi", [_outPath UTF8String]);
+//            _outPath = @"/var/mobile/Applications/F5E6C9AE-0714-4D2F-BC92-0FF9A11C4EAE/Documents/2014-08-21-14-54-41/";
+//            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 // show result
@@ -405,7 +404,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             ++_nFrames;
-            NSLog(@"%d",_nFrames);
+//            NSLog(@"%d",_nFrames);
             
         }
         else
