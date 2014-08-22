@@ -261,7 +261,7 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             if (_nFrames >= _minVidLength*_frameRate)
                 result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
             
-//            NSString _outPath = [[NSBundle mainBundle] _outPath];
+//            NSString *_outPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"/"];;
 //            _outPath = @"/var/mobile/Applications/F5E6C9AE-0714-4D2F-BC92-0FF9A11C4EAE/Documents/2014-08-21-14-54-41/";
 //            result = run_algorithms([_outPath UTF8String], "input.mp4", [_outPath UTF8String], currentResult);
             
