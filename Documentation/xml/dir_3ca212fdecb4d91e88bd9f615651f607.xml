@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_3ca212fdecb4d91e88bd9f615651f607" kind="dir">
+    <compoundname>MisfitHeartRate/algorithms/Eulerian</compoundname>
+    <innerfile refid="build___gdown__stack_8cpp">build_Gdown_stack.cpp</innerfile>
+    <innerfile refid="build___gdown__stack_8h">build_Gdown_stack.h</innerfile>
+    <innerfile refid="eulerian_8cpp">eulerian.cpp</innerfile>
+    <innerfile refid="eulerian_8h">eulerian.h</innerfile>
+    <innerfile refid="ideal__bandpassing_8cpp">ideal_bandpassing.cpp</innerfile>
+    <innerfile refid="ideal__bandpassing_8h">ideal_bandpassing.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/"/>
+  </compounddef>
+</doxygen>

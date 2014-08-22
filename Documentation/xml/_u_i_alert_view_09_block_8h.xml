@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_u_i_alert_view_09_block_8h" kind="file">
+    <compoundname>UIAlertView+Block.h</compoundname>
+    <includes local="no">Foundation/Foundation.h</includes>
+    <includes local="no">UIKit/UIKit.h</includes>
+    <includes refid="_block_additions_8h" local="yes">BlockAdditions.h</includes>
+    <includedby refid="_m_h_r_result_view_controller_8hpp" local="yes">MisfitHeartRate/ResultView/MHRResultViewController.hpp</includedby>
+    <includedby refid="_u_i_alert_view_09_block_8m" local="yes">MisfitHeartRate/Utilities/UIAlertView+Block.m</includedby>
+    <incdepgraph>
+      <node id="1150">
+        <label>MisfitHeartRate/Utilities/UIAlertView+Block.h</label>
+        <link refid="UIAlertView+Block.h"/>
+        <childnode refid="1151" relation="include">
+        </childnode>
+        <childnode refid="1152" relation="include">
+        </childnode>
+        <childnode refid="1153" relation="include">
+        </childnode>
+      </node>
+      <node id="1152">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="1153">
+        <label>BlockAdditions.h</label>
+        <link refid="_block_additions_8h"/>
+      </node>
+      <node id="1151">
+        <label>Foundation/Foundation.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1161">
+        <label>MisfitHeartRate/ResultView/MHRResultViewController.mm</label>
+        <link refid="_m_h_r_result_view_controller_8mm"/>
+      </node>
+      <node id="1154">
+        <label>MisfitHeartRate/Utilities/UIAlertView+Block.h</label>
+        <link refid="UIAlertView+Block.h"/>
+        <childnode refid="1155" relation="include">
+        </childnode>
+        <childnode refid="1162" relation="include">
+        </childnode>
+      </node>
+      <node id="1162">
+        <label>MisfitHeartRate/Utilities/UIAlertView+Block.m</label>
+        <link refid="_u_i_alert_view_09_block_8m"/>
+      </node>
+      <node id="1158">
+        <label>MisfitHeartRate/MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="1157">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="1155">
+        <label>MisfitHeartRate/ResultView/MHRResultViewController.hpp</label>
+        <link refid="_m_h_r_result_view_controller_8hpp"/>
+        <childnode refid="1156" relation="include">
+        </childnode>
+        <childnode refid="1161" relation="include">
+        </childnode>
+      </node>
+      <node id="1160">
+        <label>MisfitHeartRate/Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="1156">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="1157" relation="include">
+        </childnode>
+        <childnode refid="1158" relation="include">
+        </childnode>
+        <childnode refid="1159" relation="include">
+        </childnode>
+      </node>
+      <node id="1159">
+        <label>MisfitHeartRate/Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="1156" relation="include">
+        </childnode>
+        <childnode refid="1160" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>UIAlertView+Block.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>SensorsCapture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>6/18/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>Misfit<sp/>Wearables.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>ref:<sp/>https://github.com/MugunthKumar/UIKitCategoryAdditions/blob/master/MKAdditions/UIAlertView%2BMKBlockAdditions.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Foundation/Foundation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;UIKit/UIKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;<ref refid="_block_additions_8h" kindref="compound">BlockAdditions.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="category_u_i_alert_view_07_block_08" kindref="compound">UIAlertView (Block)</ref><sp/>&lt;UIAlertViewDelegate&gt;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">+<sp/>(UIAlertView*)<sp/>alertViewWithTitle:(NSString*)<sp/>title</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message:(NSString*)<sp/>message;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">+<sp/>(UIAlertView*)<sp/>alertViewWithTitle:(NSString*)<sp/>title</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message:(NSString*)<sp/>message</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cancelButtonTitle:(NSString*)<sp/>cancelButtonTitle;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">+<sp/>(UIAlertView*)<sp/>alertViewWithTitle:(NSString*)<sp/>title</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message:(NSString*)<sp/>message</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cancelButtonTitle:(NSString*)<sp/>cancelButtonTitle</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>otherButtonTitles:(NSArray*)<sp/>otherButtons</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>onDismiss:(<ref refid="_block_additions_8h_1ad494ab35935449673e4736939406878e" kindref="member">DismissBlock</ref>)<sp/>dismissed</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>onCancel:(<ref refid="_block_additions_8h_1aa38483e1f273d6765108d57d0d6d01a7" kindref="member">CancelBlock</ref>)<sp/>cancelled;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/>copy)<sp/><ref refid="_block_additions_8h_1ad494ab35935449673e4736939406878e" kindref="member">DismissBlock</ref><sp/>dismissBlock;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/>copy)<sp/><ref refid="_block_additions_8h_1aa38483e1f273d6765108d57d0d6d01a7" kindref="member">CancelBlock</ref><sp/>cancelBlock;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIAlertView+Block.h"/>
+  </compounddef>
+</doxygen>

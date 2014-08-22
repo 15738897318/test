@@ -1,0 +1,1944 @@
+\hypertarget{namespace_m_h_r}{\section{M\+H\+R Namespace Reference}
+\label{namespace_m_h_r}\index{M\+H\+R@{M\+H\+R}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_m_h_r_1_1hr_debug}{hr\+Debug}
+\item 
+struct \hyperlink{struct_m_h_r_1_1hr_result}{hr\+Result}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespace_m_h_r_a48555f02f08d43ff1f06f9413c86b5ca}{set\+Face\+Params} ()
+\item 
+void \hyperlink{namespace_m_h_r_af336ca7b239bbe520636c7d147b913b5}{set\+Finger\+Params} ()
+\item 
+void \hyperlink{namespace_m_h_r_ae1292cc4cfc5411226e0cd77f652e1a5}{build\+\_\+\+Gdown\+\_\+\+Stack} (const vector$<$ Mat $>$ \&vid, vector$<$ Mat $>$ \&G\+Down\+Stack, int start\+Index, int end\+Index, int level)
+\item 
+void \hyperlink{namespace_m_h_r_af2ec0b4fd5bc225e5e008504e70475a7}{eulerian\+Gaussian\+Pyramid\+Magnification} (const vector$<$ Mat $>$ \&vid, vector$<$ Mat $>$ \&ans, String out\+Dir, double alpha, int level, double freq\+Band\+Low\+End, double freq\+Band\+High\+End, double sampling\+Rate, double chrom\+Attenuation)
+\item 
+void \hyperlink{namespace_m_h_r_a103bcf8925254f7ca646192777866d4b}{ideal\+\_\+bandpassing} (const vector$<$ Mat $>$ \&src, vector$<$ Mat $>$ \&dst, double wl, double wh, double sampling\+Rate)
+\item 
+void \hyperlink{namespace_m_h_r_a3b899245a37e41550b80b44fb40fe3e9}{read\+Frame} (const String \&src\+File, vector$<$ Mat $>$ \&dst)
+\item 
+Mat \hyperlink{namespace_m_h_r_aca720721cf34fb61faddf517a6f1ecb7}{read2\+D\+Mat\+From\+File} (F\+I\+L\+E $\ast$\&file, int rows, int cols)
+\item 
+int \hyperlink{namespace_m_h_r_aca054bab24695d684662a7972fc07d02}{read\+Int} (F\+I\+L\+E $\ast$\&file)
+\item 
+double \hyperlink{namespace_m_h_r_a30d68a835eaf7530b13d542662a88642}{read\+Double} (F\+I\+L\+E $\ast$\&file)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_a8b31e05ada67db2ce123a0674568ad29}{read\+Vector\+From\+File} (F\+I\+L\+E $\ast$\&file, int n)
+\item 
+void \hyperlink{namespace_m_h_r_a391cd23b86d2d7411411d4595cb74b86}{write\+Vector} (const vector$<$ double $>$ \&src, const String \&out\+File, bool append)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_a53c0c282e2b27534f2726f735f9664e3}{frames2signal} (const vector$<$ Mat $>$ \&monoframes, const String \&conversion\+\_\+method, double fr, double cutoff\+\_\+freq, double \&lower\+\_\+range, double \&upper\+\_\+range, bool is\+Calc\+Mode)
+\item 
+vector$<$ int $>$ \hyperlink{namespace_m_h_r_a62a720e54584696fcf7e2d545ad202dc}{hb\+\_\+counter\+\_\+autocorr} (vector$<$ double $>$ \&temporal\+\_\+mean, double fr, int first\+Sample, int window\+\_\+size, double overlap\+\_\+ratio, double min\+Peak\+Distance, \hyperlink{struct_m_h_r_1_1hr_debug}{hr\+Debug} \&debug)
+\item 
+vector$<$ int $>$ \hyperlink{namespace_m_h_r_ac8cf9fb76b7455034653c17bc9e3ee4c}{hb\+\_\+counter\+\_\+pda} (vector$<$ double $>$ temporal\+\_\+mean, double fr, int first\+Sample, int window\+\_\+size, double overlap\+\_\+ratio, double min\+Peak\+Distance, double threshold, \hyperlink{struct_m_h_r_1_1hr_debug}{hr\+Debug} \&debug)
+\item 
+void \hyperlink{namespace_m_h_r_a4ba8de262585ae09cd1564fcfda5742e}{hr\+\_\+calculator} (const vector$<$ int $>$ \&heart\+Beat\+Positions, double frame\+Rate, vector$<$ double $>$ \&ans)
+\item 
+\hyperlink{struct_m_h_r_1_1hr_result}{hr\+Result} \hyperlink{namespace_m_h_r_ac8025fa73e928ab097c9b58525d787b1}{hr\+\_\+signal\+\_\+calc} (vector$<$ double $>$ \&temporal\+\_\+mean, int first\+Sample, int window\+\_\+size, double frame\+Rate, double overlap\+\_\+ratio, double max\+\_\+bpm, double threshold\+\_\+fraction)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_a6f102a7f405b6c84ea84f4d99e3dd847}{temporal\+\_\+mean\+\_\+calc} (const vector$<$ Mat $>$ \&vid, double overlap\+\_\+ratio, double max\+\_\+bpm, double cutoff\+\_\+freq, int colour\+\_\+channel, String colourspace, double \&lower\+\_\+range, double \&upper\+\_\+range, bool is\+Calc\+Mode)
+\item 
+void \hyperlink{namespace_m_h_r_ae8dc1afd1e611d432d98186da1f813e5}{rgb2tsl} (const Mat \&rgbmap, Mat \&dst)
+\item 
+void \hyperlink{namespace_m_h_r_a357c28865a17017a73d0f4ae8c4f7480}{blur\+Dn\+Clr} (const Mat \&src, Mat \&dst, int level)
+\item 
+void \hyperlink{namespace_m_h_r_a30571de29e1537d20abf69d19329c1bb}{corr\+Dn} (const Mat \&src, Mat \&dst, const Mat \&filter, int rect\+Row, int rect\+Col)
+\item 
+double \hyperlink{namespace_m_h_r_af6125176deb7b4d4d503a4bcf851a076}{mean} (const vector$<$ double $>$ \&a)
+\item 
+void \hyperlink{namespace_m_h_r_ad11b22e616f937a6817faa9a0c72ec21}{findpeaks} (const vector$<$ double $>$ \&segment, double min\+Peak\+Distance, double threshold, vector$<$ double $>$ \&max\+\_\+peak\+\_\+strengths, vector$<$ int $>$ \&max\+\_\+peak\+\_\+locs)
+\item 
+vector$<$ pair$<$ double, int $>$ $>$ \hyperlink{namespace_m_h_r_a22cd3e8872333ff4c203c15821bf69bb}{unique\+\_\+stable} (const vector$<$ pair$<$ double, int $>$$>$ \&arr)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_a4e7d8efbc84874e131049dc705488cc9}{corr\+\_\+linear} (vector$<$ double $>$ signal, vector$<$ double $>$ kernel, bool subtract\+Mean)
+\item 
+void \hyperlink{namespace_m_h_r_ab46344d4248f6c55622fef14c1eb78c7}{hist} (const vector$<$ double $>$ \&arr, int nbins, vector$<$ int $>$ \&counts, vector$<$ double $>$ \&centers)
+\item 
+double \hyperlink{namespace_m_h_r_a4d04157ea7582bbd0a165e1a8a679219}{invprctile} (const vector$<$ double $>$ \&arr, double x)
+\item 
+double \hyperlink{namespace_m_h_r_a401757908f80823dd6c6ced91e55d751}{prctile} (vector$<$ double $>$ arr, double percent)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_af85b8b218e683bde30d7ee0329b29716}{low\+\_\+pass\+\_\+filter} (vector$<$ double $>$ arr)
+\item 
+void \hyperlink{namespace_m_h_r_a0380a36a3a26da3c0a32e0f4b3d9fec9}{gaussian\+Filter} (int length, double sigma, vector$<$ double $>$ \&ans)
+\item 
+double \hyperlink{namespace_m_h_r_a2e51d3fdfa37bc717ccc0c4557d64445}{diff\+\_\+percent} (double a, double b)
+\item 
+Mat \hyperlink{namespace_m_h_r_ad90e260536ab41e3da12f739038743d0}{atan2\+Mat} (const Mat \&a, const Mat \&b)
+\item 
+Mat \hyperlink{namespace_m_h_r_afef7e1a6e6fe95a9debb07c2d7ba3008}{pow\+Mat} (const Mat \&src, double n)
+\item 
+Mat \hyperlink{namespace_m_h_r_ac0d7c563ab4072cf5cba2d2b1cb3761e}{add} (const Mat \&a, const Mat \&b)
+\item 
+Mat \hyperlink{namespace_m_h_r_a497a8cfdabb210ba4d68b592fb589e00}{multiply} (const Mat \&a, const Mat \&b)
+\item 
+Mat \hyperlink{namespace_m_h_r_a22b0fbac0253b08d84d9c2493324e5db}{multiply} (const Mat \&a, double x)
+\item 
+\hyperlink{struct_m_h_r_1_1hr_result}{hr\+Result} \hyperlink{namespace_m_h_r_a883e36fb9e762e11d5dcdb28b0b8e236}{run\+\_\+algorithms} (const String \&src\+Dir, const String \&out\+Dir, \hyperlink{struct_m_h_r_1_1hr_result}{hr\+Result} \&curr\+Hr\+Result)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespace_m_h_r_a2446951af16ca1137edb21f8e07019cb}{\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E} = 0
+\item 
+int \hyperlink{namespace_m_h_r_a100c1e31c0fbc8c8b292064c1a8da006}{\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E} = 0
+\item 
+bool \hyperlink{namespace_m_h_r_a364268cdc7b75db63f89c9d8960aa1b4}{\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E} = true
+\item 
+String \hyperlink{namespace_m_h_r_a15d81a6b22ae7616409d6df6101690eb}{\+\_\+output\+Path} = \char`\"{}N\+U\+L\+L\char`\"{}
+\item 
+double \hyperlink{namespace_m_h_r_abbf22419d2dbaf1d661d5b73fc9af29b}{\+\_\+eulerian\+\_\+alpha} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a383bea7ba431fede0a30f05b3ae57536}{\+\_\+eulerian\+\_\+pyr\+Level} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_afe8a788bdd0504a98259321e41377180}{\+\_\+eulerian\+\_\+min\+H\+R} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_acb647c6b44ad0c7fac0fba37122d5889}{\+\_\+eulerian\+\_\+max\+H\+R} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_ab6b7928e4485f421869d4fbac9a5c1cd}{\+\_\+eulerian\+\_\+frame\+Rate} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_ad69f0161c9597e078014c52955264fd2}{\+\_\+eulerian\+\_\+chroma\+Magnifier} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a8c0f2199ebe2a27a2fc0cff1daa239ee}{\+\_\+frame\+Rate} = 30
+\item 
+int \hyperlink{namespace_m_h_r_a2ff626868d0be78114be4abbcd0ba01b}{\+\_\+number\+\_\+of\+\_\+channels} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_ac3927bf3a2b93c8dc4ef19ee1a3d55f8}{\+\_\+\+Gpyr\+\_\+filter\+\_\+length} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_ad8b548e54d84866330d426d8edc8877e}{\+\_\+start\+Frame} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a08d1602abf6cd2454b1f73a8d5523ac2}{\+\_\+end\+Frame} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a9732a5bb1cbdb99030149ae2bb1cae69}{\+\_\+window\+\_\+size\+\_\+in\+\_\+sec} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_aed0501a3045731a781439b11ee82fbfe}{\+\_\+overlap\+\_\+ratio} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a1a13273dd519ccfaf4dc1800bd2031d2}{\+\_\+max\+\_\+bpm} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a9685359cac4522cd1ee584fbfb5371d1}{\+\_\+cutoff\+\_\+freq} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_abe9f5a6b09e1219712f2b5912e68506d}{\+\_\+time\+\_\+lag} = -\/1
+\item 
+String \hyperlink{namespace_m_h_r_a16dd6a785863f2fac97ebb334606c166}{\+\_\+colourspace} = \char`\"{}-\/1\char`\"{}
+\item 
+int \hyperlink{namespace_m_h_r_a02a81ed541f6536b1632d65c8f2ad0d3}{\+\_\+channels\+\_\+to\+\_\+process} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a5a4548440538bf0354499b42e7983f2f}{\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_ae2f1f5bafa06074dcb8f0af01a058c81}{\+\_\+flag\+Debug} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_ab142c69d1b89170b4fa2533a6f749394}{\+\_\+flag\+Get\+Raw} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a7650c1d1c25787e60c4dbbdb5cedf3b8}{\+\_\+start\+Index} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a43ac6cb857f86cd5a9bc16e968faa1af}{\+\_\+end\+Index} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a8a80b7897b02d4d2a57311a344df8497}{\+\_\+peak\+Strength\+Threshold\+\_\+fraction} = -\/1
+\item 
+String \hyperlink{namespace_m_h_r_aaaae88f4be078b944fe63b49c5022684}{\+\_\+frames2signal\+Conversion\+Method} = \char`\"{}-\/1\char`\"{}
+\item 
+int \hyperlink{namespace_m_h_r_a41fcc40bb1f54975292b8d7051b7b3f9}{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a619373c68caeeba93f71d9eaeecf1a5b}{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols} = -\/1
+\item 
+Mat \hyperlink{namespace_m_h_r_a8d2bbf36755f538d9b442b415d5cde6d}{\+\_\+frame\+\_\+downsampling\+\_\+filt}
+\item 
+int \hyperlink{namespace_m_h_r_a87eb7e22893e5160d4a98344bc8bdff4}{\+\_\+trimmed\+\_\+size} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a32705f521f2a65e0b5c5454b328c26db}{\+\_\+training\+\_\+time\+\_\+start} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a6ee9276234c51d213a3b1631eee5f315}{\+\_\+training\+\_\+time\+\_\+end} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_ab3a5de59c2eed470e94ca0e79abd2b5c}{\+\_\+number\+\_\+of\+\_\+bins} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_acb8b09915d13e40eba7f00718c40ce6a}{\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode} = -\/1
+\item 
+double \hyperlink{namespace_m_h_r_a3b2e38d795c8389fd066cefa0af2ef47}{\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode} = -\/1
+\item 
+int \hyperlink{namespace_m_h_r_a5d907d8ef896004dce9f0fd1d47b77e7}{\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size} = -\/1
+\item 
+Mat \hyperlink{namespace_m_h_r_ab83e011c36b7688dab5ef024c8894300}{\+\_\+beat\+Signal\+Filter\+Kernel}
+\item 
+const double \hyperlink{namespace_m_h_r_a1f2bac57e6ccaebc6afd932278b163ec}{Na\+N} = -\/1e9
+\item 
+const int \hyperlink{namespace_m_h_r_a167cff7309df5114f9e72af8b5e820c1}{\+\_\+frames\+Block\+\_\+size} = 128
+\item 
+const int \hyperlink{namespace_m_h_r_aced573ebf5ae641d5c3a58c9762462fb}{\+\_\+min\+Vid\+Length} = 15
+\item 
+const int \hyperlink{namespace_m_h_r_a0a7cdb59c1f1e8af6e6b61543c81724d}{\+\_\+max\+Vid\+Length} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_a0f9c0b966020cdd7ef37cb2207d981ab}{\+\_\+face\+\_\+eulerian\+\_\+alpha} = 50
+\item 
+const double \hyperlink{namespace_m_h_r_a3eae7b41b03bf25902413f62c5e6545d}{\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level} = 6
+\item 
+const double \hyperlink{namespace_m_h_r_a95e1651df07df85f364ac713aac7a53b}{\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_a366f66e2cd387cf039dc5d7de4ff5f9d}{\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R} = 240
+\item 
+const double \hyperlink{namespace_m_h_r_a3c21f6619922e618bff40700a5723015}{\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_a5b039641e0cf1a30ba4f303e4764b4c8}{\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier} = 1
+\item 
+const int \hyperlink{namespace_m_h_r_a1af8c23e0ffae759111c964d2369a13b}{\+\_\+face\+\_\+number\+\_\+of\+\_\+channels} = 3
+\item 
+const int \hyperlink{namespace_m_h_r_a7eabffdab2df22a98e5aa4046d6c3baf}{\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length} = 5
+\item 
+const int \hyperlink{namespace_m_h_r_ac893410fca7e7a76ae562e47f8371cc1}{\+\_\+face\+\_\+start\+Frame} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_a349e142bd15540a9d0b5b63f426fc3dc}{\+\_\+face\+\_\+end\+Frame} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_ada7fab40b0e865f6a26751fd550b5288}{\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec} = 10
+\item 
+const double \hyperlink{namespace_m_h_r_ab6430d316d9d82ce08b7d35fda6ba14e}{\+\_\+face\+\_\+overlap\+\_\+ratio} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_a123d7bba4eba9d4c49ebe21458394a9a}{\+\_\+face\+\_\+max\+\_\+bpm} = 200
+\item 
+const double \hyperlink{namespace_m_h_r_afc5d67d6a0c4929f2fc30dce703740fe}{\+\_\+face\+\_\+cutoff\+\_\+freq} = 2.\+5
+\item 
+const double \hyperlink{namespace_m_h_r_ad108537351ba024dfa150411983a69c4}{\+\_\+face\+\_\+time\+\_\+lag} = 3
+\item 
+const String \hyperlink{namespace_m_h_r_a2c3d7c5df37d2106e5f4351ebeb44c2f}{\+\_\+face\+\_\+colourspace} = \char`\"{}tsl\char`\"{}
+\item 
+const int \hyperlink{namespace_m_h_r_ac3a2dbcaefbcbb5814108c711ebd1fe1}{\+\_\+face\+\_\+channels\+\_\+to\+\_\+process} = 1
+\item 
+const int \hyperlink{namespace_m_h_r_abfcdcdfbf5694a70c871df5484e30321}{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate} = 5
+\item 
+const int \hyperlink{namespace_m_h_r_ade58b99d0d2023434646cb0597baafdf}{\+\_\+face\+\_\+flag\+Debug} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_a6e9575c56ad75e4e165fd62fad98734f}{\+\_\+face\+\_\+flag\+Get\+Raw} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_a5c705653d488611b87b11e41e4ffbfd5}{\+\_\+face\+\_\+start\+Index} = 1
+\item 
+const int \hyperlink{namespace_m_h_r_ad45b2867da1e1b69dee3648585a3ad3a}{\+\_\+face\+\_\+end\+Index} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_adad3be408f5b45234ee745acc33d6ac8}{\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction} = 0
+\item 
+const String \hyperlink{namespace_m_h_r_a634c25b34e7aa6bbb3cfc346964d2f90}{\+\_\+face\+\_\+frames2signal\+Conversion\+Method} = \char`\"{}mode-\/balance\char`\"{}
+\item 
+const int \hyperlink{namespace_m_h_r_a7fa6df2df062c81344149450be58164a}{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows} = 7
+\item 
+const int \hyperlink{namespace_m_h_r_ae762029528d214f277ed064282784d3b}{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols} = 7
+\item 
+const Mat \hyperlink{namespace_m_h_r_a53c978f9017a65e09546b90474f17111}{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt}
+\item 
+const int \hyperlink{namespace_m_h_r_ae64aacd3f078b0c1ecfefee56c27e3ce}{\+\_\+face\+\_\+trimmed\+\_\+size} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_a4ad71fd0cc039551252ae1929fbbfea9}{\+\_\+face\+\_\+training\+\_\+time\+\_\+start} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_a86e77ed79df316c170e425d131558571}{\+\_\+face\+\_\+training\+\_\+time\+\_\+end} = 0.\+2
+\item 
+const int \hyperlink{namespace_m_h_r_a2c4c769eba572cf1388059c68e02804a}{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins} = 50
+\item 
+const double \hyperlink{namespace_m_h_r_ac4235bc51ec51e261f5822920a5886b0}{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode} = 45
+\item 
+const double \hyperlink{namespace_m_h_r_a50b60319fb33591915a63ce9b618a18c}{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode} = 45
+\item 
+const int \hyperlink{namespace_m_h_r_a7f9a1a070d8e2c3eb72d79c71b2f468a}{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size} = 15
+\item 
+const Mat \hyperlink{namespace_m_h_r_a846528ce2187823d06b73caadf751570}{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel}
+\item 
+const int \hyperlink{namespace_m_h_r_adc786b108805d8d2ad944595ea2b7092}{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N} = 2
+\item 
+const int \hyperlink{namespace_m_h_r_a90f94ddb83c7c54b9b0836586a51ad43}{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N} = 2
+\item 
+const int \hyperlink{namespace_m_h_r_a3c94a936257b6f3257fb7a7768ff4377}{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T} = 5
+\item 
+const float \hyperlink{namespace_m_h_r_a4059754ac07ffb5b08e096059f347a82}{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R} = 1.\+5f
+\item 
+const float \hyperlink{namespace_m_h_r_a8a54577ca92c7aa81cc87355a7160063}{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R} = 0.\+8f
+\item 
+const double \hyperlink{namespace_m_h_r_abe389732cdfc0aa8ebf51a84c4e645a4}{\+\_\+finger\+\_\+eulerian\+\_\+alpha} = 50
+\item 
+const double \hyperlink{namespace_m_h_r_a197af9978c9b4d443571197f5ad1b019}{\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level} = 6
+\item 
+const double \hyperlink{namespace_m_h_r_a2d844de82559885b3d8a333c82b1a733}{\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_ab2ef19fc7e685e8a85fbbbc75320fd6e}{\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R} = 240
+\item 
+const double \hyperlink{namespace_m_h_r_a6a102813ef2ea5aa11cadcc9ebaa5bbc}{\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_adc0b183529468e1b7d2eec8275c004a6}{\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier} = 1
+\item 
+const int \hyperlink{namespace_m_h_r_aa01f8308d2cb5cdb00c4a45de8a8cd5e}{\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels} = 3
+\item 
+const int \hyperlink{namespace_m_h_r_a5b1bf691aa0c1246b140b3f67580c229}{\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length} = 5
+\item 
+const int \hyperlink{namespace_m_h_r_a9b0e8542961b24a5dc2e1f77df715b51}{\+\_\+finger\+\_\+start\+Frame} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_aab21e4fd871ccbbdfc656aa4d64aa688}{\+\_\+finger\+\_\+end\+Frame} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_a04093f94b342ed569322ef2c3a5bcce2}{\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec} = 10
+\item 
+const double \hyperlink{namespace_m_h_r_a6ab2b5eaa5246621b9039b65e5501f1c}{\+\_\+finger\+\_\+overlap\+\_\+ratio} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_ae15a1148a0dba9f30071db8315b9fe88}{\+\_\+finger\+\_\+max\+\_\+bpm} = 200
+\item 
+const double \hyperlink{namespace_m_h_r_a6125713b446a1bdd5bbc0fb9e75fc58e}{\+\_\+finger\+\_\+cutoff\+\_\+freq} = 2.\+5
+\item 
+const double \hyperlink{namespace_m_h_r_ae2523999aef7718ac3e6edeb318edf8a}{\+\_\+finger\+\_\+time\+\_\+lag} = 3
+\item 
+const String \hyperlink{namespace_m_h_r_af6ec9103edc4e3fe7011676f91c83c26}{\+\_\+finger\+\_\+colourspace} = \char`\"{}rgb\char`\"{}
+\item 
+const int \hyperlink{namespace_m_h_r_a16934905e88de3a2d084e6734948ec65}{\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_a2762706b15a5accb61b7efa79cd0617a}{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate} = 5
+\item 
+const int \hyperlink{namespace_m_h_r_aefc7157a4757a4b9017c968a17fb8ee1}{\+\_\+finger\+\_\+flag\+Debug} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_a24fb7c804c7833388056a5e417354257}{\+\_\+finger\+\_\+flag\+Get\+Raw} = 0
+\item 
+const int \hyperlink{namespace_m_h_r_a25e5a8e8b0d72f6cfa98fa75e943f35e}{\+\_\+finger\+\_\+start\+Index} = 1
+\item 
+const int \hyperlink{namespace_m_h_r_a8b1ee45fde805239e5267fb0dcb03735}{\+\_\+finger\+\_\+end\+Index} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_a417e8c2df65251a5a34b250f975a3867}{\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction} = 0
+\item 
+const String \hyperlink{namespace_m_h_r_a4c571f87fe52934440add1a3a5a98e14}{\+\_\+finger\+\_\+frames2signal\+Conversion\+Method} = \char`\"{}mode-\/balance\char`\"{}
+\item 
+const int \hyperlink{namespace_m_h_r_a5d49af784fd77df019705d26d3654953}{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows} = 7
+\item 
+const int \hyperlink{namespace_m_h_r_a2c854934355cedc3760bfddd3bcd03a6}{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols} = 7
+\item 
+const Mat \hyperlink{namespace_m_h_r_a9a40d6696920c99016b2c4cc40e8db3b}{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt}
+\item 
+const int \hyperlink{namespace_m_h_r_a8a6e23a5b4183588a231061fe7d43524}{\+\_\+finger\+\_\+trimmed\+\_\+size} = 30
+\item 
+const double \hyperlink{namespace_m_h_r_afcd48923eb1d7b2aff98acc4cf2a9d24}{\+\_\+finger\+\_\+training\+\_\+time\+\_\+start} = 0
+\item 
+const double \hyperlink{namespace_m_h_r_a69b9408e97af3e5261c4ede559d9f7d6}{\+\_\+finger\+\_\+training\+\_\+time\+\_\+end} = 0.\+2
+\item 
+const int \hyperlink{namespace_m_h_r_a1cd0eaa85c6115e1d53ad1c1a3209b41}{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins} = 50
+\item 
+const double \hyperlink{namespace_m_h_r_a9714df3caf979755314e0a049dd96368}{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode} = 45
+\item 
+const double \hyperlink{namespace_m_h_r_a8c272379feda002b512fbc5e3e917000}{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode} = 45
+\item 
+const int \hyperlink{namespace_m_h_r_a9b1303d740470ce969352e3173a27ebb}{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size} = 15
+\item 
+const Mat \hyperlink{namespace_m_h_r_a7c6f13da1b28c69fdd787e07d05c7503}{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel}
+\item 
+const Mat \hyperlink{namespace_m_h_r_a7191e886f0a618347db01d5743eb2856}{rgb2ntsc\+\_\+base\+Mat}
+\item 
+const Mat \hyperlink{namespace_m_h_r_a1ab4a7e6b45362de2827fd373b53ba24}{ntsc2rgb\+\_\+base\+Mat}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespace_m_h_r_ac0d7c563ab4072cf5cba2d2b1cb3761e}{\index{M\+H\+R@{M\+H\+R}!add@{add}}
+\index{add@{add}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::add (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{a, }
+\item[{const Mat \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ac0d7c563ab4072cf5cba2d2b1cb3761e}
+\begin{DoxyReturn}{Returns}
+a + b 
+\end{DoxyReturn}
+
+
+Definition at line 32 of file matrix.\+cpp.
+
+\hypertarget{namespace_m_h_r_ad90e260536ab41e3da12f739038743d0}{\index{M\+H\+R@{M\+H\+R}!atan2\+Mat@{atan2\+Mat}}
+\index{atan2\+Mat@{atan2\+Mat}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{atan2\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::atan2\+Mat (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{a, }
+\item[{const Mat \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ad90e260536ab41e3da12f739038743d0}
+
+\begin{DoxyParams}{Parameters}
+{\em a,b} & which have the same size ~\newline
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a new Mat which each element\mbox{[}i, j\mbox{]} = atan2(a\mbox{[}i, j\mbox{]}, b\mbox{[}i, j\mbox{]}) ~\newline
+Data type\+: C\+V\+\_\+64\+F 
+\end{DoxyReturn}
+
+
+Definition at line 13 of file matrix.\+cpp.
+
+\hypertarget{namespace_m_h_r_a357c28865a17017a73d0f4ae8c4f7480}{\index{M\+H\+R@{M\+H\+R}!blur\+Dn\+Clr@{blur\+Dn\+Clr}}
+\index{blur\+Dn\+Clr@{blur\+Dn\+Clr}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{blur\+Dn\+Clr}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::blur\+Dn\+Clr (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst, }
+\item[{int}]{level}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a357c28865a17017a73d0f4ae8c4f7480}
+Blur and downsample an image. The blurring is done with filter kernel specified by F\+I\+L\+T (default = 'binom5') ~\newline
+ \href{https://github.com/diego898/matlab-utils/blob/master/toolbox/EVM_Matlab/blurDnClr.m}{\tt https\+://github.\+com/diego898/matlab-\/utils/blob/master/toolbox/\+E\+V\+M\+\_\+\+Matlab/blur\+Dn\+Clr.\+m} ~\newline
+ \href{http://docs.opencv.org/doc/tutorials/imgproc/pyramids/pyramids.html}{\tt http\+://docs.\+opencv.\+org/doc/tutorials/imgproc/pyramids/pyramids.\+html} ~\newline
+
+
+Definition at line 89 of file image.\+cpp.
+
+\hypertarget{namespace_m_h_r_ae1292cc4cfc5411226e0cd77f652e1a5}{\index{M\+H\+R@{M\+H\+R}!build\+\_\+\+Gdown\+\_\+\+Stack@{build\+\_\+\+Gdown\+\_\+\+Stack}}
+\index{build\+\_\+\+Gdown\+\_\+\+Stack@{build\+\_\+\+Gdown\+\_\+\+Stack}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{build\+\_\+\+Gdown\+\_\+\+Stack}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::build\+\_\+\+Gdown\+\_\+\+Stack (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ Mat $>$ \&}]{vid, }
+\item[{vector$<$ Mat $>$ \&}]{G\+Down\+Stack, }
+\item[{int}]{start\+Index, }
+\item[{int}]{end\+Index, }
+\item[{int}]{level}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ae1292cc4cfc5411226e0cd77f652e1a5}
+Apply Gaussian pyramid decomposition on {\itshape vid} from {\itshape start\+Index} to {\itshape end\+Index}, and select a specific band indicated by {\itshape level}. ~\newline
+\begin{DoxyReturn}{Returns}
+{\itshape G\+Down\+Stack} is stack of one band of Gaussian pyramid of each frame 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em vid,G\+Down\+Stack} & 
+\begin{DoxyItemize}
+\item the first dimension is the time axis ~\newline
+
+\item the second dimension is the y axis of the video's frames ~\newline
+
+\item the third dimension is the x axis of the video's frames ~\newline
+
+\item the forth dimension is the color channel ~\newline
+Data type\+: C\+V\+\_\+64\+F\+C3 or C\+V\+\_\+64\+F 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file build\+\_\+\+Gdown\+\_\+stack.\+cpp.
+
+\hypertarget{namespace_m_h_r_a4e7d8efbc84874e131049dc705488cc9}{\index{M\+H\+R@{M\+H\+R}!corr\+\_\+linear@{corr\+\_\+linear}}
+\index{corr\+\_\+linear@{corr\+\_\+linear}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{corr\+\_\+linear}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ M\+H\+R\+::corr\+\_\+linear (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{signal, }
+\item[{vector$<$ double $>$}]{kernel, }
+\item[{bool}]{subtract\+Mean = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a4e7d8efbc84874e131049dc705488cc9}
+\href{http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf}{\tt http\+://www.\+cs.\+cornell.\+edu/courses/\+C\+S1114/2013sp/sections/\+S06\+\_\+convolution.\+pdf} \begin{DoxyReturn}{Returns}
+1\+D convolution operation of 2 vectors signal and kernel 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em subtract\+Mean} & if is true, then before all calculations, each elements of the signal vector will be subtracted by mean({\itshape signal}), and each elements of the kernel vector will be subtracted by mean({\itshape kernel}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_a30571de29e1537d20abf69d19329c1bb}{\index{M\+H\+R@{M\+H\+R}!corr\+Dn@{corr\+Dn}}
+\index{corr\+Dn@{corr\+Dn}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{corr\+Dn}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::corr\+Dn (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst, }
+\item[{const Mat \&}]{filter, }
+\item[{int}]{rect\+Row, }
+\item[{int}]{rect\+Col}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a30571de29e1537d20abf69d19329c1bb}
+Compute correlation of 2\+D matrices {\itshape src} with {\itshape filter}, followed by downsampling. ~\newline
+ \href{http://www.mathworks.com/matlabcentral/fileexchange/43909-separable-steerable-pyramid-toolbox/content/sepspyr/deps/matlabPyrTools-1.3/mpt_corrDn.m}{\tt http\+://www.\+mathworks.\+com/matlabcentral/fileexchange/43909-\/separable-\/steerable-\/pyramid-\/toolbox/content/sepspyr/deps/matlab\+Pyr\+Tools-\/1.\+3/mpt\+\_\+corr\+Dn.\+m} ~\newline
+ \href{http://docs.opencv.org/modules/imgproc/doc/filtering.html#void%20filter2D%28InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20InputArray%20kernel,%20Point%20anchor,%20double%20delta,%20int%20borderType%29}{\tt http\+://docs.\+opencv.\+org/modules/imgproc/doc/filtering.\+html\#void\%20filter2\+D\%28\+Input\+Array\%20src,\%20\+Output\+Array\%20dst,\%20int\%20ddepth,\%20\+Input\+Array\%20kernel,\%20\+Point\%20anchor,\%20double\%20delta,\%20int\%20border\+Type\%29} ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em src} & must be larger (in both dimensions) than {\itshape filter}. ~\newline
+\\
+\hline
+{\em filter} & is assumed to be floor(size({\itshape filter})/2)+1. ~\newline
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\itshape dst's} data types\+: C\+V\+\_\+64\+F 
+\end{DoxyReturn}
+
+
+Definition at line 99 of file image.\+cpp.
+
+\hypertarget{namespace_m_h_r_a2e51d3fdfa37bc717ccc0c4557d64445}{\index{M\+H\+R@{M\+H\+R}!diff\+\_\+percent@{diff\+\_\+percent}}
+\index{diff\+\_\+percent@{diff\+\_\+percent}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{diff\+\_\+percent}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::diff\+\_\+percent (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a2e51d3fdfa37bc717ccc0c4557d64445}
+\begin{DoxyReturn}{Returns}
+100$\ast$$\vert$a-\/b$\vert$/b 
+\end{DoxyReturn}
+
+
+Definition at line 234 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_af2ec0b4fd5bc225e5e008504e70475a7}{\index{M\+H\+R@{M\+H\+R}!eulerian\+Gaussian\+Pyramid\+Magnification@{eulerian\+Gaussian\+Pyramid\+Magnification}}
+\index{eulerian\+Gaussian\+Pyramid\+Magnification@{eulerian\+Gaussian\+Pyramid\+Magnification}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{eulerian\+Gaussian\+Pyramid\+Magnification}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::eulerian\+Gaussian\+Pyramid\+Magnification (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ Mat $>$ \&}]{vid, }
+\item[{vector$<$ Mat $>$ \&}]{ans, }
+\item[{String}]{out\+Dir, }
+\item[{double}]{alpha, }
+\item[{int}]{level, }
+\item[{double}]{freq\+Band\+Low\+End, }
+\item[{double}]{freq\+Band\+High\+End, }
+\item[{double}]{sampling\+Rate, }
+\item[{double}]{chrom\+Attenuation}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_af2ec0b4fd5bc225e5e008504e70475a7}
+Use Eulerian magnification technique on input frames. ~\newline
+Spatial Filtering\+: Gaussian blur and down sample ~\newline
+Temporal Filtering\+: Ideal bandpass ~\newline
+ \href{http://graphics.cs.cmu.edu/courses/15-463/2012_fall/hw/proj2g-eulerian/}{\tt http\+://graphics.\+cs.\+cmu.\+edu/courses/15-\/463/2012\+\_\+fall/hw/proj2g-\/eulerian/} ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Dir} & output folder for debug files \\
+\hline
+{\em alpha} & magnification rate \\
+\hline
+{\em level} & see \hyperlink{namespace_m_h_r_a357c28865a17017a73d0f4ae8c4f7480}{blur\+Dn\+Clr()} \\
+\hline
+{\em freq\+Band\+Low\+End} & see {\itshape wl} argument in \hyperlink{namespace_m_h_r_a103bcf8925254f7ca646192777866d4b}{ideal\+\_\+bandpassing()} \\
+\hline
+{\em freq\+Band\+High\+End} & see {\itshape wh} argument in \hyperlink{namespace_m_h_r_a103bcf8925254f7ca646192777866d4b}{ideal\+\_\+bandpassing()} \\
+\hline
+{\em sampling\+Rate} & the video's frame rate \\
+\hline
+{\em chrom\+Attenuation} & the magnification rate of chrom\+A channel in Y\+I\+Q coulourspace \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file eulerian.\+cpp.
+
+\hypertarget{namespace_m_h_r_ad11b22e616f937a6817faa9a0c72ec21}{\index{M\+H\+R@{M\+H\+R}!findpeaks@{findpeaks}}
+\index{findpeaks@{findpeaks}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{findpeaks}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::findpeaks (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{segment, }
+\item[{double}]{min\+Peak\+Distance, }
+\item[{double}]{threshold, }
+\item[{vector$<$ double $>$ \&}]{max\+\_\+peak\+\_\+strengths, }
+\item[{vector$<$ int $>$ \&}]{max\+\_\+peak\+\_\+locs}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ad11b22e616f937a6817faa9a0c72ec21}
+findpeaks in {\itshape segment}, with {\itshape min\+Peak\+Distance} and {\itshape threshold},~\newline
+complexity O(n$^\wedge$2) with n = number of peaks 
+\begin{DoxyParams}{Parameters}
+{\em segment} & a vector of signals \\
+\hline
+{\em min\+Peak\+Distance} & minimum distance between two peaks \\
+\hline
+{\em threshold} & the minimum value that a peak point should be larger than its two neighbors point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\itshape max\+\_\+peak\+\_\+strengths} 
+
+{\itshape max\+\_\+peak\+\_\+locs} 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_a53c0c282e2b27534f2726f735f9664e3}{\index{M\+H\+R@{M\+H\+R}!frames2signal@{frames2signal}}
+\index{frames2signal@{frames2signal}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{frames2signal}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ M\+H\+R\+::frames2signal (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ Mat $>$ \&}]{monoframes, }
+\item[{const String \&}]{conversion\+\_\+method, }
+\item[{double}]{fr, }
+\item[{double}]{cutoff\+\_\+freq, }
+\item[{double \&}]{lower\+\_\+range, }
+\item[{double \&}]{upper\+\_\+range, }
+\item[{bool}]{is\+Calc\+Mode}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a53c0c282e2b27534f2726f735f9664e3}
+The function will convert the array of frames into an array of signal value (type double) note that the frame is mono channel. 
+\begin{DoxyParams}{Parameters}
+{\em fr} & video's frame rate \\
+\hline
+{\em conversion\+\_\+method} & we have 3 method for converting a frame into a double value\+:
+\begin{DoxyItemize}
+\item simple-\/mean
+\item trimmed-\/mean
+\item mode-\/balance 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+mode \+: 'simple-\/mean' get the mean of all pixel's value in the picture frame
+
+mode \+: 'trimmed-\/mean' get the mean of all pixel's value in a smaller rectangle inside the picture frame
+
+this method will calculate the histogram of pixel's value from the first\+\_\+tranning\+\_\+frames\+\_\+start to first\+\_\+tranning\+\_\+frames\+\_\+end. Then get the bin that has the most number of value, get the centre of that bin as a centre value, then use the prctile function to get the percentile of that centre value. Finally we calculate the mean of values that have the inverted percentile in the range from (centre value's percentile -\/ lower\+\_\+pct\+\_\+range) to (centre value's percentile + upper\+\_\+pct\+\_\+range).
+
+Definition at line 13 of file frames2signal.\+cpp.
+
+\hypertarget{namespace_m_h_r_a0380a36a3a26da3c0a32e0f4b3d9fec9}{\index{M\+H\+R@{M\+H\+R}!gaussian\+Filter@{gaussian\+Filter}}
+\index{gaussian\+Filter@{gaussian\+Filter}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{gaussian\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::gaussian\+Filter (
+\begin{DoxyParamCaption}
+\item[{int}]{length, }
+\item[{double}]{sigma, }
+\item[{vector$<$ double $>$ \&}]{ans}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a0380a36a3a26da3c0a32e0f4b3d9fec9}
+Generate a vector of Gaussian values of a desired length and properties~\newline
+ \href{http://www.mathworks.com/help/images/ref/fspecial.html}{\tt http\+://www.\+mathworks.\+com/help/images/ref/fspecial.\+html} ~\newline
+ \href{http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29}{\tt http\+://docs.\+opencv.\+org/modules/imgproc/doc/filtering.\+html\#\+Mat\%20get\+Gaussian\+Kernel\%28int\%20ksize,\%20double\%20sigma,\%20int\%20ktype\%29} ~\newline
+
+
+Definition at line 222 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_a62a720e54584696fcf7e2d545ad202dc}{\index{M\+H\+R@{M\+H\+R}!hb\+\_\+counter\+\_\+autocorr@{hb\+\_\+counter\+\_\+autocorr}}
+\index{hb\+\_\+counter\+\_\+autocorr@{hb\+\_\+counter\+\_\+autocorr}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{hb\+\_\+counter\+\_\+autocorr}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ M\+H\+R\+::hb\+\_\+counter\+\_\+autocorr (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$ \&}]{temporal\+\_\+mean, }
+\item[{double}]{fr, }
+\item[{int}]{first\+Sample, }
+\item[{int}]{window\+\_\+size, }
+\item[{double}]{overlap\+\_\+ratio, }
+\item[{double}]{min\+Peak\+Distance, }
+\item[{hr\+Debug \&}]{debug}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a62a720e54584696fcf7e2d545ad202dc}
+This function will convert the signal array (after using the frame2signal function) to an autocorelation array and then convert to an array of heart beats' position. ~\newline
+The function will shift a window with size {\itshape window\+\_\+size} from {\itshape first\+Sample} position to calculate the heart beats in that window. ~\newline
+This function is different from the hb\+\_\+counter\+\_\+pda function, instead of calculating the heart beats directly from the signal array, we will first convert the signal array to an autocorrelation array ( \href{http://en.wikipedia.org/wiki/Autocorrelation}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Autocorrelation}) then use this array to calculate the heart beats. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & the frame rate. \\
+\hline
+{\em overlap\+\_\+ratio} & the ratio of the next window will be identical with the current window, at default this ratio value is 0 \\
+\hline
+{\em min\+Peak\+Distance,threshold} & these arguments are for the find\+Peaks function. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file hb\+\_\+counter\+\_\+autocorr.\+cpp.
+
+\hypertarget{namespace_m_h_r_ac8cf9fb76b7455034653c17bc9e3ee4c}{\index{M\+H\+R@{M\+H\+R}!hb\+\_\+counter\+\_\+pda@{hb\+\_\+counter\+\_\+pda}}
+\index{hb\+\_\+counter\+\_\+pda@{hb\+\_\+counter\+\_\+pda}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{hb\+\_\+counter\+\_\+pda}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ M\+H\+R\+::hb\+\_\+counter\+\_\+pda (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{temporal\+\_\+mean, }
+\item[{double}]{fr, }
+\item[{int}]{first\+Sample, }
+\item[{int}]{window\+\_\+size, }
+\item[{double}]{overlap\+\_\+ratio, }
+\item[{double}]{min\+Peak\+Distance, }
+\item[{double}]{threshold, }
+\item[{hr\+Debug \&}]{debug}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ac8cf9fb76b7455034653c17bc9e3ee4c}
+This function will convert the signal array (after using the frame2signal() function) to an array of heart beats' position The function will shift a window with size {\itshape window\+\_\+size} from {\itshape first\+Sample} position to calculate the heart beats in that window. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & the frame rate. \\
+\hline
+{\em overlap\+\_\+ratio} & the ratio of the next window will be identical with the current window, at default this ratio value is 0 \\
+\hline
+{\em min\+Peak\+Distance,threshold} & these arguments are for the find\+Peaks function. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file hb\+\_\+counter\+\_\+pda.\+cpp.
+
+\hypertarget{namespace_m_h_r_ab46344d4248f6c55622fef14c1eb78c7}{\index{M\+H\+R@{M\+H\+R}!hist@{hist}}
+\index{hist@{hist}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{hist}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::hist (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{arr, }
+\item[{int}]{nbins, }
+\item[{vector$<$ int $>$ \&}]{counts, }
+\item[{vector$<$ double $>$ \&}]{centers}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ab46344d4248f6c55622fef14c1eb78c7}
+\href{http://www.mathworks.com/help/matlab/ref/hist.html}{\tt http\+://www.\+mathworks.\+com/help/matlab/ref/hist.\+html} \begin{DoxyReturn}{Returns}
+{\itshape counts\+:} number of elements in each bin, 
+
+{\itshape centers\+:} the center value of each bin get the histogram of arr's value, the range from min value to max value of the arr will be divided into {\itshape nbins} bins, each bin will have a centres point and a count value denoting number of value in the array belong to that bin's range 
+\end{DoxyReturn}
+
+
+Definition at line 125 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_a4ba8de262585ae09cd1564fcfda5742e}{\index{M\+H\+R@{M\+H\+R}!hr\+\_\+calculator@{hr\+\_\+calculator}}
+\index{hr\+\_\+calculator@{hr\+\_\+calculator}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{hr\+\_\+calculator}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::hr\+\_\+calculator (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ int $>$ \&}]{heart\+Beat\+Positions, }
+\item[{double}]{frame\+Rate, }
+\item[{vector$<$ double $>$ \&}]{ans}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a4ba8de262585ae09cd1564fcfda5742e}
+Calculate the heart-\/rate from a list of heart-\/beat positions. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em ans} & 
+\begin{DoxyItemize}
+\item the first number is average heart-\/rate
+\item the second number is mode of the instantaneous heart-\/rates multiply with frame\+Rate$\ast$60 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file hr\+\_\+calculator.\+cpp.
+
+\hypertarget{namespace_m_h_r_ac8025fa73e928ab097c9b58525d787b1}{\index{M\+H\+R@{M\+H\+R}!hr\+\_\+signal\+\_\+calc@{hr\+\_\+signal\+\_\+calc}}
+\index{hr\+\_\+signal\+\_\+calc@{hr\+\_\+signal\+\_\+calc}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{hr\+\_\+signal\+\_\+calc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hr\+Result} M\+H\+R\+::hr\+\_\+signal\+\_\+calc (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$ \&}]{temporal\+\_\+mean, }
+\item[{int}]{first\+Sample, }
+\item[{int}]{window\+\_\+size, }
+\item[{double}]{frame\+Rate, }
+\item[{double}]{overlap\+\_\+ratio, }
+\item[{double}]{max\+\_\+bpm, }
+\item[{double}]{threshold\+\_\+fraction}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ac8025fa73e928ab097c9b58525d787b1}
+Return the average heart-\/rate calculated by autocorr algorithm and pda algorithm. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em } & see \hyperlink{namespace_m_h_r_ac8cf9fb76b7455034653c17bc9e3ee4c}{hb\+\_\+counter\+\_\+pda()} or \hyperlink{namespace_m_h_r_a62a720e54584696fcf7e2d545ad202dc}{hb\+\_\+counter\+\_\+autocorr()}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file hr\+\_\+signal\+\_\+calc.\+cpp.
+
+\hypertarget{namespace_m_h_r_a103bcf8925254f7ca646192777866d4b}{\index{M\+H\+R@{M\+H\+R}!ideal\+\_\+bandpassing@{ideal\+\_\+bandpassing}}
+\index{ideal\+\_\+bandpassing@{ideal\+\_\+bandpassing}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{ideal\+\_\+bandpassing}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::ideal\+\_\+bandpassing (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ Mat $>$ \&}]{src, }
+\item[{vector$<$ Mat $>$ \&}]{dst, }
+\item[{double}]{wl, }
+\item[{double}]{wh, }
+\item[{double}]{sampling\+Rate}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a103bcf8925254f7ca646192777866d4b}
+Apply ideal band pass filter on {\itshape src}. ~\newline
+ \href{http://en.wikipedia.org/wiki/Band-pass_filter}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Band-\/pass\+\_\+filter} 
+\begin{DoxyParams}{Parameters}
+{\em src,dst} & 
+\begin{DoxyItemize}
+\item the first dimension is the time axis ~\newline
+
+\item the second dimension is the y axis of the video's frames ~\newline
+
+\item the third dimension is the x axis of the video's frames ~\newline
+
+\item the forth dimension is the color channel ~\newline
+
+\end{DoxyItemize}\\
+\hline
+{\em wl} & lower cutoff frequency of ideal band pass filter ~\newline
+\\
+\hline
+{\em wh} & higher cutoff frequency of ideal band pass filter ~\newline
+\\
+\hline
+{\em sampling\+Rate} & sampling rate of {\itshape src} ~\newline
+Data type\+: C\+V\+\_\+64\+F\+C3 or C\+V\+\_\+64\+F \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file ideal\+\_\+bandpassing.\+cpp.
+
+\hypertarget{namespace_m_h_r_a4d04157ea7582bbd0a165e1a8a679219}{\index{M\+H\+R@{M\+H\+R}!invprctile@{invprctile}}
+\index{invprctile@{invprctile}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{invprctile}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::invprctile (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{arr, }
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a4d04157ea7582bbd0a165e1a8a679219}
+get the invert percentile of arr with value x. \begin{DoxyReturn}{Returns}
+the percent of number of values in arr that smaller or equal x. 
+\end{DoxyReturn}
+
+
+Definition at line 164 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_af85b8b218e683bde30d7ee0329b29716}{\index{M\+H\+R@{M\+H\+R}!low\+\_\+pass\+\_\+filter@{low\+\_\+pass\+\_\+filter}}
+\index{low\+\_\+pass\+\_\+filter@{low\+\_\+pass\+\_\+filter}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{low\+\_\+pass\+\_\+filter}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ M\+H\+R\+::low\+\_\+pass\+\_\+filter (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{arr}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_af85b8b218e683bde30d7ee0329b29716}
+filter function for frames2signal function, apply low pass filter on vector {\itshape arr}.  \href{http://en.wikipedia.org/wiki/Low-pass_filter}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Low-\/pass\+\_\+filter} 
+
+Definition at line 194 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_af6125176deb7b4d4d503a4bcf851a076}{\index{M\+H\+R@{M\+H\+R}!mean@{mean}}
+\index{mean@{mean}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::mean (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{a}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_af6125176deb7b4d4d503a4bcf851a076}
+\begin{DoxyReturn}{Returns}
+the mean value of a double vector 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_a497a8cfdabb210ba4d68b592fb589e00}{\index{M\+H\+R@{M\+H\+R}!multiply@{multiply}}
+\index{multiply@{multiply}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{multiply}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::multiply (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{a, }
+\item[{const Mat \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a497a8cfdabb210ba4d68b592fb589e00}
+\begin{DoxyReturn}{Returns}
+a $\ast$ b (element-\/wise) 
+\end{DoxyReturn}
+
+
+Definition at line 40 of file matrix.\+cpp.
+
+\hypertarget{namespace_m_h_r_a22b0fbac0253b08d84d9c2493324e5db}{\index{M\+H\+R@{M\+H\+R}!multiply@{multiply}}
+\index{multiply@{multiply}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{multiply}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::multiply (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{a, }
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a22b0fbac0253b08d84d9c2493324e5db}
+\begin{DoxyReturn}{Returns}
+a new Mat which each element\mbox{[}i, j\mbox{]} = a\mbox{[}i, j\mbox{]} $\ast$ x ~\newline
+Data type\+: C\+V\+\_\+64\+F 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file matrix.\+cpp.
+
+\hypertarget{namespace_m_h_r_afef7e1a6e6fe95a9debb07c2d7ba3008}{\index{M\+H\+R@{M\+H\+R}!pow\+Mat@{pow\+Mat}}
+\index{pow\+Mat@{pow\+Mat}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{pow\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::pow\+Mat (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{double}]{n}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_afef7e1a6e6fe95a9debb07c2d7ba3008}
+\begin{DoxyReturn}{Returns}
+the {\itshape n-\/th} power of {\itshape src} (element-\/wise) ~\newline
+Data type\+: C\+V\+\_\+64\+F 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file matrix.\+cpp.
+
+\hypertarget{namespace_m_h_r_a401757908f80823dd6c6ced91e55d751}{\index{M\+H\+R@{M\+H\+R}!prctile@{prctile}}
+\index{prctile@{prctile}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{prctile}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::prctile (
+\begin{DoxyParamCaption}
+\item[{vector$<$ double $>$}]{arr, }
+\item[{double}]{percent}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a401757908f80823dd6c6ced91e55d751}
+get the percentile of arr with a percent value. 
+
+Definition at line 172 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_aca720721cf34fb61faddf517a6f1ecb7}{\index{M\+H\+R@{M\+H\+R}!read2\+D\+Mat\+From\+File@{read2\+D\+Mat\+From\+File}}
+\index{read2\+D\+Mat\+From\+File@{read2\+D\+Mat\+From\+File}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{read2\+D\+Mat\+From\+File}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::read2\+D\+Mat\+From\+File (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$\&}]{file, }
+\item[{int}]{rows, }
+\item[{int}]{cols}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_aca720721cf34fb61faddf517a6f1ecb7}
+read a 2\+D Mat ({\itshape rows} $\ast$ {\itshape cols}) from an opened file 
+
+Definition at line 40 of file files.\+cpp.
+
+\hypertarget{namespace_m_h_r_a30d68a835eaf7530b13d542662a88642}{\index{M\+H\+R@{M\+H\+R}!read\+Double@{read\+Double}}
+\index{read\+Double@{read\+Double}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{read\+Double}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::read\+Double (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$\&}]{file}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a30d68a835eaf7530b13d542662a88642}
+read a double number from an opened file 
+
+Definition at line 58 of file files.\+cpp.
+
+\hypertarget{namespace_m_h_r_a3b899245a37e41550b80b44fb40fe3e9}{\index{M\+H\+R@{M\+H\+R}!read\+Frame@{read\+Frame}}
+\index{read\+Frame@{read\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{read\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::read\+Frame (
+\begin{DoxyParamCaption}
+\item[{const String \&}]{src\+File, }
+\item[{vector$<$ Mat $>$ \&}]{dst}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a3b899245a37e41550b80b44fb40fe3e9}
+read frames from a file to a a Mat vector 
+
+Definition at line 13 of file files.\+cpp.
+
+\hypertarget{namespace_m_h_r_aca054bab24695d684662a7972fc07d02}{\index{M\+H\+R@{M\+H\+R}!read\+Int@{read\+Int}}
+\index{read\+Int@{read\+Int}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{read\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::read\+Int (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$\&}]{file}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_aca054bab24695d684662a7972fc07d02}
+read an integer from an opened file 
+
+Definition at line 50 of file files.\+cpp.
+
+\hypertarget{namespace_m_h_r_a8b31e05ada67db2ce123a0674568ad29}{\index{M\+H\+R@{M\+H\+R}!read\+Vector\+From\+File@{read\+Vector\+From\+File}}
+\index{read\+Vector\+From\+File@{read\+Vector\+From\+File}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{read\+Vector\+From\+File}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ M\+H\+R\+::read\+Vector\+From\+File (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$\&}]{file, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a8b31e05ada67db2ce123a0674568ad29}
+read a vector$<$double$>$ with {\itshape n} elements from an opened file 
+
+Definition at line 66 of file files.\+cpp.
+
+\hypertarget{namespace_m_h_r_ae8dc1afd1e611d432d98186da1f813e5}{\index{M\+H\+R@{M\+H\+R}!rgb2tsl@{rgb2tsl}}
+\index{rgb2tsl@{rgb2tsl}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{rgb2tsl}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::rgb2tsl (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{rgbmap, }
+\item[{Mat \&}]{dst}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_ae8dc1afd1e611d432d98186da1f813e5}
+convert a R\+G\+B frame to a T\+S\+L frame ~\newline
+Data type\+: C\+V\+\_\+64\+F\+C3 ~\newline
+ \href{http://en.wikipedia.org/wiki/TSL_color_space}{\tt http\+://en.\+wikipedia.\+org/wiki/\+T\+S\+L\+\_\+color\+\_\+space} 
+
+Definition at line 12 of file image.\+cpp.
+
+\hypertarget{namespace_m_h_r_a883e36fb9e762e11d5dcdb28b0b8e236}{\index{M\+H\+R@{M\+H\+R}!run\+\_\+algorithms@{run\+\_\+algorithms}}
+\index{run\+\_\+algorithms@{run\+\_\+algorithms}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{run\+\_\+algorithms}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hr\+Result} M\+H\+R\+::run\+\_\+algorithms (
+\begin{DoxyParamCaption}
+\item[{const String \&}]{src\+Dir, }
+\item[{const String \&}]{out\+Dir, }
+\item[{hr\+Result \&}]{curr\+Hr\+Result}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a883e36fb9e762e11d5dcdb28b0b8e236}
+
+
+Definition at line 13 of file run\+\_\+algorithms.\+cpp.
+
+\hypertarget{namespace_m_h_r_a48555f02f08d43ff1f06f9413c86b5ca}{\index{M\+H\+R@{M\+H\+R}!set\+Face\+Params@{set\+Face\+Params}}
+\index{set\+Face\+Params@{set\+Face\+Params}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{set\+Face\+Params}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::set\+Face\+Params (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a48555f02f08d43ff1f06f9413c86b5ca}
+
+
+Definition at line 81 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_af336ca7b239bbe520636c7d147b913b5}{\index{M\+H\+R@{M\+H\+R}!set\+Finger\+Params@{set\+Finger\+Params}}
+\index{set\+Finger\+Params@{set\+Finger\+Params}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{set\+Finger\+Params}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::set\+Finger\+Params (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_af336ca7b239bbe520636c7d147b913b5}
+
+
+Definition at line 133 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a6f102a7f405b6c84ea84f4d99e3dd847}{\index{M\+H\+R@{M\+H\+R}!temporal\+\_\+mean\+\_\+calc@{temporal\+\_\+mean\+\_\+calc}}
+\index{temporal\+\_\+mean\+\_\+calc@{temporal\+\_\+mean\+\_\+calc}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{temporal\+\_\+mean\+\_\+calc}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ M\+H\+R\+::temporal\+\_\+mean\+\_\+calc (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ Mat $>$ \&}]{vid, }
+\item[{double}]{overlap\+\_\+ratio, }
+\item[{double}]{max\+\_\+bpm, }
+\item[{double}]{cutoff\+\_\+freq, }
+\item[{int}]{colour\+\_\+channel, }
+\item[{String}]{colourspace, }
+\item[{double \&}]{lower\+\_\+range, }
+\item[{double \&}]{upper\+\_\+range, }
+\item[{bool}]{is\+Calc\+Mode}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a6f102a7f405b6c84ea84f4d99e3dd847}
+Convert frames of $<$vid$>$ to signals. 
+\begin{DoxyParams}{Parameters}
+{\em vid} & data type is C\+V\+\_\+64\+F\+C3 or C\+V\+\_\+64\+F \\
+\hline
+{\em overlap\+\_\+ratio} & overlap ratio between 2 consecutive segments \\
+\hline
+{\em max\+\_\+bpm} & maximum heart rate detectable (use in determining min\+Peaks\+Distance in \hyperlink{namespace_m_h_r_ad11b22e616f937a6817faa9a0c72ec21}{findpeaks()}) \\
+\hline
+{\em colour\+\_\+channel} & if in \+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E, then convert all frames of {\itshape vid} to monoframes by select only one channel of each frame. \\
+\hline
+{\em colourspace} & if in \+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E, then convert colourspace of all frames of {\itshape vid} to \char`\"{}hsv\char`\"{}, \char`\"{}ycbcr\char`\"{} or \char`\"{}tsl\char`\"{} before converting them to monoframes \\
+\hline
+{\em cutoff\+\_\+freq,lower\+\_\+range,upper\+\_\+range$>$,is\+Calc\+Mode} & see \hyperlink{namespace_m_h_r_a53c0c282e2b27534f2726f735f9664e3}{frames2signal()} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file temporal\+\_\+mean\+\_\+calc.\+cpp.
+
+\hypertarget{namespace_m_h_r_a22cd3e8872333ff4c203c15821bf69bb}{\index{M\+H\+R@{M\+H\+R}!unique\+\_\+stable@{unique\+\_\+stable}}
+\index{unique\+\_\+stable@{unique\+\_\+stable}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{unique\+\_\+stable}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ pair$<$ double, int $>$ $>$ M\+H\+R\+::unique\+\_\+stable (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ pair$<$ double, int $>$$>$ \&}]{arr}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a22cd3e8872333ff4c203c15821bf69bb}
+remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.~\newline
+all identical item will be removed just left the first appearing value.~\newline
+the order will be reserve. 
+
+Definition at line 74 of file matlab.\+cpp.
+
+\hypertarget{namespace_m_h_r_a391cd23b86d2d7411411d4595cb74b86}{\index{M\+H\+R@{M\+H\+R}!write\+Vector@{write\+Vector}}
+\index{write\+Vector@{write\+Vector}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{write\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void M\+H\+R\+::write\+Vector (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ double $>$ \&}]{src, }
+\item[{const String \&}]{out\+File, }
+\item[{bool}]{append = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{namespace_m_h_r_a391cd23b86d2d7411411d4595cb74b86}
+write a vector$<$double$>$ to a file. ~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em append} & if == true, then the function will append the vector at the end of the file, otherwise, it will overwrite the old file or create a new file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 78 of file files.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespace_m_h_r_ab83e011c36b7688dab5ef024c8894300}{\index{M\+H\+R@{M\+H\+R}!\+\_\+beat\+Signal\+Filter\+Kernel@{\+\_\+beat\+Signal\+Filter\+Kernel}}
+\index{\+\_\+beat\+Signal\+Filter\+Kernel@{\+\_\+beat\+Signal\+Filter\+Kernel}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+beat\+Signal\+Filter\+Kernel}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::\+\_\+beat\+Signal\+Filter\+Kernel}}\label{namespace_m_h_r_ab83e011c36b7688dab5ef024c8894300}
+
+
+Definition at line 76 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a5d907d8ef896004dce9f0fd1d47b77e7}{\index{M\+H\+R@{M\+H\+R}!\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size@{\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}}
+\index{\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size@{\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size = -\/1}}\label{namespace_m_h_r_a5d907d8ef896004dce9f0fd1d47b77e7}
+
+
+Definition at line 75 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a02a81ed541f6536b1632d65c8f2ad0d3}{\index{M\+H\+R@{M\+H\+R}!\+\_\+channels\+\_\+to\+\_\+process@{\+\_\+channels\+\_\+to\+\_\+process}}
+\index{\+\_\+channels\+\_\+to\+\_\+process@{\+\_\+channels\+\_\+to\+\_\+process}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+channels\+\_\+to\+\_\+process}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+channels\+\_\+to\+\_\+process = -\/1}}\label{namespace_m_h_r_a02a81ed541f6536b1632d65c8f2ad0d3}
+
+
+Definition at line 42 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a16dd6a785863f2fac97ebb334606c166}{\index{M\+H\+R@{M\+H\+R}!\+\_\+colourspace@{\+\_\+colourspace}}
+\index{\+\_\+colourspace@{\+\_\+colourspace}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+colourspace}]{\setlength{\rightskip}{0pt plus 5cm}String M\+H\+R\+::\+\_\+colourspace = \char`\"{}-\/1\char`\"{}}}\label{namespace_m_h_r_a16dd6a785863f2fac97ebb334606c166}
+
+
+Definition at line 41 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a9685359cac4522cd1ee584fbfb5371d1}{\index{M\+H\+R@{M\+H\+R}!\+\_\+cutoff\+\_\+freq@{\+\_\+cutoff\+\_\+freq}}
+\index{\+\_\+cutoff\+\_\+freq@{\+\_\+cutoff\+\_\+freq}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+cutoff\+\_\+freq}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+cutoff\+\_\+freq = -\/1}}\label{namespace_m_h_r_a9685359cac4522cd1ee584fbfb5371d1}
+
+
+Definition at line 39 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a2446951af16ca1137edb21f8e07019cb}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E@{\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E}}
+\index{\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E@{\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+D\+E = 0}}\label{namespace_m_h_r_a2446951af16ca1137edb21f8e07019cb}
+
+
+Definition at line 13 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a08d1602abf6cd2454b1f73a8d5523ac2}{\index{M\+H\+R@{M\+H\+R}!\+\_\+end\+Frame@{\+\_\+end\+Frame}}
+\index{\+\_\+end\+Frame@{\+\_\+end\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+end\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+end\+Frame = -\/1}}\label{namespace_m_h_r_a08d1602abf6cd2454b1f73a8d5523ac2}
+
+
+Definition at line 33 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a43ac6cb857f86cd5a9bc16e968faa1af}{\index{M\+H\+R@{M\+H\+R}!\+\_\+end\+Index@{\+\_\+end\+Index}}
+\index{\+\_\+end\+Index@{\+\_\+end\+Index}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+end\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+end\+Index = -\/1}}\label{namespace_m_h_r_a43ac6cb857f86cd5a9bc16e968faa1af}
+
+
+Definition at line 50 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_abbf22419d2dbaf1d661d5b73fc9af29b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+eulerian\+\_\+alpha@{\+\_\+eulerian\+\_\+alpha}}
+\index{\+\_\+eulerian\+\_\+alpha@{\+\_\+eulerian\+\_\+alpha}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+eulerian\+\_\+alpha}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+eulerian\+\_\+alpha = -\/1}}\label{namespace_m_h_r_abbf22419d2dbaf1d661d5b73fc9af29b}
+
+
+Definition at line 21 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_ad69f0161c9597e078014c52955264fd2}{\index{M\+H\+R@{M\+H\+R}!\+\_\+eulerian\+\_\+chroma\+Magnifier@{\+\_\+eulerian\+\_\+chroma\+Magnifier}}
+\index{\+\_\+eulerian\+\_\+chroma\+Magnifier@{\+\_\+eulerian\+\_\+chroma\+Magnifier}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+eulerian\+\_\+chroma\+Magnifier}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+eulerian\+\_\+chroma\+Magnifier = -\/1}}\label{namespace_m_h_r_ad69f0161c9597e078014c52955264fd2}
+
+
+Definition at line 26 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_ab6b7928e4485f421869d4fbac9a5c1cd}{\index{M\+H\+R@{M\+H\+R}!\+\_\+eulerian\+\_\+frame\+Rate@{\+\_\+eulerian\+\_\+frame\+Rate}}
+\index{\+\_\+eulerian\+\_\+frame\+Rate@{\+\_\+eulerian\+\_\+frame\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+eulerian\+\_\+frame\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+eulerian\+\_\+frame\+Rate = -\/1}}\label{namespace_m_h_r_ab6b7928e4485f421869d4fbac9a5c1cd}
+
+
+Definition at line 25 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_acb647c6b44ad0c7fac0fba37122d5889}{\index{M\+H\+R@{M\+H\+R}!\+\_\+eulerian\+\_\+max\+H\+R@{\+\_\+eulerian\+\_\+max\+H\+R}}
+\index{\+\_\+eulerian\+\_\+max\+H\+R@{\+\_\+eulerian\+\_\+max\+H\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+eulerian\+\_\+max\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+eulerian\+\_\+max\+H\+R = -\/1}}\label{namespace_m_h_r_acb647c6b44ad0c7fac0fba37122d5889}
+
+
+Definition at line 24 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_afe8a788bdd0504a98259321e41377180}{\index{M\+H\+R@{M\+H\+R}!\+\_\+eulerian\+\_\+min\+H\+R@{\+\_\+eulerian\+\_\+min\+H\+R}}
+\index{\+\_\+eulerian\+\_\+min\+H\+R@{\+\_\+eulerian\+\_\+min\+H\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+eulerian\+\_\+min\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+eulerian\+\_\+min\+H\+R = -\/1}}\label{namespace_m_h_r_afe8a788bdd0504a98259321e41377180}
+
+
+Definition at line 23 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a383bea7ba431fede0a30f05b3ae57536}{\index{M\+H\+R@{M\+H\+R}!\+\_\+eulerian\+\_\+pyr\+Level@{\+\_\+eulerian\+\_\+pyr\+Level}}
+\index{\+\_\+eulerian\+\_\+pyr\+Level@{\+\_\+eulerian\+\_\+pyr\+Level}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+eulerian\+\_\+pyr\+Level}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+eulerian\+\_\+pyr\+Level = -\/1}}\label{namespace_m_h_r_a383bea7ba431fede0a30f05b3ae57536}
+
+
+Definition at line 22 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a846528ce2187823d06b73caadf751570}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel@{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel}}
+\index{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel@{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel}]{\setlength{\rightskip}{0pt plus 5cm}const Mat M\+H\+R\+::\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel}}\label{namespace_m_h_r_a846528ce2187823d06b73caadf751570}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= (Mat\_<double>(1, \hyperlink{namespace_m_h_r_a7f9a1a070d8e2c3eb72d79c71b2f468a}{\_face\_beatSignalFilterKernel\_size}) <<
+                                              -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
+                                              0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
+                                              0.0956, 0.0580, 0.0217, -0.0076, -0.0265)
+\end{DoxyCode}
+
+
+Definition at line 82 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a7f9a1a070d8e2c3eb72d79c71b2f468a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size@{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}}
+\index{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size@{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size = 15}}\label{namespace_m_h_r_a7f9a1a070d8e2c3eb72d79c71b2f468a}
+
+
+Definition at line 81 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ac3a2dbcaefbcbb5814108c711ebd1fe1}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+channels\+\_\+to\+\_\+process@{\+\_\+face\+\_\+channels\+\_\+to\+\_\+process}}
+\index{\+\_\+face\+\_\+channels\+\_\+to\+\_\+process@{\+\_\+face\+\_\+channels\+\_\+to\+\_\+process}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+channels\+\_\+to\+\_\+process}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+channels\+\_\+to\+\_\+process = 1}}\label{namespace_m_h_r_ac3a2dbcaefbcbb5814108c711ebd1fe1}
+
+
+Definition at line 40 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a2c3d7c5df37d2106e5f4351ebeb44c2f}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+colourspace@{\+\_\+face\+\_\+colourspace}}
+\index{\+\_\+face\+\_\+colourspace@{\+\_\+face\+\_\+colourspace}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+colourspace}]{\setlength{\rightskip}{0pt plus 5cm}const String M\+H\+R\+::\+\_\+face\+\_\+colourspace = \char`\"{}tsl\char`\"{}}}\label{namespace_m_h_r_a2c3d7c5df37d2106e5f4351ebeb44c2f}
+
+
+Definition at line 39 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_afc5d67d6a0c4929f2fc30dce703740fe}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+cutoff\+\_\+freq@{\+\_\+face\+\_\+cutoff\+\_\+freq}}
+\index{\+\_\+face\+\_\+cutoff\+\_\+freq@{\+\_\+face\+\_\+cutoff\+\_\+freq}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+cutoff\+\_\+freq}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+cutoff\+\_\+freq = 2.\+5}}\label{namespace_m_h_r_afc5d67d6a0c4929f2fc30dce703740fe}
+
+
+Definition at line 37 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a349e142bd15540a9d0b5b63f426fc3dc}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+end\+Frame@{\+\_\+face\+\_\+end\+Frame}}
+\index{\+\_\+face\+\_\+end\+Frame@{\+\_\+face\+\_\+end\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+end\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+end\+Frame = 0}}\label{namespace_m_h_r_a349e142bd15540a9d0b5b63f426fc3dc}
+
+
+Definition at line 31 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ad45b2867da1e1b69dee3648585a3ad3a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+end\+Index@{\+\_\+face\+\_\+end\+Index}}
+\index{\+\_\+face\+\_\+end\+Index@{\+\_\+face\+\_\+end\+Index}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+end\+Index}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+end\+Index = 0}}\label{namespace_m_h_r_ad45b2867da1e1b69dee3648585a3ad3a}
+
+
+Definition at line 48 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a0f9c0b966020cdd7ef37cb2207d981ab}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+eulerian\+\_\+alpha@{\+\_\+face\+\_\+eulerian\+\_\+alpha}}
+\index{\+\_\+face\+\_\+eulerian\+\_\+alpha@{\+\_\+face\+\_\+eulerian\+\_\+alpha}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+eulerian\+\_\+alpha}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+eulerian\+\_\+alpha = 50}}\label{namespace_m_h_r_a0f9c0b966020cdd7ef37cb2207d981ab}
+
+
+Definition at line 20 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a5b039641e0cf1a30ba4f303e4764b4c8}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier@{\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier}}
+\index{\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier@{\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+eulerian\+\_\+chroma\+Magnifier = 1}}\label{namespace_m_h_r_a5b039641e0cf1a30ba4f303e4764b4c8}
+
+
+Definition at line 25 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a3c21f6619922e618bff40700a5723015}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate@{\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate}}
+\index{\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate@{\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+eulerian\+\_\+frame\+Rate = 30}}\label{namespace_m_h_r_a3c21f6619922e618bff40700a5723015}
+
+
+Definition at line 24 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a366f66e2cd387cf039dc5d7de4ff5f9d}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R@{\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R}}
+\index{\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R@{\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+eulerian\+\_\+max\+H\+R = 240}}\label{namespace_m_h_r_a366f66e2cd387cf039dc5d7de4ff5f9d}
+
+
+Definition at line 23 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a95e1651df07df85f364ac713aac7a53b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R@{\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R}}
+\index{\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R@{\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+eulerian\+\_\+min\+H\+R = 30}}\label{namespace_m_h_r_a95e1651df07df85f364ac713aac7a53b}
+
+
+Definition at line 22 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a3eae7b41b03bf25902413f62c5e6545d}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level@{\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level}}
+\index{\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level@{\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+eulerian\+\_\+pyr\+Level = 6}}\label{namespace_m_h_r_a3eae7b41b03bf25902413f62c5e6545d}
+
+
+Definition at line 21 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ade58b99d0d2023434646cb0597baafdf}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+flag\+Debug@{\+\_\+face\+\_\+flag\+Debug}}
+\index{\+\_\+face\+\_\+flag\+Debug@{\+\_\+face\+\_\+flag\+Debug}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+flag\+Debug}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+flag\+Debug = 0}}\label{namespace_m_h_r_ade58b99d0d2023434646cb0597baafdf}
+
+
+Definition at line 44 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a6e9575c56ad75e4e165fd62fad98734f}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+flag\+Get\+Raw@{\+\_\+face\+\_\+flag\+Get\+Raw}}
+\index{\+\_\+face\+\_\+flag\+Get\+Raw@{\+\_\+face\+\_\+flag\+Get\+Raw}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+flag\+Get\+Raw}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+flag\+Get\+Raw = 0}}\label{namespace_m_h_r_a6e9575c56ad75e4e165fd62fad98734f}
+
+
+Definition at line 45 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a53c978f9017a65e09546b90474f17111}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt@{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt}}
+\index{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt@{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt}]{\setlength{\rightskip}{0pt plus 5cm}const Mat M\+H\+R\+::\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt}}\label{namespace_m_h_r_a53c978f9017a65e09546b90474f17111}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+        (Mat\_<double>(\hyperlink{namespace_m_h_r_a7fa6df2df062c81344149450be58164a}{\_face\_frame\_downsampling\_filt\_rows},
+      \hyperlink{namespace_m_h_r_ae762029528d214f277ed064282784d3b}{\_face\_frame\_downsampling\_filt\_cols}) <<
+           0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
+           0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+           0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
+           0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175,
+           0.0162, 0.0241, 0.0241307, 0.0332, 0.0307, 0.0241, 0.0162,
+           0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+           0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085)
+\end{DoxyCode}
+
+
+Definition at line 55 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ae762029528d214f277ed064282784d3b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols@{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}}
+\index{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols@{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols = 7}}\label{namespace_m_h_r_ae762029528d214f277ed064282784d3b}
+
+
+Definition at line 54 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a7fa6df2df062c81344149450be58164a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows@{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}}
+\index{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows@{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows = 7}}\label{namespace_m_h_r_a7fa6df2df062c81344149450be58164a}
+
+
+Definition at line 53 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a634c25b34e7aa6bbb3cfc346964d2f90}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+frames2signal\+Conversion\+Method@{\+\_\+face\+\_\+frames2signal\+Conversion\+Method}}
+\index{\+\_\+face\+\_\+frames2signal\+Conversion\+Method@{\+\_\+face\+\_\+frames2signal\+Conversion\+Method}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+frames2signal\+Conversion\+Method}]{\setlength{\rightskip}{0pt plus 5cm}const String M\+H\+R\+::\+\_\+face\+\_\+frames2signal\+Conversion\+Method = \char`\"{}mode-\/balance\char`\"{}}}\label{namespace_m_h_r_a634c25b34e7aa6bbb3cfc346964d2f90}
+
+
+Definition at line 51 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a7eabffdab2df22a98e5aa4046d6c3baf}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length@{\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length}}
+\index{\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length@{\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+\+Gpyr\+\_\+filter\+\_\+length = 5}}\label{namespace_m_h_r_a7eabffdab2df22a98e5aa4046d6c3baf}
+
+
+Definition at line 29 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a123d7bba4eba9d4c49ebe21458394a9a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+max\+\_\+bpm@{\+\_\+face\+\_\+max\+\_\+bpm}}
+\index{\+\_\+face\+\_\+max\+\_\+bpm@{\+\_\+face\+\_\+max\+\_\+bpm}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+max\+\_\+bpm}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+max\+\_\+bpm = 200}}\label{namespace_m_h_r_a123d7bba4eba9d4c49ebe21458394a9a}
+
+
+Definition at line 36 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a364268cdc7b75db63f89c9d8960aa1b4}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E@{\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E}}
+\index{\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E@{\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}bool M\+H\+R\+::\+\_\+\+F\+A\+C\+E\+\_\+\+M\+O\+D\+E = true}}\label{namespace_m_h_r_a364268cdc7b75db63f89c9d8960aa1b4}
+
+
+Definition at line 16 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a2c4c769eba572cf1388059c68e02804a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+number\+\_\+of\+\_\+bins@{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins}}
+\index{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins@{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+number\+\_\+of\+\_\+bins = 50}}\label{namespace_m_h_r_a2c4c769eba572cf1388059c68e02804a}
+
+
+Definition at line 73 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_abfcdcdfbf5694a70c871df5484e30321}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate@{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}}
+\index{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate@{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate = 5}}\label{namespace_m_h_r_abfcdcdfbf5694a70c871df5484e30321}
+
+
+Definition at line 41 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a1af8c23e0ffae759111c964d2369a13b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+number\+\_\+of\+\_\+channels@{\+\_\+face\+\_\+number\+\_\+of\+\_\+channels}}
+\index{\+\_\+face\+\_\+number\+\_\+of\+\_\+channels@{\+\_\+face\+\_\+number\+\_\+of\+\_\+channels}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+number\+\_\+of\+\_\+channels}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+number\+\_\+of\+\_\+channels = 3}}\label{namespace_m_h_r_a1af8c23e0ffae759111c964d2369a13b}
+
+
+Definition at line 28 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ab6430d316d9d82ce08b7d35fda6ba14e}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+overlap\+\_\+ratio@{\+\_\+face\+\_\+overlap\+\_\+ratio}}
+\index{\+\_\+face\+\_\+overlap\+\_\+ratio@{\+\_\+face\+\_\+overlap\+\_\+ratio}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+overlap\+\_\+ratio}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+overlap\+\_\+ratio = 0}}\label{namespace_m_h_r_ab6430d316d9d82ce08b7d35fda6ba14e}
+
+
+Definition at line 35 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a50b60319fb33591915a63ce9b618a18c}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode@{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}}
+\index{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode@{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode = 45}}\label{namespace_m_h_r_a50b60319fb33591915a63ce9b618a18c}
+
+
+Definition at line 75 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ac4235bc51ec51e261f5822920a5886b0}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode@{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}}
+\index{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode@{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode = 45}}\label{namespace_m_h_r_ac4235bc51ec51e261f5822920a5886b0}
+
+
+Definition at line 74 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_adad3be408f5b45234ee745acc33d6ac8}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction@{\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction}}
+\index{\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction@{\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+peak\+Strength\+Threshold\+\_\+fraction = 0}}\label{namespace_m_h_r_adad3be408f5b45234ee745acc33d6ac8}
+
+
+Definition at line 50 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ac893410fca7e7a76ae562e47f8371cc1}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+start\+Frame@{\+\_\+face\+\_\+start\+Frame}}
+\index{\+\_\+face\+\_\+start\+Frame@{\+\_\+face\+\_\+start\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+start\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+start\+Frame = 0}}\label{namespace_m_h_r_ac893410fca7e7a76ae562e47f8371cc1}
+
+
+Definition at line 30 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a5c705653d488611b87b11e41e4ffbfd5}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+start\+Index@{\+\_\+face\+\_\+start\+Index}}
+\index{\+\_\+face\+\_\+start\+Index@{\+\_\+face\+\_\+start\+Index}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+start\+Index}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+start\+Index = 1}}\label{namespace_m_h_r_a5c705653d488611b87b11e41e4ffbfd5}
+
+
+Definition at line 47 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ad108537351ba024dfa150411983a69c4}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+time\+\_\+lag@{\+\_\+face\+\_\+time\+\_\+lag}}
+\index{\+\_\+face\+\_\+time\+\_\+lag@{\+\_\+face\+\_\+time\+\_\+lag}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+time\+\_\+lag}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+time\+\_\+lag = 3}}\label{namespace_m_h_r_ad108537351ba024dfa150411983a69c4}
+
+
+Definition at line 38 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a86e77ed79df316c170e425d131558571}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+training\+\_\+time\+\_\+end@{\+\_\+face\+\_\+training\+\_\+time\+\_\+end}}
+\index{\+\_\+face\+\_\+training\+\_\+time\+\_\+end@{\+\_\+face\+\_\+training\+\_\+time\+\_\+end}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+training\+\_\+time\+\_\+end}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+training\+\_\+time\+\_\+end = 0.\+2}}\label{namespace_m_h_r_a86e77ed79df316c170e425d131558571}
+
+
+Definition at line 72 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a4ad71fd0cc039551252ae1929fbbfea9}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+training\+\_\+time\+\_\+start@{\+\_\+face\+\_\+training\+\_\+time\+\_\+start}}
+\index{\+\_\+face\+\_\+training\+\_\+time\+\_\+start@{\+\_\+face\+\_\+training\+\_\+time\+\_\+start}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+training\+\_\+time\+\_\+start}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+training\+\_\+time\+\_\+start = 0}}\label{namespace_m_h_r_a4ad71fd0cc039551252ae1929fbbfea9}
+
+
+Definition at line 71 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ae64aacd3f078b0c1ecfefee56c27e3ce}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+trimmed\+\_\+size@{\+\_\+face\+\_\+trimmed\+\_\+size}}
+\index{\+\_\+face\+\_\+trimmed\+\_\+size@{\+\_\+face\+\_\+trimmed\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+trimmed\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+face\+\_\+trimmed\+\_\+size = 30}}\label{namespace_m_h_r_ae64aacd3f078b0c1ecfefee56c27e3ce}
+
+
+Definition at line 68 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ada7fab40b0e865f6a26751fd550b5288}{\index{M\+H\+R@{M\+H\+R}!\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec@{\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}}
+\index{\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec@{\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+face\+\_\+window\+\_\+size\+\_\+in\+\_\+sec = 10}}\label{namespace_m_h_r_ada7fab40b0e865f6a26751fd550b5288}
+
+
+Definition at line 34 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a7c6f13da1b28c69fdd787e07d05c7503}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel@{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel}}
+\index{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel@{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel}]{\setlength{\rightskip}{0pt plus 5cm}const Mat M\+H\+R\+::\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel}}\label{namespace_m_h_r_a7c6f13da1b28c69fdd787e07d05c7503}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= (Mat\_<double>(1, \hyperlink{namespace_m_h_r_a9b1303d740470ce969352e3173a27ebb}{\_finger\_beatSignalFilterKernel\_size}) <<
+                                              -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
+                                              0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
+                                              0.0956, 0.0580, 0.0217, -0.0076, -0.0265)
+\end{DoxyCode}
+
+
+Definition at line 82 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a9b1303d740470ce969352e3173a27ebb}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size@{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}}
+\index{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size@{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+beat\+Signal\+Filter\+Kernel\+\_\+size = 15}}\label{namespace_m_h_r_a9b1303d740470ce969352e3173a27ebb}
+
+
+Definition at line 81 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a16934905e88de3a2d084e6734948ec65}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process@{\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process}}
+\index{\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process@{\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+channels\+\_\+to\+\_\+process = 0}}\label{namespace_m_h_r_a16934905e88de3a2d084e6734948ec65}
+
+
+Definition at line 40 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_af6ec9103edc4e3fe7011676f91c83c26}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+colourspace@{\+\_\+finger\+\_\+colourspace}}
+\index{\+\_\+finger\+\_\+colourspace@{\+\_\+finger\+\_\+colourspace}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+colourspace}]{\setlength{\rightskip}{0pt plus 5cm}const String M\+H\+R\+::\+\_\+finger\+\_\+colourspace = \char`\"{}rgb\char`\"{}}}\label{namespace_m_h_r_af6ec9103edc4e3fe7011676f91c83c26}
+
+
+Definition at line 39 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a6125713b446a1bdd5bbc0fb9e75fc58e}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+cutoff\+\_\+freq@{\+\_\+finger\+\_\+cutoff\+\_\+freq}}
+\index{\+\_\+finger\+\_\+cutoff\+\_\+freq@{\+\_\+finger\+\_\+cutoff\+\_\+freq}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+cutoff\+\_\+freq}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+cutoff\+\_\+freq = 2.\+5}}\label{namespace_m_h_r_a6125713b446a1bdd5bbc0fb9e75fc58e}
+
+
+Definition at line 37 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_aab21e4fd871ccbbdfc656aa4d64aa688}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+end\+Frame@{\+\_\+finger\+\_\+end\+Frame}}
+\index{\+\_\+finger\+\_\+end\+Frame@{\+\_\+finger\+\_\+end\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+end\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+end\+Frame = 0}}\label{namespace_m_h_r_aab21e4fd871ccbbdfc656aa4d64aa688}
+
+
+Definition at line 31 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a8b1ee45fde805239e5267fb0dcb03735}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+end\+Index@{\+\_\+finger\+\_\+end\+Index}}
+\index{\+\_\+finger\+\_\+end\+Index@{\+\_\+finger\+\_\+end\+Index}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+end\+Index}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+end\+Index = 0}}\label{namespace_m_h_r_a8b1ee45fde805239e5267fb0dcb03735}
+
+
+Definition at line 48 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_abe389732cdfc0aa8ebf51a84c4e645a4}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+eulerian\+\_\+alpha@{\+\_\+finger\+\_\+eulerian\+\_\+alpha}}
+\index{\+\_\+finger\+\_\+eulerian\+\_\+alpha@{\+\_\+finger\+\_\+eulerian\+\_\+alpha}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+eulerian\+\_\+alpha}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+eulerian\+\_\+alpha = 50}}\label{namespace_m_h_r_abe389732cdfc0aa8ebf51a84c4e645a4}
+
+
+Definition at line 20 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_adc0b183529468e1b7d2eec8275c004a6}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier@{\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier}}
+\index{\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier@{\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+eulerian\+\_\+chroma\+Magnifier = 1}}\label{namespace_m_h_r_adc0b183529468e1b7d2eec8275c004a6}
+
+
+Definition at line 25 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a6a102813ef2ea5aa11cadcc9ebaa5bbc}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate@{\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate}}
+\index{\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate@{\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+eulerian\+\_\+frame\+Rate = 30}}\label{namespace_m_h_r_a6a102813ef2ea5aa11cadcc9ebaa5bbc}
+
+
+Definition at line 24 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ab2ef19fc7e685e8a85fbbbc75320fd6e}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R@{\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R}}
+\index{\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R@{\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+eulerian\+\_\+max\+H\+R = 240}}\label{namespace_m_h_r_ab2ef19fc7e685e8a85fbbbc75320fd6e}
+
+
+Definition at line 23 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a2d844de82559885b3d8a333c82b1a733}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R@{\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R}}
+\index{\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R@{\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+eulerian\+\_\+min\+H\+R = 30}}\label{namespace_m_h_r_a2d844de82559885b3d8a333c82b1a733}
+
+
+Definition at line 22 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a197af9978c9b4d443571197f5ad1b019}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level@{\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level}}
+\index{\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level@{\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+eulerian\+\_\+pyr\+Level = 6}}\label{namespace_m_h_r_a197af9978c9b4d443571197f5ad1b019}
+
+
+Definition at line 21 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_aefc7157a4757a4b9017c968a17fb8ee1}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+flag\+Debug@{\+\_\+finger\+\_\+flag\+Debug}}
+\index{\+\_\+finger\+\_\+flag\+Debug@{\+\_\+finger\+\_\+flag\+Debug}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+flag\+Debug}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+flag\+Debug = 0}}\label{namespace_m_h_r_aefc7157a4757a4b9017c968a17fb8ee1}
+
+
+Definition at line 44 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a24fb7c804c7833388056a5e417354257}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+flag\+Get\+Raw@{\+\_\+finger\+\_\+flag\+Get\+Raw}}
+\index{\+\_\+finger\+\_\+flag\+Get\+Raw@{\+\_\+finger\+\_\+flag\+Get\+Raw}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+flag\+Get\+Raw}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+flag\+Get\+Raw = 0}}\label{namespace_m_h_r_a24fb7c804c7833388056a5e417354257}
+
+
+Definition at line 45 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a9a40d6696920c99016b2c4cc40e8db3b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt@{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt}}
+\index{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt@{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt}]{\setlength{\rightskip}{0pt plus 5cm}const Mat M\+H\+R\+::\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt}}\label{namespace_m_h_r_a9a40d6696920c99016b2c4cc40e8db3b}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+        (Mat\_<double>(\hyperlink{namespace_m_h_r_a5d49af784fd77df019705d26d3654953}{\_finger\_frame\_downsampling\_filt\_rows}, 
+      \hyperlink{namespace_m_h_r_a2c854934355cedc3760bfddd3bcd03a6}{\_finger\_frame\_downsampling\_filt\_cols}) <<
+             0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
+             0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+             0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
+             0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175,
+             0.0162, 0.0241, 0.0241307, 0.0332, 0.0307, 0.0241, 0.0162,
+             0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+             0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085)
+\end{DoxyCode}
+
+
+Definition at line 55 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a2c854934355cedc3760bfddd3bcd03a6}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols@{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}}
+\index{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols@{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols = 7}}\label{namespace_m_h_r_a2c854934355cedc3760bfddd3bcd03a6}
+
+
+Definition at line 54 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a5d49af784fd77df019705d26d3654953}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows@{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}}
+\index{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows@{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows = 7}}\label{namespace_m_h_r_a5d49af784fd77df019705d26d3654953}
+
+
+Definition at line 53 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a4c571f87fe52934440add1a3a5a98e14}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+frames2signal\+Conversion\+Method@{\+\_\+finger\+\_\+frames2signal\+Conversion\+Method}}
+\index{\+\_\+finger\+\_\+frames2signal\+Conversion\+Method@{\+\_\+finger\+\_\+frames2signal\+Conversion\+Method}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+frames2signal\+Conversion\+Method}]{\setlength{\rightskip}{0pt plus 5cm}const String M\+H\+R\+::\+\_\+finger\+\_\+frames2signal\+Conversion\+Method = \char`\"{}mode-\/balance\char`\"{}}}\label{namespace_m_h_r_a4c571f87fe52934440add1a3a5a98e14}
+
+
+Definition at line 51 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a5b1bf691aa0c1246b140b3f67580c229}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length@{\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length}}
+\index{\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length@{\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+\+Gpyr\+\_\+filter\+\_\+length = 5}}\label{namespace_m_h_r_a5b1bf691aa0c1246b140b3f67580c229}
+
+
+Definition at line 29 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ae15a1148a0dba9f30071db8315b9fe88}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+max\+\_\+bpm@{\+\_\+finger\+\_\+max\+\_\+bpm}}
+\index{\+\_\+finger\+\_\+max\+\_\+bpm@{\+\_\+finger\+\_\+max\+\_\+bpm}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+max\+\_\+bpm}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+max\+\_\+bpm = 200}}\label{namespace_m_h_r_ae15a1148a0dba9f30071db8315b9fe88}
+
+
+Definition at line 36 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a1cd0eaa85c6115e1d53ad1c1a3209b41}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins@{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins}}
+\index{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins@{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins = 50}}\label{namespace_m_h_r_a1cd0eaa85c6115e1d53ad1c1a3209b41}
+
+
+Definition at line 73 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a2762706b15a5accb61b7efa79cd0617a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate@{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}}
+\index{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate@{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate = 5}}\label{namespace_m_h_r_a2762706b15a5accb61b7efa79cd0617a}
+
+
+Definition at line 41 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_aa01f8308d2cb5cdb00c4a45de8a8cd5e}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels@{\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels}}
+\index{\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels@{\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+number\+\_\+of\+\_\+channels = 3}}\label{namespace_m_h_r_aa01f8308d2cb5cdb00c4a45de8a8cd5e}
+
+
+Definition at line 28 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a6ab2b5eaa5246621b9039b65e5501f1c}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+overlap\+\_\+ratio@{\+\_\+finger\+\_\+overlap\+\_\+ratio}}
+\index{\+\_\+finger\+\_\+overlap\+\_\+ratio@{\+\_\+finger\+\_\+overlap\+\_\+ratio}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+overlap\+\_\+ratio}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+overlap\+\_\+ratio = 0}}\label{namespace_m_h_r_a6ab2b5eaa5246621b9039b65e5501f1c}
+
+
+Definition at line 35 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a8c272379feda002b512fbc5e3e917000}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode@{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}}
+\index{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode@{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode = 45}}\label{namespace_m_h_r_a8c272379feda002b512fbc5e3e917000}
+
+
+Definition at line 75 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a9714df3caf979755314e0a049dd96368}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode@{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}}
+\index{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode@{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode = 45}}\label{namespace_m_h_r_a9714df3caf979755314e0a049dd96368}
+
+
+Definition at line 74 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a417e8c2df65251a5a34b250f975a3867}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction@{\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction}}
+\index{\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction@{\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+peak\+Strength\+Threshold\+\_\+fraction = 0}}\label{namespace_m_h_r_a417e8c2df65251a5a34b250f975a3867}
+
+
+Definition at line 50 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a9b0e8542961b24a5dc2e1f77df715b51}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+start\+Frame@{\+\_\+finger\+\_\+start\+Frame}}
+\index{\+\_\+finger\+\_\+start\+Frame@{\+\_\+finger\+\_\+start\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+start\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+start\+Frame = 0}}\label{namespace_m_h_r_a9b0e8542961b24a5dc2e1f77df715b51}
+
+
+Definition at line 30 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a25e5a8e8b0d72f6cfa98fa75e943f35e}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+start\+Index@{\+\_\+finger\+\_\+start\+Index}}
+\index{\+\_\+finger\+\_\+start\+Index@{\+\_\+finger\+\_\+start\+Index}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+start\+Index}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+start\+Index = 1}}\label{namespace_m_h_r_a25e5a8e8b0d72f6cfa98fa75e943f35e}
+
+
+Definition at line 47 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ae2523999aef7718ac3e6edeb318edf8a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+time\+\_\+lag@{\+\_\+finger\+\_\+time\+\_\+lag}}
+\index{\+\_\+finger\+\_\+time\+\_\+lag@{\+\_\+finger\+\_\+time\+\_\+lag}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+time\+\_\+lag}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+time\+\_\+lag = 3}}\label{namespace_m_h_r_ae2523999aef7718ac3e6edeb318edf8a}
+
+
+Definition at line 38 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a69b9408e97af3e5261c4ede559d9f7d6}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+training\+\_\+time\+\_\+end@{\+\_\+finger\+\_\+training\+\_\+time\+\_\+end}}
+\index{\+\_\+finger\+\_\+training\+\_\+time\+\_\+end@{\+\_\+finger\+\_\+training\+\_\+time\+\_\+end}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+training\+\_\+time\+\_\+end}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+training\+\_\+time\+\_\+end = 0.\+2}}\label{namespace_m_h_r_a69b9408e97af3e5261c4ede559d9f7d6}
+
+
+Definition at line 72 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_afcd48923eb1d7b2aff98acc4cf2a9d24}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+training\+\_\+time\+\_\+start@{\+\_\+finger\+\_\+training\+\_\+time\+\_\+start}}
+\index{\+\_\+finger\+\_\+training\+\_\+time\+\_\+start@{\+\_\+finger\+\_\+training\+\_\+time\+\_\+start}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+training\+\_\+time\+\_\+start}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+training\+\_\+time\+\_\+start = 0}}\label{namespace_m_h_r_afcd48923eb1d7b2aff98acc4cf2a9d24}
+
+
+Definition at line 71 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a8a6e23a5b4183588a231061fe7d43524}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+trimmed\+\_\+size@{\+\_\+finger\+\_\+trimmed\+\_\+size}}
+\index{\+\_\+finger\+\_\+trimmed\+\_\+size@{\+\_\+finger\+\_\+trimmed\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+trimmed\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+finger\+\_\+trimmed\+\_\+size = 30}}\label{namespace_m_h_r_a8a6e23a5b4183588a231061fe7d43524}
+
+
+Definition at line 68 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a04093f94b342ed569322ef2c3a5bcce2}{\index{M\+H\+R@{M\+H\+R}!\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec@{\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}}
+\index{\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec@{\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+\_\+finger\+\_\+window\+\_\+size\+\_\+in\+\_\+sec = 10}}\label{namespace_m_h_r_a04093f94b342ed569322ef2c3a5bcce2}
+
+
+Definition at line 34 of file finger\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ae2f1f5bafa06074dcb8f0af01a058c81}{\index{M\+H\+R@{M\+H\+R}!\+\_\+flag\+Debug@{\+\_\+flag\+Debug}}
+\index{\+\_\+flag\+Debug@{\+\_\+flag\+Debug}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+flag\+Debug}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+flag\+Debug = -\/1}}\label{namespace_m_h_r_ae2f1f5bafa06074dcb8f0af01a058c81}
+
+
+Definition at line 46 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_ab142c69d1b89170b4fa2533a6f749394}{\index{M\+H\+R@{M\+H\+R}!\+\_\+flag\+Get\+Raw@{\+\_\+flag\+Get\+Raw}}
+\index{\+\_\+flag\+Get\+Raw@{\+\_\+flag\+Get\+Raw}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+flag\+Get\+Raw}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+flag\+Get\+Raw = -\/1}}\label{namespace_m_h_r_ab142c69d1b89170b4fa2533a6f749394}
+
+
+Definition at line 47 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a8d2bbf36755f538d9b442b415d5cde6d}{\index{M\+H\+R@{M\+H\+R}!\+\_\+frame\+\_\+downsampling\+\_\+filt@{\+\_\+frame\+\_\+downsampling\+\_\+filt}}
+\index{\+\_\+frame\+\_\+downsampling\+\_\+filt@{\+\_\+frame\+\_\+downsampling\+\_\+filt}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+frame\+\_\+downsampling\+\_\+filt}]{\setlength{\rightskip}{0pt plus 5cm}Mat M\+H\+R\+::\+\_\+frame\+\_\+downsampling\+\_\+filt}}\label{namespace_m_h_r_a8d2bbf36755f538d9b442b415d5cde6d}
+
+
+Definition at line 57 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a619373c68caeeba93f71d9eaeecf1a5b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols@{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}}
+\index{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols@{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+cols = -\/1}}\label{namespace_m_h_r_a619373c68caeeba93f71d9eaeecf1a5b}
+
+
+Definition at line 56 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a41fcc40bb1f54975292b8d7051b7b3f9}{\index{M\+H\+R@{M\+H\+R}!\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows@{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}}
+\index{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows@{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+frame\+\_\+downsampling\+\_\+filt\+\_\+rows = -\/1}}\label{namespace_m_h_r_a41fcc40bb1f54975292b8d7051b7b3f9}
+
+
+Definition at line 55 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a8c0f2199ebe2a27a2fc0cff1daa239ee}{\index{M\+H\+R@{M\+H\+R}!\+\_\+frame\+Rate@{\+\_\+frame\+Rate}}
+\index{\+\_\+frame\+Rate@{\+\_\+frame\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+frame\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+frame\+Rate = 30}}\label{namespace_m_h_r_a8c0f2199ebe2a27a2fc0cff1daa239ee}
+
+
+Definition at line 29 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_aaaae88f4be078b944fe63b49c5022684}{\index{M\+H\+R@{M\+H\+R}!\+\_\+frames2signal\+Conversion\+Method@{\+\_\+frames2signal\+Conversion\+Method}}
+\index{\+\_\+frames2signal\+Conversion\+Method@{\+\_\+frames2signal\+Conversion\+Method}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+frames2signal\+Conversion\+Method}]{\setlength{\rightskip}{0pt plus 5cm}String M\+H\+R\+::\+\_\+frames2signal\+Conversion\+Method = \char`\"{}-\/1\char`\"{}}}\label{namespace_m_h_r_aaaae88f4be078b944fe63b49c5022684}
+
+
+Definition at line 53 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a167cff7309df5114f9e72af8b5e820c1}{\index{M\+H\+R@{M\+H\+R}!\+\_\+frames\+Block\+\_\+size@{\+\_\+frames\+Block\+\_\+size}}
+\index{\+\_\+frames\+Block\+\_\+size@{\+\_\+frames\+Block\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+frames\+Block\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+frames\+Block\+\_\+size = 128}}\label{namespace_m_h_r_a167cff7309df5114f9e72af8b5e820c1}
+
+
+Definition at line 27 of file config.\+h.
+
+\hypertarget{namespace_m_h_r_ac3927bf3a2b93c8dc4ef19ee1a3d55f8}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+Gpyr\+\_\+filter\+\_\+length@{\+\_\+\+Gpyr\+\_\+filter\+\_\+length}}
+\index{\+\_\+\+Gpyr\+\_\+filter\+\_\+length@{\+\_\+\+Gpyr\+\_\+filter\+\_\+length}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+Gpyr\+\_\+filter\+\_\+length}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+\+Gpyr\+\_\+filter\+\_\+length = -\/1}}\label{namespace_m_h_r_ac3927bf3a2b93c8dc4ef19ee1a3d55f8}
+
+
+Definition at line 31 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a1a13273dd519ccfaf4dc1800bd2031d2}{\index{M\+H\+R@{M\+H\+R}!\+\_\+max\+\_\+bpm@{\+\_\+max\+\_\+bpm}}
+\index{\+\_\+max\+\_\+bpm@{\+\_\+max\+\_\+bpm}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+max\+\_\+bpm}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+max\+\_\+bpm = -\/1}}\label{namespace_m_h_r_a1a13273dd519ccfaf4dc1800bd2031d2}
+
+
+Definition at line 38 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a0a7cdb59c1f1e8af6e6b61543c81724d}{\index{M\+H\+R@{M\+H\+R}!\+\_\+max\+Vid\+Length@{\+\_\+max\+Vid\+Length}}
+\index{\+\_\+max\+Vid\+Length@{\+\_\+max\+Vid\+Length}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+max\+Vid\+Length}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+max\+Vid\+Length = 30}}\label{namespace_m_h_r_a0a7cdb59c1f1e8af6e6b61543c81724d}
+
+
+Definition at line 29 of file config.\+h.
+
+\hypertarget{namespace_m_h_r_aced573ebf5ae641d5c3a58c9762462fb}{\index{M\+H\+R@{M\+H\+R}!\+\_\+min\+Vid\+Length@{\+\_\+min\+Vid\+Length}}
+\index{\+\_\+min\+Vid\+Length@{\+\_\+min\+Vid\+Length}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+min\+Vid\+Length}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+min\+Vid\+Length = 15}}\label{namespace_m_h_r_aced573ebf5ae641d5c3a58c9762462fb}
+
+
+Definition at line 28 of file config.\+h.
+
+\hypertarget{namespace_m_h_r_ab3a5de59c2eed470e94ca0e79abd2b5c}{\index{M\+H\+R@{M\+H\+R}!\+\_\+number\+\_\+of\+\_\+bins@{\+\_\+number\+\_\+of\+\_\+bins}}
+\index{\+\_\+number\+\_\+of\+\_\+bins@{\+\_\+number\+\_\+of\+\_\+bins}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+number\+\_\+of\+\_\+bins}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+number\+\_\+of\+\_\+bins = -\/1}}\label{namespace_m_h_r_ab3a5de59c2eed470e94ca0e79abd2b5c}
+
+
+Definition at line 67 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a5a4548440538bf0354499b42e7983f2f}{\index{M\+H\+R@{M\+H\+R}!\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate@{\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}}
+\index{\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate@{\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+number\+\_\+of\+\_\+bins\+\_\+heart\+Rate = -\/1}}\label{namespace_m_h_r_a5a4548440538bf0354499b42e7983f2f}
+
+
+Definition at line 43 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a2ff626868d0be78114be4abbcd0ba01b}{\index{M\+H\+R@{M\+H\+R}!\+\_\+number\+\_\+of\+\_\+channels@{\+\_\+number\+\_\+of\+\_\+channels}}
+\index{\+\_\+number\+\_\+of\+\_\+channels@{\+\_\+number\+\_\+of\+\_\+channels}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+number\+\_\+of\+\_\+channels}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+number\+\_\+of\+\_\+channels = -\/1}}\label{namespace_m_h_r_a2ff626868d0be78114be4abbcd0ba01b}
+
+
+Definition at line 30 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a15d81a6b22ae7616409d6df6101690eb}{\index{M\+H\+R@{M\+H\+R}!\+\_\+output\+Path@{\+\_\+output\+Path}}
+\index{\+\_\+output\+Path@{\+\_\+output\+Path}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+output\+Path}]{\setlength{\rightskip}{0pt plus 5cm}String M\+H\+R\+::\+\_\+output\+Path = \char`\"{}N\+U\+L\+L\char`\"{}}}\label{namespace_m_h_r_a15d81a6b22ae7616409d6df6101690eb}
+
+
+Definition at line 18 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_aed0501a3045731a781439b11ee82fbfe}{\index{M\+H\+R@{M\+H\+R}!\+\_\+overlap\+\_\+ratio@{\+\_\+overlap\+\_\+ratio}}
+\index{\+\_\+overlap\+\_\+ratio@{\+\_\+overlap\+\_\+ratio}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+overlap\+\_\+ratio}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+overlap\+\_\+ratio = -\/1}}\label{namespace_m_h_r_aed0501a3045731a781439b11ee82fbfe}
+
+
+Definition at line 37 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a3b2e38d795c8389fd066cefa0af2ef47}{\index{M\+H\+R@{M\+H\+R}!\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode@{\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}}
+\index{\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode@{\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+pct\+\_\+reach\+\_\+above\+\_\+mode = -\/1}}\label{namespace_m_h_r_a3b2e38d795c8389fd066cefa0af2ef47}
+
+
+Definition at line 69 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_acb8b09915d13e40eba7f00718c40ce6a}{\index{M\+H\+R@{M\+H\+R}!\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode@{\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}}
+\index{\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode@{\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+pct\+\_\+reach\+\_\+below\+\_\+mode = -\/1}}\label{namespace_m_h_r_acb8b09915d13e40eba7f00718c40ce6a}
+
+
+Definition at line 68 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a8a80b7897b02d4d2a57311a344df8497}{\index{M\+H\+R@{M\+H\+R}!\+\_\+peak\+Strength\+Threshold\+\_\+fraction@{\+\_\+peak\+Strength\+Threshold\+\_\+fraction}}
+\index{\+\_\+peak\+Strength\+Threshold\+\_\+fraction@{\+\_\+peak\+Strength\+Threshold\+\_\+fraction}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+peak\+Strength\+Threshold\+\_\+fraction}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+peak\+Strength\+Threshold\+\_\+fraction = -\/1}}\label{namespace_m_h_r_a8a80b7897b02d4d2a57311a344df8497}
+
+
+Definition at line 52 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a8a54577ca92c7aa81cc87355a7160063}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R@{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R}}
+\index{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R@{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}const float M\+H\+R\+::\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+L\+O\+W\+E\+R = 0.\+8f}}\label{namespace_m_h_r_a8a54577ca92c7aa81cc87355a7160063}
+
+
+Definition at line 94 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a4059754ac07ffb5b08e096059f347a82}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R@{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R}}
+\index{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R@{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}const float M\+H\+R\+::\+\_\+\+R\+O\+I\+\_\+\+R\+A\+T\+I\+O\+\_\+\+U\+P\+P\+E\+R = 1.\+5f}}\label{namespace_m_h_r_a4059754ac07ffb5b08e096059f347a82}
+
+
+Definition at line 93 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_ad8b548e54d84866330d426d8edc8877e}{\index{M\+H\+R@{M\+H\+R}!\+\_\+start\+Frame@{\+\_\+start\+Frame}}
+\index{\+\_\+start\+Frame@{\+\_\+start\+Frame}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+start\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+start\+Frame = -\/1}}\label{namespace_m_h_r_ad8b548e54d84866330d426d8edc8877e}
+
+
+Definition at line 32 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a7650c1d1c25787e60c4dbbdb5cedf3b8}{\index{M\+H\+R@{M\+H\+R}!\+\_\+start\+Index@{\+\_\+start\+Index}}
+\index{\+\_\+start\+Index@{\+\_\+start\+Index}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+start\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+start\+Index = -\/1}}\label{namespace_m_h_r_a7650c1d1c25787e60c4dbbdb5cedf3b8}
+
+
+Definition at line 49 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a100c1e31c0fbc8c8b292064c1a8da006}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E@{\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E}}
+\index{\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E@{\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+\+T\+H\+R\+E\+E\+\_\+\+C\+H\+A\+N\+\_\+\+M\+O\+D\+E = 0}}\label{namespace_m_h_r_a100c1e31c0fbc8c8b292064c1a8da006}
+
+
+Definition at line 14 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a3c94a936257b6f3257fb7a7768ff4377}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T@{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T}}
+\index{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T@{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T = 5}}\label{namespace_m_h_r_a3c94a936257b6f3257fb7a7768ff4377}
+
+
+Definition at line 91 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_a90f94ddb83c7c54b9b0836586a51ad43}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N@{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N}}
+\index{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N@{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N = 2}}\label{namespace_m_h_r_a90f94ddb83c7c54b9b0836586a51ad43}
+
+
+Definition at line 90 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_adc786b108805d8d2ad944595ea2b7092}{\index{M\+H\+R@{M\+H\+R}!\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N@{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N}}
+\index{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N@{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+H\+R\+::\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+N\+O\+\_\+\+F\+A\+C\+E\+\_\+\+F\+R\+A\+M\+E\+S\+\_\+\+M\+I\+N = 2}}\label{namespace_m_h_r_adc786b108805d8d2ad944595ea2b7092}
+
+
+Definition at line 89 of file face\+\_\+params.\+h.
+
+\hypertarget{namespace_m_h_r_abe9f5a6b09e1219712f2b5912e68506d}{\index{M\+H\+R@{M\+H\+R}!\+\_\+time\+\_\+lag@{\+\_\+time\+\_\+lag}}
+\index{\+\_\+time\+\_\+lag@{\+\_\+time\+\_\+lag}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+time\+\_\+lag}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+time\+\_\+lag = -\/1}}\label{namespace_m_h_r_abe9f5a6b09e1219712f2b5912e68506d}
+
+
+Definition at line 40 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a6ee9276234c51d213a3b1631eee5f315}{\index{M\+H\+R@{M\+H\+R}!\+\_\+training\+\_\+time\+\_\+end@{\+\_\+training\+\_\+time\+\_\+end}}
+\index{\+\_\+training\+\_\+time\+\_\+end@{\+\_\+training\+\_\+time\+\_\+end}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+training\+\_\+time\+\_\+end}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+training\+\_\+time\+\_\+end = -\/1}}\label{namespace_m_h_r_a6ee9276234c51d213a3b1631eee5f315}
+
+
+Definition at line 66 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a32705f521f2a65e0b5c5454b328c26db}{\index{M\+H\+R@{M\+H\+R}!\+\_\+training\+\_\+time\+\_\+start@{\+\_\+training\+\_\+time\+\_\+start}}
+\index{\+\_\+training\+\_\+time\+\_\+start@{\+\_\+training\+\_\+time\+\_\+start}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+training\+\_\+time\+\_\+start}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+training\+\_\+time\+\_\+start = -\/1}}\label{namespace_m_h_r_a32705f521f2a65e0b5c5454b328c26db}
+
+
+Definition at line 65 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a87eb7e22893e5160d4a98344bc8bdff4}{\index{M\+H\+R@{M\+H\+R}!\+\_\+trimmed\+\_\+size@{\+\_\+trimmed\+\_\+size}}
+\index{\+\_\+trimmed\+\_\+size@{\+\_\+trimmed\+\_\+size}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+trimmed\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}int M\+H\+R\+::\+\_\+trimmed\+\_\+size = -\/1}}\label{namespace_m_h_r_a87eb7e22893e5160d4a98344bc8bdff4}
+
+
+Definition at line 62 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a9732a5bb1cbdb99030149ae2bb1cae69}{\index{M\+H\+R@{M\+H\+R}!\+\_\+window\+\_\+size\+\_\+in\+\_\+sec@{\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}}
+\index{\+\_\+window\+\_\+size\+\_\+in\+\_\+sec@{\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{\+\_\+window\+\_\+size\+\_\+in\+\_\+sec}]{\setlength{\rightskip}{0pt plus 5cm}double M\+H\+R\+::\+\_\+window\+\_\+size\+\_\+in\+\_\+sec = -\/1}}\label{namespace_m_h_r_a9732a5bb1cbdb99030149ae2bb1cae69}
+
+
+Definition at line 36 of file config.\+cpp.
+
+\hypertarget{namespace_m_h_r_a1f2bac57e6ccaebc6afd932278b163ec}{\index{M\+H\+R@{M\+H\+R}!Na\+N@{Na\+N}}
+\index{Na\+N@{Na\+N}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{Na\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double M\+H\+R\+::\+Na\+N = -\/1e9}}\label{namespace_m_h_r_a1f2bac57e6ccaebc6afd932278b163ec}
+
+
+Definition at line 25 of file config.\+h.
+
+\hypertarget{namespace_m_h_r_a1ab4a7e6b45362de2827fd373b53ba24}{\index{M\+H\+R@{M\+H\+R}!ntsc2rgb\+\_\+base\+Mat@{ntsc2rgb\+\_\+base\+Mat}}
+\index{ntsc2rgb\+\_\+base\+Mat@{ntsc2rgb\+\_\+base\+Mat}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{ntsc2rgb\+\_\+base\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}const Mat M\+H\+R\+::ntsc2rgb\+\_\+base\+Mat}}\label{namespace_m_h_r_a1ab4a7e6b45362de2827fd373b53ba24}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= (Mat\_<double>(3, 3) <<
+                                  1.0000, 0.9562, 0.6214,
+                                  1.0000, -0.2727, -0.6468,
+                                  1.0000, -1.1037, 1.7006)
+\end{DoxyCode}
+From Y\+I\+Q to R\+G\+B\+:  \href{http://en.wikipedia.org/wiki/YIQ}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Y\+I\+Q} 
+
+Definition at line 27 of file image.\+h.
+
+\hypertarget{namespace_m_h_r_a7191e886f0a618347db01d5743eb2856}{\index{M\+H\+R@{M\+H\+R}!rgb2ntsc\+\_\+base\+Mat@{rgb2ntsc\+\_\+base\+Mat}}
+\index{rgb2ntsc\+\_\+base\+Mat@{rgb2ntsc\+\_\+base\+Mat}!M\+H\+R@{M\+H\+R}}
+\subsubsection[{rgb2ntsc\+\_\+base\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}const Mat M\+H\+R\+::rgb2ntsc\+\_\+base\+Mat}}\label{namespace_m_h_r_a7191e886f0a618347db01d5743eb2856}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= (Mat\_<double>(3, 3) <<
+                                  0.299, 0.587, 0.114,
+                                  0.596, -0.274, -0.322,
+                                  0.211, -0.523, 0.312)
+\end{DoxyCode}
+From R\+G\+B to Y\+I\+Q\+:  \href{http://en.wikipedia.org/wiki/YIQ}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Y\+I\+Q} 
+
+Definition at line 18 of file image.\+h.
+

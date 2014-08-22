@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="frames2signal_8h" kind="file">
+    <compoundname>frames2signal.h</compoundname>
+    <includes refid="matlab_8h" local="yes">matlab.h</includes>
+    <includedby refid="frames2signal_8cpp" local="yes">MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp</includedby>
+    <includedby refid="temporal__mean__calc_8h" local="yes">MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.h</includedby>
+    <incdepgraph>
+      <node id="279">
+        <label>matlab.h</label>
+        <link refid="matlab_8h"/>
+        <childnode refid="280" relation="include">
+        </childnode>
+        <childnode refid="281" relation="include">
+        </childnode>
+      </node>
+      <node id="284">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="282">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="283" relation="include">
+        </childnode>
+        <childnode refid="286" relation="include">
+        </childnode>
+      </node>
+      <node id="285">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="278">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/frames2signal.h</label>
+        <link refid="frames2signal.h"/>
+        <childnode refid="279" relation="include">
+        </childnode>
+      </node>
+      <node id="283">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="284" relation="include">
+        </childnode>
+        <childnode refid="285" relation="include">
+        </childnode>
+      </node>
+      <node id="281">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="282" relation="include">
+        </childnode>
+      </node>
+      <node id="280">
+        <label>set</label>
+      </node>
+      <node id="286">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="284" relation="include">
+        </childnode>
+        <childnode refid="285" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="295">
+        <label>MisfitHeartRate/MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="294">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="290">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.cpp</label>
+        <link refid="temporal__mean__calc_8cpp"/>
+      </node>
+      <node id="297">
+        <label>MisfitHeartRate/Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="291">
+        <label>MisfitHeartRate/algorithms/run_algorithms.h</label>
+        <link refid="run__algorithms_8h"/>
+        <childnode refid="292" relation="include">
+        </childnode>
+        <childnode refid="293" relation="include">
+        </childnode>
+      </node>
+      <node id="287">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/frames2signal.h</label>
+        <link refid="frames2signal.h"/>
+        <childnode refid="288" relation="include">
+        </childnode>
+        <childnode refid="289" relation="include">
+        </childnode>
+      </node>
+      <node id="293">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="294" relation="include">
+        </childnode>
+        <childnode refid="295" relation="include">
+        </childnode>
+        <childnode refid="296" relation="include">
+        </childnode>
+      </node>
+      <node id="292">
+        <label>MisfitHeartRate/algorithms/run_algorithms.cpp</label>
+        <link refid="run__algorithms_8cpp"/>
+      </node>
+      <node id="288">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp</label>
+        <link refid="frames2signal_8cpp"/>
+      </node>
+      <node id="289">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.h</label>
+        <link refid="temporal__mean__calc_8h"/>
+        <childnode refid="290" relation="include">
+        </childnode>
+        <childnode refid="291" relation="include">
+        </childnode>
+      </node>
+      <node id="296">
+        <label>MisfitHeartRate/Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="293" relation="include">
+        </childnode>
+        <childnode refid="297" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>frames2signal.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/2/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__MisfitHeartRate__frames2signal__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MisfitHeartRate__frames2signal__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="matlab_8h" kindref="compound">matlab.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">cv;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/><ref refid="namespace_m_h_r_1a53c0c282e2b27534f2726f735f9664e3" kindref="member">frames2signal</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Mat&gt;&amp;<sp/>monoframes,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>&amp;conversion_method,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>fr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cutoff_freq,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;lower_range,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;upper_range,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCalcMode);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__MisfitHeartRate__frame2signal__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.h"/>
+  </compounddef>
+</doxygen>

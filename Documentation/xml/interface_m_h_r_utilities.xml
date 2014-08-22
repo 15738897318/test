@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_h_r_utilities" kind="class" prot="public">
+    <compoundname>MHRUtilities</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">NSObject</basecompoundref>
+    <includes refid="_m_h_r_utilities_8h" local="no">MHRUtilities.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_m_h_r_utilities_1a1f7c42bb731cae8fb90d106014b00df9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSString *</type>
+        <definition>NSString * MHRUtilities::report_memory</definition>
+        <argsstring>()</argsstring>
+        <name>report_memory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="87" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.m" bodystart="16" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_h_r_utilities_1a85f3406abe6ae8911d4a8349996e1d6c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MHRUtilities::createDirectory:</definition>
+        <argsstring>(NSString *directoryPath)</argsstring>
+        <name>createDirectory:</name>
+        <param>
+          <type>NSString *</type>
+          <declname>directoryPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="87" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.m" bodystart="37" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_h_r_utilities_1a4c2719ba1e46c5491a9868ab93dc8cfe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MHRUtilities::setTorchModeOn:</definition>
+        <argsstring>(BOOL isOn)</argsstring>
+        <name>setTorchModeOn:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>isOn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="87" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.m" bodystart="50" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_h_r_utilities_1aced58e360114134fcc1982a6862fc523" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>CALayer *</type>
+        <definition>CALayer * MHRUtilities::newRectangleLayer:pListKey:</definition>
+        <argsstring>(CGRect frame,[pListKey] NSString *pListKey)</argsstring>
+        <name>newRectangleLayer:pListKey:</name>
+        <param>
+          <type>CGRect</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <attributes>[pListKey]</attributes>
+          <type>NSString *</type>
+          <declname>pListKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="52" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.m" bodystart="89" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_m_h_r_utilities_1a92885094add75d90dfb00faaf36d423e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UIColor *</type>
+        <definition>UIColor * MHRUtilities::MFUIColorMakeFromRGBArray</definition>
+        <argsstring>(NSArray *rgbArray)</argsstring>
+        <name>MFUIColorMakeFromRGBArray</name>
+        <param>
+          <type>NSArray *</type>
+          <declname>rgbArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="51" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.m" bodystart="70" bodyend="76"/>
+        <references refid="_m_h_r_utilities_8h_1a162ff1fff00582d4eca918b4fa51db87" compoundref="_m_h_r_utilities_8h" startline="48">MFRGB</references>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_h_r_utilities_1a824edf59b4a4e127db0f4248c4d4bfd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UIColor *</type>
+        <definition>UIColor * MHRUtilities::MFUIColorMakeFromRGBAArray</definition>
+        <argsstring>(NSArray *rgbaArray)</argsstring>
+        <name>MFUIColorMakeFromRGBAArray</name>
+        <param>
+          <type>NSArray *</type>
+          <declname>rgbaArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="52" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.m" bodystart="79" bodyend="86"/>
+        <references refid="_m_h_r_utilities_8h_1a7dc33c43bd98a2dae36a0de770b5a7fa" compoundref="_m_h_r_utilities_8h" startline="49">MFRGBA</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="62">
+        <label>MHRUtilities</label>
+        <link refid="interface_m_h_r_utilities"/>
+        <childnode refid="63" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>NSObject</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="64">
+        <label>MHRUtilities</label>
+        <link refid="interface_m_h_r_utilities"/>
+        <childnode refid="65" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>NSObject</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="17" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="16" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_h_r_utilities_1a85f3406abe6ae8911d4a8349996e1d6c" prot="public" virt="virtual"><scope>MHRUtilities</scope><name>createDirectory:</name></member>
+      <member refid="interface_m_h_r_utilities_1a824edf59b4a4e127db0f4248c4d4bfd6" prot="public" virt="non-virtual"><scope>MHRUtilities</scope><name>MFUIColorMakeFromRGBAArray</name></member>
+      <member refid="interface_m_h_r_utilities_1a92885094add75d90dfb00faaf36d423e" prot="public" virt="non-virtual"><scope>MHRUtilities</scope><name>MFUIColorMakeFromRGBArray</name></member>
+      <member refid="interface_m_h_r_utilities_1aced58e360114134fcc1982a6862fc523" prot="public" virt="virtual"><scope>MHRUtilities</scope><name>newRectangleLayer:pListKey:</name></member>
+      <member refid="interface_m_h_r_utilities_1a1f7c42bb731cae8fb90d106014b00df9" prot="public" virt="virtual"><scope>MHRUtilities</scope><name>report_memory</name></member>
+      <member refid="interface_m_h_r_utilities_1a4c2719ba1e46c5491a9868ab93dc8cfe" prot="public" virt="virtual"><scope>MHRUtilities</scope><name>setTorchModeOn:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

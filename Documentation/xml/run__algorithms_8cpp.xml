@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="run__algorithms_8cpp" kind="file">
+    <compoundname>run_algorithms.cpp</compoundname>
+    <includes refid="run__algorithms_8h" local="yes">run_algorithms.h</includes>
+    <incdepgraph>
+      <node id="696">
+        <label>hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="686" relation="include">
+        </childnode>
+        <childnode refid="688" relation="include">
+        </childnode>
+        <childnode refid="693" relation="include">
+        </childnode>
+      </node>
+      <node id="699">
+        <label>globals.h</label>
+        <link refid="globals_8h"/>
+        <childnode refid="700" relation="include">
+        </childnode>
+        <childnode refid="697" relation="include">
+        </childnode>
+      </node>
+      <node id="688">
+        <label>matlab.h</label>
+        <link refid="matlab_8h"/>
+        <childnode refid="689" relation="include">
+        </childnode>
+        <childnode refid="680" relation="include">
+        </childnode>
+      </node>
+      <node id="697">
+        <label>hr_signal_calc.h</label>
+        <link refid="hr__signal__calc_8h"/>
+        <childnode refid="692" relation="include">
+        </childnode>
+        <childnode refid="696" relation="include">
+        </childnode>
+        <childnode refid="698" relation="include">
+        </childnode>
+      </node>
+      <node id="687">
+        <label>ideal_bandpassing.h</label>
+        <link refid="ideal__bandpassing_8h"/>
+        <childnode refid="688" relation="include">
+        </childnode>
+      </node>
+      <node id="683">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="678">
+        <label>build_Gdown_stack.h</label>
+        <link refid="build___gdown__stack_8h"/>
+        <childnode refid="679" relation="include">
+        </childnode>
+      </node>
+      <node id="681">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="682" relation="include">
+        </childnode>
+        <childnode refid="685" relation="include">
+        </childnode>
+      </node>
+      <node id="693">
+        <label>hr_structures.h</label>
+        <link refid="hr__structures_8h"/>
+        <childnode refid="694" relation="include">
+        </childnode>
+        <childnode refid="695" relation="include">
+        </childnode>
+      </node>
+      <node id="692">
+        <label>hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="686" relation="include">
+        </childnode>
+        <childnode refid="688" relation="include">
+        </childnode>
+        <childnode refid="693" relation="include">
+        </childnode>
+      </node>
+      <node id="698">
+        <label>hr_calculator.h</label>
+        <link refid="hr__calculator_8h"/>
+        <childnode refid="688" relation="include">
+        </childnode>
+      </node>
+      <node id="686">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="680" relation="include">
+        </childnode>
+      </node>
+      <node id="679">
+        <label>files.h</label>
+        <link refid="files_8h"/>
+        <childnode refid="680" relation="include">
+        </childnode>
+        <childnode refid="686" relation="include">
+        </childnode>
+      </node>
+      <node id="684">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="676">
+        <label>run_algorithms.h</label>
+        <link refid="run__algorithms_8h"/>
+        <childnode refid="677" relation="include">
+        </childnode>
+        <childnode refid="690" relation="include">
+        </childnode>
+        <childnode refid="699" relation="include">
+        </childnode>
+      </node>
+      <node id="691">
+        <label>frames2signal.h</label>
+        <link refid="frames2signal_8h"/>
+        <childnode refid="688" relation="include">
+        </childnode>
+      </node>
+      <node id="694">
+        <label>vector</label>
+      </node>
+      <node id="695">
+        <label>utility</label>
+      </node>
+      <node id="675">
+        <label>MisfitHeartRate/algorithms/run_algorithms.cpp</label>
+        <link refid="run_algorithms.cpp"/>
+        <childnode refid="676" relation="include">
+        </childnode>
+      </node>
+      <node id="677">
+        <label>eulerian.h</label>
+        <link refid="eulerian_8h"/>
+        <childnode refid="678" relation="include">
+        </childnode>
+        <childnode refid="687" relation="include">
+        </childnode>
+      </node>
+      <node id="682">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="683" relation="include">
+        </childnode>
+        <childnode refid="684" relation="include">
+        </childnode>
+      </node>
+      <node id="700">
+        <label>iostream</label>
+      </node>
+      <node id="690">
+        <label>temporal_mean_calc.h</label>
+        <link refid="temporal__mean__calc_8h"/>
+        <childnode refid="686" relation="include">
+        </childnode>
+        <childnode refid="691" relation="include">
+        </childnode>
+        <childnode refid="692" relation="include">
+        </childnode>
+        <childnode refid="696" relation="include">
+        </childnode>
+        <childnode refid="697" relation="include">
+        </childnode>
+      </node>
+      <node id="680">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="681" relation="include">
+        </childnode>
+      </node>
+      <node id="689">
+        <label>set</label>
+      </node>
+      <node id="685">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="683" relation="include">
+        </childnode>
+        <childnode refid="684" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>run_algorithms.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/4/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="run__algorithms_8h" kindref="compound">run_algorithms.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="13" refid="namespace_m_h_r_1a883e36fb9e762e11d5dcdb28b0b8e236" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref><sp/><ref refid="namespace_m_h_r_1a883e36fb9e762e11d5dcdb28b0b8e236" kindref="member">run_algorithms</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>&amp;srcDir,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>&amp;outDir,<sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref><sp/>&amp;currHrResult)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clock_t<sp/>t1<sp/>=<sp/>clock();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>first<sp/>frames</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFrames<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*file<sp/>=<sp/>fopen((srcDir<sp/>+<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;/input_frames.txt&quot;</highlight><highlight class="normal">)).c_str(),<sp/></highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(file)<sp/>fscanf(file,<sp/></highlight><highlight class="stringliteral">&quot;%d&quot;</highlight><highlight class="normal">,<sp/>&amp;nFrames);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(file);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nFrames<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespace_m_h_r_1a2446951af16ca1137edb21f8e07019cb" kindref="member">_DEBUG_MODE</ref>)<sp/>printf(</highlight><highlight class="stringliteral">&quot;nFrames<sp/>==<sp/>0\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref>(-1,<sp/>-1);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Block<sp/>1:<sp/>turn<sp/>frames<sp/>to<sp/>signals</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;Mat&gt;<sp/>vid;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentFrame<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isCalcMode<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>window_size<sp/>=<sp/>round(<ref refid="namespace_m_h_r_1a9732a5bb1cbdb99030149ae2bb1cae69" kindref="member">_window_size_in_sec</ref><sp/>*<sp/><ref refid="namespace_m_h_r_1a8c0f2199ebe2a27a2fc0cff1daa239ee" kindref="member">_frameRate</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>firstSample<sp/>=<sp/>round(_frameRate<sp/>*<sp/><ref refid="namespace_m_h_r_1abe9f5a6b09e1219712f2b5912e68506d" kindref="member">_time_lag</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold_fraction<sp/>=<sp/>0,<sp/>lower_range,<sp/>upper_range;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;Mat&gt;<sp/>monoframes,<sp/>debug_monoframes,<sp/>eulerianVid;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/>temporal_mean;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/>temporal_mean_filt;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>tmp_eulerianVid;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(1)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*-----------------read<sp/>M<sp/>frames,<sp/>add<sp/>to<sp/>odd<sp/>frames<sp/>(0)-----------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespace_m_h_r_1a167cff7309df5114f9e72af8b5e820c1" kindref="member">_framesBlock_size</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++currentFrame;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a3b899245a37e41550b80b44fb40fe3e9" kindref="member">readFrame</ref>(srcDir<sp/>+<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;/input_frame[&quot;</highlight><highlight class="normal">)<sp/>+<sp/>to_string(i)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;].png&quot;</highlight><highlight class="normal">,<sp/>vid);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentFrame<sp/>&gt;=<sp/>nFrames<sp/>-<sp/>1)<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*-----------------run_eulerian():<sp/>M<sp/>frames<sp/>(1)-----------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1af2ec0b4fd5bc225e5e008504e70475a7" kindref="member">eulerianGaussianPyramidMagnification</ref>(vid,<sp/>eulerianVid,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outDir,<sp/><ref refid="namespace_m_h_r_1abbf22419d2dbaf1d661d5b73fc9af29b" kindref="member">_eulerian_alpha</ref>,<sp/><ref refid="namespace_m_h_r_1a383bea7ba431fede0a30f05b3ae57536" kindref="member">_eulerian_pyrLevel</ref>,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1afe8a788bdd0504a98259321e41377180" kindref="member">_eulerian_minHR</ref>/60.0,<sp/><ref refid="namespace_m_h_r_1acb647c6b44ad0c7fac0fba37122d5889" kindref="member">_eulerian_maxHR</ref>/60.0,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1ab6b7928e4485f421869d4fbac9a5c1cd" kindref="member">_eulerian_frameRate</ref>,<sp/><ref refid="namespace_m_h_r_1ad69f0161c9597e078014c52955264fd2" kindref="member">_eulerian_chromaMagnifier</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*-----------------remove<sp/>old<sp/>frames-----------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>eulerianLen<sp/>=<sp/>(int)eulerianVid.size();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vid.clear();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*-----------------turn<sp/>eulerianLen<sp/>(1)<sp/>frames<sp/>to<sp/>signals-----------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/>tmp<sp/>=<sp/><ref refid="namespace_m_h_r_1a6f102a7f405b6c84ea84f4d99e3dd847" kindref="member">temporal_mean_calc</ref>(eulerianVid,<sp/><ref refid="namespace_m_h_r_1aed0501a3045731a781439b11ee82fbfe" kindref="member">_overlap_ratio</ref>,<sp/><ref refid="namespace_m_h_r_1a1a13273dd519ccfaf4dc1800bd2031d2" kindref="member">_max_bpm</ref>,<sp/><ref refid="namespace_m_h_r_1a9685359cac4522cd1ee584fbfb5371d1" kindref="member">_cutoff_freq</ref>,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a02a81ed541f6536b1632d65c8f2ad0d3" kindref="member">_channels_to_process</ref>,<sp/><ref refid="namespace_m_h_r_1a16dd6a785863f2fac97ebb334606c166" kindref="member">_colourspace</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lower_range,<sp/>upper_range,<sp/>isCalcMode);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>eulerianLen;<sp/>++i)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporal_mean.push_back(tmp[i]);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isCalcMode<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentFrame<sp/>==<sp/>nFrames<sp/>-<sp/>1)<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*-----------------Perform<sp/>HR<sp/>calculation<sp/>for<sp/>the<sp/>frames<sp/>processed<sp/>so<sp/>far-----------------*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Low-pass-filter<sp/>the<sp/>signal<sp/>stream<sp/>to<sp/>remove<sp/>unwanted<sp/>noises</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporal_mean_filt<sp/>=<sp/><ref refid="namespace_m_h_r_1af85b8b218e683bde30d7ee0329b29716" kindref="member">low_pass_filter</ref>(temporal_mean);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Block<sp/>2:<sp/>Heart-rate<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-<sp/>Basis<sp/>takes<sp/>15secs<sp/>to<sp/>generate<sp/>an<sp/>HR<sp/>estimate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-<sp/>Cardiio<sp/>takes<sp/>30secs<sp/>to<sp/>generate<sp/>an<sp/>HR<sp/>estimate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currHrResult<sp/>=<sp/><ref refid="namespace_m_h_r_1ac8025fa73e928ab097c9b58525d787b1" kindref="member">hr_signal_calc</ref>(temporal_mean_filt,<sp/>firstSample,<sp/>window_size,<sp/>_frameRate,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1aed0501a3045731a781439b11ee82fbfe" kindref="member">_overlap_ratio</ref>,<sp/><ref refid="namespace_m_h_r_1a1a13273dd519ccfaf4dc1800bd2031d2" kindref="member">_max_bpm</ref>,<sp/>threshold_fraction);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="globals_8cpp_1abb1219822989c459332111a5d38b5d72" kindref="member">hrGlobalResult</ref><sp/>=<sp/>currHrResult;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespace_m_h_r_1a2446951af16ca1137edb21f8e07019cb" kindref="member">_DEBUG_MODE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%lf<sp/>%lf\n&quot;</highlight><highlight class="normal">,currHrResult.<ref refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kindref="member">autocorr</ref>,currHrResult.<ref refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kindref="member">pda</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespace_m_h_r_1a2446951af16ca1137edb21f8e07019cb" kindref="member">_DEBUG_MODE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>print<sp/>the<sp/>result<sp/>to<sp/>file<sp/>result.txt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>resultFilePath<sp/>=<sp/>outDir<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;result.txt&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*resultFile<sp/>=<sp/>fopen(resultFilePath.c_str(),<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;temporal_mean_before_low_pass_filter:\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>sz<sp/>=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)temporal_mean.size();<sp/>i<sp/>&lt;<sp/>sz;<sp/>++i)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;%lf,<sp/>&quot;</highlight><highlight class="normal">,<sp/>temporal_mean[i]);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;\n\ntemporal_mean:\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>sz<sp/>=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)temporal_mean_filt.size();<sp/>i<sp/>&lt;<sp/>sz;<sp/>++i)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;%lf,<sp/>&quot;</highlight><highlight class="normal">,<sp/>temporal_mean_filt[i]);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;\n\n\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>vidType<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;mp4&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;run_hr(vidType<sp/>=<sp/>%s,<sp/>colourspace<sp/>=<sp/>%s,<sp/>min_hr<sp/>=<sp/>%lf,<sp/>max_hr<sp/>=<sp/>%lf,<sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alpha<sp/>=<sp/>%lf,<sp/>level<sp/>=<sp/>%lf,<sp/>chromAtn<sp/>=<sp/>%lf)\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vidType.c_str(),<sp/><ref refid="namespace_m_h_r_1a16dd6a785863f2fac97ebb334606c166" kindref="member">_colourspace</ref>.c_str(),<sp/><ref refid="namespace_m_h_r_1afe8a788bdd0504a98259321e41377180" kindref="member">_eulerian_minHR</ref>,<sp/><ref refid="namespace_m_h_r_1acb647c6b44ad0c7fac0fba37122d5889" kindref="member">_eulerian_maxHR</ref>,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1abbf22419d2dbaf1d661d5b73fc9af29b" kindref="member">_eulerian_alpha</ref>,<sp/><ref refid="namespace_m_h_r_1a383bea7ba431fede0a30f05b3ae57536" kindref="member">_eulerian_pyrLevel</ref>,<sp/><ref refid="namespace_m_h_r_1ad69f0161c9597e078014c52955264fd2" kindref="member">_eulerian_chromaMagnifier</ref>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(resultFile,<sp/></highlight><highlight class="stringliteral">&quot;Heart<sp/>Rate<sp/>result<sp/>{autocorr,<sp/>pda}<sp/>=<sp/>{%lf,<sp/>%lf}\n&quot;</highlight><highlight class="normal">,<sp/>currHrResult.<ref refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kindref="member">autocorr</ref>,<sp/>currHrResult.<ref refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kindref="member">pda</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(resultFile);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;run_algorithm()<sp/>runtime<sp/>=<sp/>%f\n&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)clock()<sp/>-<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)t1)/CLOCKS_PER_SEC);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currHrResult;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/run_algorithms.cpp"/>
+  </compounddef>
+</doxygen>

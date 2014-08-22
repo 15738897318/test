@@ -1,0 +1,1514 @@
+.TH "MHR" 3 "Fri Aug 22 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MHR \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBhrDebug\fP"
+.br
+.ti -1c
+.RI "struct \fBhrResult\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetFaceParams\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetFingerParams\fP ()"
+.br
+.ti -1c
+.RI "void \fBbuild_Gdown_Stack\fP (const vector< Mat > &vid, vector< Mat > &GDownStack, int startIndex, int endIndex, int level)"
+.br
+.ti -1c
+.RI "void \fBeulerianGaussianPyramidMagnification\fP (const vector< Mat > &vid, vector< Mat > &ans, String outDir, double alpha, int level, double freqBandLowEnd, double freqBandHighEnd, double samplingRate, double chromAttenuation)"
+.br
+.ti -1c
+.RI "void \fBideal_bandpassing\fP (const vector< Mat > &src, vector< Mat > &dst, double wl, double wh, double samplingRate)"
+.br
+.ti -1c
+.RI "void \fBreadFrame\fP (const String &srcFile, vector< Mat > &dst)"
+.br
+.ti -1c
+.RI "Mat \fBread2DMatFromFile\fP (FILE *&file, int rows, int cols)"
+.br
+.ti -1c
+.RI "int \fBreadInt\fP (FILE *&file)"
+.br
+.ti -1c
+.RI "double \fBreadDouble\fP (FILE *&file)"
+.br
+.ti -1c
+.RI "vector< double > \fBreadVectorFromFile\fP (FILE *&file, int n)"
+.br
+.ti -1c
+.RI "void \fBwriteVector\fP (const vector< double > &src, const String &outFile, bool append)"
+.br
+.ti -1c
+.RI "vector< double > \fBframes2signal\fP (const vector< Mat > &monoframes, const String &conversion_method, double fr, double cutoff_freq, double &lower_range, double &upper_range, bool isCalcMode)"
+.br
+.ti -1c
+.RI "vector< int > \fBhb_counter_autocorr\fP (vector< double > &temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, \fBhrDebug\fP &debug)"
+.br
+.ti -1c
+.RI "vector< int > \fBhb_counter_pda\fP (vector< double > temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, double threshold, \fBhrDebug\fP &debug)"
+.br
+.ti -1c
+.RI "void \fBhr_calculator\fP (const vector< int > &heartBeatPositions, double frameRate, vector< double > &ans)"
+.br
+.ti -1c
+.RI "\fBhrResult\fP \fBhr_signal_calc\fP (vector< double > &temporal_mean, int firstSample, int window_size, double frameRate, double overlap_ratio, double max_bpm, double threshold_fraction)"
+.br
+.ti -1c
+.RI "vector< double > \fBtemporal_mean_calc\fP (const vector< Mat > &vid, double overlap_ratio, double max_bpm, double cutoff_freq, int colour_channel, String colourspace, double &lower_range, double &upper_range, bool isCalcMode)"
+.br
+.ti -1c
+.RI "void \fBrgb2tsl\fP (const Mat &rgbmap, Mat &dst)"
+.br
+.ti -1c
+.RI "void \fBblurDnClr\fP (const Mat &src, Mat &dst, int level)"
+.br
+.ti -1c
+.RI "void \fBcorrDn\fP (const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol)"
+.br
+.ti -1c
+.RI "double \fBmean\fP (const vector< double > &a)"
+.br
+.ti -1c
+.RI "void \fBfindpeaks\fP (const vector< double > &segment, double minPeakDistance, double threshold, vector< double > &max_peak_strengths, vector< int > &max_peak_locs)"
+.br
+.ti -1c
+.RI "vector< pair< double, int > > \fBunique_stable\fP (const vector< pair< double, int >> &arr)"
+.br
+.ti -1c
+.RI "vector< double > \fBcorr_linear\fP (vector< double > signal, vector< double > kernel, bool subtractMean)"
+.br
+.ti -1c
+.RI "void \fBhist\fP (const vector< double > &arr, int nbins, vector< int > &counts, vector< double > &centers)"
+.br
+.ti -1c
+.RI "double \fBinvprctile\fP (const vector< double > &arr, double x)"
+.br
+.ti -1c
+.RI "double \fBprctile\fP (vector< double > arr, double percent)"
+.br
+.ti -1c
+.RI "vector< double > \fBlow_pass_filter\fP (vector< double > arr)"
+.br
+.ti -1c
+.RI "void \fBgaussianFilter\fP (int length, double sigma, vector< double > &ans)"
+.br
+.ti -1c
+.RI "double \fBdiff_percent\fP (double a, double b)"
+.br
+.ti -1c
+.RI "Mat \fBatan2Mat\fP (const Mat &a, const Mat &b)"
+.br
+.ti -1c
+.RI "Mat \fBpowMat\fP (const Mat &src, double n)"
+.br
+.ti -1c
+.RI "Mat \fBadd\fP (const Mat &a, const Mat &b)"
+.br
+.ti -1c
+.RI "Mat \fBmultiply\fP (const Mat &a, const Mat &b)"
+.br
+.ti -1c
+.RI "Mat \fBmultiply\fP (const Mat &a, double x)"
+.br
+.ti -1c
+.RI "\fBhrResult\fP \fBrun_algorithms\fP (const String &srcDir, const String &outDir, \fBhrResult\fP &currHrResult)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fB_DEBUG_MODE\fP = 0"
+.br
+.ti -1c
+.RI "int \fB_THREE_CHAN_MODE\fP = 0"
+.br
+.ti -1c
+.RI "bool \fB_FACE_MODE\fP = true"
+.br
+.ti -1c
+.RI "String \fB_outputPath\fP = 'NULL'"
+.br
+.ti -1c
+.RI "double \fB_eulerian_alpha\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_eulerian_pyrLevel\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_eulerian_minHR\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_eulerian_maxHR\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_eulerian_frameRate\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_eulerian_chromaMagnifier\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_frameRate\fP = 30"
+.br
+.ti -1c
+.RI "int \fB_number_of_channels\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_Gpyr_filter_length\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_startFrame\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_endFrame\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_window_size_in_sec\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_overlap_ratio\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_max_bpm\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_cutoff_freq\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_time_lag\fP = -1"
+.br
+.ti -1c
+.RI "String \fB_colourspace\fP = '-1'"
+.br
+.ti -1c
+.RI "int \fB_channels_to_process\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_number_of_bins_heartRate\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_flagDebug\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_flagGetRaw\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_startIndex\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_endIndex\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_peakStrengthThreshold_fraction\fP = -1"
+.br
+.ti -1c
+.RI "String \fB_frames2signalConversionMethod\fP = '-1'"
+.br
+.ti -1c
+.RI "int \fB_frame_downsampling_filt_rows\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_frame_downsampling_filt_cols\fP = -1"
+.br
+.ti -1c
+.RI "Mat \fB_frame_downsampling_filt\fP"
+.br
+.ti -1c
+.RI "int \fB_trimmed_size\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_training_time_start\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_training_time_end\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_number_of_bins\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_pct_reach_below_mode\fP = -1"
+.br
+.ti -1c
+.RI "double \fB_pct_reach_above_mode\fP = -1"
+.br
+.ti -1c
+.RI "int \fB_beatSignalFilterKernel_size\fP = -1"
+.br
+.ti -1c
+.RI "Mat \fB_beatSignalFilterKernel\fP"
+.br
+.ti -1c
+.RI "const double \fBNaN\fP = -1e9"
+.br
+.ti -1c
+.RI "const int \fB_framesBlock_size\fP = 128"
+.br
+.ti -1c
+.RI "const int \fB_minVidLength\fP = 15"
+.br
+.ti -1c
+.RI "const int \fB_maxVidLength\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_face_eulerian_alpha\fP = 50"
+.br
+.ti -1c
+.RI "const double \fB_face_eulerian_pyrLevel\fP = 6"
+.br
+.ti -1c
+.RI "const double \fB_face_eulerian_minHR\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_face_eulerian_maxHR\fP = 240"
+.br
+.ti -1c
+.RI "const double \fB_face_eulerian_frameRate\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_face_eulerian_chromaMagnifier\fP = 1"
+.br
+.ti -1c
+.RI "const int \fB_face_number_of_channels\fP = 3"
+.br
+.ti -1c
+.RI "const int \fB_face_Gpyr_filter_length\fP = 5"
+.br
+.ti -1c
+.RI "const int \fB_face_startFrame\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_face_endFrame\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_face_window_size_in_sec\fP = 10"
+.br
+.ti -1c
+.RI "const double \fB_face_overlap_ratio\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_face_max_bpm\fP = 200"
+.br
+.ti -1c
+.RI "const double \fB_face_cutoff_freq\fP = 2\&.5"
+.br
+.ti -1c
+.RI "const double \fB_face_time_lag\fP = 3"
+.br
+.ti -1c
+.RI "const String \fB_face_colourspace\fP = 'tsl'"
+.br
+.ti -1c
+.RI "const int \fB_face_channels_to_process\fP = 1"
+.br
+.ti -1c
+.RI "const int \fB_face_number_of_bins_heartRate\fP = 5"
+.br
+.ti -1c
+.RI "const int \fB_face_flagDebug\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_face_flagGetRaw\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_face_startIndex\fP = 1"
+.br
+.ti -1c
+.RI "const int \fB_face_endIndex\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_face_peakStrengthThreshold_fraction\fP = 0"
+.br
+.ti -1c
+.RI "const String \fB_face_frames2signalConversionMethod\fP = 'mode-balance'"
+.br
+.ti -1c
+.RI "const int \fB_face_frame_downsampling_filt_rows\fP = 7"
+.br
+.ti -1c
+.RI "const int \fB_face_frame_downsampling_filt_cols\fP = 7"
+.br
+.ti -1c
+.RI "const Mat \fB_face_frame_downsampling_filt\fP"
+.br
+.ti -1c
+.RI "const int \fB_face_trimmed_size\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_face_training_time_start\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_face_training_time_end\fP = 0\&.2"
+.br
+.ti -1c
+.RI "const int \fB_face_number_of_bins\fP = 50"
+.br
+.ti -1c
+.RI "const double \fB_face_pct_reach_below_mode\fP = 45"
+.br
+.ti -1c
+.RI "const double \fB_face_pct_reach_above_mode\fP = 45"
+.br
+.ti -1c
+.RI "const int \fB_face_beatSignalFilterKernel_size\fP = 15"
+.br
+.ti -1c
+.RI "const Mat \fB_face_beatSignalFilterKernel\fP"
+.br
+.ti -1c
+.RI "const int \fB_THRESHOLD_NO_FACE_FRAMES_MIN\fP = 2"
+.br
+.ti -1c
+.RI "const int \fB_THRESHOLD_FACE_FRAMES_MIN\fP = 2"
+.br
+.ti -1c
+.RI "const int \fB_THRESHOLD_FACE_FRAMES_FOR_START\fP = 5"
+.br
+.ti -1c
+.RI "const float \fB_ROI_RATIO_UPPER\fP = 1\&.5f"
+.br
+.ti -1c
+.RI "const float \fB_ROI_RATIO_LOWER\fP = 0\&.8f"
+.br
+.ti -1c
+.RI "const double \fB_finger_eulerian_alpha\fP = 50"
+.br
+.ti -1c
+.RI "const double \fB_finger_eulerian_pyrLevel\fP = 6"
+.br
+.ti -1c
+.RI "const double \fB_finger_eulerian_minHR\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_finger_eulerian_maxHR\fP = 240"
+.br
+.ti -1c
+.RI "const double \fB_finger_eulerian_frameRate\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_finger_eulerian_chromaMagnifier\fP = 1"
+.br
+.ti -1c
+.RI "const int \fB_finger_number_of_channels\fP = 3"
+.br
+.ti -1c
+.RI "const int \fB_finger_Gpyr_filter_length\fP = 5"
+.br
+.ti -1c
+.RI "const int \fB_finger_startFrame\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_finger_endFrame\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_finger_window_size_in_sec\fP = 10"
+.br
+.ti -1c
+.RI "const double \fB_finger_overlap_ratio\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_finger_max_bpm\fP = 200"
+.br
+.ti -1c
+.RI "const double \fB_finger_cutoff_freq\fP = 2\&.5"
+.br
+.ti -1c
+.RI "const double \fB_finger_time_lag\fP = 3"
+.br
+.ti -1c
+.RI "const String \fB_finger_colourspace\fP = 'rgb'"
+.br
+.ti -1c
+.RI "const int \fB_finger_channels_to_process\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_finger_number_of_bins_heartRate\fP = 5"
+.br
+.ti -1c
+.RI "const int \fB_finger_flagDebug\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_finger_flagGetRaw\fP = 0"
+.br
+.ti -1c
+.RI "const int \fB_finger_startIndex\fP = 1"
+.br
+.ti -1c
+.RI "const int \fB_finger_endIndex\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_finger_peakStrengthThreshold_fraction\fP = 0"
+.br
+.ti -1c
+.RI "const String \fB_finger_frames2signalConversionMethod\fP = 'mode-balance'"
+.br
+.ti -1c
+.RI "const int \fB_finger_frame_downsampling_filt_rows\fP = 7"
+.br
+.ti -1c
+.RI "const int \fB_finger_frame_downsampling_filt_cols\fP = 7"
+.br
+.ti -1c
+.RI "const Mat \fB_finger_frame_downsampling_filt\fP"
+.br
+.ti -1c
+.RI "const int \fB_finger_trimmed_size\fP = 30"
+.br
+.ti -1c
+.RI "const double \fB_finger_training_time_start\fP = 0"
+.br
+.ti -1c
+.RI "const double \fB_finger_training_time_end\fP = 0\&.2"
+.br
+.ti -1c
+.RI "const int \fB_finger_number_of_bins\fP = 50"
+.br
+.ti -1c
+.RI "const double \fB_finger_pct_reach_below_mode\fP = 45"
+.br
+.ti -1c
+.RI "const double \fB_finger_pct_reach_above_mode\fP = 45"
+.br
+.ti -1c
+.RI "const int \fB_finger_beatSignalFilterKernel_size\fP = 15"
+.br
+.ti -1c
+.RI "const Mat \fB_finger_beatSignalFilterKernel\fP"
+.br
+.ti -1c
+.RI "const Mat \fBrgb2ntsc_baseMat\fP"
+.br
+.ti -1c
+.RI "const Mat \fBntsc2rgb_baseMat\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "Mat MHR::add (const Mat &a, const Mat &b)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+a + b 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file matrix\&.cpp\&.
+.SS "Mat MHR::atan2Mat (const Mat &a, const Mat &b)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa,b\fP which have the same size 
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a new Mat which each element[i, j] = atan2(a[i, j], b[i, j]) 
+.br
+Data type: CV_64F 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file matrix\&.cpp\&.
+.SS "void MHR::blurDnClr (const Mat &src, Mat &dst, intlevel)"
+Blur and downsample an image\&. The blurring is done with filter kernel specified by FILT (default = 'binom5') 
+.br
+ https://github.com/diego898/matlab-utils/blob/master/toolbox/EVM_Matlab/blurDnClr.m 
+.br
+ http://docs.opencv.org/doc/tutorials/imgproc/pyramids/pyramids.html 
+.br
+
+.PP
+Definition at line 89 of file image\&.cpp\&.
+.SS "void MHR::build_Gdown_Stack (const vector< Mat > &vid, vector< Mat > &GDownStack, intstartIndex, intendIndex, intlevel)"
+Apply Gaussian pyramid decomposition on \fIvid\fP from \fIstartIndex\fP to \fIendIndex\fP, and select a specific band indicated by \fIlevel\fP\&. 
+.br
+\fBReturns:\fP
+.RS 4
+\fIGDownStack\fP is stack of one band of Gaussian pyramid of each frame 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvid,GDownStack\fP 
+.IP "\(bu" 2
+the first dimension is the time axis 
+.br
+
+.IP "\(bu" 2
+the second dimension is the y axis of the video's frames 
+.br
+
+.IP "\(bu" 2
+the third dimension is the x axis of the video's frames 
+.br
+
+.IP "\(bu" 2
+the forth dimension is the color channel 
+.br
+Data type: CV_64FC3 or CV_64F 
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 13 of file build_Gdown_stack\&.cpp\&.
+.SS "vector< double > MHR::corr_linear (vector< double >signal, vector< double >kernel, boolsubtractMean = \fCtrue\fP)"
+http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf 
+.PP
+\fBReturns:\fP
+.RS 4
+1D convolution operation of 2 vectors signal and kernel 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsubtractMean\fP if is true, then before all calculations, each elements of the signal vector will be subtracted by mean(\fIsignal\fP), and each elements of the kernel vector will be subtracted by mean(\fIkernel\fP)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 87 of file matlab\&.cpp\&.
+.SS "void MHR::corrDn (const Mat &src, Mat &dst, const Mat &filter, intrectRow, intrectCol)"
+Compute correlation of 2D matrices \fIsrc\fP with \fIfilter\fP, followed by downsampling\&. 
+.br
+ http://www.mathworks.com/matlabcentral/fileexchange/43909-separable-steerable-pyramid-toolbox/content/sepspyr/deps/matlabPyrTools-1.3/mpt_corrDn.m 
+.br
+ http://docs.opencv.org/modules/imgproc/doc/filtering.html#void%20filter2D%28InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20InputArray%20kernel,%20Point%20anchor,%20double%20delta,%20int%20borderType%29 
+.br
+\fBParameters:\fP
+.RS 4
+\fIsrc\fP must be larger (in both dimensions) than \fIfilter\fP\&. 
+.br
+.br
+\fIfilter\fP is assumed to be floor(size(\fIfilter\fP)/2)+1\&. 
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fIdst's\fP data types: CV_64F 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file image\&.cpp\&.
+.SS "double MHR::diff_percent (doublea, doubleb)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+100*|a-b|/b 
+.RE
+.PP
+
+.PP
+Definition at line 234 of file matlab\&.cpp\&.
+.SS "void MHR::eulerianGaussianPyramidMagnification (const vector< Mat > &vid, vector< Mat > &ans, StringoutDir, doublealpha, intlevel, doublefreqBandLowEnd, doublefreqBandHighEnd, doublesamplingRate, doublechromAttenuation)"
+Use Eulerian magnification technique on input frames\&. 
+.br
+Spatial Filtering: Gaussian blur and down sample 
+.br
+Temporal Filtering: Ideal bandpass 
+.br
+ http://graphics.cs.cmu.edu/courses/15-463/2012_fall/hw/proj2g-eulerian/ 
+.br
+\fBParameters:\fP
+.RS 4
+\fIoutDir\fP output folder for debug files 
+.br
+\fIalpha\fP magnification rate 
+.br
+\fIlevel\fP see \fBblurDnClr()\fP 
+.br
+\fIfreqBandLowEnd\fP see \fIwl\fP argument in \fBideal_bandpassing()\fP 
+.br
+\fIfreqBandHighEnd\fP see \fIwh\fP argument in \fBideal_bandpassing()\fP 
+.br
+\fIsamplingRate\fP the video's frame rate 
+.br
+\fIchromAttenuation\fP the magnification rate of chromA channel in YIQ coulourspace 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file eulerian\&.cpp\&.
+.SS "void MHR::findpeaks (const vector< double > &segment, doubleminPeakDistance, doublethreshold, vector< double > &max_peak_strengths, vector< int > &max_peak_locs)"
+findpeaks in \fIsegment\fP, with \fIminPeakDistance\fP and \fIthreshold\fP,
+.br
+complexity O(n^2) with n = number of peaks 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsegment\fP a vector of signals 
+.br
+\fIminPeakDistance\fP minimum distance between two peaks 
+.br
+\fIthreshold\fP the minimum value that a peak point should be larger than its two neighbors point 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fImax_peak_strengths\fP 
+.PP
+\fImax_peak_locs\fP 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file matlab\&.cpp\&.
+.SS "vector< double > MHR::frames2signal (const vector< Mat > &monoframes, const String &conversion_method, doublefr, doublecutoff_freq, double &lower_range, double &upper_range, boolisCalcMode)"
+The function will convert the array of frames into an array of signal value (type double) note that the frame is mono channel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfr\fP video's frame rate 
+.br
+\fIconversion_method\fP we have 3 method for converting a frame into a double value:
+.IP "\(bu" 2
+simple-mean
+.IP "\(bu" 2
+trimmed-mean
+.IP "\(bu" 2
+mode-balance 
+.PP
+.RE
+.PP
+mode : 'simple-mean' get the mean of all pixel's value in the picture frame
+.PP
+mode : 'trimmed-mean' get the mean of all pixel's value in a smaller rectangle inside the picture frame
+.PP
+this method will calculate the histogram of pixel's value from the first_tranning_frames_start to first_tranning_frames_end\&. Then get the bin that has the most number of value, get the centre of that bin as a centre value, then use the prctile function to get the percentile of that centre value\&. Finally we calculate the mean of values that have the inverted percentile in the range from (centre value's percentile - lower_pct_range) to (centre value's percentile + upper_pct_range)\&.
+.PP
+Definition at line 13 of file frames2signal\&.cpp\&.
+.SS "void MHR::gaussianFilter (intlength, doublesigma, vector< double > &ans)"
+Generate a vector of Gaussian values of a desired length and properties
+.br
+ http://www.mathworks.com/help/images/ref/fspecial.html 
+.br
+ http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29 
+.br
+
+.PP
+Definition at line 222 of file matlab\&.cpp\&.
+.SS "vector< int > MHR::hb_counter_autocorr (vector< double > &temporal_mean, doublefr, intfirstSample, intwindow_size, doubleoverlap_ratio, doubleminPeakDistance, hrDebug &debug)"
+This function will convert the signal array (after using the frame2signal function) to an autocorelation array and then convert to an array of heart beats' position\&. 
+.br
+The function will shift a window with size \fIwindow_size\fP from \fIfirstSample\fP position to calculate the heart beats in that window\&. 
+.br
+This function is different from the hb_counter_pda function, instead of calculating the heart beats directly from the signal array, we will first convert the signal array to an autocorrelation array ( http://en.wikipedia.org/wiki/Autocorrelation) then use this array to calculate the heart beats\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIfr\fP the frame rate\&. 
+.br
+\fIoverlap_ratio\fP the ratio of the next window will be identical with the current window, at default this ratio value is 0 
+.br
+\fIminPeakDistance,threshold\fP these arguments are for the findPeaks function\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file hb_counter_autocorr\&.cpp\&.
+.SS "vector< int > MHR::hb_counter_pda (vector< double >temporal_mean, doublefr, intfirstSample, intwindow_size, doubleoverlap_ratio, doubleminPeakDistance, doublethreshold, hrDebug &debug)"
+This function will convert the signal array (after using the frame2signal() function) to an array of heart beats' position The function will shift a window with size \fIwindow_size\fP from \fIfirstSample\fP position to calculate the heart beats in that window\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIfr\fP the frame rate\&. 
+.br
+\fIoverlap_ratio\fP the ratio of the next window will be identical with the current window, at default this ratio value is 0 
+.br
+\fIminPeakDistance,threshold\fP these arguments are for the findPeaks function\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file hb_counter_pda\&.cpp\&.
+.SS "void MHR::hist (const vector< double > &arr, intnbins, vector< int > &counts, vector< double > &centers)"
+http://www.mathworks.com/help/matlab/ref/hist.html 
+.PP
+\fBReturns:\fP
+.RS 4
+\fIcounts:\fP number of elements in each bin, 
+.PP
+\fIcenters:\fP the center value of each bin get the histogram of arr's value, the range from min value to max value of the arr will be divided into \fInbins\fP bins, each bin will have a centres point and a count value denoting number of value in the array belong to that bin's range 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file matlab\&.cpp\&.
+.SS "void MHR::hr_calculator (const vector< int > &heartBeatPositions, doubleframeRate, vector< double > &ans)"
+Calculate the heart-rate from a list of heart-beat positions\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIans\fP 
+.IP "\(bu" 2
+the first number is average heart-rate
+.IP "\(bu" 2
+the second number is mode of the instantaneous heart-rates multiply with frameRate*60 
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 13 of file hr_calculator\&.cpp\&.
+.SS "\fBhrResult\fP MHR::hr_signal_calc (vector< double > &temporal_mean, intfirstSample, intwindow_size, doubleframeRate, doubleoverlap_ratio, doublemax_bpm, doublethreshold_fraction)"
+Return the average heart-rate calculated by autocorr algorithm and pda algorithm\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fI\fP see \fBhb_counter_pda()\fP or \fBhb_counter_autocorr()\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file hr_signal_calc\&.cpp\&.
+.SS "void MHR::ideal_bandpassing (const vector< Mat > &src, vector< Mat > &dst, doublewl, doublewh, doublesamplingRate)"
+Apply ideal band pass filter on \fIsrc\fP\&. 
+.br
+ http://en.wikipedia.org/wiki/Band-pass_filter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsrc,dst\fP 
+.IP "\(bu" 2
+the first dimension is the time axis 
+.br
+
+.IP "\(bu" 2
+the second dimension is the y axis of the video's frames 
+.br
+
+.IP "\(bu" 2
+the third dimension is the x axis of the video's frames 
+.br
+
+.IP "\(bu" 2
+the forth dimension is the color channel 
+.br
+
+.PP
+.br
+\fIwl\fP lower cutoff frequency of ideal band pass filter 
+.br
+.br
+\fIwh\fP higher cutoff frequency of ideal band pass filter 
+.br
+.br
+\fIsamplingRate\fP sampling rate of \fIsrc\fP 
+.br
+Data type: CV_64FC3 or CV_64F 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file ideal_bandpassing\&.cpp\&.
+.SS "double MHR::invprctile (const vector< double > &arr, doublex)"
+get the invert percentile of arr with value x\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the percent of number of values in arr that smaller or equal x\&. 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file matlab\&.cpp\&.
+.SS "vector< double > MHR::low_pass_filter (vector< double >arr)"
+filter function for frames2signal function, apply low pass filter on vector \fIarr\fP\&.  http://en.wikipedia.org/wiki/Low-pass_filter 
+.PP
+Definition at line 194 of file matlab\&.cpp\&.
+.SS "double MHR::mean (const vector< double > &a)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+the mean value of a double vector 
+.RE
+.PP
+
+.PP
+Definition at line 14 of file matlab\&.cpp\&.
+.SS "Mat MHR::multiply (const Mat &a, const Mat &b)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+a * b (element-wise) 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file matrix\&.cpp\&.
+.SS "Mat MHR::multiply (const Mat &a, doublex)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+a new Mat which each element[i, j] = a[i, j] * x 
+.br
+Data type: CV_64F 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file matrix\&.cpp\&.
+.SS "Mat MHR::powMat (const Mat &src, doublen)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+the \fIn-th\fP power of \fIsrc\fP (element-wise) 
+.br
+Data type: CV_64F 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file matrix\&.cpp\&.
+.SS "double MHR::prctile (vector< double >arr, doublepercent)"
+get the percentile of arr with a percent value\&. 
+.PP
+Definition at line 172 of file matlab\&.cpp\&.
+.SS "Mat MHR::read2DMatFromFile (FILE *&file, introws, intcols)"
+read a 2D Mat (\fIrows\fP * \fIcols\fP) from an opened file 
+.PP
+Definition at line 40 of file files\&.cpp\&.
+.SS "double MHR::readDouble (FILE *&file)"
+read a double number from an opened file 
+.PP
+Definition at line 58 of file files\&.cpp\&.
+.SS "void MHR::readFrame (const String &srcFile, vector< Mat > &dst)"
+read frames from a file to a a Mat vector 
+.PP
+Definition at line 13 of file files\&.cpp\&.
+.SS "int MHR::readInt (FILE *&file)"
+read an integer from an opened file 
+.PP
+Definition at line 50 of file files\&.cpp\&.
+.SS "vector< double > MHR::readVectorFromFile (FILE *&file, intn)"
+read a vector<double> with \fIn\fP elements from an opened file 
+.PP
+Definition at line 66 of file files\&.cpp\&.
+.SS "void MHR::rgb2tsl (const Mat &rgbmap, Mat &dst)"
+convert a RGB frame to a TSL frame 
+.br
+Data type: CV_64FC3 
+.br
+ http://en.wikipedia.org/wiki/TSL_color_space 
+.PP
+Definition at line 12 of file image\&.cpp\&.
+.SS "\fBhrResult\fP MHR::run_algorithms (const String &srcDir, const String &outDir, hrResult &currHrResult)"
+
+.PP
+Definition at line 13 of file run_algorithms\&.cpp\&.
+.SS "void MHR::setFaceParams ()"
+
+.PP
+Definition at line 81 of file config\&.cpp\&.
+.SS "void MHR::setFingerParams ()"
+
+.PP
+Definition at line 133 of file config\&.cpp\&.
+.SS "vector< double > MHR::temporal_mean_calc (const vector< Mat > &vid, doubleoverlap_ratio, doublemax_bpm, doublecutoff_freq, intcolour_channel, Stringcolourspace, double &lower_range, double &upper_range, boolisCalcMode)"
+Convert frames of <vid> to signals\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvid\fP data type is CV_64FC3 or CV_64F 
+.br
+\fIoverlap_ratio\fP overlap ratio between 2 consecutive segments 
+.br
+\fImax_bpm\fP maximum heart rate detectable (use in determining minPeaksDistance in \fBfindpeaks()\fP) 
+.br
+\fIcolour_channel\fP if in _THREE_CHAN_MODE, then convert all frames of \fIvid\fP to monoframes by select only one channel of each frame\&. 
+.br
+\fIcolourspace\fP if in _THREE_CHAN_MODE, then convert colourspace of all frames of \fIvid\fP to 'hsv', 'ycbcr' or 'tsl' before converting them to monoframes 
+.br
+\fIcutoff_freq,lower_range,upper_range>,isCalcMode\fP see \fBframes2signal()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file temporal_mean_calc\&.cpp\&.
+.SS "vector< pair< double, int > > MHR::unique_stable (const vector< pair< double, int >> &arr)"
+remove all identical item in the arr, two items are equal if the second value (type int) of them are equal\&.
+.br
+all identical item will be removed just left the first appearing value\&.
+.br
+the order will be reserve\&. 
+.PP
+Definition at line 74 of file matlab\&.cpp\&.
+.SS "void MHR::writeVector (const vector< double > &src, const String &outFile, boolappend = \fCfalse\fP)"
+write a vector<double> to a file\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIappend\fP if == true, then the function will append the vector at the end of the file, otherwise, it will overwrite the old file or create a new file 
+.RE
+.PP
+
+.PP
+Definition at line 78 of file files\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "Mat MHR::_beatSignalFilterKernel"
+
+.PP
+Definition at line 76 of file config\&.cpp\&.
+.SS "int MHR::_beatSignalFilterKernel_size = -1"
+
+.PP
+Definition at line 75 of file config\&.cpp\&.
+.SS "int MHR::_channels_to_process = -1"
+
+.PP
+Definition at line 42 of file config\&.cpp\&.
+.SS "String MHR::_colourspace = '-1'"
+
+.PP
+Definition at line 41 of file config\&.cpp\&.
+.SS "double MHR::_cutoff_freq = -1"
+
+.PP
+Definition at line 39 of file config\&.cpp\&.
+.SS "int MHR::_DEBUG_MODE = 0"
+
+.PP
+Definition at line 13 of file config\&.cpp\&.
+.SS "int MHR::_endFrame = -1"
+
+.PP
+Definition at line 33 of file config\&.cpp\&.
+.SS "int MHR::_endIndex = -1"
+
+.PP
+Definition at line 50 of file config\&.cpp\&.
+.SS "double MHR::_eulerian_alpha = -1"
+
+.PP
+Definition at line 21 of file config\&.cpp\&.
+.SS "double MHR::_eulerian_chromaMagnifier = -1"
+
+.PP
+Definition at line 26 of file config\&.cpp\&.
+.SS "double MHR::_eulerian_frameRate = -1"
+
+.PP
+Definition at line 25 of file config\&.cpp\&.
+.SS "double MHR::_eulerian_maxHR = -1"
+
+.PP
+Definition at line 24 of file config\&.cpp\&.
+.SS "double MHR::_eulerian_minHR = -1"
+
+.PP
+Definition at line 23 of file config\&.cpp\&.
+.SS "double MHR::_eulerian_pyrLevel = -1"
+
+.PP
+Definition at line 22 of file config\&.cpp\&.
+.SS "const Mat MHR::_face_beatSignalFilterKernel"
+\fBInitial value:\fP
+.PP
+.nf
+= (Mat_<double>(1, _face_beatSignalFilterKernel_size) <<
+                                              -0\&.0265, -0\&.0076, 0\&.0217, 0\&.0580, 0\&.0956,
+                                              0\&.1285, 0\&.1509, 0\&.1589, 0\&.1509, 0\&.1285,
+                                              0\&.0956, 0\&.0580, 0\&.0217, -0\&.0076, -0\&.0265)
+.fi
+.PP
+Definition at line 82 of file face_params\&.h\&.
+.SS "const int MHR::_face_beatSignalFilterKernel_size = 15"
+
+.PP
+Definition at line 81 of file face_params\&.h\&.
+.SS "const int MHR::_face_channels_to_process = 1"
+
+.PP
+Definition at line 40 of file face_params\&.h\&.
+.SS "const String MHR::_face_colourspace = 'tsl'"
+
+.PP
+Definition at line 39 of file face_params\&.h\&.
+.SS "const double MHR::_face_cutoff_freq = 2\&.5"
+
+.PP
+Definition at line 37 of file face_params\&.h\&.
+.SS "const int MHR::_face_endFrame = 0"
+
+.PP
+Definition at line 31 of file face_params\&.h\&.
+.SS "const int MHR::_face_endIndex = 0"
+
+.PP
+Definition at line 48 of file face_params\&.h\&.
+.SS "const double MHR::_face_eulerian_alpha = 50"
+
+.PP
+Definition at line 20 of file face_params\&.h\&.
+.SS "const double MHR::_face_eulerian_chromaMagnifier = 1"
+
+.PP
+Definition at line 25 of file face_params\&.h\&.
+.SS "const double MHR::_face_eulerian_frameRate = 30"
+
+.PP
+Definition at line 24 of file face_params\&.h\&.
+.SS "const double MHR::_face_eulerian_maxHR = 240"
+
+.PP
+Definition at line 23 of file face_params\&.h\&.
+.SS "const double MHR::_face_eulerian_minHR = 30"
+
+.PP
+Definition at line 22 of file face_params\&.h\&.
+.SS "const double MHR::_face_eulerian_pyrLevel = 6"
+
+.PP
+Definition at line 21 of file face_params\&.h\&.
+.SS "const int MHR::_face_flagDebug = 0"
+
+.PP
+Definition at line 44 of file face_params\&.h\&.
+.SS "const int MHR::_face_flagGetRaw = 0"
+
+.PP
+Definition at line 45 of file face_params\&.h\&.
+.SS "const Mat MHR::_face_frame_downsampling_filt"
+\fBInitial value:\fP
+.PP
+.nf
+=
+        (Mat_<double>(_face_frame_downsampling_filt_rows,_face_frame_downsampling_filt_cols) <<
+           0\&.0085, 0\&.0127, 0\&.0162, 0\&.0175, 0\&.0162, 0\&.0127, 0\&.0085,
+           0\&.0127, 0\&.0190, 0\&.0241, 0\&.0261, 0\&.0241, 0\&.0190, 0\&.0127,
+           0\&.0162, 0\&.0241, 0\&.0307, 0\&.0332, 0\&.0307, 0\&.0241, 0\&.0162,
+           0\&.0175, 0\&.0261, 0\&.0332, 0\&.0360, 0\&.0332, 0\&.0261, 0\&.0175,
+           0\&.0162, 0\&.0241, 0\&.0241307, 0\&.0332, 0\&.0307, 0\&.0241, 0\&.0162,
+           0\&.0127, 0\&.0190, 0\&.0241, 0\&.0261, 0\&.0241, 0\&.0190, 0\&.0127,
+           0\&.0085, 0\&.0127, 0\&.0162, 0\&.0175, 0\&.0162, 0\&.0127, 0\&.0085)
+.fi
+.PP
+Definition at line 55 of file face_params\&.h\&.
+.SS "const int MHR::_face_frame_downsampling_filt_cols = 7"
+
+.PP
+Definition at line 54 of file face_params\&.h\&.
+.SS "const int MHR::_face_frame_downsampling_filt_rows = 7"
+
+.PP
+Definition at line 53 of file face_params\&.h\&.
+.SS "const String MHR::_face_frames2signalConversionMethod = 'mode-balance'"
+
+.PP
+Definition at line 51 of file face_params\&.h\&.
+.SS "const int MHR::_face_Gpyr_filter_length = 5"
+
+.PP
+Definition at line 29 of file face_params\&.h\&.
+.SS "const double MHR::_face_max_bpm = 200"
+
+.PP
+Definition at line 36 of file face_params\&.h\&.
+.SS "bool MHR::_FACE_MODE = true"
+
+.PP
+Definition at line 16 of file config\&.cpp\&.
+.SS "const int MHR::_face_number_of_bins = 50"
+
+.PP
+Definition at line 73 of file face_params\&.h\&.
+.SS "const int MHR::_face_number_of_bins_heartRate = 5"
+
+.PP
+Definition at line 41 of file face_params\&.h\&.
+.SS "const int MHR::_face_number_of_channels = 3"
+
+.PP
+Definition at line 28 of file face_params\&.h\&.
+.SS "const double MHR::_face_overlap_ratio = 0"
+
+.PP
+Definition at line 35 of file face_params\&.h\&.
+.SS "const double MHR::_face_pct_reach_above_mode = 45"
+
+.PP
+Definition at line 75 of file face_params\&.h\&.
+.SS "const double MHR::_face_pct_reach_below_mode = 45"
+
+.PP
+Definition at line 74 of file face_params\&.h\&.
+.SS "const double MHR::_face_peakStrengthThreshold_fraction = 0"
+
+.PP
+Definition at line 50 of file face_params\&.h\&.
+.SS "const int MHR::_face_startFrame = 0"
+
+.PP
+Definition at line 30 of file face_params\&.h\&.
+.SS "const int MHR::_face_startIndex = 1"
+
+.PP
+Definition at line 47 of file face_params\&.h\&.
+.SS "const double MHR::_face_time_lag = 3"
+
+.PP
+Definition at line 38 of file face_params\&.h\&.
+.SS "const double MHR::_face_training_time_end = 0\&.2"
+
+.PP
+Definition at line 72 of file face_params\&.h\&.
+.SS "const double MHR::_face_training_time_start = 0"
+
+.PP
+Definition at line 71 of file face_params\&.h\&.
+.SS "const int MHR::_face_trimmed_size = 30"
+
+.PP
+Definition at line 68 of file face_params\&.h\&.
+.SS "const double MHR::_face_window_size_in_sec = 10"
+
+.PP
+Definition at line 34 of file face_params\&.h\&.
+.SS "const Mat MHR::_finger_beatSignalFilterKernel"
+\fBInitial value:\fP
+.PP
+.nf
+= (Mat_<double>(1, _finger_beatSignalFilterKernel_size) <<
+                                              -0\&.0265, -0\&.0076, 0\&.0217, 0\&.0580, 0\&.0956,
+                                              0\&.1285, 0\&.1509, 0\&.1589, 0\&.1509, 0\&.1285,
+                                              0\&.0956, 0\&.0580, 0\&.0217, -0\&.0076, -0\&.0265)
+.fi
+.PP
+Definition at line 82 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_beatSignalFilterKernel_size = 15"
+
+.PP
+Definition at line 81 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_channels_to_process = 0"
+
+.PP
+Definition at line 40 of file finger_params\&.h\&.
+.SS "const String MHR::_finger_colourspace = 'rgb'"
+
+.PP
+Definition at line 39 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_cutoff_freq = 2\&.5"
+
+.PP
+Definition at line 37 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_endFrame = 0"
+
+.PP
+Definition at line 31 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_endIndex = 0"
+
+.PP
+Definition at line 48 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_eulerian_alpha = 50"
+
+.PP
+Definition at line 20 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_eulerian_chromaMagnifier = 1"
+
+.PP
+Definition at line 25 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_eulerian_frameRate = 30"
+
+.PP
+Definition at line 24 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_eulerian_maxHR = 240"
+
+.PP
+Definition at line 23 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_eulerian_minHR = 30"
+
+.PP
+Definition at line 22 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_eulerian_pyrLevel = 6"
+
+.PP
+Definition at line 21 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_flagDebug = 0"
+
+.PP
+Definition at line 44 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_flagGetRaw = 0"
+
+.PP
+Definition at line 45 of file finger_params\&.h\&.
+.SS "const Mat MHR::_finger_frame_downsampling_filt"
+\fBInitial value:\fP
+.PP
+.nf
+=
+        (Mat_<double>(_finger_frame_downsampling_filt_rows, _finger_frame_downsampling_filt_cols) <<
+             0\&.0085, 0\&.0127, 0\&.0162, 0\&.0175, 0\&.0162, 0\&.0127, 0\&.0085,
+             0\&.0127, 0\&.0190, 0\&.0241, 0\&.0261, 0\&.0241, 0\&.0190, 0\&.0127,
+             0\&.0162, 0\&.0241, 0\&.0307, 0\&.0332, 0\&.0307, 0\&.0241, 0\&.0162,
+             0\&.0175, 0\&.0261, 0\&.0332, 0\&.0360, 0\&.0332, 0\&.0261, 0\&.0175,
+             0\&.0162, 0\&.0241, 0\&.0241307, 0\&.0332, 0\&.0307, 0\&.0241, 0\&.0162,
+             0\&.0127, 0\&.0190, 0\&.0241, 0\&.0261, 0\&.0241, 0\&.0190, 0\&.0127,
+             0\&.0085, 0\&.0127, 0\&.0162, 0\&.0175, 0\&.0162, 0\&.0127, 0\&.0085)
+.fi
+.PP
+Definition at line 55 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_frame_downsampling_filt_cols = 7"
+
+.PP
+Definition at line 54 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_frame_downsampling_filt_rows = 7"
+
+.PP
+Definition at line 53 of file finger_params\&.h\&.
+.SS "const String MHR::_finger_frames2signalConversionMethod = 'mode-balance'"
+
+.PP
+Definition at line 51 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_Gpyr_filter_length = 5"
+
+.PP
+Definition at line 29 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_max_bpm = 200"
+
+.PP
+Definition at line 36 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_number_of_bins = 50"
+
+.PP
+Definition at line 73 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_number_of_bins_heartRate = 5"
+
+.PP
+Definition at line 41 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_number_of_channels = 3"
+
+.PP
+Definition at line 28 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_overlap_ratio = 0"
+
+.PP
+Definition at line 35 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_pct_reach_above_mode = 45"
+
+.PP
+Definition at line 75 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_pct_reach_below_mode = 45"
+
+.PP
+Definition at line 74 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_peakStrengthThreshold_fraction = 0"
+
+.PP
+Definition at line 50 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_startFrame = 0"
+
+.PP
+Definition at line 30 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_startIndex = 1"
+
+.PP
+Definition at line 47 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_time_lag = 3"
+
+.PP
+Definition at line 38 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_training_time_end = 0\&.2"
+
+.PP
+Definition at line 72 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_training_time_start = 0"
+
+.PP
+Definition at line 71 of file finger_params\&.h\&.
+.SS "const int MHR::_finger_trimmed_size = 30"
+
+.PP
+Definition at line 68 of file finger_params\&.h\&.
+.SS "const double MHR::_finger_window_size_in_sec = 10"
+
+.PP
+Definition at line 34 of file finger_params\&.h\&.
+.SS "int MHR::_flagDebug = -1"
+
+.PP
+Definition at line 46 of file config\&.cpp\&.
+.SS "int MHR::_flagGetRaw = -1"
+
+.PP
+Definition at line 47 of file config\&.cpp\&.
+.SS "Mat MHR::_frame_downsampling_filt"
+
+.PP
+Definition at line 57 of file config\&.cpp\&.
+.SS "int MHR::_frame_downsampling_filt_cols = -1"
+
+.PP
+Definition at line 56 of file config\&.cpp\&.
+.SS "int MHR::_frame_downsampling_filt_rows = -1"
+
+.PP
+Definition at line 55 of file config\&.cpp\&.
+.SS "int MHR::_frameRate = 30"
+
+.PP
+Definition at line 29 of file config\&.cpp\&.
+.SS "String MHR::_frames2signalConversionMethod = '-1'"
+
+.PP
+Definition at line 53 of file config\&.cpp\&.
+.SS "const int MHR::_framesBlock_size = 128"
+
+.PP
+Definition at line 27 of file config\&.h\&.
+.SS "int MHR::_Gpyr_filter_length = -1"
+
+.PP
+Definition at line 31 of file config\&.cpp\&.
+.SS "double MHR::_max_bpm = -1"
+
+.PP
+Definition at line 38 of file config\&.cpp\&.
+.SS "const int MHR::_maxVidLength = 30"
+
+.PP
+Definition at line 29 of file config\&.h\&.
+.SS "const int MHR::_minVidLength = 15"
+
+.PP
+Definition at line 28 of file config\&.h\&.
+.SS "int MHR::_number_of_bins = -1"
+
+.PP
+Definition at line 67 of file config\&.cpp\&.
+.SS "int MHR::_number_of_bins_heartRate = -1"
+
+.PP
+Definition at line 43 of file config\&.cpp\&.
+.SS "int MHR::_number_of_channels = -1"
+
+.PP
+Definition at line 30 of file config\&.cpp\&.
+.SS "String MHR::_outputPath = 'NULL'"
+
+.PP
+Definition at line 18 of file config\&.cpp\&.
+.SS "double MHR::_overlap_ratio = -1"
+
+.PP
+Definition at line 37 of file config\&.cpp\&.
+.SS "double MHR::_pct_reach_above_mode = -1"
+
+.PP
+Definition at line 69 of file config\&.cpp\&.
+.SS "double MHR::_pct_reach_below_mode = -1"
+
+.PP
+Definition at line 68 of file config\&.cpp\&.
+.SS "double MHR::_peakStrengthThreshold_fraction = -1"
+
+.PP
+Definition at line 52 of file config\&.cpp\&.
+.SS "const float MHR::_ROI_RATIO_LOWER = 0\&.8f"
+
+.PP
+Definition at line 94 of file face_params\&.h\&.
+.SS "const float MHR::_ROI_RATIO_UPPER = 1\&.5f"
+
+.PP
+Definition at line 93 of file face_params\&.h\&.
+.SS "int MHR::_startFrame = -1"
+
+.PP
+Definition at line 32 of file config\&.cpp\&.
+.SS "int MHR::_startIndex = -1"
+
+.PP
+Definition at line 49 of file config\&.cpp\&.
+.SS "int MHR::_THREE_CHAN_MODE = 0"
+
+.PP
+Definition at line 14 of file config\&.cpp\&.
+.SS "const int MHR::_THRESHOLD_FACE_FRAMES_FOR_START = 5"
+
+.PP
+Definition at line 91 of file face_params\&.h\&.
+.SS "const int MHR::_THRESHOLD_FACE_FRAMES_MIN = 2"
+
+.PP
+Definition at line 90 of file face_params\&.h\&.
+.SS "const int MHR::_THRESHOLD_NO_FACE_FRAMES_MIN = 2"
+
+.PP
+Definition at line 89 of file face_params\&.h\&.
+.SS "double MHR::_time_lag = -1"
+
+.PP
+Definition at line 40 of file config\&.cpp\&.
+.SS "double MHR::_training_time_end = -1"
+
+.PP
+Definition at line 66 of file config\&.cpp\&.
+.SS "double MHR::_training_time_start = -1"
+
+.PP
+Definition at line 65 of file config\&.cpp\&.
+.SS "int MHR::_trimmed_size = -1"
+
+.PP
+Definition at line 62 of file config\&.cpp\&.
+.SS "double MHR::_window_size_in_sec = -1"
+
+.PP
+Definition at line 36 of file config\&.cpp\&.
+.SS "const double MHR::NaN = -1e9"
+
+.PP
+Definition at line 25 of file config\&.h\&.
+.SS "const Mat MHR::ntsc2rgb_baseMat"
+\fBInitial value:\fP
+.PP
+.nf
+= (Mat_<double>(3, 3) <<
+                                  1\&.0000, 0\&.9562, 0\&.6214,
+                                  1\&.0000, -0\&.2727, -0\&.6468,
+                                  1\&.0000, -1\&.1037, 1\&.7006)
+.fi
+From YIQ to RGB:  http://en.wikipedia.org/wiki/YIQ 
+.PP
+Definition at line 27 of file image\&.h\&.
+.SS "const Mat MHR::rgb2ntsc_baseMat"
+\fBInitial value:\fP
+.PP
+.nf
+= (Mat_<double>(3, 3) <<
+                                  0\&.299, 0\&.587, 0\&.114,
+                                  0\&.596, -0\&.274, -0\&.322,
+                                  0\&.211, -0\&.523, 0\&.312)
+.fi
+From RGB to YIQ:  http://en.wikipedia.org/wiki/YIQ 
+.PP
+Definition at line 18 of file image\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

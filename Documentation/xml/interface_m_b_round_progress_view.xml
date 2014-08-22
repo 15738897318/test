@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_b_round_progress_view" kind="class" prot="public">
+    <compoundname>MBRoundProgressView</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIView</basecompoundref>
+    <includes refid="_m_b_progress_h_u_d_8h" local="no">MBProgressHUD.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_m_b_round_progress_view_1af92eeb35944c81f406571bc353dc5d5a" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBRoundProgressView::progress</definition>
+        <argsstring></argsstring>
+        <name>progress</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Progress (0.0 to 1.0) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="450" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="450" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_round_progress_view_1ae5c8d76a85810a3f843f262bdfff1163" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBRoundProgressView::progressTintColor</definition>
+        <argsstring></argsstring>
+        <name>progressTintColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Indicator progress color. Defaults to white [UIColor whiteColor] </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="456" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_round_progress_view_1ab111d2fa027158e7c21ad411767d193a" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBRoundProgressView::backgroundTintColor</definition>
+        <argsstring></argsstring>
+        <name>backgroundTintColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Indicator background (non-progress) color. Defaults to translucent white (alpha 0.1) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="462" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="462" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_round_progress_view_1abac11853dafb3f11426dab6d42834f9c" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MBRoundProgressView::annular</definition>
+        <argsstring></argsstring>
+        <name>annular</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="467" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="467" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A progress view for showing definite progress by filling up a circle (pie chart). </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="18">
+        <label>MBRoundProgressView</label>
+        <link refid="interface_m_b_round_progress_view"/>
+        <childnode refid="19" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>UIView</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="20">
+        <label>MBRoundProgressView</label>
+        <link refid="interface_m_b_round_progress_view"/>
+        <childnode refid="21" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>UIView</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="446" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="445" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_b_round_progress_view_1abac11853dafb3f11426dab6d42834f9c" prot="public" virt="non-virtual"><scope>MBRoundProgressView</scope><name>annular</name></member>
+      <member refid="interface_m_b_round_progress_view_1ab111d2fa027158e7c21ad411767d193a" prot="public" virt="non-virtual"><scope>MBRoundProgressView</scope><name>backgroundTintColor</name></member>
+      <member refid="interface_m_b_round_progress_view_1af92eeb35944c81f406571bc353dc5d5a" prot="public" virt="non-virtual"><scope>MBRoundProgressView</scope><name>progress</name></member>
+      <member refid="interface_m_b_round_progress_view_1ae5c8d76a85810a3f843f262bdfff1163" prot="public" virt="non-virtual"><scope>MBRoundProgressView</scope><name>progressTintColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

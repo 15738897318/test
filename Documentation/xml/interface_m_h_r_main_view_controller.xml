@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_h_r_main_view_controller" kind="class" prot="public">
+    <compoundname>MHRMainViewController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIViewController</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">&lt;CvVideoCameraDelegate&gt;</basecompoundref>
+    <basecompoundref refid="protocol_m_h_r_settings_view_delegate-p" prot="public" virt="non-virtual">&lt;MHRSettingsViewDelegate&gt;</basecompoundref>
+    <includes refid="_m_h_r_main_view_controller_8hpp" local="no">MHRMainViewController.hpp</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="30">
+        <label>&lt;CvVideoCameraDelegate&gt;</label>
+      </node>
+      <node id="31">
+        <label>&lt;MHRSettingsViewDelegate&gt;</label>
+        <link refid="protocol_m_h_r_settings_view_delegate-p"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>UIViewController</label>
+      </node>
+      <node id="32">
+        <label>&lt;NSObject&gt;</label>
+      </node>
+      <node id="28">
+        <label>MHRMainViewController</label>
+        <link refid="interface_m_h_r_main_view_controller"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+        <childnode refid="31" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="35">
+        <label>&lt;CvVideoCameraDelegate&gt;</label>
+      </node>
+      <node id="36">
+        <label>&lt;MHRSettingsViewDelegate&gt;</label>
+        <link refid="protocol_m_h_r_settings_view_delegate-p"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>UIViewController</label>
+      </node>
+      <node id="37">
+        <label>&lt;NSObject&gt;</label>
+      </node>
+      <node id="33">
+        <label>MHRMainViewController</label>
+        <link refid="interface_m_h_r_main_view_controller"/>
+        <childnode refid="34" relation="public-inheritance">
+        </childnode>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.hpp" line="31" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.hpp" bodystart="31" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="protocol_m_h_r_settings_view_delegate-p_1a1d7367b2d59c2dce76e953607bdc032e" prot="public" virt="virtual"><scope>MHRMainViewController</scope><name>debugModeChanged:</name></member>
+      <member refid="protocol_m_h_r_settings_view_delegate-p_1ade012e6adf8df6a09d7a51909815f360" prot="public" virt="virtual"><scope>MHRMainViewController</scope><name>threeChanModeChanged:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

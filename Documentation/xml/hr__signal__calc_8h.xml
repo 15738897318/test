@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="hr__signal__calc_8h" kind="file">
+    <compoundname>hr_signal_calc.h</compoundname>
+    <includes refid="hb__counter__pda_8h" local="yes">hb_counter_pda.h</includes>
+    <includes refid="hb__counter__autocorr_8h" local="yes">hb_counter_autocorr.h</includes>
+    <includes refid="hr__calculator_8h" local="yes">hr_calculator.h</includes>
+    <includedby refid="hr__signal__calc_8cpp" local="yes">MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp</includedby>
+    <includedby refid="temporal__mean__calc_8h" local="yes">MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.h</includedby>
+    <includedby refid="globals_8h" local="yes">MisfitHeartRate/globals.h</includedby>
+    <incdepgraph>
+      <node id="451">
+        <label>hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="439" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="448" relation="include">
+        </childnode>
+      </node>
+      <node id="446">
+        <label>matlab.h</label>
+        <link refid="matlab_8h"/>
+        <childnode refid="447" relation="include">
+        </childnode>
+        <childnode refid="440" relation="include">
+        </childnode>
+      </node>
+      <node id="437">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.h</label>
+        <link refid="hr_signal_calc.h"/>
+        <childnode refid="438" relation="include">
+        </childnode>
+        <childnode refid="451" relation="include">
+        </childnode>
+        <childnode refid="452" relation="include">
+        </childnode>
+      </node>
+      <node id="443">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="441">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="442" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+      </node>
+      <node id="448">
+        <label>hr_structures.h</label>
+        <link refid="hr__structures_8h"/>
+        <childnode refid="449" relation="include">
+        </childnode>
+        <childnode refid="450" relation="include">
+        </childnode>
+      </node>
+      <node id="438">
+        <label>hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="439" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="448" relation="include">
+        </childnode>
+      </node>
+      <node id="452">
+        <label>hr_calculator.h</label>
+        <link refid="hr__calculator_8h"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+      </node>
+      <node id="439">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="440" relation="include">
+        </childnode>
+      </node>
+      <node id="444">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="449">
+        <label>vector</label>
+      </node>
+      <node id="450">
+        <label>utility</label>
+      </node>
+      <node id="442">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+      </node>
+      <node id="440">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="441" relation="include">
+        </childnode>
+      </node>
+      <node id="447">
+        <label>set</label>
+      </node>
+      <node id="445">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="465">
+        <label>MisfitHeartRate/globals.cpp</label>
+        <link refid="globals_8cpp"/>
+      </node>
+      <node id="464">
+        <label>MisfitHeartRate/globals.h</label>
+        <link refid="globals_8h"/>
+        <childnode refid="457" relation="include">
+        </childnode>
+        <childnode refid="465" relation="include">
+        </childnode>
+        <childnode refid="459" relation="include">
+        </childnode>
+      </node>
+      <node id="461">
+        <label>MisfitHeartRate/MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="460">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="453">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.h</label>
+        <link refid="hr_signal_calc.h"/>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="455" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
+        </childnode>
+      </node>
+      <node id="456">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.cpp</label>
+        <link refid="temporal__mean__calc_8cpp"/>
+      </node>
+      <node id="463">
+        <label>MisfitHeartRate/Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="457">
+        <label>MisfitHeartRate/algorithms/run_algorithms.h</label>
+        <link refid="run__algorithms_8h"/>
+        <childnode refid="458" relation="include">
+        </childnode>
+        <childnode refid="459" relation="include">
+        </childnode>
+      </node>
+      <node id="459">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="460" relation="include">
+        </childnode>
+        <childnode refid="461" relation="include">
+        </childnode>
+        <childnode refid="462" relation="include">
+        </childnode>
+      </node>
+      <node id="458">
+        <label>MisfitHeartRate/algorithms/run_algorithms.cpp</label>
+        <link refid="run__algorithms_8cpp"/>
+      </node>
+      <node id="455">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.h</label>
+        <link refid="temporal__mean__calc_8h"/>
+        <childnode refid="456" relation="include">
+        </childnode>
+        <childnode refid="457" relation="include">
+        </childnode>
+      </node>
+      <node id="454">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp</label>
+        <link refid="hr__signal__calc_8cpp"/>
+      </node>
+      <node id="462">
+        <label>MisfitHeartRate/Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="459" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>hr_signal_calc.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/4/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__MisfitHeartRate__hr_signal_calc__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MisfitHeartRate__hr_signal_calc__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hb__counter__pda_8h" kindref="compound">hb_counter_pda.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hb__counter__autocorr_8h" kindref="compound">hb_counter_autocorr.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hr__calculator_8h" kindref="compound">hr_calculator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>hrResult<sp/><ref refid="namespace_m_h_r_1ac8025fa73e928ab097c9b58525d787b1" kindref="member">hr_signal_calc</ref>(vector&lt;double&gt;<sp/>&amp;temporal_mean,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>firstSample,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>window_size,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>frameRate,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>overlap_ratio,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>max_bpm,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold_fraction);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__MisfitHeartRate__hr_signal_calc__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.h"/>
+  </compounddef>
+</doxygen>

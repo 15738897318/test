@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_836cd6b921f021ea6c238cb2cc4dfa85" kind="dir">
+    <compoundname>MisfitHeartRate/algorithms</compoundname>
+    <innerdir refid="dir_3ca212fdecb4d91e88bd9f615651f607">MisfitHeartRate/algorithms/Eulerian</innerdir>
+    <innerdir refid="dir_e7fe4f50af6161eac690e5c79969c139">MisfitHeartRate/algorithms/files</innerdir>
+    <innerdir refid="dir_4c6720b039ef5d8ec4bf05e8d23a4078">MisfitHeartRate/algorithms/HeartRateCal</innerdir>
+    <innerdir refid="dir_3a4f66c92c5413957198e8136c279bd4">MisfitHeartRate/algorithms/image</innerdir>
+    <innerdir refid="dir_0e37e8e9b44593d6476ada135fa792ba">MisfitHeartRate/algorithms/math</innerdir>
+    <innerdir refid="dir_b94daa64cd0518b32b5f0cf1f2996392">MisfitHeartRate/algorithms/matrix</innerdir>
+    <innerfile refid="config_8cpp">config.cpp</innerfile>
+    <innerfile refid="config_8h">config.h</innerfile>
+    <innerfile refid="face__params_8h">face_params.h</innerfile>
+    <innerfile refid="finger__params_8h">finger_params.h</innerfile>
+    <innerfile refid="run__algorithms_8cpp">run_algorithms.cpp</innerfile>
+    <innerfile refid="run__algorithms_8h">run_algorithms.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/"/>
+  </compounddef>
+</doxygen>

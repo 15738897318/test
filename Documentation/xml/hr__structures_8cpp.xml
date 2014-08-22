@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="hr__structures_8cpp" kind="file">
+    <compoundname>hr_structures.cpp</compoundname>
+    <includes refid="hr__structures_8h" local="yes">hr_structures.h</includes>
+    <incdepgraph>
+      <node id="467">
+        <label>hr_structures.h</label>
+        <link refid="hr__structures_8h"/>
+        <childnode refid="468" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+      </node>
+      <node id="466">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_structures.cpp</label>
+        <link refid="hr_structures.cpp"/>
+        <childnode refid="467" relation="include">
+        </childnode>
+      </node>
+      <node id="468">
+        <label>vector</label>
+      </node>
+      <node id="469">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>hr_structures.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Pulsar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>8/20/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>Misfit<sp/>Wearables<sp/>Corporation.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hr__structures_8h" kindref="compound">hr_structures.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="12" refid="struct_m_h_r_1_1hr_result_1a94669db221b6a6834d0e385e144eb6ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_result_1a94669db221b6a6834d0e385e144eb6ba" kindref="member">hrResult::hrResult</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="13" refid="struct_m_h_r_1_1hr_result_1a6aa4ad99d1212655782408fb3785eb1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_result_1a94669db221b6a6834d0e385e144eb6ba" kindref="member">hrResult::hrResult</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>autocorr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pda)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;autocorr<sp/>=<sp/><ref refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kindref="member">autocorr</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;pda<sp/>=<sp/><ref refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kindref="member">pda</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="20" refid="struct_m_h_r_1_1hr_result_1a31ede18d6971c0160729a5f8433e4928" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result_1a31ede18d6971c0160729a5f8433e4928" kindref="member">hrResult::operator = </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref><sp/>&amp;other)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kindref="member">autocorr</ref><sp/>=<sp/>other.<ref refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kindref="member">autocorr</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kindref="member">pda</ref><sp/>=<sp/>other.<ref refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kindref="member">pda</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.cpp"/>
+  </compounddef>
+</doxygen>

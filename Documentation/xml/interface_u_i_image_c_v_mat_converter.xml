@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_u_i_image_c_v_mat_converter" kind="class" prot="public">
+    <compoundname>UIImageCVMatConverter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">NSObject</basecompoundref>
+    <includes refid="_u_i_image_c_v_mat_converter_8hpp" local="no">UIImageCVMatConverter.hpp</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_u_i_image_c_v_mat_converter_1ae96cde81129f965a43427053199cd92d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>UIImage *</type>
+        <definition>UIImage * UIImageCVMatConverter::UIImageFromCVMat:</definition>
+        <argsstring>(cv::Mat cvMat)</argsstring>
+        <name>UIImageFromCVMat:</name>
+        <param>
+          <type>cv::Mat</type>
+          <declname>cvMat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.mm" bodystart="48" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_u_i_image_c_v_mat_converter_1abd5e5c4c7280d04fffea79737b556507" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>UIImage *</type>
+        <definition>UIImage * UIImageCVMatConverter::UIImageFromCVMat:withUIImage:</definition>
+        <argsstring>(cv::Mat cvMat,[withUIImage] UIImage *image)</argsstring>
+        <name>UIImageFromCVMat:withUIImage:</name>
+        <param>
+          <type>cv::Mat</type>
+          <declname>cvMat</declname>
+        </param>
+        <param>
+          <attributes>[withUIImage]</attributes>
+          <type>UIImage *</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.mm" bodystart="16" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_u_i_image_c_v_mat_converter_1abeefe1d140e9bdd660b07d1dabce66f1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>cv::Mat</type>
+        <definition>cv::Mat UIImageCVMatConverter::cvMatFromUIImage:</definition>
+        <argsstring>(UIImage *image)</argsstring>
+        <name>cvMatFromUIImage:</name>
+        <param>
+          <type>UIImage *</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.mm" bodystart="84" bodyend="106"/>
+        <referencedby refid="interface_u_i_image_c_v_mat_converter_1adcff189c46b8a96188a10775f133138f" compoundref="_u_i_image_c_v_mat_converter_8mm" startline="109" endline="121">cvMatGrayFromUIImage:</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="interface_u_i_image_c_v_mat_converter_1adcff189c46b8a96188a10775f133138f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>cv::Mat</type>
+        <definition>cv::Mat UIImageCVMatConverter::cvMatGrayFromUIImage:</definition>
+        <argsstring>(UIImage *image)</argsstring>
+        <name>cvMatGrayFromUIImage:</name>
+        <param>
+          <type>UIImage *</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.mm" bodystart="109" bodyend="121"/>
+        <references refid="interface_u_i_image_c_v_mat_converter_1abeefe1d140e9bdd660b07d1dabce66f1" compoundref="_u_i_image_c_v_mat_converter_8mm" startline="84" endline="106">cvMatFromUIImage:</references>
+      </memberdef>
+      <memberdef kind="function" id="interface_u_i_image_c_v_mat_converter_1a6f3591f2805f153289fae9fb8e50ca67" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>UIImage *</type>
+        <definition>UIImage * UIImageCVMatConverter::scaleAndRotateImageFrontCamera:</definition>
+        <argsstring>(UIImage *image)</argsstring>
+        <name>scaleAndRotateImageFrontCamera:</name>
+        <param>
+          <type>UIImage *</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.mm" bodystart="216" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_u_i_image_c_v_mat_converter_1a92e5de957061495ab6c3f1cadfafa2f9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>UIImage *</type>
+        <definition>UIImage * UIImageCVMatConverter::scaleAndRotateImageBackCamera:</definition>
+        <argsstring>(UIImage *image)</argsstring>
+        <name>scaleAndRotateImageBackCamera:</name>
+        <param>
+          <type>UIImage *</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.mm" bodystart="124" bodyend="214"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="68">
+        <label>UIImageCVMatConverter</label>
+        <link refid="interface_u_i_image_c_v_mat_converter"/>
+        <childnode refid="69" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>NSObject</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="70">
+        <label>UIImageCVMatConverter</label>
+        <link refid="interface_u_i_image_c_v_mat_converter"/>
+        <childnode refid="71" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>NSObject</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIImageCVMatConverter.hpp" bodystart="15" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_u_i_image_c_v_mat_converter_1abeefe1d140e9bdd660b07d1dabce66f1" prot="public" virt="virtual"><scope>UIImageCVMatConverter</scope><name>cvMatFromUIImage:</name></member>
+      <member refid="interface_u_i_image_c_v_mat_converter_1adcff189c46b8a96188a10775f133138f" prot="public" virt="virtual"><scope>UIImageCVMatConverter</scope><name>cvMatGrayFromUIImage:</name></member>
+      <member refid="interface_u_i_image_c_v_mat_converter_1a92e5de957061495ab6c3f1cadfafa2f9" prot="public" virt="virtual"><scope>UIImageCVMatConverter</scope><name>scaleAndRotateImageBackCamera:</name></member>
+      <member refid="interface_u_i_image_c_v_mat_converter_1a6f3591f2805f153289fae9fb8e50ca67" prot="public" virt="virtual"><scope>UIImageCVMatConverter</scope><name>scaleAndRotateImageFrontCamera:</name></member>
+      <member refid="interface_u_i_image_c_v_mat_converter_1ae96cde81129f965a43427053199cd92d" prot="public" virt="virtual"><scope>UIImageCVMatConverter</scope><name>UIImageFromCVMat:</name></member>
+      <member refid="interface_u_i_image_c_v_mat_converter_1abd5e5c4c7280d04fffea79737b556507" prot="public" virt="virtual"><scope>UIImageCVMatConverter</scope><name>UIImageFromCVMat:withUIImage:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

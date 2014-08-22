@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="protocol_m_b_progress_h_u_d_delegate-p" kind="protocol" prot="public">
+    <compoundname>MBProgressHUDDelegate-p</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">&lt;UIViewNSObject&gt;</basecompoundref>
+    <includes refid="_m_b_progress_h_u_d_8h" local="no">MBProgressHUD.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="protocol_m_b_progress_h_u_d_delegate-p_1a0b2a08b1d9cf3758cca8d52a61bed1cc" prot="public" static="no" const="no" explicit="no" inline="no" optional="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUDDelegate-p::hudWasHidden:</definition>
+        <argsstring>(MBProgressHUD *hud)</argsstring>
+        <name>hudWasHidden:</name>
+        <param>
+          <type><ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref> *</type>
+          <declname>hud</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called after the HUD was fully hidden from the screen. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="425" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14">
+        <label>&lt;MBProgressHUDDelegate&gt;</label>
+        <link refid="protocol_m_b_progress_h_u_d_delegate-p"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>&lt;UIViewNSObject&gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="16">
+        <label>&lt;MBProgressHUDDelegate&gt;</label>
+        <link refid="protocol_m_b_progress_h_u_d_delegate-p"/>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>&lt;UIViewNSObject&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="430" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="430" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="protocol_m_b_progress_h_u_d_delegate-p_1a0b2a08b1d9cf3758cca8d52a61bed1cc" prot="public" virt="virtual"><scope>MBProgressHUDDelegate-p</scope><name>hudWasHidden:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

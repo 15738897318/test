@@ -1,0 +1,91 @@
+.TH "MisfitHeartRate/Utilities/MHRUtilities.h" 3 "Fri Aug 22 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MisfitHeartRate/Utilities/MHRUtilities.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#import <Foundation/Foundation\&.h>\fP
+.br
+\fC#import <UIKit/UIKit\&.h>\fP
+.br
+\fC#import <mach/mach\&.h>\fP
+.br
+\fC#import <AVFoundation/AVFoundation\&.h>\fP
+.br
+\fC#import 'MHRAppDelegate\&.hpp'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBMHRUtilities\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSCREEN_SIZE_IS_4_INCHES\fP   ([UIScreen mainScreen]\&.bounds\&.size\&.height >= 568)"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_VERSION_EQUAL_TO\fP(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_VERSION_GREATER_THAN\fP(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO\fP(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_VERSION_LESS_THAN\fP(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO\fP(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)"
+.br
+.ti -1c
+.RI "#define \fBMFRGB\fP(r, g, b)   [UIColor colorWithRed:r/255\&.0 green:g/255\&.0 blue:b/255\&.0 alpha:1]"
+.br
+.ti -1c
+.RI "#define \fBMFRGBA\fP(r, g, b, a)   [UIColor colorWithRed:r/255\&.0 green:g/255\&.0 blue:b/255\&.0 alpha:a]"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MFRGB(r, g, b)   [UIColor colorWithRed:r/255\&.0 green:g/255\&.0 blue:b/255\&.0 alpha:1]"
+
+.PP
+Definition at line 48 of file MHRUtilities\&.h\&.
+.SS "#define MFRGBA(r, g, b, a)   [UIColor colorWithRed:r/255\&.0 green:g/255\&.0 blue:b/255\&.0 alpha:a]"
+
+.PP
+Definition at line 49 of file MHRUtilities\&.h\&.
+.SS "#define SCREEN_SIZE_IS_4_INCHES   ([UIScreen mainScreen]\&.bounds\&.size\&.height >= 568)"
+
+.PP
+Definition at line 18 of file MHRUtilities\&.h\&.
+.SS "#define SYSTEM_VERSION_EQUAL_TO(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)"
+
+.PP
+Definition at line 20 of file MHRUtilities\&.h\&.
+.SS "#define SYSTEM_VERSION_GREATER_THAN(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)"
+
+.PP
+Definition at line 22 of file MHRUtilities\&.h\&.
+.SS "#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)"
+
+.PP
+Definition at line 24 of file MHRUtilities\&.h\&.
+.SS "#define SYSTEM_VERSION_LESS_THAN(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)"
+
+.PP
+Definition at line 26 of file MHRUtilities\&.h\&.
+.SS "#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)"
+
+.PP
+Definition at line 28 of file MHRUtilities\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

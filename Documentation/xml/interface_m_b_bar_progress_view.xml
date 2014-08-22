@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_b_bar_progress_view" kind="class" prot="public">
+    <compoundname>MBBarProgressView</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIView</basecompoundref>
+    <includes refid="_m_b_progress_h_u_d_8h" local="no">MBProgressHUD.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_m_b_bar_progress_view_1aa34865ca266850eb7060e91309f3512b" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBBarProgressView::progress</definition>
+        <argsstring></argsstring>
+        <name>progress</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Progress (0.0 to 1.0) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="480" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="480" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_bar_progress_view_1a594029fb5ed62f3de81902c0ea815f2f" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBBarProgressView::lineColor</definition>
+        <argsstring></argsstring>
+        <name>lineColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bar border line color. Defaults to white [UIColor whiteColor]. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="486" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="486" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_bar_progress_view_1a0529e715ce6e40bf0e09864ba0ca1219" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBBarProgressView::progressRemainingColor</definition>
+        <argsstring></argsstring>
+        <name>progressRemainingColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bar background color. Defaults to clear [UIColor clearColor]; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="492" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="492" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_bar_progress_view_1a5b27bb23bd54ae1c7b37a3fedd817e80" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBBarProgressView::progressColor</definition>
+        <argsstring></argsstring>
+        <name>progressColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bar progress color. Defaults to white [UIColor whiteColor]. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="498" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A flat bar progress view. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>MBBarProgressView</label>
+        <link refid="interface_m_b_bar_progress_view"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>UIView</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6">
+        <label>MBBarProgressView</label>
+        <link refid="interface_m_b_bar_progress_view"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>UIView</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="476" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="475" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_b_bar_progress_view_1a594029fb5ed62f3de81902c0ea815f2f" prot="public" virt="non-virtual"><scope>MBBarProgressView</scope><name>lineColor</name></member>
+      <member refid="interface_m_b_bar_progress_view_1aa34865ca266850eb7060e91309f3512b" prot="public" virt="non-virtual"><scope>MBBarProgressView</scope><name>progress</name></member>
+      <member refid="interface_m_b_bar_progress_view_1a5b27bb23bd54ae1c7b37a3fedd817e80" prot="public" virt="non-virtual"><scope>MBBarProgressView</scope><name>progressColor</name></member>
+      <member refid="interface_m_b_bar_progress_view_1a0529e715ce6e40bf0e09864ba0ca1219" prot="public" virt="non-virtual"><scope>MBBarProgressView</scope><name>progressRemainingColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

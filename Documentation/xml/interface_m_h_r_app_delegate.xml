@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_h_r_app_delegate" kind="class" prot="public">
+    <compoundname>MHRAppDelegate</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIResponder</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">&lt;UIApplicationDelegate&gt;</basecompoundref>
+    <includes refid="_m_h_r_app_delegate_8hpp" local="no">MHRAppDelegate.hpp</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_m_h_r_app_delegate_1ae07fbc2242a8ac6a6cca11d22a56dede" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="strong">
+        <type>UIWindow *</type>
+        <definition>UIWindow* MHRAppDelegate::window</definition>
+        <argsstring></argsstring>
+        <name>window</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_h_r_app_delegate_1a798999c986183b6b0f61070b46856713" prot="public" static="no" readable="yes" writable="no" gettable="no" settable="no" accessor="strong">
+        <type>NSManagedObjectContext *</type>
+        <definition>NSManagedObjectContext * MHRAppDelegate::managedObjectContext</definition>
+        <argsstring></argsstring>
+        <name>managedObjectContext</name>
+        <read></read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" bodystart="15" bodyend="-1"/>
+        <referencedby refid="interface_m_h_r_app_delegate_1aec18685dadaebd97aa02780c3f43c5c1" compoundref="_m_h_r_app_delegate_8mm" startline="76" endline="88">saveContext</referencedby>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_h_r_app_delegate_1ab0f79ebe18e402e0249870b98354612b" prot="public" static="no" readable="yes" writable="no" gettable="no" settable="no" accessor="strong">
+        <type>NSManagedObjectModel *</type>
+        <definition>NSManagedObjectModel * MHRAppDelegate::managedObjectModel</definition>
+        <argsstring></argsstring>
+        <name>managedObjectModel</name>
+        <read></read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_h_r_app_delegate_1ade32c3c30bed3706907d1a52c129da79" prot="public" static="no" readable="yes" writable="no" gettable="no" settable="no" accessor="strong">
+        <type>NSPersistentStoreCoordinator *</type>
+        <definition>NSPersistentStoreCoordinator * MHRAppDelegate::persistentStoreCoordinator</definition>
+        <argsstring></argsstring>
+        <name>persistentStoreCoordinator</name>
+        <read></read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="17" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_m_h_r_app_delegate_1aec18685dadaebd97aa02780c3f43c5c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MHRAppDelegate::saveContext</definition>
+        <argsstring>()</argsstring>
+        <name>saveContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="17" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.mm" bodystart="76" bodyend="88"/>
+        <references refid="interface_m_h_r_app_delegate_1a798999c986183b6b0f61070b46856713" compoundref="_m_h_r_app_delegate_8hpp" startline="15">managedObjectContext</references>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_h_r_app_delegate_1a7f18dc9ee3d899f8b4661b48734f1001" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSURL *</type>
+        <definition>NSURL * MHRAppDelegate::applicationDocumentsDirectory</definition>
+        <argsstring>()</argsstring>
+        <name>applicationDocumentsDirectory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="17" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.mm" bodystart="166" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_h_r_app_delegate_1ac246805d8cd3d8477430f1a9c7fefbac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDictionary *</type>
+        <definition>NSDictionary * MHRAppDelegate::getPlistSkinDict</definition>
+        <argsstring>()</argsstring>
+        <name>getPlistSkinDict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="17" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.mm" bodystart="37" bodyend="45"/>
+        <references refid="_m_h_r_app_delegate_8mm_1a410f9d5fa42ffb700da1838a7ad0902e" compoundref="_m_h_r_app_delegate_8mm" startline="22">pListSkinDict</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="23">
+        <label>UIResponder</label>
+      </node>
+      <node id="24">
+        <label>&lt;UIApplicationDelegate&gt;</label>
+      </node>
+      <node id="22">
+        <label>MHRAppDelegate</label>
+        <link refid="interface_m_h_r_app_delegate"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="26">
+        <label>UIResponder</label>
+      </node>
+      <node id="27">
+        <label>&lt;UIApplicationDelegate&gt;</label>
+      </node>
+      <node id="25">
+        <label>MHRAppDelegate</label>
+        <link refid="interface_m_h_r_app_delegate"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" line="11" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp" bodystart="11" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_h_r_app_delegate_1a7f18dc9ee3d899f8b4661b48734f1001" prot="public" virt="virtual"><scope>MHRAppDelegate</scope><name>applicationDocumentsDirectory</name></member>
+      <member refid="interface_m_h_r_app_delegate_1ac246805d8cd3d8477430f1a9c7fefbac" prot="public" virt="virtual"><scope>MHRAppDelegate</scope><name>getPlistSkinDict</name></member>
+      <member refid="interface_m_h_r_app_delegate_1a798999c986183b6b0f61070b46856713" prot="public" virt="non-virtual"><scope>MHRAppDelegate</scope><name>managedObjectContext</name></member>
+      <member refid="interface_m_h_r_app_delegate_1ab0f79ebe18e402e0249870b98354612b" prot="public" virt="non-virtual"><scope>MHRAppDelegate</scope><name>managedObjectModel</name></member>
+      <member refid="interface_m_h_r_app_delegate_1ade32c3c30bed3706907d1a52c129da79" prot="public" virt="non-virtual"><scope>MHRAppDelegate</scope><name>persistentStoreCoordinator</name></member>
+      <member refid="interface_m_h_r_app_delegate_1aec18685dadaebd97aa02780c3f43c5c1" prot="public" virt="virtual"><scope>MHRAppDelegate</scope><name>saveContext</name></member>
+      <member refid="interface_m_h_r_app_delegate_1ae07fbc2242a8ac6a6cca11d22a56dede" prot="public" virt="non-virtual"><scope>MHRAppDelegate</scope><name>window</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

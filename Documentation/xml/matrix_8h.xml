@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="matrix_8h" kind="file">
+    <compoundname>matrix.h</compoundname>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includedby refid="files_8h" local="yes">MisfitHeartRate/algorithms/files/files.h</includedby>
+    <includedby refid="image_8h" local="yes">MisfitHeartRate/algorithms/image/image.h</includedby>
+    <includedby refid="matlab_8h" local="yes">MisfitHeartRate/algorithms/math/matlab.h</includedby>
+    <includedby refid="matrix_8cpp" local="yes">MisfitHeartRate/algorithms/matrix/matrix.cpp</includedby>
+    <incdepgraph>
+      <node id="637">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="635">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="636" relation="include">
+        </childnode>
+        <childnode refid="639" relation="include">
+        </childnode>
+      </node>
+      <node id="638">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="636">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="637" relation="include">
+        </childnode>
+        <childnode refid="638" relation="include">
+        </childnode>
+      </node>
+      <node id="634">
+        <label>MisfitHeartRate/algorithms/matrix/matrix.h</label>
+        <link refid="matrix.h"/>
+        <childnode refid="635" relation="include">
+        </childnode>
+      </node>
+      <node id="639">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="637" relation="include">
+        </childnode>
+        <childnode refid="638" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="655">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="656" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+      </node>
+      <node id="662">
+        <label>MisfitHeartRate/globals.cpp</label>
+        <link refid="globals_8cpp"/>
+      </node>
+      <node id="661">
+        <label>MisfitHeartRate/globals.h</label>
+        <link refid="globals_8h"/>
+        <childnode refid="646" relation="include">
+        </childnode>
+        <childnode refid="662" relation="include">
+        </childnode>
+        <childnode refid="648" relation="include">
+        </childnode>
+      </node>
+      <node id="650">
+        <label>MisfitHeartRate/MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="649">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="666">
+        <label>MisfitHeartRate/algorithms/math/matlab.h</label>
+        <link refid="matlab_8h"/>
+        <childnode refid="667" relation="include">
+        </childnode>
+        <childnode refid="669" relation="include">
+        </childnode>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="663" relation="include">
+        </childnode>
+        <childnode refid="671" relation="include">
+        </childnode>
+        <childnode refid="673" relation="include">
+        </childnode>
+        <childnode refid="649" relation="include">
+        </childnode>
+      </node>
+      <node id="657">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.h</label>
+        <link refid="hr__signal__calc_8h"/>
+        <childnode refid="658" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="667">
+        <label>MisfitHeartRate/algorithms/Eulerian/ideal_bandpassing.h</label>
+        <link refid="ideal__bandpassing_8h"/>
+        <childnode refid="644" relation="include">
+        </childnode>
+        <childnode refid="668" relation="include">
+        </childnode>
+      </node>
+      <node id="660">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.cpp</label>
+        <link refid="temporal__mean__calc_8cpp"/>
+      </node>
+      <node id="642">
+        <label>MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.h</label>
+        <link refid="build___gdown__stack_8h"/>
+        <childnode refid="643" relation="include">
+        </childnode>
+        <childnode refid="644" relation="include">
+        </childnode>
+      </node>
+      <node id="663">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="664" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+      </node>
+      <node id="672">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_calculator.cpp</label>
+        <link refid="hr__calculator_8cpp"/>
+      </node>
+      <node id="668">
+        <label>MisfitHeartRate/algorithms/Eulerian/ideal_bandpassing.cpp</label>
+        <link refid="ideal__bandpassing_8cpp"/>
+      </node>
+      <node id="643">
+        <label>MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.cpp</label>
+        <link refid="build___gdown__stack_8cpp"/>
+      </node>
+      <node id="652">
+        <label>MisfitHeartRate/Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="673">
+        <label>MisfitHeartRate/algorithms/math/matlab.cpp</label>
+        <link refid="matlab_8cpp"/>
+      </node>
+      <node id="671">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_calculator.h</label>
+        <link refid="hr__calculator_8h"/>
+        <childnode refid="672" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+      </node>
+      <node id="654">
+        <label>MisfitHeartRate/algorithms/image/image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="641" relation="include">
+        </childnode>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="663" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+        <childnode refid="665" relation="include">
+        </childnode>
+      </node>
+      <node id="641">
+        <label>MisfitHeartRate/algorithms/files/files.h</label>
+        <link refid="files_8h"/>
+        <childnode refid="642" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+      </node>
+      <node id="646">
+        <label>MisfitHeartRate/algorithms/run_algorithms.h</label>
+        <link refid="run__algorithms_8h"/>
+        <childnode refid="647" relation="include">
+        </childnode>
+        <childnode refid="648" relation="include">
+        </childnode>
+      </node>
+      <node id="669">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/frames2signal.h</label>
+        <link refid="frames2signal_8h"/>
+        <childnode refid="670" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+      </node>
+      <node id="645">
+        <label>MisfitHeartRate/algorithms/Eulerian/eulerian.cpp</label>
+        <link refid="eulerian_8cpp"/>
+      </node>
+      <node id="648">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="649" relation="include">
+        </childnode>
+        <childnode refid="650" relation="include">
+        </childnode>
+        <childnode refid="651" relation="include">
+        </childnode>
+      </node>
+      <node id="647">
+        <label>MisfitHeartRate/algorithms/run_algorithms.cpp</label>
+        <link refid="run__algorithms_8cpp"/>
+      </node>
+      <node id="644">
+        <label>MisfitHeartRate/algorithms/Eulerian/eulerian.h</label>
+        <link refid="eulerian_8h"/>
+        <childnode refid="645" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+      </node>
+      <node id="665">
+        <label>MisfitHeartRate/algorithms/image/image.cpp</label>
+        <link refid="image_8cpp"/>
+      </node>
+      <node id="653">
+        <label>MisfitHeartRate/algorithms/files/files.cpp</label>
+        <link refid="files_8cpp"/>
+      </node>
+      <node id="674">
+        <label>MisfitHeartRate/algorithms/matrix/matrix.cpp</label>
+        <link refid="matrix_8cpp"/>
+      </node>
+      <node id="670">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp</label>
+        <link refid="frames2signal_8cpp"/>
+      </node>
+      <node id="659">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.h</label>
+        <link refid="temporal__mean__calc_8h"/>
+        <childnode refid="660" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+      </node>
+      <node id="656">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hb_counter_autocorr.cpp</label>
+        <link refid="hb__counter__autocorr_8cpp"/>
+      </node>
+      <node id="640">
+        <label>MisfitHeartRate/algorithms/matrix/matrix.h</label>
+        <link refid="matrix.h"/>
+        <childnode refid="641" relation="include">
+        </childnode>
+        <childnode refid="654" relation="include">
+        </childnode>
+        <childnode refid="666" relation="include">
+        </childnode>
+        <childnode refid="674" relation="include">
+        </childnode>
+      </node>
+      <node id="658">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp</label>
+        <link refid="hr__signal__calc_8cpp"/>
+      </node>
+      <node id="651">
+        <label>MisfitHeartRate/Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="648" relation="include">
+        </childnode>
+        <childnode refid="652" relation="include">
+        </childnode>
+      </node>
+      <node id="664">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hb_counter_pda.cpp</label>
+        <link refid="hb__counter__pda_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>matrix.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/3/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__MisfitHeartRate__matrix__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MisfitHeartRate__matrix__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">cv;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1ad90e260536ab41e3da12f739038743d0" kindref="member">atan2Mat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;b);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" kindref="member">powMat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;src,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" kindref="member">add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;b);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;b);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__MisfitHeartRate__matrix__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.h"/>
+  </compounddef>
+</doxygen>

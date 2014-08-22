@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_u_i_view_09_position_8m" kind="file">
+    <compoundname>UIView+Position.m</compoundname>
+    <includes refid="_u_i_view_09_position_8h" local="yes">UIView+Position.h</includes>
+    <incdepgraph>
+      <node id="1196">
+        <label>UIView+Position.h</label>
+        <link refid="_u_i_view_09_position_8h"/>
+        <childnode refid="1197" relation="include">
+        </childnode>
+        <childnode refid="1198" relation="include">
+        </childnode>
+      </node>
+      <node id="1195">
+        <label>MisfitHeartRate/Utilities/UIView+Position.m</label>
+        <link refid="UIView+Position.m"/>
+        <childnode refid="1196" relation="include">
+        </childnode>
+      </node>
+      <node id="1200">
+        <label>mach/mach.h</label>
+      </node>
+      <node id="1197">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="1198">
+        <label>MHRUtilities.h</label>
+        <link refid="_m_h_r_utilities_8h"/>
+        <childnode refid="1199" relation="include">
+        </childnode>
+        <childnode refid="1197" relation="include">
+        </childnode>
+        <childnode refid="1200" relation="include">
+        </childnode>
+        <childnode refid="1201" relation="include">
+        </childnode>
+        <childnode refid="1202" relation="include">
+        </childnode>
+      </node>
+      <node id="1201">
+        <label>AVFoundation/AVFoundation.h</label>
+      </node>
+      <node id="1199">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="1202">
+        <label>MHRAppDelegate.hpp</label>
+        <link refid="_m_h_r_app_delegate_8hpp"/>
+        <childnode refid="1197" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>UIView+Position.m</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/11/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyleft<sp/>2010<sp/>Bynomial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;<ref refid="_u_i_view_09_position_8h" kindref="compound">UIView+Position.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">@implementation<sp/></highlight><highlight class="normal"><ref refid="category_u_i_view_07_position_08" kindref="compound">UIView (Position)</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">-<sp/>(CGPoint)frameOrigin<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">-<sp/>(void)setFrameOrigin:(CGPoint)newOrigin<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(newOrigin.x,<sp/>newOrigin.y,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-<sp/>(CGSize)frameSize<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">-<sp/>(void)setFrameSize:(CGSize)newSize<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(</highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>newSize.width,<sp/>newSize.height);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">-<sp/>(CGFloat)frameX<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">-<sp/>(void)setFrameX:(CGFloat)newX<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(newX,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">-<sp/>(CGFloat)frameY<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">-<sp/>(void)setFrameY:(CGFloat)newY<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(</highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x,<sp/>newY,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">-<sp/>(CGFloat)frameRight<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x<sp/>+<sp/>self.frame.size.width;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">-<sp/>(void)setFrameRight:(CGFloat)newRight<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(newRight<sp/>-<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">-<sp/>(CGFloat)frameBottom<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y<sp/>+<sp/>self.frame.size.height;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">-<sp/>(void)setFrameBottom:(CGFloat)newBottom<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(</highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x,<sp/>newBottom<sp/>-<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">-<sp/>(CGFloat)frameWidth<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">-<sp/>(void)setFrameWidth:(CGFloat)newWidth<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(</highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>newWidth,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">-<sp/>(CGFloat)frameHeight<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.height;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">-<sp/>(void)setFrameHeight:(CGFloat)newHeight<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(</highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.x,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.origin.y,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame.size.width,<sp/>newHeight);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="category_u_i_view_07_position_08_1a4ab53ef69f304fba4732aeb9256b5ee0" refkind="member"><highlight class="normal">-<sp/>(void)addCenteredSubview:(UIView<sp/>*)subview<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>subview.frameX<sp/>=<sp/>(int)((</highlight><highlight class="keyword">self</highlight><highlight class="normal">.bounds.size.width<sp/>-<sp/>subview.frameWidth)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>subview.frameY<sp/>=<sp/>(int)((</highlight><highlight class="keyword">self</highlight><highlight class="normal">.bounds.size.height<sp/>-<sp/>subview.frameHeight)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>addSubview:subview];</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="category_u_i_view_07_position_08_1afaae9a5b1741fa3eb2ae7c57cf4687d8" refkind="member"><highlight class="normal">-<sp/>(void)moveToCenterOfSuperview<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameX<sp/>=<sp/>(int)((</highlight><highlight class="keyword">self</highlight><highlight class="normal">.superview.bounds.size.width<sp/>-<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameWidth)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameY<sp/>=<sp/>(int)((</highlight><highlight class="keyword">self</highlight><highlight class="normal">.superview.bounds.size.height<sp/>-<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameHeight)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="category_u_i_view_07_position_08_1a3ede327c32904e3e1e9e5c90b6cd8071" refkind="member"><highlight class="normal">-<sp/>(void)centerVerticallyInSuperview</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameY<sp/>=<sp/>(int)((</highlight><highlight class="keyword">self</highlight><highlight class="normal">.superview.bounds.size.height<sp/>-<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameHeight)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="category_u_i_view_07_position_08_1a50aabdd38d9ff4e017bc0238e2346ae2" refkind="member"><highlight class="normal">-<sp/>(void)centerHorizontallyInSuperview</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameX<sp/>=<sp/>(int)((</highlight><highlight class="keyword">self</highlight><highlight class="normal">.superview.bounds.size.width<sp/>-<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameWidth)<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="category_u_i_view_07_position_08_1aee174d95a8088008dd006205fad44d17" refkind="member"><highlight class="normal">-<sp/>(void)setFrameXPlus:(CGFloat)dX<sp/>yPlus:(CGFloat)dY<sp/>widthPlus:(CGFloat)dWidth<sp/>heightPlus:(CGFloat)dHeight</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frame<sp/>=<sp/>CGRectMake(</highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameX<sp/>+<sp/>dX,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameY<sp/>+<sp/>dY,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameWidth<sp/>+<sp/>dWidth,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">.frameHeight<sp/>+<sp/>dHeight);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="category_u_i_view_07_position_08_1a3f7385a31ead16eb46e759a413aa9f19" refkind="member"><highlight class="normal">-<sp/>(void)adjustFrameFormiOS6ToiOS7:(CGFloat)distance</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="_m_h_r_utilities_8h_1acd7fa9cdfd9ad3df6c6b7207aa1e0359" kindref="member">SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO</ref>(</highlight><highlight class="stringliteral">@&quot;7.0&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>setFrameY:self.frame.origin.y<sp/>+<sp/>distance];</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="category_u_i_view_07_position_08_1a26680d798543876e3d295c69ecf7f35c" refkind="member"><highlight class="normal">-<sp/>(void)adjustFrameFormiOS7ToiOS6:(CGFloat)distance</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="_m_h_r_utilities_8h_1abc30dc0a00d4dcdb4e219a9c2e0aa5e4" kindref="member">SYSTEM_VERSION_LESS_THAN</ref>(</highlight><highlight class="stringliteral">@&quot;7.0&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>setFrameY:self.frame.origin.y<sp/>-<sp/>distance];</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m"/>
+  </compounddef>
+</doxygen>

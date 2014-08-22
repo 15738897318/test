@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="hr__signal__calc_8cpp" kind="file">
+    <compoundname>hr_signal_calc.cpp</compoundname>
+    <includes refid="hr__signal__calc_8h" local="yes">hr_signal_calc.h</includes>
+    <incdepgraph>
+      <node id="434">
+        <label>hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="422" relation="include">
+        </childnode>
+        <childnode refid="429" relation="include">
+        </childnode>
+        <childnode refid="431" relation="include">
+        </childnode>
+      </node>
+      <node id="429">
+        <label>matlab.h</label>
+        <link refid="matlab_8h"/>
+        <childnode refid="430" relation="include">
+        </childnode>
+        <childnode refid="423" relation="include">
+        </childnode>
+      </node>
+      <node id="420">
+        <label>hr_signal_calc.h</label>
+        <link refid="hr__signal__calc_8h"/>
+        <childnode refid="421" relation="include">
+        </childnode>
+        <childnode refid="434" relation="include">
+        </childnode>
+        <childnode refid="435" relation="include">
+        </childnode>
+      </node>
+      <node id="426">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="424">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="425" relation="include">
+        </childnode>
+        <childnode refid="428" relation="include">
+        </childnode>
+      </node>
+      <node id="431">
+        <label>hr_structures.h</label>
+        <link refid="hr__structures_8h"/>
+        <childnode refid="432" relation="include">
+        </childnode>
+        <childnode refid="433" relation="include">
+        </childnode>
+      </node>
+      <node id="421">
+        <label>hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="422" relation="include">
+        </childnode>
+        <childnode refid="429" relation="include">
+        </childnode>
+        <childnode refid="431" relation="include">
+        </childnode>
+      </node>
+      <node id="435">
+        <label>hr_calculator.h</label>
+        <link refid="hr__calculator_8h"/>
+        <childnode refid="429" relation="include">
+        </childnode>
+      </node>
+      <node id="422">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="423" relation="include">
+        </childnode>
+      </node>
+      <node id="427">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="432">
+        <label>vector</label>
+      </node>
+      <node id="433">
+        <label>utility</label>
+      </node>
+      <node id="425">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+      </node>
+      <node id="423">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="424" relation="include">
+        </childnode>
+      </node>
+      <node id="419">
+        <label>MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp</label>
+        <link refid="hr_signal_calc.cpp"/>
+        <childnode refid="420" relation="include">
+        </childnode>
+      </node>
+      <node id="430">
+        <label>set</label>
+      </node>
+      <node id="428">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="426" relation="include">
+        </childnode>
+        <childnode refid="427" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>hr_signal_calc.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/4/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hr__signal__calc_8h" kindref="compound">hr_signal_calc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="13" refid="namespace_m_h_r_1ac8025fa73e928ab097c9b58525d787b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref><sp/><ref refid="namespace_m_h_r_1ac8025fa73e928ab097c9b58525d787b1" kindref="member">hr_signal_calc</ref>(vector&lt;double&gt;<sp/>&amp;temporal_mean,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>firstSample,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>window_size,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>frameRate,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>overlap_ratio,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>max_bpm,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold_fraction)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clock_t<sp/>t1<sp/>=<sp/>clock();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>peak-detection<sp/>params</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(firstSample<sp/>&gt;<sp/>temporal_mean.size())</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>firstSample<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold<sp/>=<sp/>threshold_fraction<sp/>*<sp/>(*max_element(temporal_mean.begin()<sp/>+<sp/>firstSample,<sp/>temporal_mean.end()));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>minPeakDistance<sp/>=<sp/>round(60<sp/>/<sp/>max_bpm<sp/>*<sp/>frameRate);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>heart-rate<sp/>using<sp/>peak-detection<sp/>on<sp/>the<sp/>signal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_debug" kindref="compound">hrDebug</ref><sp/>debug_pda;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>hb_locations_pda<sp/>=<sp/><ref refid="namespace_m_h_r_1ac8cf9fb76b7455034653c17bc9e3ee4c" kindref="member">hb_counter_pda</ref>(temporal_mean,<sp/>frameRate,<sp/>firstSample,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window_size,<sp/>overlap_ratio,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minPeakDistance,<sp/>threshold,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debug_pda);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/>ans_pda;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a4ba8de262585ae09cd1564fcfda5742e" kindref="member">hr_calculator</ref>(hb_locations_pda,<sp/>frameRate,<sp/>ans_pda);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>avg_hr_pda<sp/>=<sp/>ans_pda[0];<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>average<sp/>heart<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>heart-rate<sp/>using<sp/>autocorr<sp/>algorithm<sp/>on<sp/>the<sp/>signal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_debug" kindref="compound">hrDebug</ref><sp/>debug_autocorr;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>hb_locations_autocorr<sp/>=<sp/><ref refid="namespace_m_h_r_1a62a720e54584696fcf7e2d545ad202dc" kindref="member">hb_counter_autocorr</ref>(temporal_mean,<sp/>frameRate,<sp/>firstSample,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window_size,<sp/>overlap_ratio,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minPeakDistance,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debug_autocorr);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/>ans_autocorr;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a4ba8de262585ae09cd1564fcfda5742e" kindref="member">hr_calculator</ref>(hb_locations_autocorr,<sp/>frameRate,<sp/>ans_autocorr);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>avg_hr_autocorr<sp/>=<sp/>ans_autocorr[0];<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>average<sp/>heart<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespace_m_h_r_1a2446951af16ca1137edb21f8e07019cb" kindref="member">_DEBUG_MODE</ref>)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;hr_signal_calc()<sp/>time<sp/>=<sp/>%f\n&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)clock()<sp/>-<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)t1)/1000.0);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref>(avg_hr_autocorr,<sp/>avg_hr_pda);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp"/>
+  </compounddef>
+</doxygen>

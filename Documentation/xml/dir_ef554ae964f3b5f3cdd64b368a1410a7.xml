@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_ef554ae964f3b5f3cdd64b368a1410a7" kind="dir">
+    <compoundname>MisfitHeartRate/MainView</compoundname>
+    <innerfile refid="_m_h_r_main_view_controller_8hpp">MHRMainViewController.hpp</innerfile>
+    <innerfile refid="_m_h_r_main_view_controller_8mm">MHRMainViewController.mm</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/"/>
+  </compounddef>
+</doxygen>

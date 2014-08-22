@@ -1,0 +1,116 @@
+\hypertarget{_m_b_progress_h_u_d_8h}{\section{Misfit\+Heart\+Rate/\+Utilities/\+M\+B\+Progress\+H\+U\+D.h File Reference}
+\label{_m_b_progress_h_u_d_8h}\index{Misfit\+Heart\+Rate/\+Utilities/\+M\+B\+Progress\+H\+U\+D.\+h@{Misfit\+Heart\+Rate/\+Utilities/\+M\+B\+Progress\+H\+U\+D.\+h}}
+}
+{\ttfamily \#import $<$Foundation/\+Foundation.\+h$>$}\\*
+{\ttfamily \#import $<$U\+I\+Kit/\+U\+I\+Kit.\+h$>$}\\*
+{\ttfamily \#import $<$Core\+Graphics/\+Core\+Graphics.\+h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{interface_m_b_progress_h_u_d}{M\+B\+Progress\+H\+U\+D}
+\item 
+protocol \hyperlink{protocol_m_b_progress_h_u_d_delegate-p}{$<$\+M\+B\+Progress\+H\+U\+D\+Delegate$>$}
+\item 
+class \hyperlink{interface_m_b_round_progress_view}{M\+B\+Round\+Progress\+View}
+\item 
+class \hyperlink{interface_m_b_bar_progress_view}{M\+B\+Bar\+Progress\+View}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_b_progress_h_u_d_8h_a3b2863c8570213ff818b8e2361014d34}{M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E}~id
+\item 
+\#define \hyperlink{_m_b_progress_h_u_d_8h_a0aa3ddcad65d17ece28a6e562f031794}{M\+B\+\_\+\+S\+T\+R\+O\+N\+G}~retain
+\item 
+\#define \hyperlink{_m_b_progress_h_u_d_8h_ae418fa5342876317377e77f6492ee4e4}{M\+B\+\_\+\+W\+E\+A\+K}~assign
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621}{M\+B\+Progress\+H\+U\+D\+Mode} \{ \\*
+\hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1}{M\+B\+Progress\+H\+U\+D\+Mode\+Indeterminate}, 
+\hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29}{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate}, 
+\hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc}{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate\+Horizontal\+Bar}, 
+\hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4}{M\+B\+Progress\+H\+U\+D\+Mode\+Annular\+Determinate}, 
+\\*
+\hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8}{M\+B\+Progress\+H\+U\+D\+Mode\+Custom\+View}, 
+\hyperlink{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0}{M\+B\+Progress\+H\+U\+D\+Mode\+Text}
+ \}
+\item 
+enum \hyperlink{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990}{M\+B\+Progress\+H\+U\+D\+Animation} \{ \hyperlink{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5}{M\+B\+Progress\+H\+U\+D\+Animation\+Fade}, 
+\hyperlink{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f}{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom}, 
+\hyperlink{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119}{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+Out} = M\+B\+Progress\+H\+U\+D\+Animation\+Zoom, 
+\hyperlink{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597}{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+In}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_m_b_progress_h_u_d_8h_a3b2863c8570213ff818b8e2361014d34}{\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E@{M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E}}
+\index{M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E@{M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}
+\subsubsection[{M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+I\+N\+S\+T\+A\+N\+C\+E\+T\+Y\+P\+E~id}}\label{_m_b_progress_h_u_d_8h_a3b2863c8570213ff818b8e2361014d34}
+
+
+Definition at line 65 of file M\+B\+Progress\+H\+U\+D.\+h.
+
+\hypertarget{_m_b_progress_h_u_d_8h_a0aa3ddcad65d17ece28a6e562f031794}{\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+\_\+\+S\+T\+R\+O\+N\+G@{M\+B\+\_\+\+S\+T\+R\+O\+N\+G}}
+\index{M\+B\+\_\+\+S\+T\+R\+O\+N\+G@{M\+B\+\_\+\+S\+T\+R\+O\+N\+G}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}
+\subsubsection[{M\+B\+\_\+\+S\+T\+R\+O\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+S\+T\+R\+O\+N\+G~retain}}\label{_m_b_progress_h_u_d_8h_a0aa3ddcad65d17ece28a6e562f031794}
+
+
+Definition at line 73 of file M\+B\+Progress\+H\+U\+D.\+h.
+
+\hypertarget{_m_b_progress_h_u_d_8h_ae418fa5342876317377e77f6492ee4e4}{\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+\_\+\+W\+E\+A\+K@{M\+B\+\_\+\+W\+E\+A\+K}}
+\index{M\+B\+\_\+\+W\+E\+A\+K@{M\+B\+\_\+\+W\+E\+A\+K}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}
+\subsubsection[{M\+B\+\_\+\+W\+E\+A\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+\_\+\+W\+E\+A\+K~assign}}\label{_m_b_progress_h_u_d_8h_ae418fa5342876317377e77f6492ee4e4}
+
+
+Definition at line 83 of file M\+B\+Progress\+H\+U\+D.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990}{\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Animation@{M\+B\+Progress\+H\+U\+D\+Animation}}
+\index{M\+B\+Progress\+H\+U\+D\+Animation@{M\+B\+Progress\+H\+U\+D\+Animation}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}
+\subsubsection[{M\+B\+Progress\+H\+U\+D\+Animation}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf M\+B\+Progress\+H\+U\+D\+Animation}}}\label{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\+B\+Progress\+H\+U\+D\+Animation\+Fade@{M\+B\+Progress\+H\+U\+D\+Animation\+Fade}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Animation\+Fade@{M\+B\+Progress\+H\+U\+D\+Animation\+Fade}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5}{M\+B\+Progress\+H\+U\+D\+Animation\+Fade}\label{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5}
+}]Opacity animation \index{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom@{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Animation\+Zoom@{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f}{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom}\label{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f}
+}]Opacity + scale animation \index{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+Out@{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+Out}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+Out@{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+Out}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119}{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+Out}\label{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119}
+}]\index{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+In@{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+In}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+In@{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+In}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597}{M\+B\+Progress\+H\+U\+D\+Animation\+Zoom\+In}\label{_m_b_progress_h_u_d_8h_a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 51 of file M\+B\+Progress\+H\+U\+D.\+h.
+
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621}{\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode@{M\+B\+Progress\+H\+U\+D\+Mode}}
+\index{M\+B\+Progress\+H\+U\+D\+Mode@{M\+B\+Progress\+H\+U\+D\+Mode}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}
+\subsubsection[{M\+B\+Progress\+H\+U\+D\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf M\+B\+Progress\+H\+U\+D\+Mode}}}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\+B\+Progress\+H\+U\+D\+Mode\+Indeterminate@{M\+B\+Progress\+H\+U\+D\+Mode\+Indeterminate}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode\+Indeterminate@{M\+B\+Progress\+H\+U\+D\+Mode\+Indeterminate}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1}{M\+B\+Progress\+H\+U\+D\+Mode\+Indeterminate}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1}
+}]Progress is shown using an U\+I\+Activity\+Indicator\+View. This is the default. \index{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate@{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode\+Determinate@{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29}{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29}
+}]Progress is shown using a round, pie-\/chart like, progress view. \index{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate\+Horizontal\+Bar@{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate\+Horizontal\+Bar}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode\+Determinate\+Horizontal\+Bar@{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate\+Horizontal\+Bar}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc}{M\+B\+Progress\+H\+U\+D\+Mode\+Determinate\+Horizontal\+Bar}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc}
+}]Progress is shown using a horizontal progress bar \index{M\+B\+Progress\+H\+U\+D\+Mode\+Annular\+Determinate@{M\+B\+Progress\+H\+U\+D\+Mode\+Annular\+Determinate}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode\+Annular\+Determinate@{M\+B\+Progress\+H\+U\+D\+Mode\+Annular\+Determinate}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4}{M\+B\+Progress\+H\+U\+D\+Mode\+Annular\+Determinate}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4}
+}]Progress is shown using a ring-\/shaped progress view. \index{M\+B\+Progress\+H\+U\+D\+Mode\+Custom\+View@{M\+B\+Progress\+H\+U\+D\+Mode\+Custom\+View}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode\+Custom\+View@{M\+B\+Progress\+H\+U\+D\+Mode\+Custom\+View}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8}{M\+B\+Progress\+H\+U\+D\+Mode\+Custom\+View}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8}
+}]Shows a custom view \index{M\+B\+Progress\+H\+U\+D\+Mode\+Text@{M\+B\+Progress\+H\+U\+D\+Mode\+Text}!M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}}\index{M\+B\+Progress\+H\+U\+D.\+h@{M\+B\+Progress\+H\+U\+D.\+h}!M\+B\+Progress\+H\+U\+D\+Mode\+Text@{M\+B\+Progress\+H\+U\+D\+Mode\+Text}}\item[{\em 
+\hypertarget{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0}{M\+B\+Progress\+H\+U\+D\+Mode\+Text}\label{_m_b_progress_h_u_d_8h_a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0}
+}]Shows only labels \end{description}
+\end{Desc}
+
+
+Definition at line 36 of file M\+B\+Progress\+H\+U\+D.\+h.
+

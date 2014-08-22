@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_b592001b90cfa5a8f8f4ed7a71066a0a" kind="dir">
+    <compoundname>MisfitHeartRate</compoundname>
+    <innerdir refid="dir_836cd6b921f021ea6c238cb2cc4dfa85">MisfitHeartRate/algorithms</innerdir>
+    <innerdir refid="dir_ef554ae964f3b5f3cdd64b368a1410a7">MisfitHeartRate/MainView</innerdir>
+    <innerdir refid="dir_ab0943691ba42431850a9c1385f0c867">MisfitHeartRate/ResultView</innerdir>
+    <innerdir refid="dir_ee837f8f3072fb0ad4ad93a3ed26f5c0">MisfitHeartRate/SettingsView</innerdir>
+    <innerdir refid="dir_10422def17ec83f72319cae77d6b630d">MisfitHeartRate/Utilities</innerdir>
+    <innerfile refid="globals_8cpp">globals.cpp</innerfile>
+    <innerfile refid="globals_8h">globals.h</innerfile>
+    <innerfile refid="main_8m">main.m</innerfile>
+    <innerfile refid="_m_h_r_app_delegate_8hpp">MHRAppDelegate.hpp</innerfile>
+    <innerfile refid="_m_h_r_app_delegate_8mm">MHRAppDelegate.mm</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/"/>
+  </compounddef>
+</doxygen>

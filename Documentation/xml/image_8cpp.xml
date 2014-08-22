@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="image_8cpp" kind="file">
+    <compoundname>image.cpp</compoundname>
+    <includes refid="image_8h" local="yes">image.h</includes>
+    <incdepgraph>
+      <node id="545">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="543">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="544" relation="include">
+        </childnode>
+        <childnode refid="547" relation="include">
+        </childnode>
+      </node>
+      <node id="541">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="542" relation="include">
+        </childnode>
+      </node>
+      <node id="546">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="540">
+        <label>MisfitHeartRate/algorithms/image/image.cpp</label>
+        <link refid="image.cpp"/>
+        <childnode refid="541" relation="include">
+        </childnode>
+      </node>
+      <node id="544">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="545" relation="include">
+        </childnode>
+        <childnode refid="546" relation="include">
+        </childnode>
+      </node>
+      <node id="542">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="543" relation="include">
+        </childnode>
+      </node>
+      <node id="547">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="545" relation="include">
+        </childnode>
+        <childnode refid="546" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>image.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/3/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="image_8h" kindref="compound">image.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="12" refid="namespace_m_h_r_1ae8dc1afd1e611d432d98186da1f813e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1ae8dc1afd1e611d432d98186da1f813e5" kindref="member">rgb2tsl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat&amp;<sp/>rgbmap,<sp/>Mat<sp/>&amp;dst)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nRow<sp/>=<sp/>rgbmap.rows;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nCol<sp/>=<sp/>rgbmap.cols;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nChannel<sp/>=<sp/>rgbmap.channels();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>rgb_sumchannels<sp/>=<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>rgb_channel[3]<sp/>=<sp/>{Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F),<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F),<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F)};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nRow;<sp/>++i)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nCol;<sp/>++j)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>channel<sp/>=<sp/>0;<sp/>channel<sp/>&lt;<sp/>nChannel;<sp/>++channel)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rgb_sumchannels.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>+=<sp/>rgbmap.at&lt;Vec3d&gt;(i,<sp/>j)[channel];</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rgb_channel[channel].at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>=<sp/>rgbmap.at&lt;Vec3d&gt;(i,<sp/>j)[channel];</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r_primes<sp/>=<sp/>bsxfun(@minus,<sp/>bsxfun(@rdivide,<sp/>rgbmap(:,<sp/>:,<sp/>1),<sp/>sum(rgbmap,<sp/>3)),<sp/>1/3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r_primes(isnan(r_primes))<sp/>=<sp/>-1/3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>r_primes<sp/>=<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>divide(rgb_channel[0],<sp/>rgb_sumchannels,<sp/>r_primes);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r_primes<sp/>=<sp/>r_primes<sp/>-<sp/>Mat(nRow,<sp/>nCol,<sp/>CV_64F,<sp/>cvScalar(1.0/3.0));</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_primes<sp/>=<sp/>bsxfun(@minus,<sp/>bsxfun(@rdivide,<sp/>rgbmap(:,<sp/>:,<sp/>2),<sp/>sum(rgbmap,<sp/>3)),<sp/>1/3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_primes(isnan(g_primes))<sp/>=<sp/>-1/3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>g_primes<sp/>=<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>divide(rgb_channel[1],<sp/>rgb_sumchannels,<sp/>g_primes);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_primes<sp/>=<sp/>g_primes<sp/>-<sp/>Mat(nRow,<sp/>nCol,<sp/>CV_64F,<sp/>cvScalar(1.0/3.0));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp1<sp/>=<sp/>zeros(size(g_primes));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp1(bsxfun(@gt,<sp/>g_primes,<sp/>0))<sp/>=<sp/>1/4;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp1(bsxfun(@lt,<sp/>g_primes,<sp/>0))<sp/>=<sp/>3/4;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp2<sp/>=<sp/>ones(size(g_primes));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp2(bsxfun(@eq,<sp/>g_primes,<sp/>0))<sp/>=<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>temp1<sp/>=<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>temp2<sp/>=<sp/>Mat::ones(nRow,<sp/>nCol,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nRow;<sp/>++i)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nCol;<sp/>++j)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_primes.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp1.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>=<sp/>1.0/4.0;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(g_primes.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp1.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>=<sp/>3.0/4.0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp2.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst<sp/>=<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64FC3);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tslmap(:,<sp/>:,<sp/>1)<sp/>=<sp/>1<sp/>/<sp/>(2<sp/>*<sp/>pi)<sp/>*<sp/>bsxfun(@atan2,<sp/>r_primes,<sp/>g_primes)<sp/>.*<sp/>temp2<sp/>+<sp/>temp1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>tmp0<sp/>=<sp/><ref refid="namespace_m_h_r_1ad90e260536ab41e3da12f739038743d0" kindref="member">atan2Mat</ref>(r_primes,<sp/>g_primes);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(tmp0,<sp/>Mat(nRow,<sp/>nCol,<sp/>CV_64F,<sp/>cvScalar(1.0/(2*M_PI))),<sp/>tmp0);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(tmp0,<sp/>temp2,<sp/>tmp0);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp0<sp/>=<sp/>tmp0<sp/>+<sp/>temp1;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tslmap(:,<sp/>:,<sp/>2)<sp/>=<sp/>bsxfun(@power,<sp/>(9/5<sp/>*<sp/>(r_primes.^2<sp/>+<sp/>g_primes.^2)),<sp/>1/2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>tmp1<sp/>=<sp/><ref refid="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" kindref="member">powMat</ref>(r_primes,<sp/>2);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp1<sp/>=<sp/>tmp1<sp/>+<sp/><ref refid="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" kindref="member">powMat</ref>(g_primes,<sp/>2);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(tmp1,<sp/>Mat(nRow,<sp/>nCol,<sp/>CV_64F,<sp/>cvScalar(9.0/5.0)),<sp/>tmp1);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pow(tmp1,<sp/>0.5,<sp/>tmp1);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tslmap(:,<sp/>:,<sp/>3)<sp/>=<sp/>0.299<sp/>*<sp/>rgbmap(:,<sp/>:,<sp/>1)<sp/>+<sp/>0.587<sp/>*<sp/>rgbmap(:,<sp/>:,<sp/>2)<sp/>+<sp/>0.114<sp/>*<sp/>rgbmap(:,<sp/>:,<sp/>3);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>tmp2<sp/>=<sp/><ref refid="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" kindref="member">add</ref>(<ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(rgb_channel[0],<sp/>0.299),</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(rgb_channel[1],<sp/>0.587));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tmp2<sp/>=<sp/>tmp2<sp/>+<sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(rgb_channel[2],<sp/>0.114);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nRow;<sp/>++i)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nCol;<sp/>++j)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst.at&lt;Vec3d&gt;(i,<sp/>j)[0]<sp/>=<sp/>tmp0.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst.at&lt;Vec3d&gt;(i,<sp/>j)[1]<sp/>=<sp/>tmp1.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst.at&lt;Vec3d&gt;(i,<sp/>j)[2]<sp/>=<sp/>tmp2.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="namespace_m_h_r_1a357c28865a17017a73d0f4ae8c4f7480" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a357c28865a17017a73d0f4ae8c4f7480" kindref="member">blurDnClr</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat&amp;<sp/>src,<sp/>Mat<sp/>&amp;dst,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst<sp/>=<sp/>src.clone();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>level;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nRow<sp/>=<sp/>dst.rows/2<sp/>+<sp/>int(dst.rows%2<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nCol<sp/>=<sp/>dst.cols/2<sp/>+<sp/>int(dst.cols%2<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pyrDown(dst,<sp/>dst,<sp/>Size(nCol,<sp/>nRow));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="namespace_m_h_r_1a30571de29e1537d20abf69d19329c1bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a30571de29e1537d20abf69d19329c1bb" kindref="member">corrDn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;src,<sp/>Mat<sp/>&amp;dst,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;filter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rectRow,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rectCol)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>tmp;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filter2D(src,<sp/>tmp,<sp/>-1,<sp/>filter);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>m<sp/>=<sp/>tmp.rows/rectRow<sp/>+<sp/>(tmp.rows%rectRow<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>tmp.cols/rectCol<sp/>+<sp/>(tmp.cols%rectCol<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst<sp/>=<sp/>Mat::zeros(m,<sp/>n,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0,<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>src.rows;<sp/>++i,<sp/>x<sp/>+=<sp/>rectRow)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0,<sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>src.cols;<sp/>++j,<sp/>y<sp/>+=<sp/>rectCol)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dst.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>=<sp/>tmp.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(x,<sp/>y);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp"/>
+  </compounddef>
+</doxygen>

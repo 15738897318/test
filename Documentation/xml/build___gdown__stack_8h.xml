@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="build___gdown__stack_8h" kind="file">
+    <compoundname>build_Gdown_stack.h</compoundname>
+    <includes refid="files_8h" local="yes">files.h</includes>
+    <includedby refid="build___gdown__stack_8cpp" local="yes">MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.cpp</includedby>
+    <includedby refid="eulerian_8h" local="yes">MisfitHeartRate/algorithms/Eulerian/eulerian.h</includedby>
+    <incdepgraph>
+      <node id="67">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="62">
+        <label>MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.h</label>
+        <link refid="build_Gdown_stack.h"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>files.h</label>
+        <link refid="files_8h"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="66">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="79">
+        <label>MisfitHeartRate/MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="78">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="71">
+        <label>MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.h</label>
+        <link refid="build_Gdown_stack.h"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.cpp</label>
+        <link refid="build___gdown__stack_8cpp"/>
+      </node>
+      <node id="81">
+        <label>MisfitHeartRate/Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="75">
+        <label>MisfitHeartRate/algorithms/run_algorithms.h</label>
+        <link refid="run__algorithms_8h"/>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>MisfitHeartRate/algorithms/Eulerian/eulerian.cpp</label>
+        <link refid="eulerian_8cpp"/>
+      </node>
+      <node id="77">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>MisfitHeartRate/algorithms/run_algorithms.cpp</label>
+        <link refid="run__algorithms_8cpp"/>
+      </node>
+      <node id="73">
+        <label>MisfitHeartRate/algorithms/Eulerian/eulerian.h</label>
+        <link refid="eulerian_8h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>MisfitHeartRate/Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>build_Gdown_stack.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/5/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__MisfitHeartRate__build_Gdown_stack__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MisfitHeartRate__build_Gdown_stack__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="files_8h" kindref="compound">files.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1ae1292cc4cfc5411226e0cd77f652e1a5" kindref="member">build_Gdown_Stack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;Mat&gt;&amp;<sp/>vid,<sp/>vector&lt;Mat&gt;<sp/>&amp;GDownStack,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>startIndex,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>endIndex,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__MisfitHeartRate__build_Gdown_stack__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.h"/>
+  </compounddef>
+</doxygen>

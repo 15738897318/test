@@ -1,0 +1,44 @@
+.TH "MisfitHeartRate/algorithms/image/image.h" 3 "Fri Aug 22 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MisfitHeartRate/algorithms/image/image.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'matrix\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBMHR\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMHR::rgb2tsl\fP (const Mat &rgbmap, Mat &dst)"
+.br
+.ti -1c
+.RI "void \fBMHR::blurDnClr\fP (const Mat &src, Mat &dst, int level)"
+.br
+.ti -1c
+.RI "void \fBMHR::corrDn\fP (const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const Mat \fBMHR::rgb2ntsc_baseMat\fP"
+.br
+.ti -1c
+.RI "const Mat \fBMHR::ntsc2rgb_baseMat\fP"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

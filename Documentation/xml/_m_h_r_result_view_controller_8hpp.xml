@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_m_h_r_result_view_controller_8hpp" kind="file">
+    <compoundname>MHRResultViewController.hpp</compoundname>
+    <includes local="no">UIKit/UIKit.h</includes>
+    <includes refid="_u_i_alert_view_09_block_8h" local="yes">UIAlertView+Block.h</includes>
+    <includes refid="config_8h" local="yes">config.h</includes>
+    <includedby refid="_m_h_r_main_view_controller_8hpp" local="yes">MisfitHeartRate/MainView/MHRMainViewController.hpp</includedby>
+    <includedby refid="_m_h_r_result_view_controller_8mm" local="yes">MisfitHeartRate/ResultView/MHRResultViewController.mm</includedby>
+    <incdepgraph>
+      <node id="955">
+        <label>UIAlertView+Block.h</label>
+        <link refid="_u_i_alert_view_09_block_8h"/>
+        <childnode refid="956" relation="include">
+        </childnode>
+        <childnode refid="954" relation="include">
+        </childnode>
+        <childnode refid="957" relation="include">
+        </childnode>
+      </node>
+      <node id="960">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="954">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="958">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="959" relation="include">
+        </childnode>
+        <childnode refid="962" relation="include">
+        </childnode>
+      </node>
+      <node id="953">
+        <label>MisfitHeartRate/ResultView/MHRResultViewController.hpp</label>
+        <link refid="MHRResultViewController.hpp"/>
+        <childnode refid="954" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+        <childnode refid="958" relation="include">
+        </childnode>
+      </node>
+      <node id="961">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="957">
+        <label>BlockAdditions.h</label>
+        <link refid="_block_additions_8h"/>
+      </node>
+      <node id="959">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="960" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+      </node>
+      <node id="956">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="962">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="960" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="969">
+        <label>MisfitHeartRate/ResultView/MHRResultViewController.mm</label>
+        <link refid="_m_h_r_result_view_controller_8mm"/>
+      </node>
+      <node id="966">
+        <label>MisfitHeartRate/MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="965">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="963">
+        <label>MisfitHeartRate/ResultView/MHRResultViewController.hpp</label>
+        <link refid="MHRResultViewController.hpp"/>
+        <childnode refid="964" relation="include">
+        </childnode>
+        <childnode refid="969" relation="include">
+        </childnode>
+      </node>
+      <node id="968">
+        <label>MisfitHeartRate/Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="964">
+        <label>MisfitHeartRate/MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="965" relation="include">
+        </childnode>
+        <childnode refid="966" relation="include">
+        </childnode>
+        <childnode refid="967" relation="include">
+        </childnode>
+      </node>
+      <node id="967">
+        <label>MisfitHeartRate/Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="964" relation="include">
+        </childnode>
+        <childnode refid="968" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_m_h_r_result_view_controller" prot="public">MHRResultViewController</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MHRResultViewController.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/8/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;UIKit/UIKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;<ref refid="_u_i_alert_view_09_block_8h" kindref="compound">UIAlertView+Block.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;<ref refid="config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="interface_m_h_r_result_view_controller" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_h_r_result_view_controller" kindref="compound">MHRResultViewController</ref><sp/>:<sp/>UIViewController</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="interface_m_h_r_result_view_controller_1ad2cc92ee5ee811f8df6b04883f090096" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign,<sp/>nonatomic)<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="interface_m_h_r_result_view_controller_1ad2cc92ee5ee811f8df6b04883f090096" kindref="member">autocorrResult</ref>;</highlight></codeline>
+<codeline lineno="16" refid="interface_m_h_r_result_view_controller_1ae0daab10c086e438477f71f59fa0de37" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign,<sp/>nonatomic)<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="interface_m_h_r_result_view_controller_1ae0daab10c086e438477f71f59fa0de37" kindref="member">pdaResult</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="matrix_8cpp" kind="file">
+    <compoundname>matrix.cpp</compoundname>
+    <includes refid="matrix_8h" local="yes">matrix.h</includes>
+    <incdepgraph>
+      <node id="630">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="628">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="629" relation="include">
+        </childnode>
+        <childnode refid="632" relation="include">
+        </childnode>
+      </node>
+      <node id="631">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="629">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="630" relation="include">
+        </childnode>
+        <childnode refid="631" relation="include">
+        </childnode>
+      </node>
+      <node id="626">
+        <label>MisfitHeartRate/algorithms/matrix/matrix.cpp</label>
+        <link refid="matrix.cpp"/>
+        <childnode refid="627" relation="include">
+        </childnode>
+      </node>
+      <node id="627">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="628" relation="include">
+        </childnode>
+      </node>
+      <node id="632">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="630" relation="include">
+        </childnode>
+        <childnode refid="631" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>matrix.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>7/3/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="matrix_8h" kindref="compound">matrix.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="13" refid="namespace_m_h_r_1ad90e260536ab41e3da12f739038743d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1ad90e260536ab41e3da12f739038743d0" kindref="member">atan2Mat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;b)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nRow<sp/>=<sp/>a.rows,<sp/>nCol<sp/>=<sp/>b.cols;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>ans<sp/>=<sp/>Mat::zeros(nRow,<sp/>nCol,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>nRow;<sp/>++i)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>nCol;<sp/>++j)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ans.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j)<sp/>+=<sp/>atan2(a.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j),<sp/>b.at&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;(i,<sp/>j));</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ans;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24" refid="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" kindref="member">powMat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;src,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>n)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>ans<sp/>=<sp/>Mat::zeros(src.rows,<sp/>src.cols,<sp/>CV_64F);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pow(src,<sp/>n,<sp/>ans);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ans;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32" refid="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" kindref="member">add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;b)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>ans<sp/>=<sp/>Mat::zeros(a.rows,<sp/>a.cols,<sp/>a.type());</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" kindref="member">add</ref>(a,<sp/>b,<sp/>ans);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ans;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40" refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;b)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>ans<sp/>=<sp/>Mat::zeros(a.rows,<sp/>a.cols,<sp/>a.type());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(a,<sp/>b,<sp/>ans);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ans;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="namespace_m_h_r_1a22b0fbac0253b08d84d9c2493324e5db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Mat<sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Mat<sp/>&amp;a,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mat<sp/>ans<sp/>=<sp/>Mat::zeros(a.rows,<sp/>a.cols,<sp/>a.type());</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kindref="member">multiply</ref>(a,<sp/>Mat(a.rows,<sp/>a.cols,<sp/>CV_64F,<sp/>x),<sp/>ans,<sp/>1,<sp/>-1);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ans;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,57 @@
+.TH "MisfitHeartRate/algorithms/math/matlab.h" 3 "Fri Aug 22 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MisfitHeartRate/algorithms/math/matlab.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <set>\fP
+.br
+\fC#include 'matrix\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBMHR\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBMHR::mean\fP (const vector< double > &a)"
+.br
+.ti -1c
+.RI "void \fBMHR::findpeaks\fP (const vector< double > &segment, double minPeakDistance, double threshold, vector< double > &max_peak_strengths, vector< int > &max_peak_locs)"
+.br
+.ti -1c
+.RI "vector< pair< double, int > > \fBMHR::unique_stable\fP (const vector< pair< double, int >> &arr)"
+.br
+.ti -1c
+.RI "vector< double > \fBMHR::corr_linear\fP (vector< double > signal, vector< double > kernel, bool subtractMean)"
+.br
+.ti -1c
+.RI "void \fBMHR::hist\fP (const vector< double > &arr, int nbins, vector< int > &counts, vector< double > &centers)"
+.br
+.ti -1c
+.RI "double \fBMHR::invprctile\fP (const vector< double > &arr, double x)"
+.br
+.ti -1c
+.RI "double \fBMHR::prctile\fP (vector< double > arr, double percent)"
+.br
+.ti -1c
+.RI "vector< double > \fBMHR::low_pass_filter\fP (vector< double > arr)"
+.br
+.ti -1c
+.RI "void \fBMHR::gaussianFilter\fP (int length, double sigma, vector< double > &ans)"
+.br
+.ti -1c
+.RI "double \fBMHR::diff_percent\fP (double a, double b)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

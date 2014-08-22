@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="protocol_m_h_r_settings_view_delegate-p" kind="protocol" prot="public">
+    <compoundname>MHRSettingsViewDelegate-p</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">&lt;NSObject&gt;</basecompoundref>
+    <derivedcompoundref refid="interface_m_h_r_main_view_controller" prot="public" virt="non-virtual">MHRMainViewController</derivedcompoundref>
+    <includes refid="_m_h_r_settings_view_controller_8h" local="no">MHRSettingsViewController.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="protocol_m_h_r_settings_view_delegate-p_1a1d7367b2d59c2dce76e953607bdc032e" prot="public" static="no" const="no" explicit="no" inline="no" required="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MHRSettingsViewDelegate-p::debugModeChanged:</definition>
+        <argsstring>(BOOL mode)</argsstring>
+        <name>debugModeChanged:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="14" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="protocol_m_h_r_settings_view_delegate-p_1ade012e6adf8df6a09d7a51909815f360" prot="public" static="no" const="no" explicit="no" inline="no" required="yes" virt="virtual">
+        <type>void</type>
+        <definition>void MHRSettingsViewDelegate-p::threeChanModeChanged:</definition>
+        <argsstring>(BOOL mode)</argsstring>
+        <name>threeChanModeChanged:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="14" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="57">
+        <label>&lt;MHRSettingsViewDelegate&gt;</label>
+        <link refid="protocol_m_h_r_settings_view_delegate-p"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>&lt;NSObject&gt;</label>
+      </node>
+      <node id="59">
+        <label>MHRMainViewController</label>
+        <link refid="interface_m_h_r_main_view_controller"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="60">
+        <label>&lt;MHRSettingsViewDelegate&gt;</label>
+        <link refid="protocol_m_h_r_settings_view_delegate-p"/>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>&lt;NSObject&gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="11" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" bodystart="11" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="protocol_m_h_r_settings_view_delegate-p_1a1d7367b2d59c2dce76e953607bdc032e" prot="public" virt="virtual"><scope>MHRSettingsViewDelegate-p</scope><name>debugModeChanged:</name></member>
+      <member refid="protocol_m_h_r_settings_view_delegate-p_1ade012e6adf8df6a09d7a51909815f360" prot="public" virt="virtual"><scope>MHRSettingsViewDelegate-p</scope><name>threeChanModeChanged:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
