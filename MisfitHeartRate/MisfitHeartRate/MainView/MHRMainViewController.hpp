@@ -25,6 +25,7 @@
 #import "globals.h"
 #import "processingCumulative.h"
 #import "processingPerBlock.h"
+#import "matlab.h"
 
 using namespace cv;
 using namespace MHR;

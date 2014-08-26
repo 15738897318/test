@@ -121,7 +121,7 @@ namespace MHR {
             
             // Record all beats in the window, even if there are duplicates
             for(int i=0; i<(int) max_peak_locs.size(); ++i)
-                heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
+                heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart - firstSample+1)); // Subtract all positions by firstSample
             
             // Calculate the HR for this window
             int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);

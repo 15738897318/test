@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <random>
 #include "matrix.h"
 #include "config.h"
 
@@ -46,6 +47,8 @@ namespace MHR {
     vector<double> low_pass_filter(vector<double> arr);
     
     double diff_percent(double a, double b);
+    
+    void hr_polisher(double &hr, double &old_hr);
 }
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

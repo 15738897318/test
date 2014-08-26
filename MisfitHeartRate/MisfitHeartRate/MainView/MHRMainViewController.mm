@@ -40,7 +40,7 @@ static const int kBlockFrameSize = 128;
         NSMutableArray *frameIndexArray;
         
         NSOperationQueue *myQueue;
-        int blockCount;
+        int blockNumber;
     }
 
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -91,7 +91,7 @@ static const int kBlockFrameSize = 128;
         setFaceParams();
         [self setUpThreads];
         
-        currentResult = hrResult(55, 55);
+        currentResult = hrResult(-1, -1);
         isCapturing = NO;
         cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
         
@@ -140,54 +140,12 @@ static const int kBlockFrameSize = 128;
         myQueue = [[NSOperationQueue alloc] init];
         myQueue.maxConcurrentOperationCount = 1;
         
-        blockCount = 0;
+        blockNumber = 0;
         
 //        test_findpeak();
 //        [MHRTest test_run_algorithm];
     }
 
-    #pragma - Threads process
-    - (void)setUpThreads
-    {
-        isCalcMode = YES;
-    }
-
-    - (void)heartRateCalculation
-    {
-        int idx = blockCount * kBlockFrameSize;
-        if (idx >= frameIndexArray.count)
-        {
-            return;
-        }
-        
-        NSNumber *startIndex = frameIndexArray[idx];
-        int value = min((blockCount + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
-        NSNumber *endIndex = frameIndexArray[value];
-        
-        NSLog(@"start index: %@", startIndex);
-        NSLog(@"end index: %@", endIndex);
-        NSLog(@"block count: %d", blockCount);
-        blockCount ++;
-        
-        // Run algorithm
-        //isProcessing = YES;
-        std::vector<double> temp;
-        processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
-        processingCumulative(temporal_mean, temp, currentResult);
-        NSLog(@"Result: %lf, %lf", currentResult.autocorr, currentResult.pda);
-        //isProcessing = NO;
-        isCalcMode = NO;
-        
-    }
-
-    - (void)startThreads
-    {
-        _nFrames = 0;
-        [frameIndexArray removeAllObjects];
-        temporal_mean.clear();
-        isCalcMode = YES;
-        blockCount = 0;
-    }
 
     -(void)viewDidDisappear:(BOOL)animated
     {
@@ -295,7 +253,7 @@ static const int kBlockFrameSize = 128;
         fclose(file);
         
         // heartRate cal
-        __block hrResult result(-1, -1);
+//        __block hrResult result(-1, -1);
         
         // Show the waiting animation
         progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -339,24 +297,11 @@ static const int kBlockFrameSize = 128;
     - (void)updateUI
     {
         double hr = hrGlobalResult.autocorr;
+        double old_hr = hrOldGlobalResult.autocorr;
         
-        // If the HR is smaller than 55, then show a randomised number based on 55
-        if (hr < 55)
-            hr = 55 + arc4random() % (10 + 5 + 1) - 5;
-        else
-        {
-            double old_hr = hrOldGlobalResult.autocorr;
-            
-            // If the new HR is same as the old HR, then show a randomised number based on the old HR
-            if (hr == old_hr)
-            {
-                hr = old_hr + arc4random() % (6 + 3 + 1) - 3;
-            }
-            else
-            {
-                hrOldGlobalResult.autocorr = hr;
-            }
-        }
+        hr_polisher(hr, old_hr);
+        hrOldGlobalResult.autocorr = old_hr;
+        
         progressHUD.labelText = [NSString stringWithFormat:@"Calculating: %d BPM...",int(hr)];
     }
 
@@ -377,6 +322,7 @@ static const int kBlockFrameSize = 128;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
             [_videoCamera start];
             setFaceParams();
+            currentResult = hrResult(-1, -1);
         }
         else
         {
@@ -392,6 +338,7 @@ static const int kBlockFrameSize = 128;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
             [_videoCamera start];
             setFingerParams();
+            currentResult = hrResult(-1, -1);
         }
     }
 
@@ -444,6 +391,28 @@ static const int kBlockFrameSize = 128;
         }
     }
 
+
+    - (IBAction)settingsButtonDidTap:(id)sender {
+        MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
+        settingsView.delegate = self;
+        settingsView.debugModeOn = (_DEBUG_MODE > 0);
+        settingsView.threeChanModeOn = (_THREE_CHAN_MODE > 0);
+        [self.navigationController pushViewController:settingsView animated:YES];
+    }
+
+
+    - (void)debugModeChanged:(BOOL)mode
+    {
+        _DEBUG_MODE = int(mode);
+    }
+
+
+    - (void)threeChanModeChanged:(BOOL)mode
+    {
+        _THREE_CHAN_MODE = int(mode);
+    }
+
+
     #pragma - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
@@ -455,11 +424,10 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
-            
-            NSLog(@"%ld",(long)_nFrames);
+//            NSLog(@"%ld",(long)_nFrames);
             
             // Add new block to queue
-            int upper = (blockCount + 1) * kBlockFrameSize;
+            int upper = (blockNumber + 1) * kBlockFrameSize;
             int size = (int)frameIndexArray.count;
             
             if ( size >= upper)
@@ -545,25 +513,49 @@ static const int kBlockFrameSize = 128;
     }
 
 
-- (IBAction)settingsButtonDidTap:(id)sender {
-    MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
-    settingsView.delegate = self;
-    settingsView.debugModeOn = (_DEBUG_MODE > 0);
-    settingsView.threeChanModeOn = (_THREE_CHAN_MODE > 0);
-    [self.navigationController pushViewController:settingsView animated:YES];
-}
+    #pragma - Threads process
+    - (void)setUpThreads
+    {
+        isCalcMode = YES;
+    }
 
+    - (void)heartRateCalculation
+    {
+        int idx = blockNumber * kBlockFrameSize;
+        if (idx >= frameIndexArray.count)
+        {
+            return;
+        }
+        
+        NSNumber *startIndex = frameIndexArray[idx];
+        int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
+        NSNumber *endIndex = frameIndexArray[value];
+        
+        NSLog(@"start index: %@", startIndex);
+        NSLog(@"end index: %@", endIndex);
+        int blockCount = blockNumber + 1;
+        NSLog(@"block count: %d", blockCount);
+        blockNumber ++;
+        
+        // Run algorithm
+        //isProcessing = YES;
+        std::vector<double> temp;
+        processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
+        processingCumulative(temporal_mean, temp, currentResult);
+        NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
+        NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
+        //isProcessing = NO;
+        isCalcMode = NO;
+        
+    }
 
-- (void)debugModeChanged:(BOOL)mode
-{
-    _DEBUG_MODE = int(mode);
-}
-
-
-- (void)threeChanModeChanged:(BOOL)mode
-{
-    _THREE_CHAN_MODE = int(mode);
-}
-
+    - (void)startThreads
+    {
+        _nFrames = 0;
+        [frameIndexArray removeAllObjects];
+        temporal_mean.clear();
+        isCalcMode = YES;
+        blockNumber = 0;
+    }
 
 @end

@@ -81,6 +81,9 @@ namespace MHR {
     int _beatSignalFilterKernel_size = -1;
     Mat _beatSignalFilterKernel;
     
+    double _hrThreshold = -1; // BPM
+    double _hrStanDev = -1; // BPM
+    
     
     /*--------------change params functions--------------*/
 
@@ -137,6 +140,9 @@ namespace MHR {
         
         _beatSignalFilterKernel_size = _face_beatSignalFilterKernel_size;
         _beatSignalFilterKernel = _face_beatSignalFilterKernel.clone();
+        
+        _hrThreshold = _face_hrThreshold;
+        _hrStanDev = _face_hrStanDev;
     }
 
 
@@ -193,5 +199,8 @@ namespace MHR {
         
         _beatSignalFilterKernel_size = _finger_beatSignalFilterKernel_size;
         _beatSignalFilterKernel = _finger_beatSignalFilterKernel.clone();
+        
+        _hrThreshold = _finger_hrThreshold;
+        _hrStanDev = _finger_hrStanDev;
     }
 };

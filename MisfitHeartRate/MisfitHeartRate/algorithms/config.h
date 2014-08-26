@@ -95,6 +95,11 @@ namespace MHR {
     extern Mat _beatSignalFilterKernel;
     
     
+    //params for hr_polisher
+    extern double _hrThreshold;
+    extern double _hrStanDev;
+    
+    
     /*--------------change params functions--------------*/
     
     void setFaceParams();

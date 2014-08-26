@@ -42,7 +42,7 @@ namespace MHR {
     const double _face_overlap_ratio = 0;
     const double _face_max_bpm = 200;             // BPM
     const double _face_cutoff_freq = 2.5;         // Hz
-    const double _face_time_lag = 3;              // seconds
+    const double _face_time_lag = 1.5;              // seconds
     const String _face_colourspace = "tsl";
     const int _face_channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb
     const int _face_number_of_bins_heartRate = 5;
@@ -90,6 +90,10 @@ namespace MHR {
                                               -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
                                               0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
                                               0.0956, 0.0580, 0.0217, -0.0076, -0.0265);
+    
+    //params for hr_polisher
+    const double _face_hrThreshold = 40;
+    const double _face_hrStanDev = 5;
     
     
     /*---------------for face auto start--------------*/
