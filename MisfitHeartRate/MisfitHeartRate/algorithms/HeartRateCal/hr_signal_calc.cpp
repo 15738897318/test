@@ -36,6 +36,15 @@ namespace MHR {
         double threshold = threshold_fraction * (*max_element(temporal_mean.begin() + firstSample, temporal_mean.end()));
         int minPeakDistance = round(60 / max_bpm * frameRate);
         
+        // Calculate heart-rate using peak-detection on the signal
+        hrDebug debug_pda;
+        vector<int> hb_locations_pda = hb_counter_pda(temporal_mean, frameRate, firstSample,
+                                                      window_size, overlap_ratio,
+                                                      minPeakDistance, threshold,
+                                                      debug_pda);
+        vector<double> ans_pda;
+        hr_calculator(hb_locations_pda, frameRate, ans_pda);
+        double avg_hr_pda = ans_pda[0];     // average heart rate
         
         // Calculate heart-rate using peak-detection on the signal
         hrDebug debug_autocorr;
@@ -46,17 +55,6 @@ namespace MHR {
         vector<double> ans_autocorr;
         hr_calculator(hb_locations_autocorr, frameRate, ans_autocorr);
         double avg_hr_autocorr = ans_autocorr[0];     // average heart rate
-        
-        
-        // Calculate heart-rate using peak-detection on the signal
-        hrDebug debug_pda;
-        vector<int> hb_locations_pda = hb_counter_pda(temporal_mean, frameRate, firstSample,
-                                                      window_size, overlap_ratio,
-                                                      minPeakDistance, threshold,
-                                                      debug_pda);
-        vector<double> ans_pda;
-        hr_calculator(hb_locations_pda, frameRate, ans_pda);
-        double avg_hr_pda = ans_pda[0];     // average heart rate
         
         
         if (_DEBUG_MODE)

@@ -15,7 +15,7 @@ namespace MHR {
 		//Calculate the instantaneous heart-rates
         ans.clear();
         
-        printf("Heart-beats already counted: %d\n", (int)heartBeatPositions.size());
+        printf("Number of heart-beats counted: %d\n", (int)heartBeatPositions.size());
 		
         if ((int)heartBeatPositions.size() > 2) {
             vector<double> heartRate_inst;
