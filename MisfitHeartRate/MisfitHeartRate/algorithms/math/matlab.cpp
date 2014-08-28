@@ -243,36 +243,36 @@ namespace MHR {
     }
     
     
-    void hr_polisher(double &hr, double &old_hr)
+    void hr_polisher(double &hr, double &old_hr, double &hrThreshold, double &hrStanDev)
     {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::normal_distribution<> d(0, _hrStanDev);
+        std::normal_distribution<> d(0, hrStanDev);
         
         double randomiser;
         
-        if (hr < _hrThreshold)
+        if (hr < hrThreshold)
         {
 //            randomiser = arc4random() % (10 + 5 + 1) - 5;
+//            randomiser = (int)arc4random() % (6) - 2;
             randomiser = d(gen);
             
-            hr = _hrThreshold + randomiser;
+            hr = hrThreshold + randomiser;
         }
         else
         {
             // If the new HR is same as the old HR, then show a randomised number based on the old HR
-            if (hr == old_hr)
+            if (int(hr) == int(old_hr))
             {
 //                randomiser = arc4random() % (6 + 3 + 1) - 3;
+//                randomiser = (int)arc4random() % (3) - 1;
                 randomiser = d(gen);
                 
                 hr = old_hr + randomiser;
             }
-            else
-            {
-                old_hr = hr;
-            }
         }
+        
+        old_hr = hr;
     }
     
 }

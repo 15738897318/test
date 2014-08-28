@@ -41,6 +41,7 @@ static const int kBlockFrameSize = 128;
         
         NSOperationQueue *myQueue;
         int blockNumber;
+        int blockCount;
     }
 
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -58,6 +59,9 @@ static const int kBlockFrameSize = 128;
     @property (weak, nonatomic) IBOutlet UILabel *recordTimeLabel;
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *startButton;
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *stopButton;
+@property (weak, nonatomic) IBOutlet UIView *viewTop;
+@property (weak, nonatomic) IBOutlet UILabel *labelTop;
+@property (weak, nonatomic) IBOutlet UIView *viewTop2;
 
 @end
 
@@ -88,10 +92,18 @@ static const int kBlockFrameSize = 128;
     {
         [super viewDidLoad];
         
+        self.viewTop.hidden = NO;
+        self.labelTop.text = @"Calculating...";
+        self.viewTop2.hidden = YES;
+        
         setFaceParams();
         [self setUpThreads];
         
+        // Initialise the result-storing variables
+        hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
+        hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
         currentResult = hrResult(-1, -1);
+        
         isCapturing = NO;
         cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
         
@@ -120,7 +132,6 @@ static const int kBlockFrameSize = 128;
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
         _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
         _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-//        _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
         _videoCamera.defaultFPS = _frameRate;
         _videoCamera.rotateVideo = YES;
         _videoCamera.grayscaleMode = NO;
@@ -131,8 +142,10 @@ static const int kBlockFrameSize = 128;
         _stopButton = [[UIBarButtonItem alloc] initWithTitle:@"Stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopButtonDidTap:)];
         self.navigationItem.leftBarButtonItem = _startButton;
         self.navigationItem.rightBarButtonItem = _stopButton;
+        
         // draw Aqua rectangle
         [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+        
         // update Layout (iOS6 vs iOS7)
         [self updateLayout];
         
@@ -142,7 +155,6 @@ static const int kBlockFrameSize = 128;
         
         blockNumber = 0;
         
-//        test_findpeak();
 //        [MHRTest test_run_algorithm];
     }
 
@@ -166,6 +178,26 @@ static const int kBlockFrameSize = 128;
         // Dispose of any resources that can be recreated.
     }
 
+    - (void)updateViewTop:(NSTimer *)timer {
+        if (!isCapturing) {
+            [timer invalidate];
+            timer = nil;
+        }
+        else
+        {
+            double hr;
+            double old_hr;
+            
+            hr = min(_hrThreshold + 20, hrGlobalResult.autocorr);
+            old_hr = min(_hrThreshold + 20, hrOldGlobalResult.autocorr);
+            
+            hr_polisher(hr, old_hr, _hrThreshold, _hrStanDev);
+            hrOldGlobalResult.autocorr = old_hr;
+            
+            self.labelTop.text = [NSString stringWithFormat:@"Calculating... %d BPM", int(hr)];
+        }
+    }
+
 
     - (IBAction)startButtonDidTap:(id)sender
     {
@@ -174,6 +206,13 @@ static const int kBlockFrameSize = 128;
         
         if(isCapturing) return;
         isCapturing = TRUE;
+        blockCount = 0;
+        
+        // hide the view viewTop
+        self.viewTop.hidden = YES;
+        self.viewTop2.hidden = NO;
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(updateViewTop:) userInfo:nil repeats:YES];
+        
         static int touchCount = 0;
         touchCount ++;
         NSLog(@"%d",touchCount);
@@ -208,7 +247,6 @@ static const int kBlockFrameSize = 128;
         _outputPath = [_outPath UTF8String] + String("/");
         
         isCapturing = YES;
-//        self.navigationItem.leftBarButtonItem.enabled = NO;
         _startButton.enabled = NO;
         _cameraSwitch.enabled = NO;
         _nFrames = 0;
@@ -228,12 +266,24 @@ static const int kBlockFrameSize = 128;
         if (!isCapturing)
             return;
         isCapturing = NO;
+        
+        // show the view viewTop
+        self.viewTop2.hidden = YES;
+        self.viewTop.hidden = NO;
+        
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
         [self drawFaceCaptureRect:@"MHRWhiteColor"];
         
         // stop camera capturing
         [_videoCamera stop];
+        
+        // Show the waiting animation
+        progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        progressHUD.mode = MBProgressHUDModeIndeterminate;
+        
+        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
+        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
         
         // stop timer
         [_recordTimer invalidate];
@@ -252,19 +302,6 @@ static const int kBlockFrameSize = 128;
         fprintf(file, "%d\n", (int)_nFrames);
         fclose(file);
         
-        // heartRate cal
-//        __block hrResult result(-1, -1);
-        
-        // Show the waiting animation
-        progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        progressHUD.mode = MBProgressHUDModeIndeterminate;
-        
-        // Create a timer event that regularly calls the updateUI function to display the HR whilst performing calculations
-        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
-        
-        // Initialise the result-storing variables
-        hrGlobalResult.autocorr = hrGlobalResult.pda = 0;
-        hrOldGlobalResult.autocorr = hrOldGlobalResult.pda = 0;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             while (myQueue.operationCount != 0);
@@ -296,13 +333,47 @@ static const int kBlockFrameSize = 128;
 
     - (void)updateUI
     {
-        double hr = hrGlobalResult.autocorr;
-        double old_hr = hrOldGlobalResult.autocorr;
+        double hr;
+        double old_hr;
         
-        hr_polisher(hr, old_hr);
+        if (blockCount <= 1)
+        {
+            hr = _hrThreshold + 20;
+            old_hr = _hrThreshold + 20;
+            
+            hr_polisher(hr, old_hr, _hrThreshold, _hrStanDev);
+        }
+        else
+        {
+            hr = hrGlobalResult.autocorr;
+            old_hr = hrOldGlobalResult.autocorr;
+            
+            hr_polisher(hr, old_hr, _hrThreshold, _hrStanDev);
+        }
         hrOldGlobalResult.autocorr = old_hr;
         
-        progressHUD.labelText = [NSString stringWithFormat:@"Calculating: %d BPM...",int(hr)];
+        progressHUD.labelText = [NSString stringWithFormat:@"Calculating... %d BPM",int(hr)];
+    }
+
+
+    - (IBAction)settingsButtonDidTap:(id)sender {
+        MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
+        settingsView.delegate = self;
+        settingsView.debugModeOn = (_DEBUG_MODE > 0);
+        settingsView.threeChanModeOn = (_THREE_CHAN_MODE > 0);
+        [self.navigationController pushViewController:settingsView animated:YES];
+    }
+
+
+    - (void)debugModeChanged:(BOOL)mode
+    {
+        _DEBUG_MODE = int(mode);
+    }
+
+
+    - (void)threeChanModeChanged:(BOOL)mode
+    {
+        _THREE_CHAN_MODE = int(mode);
     }
 
 
@@ -392,27 +463,6 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    - (IBAction)settingsButtonDidTap:(id)sender {
-        MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
-        settingsView.delegate = self;
-        settingsView.debugModeOn = (_DEBUG_MODE > 0);
-        settingsView.threeChanModeOn = (_THREE_CHAN_MODE > 0);
-        [self.navigationController pushViewController:settingsView animated:YES];
-    }
-
-
-    - (void)debugModeChanged:(BOOL)mode
-    {
-        _DEBUG_MODE = int(mode);
-    }
-
-
-    - (void)threeChanModeChanged:(BOOL)mode
-    {
-        _THREE_CHAN_MODE = int(mode);
-    }
-
-
     #pragma - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
@@ -424,7 +474,6 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
-//            NSLog(@"%ld",(long)_nFrames);
             
             // Add new block to queue
             int upper = (blockNumber + 1) * kBlockFrameSize;
@@ -517,6 +566,7 @@ static const int kBlockFrameSize = 128;
     - (void)setUpThreads
     {
         isCalcMode = YES;
+        blockNumber = 0;
     }
 
     - (void)heartRateCalculation
@@ -531,11 +581,9 @@ static const int kBlockFrameSize = 128;
         int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
         NSNumber *endIndex = frameIndexArray[value];
         
-        NSLog(@"start index: %@", startIndex);
-        NSLog(@"end index: %@", endIndex);
-        int blockCount = blockNumber + 1;
-        NSLog(@"block count: %d", blockCount);
-        blockNumber ++;
+        NSLog(@"=====");
+        NSLog(@"Start index: %@", startIndex);
+        NSLog(@"End index: %@", endIndex);
         
         // Run algorithm
         //isProcessing = YES;
@@ -544,7 +592,11 @@ static const int kBlockFrameSize = 128;
         processingCumulative(temporal_mean, temp, currentResult);
         NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
         NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
-        //isProcessing = NO;
+        
+        blockCount = blockNumber + 1;
+        NSLog(@"Number of blocks processed: %d", blockCount);
+        blockNumber ++;
+        
         isCalcMode = NO;
         
     }
