@@ -48,7 +48,7 @@ namespace MHR {
     
     double diff_percent(double a, double b);
     
-    void hr_polisher(double &hr, double &old_hr);
+    void hr_polisher(double &hr, double &old_hr, double &hrThreshold, double &hrStanDev);
 }
 
 #endif /* defined(__MisfitHeartRate__matlab__) */

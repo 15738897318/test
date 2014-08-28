@@ -93,7 +93,7 @@ namespace MHR {
     
     //params for hr_polisher
     const double _face_hrThreshold = 40;
-    const double _face_hrStanDev = 5;
+    const double _face_hrStanDev = 2.5;
     
     
     /*---------------for face auto start--------------*/

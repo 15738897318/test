@@ -94,7 +94,7 @@ namespace MHR {
     
     //params for hr_polisher
     const double _finger_hrThreshold = 40;
-    const double _finger_hrStanDev = 5;
+    const double _finger_hrStanDev = 2.5;
 }
 
 #endif /* defined(__Pulsar__finger_params__) */

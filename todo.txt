@@ -1,22 +1,7 @@
-- Turn off display window when using finger capturing.
-- Will be nice to have auto start, stop for face. E.g.: it detects when I put my face on the camera and auto start. Same for stop. This will impress people, and Cardiio does not have this.
-
-- Speed improve:
-	+ matlab.h functions:			convert to passing (params) by reference
-	+ matToVector1D(Mat m):		convert to passing (params) by reference
-	+ Change CV_64 --> CV_32 and test the result.
-	+ Access a image in optimize order: http://docs.opencv.org/doc/tutorials/core/how_to_scan_images/how_to_scan_images.html
-
-
-- Remove temp files (images, videos) after calculate.
-- Update % progess when run_algorithms().
-- Use Doxygen to generate document files.
+- Will be nice to have auto stop for face. E.g.: it detects when I put my face out of the camera and auto stop.
 
 
 
 ------------------------------
-Comments:
-	+ We should focus on finger for now. At least the demo should run smoothly and correctly with this mode first.
-
 Nice to have:
 
