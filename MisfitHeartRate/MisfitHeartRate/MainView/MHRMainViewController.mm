@@ -399,12 +399,8 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             ++_nFrames;
-<<<<<<< HEAD
-            NSLog(@"%ld",(long)_nFrames);
-=======
-//            NSLog(@"%d",_nFrames);
->>>>>>> iOS_experiment
-            
+
+//            NSLog(@"%d",_nFrames);            
         }
         else
         {
