@@ -1,0 +1,579 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="category_m_h_r_main_view_controller_07_08" kind="category" prot="public">
+    <compoundname>MHRMainViewController()</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a0b32e144ea6d386ce5180a75b7f1ac76" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL MHRMainViewController()::isCapturing</definition>
+        <argsstring></argsstring>
+        <name>isCapturing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="27" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a2508c2c272b97794449944d901733307" prot="protected" static="no" mutable="no">
+        <type>cv::Rect</type>
+        <definition>cv::Rect MHRMainViewController()::cropArea</definition>
+        <argsstring></argsstring>
+        <name>cropArea</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a8ec78910220259631707236b9160c626" prot="protected" static="no" mutable="no">
+        <type>cv::Rect</type>
+        <definition>cv::Rect MHRMainViewController()::ROI_upper</definition>
+        <argsstring></argsstring>
+        <name>ROI_upper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a8e5e7cd7481bac3b8bf77d684976a283" prot="protected" static="no" mutable="no">
+        <type>cv::Rect</type>
+        <definition>cv::Rect MHRMainViewController()::ROI_lower</definition>
+        <argsstring></argsstring>
+        <name>ROI_lower</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1aee235ca60383f404b812a075eca55e75" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_m_h_r_result_view_controller" kindref="compound">MHRResultViewController</ref> *</type>
+        <definition>MHRResultViewController* MHRMainViewController()::resultView</definition>
+        <argsstring></argsstring>
+        <name>resultView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="29" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a8c4078159735c117ecbeb565b9c287e2" prot="protected" static="no" mutable="no">
+        <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref></type>
+        <definition>hrResult MHRMainViewController()::currentResult</definition>
+        <argsstring></argsstring>
+        <name>currentResult</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="30" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a796178035a8c8f1b629b666076fe1ef3" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHRMainViewController()::framesWithFace</definition>
+        <argsstring></argsstring>
+        <name>framesWithFace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="31" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a7c19b115c59979a430b286b0ab7d57cc" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHRMainViewController()::framesWithNoFace</definition>
+        <argsstring></argsstring>
+        <name>framesWithNoFace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="32" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1ad7e9d3339af1110426f965b7615b5988" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref> *</type>
+        <definition>MBProgressHUD* MHRMainViewController()::progressHUD</definition>
+        <argsstring></argsstring>
+        <name>progressHUD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="33" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1ade66611f85011833b732d24a430338e8" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MHRMainViewController()::isCalcMode</definition>
+        <argsstring></argsstring>
+        <name>isCalcMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1ac4984c4b9f2c0ed7a71d957858a0b690" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHRMainViewController()::lower_range</definition>
+        <argsstring></argsstring>
+        <name>lower_range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="36" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a2cae5817c804f84f5e8db9531d8258c9" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHRMainViewController()::upper_range</definition>
+        <argsstring></argsstring>
+        <name>upper_range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="37" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a9dbae9ee1ba7bf908a253626a618ecf6" prot="protected" static="no" mutable="no">
+        <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref></type>
+        <definition>hrResult MHRMainViewController()::result</definition>
+        <argsstring></argsstring>
+        <name>result</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="38" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1abc8096634910dfbb9d748b376d8506cb" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; MHRMainViewController()::temporal_mean</definition>
+        <argsstring></argsstring>
+        <name>temporal_mean</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="39" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1aaf8cf1ed833d48edb06718b6d7540fae" prot="protected" static="no" mutable="no">
+        <type>NSMutableArray *</type>
+        <definition>NSMutableArray* MHRMainViewController()::frameIndexArray</definition>
+        <argsstring></argsstring>
+        <name>frameIndexArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="40" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a77f4256f36d6f6bebf7f82005aec1c62" prot="protected" static="no" mutable="no">
+        <type>NSOperationQueue *</type>
+        <definition>NSOperationQueue* MHRMainViewController()::myQueue</definition>
+        <argsstring></argsstring>
+        <name>myQueue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="42" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a228b693ffc5ea747c93a4206c5b8b98d" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHRMainViewController()::blockNumber</definition>
+        <argsstring></argsstring>
+        <name>blockNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="43" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="category_m_h_r_main_view_controller_07_08_1a58a5e815d93639db9e1ab9f1da8fa9f9" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHRMainViewController()::blockCount</definition>
+        <argsstring></argsstring>
+        <name>blockCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="44" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a82652cbbdc0ac312a50c591870b579c1" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="retain">
+        <type>CvVideoCamera *</type>
+        <definition>CvVideoCamera* MHRMainViewController()::videoCamera</definition>
+        <argsstring></argsstring>
+        <name>videoCamera</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="47" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1acf930d5712d9bba15886bab49c00f36c" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="strong">
+        <type>NSString *</type>
+        <definition>NSString* MHRMainViewController()::outPath</definition>
+        <argsstring></argsstring>
+        <name>outPath</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="48" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1aff8ddd68733b8b626fc832ebf2390398" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>NSInteger</type>
+        <definition>NSInteger MHRMainViewController()::nFrames</definition>
+        <argsstring></argsstring>
+        <name>nFrames</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="49" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1ac15f6b287a439206e9a1a8816248f635" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>NSInteger</type>
+        <definition>NSInteger MHRMainViewController()::recordTime</definition>
+        <argsstring></argsstring>
+        <name>recordTime</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="50" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a1f1639552968eeba13ed2b4575bea129" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="strong">
+        <type>NSTimer *</type>
+        <definition>NSTimer* MHRMainViewController()::recordTimer</definition>
+        <argsstring></argsstring>
+        <name>recordTimer</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="51" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1ad4a109ef255380e19bcda3c2efb2ce83" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UIImageView *</type>
+        <definition>IBOutlet UIImageView* MHRMainViewController()::imageView</definition>
+        <argsstring></argsstring>
+        <name>imageView</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="53" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a64545a3386e0d53f59af539582caafd4" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UISwitch *</type>
+        <definition>IBOutlet UISwitch* MHRMainViewController()::cameraSwitch</definition>
+        <argsstring></argsstring>
+        <name>cameraSwitch</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="54" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a2457cf5b05fac6f6cb9483997159f5f6" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRMainViewController()::faceLabel</definition>
+        <argsstring></argsstring>
+        <name>faceLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="55" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a67cd700e56983a4a3a1e6da4569bafe9" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRMainViewController()::fingerLabel</definition>
+        <argsstring></argsstring>
+        <name>fingerLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="56" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a1419b93d2152551aec5038ff468f3ff6" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRMainViewController()::fingerSwitchLabel</definition>
+        <argsstring></argsstring>
+        <name>fingerSwitchLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="57" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1addd32f0cbd1a4d5bfe69a837b3505ed6" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRMainViewController()::faceSwitchLabel</definition>
+        <argsstring></argsstring>
+        <name>faceSwitchLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="58" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a63bbbfafd497288fe3035250ab5d9fcb" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRMainViewController()::recordTimeLabel</definition>
+        <argsstring></argsstring>
+        <name>recordTimeLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="59" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a98273435af4fbcd1e437f257bb9ced12" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="strong">
+        <type>IBOutlet UIBarButtonItem *</type>
+        <definition>IBOutlet UIBarButtonItem* MHRMainViewController()::startButton</definition>
+        <argsstring></argsstring>
+        <name>startButton</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="60" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a0e349ec3fa2cecae6592c8d9489dedfe" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="strong">
+        <type>IBOutlet UIBarButtonItem *</type>
+        <definition>IBOutlet UIBarButtonItem* MHRMainViewController()::stopButton</definition>
+        <argsstring></argsstring>
+        <name>stopButton</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="61" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a012367c6522cfb5d64c9d5dadcb272e2" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UIView *</type>
+        <definition>IBOutlet UIView* MHRMainViewController()::viewTop</definition>
+        <argsstring></argsstring>
+        <name>viewTop</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="62" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1a8b3917278570b1085bd6f73297f44383" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRMainViewController()::labelTop</definition>
+        <argsstring></argsstring>
+        <name>labelTop</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="63" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_main_view_controller_07_08_1ae61668adf80d339aabb1c9dcb3085428" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UIView *</type>
+        <definition>IBOutlet UIView* MHRMainViewController()::viewTop2</definition>
+        <argsstring></argsstring>
+        <name>viewTop2</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="64" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="42">
+        <label>MHRResultViewController</label>
+        <link refid="interface_m_h_r_result_view_controller"/>
+        <childnode refid="43" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>MHR::hrResult</label>
+        <link refid="struct_m_h_r_1_1hr_result"/>
+      </node>
+      <node id="43">
+        <label>UIViewController</label>
+      </node>
+      <node id="40">
+        <label>MBProgressHUD</label>
+        <link refid="interface_m_b_progress_h_u_d"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>UIView</label>
+      </node>
+      <node id="39">
+        <label>MHRMainViewController()</label>
+        <link refid="category_m_h_r_main_view_controller_07_08"/>
+        <childnode refid="40" relation="usage">
+          <edgelabel>progressHUD</edgelabel>
+        </childnode>
+        <childnode refid="42" relation="usage">
+          <edgelabel>resultView</edgelabel>
+        </childnode>
+        <childnode refid="44" relation="usage">
+          <edgelabel>result</edgelabel>
+          <edgelabel>currentResult</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" line="26" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MainView/MHRMainViewController.mm" bodystart="25" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a58a5e815d93639db9e1ab9f1da8fa9f9" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>blockCount</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a228b693ffc5ea747c93a4206c5b8b98d" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>blockNumber</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a64545a3386e0d53f59af539582caafd4" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>cameraSwitch</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a2508c2c272b97794449944d901733307" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>cropArea</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a8c4078159735c117ecbeb565b9c287e2" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>currentResult</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a2457cf5b05fac6f6cb9483997159f5f6" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>faceLabel</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1addd32f0cbd1a4d5bfe69a837b3505ed6" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>faceSwitchLabel</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a67cd700e56983a4a3a1e6da4569bafe9" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>fingerLabel</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a1419b93d2152551aec5038ff468f3ff6" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>fingerSwitchLabel</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1aaf8cf1ed833d48edb06718b6d7540fae" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>frameIndexArray</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a796178035a8c8f1b629b666076fe1ef3" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>framesWithFace</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a7c19b115c59979a430b286b0ab7d57cc" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>framesWithNoFace</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1ad4a109ef255380e19bcda3c2efb2ce83" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>imageView</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1ade66611f85011833b732d24a430338e8" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>isCalcMode</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a0b32e144ea6d386ce5180a75b7f1ac76" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>isCapturing</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a8b3917278570b1085bd6f73297f44383" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>labelTop</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1ac4984c4b9f2c0ed7a71d957858a0b690" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>lower_range</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a77f4256f36d6f6bebf7f82005aec1c62" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>myQueue</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1aff8ddd68733b8b626fc832ebf2390398" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>nFrames</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1acf930d5712d9bba15886bab49c00f36c" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>outPath</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1ad7e9d3339af1110426f965b7615b5988" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>progressHUD</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1ac15f6b287a439206e9a1a8816248f635" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>recordTime</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a63bbbfafd497288fe3035250ab5d9fcb" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>recordTimeLabel</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a1f1639552968eeba13ed2b4575bea129" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>recordTimer</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a9dbae9ee1ba7bf908a253626a618ecf6" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>result</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1aee235ca60383f404b812a075eca55e75" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>resultView</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a8e5e7cd7481bac3b8bf77d684976a283" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>ROI_lower</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a8ec78910220259631707236b9160c626" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>ROI_upper</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a98273435af4fbcd1e437f257bb9ced12" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>startButton</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a0e349ec3fa2cecae6592c8d9489dedfe" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>stopButton</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1abc8096634910dfbb9d748b376d8506cb" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>temporal_mean</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a2cae5817c804f84f5e8db9531d8258c9" prot="protected" virt="non-virtual"><scope>MHRMainViewController()</scope><name>upper_range</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a82652cbbdc0ac312a50c591870b579c1" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>videoCamera</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1a012367c6522cfb5d64c9d5dadcb272e2" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>viewTop</name></member>
+      <member refid="category_m_h_r_main_view_controller_07_08_1ae61668adf80d339aabb1c9dcb3085428" prot="public" virt="non-virtual"><scope>MHRMainViewController()</scope><name>viewTop2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

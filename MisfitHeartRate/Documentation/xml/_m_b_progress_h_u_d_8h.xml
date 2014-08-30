@@ -1,0 +1,433 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_m_b_progress_h_u_d_8h" kind="file">
+    <compoundname>MBProgressHUD.h</compoundname>
+    <includes local="no">Foundation/Foundation.h</includes>
+    <includes local="no">UIKit/UIKit.h</includes>
+    <includes local="no">CoreGraphics/CoreGraphics.h</includes>
+    <includedby refid="_m_h_r_main_view_controller_8hpp" local="yes">MainView/MHRMainViewController.hpp</includedby>
+    <includedby refid="_m_b_progress_h_u_d_8m" local="yes">Utilities/MBProgressHUD.m</includedby>
+    <incdepgraph>
+      <node id="1236">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="1237">
+        <label>CoreGraphics/CoreGraphics.h</label>
+      </node>
+      <node id="1235">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="1234">
+        <label>Utilities/MBProgressHUD.h</label>
+        <link refid="MBProgressHUD.h"/>
+        <childnode refid="1235" relation="include">
+        </childnode>
+        <childnode refid="1236" relation="include">
+        </childnode>
+        <childnode refid="1237" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1241">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="1240">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="1243">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="1239">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="1240" relation="include">
+        </childnode>
+        <childnode refid="1241" relation="include">
+        </childnode>
+        <childnode refid="1242" relation="include">
+        </childnode>
+      </node>
+      <node id="1238">
+        <label>Utilities/MBProgressHUD.h</label>
+        <link refid="MBProgressHUD.h"/>
+        <childnode refid="1239" relation="include">
+        </childnode>
+        <childnode refid="1244" relation="include">
+        </childnode>
+      </node>
+      <node id="1242">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="1239" relation="include">
+        </childnode>
+        <childnode refid="1243" relation="include">
+        </childnode>
+      </node>
+      <node id="1244">
+        <label>Utilities/MBProgressHUD.m</label>
+        <link refid="_m_b_progress_h_u_d_8m"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_m_b_progress_h_u_d" prot="public">MBProgressHUD</innerclass>
+    <innerclass refid="protocol_m_b_progress_h_u_d_delegate-p" prot="public">MBProgressHUDDelegate-p</innerclass>
+    <innerclass refid="interface_m_b_round_progress_view" prot="public">MBRoundProgressView</innerclass>
+    <innerclass refid="interface_m_b_bar_progress_view" prot="public">MBBarProgressView</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" prot="public" static="no">
+        <name>MB_INSTANCETYPE</name>
+        <initializer>id</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="65" column="11" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" prot="public" static="no">
+        <name>MB_STRONG</name>
+        <initializer>retain</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="73" column="11" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_b_progress_h_u_d_8h_1ae418fa5342876317377e77f6492ee4e4" prot="public" static="no">
+        <name>MB_WEAK</name>
+        <initializer>assign</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="83" column="11" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" prot="public" static="no">
+        <name>MBProgressHUDMode</name>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1" prot="public">
+          <name>MBProgressHUDModeIndeterminate</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Progress is shown using an UIActivityIndicatorView. This is the default. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29" prot="public">
+          <name>MBProgressHUDModeDeterminate</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Progress is shown using a round, pie-chart like, progress view. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc" prot="public">
+          <name>MBProgressHUDModeDeterminateHorizontalBar</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Progress is shown using a horizontal progress bar </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4" prot="public">
+          <name>MBProgressHUDModeAnnularDeterminate</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Progress is shown using a ring-shaped progress view. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8" prot="public">
+          <name>MBProgressHUDModeCustomView</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Shows a custom view </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0" prot="public">
+          <name>MBProgressHUDModeText</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Shows only labels </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="36" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="36" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="enum" id="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" prot="public" static="no">
+        <name>MBProgressHUDAnimation</name>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5" prot="public">
+          <name>MBProgressHUDAnimationFade</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Opacity animation </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f" prot="public">
+          <name>MBProgressHUDAnimationZoom</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Opacity + scale animation </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119" prot="public">
+          <name>MBProgressHUDAnimationZoomOut</name>
+          <initializer>= MBProgressHUDAnimationZoom</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597" prot="public">
+          <name>MBProgressHUDAnimationZoomIn</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="51" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="51" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MBProgressHUD.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Version<sp/>0.8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Matej<sp/>Bukovinski<sp/>on<sp/>2.4.09.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>code<sp/>is<sp/>distributed<sp/>under<sp/>the<sp/>terms<sp/>and<sp/>conditions<sp/>of<sp/>the<sp/>MIT<sp/>license.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2013<sp/>Matej<sp/>Bukovinski</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Permission<sp/>is<sp/>hereby<sp/>granted,<sp/>free<sp/>of<sp/>charge,<sp/>to<sp/>any<sp/>person<sp/>obtaining<sp/>a<sp/>copy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>this<sp/>software<sp/>and<sp/>associated<sp/>documentation<sp/>files<sp/>(the<sp/>&quot;Software&quot;),<sp/>to<sp/>deal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>Software<sp/>without<sp/>restriction,<sp/>including<sp/>without<sp/>limitation<sp/>the<sp/>rights</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>use,<sp/>copy,<sp/>modify,<sp/>merge,<sp/>publish,<sp/>distribute,<sp/>sublicense,<sp/>and/or<sp/>sell</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>copies<sp/>of<sp/>the<sp/>Software,<sp/>and<sp/>to<sp/>permit<sp/>persons<sp/>to<sp/>whom<sp/>the<sp/>Software<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>furnished<sp/>to<sp/>do<sp/>so,<sp/>subject<sp/>to<sp/>the<sp/>following<sp/>conditions:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>above<sp/>copyright<sp/>notice<sp/>and<sp/>this<sp/>permission<sp/>notice<sp/>shall<sp/>be<sp/>included<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>all<sp/>copies<sp/>or<sp/>substantial<sp/>portions<sp/>of<sp/>the<sp/>Software.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>THE<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>&quot;AS<sp/>IS&quot;,<sp/>WITHOUT<sp/>WARRANTY<sp/>OF<sp/>ANY<sp/>KIND,<sp/>EXPRESS<sp/>OR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IMPLIED,<sp/>INCLUDING<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO<sp/>THE<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>AND<sp/>NONINFRINGEMENT.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AUTHORS<sp/>OR<sp/>COPYRIGHT<sp/>HOLDERS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>CLAIM,<sp/>DAMAGES<sp/>OR<sp/>OTHER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>AN<sp/>ACTION<sp/>OF<sp/>CONTRACT,<sp/>TORT<sp/>OR<sp/>OTHERWISE,<sp/>ARISING<sp/>FROM,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>OUT<sp/>OF<sp/>OR<sp/>IN<sp/>CONNECTION<sp/>WITH<sp/>THE<sp/>SOFTWARE<sp/>OR<sp/>THE<sp/>USE<sp/>OR<sp/>OTHER<sp/>DEALINGS<sp/>IN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>THE<sp/>SOFTWARE.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Foundation/Foundation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;UIKit/UIKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;CoreGraphics/CoreGraphics.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">@protocol<sp/></highlight><highlight class="normal"><ref refid="protocol_m_b_progress_h_u_d_delegate-p" kindref="compound">MBProgressHUDDelegate</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="38" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1" kindref="member">MBProgressHUDModeIndeterminate</ref>,</highlight></codeline>
+<codeline lineno="40" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29" kindref="member">MBProgressHUDModeDeterminate</ref>,</highlight></codeline>
+<codeline lineno="42" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc" kindref="member">MBProgressHUDModeDeterminateHorizontalBar</ref>,</highlight></codeline>
+<codeline lineno="44" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4" kindref="member">MBProgressHUDModeAnnularDeterminate</ref>,</highlight></codeline>
+<codeline lineno="46" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8" kindref="member">MBProgressHUDModeCustomView</ref>,</highlight></codeline>
+<codeline lineno="48" refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0" kindref="member">MBProgressHUDModeText</ref></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}<sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" kindref="member">MBProgressHUDMode</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="53" refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5" kindref="member">MBProgressHUDAnimationFade</ref>,</highlight></codeline>
+<codeline lineno="55" refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f" kindref="member">MBProgressHUDAnimationZoom</ref>,</highlight></codeline>
+<codeline lineno="56" refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119" kindref="member">MBProgressHUDAnimationZoomOut</ref><sp/>=<sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f" kindref="member">MBProgressHUDAnimationZoom</ref>,</highlight></codeline>
+<codeline lineno="57" refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597" kindref="member">MBProgressHUDAnimationZoomIn</ref></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}<sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" kindref="member">MBProgressHUDAnimation</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MB_INSTANCETYPE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_feature(objc_instancetype)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_INSTANCETYPE<sp/>instancetype</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_INSTANCETYPE<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MB_STRONG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_feature(objc_arc)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_STRONG<sp/>strong</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_STRONG<sp/>retain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MB_WEAK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_feature(objc_arc_weak)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_WEAK<sp/>weak</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>__has_feature(objc_arc)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_WEAK<sp/>unsafe_unretained</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="_m_b_progress_h_u_d_8h_1ae418fa5342876317377e77f6492ee4e4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>MB_WEAK<sp/>assign</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>NS_BLOCKS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(^MBProgressHUDCompletionBlock)();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="interface_m_b_progress_h_u_d" refkind="compound"><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref><sp/>:<sp/>UIView</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">+<sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" kindref="member">MB_INSTANCETYPE</ref>)showHUDAddedTo:(UIView<sp/>*)view<sp/>animated:(BOOL)animated;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">+<sp/>(BOOL)hideHUDForView:(UIView<sp/>*)view<sp/>animated:(BOOL)animated;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">+<sp/>(NSUInteger)hideAllHUDsForView:(UIView<sp/>*)view<sp/>animated:(BOOL)animated;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal">+<sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" kindref="member">MB_INSTANCETYPE</ref>)HUDForView:(UIView<sp/>*)view;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal">+<sp/>(NSArray<sp/>*)allHUDsForView:(UIView<sp/>*)view;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">-<sp/>(id)initWithWindow:(UIWindow<sp/>*)window;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">-<sp/>(id)initWithView:(UIView<sp/>*)view;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal">-<sp/>(void)show:(BOOL)animated;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">-<sp/>(void)hide:(BOOL)animated;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal">-<sp/>(void)hide:(BOOL)animated<sp/>afterDelay:(NSTimeInterval)delay;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal">-<sp/>(void)showWhileExecuting:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)method<sp/>onTarget:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)target<sp/>withObject:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)object<sp/>animated:(BOOL)animated;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>NS_BLOCKS_AVAILABLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal">-<sp/>(void)showAnimated:(BOOL)animated<sp/>whileExecutingBlock:(dispatch_block_t)block;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal">-<sp/>(void)showAnimated:(BOOL)animated<sp/>whileExecutingBlock:(dispatch_block_t)block<sp/>completionBlock:(MBProgressHUDCompletionBlock)completion;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal">-<sp/>(void)showAnimated:(BOOL)animated<sp/>whileExecutingBlock:(dispatch_block_t)block<sp/>onQueue:(dispatch_queue_t)queue;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal">-<sp/>(void)showAnimated:(BOOL)animated<sp/>whileExecutingBlock:(dispatch_block_t)block<sp/>onQueue:(dispatch_queue_t)queue</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>completionBlock:(MBProgressHUDCompletionBlock)completion;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(copy)<sp/>MBProgressHUDCompletionBlock<sp/>completionBlock;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="interface_m_b_progress_h_u_d_1ace77eaaf507e86fe56436f7ee7b6fdc9" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" kindref="member">MBProgressHUDMode</ref><sp/><ref refid="interface_m_b_progress_h_u_d_1ace77eaaf507e86fe56436f7ee7b6fdc9" kindref="member">mode</ref>;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" kindref="member">MBProgressHUDAnimation</ref><sp/><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref>;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297" refid="interface_m_b_progress_h_u_d_1a78f89e05d797a46bf9b41a5dfd1f5d4a" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIView<sp/>*<ref refid="interface_m_b_progress_h_u_d_1a78f89e05d797a46bf9b41a5dfd1f5d4a" kindref="member">customView</ref>;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304" refid="interface_m_b_progress_h_u_d_1ad6fee32939fa55fc1a341aba117aa28f" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1ae418fa5342876317377e77f6492ee4e4" kindref="member">MB_WEAK</ref>)<sp/>id&lt;MBProgressHUDDelegate&gt;<sp/><ref refid="interface_m_b_progress_h_u_d_1ad6fee32939fa55fc1a341aba117aa28f" kindref="member">delegate</ref>;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="interface_m_b_progress_h_u_d_1a531706887f08881c7f13b4309521b299" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(copy)<sp/>NSString<sp/>*<ref refid="interface_m_b_progress_h_u_d_1a531706887f08881c7f13b4309521b299" kindref="member">labelText</ref>;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317" refid="interface_m_b_progress_h_u_d_1a8b7cbf551fc551c64159b7a3f648c6ac" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(copy)<sp/>NSString<sp/>*<ref refid="interface_m_b_progress_h_u_d_1a8b7cbf551fc551c64159b7a3f648c6ac" kindref="member">detailsLabelText</ref>;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322" refid="interface_m_b_progress_h_u_d_1a24ab5e37917e3489d6add081324a49ff" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a24ab5e37917e3489d6add081324a49ff" kindref="member">opacity</ref>;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="interface_m_b_progress_h_u_d_1a1f4ab0f3ddc52af9353a4cf225ad1361" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor<sp/>*<ref refid="interface_m_b_progress_h_u_d_1a1f4ab0f3ddc52af9353a4cf225ad1361" kindref="member">color</ref>;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="interface_m_b_progress_h_u_d_1a4e6ee114c04b90ced1a253a6d33ba785" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a4e6ee114c04b90ced1a253a6d33ba785" kindref="member">xOffset</ref>;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339" refid="interface_m_b_progress_h_u_d_1ad526ffcabab5131697eb0850c50ab1f4" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1ad526ffcabab5131697eb0850c50ab1f4" kindref="member">yOffset</ref>;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="interface_m_b_progress_h_u_d_1a4126e72234f8afcb87905a9ed65c022c" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a4126e72234f8afcb87905a9ed65c022c" kindref="member">margin</ref>;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351" refid="interface_m_b_progress_h_u_d_1a8a3573dbf4dcdeeb187a08d0070e811c" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a8a3573dbf4dcdeeb187a08d0070e811c" kindref="member">cornerRadius</ref>;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356" refid="interface_m_b_progress_h_u_d_1ab781ccd4428c8eff6907d2cdc90fc3ee" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/>BOOL<sp/><ref refid="interface_m_b_progress_h_u_d_1ab781ccd4428c8eff6907d2cdc90fc3ee" kindref="member">dimBackground</ref>;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/>*<sp/>Grace<sp/>period<sp/>is<sp/>the<sp/>time<sp/>(in<sp/>seconds)<sp/>that<sp/>the<sp/>invoked<sp/>method<sp/>may<sp/>be<sp/>run<sp/>without<sp/></highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/>*<sp/>showing<sp/>the<sp/>HUD.<sp/>If<sp/>the<sp/>task<sp/>finishes<sp/>before<sp/>the<sp/>grace<sp/>time<sp/>runs<sp/>out,<sp/>the<sp/>HUD<sp/>will</highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/>*<sp/>not<sp/>be<sp/>shown<sp/>at<sp/>all.<sp/></highlight></codeline>
+<codeline lineno="362"><highlight class="comment"><sp/>*<sp/>This<sp/>may<sp/>be<sp/>used<sp/>to<sp/>prevent<sp/>HUD<sp/>display<sp/>for<sp/>very<sp/>short<sp/>tasks.</highlight></codeline>
+<codeline lineno="363"><highlight class="comment"><sp/>*<sp/>Defaults<sp/>to<sp/>0<sp/>(no<sp/>grace<sp/>time).</highlight></codeline>
+<codeline lineno="364"><highlight class="comment"><sp/>*<sp/>Grace<sp/>time<sp/>functionality<sp/>is<sp/>only<sp/>supported<sp/>when<sp/>the<sp/>task<sp/>status<sp/>is<sp/>known!</highlight></codeline>
+<codeline lineno="365"><highlight class="comment"><sp/>*<sp/>@see<sp/>taskInProgress</highlight></codeline>
+<codeline lineno="366"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367" refid="interface_m_b_progress_h_u_d_1a6f837c351a405d0bb6ec05856d7776dd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a6f837c351a405d0bb6ec05856d7776dd" kindref="member">graceTime</ref>;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374" refid="interface_m_b_progress_h_u_d_1a9946e4b0b16d75f070ff0cbcc50226ef" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a9946e4b0b16d75f070ff0cbcc50226ef" kindref="member">minShowTime</ref>;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="interface_m_b_progress_h_u_d_1a6077ea42c37c18b3058ed63ac10ede8f" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/>BOOL<sp/><ref refid="interface_m_b_progress_h_u_d_1a6077ea42c37c18b3058ed63ac10ede8f" kindref="member">taskInProgress</ref>;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390" refid="interface_m_b_progress_h_u_d_1a36639aa18a70f2734942695c32ec5e91" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/>BOOL<sp/><ref refid="interface_m_b_progress_h_u_d_1a36639aa18a70f2734942695c32ec5e91" kindref="member">removeFromSuperViewOnHide</ref>;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395" refid="interface_m_b_progress_h_u_d_1ae61e736a34f341f4190b065f19010af8" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIFont*<sp/><ref refid="interface_m_b_progress_h_u_d_1ae61e736a34f341f4190b065f19010af8" kindref="member">labelFont</ref>;</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="400" refid="interface_m_b_progress_h_u_d_1a04eba696a66f65d28b485bb5f0a940cd" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor*<sp/><ref refid="interface_m_b_progress_h_u_d_1a04eba696a66f65d28b485bb5f0a940cd" kindref="member">labelColor</ref>;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405" refid="interface_m_b_progress_h_u_d_1af070a363d323d8eb0285e38d398b51c2" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIFont*<sp/><ref refid="interface_m_b_progress_h_u_d_1af070a363d323d8eb0285e38d398b51c2" kindref="member">detailsLabelFont</ref>;</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410" refid="interface_m_b_progress_h_u_d_1ace929217bd7673159f063d5b8e80b080" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(<ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor*<sp/><ref refid="interface_m_b_progress_h_u_d_1ace929217bd7673159f063d5b8e80b080" kindref="member">detailsLabelColor</ref>;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415" refid="interface_m_b_progress_h_u_d_1a4c8328617d11efd1f5452032246ca97f" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_progress_h_u_d_1a4c8328617d11efd1f5452032246ca97f" kindref="member">progress</ref>;</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420" refid="interface_m_b_progress_h_u_d_1a69c6b2cad533d6fe7d90df02bf7f8b0c" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign)<sp/>CGSize<sp/><ref refid="interface_m_b_progress_h_u_d_1a69c6b2cad533d6fe7d90df02bf7f8b0c" kindref="member">minSize</ref>;</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425" refid="interface_m_b_progress_h_u_d_1a4bf7271b213e304259aa7d97f7cb1849" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign,<sp/>getter<sp/>=<sp/>isSquare)<sp/>BOOL<sp/><ref refid="interface_m_b_progress_h_u_d_1a4bf7271b213e304259aa7d97f7cb1849" kindref="member">square</ref>;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430" refid="protocol_m_b_progress_h_u_d_delegate-p" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@protocol<sp/></highlight><highlight class="normal"><ref refid="protocol_m_b_progress_h_u_d_delegate-p" kindref="compound">MBProgressHUDDelegate</ref><sp/>&lt;NSObject&gt;</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight><highlight class="keyword">@optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal">-<sp/>(void)hudWasHidden:(<ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref><sp/>*)hud;</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445" refid="interface_m_b_round_progress_view" refkind="compound"><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_b_round_progress_view" kindref="compound">MBRoundProgressView</ref><sp/>:<sp/>UIView<sp/></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450" refid="interface_m_b_round_progress_view_1af92eeb35944c81f406571bc353dc5d5a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/>assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_round_progress_view_1af92eeb35944c81f406571bc353dc5d5a" kindref="member">progress</ref>;</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456" refid="interface_m_b_round_progress_view_1ae5c8d76a85810a3f843f262bdfff1163" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/><ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor<sp/>*<ref refid="interface_m_b_round_progress_view_1ae5c8d76a85810a3f843f262bdfff1163" kindref="member">progressTintColor</ref>;</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462" refid="interface_m_b_round_progress_view_1ab111d2fa027158e7c21ad411767d193a" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/><ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor<sp/>*<ref refid="interface_m_b_round_progress_view_1ab111d2fa027158e7c21ad411767d193a" kindref="member">backgroundTintColor</ref>;</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="465"><highlight class="comment"><sp/>*<sp/>Display<sp/>mode<sp/>-<sp/>NO<sp/>=<sp/>round<sp/>or<sp/>YES<sp/>=<sp/>annular.<sp/>Defaults<sp/>to<sp/>round.</highlight></codeline>
+<codeline lineno="466"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467" refid="interface_m_b_round_progress_view_1abac11853dafb3f11426dab6d42834f9c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/>assign,<sp/>getter<sp/>=<sp/>isAnnular)<sp/>BOOL<sp/><ref refid="interface_m_b_round_progress_view_1abac11853dafb3f11426dab6d42834f9c" kindref="member">annular</ref>;</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475" refid="interface_m_b_bar_progress_view" refkind="compound"><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_b_bar_progress_view" kindref="compound">MBBarProgressView</ref><sp/>:<sp/>UIView</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480" refid="interface_m_b_bar_progress_view_1aa34865ca266850eb7060e91309f3512b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/>assign)<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="interface_m_b_round_progress_view_1af92eeb35944c81f406571bc353dc5d5a" kindref="member">progress</ref>;</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"></highlight></codeline>
+<codeline lineno="486" refid="interface_m_b_bar_progress_view_1a594029fb5ed62f3de81902c0ea815f2f" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/><ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor<sp/>*lineColor;</highlight></codeline>
+<codeline lineno="487"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492" refid="interface_m_b_bar_progress_view_1a0529e715ce6e40bf0e09864ba0ca1219" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/><ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor<sp/>*progressRemainingColor;</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498" refid="interface_m_b_bar_progress_view_1a5b27bb23bd54ae1c7b37a3fedd817e80" refkind="member"><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(nonatomic,<sp/><ref refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kindref="member">MB_STRONG</ref>)<sp/>UIColor<sp/>*progressColor;</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h"/>
+  </compounddef>
+</doxygen>

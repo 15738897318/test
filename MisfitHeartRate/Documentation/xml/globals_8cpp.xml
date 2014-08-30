@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="globals_8cpp" kind="file">
+    <compoundname>globals.cpp</compoundname>
+    <includes refid="globals_8h" local="yes">globals.h</includes>
+    <incdepgraph>
+      <node id="863">
+        <label>hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="850" relation="include">
+        </childnode>
+        <childnode refid="857" relation="include">
+        </childnode>
+        <childnode refid="860" relation="include">
+        </childnode>
+      </node>
+      <node id="845">
+        <label>globals.cpp</label>
+        <link refid="globals.cpp"/>
+        <childnode refid="846" relation="include">
+        </childnode>
+      </node>
+      <node id="846">
+        <label>globals.h</label>
+        <link refid="globals_8h"/>
+        <childnode refid="847" relation="include">
+        </childnode>
+        <childnode refid="848" relation="include">
+        </childnode>
+      </node>
+      <node id="857">
+        <label>matlab.h</label>
+        <link refid="matlab_8h"/>
+        <childnode refid="858" relation="include">
+        </childnode>
+        <childnode refid="859" relation="include">
+        </childnode>
+        <childnode refid="851" relation="include">
+        </childnode>
+      </node>
+      <node id="848">
+        <label>hr_signal_calc.h</label>
+        <link refid="hr__signal__calc_8h"/>
+        <childnode refid="849" relation="include">
+        </childnode>
+        <childnode refid="863" relation="include">
+        </childnode>
+        <childnode refid="864" relation="include">
+        </childnode>
+      </node>
+      <node id="854">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="852">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="853" relation="include">
+        </childnode>
+        <childnode refid="856" relation="include">
+        </childnode>
+      </node>
+      <node id="860">
+        <label>hr_structures.h</label>
+        <link refid="hr__structures_8h"/>
+        <childnode refid="861" relation="include">
+        </childnode>
+        <childnode refid="862" relation="include">
+        </childnode>
+      </node>
+      <node id="849">
+        <label>hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="850" relation="include">
+        </childnode>
+        <childnode refid="857" relation="include">
+        </childnode>
+        <childnode refid="860" relation="include">
+        </childnode>
+      </node>
+      <node id="859">
+        <label>random</label>
+      </node>
+      <node id="864">
+        <label>hr_calculator.h</label>
+        <link refid="hr__calculator_8h"/>
+        <childnode refid="857" relation="include">
+        </childnode>
+      </node>
+      <node id="850">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+        <childnode refid="851" relation="include">
+        </childnode>
+      </node>
+      <node id="855">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="861">
+        <label>vector</label>
+      </node>
+      <node id="862">
+        <label>utility</label>
+      </node>
+      <node id="853">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="854" relation="include">
+        </childnode>
+        <childnode refid="855" relation="include">
+        </childnode>
+      </node>
+      <node id="847">
+        <label>iostream</label>
+      </node>
+      <node id="851">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="852" relation="include">
+        </childnode>
+      </node>
+      <node id="858">
+        <label>set</label>
+      </node>
+      <node id="856">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="854" relation="include">
+        </childnode>
+        <childnode refid="855" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="globals_8cpp_1abb1219822989c459332111a5d38b5d72" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">MHR::hrResult</ref></type>
+        <definition>MHR::hrResult hrGlobalResult</definition>
+        <argsstring></argsstring>
+        <name>hrGlobalResult</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/globals.cpp" line="11" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/globals.cpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="globals_8cpp_1a0d559eafb7d80f04c3ac584cd2d6ca3f" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">MHR::hrResult</ref></type>
+        <definition>MHR::hrResult hrOldGlobalResult</definition>
+        <argsstring></argsstring>
+        <name>hrOldGlobalResult</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/globals.cpp" line="12" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/globals.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>globals.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Pulsar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Thanh<sp/>Le<sp/>on<sp/>8/14/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>Misfit<sp/>Wearables<sp/>Corporation.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="globals_8h" kindref="compound">globals.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="globals_8h_1abb1219822989c459332111a5d38b5d72" refkind="member"><highlight class="normal"><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">MHR::hrResult</ref><sp/><ref refid="globals_8cpp_1abb1219822989c459332111a5d38b5d72" kindref="member">hrGlobalResult</ref>;</highlight></codeline>
+<codeline lineno="12" refid="globals_8h_1a0d559eafb7d80f04c3ac584cd2d6ca3f" refkind="member"><highlight class="normal"><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">MHR::hrResult</ref><sp/><ref refid="globals_8cpp_1a0d559eafb7d80f04c3ac584cd2d6ca3f" kindref="member">hrOldGlobalResult</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/globals.cpp"/>
+  </compounddef>
+</doxygen>

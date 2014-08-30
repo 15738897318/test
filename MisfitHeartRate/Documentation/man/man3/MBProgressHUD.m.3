@@ -1,0 +1,129 @@
+.TH "Utilities/MBProgressHUD.m" 3 "Sat Aug 30 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Utilities/MBProgressHUD.m \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#import 'MBProgressHUD\&.h'\fP
+.br
+\fC#import <tgmath\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMB_AUTORELEASE\fP(exp)   [exp autorelease]"
+.br
+.ti -1c
+.RI "#define \fBMB_RELEASE\fP(exp)   [exp release]"
+.br
+.ti -1c
+.RI "#define \fBMB_RETAIN\fP(exp)   [exp retain]"
+.br
+.ti -1c
+.RI "#define \fBMBLabelAlignmentCenter\fP   UITextAlignmentCenter"
+.br
+.ti -1c
+.RI "#define \fBMB_TEXTSIZE\fP(text, font)   [text length] > 0 ? [text sizeWithFont:font] : CGSizeZero;"
+.br
+.ti -1c
+.RI "#define \fBMB_MULTILINE_TEXTSIZE\fP(text, font, maxSize, mode)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "SEL \fBmethodForExecution\fP"
+.br
+.ti -1c
+.RI "id \fBtargetForExecution\fP"
+.br
+.ti -1c
+.RI "id \fBobjectForExecution\fP"
+.br
+.ti -1c
+.RI "UILabel * \fBlabel\fP"
+.br
+.ti -1c
+.RI "UILabel * \fBdetailsLabel\fP"
+.br
+.ti -1c
+.RI "BOOL \fBisFinished\fP"
+.br
+.ti -1c
+.RI "CGAffineTransform \fBrotationTransform\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MB_AUTORELEASE(exp)   [exp autorelease]"
+
+.PP
+Definition at line 16 of file MBProgressHUD\&.m\&.
+.SS "#define MB_MULTILINE_TEXTSIZE(text, font, maxSize, mode)"
+\fBValue:\fP
+.PP
+.nf
+[text length] > 0 ? [text \
+        sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
+.fi
+.PP
+Definition at line 39 of file MBProgressHUD\&.m\&.
+.SS "#define MB_RELEASE(exp)   [exp release]"
+
+.PP
+Definition at line 17 of file MBProgressHUD\&.m\&.
+.SS "#define MB_RETAIN(exp)   [exp retain]"
+
+.PP
+Definition at line 18 of file MBProgressHUD\&.m\&.
+.SS "#define MB_TEXTSIZE(text, font)   [text length] > 0 ? [text sizeWithFont:font] : CGSizeZero;"
+
+.PP
+Definition at line 31 of file MBProgressHUD\&.m\&.
+.SS "#define MBLabelAlignmentCenter   UITextAlignmentCenter"
+
+.PP
+Definition at line 24 of file MBProgressHUD\&.m\&.
+.SH "Variable Documentation"
+.PP 
+.SS "UILabel* detailsLabel"
+
+.PP
+Definition at line 85 of file MBProgressHUD\&.m\&.
+.SS "BOOL isFinished"
+
+.PP
+Definition at line 86 of file MBProgressHUD\&.m\&.
+.SS "UILabel* label"
+
+.PP
+Definition at line 84 of file MBProgressHUD\&.m\&.
+.SS "SEL methodForExecution"
+\fBInitial value:\fP
+.PP
+.nf
+{
+    BOOL useAnimation
+.fi
+.PP
+Definition at line 79 of file MBProgressHUD\&.m\&.
+.SS "id objectForExecution"
+
+.PP
+Definition at line 83 of file MBProgressHUD\&.m\&.
+.SS "CGAffineTransform rotationTransform"
+
+.PP
+Definition at line 87 of file MBProgressHUD\&.m\&.
+.SS "id targetForExecution"
+
+.PP
+Definition at line 82 of file MBProgressHUD\&.m\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

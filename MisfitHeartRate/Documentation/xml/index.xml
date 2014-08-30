@@ -1,0 +1,576 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.7">
+  <compound refid="struct_m_h_r_1_1hr_debug" kind="struct"><name>MHR::hrDebug</name>
+    <member refid="struct_m_h_r_1_1hr_debug_1ab0a19a437cbd96f0af5d1b41114c1b80" kind="variable"><name>avg_hr</name></member>
+    <member refid="struct_m_h_r_1_1hr_debug_1aecd197b08db2c97469bc1d99af93a559" kind="variable"><name>heartBeats</name></member>
+    <member refid="struct_m_h_r_1_1hr_debug_1a019b377c2e1d3ade917074967cf20504" kind="variable"><name>heartRates</name></member>
+    <member refid="struct_m_h_r_1_1hr_debug_1a6222c0c8c70a697d9d312e238933952b" kind="variable"><name>autocorrelation</name></member>
+  </compound>
+  <compound refid="struct_m_h_r_1_1hr_result" kind="struct"><name>MHR::hrResult</name>
+    <member refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kind="variable"><name>autocorr</name></member>
+    <member refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kind="variable"><name>pda</name></member>
+    <member refid="struct_m_h_r_1_1hr_result_1a94669db221b6a6834d0e385e144eb6ba" kind="function"><name>hrResult</name></member>
+    <member refid="struct_m_h_r_1_1hr_result_1a6aa4ad99d1212655782408fb3785eb1b" kind="function"><name>hrResult</name></member>
+    <member refid="struct_m_h_r_1_1hr_result_1a31ede18d6971c0160729a5f8433e4928" kind="function"><name>operator=</name></member>
+  </compound>
+  <compound refid="interface_m_b_bar_progress_view" kind="class"><name>MBBarProgressView</name>
+    <member refid="interface_m_b_bar_progress_view_1aa34865ca266850eb7060e91309f3512b" kind="property"><name>progress</name></member>
+    <member refid="interface_m_b_bar_progress_view_1a594029fb5ed62f3de81902c0ea815f2f" kind="property"><name>lineColor</name></member>
+    <member refid="interface_m_b_bar_progress_view_1a0529e715ce6e40bf0e09864ba0ca1219" kind="property"><name>progressRemainingColor</name></member>
+    <member refid="interface_m_b_bar_progress_view_1a5b27bb23bd54ae1c7b37a3fedd817e80" kind="property"><name>progressColor</name></member>
+  </compound>
+  <compound refid="interface_m_b_progress_h_u_d" kind="class"><name>MBProgressHUD</name>
+    <member refid="interface_m_b_progress_h_u_d_1ace77eaaf507e86fe56436f7ee7b6fdc9" kind="property"><name>mode</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kind="property"><name>animationType</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a78f89e05d797a46bf9b41a5dfd1f5d4a" kind="property"><name>customView</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ad6fee32939fa55fc1a341aba117aa28f" kind="property"><name>delegate</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a531706887f08881c7f13b4309521b299" kind="property"><name>labelText</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a8b7cbf551fc551c64159b7a3f648c6ac" kind="property"><name>detailsLabelText</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a24ab5e37917e3489d6add081324a49ff" kind="property"><name>opacity</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a1f4ab0f3ddc52af9353a4cf225ad1361" kind="property"><name>color</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a4e6ee114c04b90ced1a253a6d33ba785" kind="property"><name>xOffset</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ad526ffcabab5131697eb0850c50ab1f4" kind="property"><name>yOffset</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a4126e72234f8afcb87905a9ed65c022c" kind="property"><name>margin</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a8a3573dbf4dcdeeb187a08d0070e811c" kind="property"><name>cornerRadius</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ab781ccd4428c8eff6907d2cdc90fc3ee" kind="property"><name>dimBackground</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a6f837c351a405d0bb6ec05856d7776dd" kind="property"><name>graceTime</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a9946e4b0b16d75f070ff0cbcc50226ef" kind="property"><name>minShowTime</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a6077ea42c37c18b3058ed63ac10ede8f" kind="property"><name>taskInProgress</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a36639aa18a70f2734942695c32ec5e91" kind="property"><name>removeFromSuperViewOnHide</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ae61e736a34f341f4190b065f19010af8" kind="property"><name>labelFont</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a04eba696a66f65d28b485bb5f0a940cd" kind="property"><name>labelColor</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1af070a363d323d8eb0285e38d398b51c2" kind="property"><name>detailsLabelFont</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ace929217bd7673159f063d5b8e80b080" kind="property"><name>detailsLabelColor</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a4c8328617d11efd1f5452032246ca97f" kind="property"><name>progress</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a69c6b2cad533d6fe7d90df02bf7f8b0c" kind="property"><name>minSize</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a4bf7271b213e304259aa7d97f7cb1849" kind="property"><name>square</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a85d0c8c9647c47a289e7e7ea5d477c9a" kind="function"><name>showHUDAddedTo:animated:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ab7a06aebc0d49b4fc963815ad424013f" kind="function"><name>hideHUDForView:animated:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a86053d76e84d0fdf033af091df5ea239" kind="function"><name>hideAllHUDsForView:animated:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a30afd912f412c6612eee7f1e17241b5b" kind="function"><name>HUDForView:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1aaa8882a53b5edfd617b4ba112c60811b" kind="function"><name>allHUDsForView:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a8f3c01167d59153c85ae7efdca7717fc" kind="function"><name>initWithWindow:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1ae42ee0d2d0ea58fac1ce8de6b5ea3b60" kind="function"><name>initWithView:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a3ef075a3be624c2f94629d63bfeae25b" kind="function"><name>show:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a500fd79859e56cf98fd2eebfd37b4204" kind="function"><name>hide:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1aec6533c21bf8a9f3e552cb133ef6aeed" kind="function"><name>hide:afterDelay:</name></member>
+    <member refid="interface_m_b_progress_h_u_d_1a23cd23b9c46bd819f14314426ed9dcdb" kind="function"><name>showWhileExecuting:onTarget:withObject:animated:</name></member>
+  </compound>
+  <compound refid="category_m_b_progress_h_u_d_07_08" kind="category"><name>MBProgressHUD()</name>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a88f0841ae8c0e93249afc68954859072" kind="property"><name>indicator</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a856da5d6ea8f970c9f79cd43f8f4e3d7" kind="property"><name>graceTimer</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1ae0ef7ca861bf900eaed11b57ad49eddc" kind="property"><name>minShowTimer</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a45366644943d7cd700062c755ceef991" kind="property"><name>showStarted</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1aa7e6a57f64a0347bf480dc63ca6d2d35" kind="property"><name>size</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1afdd98061febe4c70612ec90781072666" kind="function"><name>setupLabels</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1ab854d39884bfbab11016768cd963c149" kind="function"><name>registerForKVO</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1af2d221a723e70926a82f8f676d5fc14d" kind="function"><name>unregisterFromKVO</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1abc52ed122a077567f45667fb2e229d99" kind="function"><name>observableKeypaths</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a69ef8d11e37509cd6153008561495748" kind="function"><name>registerForNotifications</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a48798d7cd00acabbf68c3042359ee26d" kind="function"><name>unregisterFromNotifications</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a1a10daf9c000912334350f6436793334" kind="function"><name>updateUIForKeypath:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1aa3a0b42eeeb2df228793b32806af1883" kind="function"><name>hideUsingAnimation:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a1d81696b9e99cce3e4291c7a5e7ca13f" kind="function"><name>showUsingAnimation:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1ac2a1bbca15d4c98346db20c155252e1f" kind="function"><name>done</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a0c6fd8c9f5579d07ee037f1db6113152" kind="function"><name>updateIndicators</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1ac171139695b879a83d4b27c383dacf1a" kind="function"><name>handleGraceTimer:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1ac821792e52ccf50a0f706e8d5df4e385" kind="function"><name>handleMinShowTimer:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1afeb3056f684d58ef12ef0a62d05d6f56" kind="function"><name>setTransformForCurrentOrientation:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1ad37178e8a931dd238e164cc1e13042fa" kind="function"><name>cleanUp</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a101d93f06bd73aa0cb365842cfc8966d" kind="function"><name>launchExecution</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1a75105f00fb727353b35fa6d2cf320114" kind="function"><name>deviceOrientationDidChange:</name></member>
+    <member refid="category_m_b_progress_h_u_d_07_08_1afa9de8a535c05efd09ab379039557536" kind="function"><name>hideDelayed:</name></member>
+  </compound>
+  <compound refid="protocol_m_b_progress_h_u_d_delegate-p" kind="protocol"><name>MBProgressHUDDelegate-p</name>
+    <member refid="protocol_m_b_progress_h_u_d_delegate-p_1a0b2a08b1d9cf3758cca8d52a61bed1cc" kind="function"><name>hudWasHidden:</name></member>
+  </compound>
+  <compound refid="interface_m_b_round_progress_view" kind="class"><name>MBRoundProgressView</name>
+    <member refid="interface_m_b_round_progress_view_1af92eeb35944c81f406571bc353dc5d5a" kind="property"><name>progress</name></member>
+    <member refid="interface_m_b_round_progress_view_1ae5c8d76a85810a3f843f262bdfff1163" kind="property"><name>progressTintColor</name></member>
+    <member refid="interface_m_b_round_progress_view_1ab111d2fa027158e7c21ad411767d193a" kind="property"><name>backgroundTintColor</name></member>
+    <member refid="interface_m_b_round_progress_view_1abac11853dafb3f11426dab6d42834f9c" kind="property"><name>annular</name></member>
+  </compound>
+  <compound refid="interface_m_h_r_app_delegate" kind="class"><name>MHRAppDelegate</name>
+    <member refid="interface_m_h_r_app_delegate_1ae07fbc2242a8ac6a6cca11d22a56dede" kind="property"><name>window</name></member>
+    <member refid="interface_m_h_r_app_delegate_1a798999c986183b6b0f61070b46856713" kind="property"><name>managedObjectContext</name></member>
+    <member refid="interface_m_h_r_app_delegate_1ab0f79ebe18e402e0249870b98354612b" kind="property"><name>managedObjectModel</name></member>
+    <member refid="interface_m_h_r_app_delegate_1ade32c3c30bed3706907d1a52c129da79" kind="property"><name>persistentStoreCoordinator</name></member>
+    <member refid="interface_m_h_r_app_delegate_1aec18685dadaebd97aa02780c3f43c5c1" kind="function"><name>saveContext</name></member>
+    <member refid="interface_m_h_r_app_delegate_1a7f18dc9ee3d899f8b4661b48734f1001" kind="function"><name>applicationDocumentsDirectory</name></member>
+    <member refid="interface_m_h_r_app_delegate_1ac246805d8cd3d8477430f1a9c7fefbac" kind="function"><name>getPlistSkinDict</name></member>
+  </compound>
+  <compound refid="interface_m_h_r_main_view_controller" kind="class"><name>MHRMainViewController</name>
+  </compound>
+  <compound refid="category_m_h_r_main_view_controller_07_08" kind="category"><name>MHRMainViewController()</name>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a0b32e144ea6d386ce5180a75b7f1ac76" kind="variable"><name>isCapturing</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a2508c2c272b97794449944d901733307" kind="variable"><name>cropArea</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a8ec78910220259631707236b9160c626" kind="variable"><name>ROI_upper</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a8e5e7cd7481bac3b8bf77d684976a283" kind="variable"><name>ROI_lower</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1aee235ca60383f404b812a075eca55e75" kind="variable"><name>resultView</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a8c4078159735c117ecbeb565b9c287e2" kind="variable"><name>currentResult</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a796178035a8c8f1b629b666076fe1ef3" kind="variable"><name>framesWithFace</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a7c19b115c59979a430b286b0ab7d57cc" kind="variable"><name>framesWithNoFace</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1ad7e9d3339af1110426f965b7615b5988" kind="variable"><name>progressHUD</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1ade66611f85011833b732d24a430338e8" kind="variable"><name>isCalcMode</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1ac4984c4b9f2c0ed7a71d957858a0b690" kind="variable"><name>lower_range</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a2cae5817c804f84f5e8db9531d8258c9" kind="variable"><name>upper_range</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a9dbae9ee1ba7bf908a253626a618ecf6" kind="variable"><name>result</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1abc8096634910dfbb9d748b376d8506cb" kind="variable"><name>temporal_mean</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1aaf8cf1ed833d48edb06718b6d7540fae" kind="variable"><name>frameIndexArray</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a77f4256f36d6f6bebf7f82005aec1c62" kind="variable"><name>myQueue</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a228b693ffc5ea747c93a4206c5b8b98d" kind="variable"><name>blockNumber</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a58a5e815d93639db9e1ab9f1da8fa9f9" kind="variable"><name>blockCount</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a82652cbbdc0ac312a50c591870b579c1" kind="property"><name>videoCamera</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1acf930d5712d9bba15886bab49c00f36c" kind="property"><name>outPath</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1aff8ddd68733b8b626fc832ebf2390398" kind="property"><name>nFrames</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1ac15f6b287a439206e9a1a8816248f635" kind="property"><name>recordTime</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a1f1639552968eeba13ed2b4575bea129" kind="property"><name>recordTimer</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1ad4a109ef255380e19bcda3c2efb2ce83" kind="property"><name>imageView</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a64545a3386e0d53f59af539582caafd4" kind="property"><name>cameraSwitch</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a2457cf5b05fac6f6cb9483997159f5f6" kind="property"><name>faceLabel</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a67cd700e56983a4a3a1e6da4569bafe9" kind="property"><name>fingerLabel</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a1419b93d2152551aec5038ff468f3ff6" kind="property"><name>fingerSwitchLabel</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1addd32f0cbd1a4d5bfe69a837b3505ed6" kind="property"><name>faceSwitchLabel</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a63bbbfafd497288fe3035250ab5d9fcb" kind="property"><name>recordTimeLabel</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a98273435af4fbcd1e437f257bb9ced12" kind="property"><name>startButton</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a0e349ec3fa2cecae6592c8d9489dedfe" kind="property"><name>stopButton</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a012367c6522cfb5d64c9d5dadcb272e2" kind="property"><name>viewTop</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1a8b3917278570b1085bd6f73297f44383" kind="property"><name>labelTop</name></member>
+    <member refid="category_m_h_r_main_view_controller_07_08_1ae61668adf80d339aabb1c9dcb3085428" kind="property"><name>viewTop2</name></member>
+  </compound>
+  <compound refid="interface_m_h_r_result_view_controller" kind="class"><name>MHRResultViewController</name>
+    <member refid="interface_m_h_r_result_view_controller_1ad2cc92ee5ee811f8df6b04883f090096" kind="property"><name>autocorrResult</name></member>
+    <member refid="interface_m_h_r_result_view_controller_1ae0daab10c086e438477f71f59fa0de37" kind="property"><name>pdaResult</name></member>
+  </compound>
+  <compound refid="category_m_h_r_result_view_controller_07_08" kind="category"><name>MHRResultViewController()</name>
+    <member refid="category_m_h_r_result_view_controller_07_08_1a47e15cc9dd4edba89fabe5631de70baa" kind="property"><name>autocorrLabel</name></member>
+    <member refid="category_m_h_r_result_view_controller_07_08_1a4d91971b1a4e42c64a1c0d2790b1fe53" kind="property"><name>pdaLabel</name></member>
+  </compound>
+  <compound refid="interface_m_h_r_settings_view_controller" kind="class"><name>MHRSettingsViewController</name>
+    <member refid="interface_m_h_r_settings_view_controller_1a6fa685e4f9358a047d6f1cfd77f7ac0f" kind="variable"><name>_delegate</name></member>
+    <member refid="interface_m_h_r_settings_view_controller_1a44380e171f6d773f58dc158ff58d47aa" kind="property"><name>delegate</name></member>
+    <member refid="interface_m_h_r_settings_view_controller_1abb8745a6f5f7529e69628d8f5f4f068e" kind="property"><name>debugModeOn</name></member>
+    <member refid="interface_m_h_r_settings_view_controller_1add55937fcb10a424e5f651d372b4b6a9" kind="property"><name>threeChanModeOn</name></member>
+  </compound>
+  <compound refid="category_m_h_r_settings_view_controller_07_08" kind="category"><name>MHRSettingsViewController()</name>
+    <member refid="category_m_h_r_settings_view_controller_07_08_1a1aa168471752fac727fa69e4be17b438" kind="property"><name>debugModeSwitch</name></member>
+    <member refid="category_m_h_r_settings_view_controller_07_08_1a1895b1abc4ef23d82293f905fbd27468" kind="property"><name>threeChanModeSwitch</name></member>
+  </compound>
+  <compound refid="protocol_m_h_r_settings_view_delegate-p" kind="protocol"><name>MHRSettingsViewDelegate-p</name>
+    <member refid="protocol_m_h_r_settings_view_delegate-p_1a1d7367b2d59c2dce76e953607bdc032e" kind="function"><name>debugModeChanged:</name></member>
+    <member refid="protocol_m_h_r_settings_view_delegate-p_1ade012e6adf8df6a09d7a51909815f360" kind="function"><name>threeChanModeChanged:</name></member>
+  </compound>
+  <compound refid="interface_m_h_r_utilities" kind="class"><name>MHRUtilities</name>
+    <member refid="interface_m_h_r_utilities_1a1f7c42bb731cae8fb90d106014b00df9" kind="function"><name>report_memory</name></member>
+    <member refid="interface_m_h_r_utilities_1a85f3406abe6ae8911d4a8349996e1d6c" kind="function"><name>createDirectory:</name></member>
+    <member refid="interface_m_h_r_utilities_1a4c2719ba1e46c5491a9868ab93dc8cfe" kind="function"><name>setTorchModeOn:</name></member>
+    <member refid="interface_m_h_r_utilities_1aced58e360114134fcc1982a6862fc523" kind="function"><name>newRectangleLayer:pListKey:</name></member>
+    <member refid="interface_m_h_r_utilities_1a92885094add75d90dfb00faaf36d423e" kind="function"><name>MFUIColorMakeFromRGBArray</name></member>
+    <member refid="interface_m_h_r_utilities_1a824edf59b4a4e127db0f4248c4d4bfd6" kind="function"><name>MFUIColorMakeFromRGBAArray</name></member>
+  </compound>
+  <compound refid="category_u_i_alert_view_07_block_08" kind="category"><name>UIAlertView(Block)</name>
+  </compound>
+  <compound refid="interface_u_i_image_c_v_mat_converter" kind="class"><name>UIImageCVMatConverter</name>
+    <member refid="interface_u_i_image_c_v_mat_converter_1ae96cde81129f965a43427053199cd92d" kind="function"><name>UIImageFromCVMat:</name></member>
+    <member refid="interface_u_i_image_c_v_mat_converter_1abd5e5c4c7280d04fffea79737b556507" kind="function"><name>UIImageFromCVMat:withUIImage:</name></member>
+    <member refid="interface_u_i_image_c_v_mat_converter_1abeefe1d140e9bdd660b07d1dabce66f1" kind="function"><name>cvMatFromUIImage:</name></member>
+    <member refid="interface_u_i_image_c_v_mat_converter_1adcff189c46b8a96188a10775f133138f" kind="function"><name>cvMatGrayFromUIImage:</name></member>
+    <member refid="interface_u_i_image_c_v_mat_converter_1a6f3591f2805f153289fae9fb8e50ca67" kind="function"><name>scaleAndRotateImageFrontCamera:</name></member>
+    <member refid="interface_u_i_image_c_v_mat_converter_1a92e5de957061495ab6c3f1cadfafa2f9" kind="function"><name>scaleAndRotateImageBackCamera:</name></member>
+  </compound>
+  <compound refid="category_u_i_view_07_position_08" kind="category"><name>UIView(Position)</name>
+    <member refid="category_u_i_view_07_position_08_1af1d70399207fb8befa7e0f287bf23368" kind="property"><name>frameOrigin</name></member>
+    <member refid="category_u_i_view_07_position_08_1afa9efa5679d7caac0a6a03f6e71342de" kind="property"><name>frameSize</name></member>
+    <member refid="category_u_i_view_07_position_08_1a16476712cc236d743510b2f39363396d" kind="property"><name>frameX</name></member>
+    <member refid="category_u_i_view_07_position_08_1a60a2692ff93131e7bbba22ecf3726f55" kind="property"><name>frameY</name></member>
+    <member refid="category_u_i_view_07_position_08_1a203a633f161baa33534255efff338ec3" kind="property"><name>frameRight</name></member>
+    <member refid="category_u_i_view_07_position_08_1a6a730310961d877923cbe081dc3e5b39" kind="property"><name>frameBottom</name></member>
+    <member refid="category_u_i_view_07_position_08_1aff1bcfa93fa19e1ed68022c263452a3b" kind="property"><name>frameWidth</name></member>
+    <member refid="category_u_i_view_07_position_08_1a96659e2eec8d359d96a460582247f4c8" kind="property"><name>frameHeight</name></member>
+    <member refid="category_u_i_view_07_position_08_1a4ab53ef69f304fba4732aeb9256b5ee0" kind="function"><name>addCenteredSubview:</name></member>
+    <member refid="category_u_i_view_07_position_08_1afaae9a5b1741fa3eb2ae7c57cf4687d8" kind="function"><name>moveToCenterOfSuperview</name></member>
+    <member refid="category_u_i_view_07_position_08_1a3ede327c32904e3e1e9e5c90b6cd8071" kind="function"><name>centerVerticallyInSuperview</name></member>
+    <member refid="category_u_i_view_07_position_08_1a50aabdd38d9ff4e017bc0238e2346ae2" kind="function"><name>centerHorizontallyInSuperview</name></member>
+    <member refid="category_u_i_view_07_position_08_1aee174d95a8088008dd006205fad44d17" kind="function"><name>setFrameXPlus:yPlus:widthPlus:heightPlus:</name></member>
+    <member refid="category_u_i_view_07_position_08_1a3f7385a31ead16eb46e759a413aa9f19" kind="function"><name>adjustFrameFormiOS6ToiOS7:</name></member>
+    <member refid="category_u_i_view_07_position_08_1a26680d798543876e3d295c69ecf7f35c" kind="function"><name>adjustFrameFormiOS7ToiOS6:</name></member>
+  </compound>
+  <compound refid="namespacecv" kind="namespace"><name>cv</name>
+  </compound>
+  <compound refid="namespace_m_h_r" kind="namespace"><name>MHR</name>
+    <member refid="namespace_m_h_r_1a2446951af16ca1137edb21f8e07019cb" kind="variable"><name>_DEBUG_MODE</name></member>
+    <member refid="namespace_m_h_r_1a100c1e31c0fbc8c8b292064c1a8da006" kind="variable"><name>_THREE_CHAN_MODE</name></member>
+    <member refid="namespace_m_h_r_1a364268cdc7b75db63f89c9d8960aa1b4" kind="variable"><name>_FACE_MODE</name></member>
+    <member refid="namespace_m_h_r_1a15d81a6b22ae7616409d6df6101690eb" kind="variable"><name>_outputPath</name></member>
+    <member refid="namespace_m_h_r_1abbf22419d2dbaf1d661d5b73fc9af29b" kind="variable"><name>_eulerian_alpha</name></member>
+    <member refid="namespace_m_h_r_1a383bea7ba431fede0a30f05b3ae57536" kind="variable"><name>_eulerian_pyrLevel</name></member>
+    <member refid="namespace_m_h_r_1afe8a788bdd0504a98259321e41377180" kind="variable"><name>_eulerian_minHR</name></member>
+    <member refid="namespace_m_h_r_1acb647c6b44ad0c7fac0fba37122d5889" kind="variable"><name>_eulerian_maxHR</name></member>
+    <member refid="namespace_m_h_r_1ab6b7928e4485f421869d4fbac9a5c1cd" kind="variable"><name>_eulerian_frameRate</name></member>
+    <member refid="namespace_m_h_r_1ad69f0161c9597e078014c52955264fd2" kind="variable"><name>_eulerian_chromaMagnifier</name></member>
+    <member refid="namespace_m_h_r_1a8c0f2199ebe2a27a2fc0cff1daa239ee" kind="variable"><name>_frameRate</name></member>
+    <member refid="namespace_m_h_r_1a2ff626868d0be78114be4abbcd0ba01b" kind="variable"><name>_number_of_channels</name></member>
+    <member refid="namespace_m_h_r_1ac3927bf3a2b93c8dc4ef19ee1a3d55f8" kind="variable"><name>_Gpyr_filter_length</name></member>
+    <member refid="namespace_m_h_r_1ad8b548e54d84866330d426d8edc8877e" kind="variable"><name>_startFrame</name></member>
+    <member refid="namespace_m_h_r_1a08d1602abf6cd2454b1f73a8d5523ac2" kind="variable"><name>_endFrame</name></member>
+    <member refid="namespace_m_h_r_1a9732a5bb1cbdb99030149ae2bb1cae69" kind="variable"><name>_window_size_in_sec</name></member>
+    <member refid="namespace_m_h_r_1aed0501a3045731a781439b11ee82fbfe" kind="variable"><name>_overlap_ratio</name></member>
+    <member refid="namespace_m_h_r_1a1a13273dd519ccfaf4dc1800bd2031d2" kind="variable"><name>_max_bpm</name></member>
+    <member refid="namespace_m_h_r_1a9685359cac4522cd1ee584fbfb5371d1" kind="variable"><name>_cutoff_freq</name></member>
+    <member refid="namespace_m_h_r_1abe9f5a6b09e1219712f2b5912e68506d" kind="variable"><name>_time_lag</name></member>
+    <member refid="namespace_m_h_r_1a16dd6a785863f2fac97ebb334606c166" kind="variable"><name>_colourspace</name></member>
+    <member refid="namespace_m_h_r_1a02a81ed541f6536b1632d65c8f2ad0d3" kind="variable"><name>_channels_to_process</name></member>
+    <member refid="namespace_m_h_r_1a5a4548440538bf0354499b42e7983f2f" kind="variable"><name>_number_of_bins_heartRate</name></member>
+    <member refid="namespace_m_h_r_1ae2f1f5bafa06074dcb8f0af01a058c81" kind="variable"><name>_flagDebug</name></member>
+    <member refid="namespace_m_h_r_1ab142c69d1b89170b4fa2533a6f749394" kind="variable"><name>_flagGetRaw</name></member>
+    <member refid="namespace_m_h_r_1a7650c1d1c25787e60c4dbbdb5cedf3b8" kind="variable"><name>_startIndex</name></member>
+    <member refid="namespace_m_h_r_1a43ac6cb857f86cd5a9bc16e968faa1af" kind="variable"><name>_endIndex</name></member>
+    <member refid="namespace_m_h_r_1a8a80b7897b02d4d2a57311a344df8497" kind="variable"><name>_peakStrengthThreshold_fraction</name></member>
+    <member refid="namespace_m_h_r_1aaaae88f4be078b944fe63b49c5022684" kind="variable"><name>_frames2signalConversionMethod</name></member>
+    <member refid="namespace_m_h_r_1a41fcc40bb1f54975292b8d7051b7b3f9" kind="variable"><name>_frame_downsampling_filt_rows</name></member>
+    <member refid="namespace_m_h_r_1a619373c68caeeba93f71d9eaeecf1a5b" kind="variable"><name>_frame_downsampling_filt_cols</name></member>
+    <member refid="namespace_m_h_r_1a8d2bbf36755f538d9b442b415d5cde6d" kind="variable"><name>_frame_downsampling_filt</name></member>
+    <member refid="namespace_m_h_r_1a87eb7e22893e5160d4a98344bc8bdff4" kind="variable"><name>_trimmed_size</name></member>
+    <member refid="namespace_m_h_r_1a32705f521f2a65e0b5c5454b328c26db" kind="variable"><name>_training_time_start</name></member>
+    <member refid="namespace_m_h_r_1a6ee9276234c51d213a3b1631eee5f315" kind="variable"><name>_training_time_end</name></member>
+    <member refid="namespace_m_h_r_1ab3a5de59c2eed470e94ca0e79abd2b5c" kind="variable"><name>_number_of_bins</name></member>
+    <member refid="namespace_m_h_r_1acb8b09915d13e40eba7f00718c40ce6a" kind="variable"><name>_pct_reach_below_mode</name></member>
+    <member refid="namespace_m_h_r_1a3b2e38d795c8389fd066cefa0af2ef47" kind="variable"><name>_pct_reach_above_mode</name></member>
+    <member refid="namespace_m_h_r_1a5d907d8ef896004dce9f0fd1d47b77e7" kind="variable"><name>_beatSignalFilterKernel_size</name></member>
+    <member refid="namespace_m_h_r_1ab83e011c36b7688dab5ef024c8894300" kind="variable"><name>_beatSignalFilterKernel</name></member>
+    <member refid="namespace_m_h_r_1ad65f931bf0d5fecacaa5062119d272bf" kind="variable"><name>_hrThreshold</name></member>
+    <member refid="namespace_m_h_r_1aa202bc96d234c5ee044f8590ad1dc0ef" kind="variable"><name>_hrStanDev</name></member>
+    <member refid="namespace_m_h_r_1a1f2bac57e6ccaebc6afd932278b163ec" kind="variable"><name>NaN</name></member>
+    <member refid="namespace_m_h_r_1a167cff7309df5114f9e72af8b5e820c1" kind="variable"><name>_framesBlock_size</name></member>
+    <member refid="namespace_m_h_r_1aced573ebf5ae641d5c3a58c9762462fb" kind="variable"><name>_minVidLength</name></member>
+    <member refid="namespace_m_h_r_1a0a7cdb59c1f1e8af6e6b61543c81724d" kind="variable"><name>_maxVidLength</name></member>
+    <member refid="namespace_m_h_r_1a0f9c0b966020cdd7ef37cb2207d981ab" kind="variable"><name>_face_eulerian_alpha</name></member>
+    <member refid="namespace_m_h_r_1a3eae7b41b03bf25902413f62c5e6545d" kind="variable"><name>_face_eulerian_pyrLevel</name></member>
+    <member refid="namespace_m_h_r_1a95e1651df07df85f364ac713aac7a53b" kind="variable"><name>_face_eulerian_minHR</name></member>
+    <member refid="namespace_m_h_r_1a366f66e2cd387cf039dc5d7de4ff5f9d" kind="variable"><name>_face_eulerian_maxHR</name></member>
+    <member refid="namespace_m_h_r_1a3c21f6619922e618bff40700a5723015" kind="variable"><name>_face_eulerian_frameRate</name></member>
+    <member refid="namespace_m_h_r_1a5b039641e0cf1a30ba4f303e4764b4c8" kind="variable"><name>_face_eulerian_chromaMagnifier</name></member>
+    <member refid="namespace_m_h_r_1a1af8c23e0ffae759111c964d2369a13b" kind="variable"><name>_face_number_of_channels</name></member>
+    <member refid="namespace_m_h_r_1a7eabffdab2df22a98e5aa4046d6c3baf" kind="variable"><name>_face_Gpyr_filter_length</name></member>
+    <member refid="namespace_m_h_r_1ac893410fca7e7a76ae562e47f8371cc1" kind="variable"><name>_face_startFrame</name></member>
+    <member refid="namespace_m_h_r_1a349e142bd15540a9d0b5b63f426fc3dc" kind="variable"><name>_face_endFrame</name></member>
+    <member refid="namespace_m_h_r_1ada7fab40b0e865f6a26751fd550b5288" kind="variable"><name>_face_window_size_in_sec</name></member>
+    <member refid="namespace_m_h_r_1ab6430d316d9d82ce08b7d35fda6ba14e" kind="variable"><name>_face_overlap_ratio</name></member>
+    <member refid="namespace_m_h_r_1a123d7bba4eba9d4c49ebe21458394a9a" kind="variable"><name>_face_max_bpm</name></member>
+    <member refid="namespace_m_h_r_1afc5d67d6a0c4929f2fc30dce703740fe" kind="variable"><name>_face_cutoff_freq</name></member>
+    <member refid="namespace_m_h_r_1ad108537351ba024dfa150411983a69c4" kind="variable"><name>_face_time_lag</name></member>
+    <member refid="namespace_m_h_r_1a2c3d7c5df37d2106e5f4351ebeb44c2f" kind="variable"><name>_face_colourspace</name></member>
+    <member refid="namespace_m_h_r_1ac3a2dbcaefbcbb5814108c711ebd1fe1" kind="variable"><name>_face_channels_to_process</name></member>
+    <member refid="namespace_m_h_r_1abfcdcdfbf5694a70c871df5484e30321" kind="variable"><name>_face_number_of_bins_heartRate</name></member>
+    <member refid="namespace_m_h_r_1ade58b99d0d2023434646cb0597baafdf" kind="variable"><name>_face_flagDebug</name></member>
+    <member refid="namespace_m_h_r_1a6e9575c56ad75e4e165fd62fad98734f" kind="variable"><name>_face_flagGetRaw</name></member>
+    <member refid="namespace_m_h_r_1a5c705653d488611b87b11e41e4ffbfd5" kind="variable"><name>_face_startIndex</name></member>
+    <member refid="namespace_m_h_r_1ad45b2867da1e1b69dee3648585a3ad3a" kind="variable"><name>_face_endIndex</name></member>
+    <member refid="namespace_m_h_r_1adad3be408f5b45234ee745acc33d6ac8" kind="variable"><name>_face_peakStrengthThreshold_fraction</name></member>
+    <member refid="namespace_m_h_r_1a634c25b34e7aa6bbb3cfc346964d2f90" kind="variable"><name>_face_frames2signalConversionMethod</name></member>
+    <member refid="namespace_m_h_r_1a7fa6df2df062c81344149450be58164a" kind="variable"><name>_face_frame_downsampling_filt_rows</name></member>
+    <member refid="namespace_m_h_r_1ae762029528d214f277ed064282784d3b" kind="variable"><name>_face_frame_downsampling_filt_cols</name></member>
+    <member refid="namespace_m_h_r_1a53c978f9017a65e09546b90474f17111" kind="variable"><name>_face_frame_downsampling_filt</name></member>
+    <member refid="namespace_m_h_r_1ae64aacd3f078b0c1ecfefee56c27e3ce" kind="variable"><name>_face_trimmed_size</name></member>
+    <member refid="namespace_m_h_r_1a4ad71fd0cc039551252ae1929fbbfea9" kind="variable"><name>_face_training_time_start</name></member>
+    <member refid="namespace_m_h_r_1a86e77ed79df316c170e425d131558571" kind="variable"><name>_face_training_time_end</name></member>
+    <member refid="namespace_m_h_r_1a2c4c769eba572cf1388059c68e02804a" kind="variable"><name>_face_number_of_bins</name></member>
+    <member refid="namespace_m_h_r_1ac4235bc51ec51e261f5822920a5886b0" kind="variable"><name>_face_pct_reach_below_mode</name></member>
+    <member refid="namespace_m_h_r_1a50b60319fb33591915a63ce9b618a18c" kind="variable"><name>_face_pct_reach_above_mode</name></member>
+    <member refid="namespace_m_h_r_1a7f9a1a070d8e2c3eb72d79c71b2f468a" kind="variable"><name>_face_beatSignalFilterKernel_size</name></member>
+    <member refid="namespace_m_h_r_1a846528ce2187823d06b73caadf751570" kind="variable"><name>_face_beatSignalFilterKernel</name></member>
+    <member refid="namespace_m_h_r_1a1e8025b0c611a1a8b4bf74baca52c91c" kind="variable"><name>_face_hrThreshold</name></member>
+    <member refid="namespace_m_h_r_1a0eb61186bc00ecb180d50821bee1d360" kind="variable"><name>_face_hrStanDev</name></member>
+    <member refid="namespace_m_h_r_1adc786b108805d8d2ad944595ea2b7092" kind="variable"><name>_THRESHOLD_NO_FACE_FRAMES_MIN</name></member>
+    <member refid="namespace_m_h_r_1a90f94ddb83c7c54b9b0836586a51ad43" kind="variable"><name>_THRESHOLD_FACE_FRAMES_MIN</name></member>
+    <member refid="namespace_m_h_r_1a3c94a936257b6f3257fb7a7768ff4377" kind="variable"><name>_THRESHOLD_FACE_FRAMES_FOR_START</name></member>
+    <member refid="namespace_m_h_r_1a4059754ac07ffb5b08e096059f347a82" kind="variable"><name>_ROI_RATIO_UPPER</name></member>
+    <member refid="namespace_m_h_r_1a8a54577ca92c7aa81cc87355a7160063" kind="variable"><name>_ROI_RATIO_LOWER</name></member>
+    <member refid="namespace_m_h_r_1abe389732cdfc0aa8ebf51a84c4e645a4" kind="variable"><name>_finger_eulerian_alpha</name></member>
+    <member refid="namespace_m_h_r_1a197af9978c9b4d443571197f5ad1b019" kind="variable"><name>_finger_eulerian_pyrLevel</name></member>
+    <member refid="namespace_m_h_r_1a2d844de82559885b3d8a333c82b1a733" kind="variable"><name>_finger_eulerian_minHR</name></member>
+    <member refid="namespace_m_h_r_1ab2ef19fc7e685e8a85fbbbc75320fd6e" kind="variable"><name>_finger_eulerian_maxHR</name></member>
+    <member refid="namespace_m_h_r_1a6a102813ef2ea5aa11cadcc9ebaa5bbc" kind="variable"><name>_finger_eulerian_frameRate</name></member>
+    <member refid="namespace_m_h_r_1adc0b183529468e1b7d2eec8275c004a6" kind="variable"><name>_finger_eulerian_chromaMagnifier</name></member>
+    <member refid="namespace_m_h_r_1aa01f8308d2cb5cdb00c4a45de8a8cd5e" kind="variable"><name>_finger_number_of_channels</name></member>
+    <member refid="namespace_m_h_r_1a5b1bf691aa0c1246b140b3f67580c229" kind="variable"><name>_finger_Gpyr_filter_length</name></member>
+    <member refid="namespace_m_h_r_1a9b0e8542961b24a5dc2e1f77df715b51" kind="variable"><name>_finger_startFrame</name></member>
+    <member refid="namespace_m_h_r_1aab21e4fd871ccbbdfc656aa4d64aa688" kind="variable"><name>_finger_endFrame</name></member>
+    <member refid="namespace_m_h_r_1a04093f94b342ed569322ef2c3a5bcce2" kind="variable"><name>_finger_window_size_in_sec</name></member>
+    <member refid="namespace_m_h_r_1a6ab2b5eaa5246621b9039b65e5501f1c" kind="variable"><name>_finger_overlap_ratio</name></member>
+    <member refid="namespace_m_h_r_1ae15a1148a0dba9f30071db8315b9fe88" kind="variable"><name>_finger_max_bpm</name></member>
+    <member refid="namespace_m_h_r_1a6125713b446a1bdd5bbc0fb9e75fc58e" kind="variable"><name>_finger_cutoff_freq</name></member>
+    <member refid="namespace_m_h_r_1ae2523999aef7718ac3e6edeb318edf8a" kind="variable"><name>_finger_time_lag</name></member>
+    <member refid="namespace_m_h_r_1af6ec9103edc4e3fe7011676f91c83c26" kind="variable"><name>_finger_colourspace</name></member>
+    <member refid="namespace_m_h_r_1a16934905e88de3a2d084e6734948ec65" kind="variable"><name>_finger_channels_to_process</name></member>
+    <member refid="namespace_m_h_r_1a2762706b15a5accb61b7efa79cd0617a" kind="variable"><name>_finger_number_of_bins_heartRate</name></member>
+    <member refid="namespace_m_h_r_1aefc7157a4757a4b9017c968a17fb8ee1" kind="variable"><name>_finger_flagDebug</name></member>
+    <member refid="namespace_m_h_r_1a24fb7c804c7833388056a5e417354257" kind="variable"><name>_finger_flagGetRaw</name></member>
+    <member refid="namespace_m_h_r_1a25e5a8e8b0d72f6cfa98fa75e943f35e" kind="variable"><name>_finger_startIndex</name></member>
+    <member refid="namespace_m_h_r_1a8b1ee45fde805239e5267fb0dcb03735" kind="variable"><name>_finger_endIndex</name></member>
+    <member refid="namespace_m_h_r_1a417e8c2df65251a5a34b250f975a3867" kind="variable"><name>_finger_peakStrengthThreshold_fraction</name></member>
+    <member refid="namespace_m_h_r_1a4c571f87fe52934440add1a3a5a98e14" kind="variable"><name>_finger_frames2signalConversionMethod</name></member>
+    <member refid="namespace_m_h_r_1a5d49af784fd77df019705d26d3654953" kind="variable"><name>_finger_frame_downsampling_filt_rows</name></member>
+    <member refid="namespace_m_h_r_1a2c854934355cedc3760bfddd3bcd03a6" kind="variable"><name>_finger_frame_downsampling_filt_cols</name></member>
+    <member refid="namespace_m_h_r_1a9a40d6696920c99016b2c4cc40e8db3b" kind="variable"><name>_finger_frame_downsampling_filt</name></member>
+    <member refid="namespace_m_h_r_1a8a6e23a5b4183588a231061fe7d43524" kind="variable"><name>_finger_trimmed_size</name></member>
+    <member refid="namespace_m_h_r_1afcd48923eb1d7b2aff98acc4cf2a9d24" kind="variable"><name>_finger_training_time_start</name></member>
+    <member refid="namespace_m_h_r_1a69b9408e97af3e5261c4ede559d9f7d6" kind="variable"><name>_finger_training_time_end</name></member>
+    <member refid="namespace_m_h_r_1a1cd0eaa85c6115e1d53ad1c1a3209b41" kind="variable"><name>_finger_number_of_bins</name></member>
+    <member refid="namespace_m_h_r_1a9714df3caf979755314e0a049dd96368" kind="variable"><name>_finger_pct_reach_below_mode</name></member>
+    <member refid="namespace_m_h_r_1a8c272379feda002b512fbc5e3e917000" kind="variable"><name>_finger_pct_reach_above_mode</name></member>
+    <member refid="namespace_m_h_r_1a9b1303d740470ce969352e3173a27ebb" kind="variable"><name>_finger_beatSignalFilterKernel_size</name></member>
+    <member refid="namespace_m_h_r_1a7c6f13da1b28c69fdd787e07d05c7503" kind="variable"><name>_finger_beatSignalFilterKernel</name></member>
+    <member refid="namespace_m_h_r_1ad34bb64ea8d7aec01e0b4a8ae885c2a6" kind="variable"><name>_finger_hrThreshold</name></member>
+    <member refid="namespace_m_h_r_1a418b4c21db49ca7ed9f3546cc04f7210" kind="variable"><name>_finger_hrStanDev</name></member>
+    <member refid="namespace_m_h_r_1a7191e886f0a618347db01d5743eb2856" kind="variable"><name>rgb2ntsc_baseMat</name></member>
+    <member refid="namespace_m_h_r_1a1ab4a7e6b45362de2827fd373b53ba24" kind="variable"><name>ntsc2rgb_baseMat</name></member>
+    <member refid="namespace_m_h_r_1a48555f02f08d43ff1f06f9413c86b5ca" kind="function"><name>setFaceParams</name></member>
+    <member refid="namespace_m_h_r_1af336ca7b239bbe520636c7d147b913b5" kind="function"><name>setFingerParams</name></member>
+    <member refid="namespace_m_h_r_1ae1292cc4cfc5411226e0cd77f652e1a5" kind="function"><name>build_Gdown_Stack</name></member>
+    <member refid="namespace_m_h_r_1af2ec0b4fd5bc225e5e008504e70475a7" kind="function"><name>eulerianGaussianPyramidMagnification</name></member>
+    <member refid="namespace_m_h_r_1a103bcf8925254f7ca646192777866d4b" kind="function"><name>ideal_bandpassing</name></member>
+    <member refid="namespace_m_h_r_1a3b899245a37e41550b80b44fb40fe3e9" kind="function"><name>readFrame</name></member>
+    <member refid="namespace_m_h_r_1aca720721cf34fb61faddf517a6f1ecb7" kind="function"><name>read2DMatFromFile</name></member>
+    <member refid="namespace_m_h_r_1a8b31e05ada67db2ce123a0674568ad29" kind="function"><name>readVectorFromFile</name></member>
+    <member refid="namespace_m_h_r_1aca054bab24695d684662a7972fc07d02" kind="function"><name>readInt</name></member>
+    <member refid="namespace_m_h_r_1a30d68a835eaf7530b13d542662a88642" kind="function"><name>readDouble</name></member>
+    <member refid="namespace_m_h_r_1a391cd23b86d2d7411411d4595cb74b86" kind="function"><name>writeVector</name></member>
+    <member refid="namespace_m_h_r_1aa23b9d8c3b852392335d3d9df6afc874" kind="function"><name>frameToFile</name></member>
+    <member refid="namespace_m_h_r_1a093ff56ed91709ddd3cd6bc1575ca55b" kind="function"><name>frameChannelToFile</name></member>
+    <member refid="namespace_m_h_r_1a53c0c282e2b27534f2726f735f9664e3" kind="function"><name>frames2signal</name></member>
+    <member refid="namespace_m_h_r_1a62a720e54584696fcf7e2d545ad202dc" kind="function"><name>hb_counter_autocorr</name></member>
+    <member refid="namespace_m_h_r_1ac8cf9fb76b7455034653c17bc9e3ee4c" kind="function"><name>hb_counter_pda</name></member>
+    <member refid="namespace_m_h_r_1a4ba8de262585ae09cd1564fcfda5742e" kind="function"><name>hr_calculator</name></member>
+    <member refid="namespace_m_h_r_1ac8025fa73e928ab097c9b58525d787b1" kind="function"><name>hr_signal_calc</name></member>
+    <member refid="namespace_m_h_r_1a6f102a7f405b6c84ea84f4d99e3dd847" kind="function"><name>temporal_mean_calc</name></member>
+    <member refid="namespace_m_h_r_1ae8dc1afd1e611d432d98186da1f813e5" kind="function"><name>rgb2tsl</name></member>
+    <member refid="namespace_m_h_r_1a357c28865a17017a73d0f4ae8c4f7480" kind="function"><name>blurDnClr</name></member>
+    <member refid="namespace_m_h_r_1a30571de29e1537d20abf69d19329c1bb" kind="function"><name>corrDn</name></member>
+    <member refid="namespace_m_h_r_1af6125176deb7b4d4d503a4bcf851a076" kind="function"><name>mean</name></member>
+    <member refid="namespace_m_h_r_1ad11b22e616f937a6817faa9a0c72ec21" kind="function"><name>findpeaks</name></member>
+    <member refid="namespace_m_h_r_1a22cd3e8872333ff4c203c15821bf69bb" kind="function"><name>unique_stable</name></member>
+    <member refid="namespace_m_h_r_1a4e7d8efbc84874e131049dc705488cc9" kind="function"><name>corr_linear</name></member>
+    <member refid="namespace_m_h_r_1ab46344d4248f6c55622fef14c1eb78c7" kind="function"><name>hist</name></member>
+    <member refid="namespace_m_h_r_1a4d04157ea7582bbd0a165e1a8a679219" kind="function"><name>invprctile</name></member>
+    <member refid="namespace_m_h_r_1a401757908f80823dd6c6ced91e55d751" kind="function"><name>prctile</name></member>
+    <member refid="namespace_m_h_r_1af85b8b218e683bde30d7ee0329b29716" kind="function"><name>low_pass_filter</name></member>
+    <member refid="namespace_m_h_r_1a0380a36a3a26da3c0a32e0f4b3d9fec9" kind="function"><name>gaussianFilter</name></member>
+    <member refid="namespace_m_h_r_1a2e51d3fdfa37bc717ccc0c4557d64445" kind="function"><name>diff_percent</name></member>
+    <member refid="namespace_m_h_r_1a8612a874ea7842e4b65969e11f1c2416" kind="function"><name>hr_polisher</name></member>
+    <member refid="namespace_m_h_r_1ad90e260536ab41e3da12f739038743d0" kind="function"><name>atan2Mat</name></member>
+    <member refid="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" kind="function"><name>powMat</name></member>
+    <member refid="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" kind="function"><name>add</name></member>
+    <member refid="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" kind="function"><name>multiply</name></member>
+    <member refid="namespace_m_h_r_1a22b0fbac0253b08d84d9c2493324e5db" kind="function"><name>multiply</name></member>
+    <member refid="namespace_m_h_r_1a8f470f59589f00a7570d089362d6aa50" kind="function"><name>processingCumulative</name></member>
+    <member refid="namespace_m_h_r_1af87fd1d23c5d7c0a72caf3061057ebda" kind="function"><name>processingPerBlock</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="config_8cpp" kind="file"><name>config.cpp</name>
+  </compound>
+  <compound refid="config_8h" kind="file"><name>config.h</name>
+  </compound>
+  <compound refid="build___gdown__stack_8cpp" kind="file"><name>build_Gdown_stack.cpp</name>
+  </compound>
+  <compound refid="build___gdown__stack_8h" kind="file"><name>build_Gdown_stack.h</name>
+  </compound>
+  <compound refid="eulerian_8cpp" kind="file"><name>eulerian.cpp</name>
+  </compound>
+  <compound refid="eulerian_8h" kind="file"><name>eulerian.h</name>
+  </compound>
+  <compound refid="ideal__bandpassing_8cpp" kind="file"><name>ideal_bandpassing.cpp</name>
+  </compound>
+  <compound refid="ideal__bandpassing_8h" kind="file"><name>ideal_bandpassing.h</name>
+  </compound>
+  <compound refid="face__params_8h" kind="file"><name>face_params.h</name>
+  </compound>
+  <compound refid="files_8cpp" kind="file"><name>files.cpp</name>
+  </compound>
+  <compound refid="files_8h" kind="file"><name>files.h</name>
+  </compound>
+  <compound refid="finger__params_8h" kind="file"><name>finger_params.h</name>
+  </compound>
+  <compound refid="frames2signal_8cpp" kind="file"><name>frames2signal.cpp</name>
+  </compound>
+  <compound refid="frames2signal_8h" kind="file"><name>frames2signal.h</name>
+  </compound>
+  <compound refid="hb__counter__autocorr_8cpp" kind="file"><name>hb_counter_autocorr.cpp</name>
+  </compound>
+  <compound refid="hb__counter__autocorr_8h" kind="file"><name>hb_counter_autocorr.h</name>
+  </compound>
+  <compound refid="hb__counter__pda_8cpp" kind="file"><name>hb_counter_pda.cpp</name>
+  </compound>
+  <compound refid="hb__counter__pda_8h" kind="file"><name>hb_counter_pda.h</name>
+  </compound>
+  <compound refid="hr__calculator_8cpp" kind="file"><name>hr_calculator.cpp</name>
+  </compound>
+  <compound refid="hr__calculator_8h" kind="file"><name>hr_calculator.h</name>
+  </compound>
+  <compound refid="hr__signal__calc_8cpp" kind="file"><name>hr_signal_calc.cpp</name>
+  </compound>
+  <compound refid="hr__signal__calc_8h" kind="file"><name>hr_signal_calc.h</name>
+  </compound>
+  <compound refid="hr__structures_8cpp" kind="file"><name>hr_structures.cpp</name>
+  </compound>
+  <compound refid="hr__structures_8h" kind="file"><name>hr_structures.h</name>
+  </compound>
+  <compound refid="temporal__mean__calc_8cpp" kind="file"><name>temporal_mean_calc.cpp</name>
+  </compound>
+  <compound refid="temporal__mean__calc_8h" kind="file"><name>temporal_mean_calc.h</name>
+  </compound>
+  <compound refid="image_8cpp" kind="file"><name>image.cpp</name>
+  </compound>
+  <compound refid="image_8h" kind="file"><name>image.h</name>
+  </compound>
+  <compound refid="matlab_8cpp" kind="file"><name>matlab.cpp</name>
+  </compound>
+  <compound refid="matlab_8h" kind="file"><name>matlab.h</name>
+  </compound>
+  <compound refid="matrix_8cpp" kind="file"><name>matrix.cpp</name>
+  </compound>
+  <compound refid="matrix_8h" kind="file"><name>matrix.h</name>
+  </compound>
+  <compound refid="processing_cumulative_8cpp" kind="file"><name>processingCumulative.cpp</name>
+  </compound>
+  <compound refid="processing_cumulative_8h" kind="file"><name>processingCumulative.h</name>
+  </compound>
+  <compound refid="processing_per_block_8cpp" kind="file"><name>processingPerBlock.cpp</name>
+  </compound>
+  <compound refid="processing_per_block_8h" kind="file"><name>processingPerBlock.h</name>
+  </compound>
+  <compound refid="globals_8cpp" kind="file"><name>globals.cpp</name>
+    <member refid="globals_8cpp_1abb1219822989c459332111a5d38b5d72" kind="variable"><name>hrGlobalResult</name></member>
+    <member refid="globals_8cpp_1a0d559eafb7d80f04c3ac584cd2d6ca3f" kind="variable"><name>hrOldGlobalResult</name></member>
+  </compound>
+  <compound refid="globals_8h" kind="file"><name>globals.h</name>
+    <member refid="globals_8h_1abb1219822989c459332111a5d38b5d72" kind="variable"><name>hrGlobalResult</name></member>
+    <member refid="globals_8h_1a0d559eafb7d80f04c3ac584cd2d6ca3f" kind="variable"><name>hrOldGlobalResult</name></member>
+  </compound>
+  <compound refid="main_8m" kind="file"><name>main.m</name>
+    <member refid="main_8m_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="_m_h_r_main_view_controller_8hpp" kind="file"><name>MHRMainViewController.hpp</name>
+  </compound>
+  <compound refid="_m_h_r_main_view_controller_8mm" kind="file"><name>MHRMainViewController.mm</name>
+    <member refid="_m_h_r_main_view_controller_8mm_1a2cedb8dbc416f03a7e9d6e9533043773" kind="variable"><name>IOS6_Y_DELTA</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a964d7f0fc9e80567acdcdff8d0b68b4a" kind="variable"><name>CAMERA_WIDTH</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1abbbac9562c51eabfa14609a91464eb1c" kind="variable"><name>CAMERA_HEIGHT</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a86e681b82b6df52d2edfcd3361ef7ef2" kind="variable"><name>IMAGE_WIDTH</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1ac30c65321e99b04ebbdcdda7c2fac426" kind="variable"><name>IMAGE_HEIGHT</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a3f33c36bfbff665a75263b4578776a71" kind="variable"><name>WIDTH_PADDING</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a024d8577f09294f908fb4431519650d8" kind="variable"><name>HEIGHT_PADDING</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a80a347d4e2053fd19fef6fdb639887c3" kind="variable"><name>FACE_MESSAGE</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a6d21d4b2204cdfda10cc4c2ebcb93b2c" kind="variable"><name>FINGER_MESSAGE</name></member>
+    <member refid="_m_h_r_main_view_controller_8mm_1a25b763a869d053f6f37ebc1aa9df27e8" kind="variable"><name>kBlockFrameSize</name></member>
+  </compound>
+  <compound refid="_m_h_r_app_delegate_8hpp" kind="file"><name>MHRAppDelegate.hpp</name>
+  </compound>
+  <compound refid="_m_h_r_app_delegate_8mm" kind="file"><name>MHRAppDelegate.mm</name>
+    <member refid="_m_h_r_app_delegate_8mm_1a9a37d4720545212bc71afc310ca8f7c4" kind="variable"><name>kSkinPListFileName</name></member>
+    <member refid="_m_h_r_app_delegate_8mm_1a410f9d5fa42ffb700da1838a7ad0902e" kind="variable"><name>pListSkinDict</name></member>
+  </compound>
+  <compound refid="_m_h_r_result_view_controller_8hpp" kind="file"><name>MHRResultViewController.hpp</name>
+  </compound>
+  <compound refid="_m_h_r_result_view_controller_8mm" kind="file"><name>MHRResultViewController.mm</name>
+  </compound>
+  <compound refid="_m_h_r_settings_view_controller_8h" kind="file"><name>MHRSettingsViewController.h</name>
+  </compound>
+  <compound refid="_m_h_r_settings_view_controller_8m" kind="file"><name>MHRSettingsViewController.m</name>
+  </compound>
+  <compound refid="auto__start_8hpp" kind="file"><name>auto_start.hpp</name>
+  </compound>
+  <compound refid="auto__start_8mm" kind="file"><name>auto_start.mm</name>
+  </compound>
+  <compound refid="_block_additions_8h" kind="file"><name>BlockAdditions.h</name>
+    <member refid="_block_additions_8h_1aa070ffd6a26a5120a55550583b95c8c7" kind="define"><name>kPhotoActionSheetTag</name></member>
+    <member refid="_block_additions_8h_1aa6caa59baac5b9e0ffbf08a3de2f961d" kind="typedef"><name>VoidBlock</name></member>
+    <member refid="_block_additions_8h_1ad494ab35935449673e4736939406878e" kind="typedef"><name>DismissBlock</name></member>
+    <member refid="_block_additions_8h_1aa38483e1f273d6765108d57d0d6d01a7" kind="typedef"><name>CancelBlock</name></member>
+    <member refid="_block_additions_8h_1ad1a056ffbeb8db0717c9ed1177d61e29" kind="typedef"><name>PhotoPickedBlock</name></member>
+  </compound>
+  <compound refid="_m_b_progress_h_u_d_8h" kind="file"><name>MBProgressHUD.h</name>
+    <member refid="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" kind="define"><name>MB_INSTANCETYPE</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a0aa3ddcad65d17ece28a6e562f031794" kind="define"><name>MB_STRONG</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1ae418fa5342876317377e77f6492ee4e4" kind="define"><name>MB_WEAK</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" kind="enum"><name>MBProgressHUDMode</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a7d546c063ab8c0a2a5b590f8c2ca9ae1" kind="enumvalue"><name>MBProgressHUDModeIndeterminate</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a87273ab59b043c87bdbf23eb7c6c0a29" kind="enumvalue"><name>MBProgressHUDModeDeterminate</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa3f5bbc93e2e4d37c2ccc788888eeffc" kind="enumvalue"><name>MBProgressHUDModeDeterminateHorizontalBar</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a6812f646af244b722c1b06e23bb596a4" kind="enumvalue"><name>MBProgressHUDModeAnnularDeterminate</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621a1068fa433ab70ff3bfdc9b24063943d8" kind="enumvalue"><name>MBProgressHUDModeCustomView</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621aa288954107f046996e0ef5d4588df3a0" kind="enumvalue"><name>MBProgressHUDModeText</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" kind="enum"><name>MBProgressHUDAnimation</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990aabab0a23495b4a58b97dd9a29ce533d5" kind="enumvalue"><name>MBProgressHUDAnimationFade</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a57845b41854be930ae8213265dddb00f" kind="enumvalue"><name>MBProgressHUDAnimationZoom</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a2f5a4788aad7e24be66b6060e3652119" kind="enumvalue"><name>MBProgressHUDAnimationZoomOut</name></member>
+    <member refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990a0867bb706a7cf398eeec50d053f6c597" kind="enumvalue"><name>MBProgressHUDAnimationZoomIn</name></member>
+  </compound>
+  <compound refid="_m_b_progress_h_u_d_8m" kind="file"><name>MBProgressHUD.m</name>
+    <member refid="_m_b_progress_h_u_d_8m_1af25a10631b1ec935a4c12da3b022fd73" kind="define"><name>MB_AUTORELEASE</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1abb0e3258d042c04d3b78634cd6787407" kind="define"><name>MB_RELEASE</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a57936e1cb5b0895defc7751f26834578" kind="define"><name>MB_RETAIN</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a6170ca9e856c74ad7817ac1ac63bcef0" kind="define"><name>MBLabelAlignmentCenter</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a95ac44ceb0fd1865e7458f975158a327" kind="define"><name>MB_TEXTSIZE</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a1a60565b143863cd55f99742baabe0e5" kind="define"><name>MB_MULTILINE_TEXTSIZE</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a96ac2bd89f3a034bfb0d1e70d1c5dbb5" kind="variable"><name>kPadding</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1ac681970a4a53d357057847adec2150c0" kind="variable"><name>kLabelFontSize</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a106e899458c2237d0eb67cd74f866238" kind="variable"><name>kDetailsLabelFontSize</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1ae28780a2d6fe7834cc029fbbdf206b62" kind="variable"><name>methodForExecution</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1ac38a276e24f577d9c261e271f57a33c4" kind="variable"><name>targetForExecution</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a8a5775046c2febf1bffd946f6febce85" kind="variable"><name>objectForExecution</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a077d2090d973b1d47c6e3d6e0c47e8af" kind="variable"><name>label</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a077099bddd69564b35222123f4c42f33" kind="variable"><name>detailsLabel</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1a2f9955018d8c22980f27a7f93876e39a" kind="variable"><name>isFinished</name></member>
+    <member refid="_m_b_progress_h_u_d_8m_1adc611101946978c2d856725aee5f3268" kind="variable"><name>rotationTransform</name></member>
+  </compound>
+  <compound refid="_m_h_r_utilities_8h" kind="file"><name>MHRUtilities.h</name>
+    <member refid="_m_h_r_utilities_8h_1a48000e064c9389663bc27a2a8562518f" kind="define"><name>SCREEN_SIZE_IS_4_INCHES</name></member>
+    <member refid="_m_h_r_utilities_8h_1ab94c1ec147f530a7379cf54c02b234e8" kind="define"><name>SYSTEM_VERSION_EQUAL_TO</name></member>
+    <member refid="_m_h_r_utilities_8h_1a6501191c9843cf6dfc3b579c6568960c" kind="define"><name>SYSTEM_VERSION_GREATER_THAN</name></member>
+    <member refid="_m_h_r_utilities_8h_1acd7fa9cdfd9ad3df6c6b7207aa1e0359" kind="define"><name>SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO</name></member>
+    <member refid="_m_h_r_utilities_8h_1abc30dc0a00d4dcdb4e219a9c2e0aa5e4" kind="define"><name>SYSTEM_VERSION_LESS_THAN</name></member>
+    <member refid="_m_h_r_utilities_8h_1af6b8bacd436dcb7154270e650242fedc" kind="define"><name>SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO</name></member>
+    <member refid="_m_h_r_utilities_8h_1a162ff1fff00582d4eca918b4fa51db87" kind="define"><name>MFRGB</name></member>
+    <member refid="_m_h_r_utilities_8h_1a7dc33c43bd98a2dae36a0de770b5a7fa" kind="define"><name>MFRGBA</name></member>
+  </compound>
+  <compound refid="_m_h_r_utilities_8m" kind="file"><name>MHRUtilities.m</name>
+  </compound>
+  <compound refid="_u_i_alert_view_09_block_8h" kind="file"><name>UIAlertView+Block.h</name>
+  </compound>
+  <compound refid="_u_i_alert_view_09_block_8m" kind="file"><name>UIAlertView+Block.m</name>
+    <member refid="_u_i_alert_view_09_block_8m_1a7f1f344692b86e1702b04e4b2f2bd5c9" kind="variable"><name>DISMISS_IDENTIFER</name></member>
+    <member refid="_u_i_alert_view_09_block_8m_1adb84a7bd1981cda4606deaaf522ddab3" kind="variable"><name>CANCEL_IDENTIFER</name></member>
+  </compound>
+  <compound refid="_u_i_image_c_v_mat_converter_8hpp" kind="file"><name>UIImageCVMatConverter.hpp</name>
+  </compound>
+  <compound refid="_u_i_image_c_v_mat_converter_8mm" kind="file"><name>UIImageCVMatConverter.mm</name>
+  </compound>
+  <compound refid="_u_i_view_09_position_8h" kind="file"><name>UIView+Position.h</name>
+  </compound>
+  <compound refid="_u_i_view_09_position_8m" kind="file"><name>UIView+Position.m</name>
+  </compound>
+  <compound refid="dir_c0ce462e37efe0a8d60c01d75f78f8a0" kind="dir"><name>algorithms</name>
+  </compound>
+  <compound refid="dir_f04e84ec938dead76aca1288a89c4d91" kind="dir"><name>algorithms/Eulerian</name>
+  </compound>
+  <compound refid="dir_e0feb606b2da5a1380a3631843062f86" kind="dir"><name>algorithms/files</name>
+  </compound>
+  <compound refid="dir_e06b311ad868e09d8f9995ad892a827f" kind="dir"><name>algorithms/HeartRateCal</name>
+  </compound>
+  <compound refid="dir_1db81da9ff9a71f9da8bc79036c759da" kind="dir"><name>algorithms/image</name>
+  </compound>
+  <compound refid="dir_a461f98cf4db8d4d34108aba618a593e" kind="dir"><name>MainView</name>
+  </compound>
+  <compound refid="dir_2a258af59a73a65576f184df65b9addd" kind="dir"><name>algorithms/math</name>
+  </compound>
+  <compound refid="dir_1cd5fa9dac7ad746db8aefa847e73877" kind="dir"><name>algorithms/matrix</name>
+  </compound>
+  <compound refid="dir_02f164e26f669216ef1a83c1abbfff76" kind="dir"><name>ResultView</name>
+  </compound>
+  <compound refid="dir_dd04980def7ea85666b7a58ba2817d6f" kind="dir"><name>SettingsView</name>
+  </compound>
+  <compound refid="dir_b05a5fa85f84bfc9013183c9d87f9a36" kind="dir"><name>Utilities</name>
+  </compound>
+</doxygenindex>

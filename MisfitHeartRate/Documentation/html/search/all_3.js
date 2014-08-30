@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['camera_5fheight',['CAMERA_HEIGHT',['../_m_h_r_main_view_controller_8mm.html#abbbac9562c51eabfa14609a91464eb1c',1,'MHRMainViewController.mm']]],
+  ['camera_5fwidth',['CAMERA_WIDTH',['../_m_h_r_main_view_controller_8mm.html#a964d7f0fc9e80567acdcdff8d0b68b4a',1,'MHRMainViewController.mm']]],
+  ['cameraswitch',['cameraSwitch',['../category_m_h_r_main_view_controller_07_08.html#a64545a3386e0d53f59af539582caafd4',1,'MHRMainViewController()']]],
+  ['cancelblock',['CancelBlock',['../_block_additions_8h.html#aa38483e1f273d6765108d57d0d6d01a7',1,'BlockAdditions.h']]],
+  ['centerhorizontallyinsuperview',['centerHorizontallyInSuperview',['../category_u_i_view_07_position_08.html#a50aabdd38d9ff4e017bc0238e2346ae2',1,'UIView(Position)']]],
+  ['centerverticallyinsuperview',['centerVerticallyInSuperview',['../category_u_i_view_07_position_08.html#a3ede327c32904e3e1e9e5c90b6cd8071',1,'UIView(Position)']]],
+  ['cleanup',['cleanUp',['../category_m_b_progress_h_u_d_07_08.html#ad37178e8a931dd238e164cc1e13042fa',1,'MBProgressHUD()']]],
+  ['color',['color',['../interface_m_b_progress_h_u_d.html#a1f4ab0f3ddc52af9353a4cf225ad1361',1,'MBProgressHUD']]],
+  ['config_2ecpp',['config.cpp',['../config_8cpp.html',1,'']]],
+  ['config_2eh',['config.h',['../config_8h.html',1,'']]],
+  ['cornerradius',['cornerRadius',['../interface_m_b_progress_h_u_d.html#a8a3573dbf4dcdeeb187a08d0070e811c',1,'MBProgressHUD']]],
+  ['corr_5flinear',['corr_linear',['../namespace_m_h_r.html#a4e7d8efbc84874e131049dc705488cc9',1,'MHR']]],
+  ['corrdn',['corrDn',['../namespace_m_h_r.html#a30571de29e1537d20abf69d19329c1bb',1,'MHR']]],
+  ['createdirectory_3a',['createDirectory:',['../interface_m_h_r_utilities.html#a85f3406abe6ae8911d4a8349996e1d6c',1,'MHRUtilities']]],
+  ['croparea',['cropArea',['../category_m_h_r_main_view_controller_07_08.html#a2508c2c272b97794449944d901733307',1,'MHRMainViewController()']]],
+  ['currentresult',['currentResult',['../category_m_h_r_main_view_controller_07_08.html#a8c4078159735c117ecbeb565b9c287e2',1,'MHRMainViewController()']]],
+  ['customview',['customView',['../interface_m_b_progress_h_u_d.html#a78f89e05d797a46bf9b41a5dfd1f5d4a',1,'MBProgressHUD']]],
+  ['cvmatfromuiimage_3a',['cvMatFromUIImage:',['../interface_u_i_image_c_v_mat_converter.html#abeefe1d140e9bdd660b07d1dabce66f1',1,'UIImageCVMatConverter']]],
+  ['cvmatgrayfromuiimage_3a',['cvMatGrayFromUIImage:',['../interface_u_i_image_c_v_mat_converter.html#adcff189c46b8a96188a10775f133138f',1,'UIImageCVMatConverter']]]
+];

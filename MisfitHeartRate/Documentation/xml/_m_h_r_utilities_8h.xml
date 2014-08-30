@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_m_h_r_utilities_8h" kind="file">
+    <compoundname>MHRUtilities.h</compoundname>
+    <includes local="no">Foundation/Foundation.h</includes>
+    <includes local="no">UIKit/UIKit.h</includes>
+    <includes local="no">mach/mach.h</includes>
+    <includes local="no">AVFoundation/AVFoundation.h</includes>
+    <includes refid="_m_h_r_app_delegate_8hpp" local="yes">MHRAppDelegate.hpp</includes>
+    <includedby refid="_m_h_r_main_view_controller_8hpp" local="yes">MainView/MHRMainViewController.hpp</includedby>
+    <includedby refid="_m_h_r_utilities_8m" local="yes">Utilities/MHRUtilities.m</includedby>
+    <includedby refid="_u_i_view_09_position_8h" local="yes">Utilities/UIView+Position.h</includedby>
+    <incdepgraph>
+      <node id="1255">
+        <label>mach/mach.h</label>
+      </node>
+      <node id="1254">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="1252">
+        <label>Utilities/MHRUtilities.h</label>
+        <link refid="MHRUtilities.h"/>
+        <childnode refid="1253" relation="include">
+        </childnode>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1255" relation="include">
+        </childnode>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1257" relation="include">
+        </childnode>
+      </node>
+      <node id="1256">
+        <label>AVFoundation/AVFoundation.h</label>
+      </node>
+      <node id="1253">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="1257">
+        <label>MHRAppDelegate.hpp</label>
+        <link refid="_m_h_r_app_delegate_8hpp"/>
+        <childnode refid="1254" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1261">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="1260">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="1265">
+        <label>Utilities/UIView+Position.h</label>
+        <link refid="_u_i_view_09_position_8h"/>
+        <childnode refid="1259" relation="include">
+        </childnode>
+        <childnode refid="1266" relation="include">
+        </childnode>
+      </node>
+      <node id="1266">
+        <label>Utilities/UIView+Position.m</label>
+        <link refid="_u_i_view_09_position_8m"/>
+      </node>
+      <node id="1263">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="1259">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="1260" relation="include">
+        </childnode>
+        <childnode refid="1261" relation="include">
+        </childnode>
+        <childnode refid="1262" relation="include">
+        </childnode>
+      </node>
+      <node id="1258">
+        <label>Utilities/MHRUtilities.h</label>
+        <link refid="MHRUtilities.h"/>
+        <childnode refid="1259" relation="include">
+        </childnode>
+        <childnode refid="1264" relation="include">
+        </childnode>
+        <childnode refid="1265" relation="include">
+        </childnode>
+      </node>
+      <node id="1264">
+        <label>Utilities/MHRUtilities.m</label>
+        <link refid="_m_h_r_utilities_8m"/>
+      </node>
+      <node id="1262">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="1259" relation="include">
+        </childnode>
+        <childnode refid="1263" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_m_h_r_utilities" prot="public">MHRUtilities</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1a48000e064c9389663bc27a2a8562518f" prot="public" static="no">
+        <name>SCREEN_SIZE_IS_4_INCHES</name>
+        <initializer>([UIScreen mainScreen].bounds.size.height &gt;= 568)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="18" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1ab94c1ec147f530a7379cf54c02b234e8" prot="public" static="no">
+        <name>SYSTEM_VERSION_EQUAL_TO</name>
+        <param><defname>v</defname></param>
+        <initializer>([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="20" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1a6501191c9843cf6dfc3b579c6568960c" prot="public" static="no">
+        <name>SYSTEM_VERSION_GREATER_THAN</name>
+        <param><defname>v</defname></param>
+        <initializer>([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="22" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1acd7fa9cdfd9ad3df6c6b7207aa1e0359" prot="public" static="no">
+        <name>SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO</name>
+        <param><defname>v</defname></param>
+        <initializer>([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="24" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1abc30dc0a00d4dcdb4e219a9c2e0aa5e4" prot="public" static="no">
+        <name>SYSTEM_VERSION_LESS_THAN</name>
+        <param><defname>v</defname></param>
+        <initializer>([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="26" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1af6b8bacd436dcb7154270e650242fedc" prot="public" static="no">
+        <name>SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO</name>
+        <param><defname>v</defname></param>
+        <initializer>([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="28" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1a162ff1fff00582d4eca918b4fa51db87" prot="public" static="no">
+        <name>MFRGB</name>
+        <param><defname>r</defname></param>
+        <param><defname>g</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>[UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="48" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_m_h_r_utilities_8h_1a7dc33c43bd98a2dae36a0de770b5a7fa" prot="public" static="no">
+        <name>MFRGBA</name>
+        <param><defname>r</defname></param>
+        <param><defname>g</defname></param>
+        <param><defname>b</defname></param>
+        <param><defname>a</defname></param>
+        <initializer>[UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" line="49" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MHRUtilities.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>6/30/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Foundation/Foundation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;UIKit/UIKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;mach/mach.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;AVFoundation/AVFoundation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;<ref refid="_m_h_r_app_delegate_8hpp" kindref="compound">MHRAppDelegate.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="interface_m_h_r_utilities" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_h_r_utilities" kindref="compound">MHRUtilities</ref><sp/>:<sp/>NSObject</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="_m_h_r_utilities_8h_1a48000e064c9389663bc27a2a8562518f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SCREEN_SIZE_IS_4_INCHES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>([UIScreen<sp/>mainScreen].bounds.size.height<sp/>&gt;=<sp/>568)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="_m_h_r_utilities_8h_1ab94c1ec147f530a7379cf54c02b234e8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSTEM_VERSION_EQUAL_TO(v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>([[[UIDevice<sp/>currentDevice]<sp/>systemVersion]<sp/>compare:v<sp/>options:NSNumericSearch]<sp/>==<sp/>NSOrderedSame)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="_m_h_r_utilities_8h_1a6501191c9843cf6dfc3b579c6568960c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSTEM_VERSION_GREATER_THAN(v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>([[[UIDevice<sp/>currentDevice]<sp/>systemVersion]<sp/>compare:v<sp/>options:NSNumericSearch]<sp/>==<sp/>NSOrderedDescending)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="_m_h_r_utilities_8h_1acd7fa9cdfd9ad3df6c6b7207aa1e0359" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)<sp/><sp/>([[[UIDevice<sp/>currentDevice]<sp/>systemVersion]<sp/>compare:v<sp/>options:NSNumericSearch]<sp/>!=<sp/>NSOrderedAscending)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="_m_h_r_utilities_8h_1abc30dc0a00d4dcdb4e219a9c2e0aa5e4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSTEM_VERSION_LESS_THAN(v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>([[[UIDevice<sp/>currentDevice]<sp/>systemVersion]<sp/>compare:v<sp/>options:NSNumericSearch]<sp/>==<sp/>NSOrderedAscending)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="_m_h_r_utilities_8h_1af6b8bacd436dcb7154270e650242fedc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)<sp/><sp/><sp/><sp/><sp/>([[[UIDevice<sp/>currentDevice]<sp/>systemVersion]<sp/>compare:v<sp/>options:NSNumericSearch]<sp/>!=<sp/>NSOrderedDescending)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>-<sp/>Debug</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">+<sp/>(NSString<sp/>*)<ref refid="interface_m_h_r_utilities_1a1f7c42bb731cae8fb90d106014b00df9" kindref="member">report_memory</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>-<sp/>Files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">+<sp/>(void)createDirectory:(NSString<sp/>*)directoryPath;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>-<sp/>Video<sp/>Camera</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">+<sp/>(void)setTorchModeOn:(BOOL)isOn;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>-<sp/>Colors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="_m_h_r_utilities_8h_1a162ff1fff00582d4eca918b4fa51db87" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MFRGB(r,<sp/>g,<sp/>b)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[UIColor<sp/>colorWithRed:r/255.0<sp/>green:g/255.0<sp/>blue:b/255.0<sp/>alpha:1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="_m_h_r_utilities_8h_1a7dc33c43bd98a2dae36a0de770b5a7fa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MFRGBA(r,<sp/>g,<sp/>b,<sp/>a)<sp/><sp/><sp/><sp/><sp/><sp/>[UIColor<sp/>colorWithRed:r/255.0<sp/>green:g/255.0<sp/>blue:b/255.0<sp/>alpha:a]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">UIColor*<sp/><ref refid="interface_m_h_r_utilities_1a92885094add75d90dfb00faaf36d423e" kindref="member">MFUIColorMakeFromRGBArray</ref>(NSArray*<sp/>rgbArray);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">UIColor*<sp/><ref refid="interface_m_h_r_utilities_1a824edf59b4a4e127db0f4248c4d4bfd6" kindref="member">MFUIColorMakeFromRGBAArray</ref>(NSArray*<sp/>rgbaArray);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//CALayer*<sp/>newRectangleLayer(CGRect<sp/>frame/*,<sp/>NSString<sp/>*pListKey*/);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">+<sp/>(CALayer*)newRectangleLayer:(CGRect)frame<sp/>pListKey:(NSString<sp/>*)pListKey;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MHRUtilities.h"/>
+  </compounddef>
+</doxygen>

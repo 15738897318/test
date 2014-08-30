@@ -1,0 +1,49 @@
+.TH "algorithms/files/files.cpp" 3 "Sat Aug 30 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+algorithms/files/files.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'files\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBMHR\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMHR::readFrame\fP (const String &srcFile, vector< Mat > &dst)"
+.br
+.ti -1c
+.RI "Mat \fBMHR::read2DMatFromFile\fP (FILE *&file, int rows, int cols)"
+.br
+.ti -1c
+.RI "vector< double > \fBMHR::readVectorFromFile\fP (FILE *&file, int n)"
+.br
+.ti -1c
+.RI "int \fBMHR::readInt\fP (FILE *&file)"
+.br
+.ti -1c
+.RI "double \fBMHR::readDouble\fP (FILE *&file)"
+.br
+.ti -1c
+.RI "void \fBMHR::writeVector\fP (const vector< double > &src, const String &outFile, bool append)"
+.br
+.ti -1c
+.RI "bool \fBMHR::frameToFile\fP (const Mat &frame, const String &outFile)"
+.br
+.ti -1c
+.RI "void \fBMHR::frameChannelToFile\fP (const Mat &frame, const String &outFile, int channel)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

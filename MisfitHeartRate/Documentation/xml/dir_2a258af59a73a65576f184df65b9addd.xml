@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_2a258af59a73a65576f184df65b9addd" kind="dir">
+    <compoundname>algorithms/math</compoundname>
+    <innerfile refid="matlab_8cpp">matlab.cpp</innerfile>
+    <innerfile refid="matlab_8h">matlab.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/"/>
+  </compounddef>
+</doxygen>

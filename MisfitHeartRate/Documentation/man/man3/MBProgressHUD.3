@@ -1,0 +1,482 @@
+.TH "MBProgressHUD" 3 "Sat Aug 30 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MBProgressHUD \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#import <MBProgressHUD\&.h>\fP
+.PP
+Inherits UIView\&.
+.SS "Instance Methods"
+
+.in +1c
+.ti -1c
+.RI "(id) - \fBinitWithWindow:\fP"
+.br
+.ti -1c
+.RI "(id) - \fBinitWithView:\fP"
+.br
+.ti -1c
+.RI "(void) - \fBshow:\fP"
+.br
+.ti -1c
+.RI "(void) - \fBhide:\fP"
+.br
+.ti -1c
+.RI "(void) - \fBhide:afterDelay:\fP"
+.br
+.ti -1c
+.RI "(void) - \fBshowWhileExecuting:onTarget:withObject:animated:\fP"
+.br
+.in -1c
+.SS "Class Methods"
+
+.in +1c
+.ti -1c
+.RI "(\fBMB_INSTANCETYPE\fP) + \fBshowHUDAddedTo:animated:\fP"
+.br
+.ti -1c
+.RI "(BOOL) + \fBhideHUDForView:animated:\fP"
+.br
+.ti -1c
+.RI "(NSUInteger) + \fBhideAllHUDsForView:animated:\fP"
+.br
+.ti -1c
+.RI "(\fBMB_INSTANCETYPE\fP) + \fBHUDForView:\fP"
+.br
+.ti -1c
+.RI "(NSArray *) + \fBallHUDsForView:\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBMBProgressHUDMode\fP \fBmode\fP"
+.br
+.ti -1c
+.RI "\fBMBProgressHUDAnimation\fP \fBanimationType\fP"
+.br
+.ti -1c
+.RI "UIView * \fBcustomView\fP"
+.br
+.ti -1c
+.RI "id< \fBMBProgressHUDDelegate\fP > \fBdelegate\fP"
+.br
+.ti -1c
+.RI "NSString * \fBlabelText\fP"
+.br
+.ti -1c
+.RI "NSString * \fBdetailsLabelText\fP"
+.br
+.ti -1c
+.RI "float \fBopacity\fP"
+.br
+.ti -1c
+.RI "UIColor * \fBcolor\fP"
+.br
+.ti -1c
+.RI "float \fBxOffset\fP"
+.br
+.ti -1c
+.RI "float \fByOffset\fP"
+.br
+.ti -1c
+.RI "float \fBmargin\fP"
+.br
+.ti -1c
+.RI "float \fBcornerRadius\fP"
+.br
+.ti -1c
+.RI "BOOL \fBdimBackground\fP"
+.br
+.ti -1c
+.RI "float \fBgraceTime\fP"
+.br
+.ti -1c
+.RI "float \fBminShowTime\fP"
+.br
+.ti -1c
+.RI "BOOL \fBtaskInProgress\fP"
+.br
+.ti -1c
+.RI "BOOL \fBremoveFromSuperViewOnHide\fP"
+.br
+.ti -1c
+.RI "UIFont * \fBlabelFont\fP"
+.br
+.ti -1c
+.RI "UIColor * \fBlabelColor\fP"
+.br
+.ti -1c
+.RI "UIFont * \fBdetailsLabelFont\fP"
+.br
+.ti -1c
+.RI "UIColor * \fBdetailsLabelColor\fP"
+.br
+.ti -1c
+.RI "float \fBprogress\fP"
+.br
+.ti -1c
+.RI "CGSize \fBminSize\fP"
+.br
+.ti -1c
+.RI "BOOL \fBsquare\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Displays a simple HUD window containing a progress indicator and two optional labels for short messages\&.
+.PP
+This is a simple drop-in class for displaying a progress HUD view similar to Apple's private UIProgressHUD class\&. The \fBMBProgressHUD\fP window spans over the entire space given to it by the initWithFrame constructor and catches all user input on this region, thereby preventing the user operations on components below the view\&. The HUD itself is drawn centered as a rounded semi-transparent view which resizes depending on the user specified content\&.
+.PP
+This view supports four modes of operation:
+.IP "\(bu" 2
+MBProgressHUDModeIndeterminate - shows a UIActivityIndicatorView
+.IP "\(bu" 2
+MBProgressHUDModeDeterminate - shows a custom round progress indicator
+.IP "\(bu" 2
+MBProgressHUDModeAnnularDeterminate - shows a custom annular progress indicator
+.IP "\(bu" 2
+MBProgressHUDModeCustomView - shows an arbitrary, user specified view (
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcustomView\fP)
+.RE
+.PP
+All three modes can have optional labels assigned:
+.IP "\(bu" 2
+If the labelText property is set and non-empty then a label containing the provided content is placed below the indicator view\&.
+.IP "\(bu" 2
+If also the detailsLabelText property is set then another label is placed below the first label\&. 
+.PP
+
+.PP
+Definition at line 111 of file MBProgressHUD\&.h\&.
+.SH "Method Documentation"
+.PP 
+.SS "+ (NSArray *) allHUDsForView: (UIView *)view"
+Finds all HUD subviews and returns them\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP The view that is going to be searched\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+All found HUD views (array of \fBMBProgressHUD\fP objects)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file MBProgressHUD\&.m\&.
+.SS "- (void) hide: (BOOL)animated"
+Hide the HUD\&. This still calls the hudWasHidden: delegate\&. This is the counterpart of the show: method\&. Use it to hide the HUD when your task completes\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanimated\fP If set to YES the HUD will disappear using the current animationType\&. If set to NO the HUD will not use animations while disappearing\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBanimationType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file MBProgressHUD\&.m\&.
+.SS "- (void) \fBhide:\fP (BOOL)animated(NSTimeInterval)delay"
+Hide the HUD after a delay\&. This still calls the hudWasHidden: delegate\&. This is the counterpart of the show: method\&. Use it to hide the HUD when your task completes\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanimated\fP If set to YES the HUD will disappear using the current animationType\&. If set to NO the HUD will not use animations while disappearing\&. 
+.br
+\fIdelay\fP Delay in seconds until the HUD is hidden\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBanimationType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 285 of file MBProgressHUD\&.m\&.
+.SS "+ (NSUInteger) hideAllHUDsForView: (UIView *)view(BOOL)animated"
+Finds all the HUD subviews and hides them\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP The view that is going to be searched for HUD subviews\&. 
+.br
+\fIanimated\fP If set to YES the HUDs will disappear using the current animationType\&. If set to NO the HUDs will not use animations while disappearing\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of HUDs found and removed\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fB+ hideHUDForView:animated:\fP 
+.PP
+\fBanimationType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file MBProgressHUD\&.m\&.
+.SS "+ (BOOL) hideHUDForView: (UIView *)view(BOOL)animated"
+Finds the top-most HUD subview and hides it\&. The counterpart to this method is showHUDAddedTo:animated:\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP The view that is going to be searched for a HUD subview\&. 
+.br
+\fIanimated\fP If set to YES the HUD will disappear using the current animationType\&. If set to NO the HUD will not use animations while disappearing\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+YES if a HUD was found and removed, NO otherwise\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fB+ showHUDAddedTo:animated:\fP 
+.PP
+\fBanimationType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file MBProgressHUD\&.m\&.
+.SS "+ (\fBMB_INSTANCETYPE\fP) HUDForView: (UIView *)view"
+Finds the top-most HUD subview and returns it\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP The view that is going to be searched\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A reference to the last HUD subview discovered\&. 
+.RE
+.PP
+
+.PP
+Definition at line 152 of file MBProgressHUD\&.m\&.
+.SS "- (id) initWithView: (UIView *)view"
+A convenience constructor that initializes the HUD with the view's bounds\&. Calls the designated constructor with view\&.bounds as the parameter
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP The view instance that will provide the bounds for the HUD\&. Should be the same instance as the HUD's superview (i\&.e\&., the view that the HUD will be added to)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 219 of file MBProgressHUD\&.m\&.
+.SS "- (id) initWithWindow: (UIWindow *)window"
+A convenience constructor that initializes the HUD with the window's bounds\&. Calls the designated constructor with window\&.bounds as the parameter\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwindow\fP The window instance that will provide the bounds for the HUD\&. Should be the same instance as the HUD's superview (i\&.e\&., the window that the HUD will be added to)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 224 of file MBProgressHUD\&.m\&.
+.SS "- (void) show: (BOOL)animated"
+Display the HUD\&. You need to make sure that the main thread completes its run loop soon after this method call so the user interface can be updated\&. Call this method when your task is already set-up to be executed in a new thread (e\&.g\&., when using something like NSOperation or calling an asynchronous call like NSURLRequest)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanimated\fP If set to YES the HUD will appear using the current animationType\&. If set to NO the HUD will not use animations while appearing\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBanimationType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 255 of file MBProgressHUD\&.m\&.
+.SS "+ (\fBMB_INSTANCETYPE\fP) showHUDAddedTo: (UIView *)view(BOOL)animated"
+Creates a new HUD, adds it to provided view and shows it\&. The counterpart to this method is hideHUDForView:animated:\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP The view that the HUD will be added to 
+.br
+\fIanimated\fP If set to YES the HUD will appear using the current animationType\&. If set to NO the HUD will not use animations while appearing\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A reference to the created HUD\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fB+ hideHUDForView:animated:\fP 
+.PP
+\fBanimationType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file MBProgressHUD\&.m\&.
+.SS "- (void) showWhileExecuting: (SEL)method(id)target(id)object(BOOL)animated"
+Shows the HUD while a background task is executing in a new thread, then hides the HUD\&.
+.PP
+This method also takes care of autorelease pools so your method does not have to be concerned with setting up a pool\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImethod\fP The method to be executed while the HUD is shown\&. This method will be executed in a new thread\&. 
+.br
+\fItarget\fP The object that the target method belongs to\&. 
+.br
+\fIobject\fP An optional object to be passed to the method\&. 
+.br
+\fIanimated\fP If set to YES the HUD will (dis)appear using the current animationType\&. If set to NO the HUD will not use animations while (dis)appearing\&. 
+.RE
+.PP
+
+.PP
+Definition at line 389 of file MBProgressHUD\&.m\&.
+.SH "Property Documentation"
+.PP 
+.SS "- (\fBMBProgressHUDAnimation\fP) animationType\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The animation type that should be used when the HUD is shown and hidden\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBMBProgressHUDAnimation\fP 
+.RE
+.PP
+
+.PP
+Definition at line 291 of file MBProgressHUD\&.h\&.
+.SS "- (UIColor*) color\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The color of the HUD window\&. Defaults to black\&. If this property is set, color is set using this UIColor and the opacity property is not used\&. using retain because performing copy on UIColor base colors (like [UIColor greenColor]) cause problems with the copyZone\&. 
+.PP
+Definition at line 329 of file MBProgressHUD\&.h\&.
+.SS "- (float) cornerRadius\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The corner radius for th HUD Defaults to 10\&.0 
+.PP
+Definition at line 351 of file MBProgressHUD\&.h\&.
+.SS "- (UIView*) customView\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The UIView (e\&.g\&., a UIImageView) to be shown when the HUD is in MBProgressHUDModeCustomView\&. For best results use a 37 by 37 pixel view (so the bounds match the built in indicator bounds)\&. 
+.PP
+Definition at line 297 of file MBProgressHUD\&.h\&.
+.SS "- (id<\fBMBProgressHUDDelegate\fP>) delegate\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The HUD delegate object\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBMBProgressHUDDelegate\fP 
+.RE
+.PP
+
+.PP
+Definition at line 304 of file MBProgressHUD\&.h\&.
+.SS "- (UIColor*) detailsLabelColor\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Color to be used for the details label\&. Set this property if the default is not adequate\&. 
+.PP
+Definition at line 410 of file MBProgressHUD\&.h\&.
+.SS "- (UIFont*) detailsLabelFont\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Font to be used for the details label\&. Set this property if the default is not adequate\&. 
+.PP
+Definition at line 405 of file MBProgressHUD\&.h\&.
+.SS "- (NSString*) detailsLabelText\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [copy]\fP"
+An optional details message displayed below the labelText message\&. This message is displayed only if the labelText property is also set and is different from an empty string ("")\&. The details text can span multiple lines\&. 
+.PP
+Definition at line 317 of file MBProgressHUD\&.h\&.
+.SS "- (BOOL) dimBackground\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Cover the HUD background view with a radial gradient\&. 
+.PP
+Definition at line 356 of file MBProgressHUD\&.h\&.
+.SS "- (float) graceTime\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+
+.PP
+Definition at line 367 of file MBProgressHUD\&.h\&.
+.SS "- (UIColor*) labelColor\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Color to be used for the main label\&. Set this property if the default is not adequate\&. 
+.PP
+Definition at line 400 of file MBProgressHUD\&.h\&.
+.SS "- (UIFont*) labelFont\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Font to be used for the main label\&. Set this property if the default is not adequate\&. 
+.PP
+Definition at line 395 of file MBProgressHUD\&.h\&.
+.SS "- (NSString*) labelText\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [copy]\fP"
+An optional short message to be displayed below the activity indicator\&. The HUD is automatically resized to fit the entire text\&. If the text is too long it will get clipped by displaying '\&.\&.\&.' at the end\&. If left unchanged or set to "", then no message is displayed\&. 
+.PP
+Definition at line 311 of file MBProgressHUD\&.h\&.
+.SS "- (float) margin\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The amount of space between the HUD edge and the HUD elements (labels, indicators or custom views)\&. Defaults to 20\&.0 
+.PP
+Definition at line 345 of file MBProgressHUD\&.h\&.
+.SS "- (float) minShowTime\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The minimum time (in seconds) that the HUD is shown\&. This avoids the problem of the HUD being shown and than instantly hidden\&. Defaults to 0 (no minimum show time)\&. 
+.PP
+Definition at line 374 of file MBProgressHUD\&.h\&.
+.SS "- (CGSize) minSize\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The minimum size of the HUD bezel\&. Defaults to CGSizeZero (no minimum size)\&. 
+.PP
+Definition at line 420 of file MBProgressHUD\&.h\&.
+.SS "- (\fBMBProgressHUDMode\fP) mode\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+\fBMBProgressHUD\fP operation mode\&. The default is MBProgressHUDModeIndeterminate\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBMBProgressHUDMode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 284 of file MBProgressHUD\&.h\&.
+.SS "- (float) opacity\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The opacity of the HUD window\&. Defaults to 0\&.8 (80% opacity)\&. 
+.PP
+Definition at line 322 of file MBProgressHUD\&.h\&.
+.SS "- (float) progress\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The progress of the progress indicator, from 0\&.0 to 1\&.0\&. Defaults to 0\&.0\&. 
+.PP
+Definition at line 415 of file MBProgressHUD\&.h\&.
+.SS "- (BOOL) removeFromSuperViewOnHide\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Removes the HUD from its parent view when hidden\&. Defaults to NO\&. 
+.PP
+Definition at line 390 of file MBProgressHUD\&.h\&.
+.SS "- (BOOL) square\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Force the HUD dimensions to be equal if possible\&. 
+.PP
+Definition at line 425 of file MBProgressHUD\&.h\&.
+.SS "- (BOOL) taskInProgress\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+Indicates that the executed operation is in progress\&. Needed for correct graceTime operation\&. If you don't set a graceTime (different than 0\&.0) this does nothing\&. This property is automatically set when using showWhileExecuting:onTarget:withObject:animated:\&. When threading is done outside of the HUD (i\&.e\&., when the show: and hide: methods are used directly), you need to set this property when your task starts and completes in order to have normal graceTime functionality\&. 
+.PP
+Definition at line 384 of file MBProgressHUD\&.h\&.
+.SS "- (float) xOffset\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The x-axis offset of the HUD relative to the centre of the superview\&. 
+.PP
+Definition at line 334 of file MBProgressHUD\&.h\&.
+.SS "- (float) yOffset\fC [read]\fP, \fC [write]\fP, \fC [atomic]\fP, \fC [assign]\fP"
+The y-axis offset of the HUD relative to the centre of the superview\&. 
+.PP
+Definition at line 339 of file MBProgressHUD\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

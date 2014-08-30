@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_c0ce462e37efe0a8d60c01d75f78f8a0" kind="dir">
+    <compoundname>algorithms</compoundname>
+    <innerdir refid="dir_f04e84ec938dead76aca1288a89c4d91">algorithms/Eulerian</innerdir>
+    <innerdir refid="dir_e0feb606b2da5a1380a3631843062f86">algorithms/files</innerdir>
+    <innerdir refid="dir_e06b311ad868e09d8f9995ad892a827f">algorithms/HeartRateCal</innerdir>
+    <innerdir refid="dir_1db81da9ff9a71f9da8bc79036c759da">algorithms/image</innerdir>
+    <innerdir refid="dir_2a258af59a73a65576f184df65b9addd">algorithms/math</innerdir>
+    <innerdir refid="dir_1cd5fa9dac7ad746db8aefa847e73877">algorithms/matrix</innerdir>
+    <innerfile refid="config_8cpp">config.cpp</innerfile>
+    <innerfile refid="config_8h">config.h</innerfile>
+    <innerfile refid="face__params_8h">face_params.h</innerfile>
+    <innerfile refid="finger__params_8h">finger_params.h</innerfile>
+    <innerfile refid="processing_cumulative_8cpp">processingCumulative.cpp</innerfile>
+    <innerfile refid="processing_cumulative_8h">processingCumulative.h</innerfile>
+    <innerfile refid="processing_per_block_8cpp">processingPerBlock.cpp</innerfile>
+    <innerfile refid="processing_per_block_8h">processingPerBlock.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/"/>
+  </compounddef>
+</doxygen>

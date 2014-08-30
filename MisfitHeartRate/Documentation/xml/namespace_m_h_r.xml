@@ -1,0 +1,3231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="namespace_m_h_r" kind="namespace">
+    <compoundname>MHR</compoundname>
+    <innerclass refid="struct_m_h_r_1_1hr_debug" prot="public">MHR::hrDebug</innerclass>
+    <innerclass refid="struct_m_h_r_1_1hr_result" prot="public">MHR::hrResult</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_m_h_r_1a2446951af16ca1137edb21f8e07019cb" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_DEBUG_MODE</definition>
+        <argsstring></argsstring>
+        <name>_DEBUG_MODE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a100c1e31c0fbc8c8b292064c1a8da006" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_THREE_CHAN_MODE</definition>
+        <argsstring></argsstring>
+        <name>_THREE_CHAN_MODE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="14" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a364268cdc7b75db63f89c9d8960aa1b4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MHR::_FACE_MODE</definition>
+        <argsstring></argsstring>
+        <name>_FACE_MODE</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a15d81a6b22ae7616409d6df6101690eb" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String MHR::_outputPath</definition>
+        <argsstring></argsstring>
+        <name>_outputPath</name>
+        <initializer>= &quot;NULL&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="18" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1abbf22419d2dbaf1d661d5b73fc9af29b" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_eulerian_alpha</definition>
+        <argsstring></argsstring>
+        <name>_eulerian_alpha</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="21" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a383bea7ba431fede0a30f05b3ae57536" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_eulerian_pyrLevel</definition>
+        <argsstring></argsstring>
+        <name>_eulerian_pyrLevel</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="22" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1afe8a788bdd0504a98259321e41377180" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_eulerian_minHR</definition>
+        <argsstring></argsstring>
+        <name>_eulerian_minHR</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="23" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1acb647c6b44ad0c7fac0fba37122d5889" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_eulerian_maxHR</definition>
+        <argsstring></argsstring>
+        <name>_eulerian_maxHR</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="24" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ab6b7928e4485f421869d4fbac9a5c1cd" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_eulerian_frameRate</definition>
+        <argsstring></argsstring>
+        <name>_eulerian_frameRate</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="25" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ad69f0161c9597e078014c52955264fd2" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_eulerian_chromaMagnifier</definition>
+        <argsstring></argsstring>
+        <name>_eulerian_chromaMagnifier</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="26" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8c0f2199ebe2a27a2fc0cff1daa239ee" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_frameRate</definition>
+        <argsstring></argsstring>
+        <name>_frameRate</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="29" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a2ff626868d0be78114be4abbcd0ba01b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_number_of_channels</definition>
+        <argsstring></argsstring>
+        <name>_number_of_channels</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="30" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ac3927bf3a2b93c8dc4ef19ee1a3d55f8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_Gpyr_filter_length</definition>
+        <argsstring></argsstring>
+        <name>_Gpyr_filter_length</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="31" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ad8b548e54d84866330d426d8edc8877e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_startFrame</definition>
+        <argsstring></argsstring>
+        <name>_startFrame</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="32" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a08d1602abf6cd2454b1f73a8d5523ac2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_endFrame</definition>
+        <argsstring></argsstring>
+        <name>_endFrame</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="33" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a9732a5bb1cbdb99030149ae2bb1cae69" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_window_size_in_sec</definition>
+        <argsstring></argsstring>
+        <name>_window_size_in_sec</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="36" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aed0501a3045731a781439b11ee82fbfe" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_overlap_ratio</definition>
+        <argsstring></argsstring>
+        <name>_overlap_ratio</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="37" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a1a13273dd519ccfaf4dc1800bd2031d2" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_max_bpm</definition>
+        <argsstring></argsstring>
+        <name>_max_bpm</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="38" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a9685359cac4522cd1ee584fbfb5371d1" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_cutoff_freq</definition>
+        <argsstring></argsstring>
+        <name>_cutoff_freq</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="39" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1abe9f5a6b09e1219712f2b5912e68506d" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_time_lag</definition>
+        <argsstring></argsstring>
+        <name>_time_lag</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="40" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a16dd6a785863f2fac97ebb334606c166" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String MHR::_colourspace</definition>
+        <argsstring></argsstring>
+        <name>_colourspace</name>
+        <initializer>= &quot;-1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="41" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a02a81ed541f6536b1632d65c8f2ad0d3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_channels_to_process</definition>
+        <argsstring></argsstring>
+        <name>_channels_to_process</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="42" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a5a4548440538bf0354499b42e7983f2f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_number_of_bins_heartRate</definition>
+        <argsstring></argsstring>
+        <name>_number_of_bins_heartRate</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="43" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ae2f1f5bafa06074dcb8f0af01a058c81" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_flagDebug</definition>
+        <argsstring></argsstring>
+        <name>_flagDebug</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="46" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ab142c69d1b89170b4fa2533a6f749394" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_flagGetRaw</definition>
+        <argsstring></argsstring>
+        <name>_flagGetRaw</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="47" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a7650c1d1c25787e60c4dbbdb5cedf3b8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_startIndex</definition>
+        <argsstring></argsstring>
+        <name>_startIndex</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="49" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a43ac6cb857f86cd5a9bc16e968faa1af" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_endIndex</definition>
+        <argsstring></argsstring>
+        <name>_endIndex</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="50" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8a80b7897b02d4d2a57311a344df8497" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_peakStrengthThreshold_fraction</definition>
+        <argsstring></argsstring>
+        <name>_peakStrengthThreshold_fraction</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="52" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aaaae88f4be078b944fe63b49c5022684" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String MHR::_frames2signalConversionMethod</definition>
+        <argsstring></argsstring>
+        <name>_frames2signalConversionMethod</name>
+        <initializer>= &quot;-1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="53" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a41fcc40bb1f54975292b8d7051b7b3f9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_frame_downsampling_filt_rows</definition>
+        <argsstring></argsstring>
+        <name>_frame_downsampling_filt_rows</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="55" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a619373c68caeeba93f71d9eaeecf1a5b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_frame_downsampling_filt_cols</definition>
+        <argsstring></argsstring>
+        <name>_frame_downsampling_filt_cols</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="56" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8d2bbf36755f538d9b442b415d5cde6d" prot="public" static="no" mutable="no">
+        <type>Mat</type>
+        <definition>Mat MHR::_frame_downsampling_filt</definition>
+        <argsstring></argsstring>
+        <name>_frame_downsampling_filt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="57" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a87eb7e22893e5160d4a98344bc8bdff4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_trimmed_size</definition>
+        <argsstring></argsstring>
+        <name>_trimmed_size</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="62" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a32705f521f2a65e0b5c5454b328c26db" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_training_time_start</definition>
+        <argsstring></argsstring>
+        <name>_training_time_start</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="65" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a6ee9276234c51d213a3b1631eee5f315" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_training_time_end</definition>
+        <argsstring></argsstring>
+        <name>_training_time_end</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="66" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ab3a5de59c2eed470e94ca0e79abd2b5c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_number_of_bins</definition>
+        <argsstring></argsstring>
+        <name>_number_of_bins</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="67" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1acb8b09915d13e40eba7f00718c40ce6a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_pct_reach_below_mode</definition>
+        <argsstring></argsstring>
+        <name>_pct_reach_below_mode</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="68" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a3b2e38d795c8389fd066cefa0af2ef47" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_pct_reach_above_mode</definition>
+        <argsstring></argsstring>
+        <name>_pct_reach_above_mode</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="69" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a5d907d8ef896004dce9f0fd1d47b77e7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MHR::_beatSignalFilterKernel_size</definition>
+        <argsstring></argsstring>
+        <name>_beatSignalFilterKernel_size</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="75" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ab83e011c36b7688dab5ef024c8894300" prot="public" static="no" mutable="no">
+        <type>Mat</type>
+        <definition>Mat MHR::_beatSignalFilterKernel</definition>
+        <argsstring></argsstring>
+        <name>_beatSignalFilterKernel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="76" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ad65f931bf0d5fecacaa5062119d272bf" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_hrThreshold</definition>
+        <argsstring></argsstring>
+        <name>_hrThreshold</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="78" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aa202bc96d234c5ee044f8590ad1dc0ef" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::_hrStanDev</definition>
+        <argsstring></argsstring>
+        <name>_hrStanDev</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="79" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a1f2bac57e6ccaebc6afd932278b163ec" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::NaN</definition>
+        <argsstring></argsstring>
+        <name>NaN</name>
+        <initializer>= -1e9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" line="25" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a167cff7309df5114f9e72af8b5e820c1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_framesBlock_size</definition>
+        <argsstring></argsstring>
+        <name>_framesBlock_size</name>
+        <initializer>= 128</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" line="27" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aced573ebf5ae641d5c3a58c9762462fb" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_minVidLength</definition>
+        <argsstring></argsstring>
+        <name>_minVidLength</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a0a7cdb59c1f1e8af6e6b61543c81724d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_maxVidLength</definition>
+        <argsstring></argsstring>
+        <name>_maxVidLength</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" line="29" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a0f9c0b966020cdd7ef37cb2207d981ab" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_eulerian_alpha</definition>
+        <argsstring></argsstring>
+        <name>_face_eulerian_alpha</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="20" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a3eae7b41b03bf25902413f62c5e6545d" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_eulerian_pyrLevel</definition>
+        <argsstring></argsstring>
+        <name>_face_eulerian_pyrLevel</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="21" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a95e1651df07df85f364ac713aac7a53b" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_eulerian_minHR</definition>
+        <argsstring></argsstring>
+        <name>_face_eulerian_minHR</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="22" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a366f66e2cd387cf039dc5d7de4ff5f9d" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_eulerian_maxHR</definition>
+        <argsstring></argsstring>
+        <name>_face_eulerian_maxHR</name>
+        <initializer>= 240</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="23" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a3c21f6619922e618bff40700a5723015" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_eulerian_frameRate</definition>
+        <argsstring></argsstring>
+        <name>_face_eulerian_frameRate</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="24" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a5b039641e0cf1a30ba4f303e4764b4c8" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_eulerian_chromaMagnifier</definition>
+        <argsstring></argsstring>
+        <name>_face_eulerian_chromaMagnifier</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="25" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a1af8c23e0ffae759111c964d2369a13b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_number_of_channels</definition>
+        <argsstring></argsstring>
+        <name>_face_number_of_channels</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a7eabffdab2df22a98e5aa4046d6c3baf" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_Gpyr_filter_length</definition>
+        <argsstring></argsstring>
+        <name>_face_Gpyr_filter_length</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="29" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ac893410fca7e7a76ae562e47f8371cc1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_startFrame</definition>
+        <argsstring></argsstring>
+        <name>_face_startFrame</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="30" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a349e142bd15540a9d0b5b63f426fc3dc" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_endFrame</definition>
+        <argsstring></argsstring>
+        <name>_face_endFrame</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="31" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ada7fab40b0e865f6a26751fd550b5288" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_window_size_in_sec</definition>
+        <argsstring></argsstring>
+        <name>_face_window_size_in_sec</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="34" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ab6430d316d9d82ce08b7d35fda6ba14e" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_overlap_ratio</definition>
+        <argsstring></argsstring>
+        <name>_face_overlap_ratio</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a123d7bba4eba9d4c49ebe21458394a9a" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_max_bpm</definition>
+        <argsstring></argsstring>
+        <name>_face_max_bpm</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="36" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1afc5d67d6a0c4929f2fc30dce703740fe" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_cutoff_freq</definition>
+        <argsstring></argsstring>
+        <name>_face_cutoff_freq</name>
+        <initializer>= 2.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="37" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ad108537351ba024dfa150411983a69c4" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_time_lag</definition>
+        <argsstring></argsstring>
+        <name>_face_time_lag</name>
+        <initializer>= 1.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="38" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a2c3d7c5df37d2106e5f4351ebeb44c2f" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String MHR::_face_colourspace</definition>
+        <argsstring></argsstring>
+        <name>_face_colourspace</name>
+        <initializer>= &quot;tsl&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="39" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ac3a2dbcaefbcbb5814108c711ebd1fe1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_channels_to_process</definition>
+        <argsstring></argsstring>
+        <name>_face_channels_to_process</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="40" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1abfcdcdfbf5694a70c871df5484e30321" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_number_of_bins_heartRate</definition>
+        <argsstring></argsstring>
+        <name>_face_number_of_bins_heartRate</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="41" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ade58b99d0d2023434646cb0597baafdf" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_flagDebug</definition>
+        <argsstring></argsstring>
+        <name>_face_flagDebug</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="44" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a6e9575c56ad75e4e165fd62fad98734f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_flagGetRaw</definition>
+        <argsstring></argsstring>
+        <name>_face_flagGetRaw</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="45" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a5c705653d488611b87b11e41e4ffbfd5" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_startIndex</definition>
+        <argsstring></argsstring>
+        <name>_face_startIndex</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="47" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ad45b2867da1e1b69dee3648585a3ad3a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_endIndex</definition>
+        <argsstring></argsstring>
+        <name>_face_endIndex</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="48" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1adad3be408f5b45234ee745acc33d6ac8" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_peakStrengthThreshold_fraction</definition>
+        <argsstring></argsstring>
+        <name>_face_peakStrengthThreshold_fraction</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="50" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a634c25b34e7aa6bbb3cfc346964d2f90" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String MHR::_face_frames2signalConversionMethod</definition>
+        <argsstring></argsstring>
+        <name>_face_frames2signalConversionMethod</name>
+        <initializer>= &quot;mode-balance&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="51" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a7fa6df2df062c81344149450be58164a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_frame_downsampling_filt_rows</definition>
+        <argsstring></argsstring>
+        <name>_face_frame_downsampling_filt_rows</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="53" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ae762029528d214f277ed064282784d3b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_frame_downsampling_filt_cols</definition>
+        <argsstring></argsstring>
+        <name>_face_frame_downsampling_filt_cols</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="54" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a53c978f9017a65e09546b90474f17111" prot="public" static="no" mutable="no">
+        <type>const Mat</type>
+        <definition>const Mat MHR::_face_frame_downsampling_filt</definition>
+        <argsstring></argsstring>
+        <name>_face_frame_downsampling_filt</name>
+        <initializer>=
+        (Mat_&lt;double&gt;(<ref refid="namespace_m_h_r_1a7fa6df2df062c81344149450be58164a" kindref="member">_face_frame_downsampling_filt_rows</ref>,<ref refid="namespace_m_h_r_1ae762029528d214f277ed064282784d3b" kindref="member">_face_frame_downsampling_filt_cols</ref>) &lt;&lt;
+           0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
+           0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+           0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
+           0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175,
+           0.0162, 0.0241, 0.0241307, 0.0332, 0.0307, 0.0241, 0.0162,
+           0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+           0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="55" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ae64aacd3f078b0c1ecfefee56c27e3ce" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_trimmed_size</definition>
+        <argsstring></argsstring>
+        <name>_face_trimmed_size</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="68" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a4ad71fd0cc039551252ae1929fbbfea9" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_training_time_start</definition>
+        <argsstring></argsstring>
+        <name>_face_training_time_start</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="71" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a86e77ed79df316c170e425d131558571" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_training_time_end</definition>
+        <argsstring></argsstring>
+        <name>_face_training_time_end</name>
+        <initializer>= 0.2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="72" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a2c4c769eba572cf1388059c68e02804a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_number_of_bins</definition>
+        <argsstring></argsstring>
+        <name>_face_number_of_bins</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="73" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ac4235bc51ec51e261f5822920a5886b0" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_pct_reach_below_mode</definition>
+        <argsstring></argsstring>
+        <name>_face_pct_reach_below_mode</name>
+        <initializer>= 45</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="74" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a50b60319fb33591915a63ce9b618a18c" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_pct_reach_above_mode</definition>
+        <argsstring></argsstring>
+        <name>_face_pct_reach_above_mode</name>
+        <initializer>= 45</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="75" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a7f9a1a070d8e2c3eb72d79c71b2f468a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_face_beatSignalFilterKernel_size</definition>
+        <argsstring></argsstring>
+        <name>_face_beatSignalFilterKernel_size</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="81" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a846528ce2187823d06b73caadf751570" prot="public" static="no" mutable="no">
+        <type>const Mat</type>
+        <definition>const Mat MHR::_face_beatSignalFilterKernel</definition>
+        <argsstring></argsstring>
+        <name>_face_beatSignalFilterKernel</name>
+        <initializer>= (Mat_&lt;double&gt;(1, <ref refid="namespace_m_h_r_1a7f9a1a070d8e2c3eb72d79c71b2f468a" kindref="member">_face_beatSignalFilterKernel_size</ref>) &lt;&lt;
+                                              -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
+                                              0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
+                                              0.0956, 0.0580, 0.0217, -0.0076, -0.0265)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="82" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a1e8025b0c611a1a8b4bf74baca52c91c" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_hrThreshold</definition>
+        <argsstring></argsstring>
+        <name>_face_hrThreshold</name>
+        <initializer>= 40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="88" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a0eb61186bc00ecb180d50821bee1d360" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_face_hrStanDev</definition>
+        <argsstring></argsstring>
+        <name>_face_hrStanDev</name>
+        <initializer>= 2.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="89" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1adc786b108805d8d2ad944595ea2b7092" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_THRESHOLD_NO_FACE_FRAMES_MIN</definition>
+        <argsstring></argsstring>
+        <name>_THRESHOLD_NO_FACE_FRAMES_MIN</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="93" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a90f94ddb83c7c54b9b0836586a51ad43" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_THRESHOLD_FACE_FRAMES_MIN</definition>
+        <argsstring></argsstring>
+        <name>_THRESHOLD_FACE_FRAMES_MIN</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="94" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a3c94a936257b6f3257fb7a7768ff4377" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_THRESHOLD_FACE_FRAMES_FOR_START</definition>
+        <argsstring></argsstring>
+        <name>_THRESHOLD_FACE_FRAMES_FOR_START</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="95" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a4059754ac07ffb5b08e096059f347a82" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float MHR::_ROI_RATIO_UPPER</definition>
+        <argsstring></argsstring>
+        <name>_ROI_RATIO_UPPER</name>
+        <initializer>= 1.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="97" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8a54577ca92c7aa81cc87355a7160063" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float MHR::_ROI_RATIO_LOWER</definition>
+        <argsstring></argsstring>
+        <name>_ROI_RATIO_LOWER</name>
+        <initializer>= 0.8f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" line="98" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/face_params.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1abe389732cdfc0aa8ebf51a84c4e645a4" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_eulerian_alpha</definition>
+        <argsstring></argsstring>
+        <name>_finger_eulerian_alpha</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="20" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a197af9978c9b4d443571197f5ad1b019" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_eulerian_pyrLevel</definition>
+        <argsstring></argsstring>
+        <name>_finger_eulerian_pyrLevel</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="21" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a2d844de82559885b3d8a333c82b1a733" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_eulerian_minHR</definition>
+        <argsstring></argsstring>
+        <name>_finger_eulerian_minHR</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="22" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ab2ef19fc7e685e8a85fbbbc75320fd6e" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_eulerian_maxHR</definition>
+        <argsstring></argsstring>
+        <name>_finger_eulerian_maxHR</name>
+        <initializer>= 240</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="23" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a6a102813ef2ea5aa11cadcc9ebaa5bbc" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_eulerian_frameRate</definition>
+        <argsstring></argsstring>
+        <name>_finger_eulerian_frameRate</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="24" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1adc0b183529468e1b7d2eec8275c004a6" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_eulerian_chromaMagnifier</definition>
+        <argsstring></argsstring>
+        <name>_finger_eulerian_chromaMagnifier</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="25" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aa01f8308d2cb5cdb00c4a45de8a8cd5e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_number_of_channels</definition>
+        <argsstring></argsstring>
+        <name>_finger_number_of_channels</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a5b1bf691aa0c1246b140b3f67580c229" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_Gpyr_filter_length</definition>
+        <argsstring></argsstring>
+        <name>_finger_Gpyr_filter_length</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="29" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a9b0e8542961b24a5dc2e1f77df715b51" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_startFrame</definition>
+        <argsstring></argsstring>
+        <name>_finger_startFrame</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="30" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aab21e4fd871ccbbdfc656aa4d64aa688" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_endFrame</definition>
+        <argsstring></argsstring>
+        <name>_finger_endFrame</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="31" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a04093f94b342ed569322ef2c3a5bcce2" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_window_size_in_sec</definition>
+        <argsstring></argsstring>
+        <name>_finger_window_size_in_sec</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="34" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a6ab2b5eaa5246621b9039b65e5501f1c" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_overlap_ratio</definition>
+        <argsstring></argsstring>
+        <name>_finger_overlap_ratio</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ae15a1148a0dba9f30071db8315b9fe88" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_max_bpm</definition>
+        <argsstring></argsstring>
+        <name>_finger_max_bpm</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="36" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a6125713b446a1bdd5bbc0fb9e75fc58e" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_cutoff_freq</definition>
+        <argsstring></argsstring>
+        <name>_finger_cutoff_freq</name>
+        <initializer>= 2.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="37" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ae2523999aef7718ac3e6edeb318edf8a" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_time_lag</definition>
+        <argsstring></argsstring>
+        <name>_finger_time_lag</name>
+        <initializer>= 1.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="38" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1af6ec9103edc4e3fe7011676f91c83c26" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String MHR::_finger_colourspace</definition>
+        <argsstring></argsstring>
+        <name>_finger_colourspace</name>
+        <initializer>= &quot;rgb&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="39" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a16934905e88de3a2d084e6734948ec65" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_channels_to_process</definition>
+        <argsstring></argsstring>
+        <name>_finger_channels_to_process</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="40" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a2762706b15a5accb61b7efa79cd0617a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_number_of_bins_heartRate</definition>
+        <argsstring></argsstring>
+        <name>_finger_number_of_bins_heartRate</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="41" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1aefc7157a4757a4b9017c968a17fb8ee1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_flagDebug</definition>
+        <argsstring></argsstring>
+        <name>_finger_flagDebug</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="44" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a24fb7c804c7833388056a5e417354257" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_flagGetRaw</definition>
+        <argsstring></argsstring>
+        <name>_finger_flagGetRaw</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="45" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a25e5a8e8b0d72f6cfa98fa75e943f35e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_startIndex</definition>
+        <argsstring></argsstring>
+        <name>_finger_startIndex</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="47" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8b1ee45fde805239e5267fb0dcb03735" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_endIndex</definition>
+        <argsstring></argsstring>
+        <name>_finger_endIndex</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="48" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a417e8c2df65251a5a34b250f975a3867" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_peakStrengthThreshold_fraction</definition>
+        <argsstring></argsstring>
+        <name>_finger_peakStrengthThreshold_fraction</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="50" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a4c571f87fe52934440add1a3a5a98e14" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String MHR::_finger_frames2signalConversionMethod</definition>
+        <argsstring></argsstring>
+        <name>_finger_frames2signalConversionMethod</name>
+        <initializer>= &quot;mode-balance&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="51" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a5d49af784fd77df019705d26d3654953" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_frame_downsampling_filt_rows</definition>
+        <argsstring></argsstring>
+        <name>_finger_frame_downsampling_filt_rows</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="53" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a2c854934355cedc3760bfddd3bcd03a6" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_frame_downsampling_filt_cols</definition>
+        <argsstring></argsstring>
+        <name>_finger_frame_downsampling_filt_cols</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="54" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a9a40d6696920c99016b2c4cc40e8db3b" prot="public" static="no" mutable="no">
+        <type>const Mat</type>
+        <definition>const Mat MHR::_finger_frame_downsampling_filt</definition>
+        <argsstring></argsstring>
+        <name>_finger_frame_downsampling_filt</name>
+        <initializer>=
+        (Mat_&lt;double&gt;(<ref refid="namespace_m_h_r_1a5d49af784fd77df019705d26d3654953" kindref="member">_finger_frame_downsampling_filt_rows</ref>, <ref refid="namespace_m_h_r_1a2c854934355cedc3760bfddd3bcd03a6" kindref="member">_finger_frame_downsampling_filt_cols</ref>) &lt;&lt;
+             0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085,
+             0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+             0.0162, 0.0241, 0.0307, 0.0332, 0.0307, 0.0241, 0.0162,
+             0.0175, 0.0261, 0.0332, 0.0360, 0.0332, 0.0261, 0.0175,
+             0.0162, 0.0241, 0.0241307, 0.0332, 0.0307, 0.0241, 0.0162,
+             0.0127, 0.0190, 0.0241, 0.0261, 0.0241, 0.0190, 0.0127,
+             0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.0085)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="55" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8a6e23a5b4183588a231061fe7d43524" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_trimmed_size</definition>
+        <argsstring></argsstring>
+        <name>_finger_trimmed_size</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="68" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1afcd48923eb1d7b2aff98acc4cf2a9d24" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_training_time_start</definition>
+        <argsstring></argsstring>
+        <name>_finger_training_time_start</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="71" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a69b9408e97af3e5261c4ede559d9f7d6" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_training_time_end</definition>
+        <argsstring></argsstring>
+        <name>_finger_training_time_end</name>
+        <initializer>= 0.2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="72" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a1cd0eaa85c6115e1d53ad1c1a3209b41" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_number_of_bins</definition>
+        <argsstring></argsstring>
+        <name>_finger_number_of_bins</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="73" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a9714df3caf979755314e0a049dd96368" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_pct_reach_below_mode</definition>
+        <argsstring></argsstring>
+        <name>_finger_pct_reach_below_mode</name>
+        <initializer>= 45</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="74" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a8c272379feda002b512fbc5e3e917000" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_pct_reach_above_mode</definition>
+        <argsstring></argsstring>
+        <name>_finger_pct_reach_above_mode</name>
+        <initializer>= 45</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="75" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a9b1303d740470ce969352e3173a27ebb" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int MHR::_finger_beatSignalFilterKernel_size</definition>
+        <argsstring></argsstring>
+        <name>_finger_beatSignalFilterKernel_size</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="81" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a7c6f13da1b28c69fdd787e07d05c7503" prot="public" static="no" mutable="no">
+        <type>const Mat</type>
+        <definition>const Mat MHR::_finger_beatSignalFilterKernel</definition>
+        <argsstring></argsstring>
+        <name>_finger_beatSignalFilterKernel</name>
+        <initializer>= (Mat_&lt;double&gt;(1, <ref refid="namespace_m_h_r_1a9b1303d740470ce969352e3173a27ebb" kindref="member">_finger_beatSignalFilterKernel_size</ref>) &lt;&lt;
+                                              -0.0265, -0.0076, 0.0217, 0.0580, 0.0956,
+                                              0.1285, 0.1509, 0.1589, 0.1509, 0.1285,
+                                              0.0956, 0.0580, 0.0217, -0.0076, -0.0265)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="82" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1ad34bb64ea8d7aec01e0b4a8ae885c2a6" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_hrThreshold</definition>
+        <argsstring></argsstring>
+        <name>_finger_hrThreshold</name>
+        <initializer>= 40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="88" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a418b4c21db49ca7ed9f3546cc04f7210" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double MHR::_finger_hrStanDev</definition>
+        <argsstring></argsstring>
+        <name>_finger_hrStanDev</name>
+        <initializer>= 2.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" line="89" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/finger_params.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a7191e886f0a618347db01d5743eb2856" prot="public" static="no" mutable="no">
+        <type>const Mat</type>
+        <definition>const Mat MHR::rgb2ntsc_baseMat</definition>
+        <argsstring></argsstring>
+        <name>rgb2ntsc_baseMat</name>
+        <initializer>= (Mat_&lt;double&gt;(3, 3) &lt;&lt;
+                                  0.299, 0.587, 0.114,
+                                  0.596, -0.274, -0.322,
+                                  0.211, -0.523, 0.312)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>From RGB to YIQ:  <ulink url="http://en.wikipedia.org/wiki/YIQ">http://en.wikipedia.org/wiki/YIQ</ulink> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.h" line="18" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_m_h_r_1a1ab4a7e6b45362de2827fd373b53ba24" prot="public" static="no" mutable="no">
+        <type>const Mat</type>
+        <definition>const Mat MHR::ntsc2rgb_baseMat</definition>
+        <argsstring></argsstring>
+        <name>ntsc2rgb_baseMat</name>
+        <initializer>= (Mat_&lt;double&gt;(3, 3) &lt;&lt;
+                                  1.0000, 0.9562, 0.6214,
+                                  1.0000, -0.2727, -0.6468,
+                                  1.0000, -1.1037, 1.7006)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>From YIQ to RGB:  <ulink url="http://en.wikipedia.org/wiki/YIQ">http://en.wikipedia.org/wiki/YIQ</ulink> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.h" line="27" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_m_h_r_1a48555f02f08d43ff1f06f9413c86b5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::setFaceParams</definition>
+        <argsstring>()</argsstring>
+        <name>setFaceParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="84" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="84" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1af336ca7b239bbe520636c7d147b913b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::setFingerParams</definition>
+        <argsstring>()</argsstring>
+        <name>setFingerParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="139" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" bodystart="139" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ae1292cc4cfc5411226e0cd77f652e1a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::build_Gdown_Stack</definition>
+        <argsstring>(const vector&lt; Mat &gt; &amp;vid, vector&lt; Mat &gt; &amp;GDownStack, int startIndex, int endIndex, int level)</argsstring>
+        <name>build_Gdown_Stack</name>
+        <param>
+          <type>const vector&lt; Mat &gt; &amp;</type>
+          <declname>vid</declname>
+        </param>
+        <param>
+          <type>vector&lt; Mat &gt; &amp;</type>
+          <declname>GDownStack</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>startIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>endIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Apply Gaussian pyramid decomposition on <emphasis>vid</emphasis> from <emphasis>startIndex</emphasis> to <emphasis>endIndex</emphasis>, and select a specific band indicated by <emphasis>level</emphasis>. <linebreak/>
+<simplesect kind="return"><para><emphasis>GDownStack</emphasis> is stack of one band of Gaussian pyramid of each frame </para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vid</parametername>
+<parametername>GDownStack</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>the first dimension is the time axis <linebreak/>
+</para></listitem><listitem><para>the second dimension is the y axis of the video&apos;s frames <linebreak/>
+</para></listitem><listitem><para>the third dimension is the x axis of the video&apos;s frames <linebreak/>
+</para></listitem><listitem><para>the forth dimension is the color channel <linebreak/>
+Data type: CV_64FC3 or CV_64F </para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/build_Gdown_stack.cpp" bodystart="13" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1af2ec0b4fd5bc225e5e008504e70475a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::eulerianGaussianPyramidMagnification</definition>
+        <argsstring>(const vector&lt; Mat &gt; &amp;vid, vector&lt; Mat &gt; &amp;ans, String outDir, double alpha, int level, double freqBandLowEnd, double freqBandHighEnd, double samplingRate, double chromAttenuation)</argsstring>
+        <name>eulerianGaussianPyramidMagnification</name>
+        <param>
+          <type>const vector&lt; Mat &gt; &amp;</type>
+          <declname>vid</declname>
+        </param>
+        <param>
+          <type>vector&lt; Mat &gt; &amp;</type>
+          <declname>ans</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>outDir</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>freqBandLowEnd</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>freqBandHighEnd</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>samplingRate</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>chromAttenuation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Use Eulerian magnification technique on input frames. <linebreak/>
+Spatial Filtering: Gaussian blur and down sample <linebreak/>
+Temporal Filtering: Ideal bandpass <linebreak/>
+ <ulink url="http://graphics.cs.cmu.edu/courses/15-463/2012_fall/hw/proj2g-eulerian/">http://graphics.cs.cmu.edu/courses/15-463/2012_fall/hw/proj2g-eulerian/</ulink> <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>outDir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output folder for debug files </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>magnification rate </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see <ref refid="namespace_m_h_r_1a357c28865a17017a73d0f4ae8c4f7480" kindref="member">blurDnClr()</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>freqBandLowEnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see <emphasis>wl</emphasis> argument in <ref refid="namespace_m_h_r_1a103bcf8925254f7ca646192777866d4b" kindref="member">ideal_bandpassing()</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>freqBandHighEnd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see <emphasis>wh</emphasis> argument in <ref refid="namespace_m_h_r_1a103bcf8925254f7ca646192777866d4b" kindref="member">ideal_bandpassing()</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>samplingRate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the video&apos;s frame rate </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chromAttenuation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the magnification rate of chromA channel in YIQ coulourspace </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/eulerian.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/eulerian.cpp" bodystart="13" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a103bcf8925254f7ca646192777866d4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::ideal_bandpassing</definition>
+        <argsstring>(const vector&lt; Mat &gt; &amp;src, vector&lt; Mat &gt; &amp;dst, double wl, double wh, double samplingRate)</argsstring>
+        <name>ideal_bandpassing</name>
+        <param>
+          <type>const vector&lt; Mat &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>vector&lt; Mat &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>wl</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>wh</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>samplingRate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Apply ideal band pass filter on <emphasis>src</emphasis>. <linebreak/>
+ <ulink url="http://en.wikipedia.org/wiki/Band-pass_filter">http://en.wikipedia.org/wiki/Band-pass_filter</ulink> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>src</parametername>
+<parametername>dst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>the first dimension is the time axis <linebreak/>
+</para></listitem><listitem><para>the second dimension is the y axis of the video&apos;s frames <linebreak/>
+</para></listitem><listitem><para>the third dimension is the x axis of the video&apos;s frames <linebreak/>
+</para></listitem><listitem><para>the forth dimension is the color channel <linebreak/>
+</para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower cutoff frequency of ideal band pass filter <linebreak/>
+</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>higher cutoff frequency of ideal band pass filter <linebreak/>
+</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>samplingRate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>sampling rate of <emphasis>src</emphasis> <linebreak/>
+Data type: CV_64FC3 or CV_64F </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/ideal_bandpassing.cpp" line="17" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/Eulerian/ideal_bandpassing.cpp" bodystart="17" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a3b899245a37e41550b80b44fb40fe3e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::readFrame</definition>
+        <argsstring>(const String &amp;srcFile, vector&lt; Mat &gt; &amp;dst)</argsstring>
+        <name>readFrame</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>srcFile</declname>
+        </param>
+        <param>
+          <type>vector&lt; Mat &gt; &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read frames from a file to a a Mat vector </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="13" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1aca720721cf34fb61faddf517a6f1ecb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat MHR::read2DMatFromFile</definition>
+        <argsstring>(FILE *&amp;file, int rows, int cols)</argsstring>
+        <name>read2DMatFromFile</name>
+        <param>
+          <type>FILE *&amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>cols</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read a 2D Mat (<emphasis>rows</emphasis> * <emphasis>cols</emphasis>) from an opened file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="39" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="39" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a8b31e05ada67db2ce123a0674568ad29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt; double &gt; MHR::readVectorFromFile</definition>
+        <argsstring>(FILE *&amp;file, int n)</argsstring>
+        <name>readVectorFromFile</name>
+        <param>
+          <type>FILE *&amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read a vector&lt;double&gt; with <emphasis>n</emphasis> elements from an opened file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="49" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="49" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1aca054bab24695d684662a7972fc07d02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MHR::readInt</definition>
+        <argsstring>(FILE *&amp;file)</argsstring>
+        <name>readInt</name>
+        <param>
+          <type>FILE *&amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read an integer from an opened file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="61" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="61" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a30d68a835eaf7530b13d542662a88642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double MHR::readDouble</definition>
+        <argsstring>(FILE *&amp;file)</argsstring>
+        <name>readDouble</name>
+        <param>
+          <type>FILE *&amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read a double number from an opened file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="69" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="69" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a391cd23b86d2d7411411d4595cb74b86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::writeVector</definition>
+        <argsstring>(const vector&lt; double &gt; &amp;src, const String &amp;outFile, bool append)</argsstring>
+        <name>writeVector</name>
+        <param>
+          <type>const vector&lt; double &gt; &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>outFile</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>append</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write a vector&lt;double&gt; to a file. <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>append</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if == true, then the function will append the vector at the end of the file, otherwise, it will overwrite the old file or create a new file </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="77" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="77" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1aa23b9d8c3b852392335d3d9df6afc874" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MHR::frameToFile</definition>
+        <argsstring>(const Mat &amp;frame, const String &amp;outFile)</argsstring>
+        <name>frameToFile</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>outFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write a 2D Mat to an image file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="96" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a093ff56ed91709ddd3cd6bc1575ca55b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::frameChannelToFile</definition>
+        <argsstring>(const Mat &amp;frame, const String &amp;outFile, int channel)</argsstring>
+        <name>frameChannelToFile</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>outFile</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write a 2D Mat to a file as text for the specified <emphasis>channel</emphasis> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" line="102" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/files/files.cpp" bodystart="102" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a53c0c282e2b27534f2726f735f9664e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt; double &gt; MHR::frames2signal</definition>
+        <argsstring>(const vector&lt; Mat &gt; &amp;monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)</argsstring>
+        <name>frames2signal</name>
+        <param>
+          <type>const vector&lt; Mat &gt; &amp;</type>
+          <declname>monoframes</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>conversion_method</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>fr</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cutoff_freq</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>lower_range</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>upper_range</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isCalcMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The function will convert the array of frames into an array of signal value (type double) note that the frame is mono channel. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>video&apos;s frame rate </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>conversion_method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>we have 3 method for converting a frame into a double value:<itemizedlist>
+<listitem><para>simple-mean</para></listitem><listitem><para>trimmed-mean</para></listitem><listitem><para>mode-balance </para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>mode : &apos;simple-mean&apos; get the mean of all pixel&apos;s value in the picture frame</para><para>mode : &apos;trimmed-mean&apos; get the mean of all pixel&apos;s value in a smaller rectangle inside the picture frame</para><para>this method will calculate the histogram of pixel&apos;s value from the first_tranning_frames_start to first_tranning_frames_end. Then get the bin that has the most number of value, get the centre of that bin as a centre value, then use the prctile function to get the percentile of that centre value. Finally we calculate the mean of values that have the inverted percentile in the range from (centre value&apos;s percentile - lower_pct_range) to (centre value&apos;s percentile + upper_pct_range).</para>        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/frames2signal.cpp" bodystart="13" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a62a720e54584696fcf7e2d545ad202dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; int &gt;</type>
+        <definition>vector&lt; int &gt; MHR::hb_counter_autocorr</definition>
+        <argsstring>(vector&lt; double &gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug &amp;debug)</argsstring>
+        <name>hb_counter_autocorr</name>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>temporal_mean</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>fr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>firstSample</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>window_size</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>overlap_ratio</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>minPeakDistance</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_m_h_r_1_1hr_debug" kindref="compound">hrDebug</ref> &amp;</type>
+          <declname>debug</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function will convert the signal array (after using the frame2signal function) to an autocorelation array and then convert to an array of heart beats&apos; position. <linebreak/>
+The function will shift a window with size <emphasis>window_size</emphasis> from <emphasis>firstSample</emphasis> position to calculate the heart beats in that window. <linebreak/>
+This function is different from the hb_counter_pda function, instead of calculating the heart beats directly from the signal array, we will first convert the signal array to an autocorrelation array ( <ulink url="http://en.wikipedia.org/wiki/Autocorrelation">http://en.wikipedia.org/wiki/Autocorrelation</ulink>) then use this array to calculate the heart beats. <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the frame rate. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overlap_ratio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ratio of the next window will be identical with the current window, at default this ratio value is 0 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minPeakDistance</parametername>
+<parametername>threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>these arguments are for the findPeaks function. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hb_counter_autocorr.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hb_counter_autocorr.cpp" bodystart="13" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ac8cf9fb76b7455034653c17bc9e3ee4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; int &gt;</type>
+        <definition>vector&lt; int &gt; MHR::hb_counter_pda</definition>
+        <argsstring>(vector&lt; double &gt; temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, double threshold, hrDebug &amp;debug)</argsstring>
+        <name>hb_counter_pda</name>
+        <param>
+          <type>vector&lt; double &gt;</type>
+          <declname>temporal_mean</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>fr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>firstSample</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>window_size</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>overlap_ratio</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>minPeakDistance</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>threshold</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_m_h_r_1_1hr_debug" kindref="compound">hrDebug</ref> &amp;</type>
+          <declname>debug</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function will convert the signal array (after using the frame2signal() function) to an array of heart beats&apos; position The function will shift a window with size <emphasis>window_size</emphasis> from <emphasis>firstSample</emphasis> position to calculate the heart beats in that window. <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the frame rate. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overlap_ratio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ratio of the next window will be identical with the current window, at default this ratio value is 0 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minPeakDistance</parametername>
+<parametername>threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>these arguments are for the findPeaks function. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hb_counter_pda.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hb_counter_pda.cpp" bodystart="13" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a4ba8de262585ae09cd1564fcfda5742e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::hr_calculator</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;heartBeatPositions, double frameRate, vector&lt; double &gt; &amp;ans)</argsstring>
+        <name>hr_calculator</name>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>heartBeatPositions</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>frameRate</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>ans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate the heart-rate from a list of heart-beat positions. <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>the first number is average heart-rate</para></listitem><listitem><para>the second number is mode of the instantaneous heart-rates multiply with frameRate*60 </para></listitem></itemizedlist>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_calculator.cpp" line="14" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_calculator.cpp" bodystart="14" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ac8025fa73e928ab097c9b58525d787b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref></type>
+        <definition>hrResult MHR::hr_signal_calc</definition>
+        <argsstring>(vector&lt; double &gt; &amp;temporal_mean, int firstSample, int window_size, double frameRate, double overlap_ratio, double max_bpm, double threshold_fraction)</argsstring>
+        <name>hr_signal_calc</name>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>temporal_mean</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>firstSample</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>window_size</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>frameRate</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>overlap_ratio</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>max_bpm</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>threshold_fraction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the average heart-rate calculated by autocorr algorithm and pda algorithm. <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+<para>see <ref refid="namespace_m_h_r_1ac8cf9fb76b7455034653c17bc9e3ee4c" kindref="member">hb_counter_pda()</ref> or <ref refid="namespace_m_h_r_1a62a720e54584696fcf7e2d545ad202dc" kindref="member">hb_counter_autocorr()</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_signal_calc.cpp" bodystart="13" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a6f102a7f405b6c84ea84f4d99e3dd847" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt; double &gt; MHR::temporal_mean_calc</definition>
+        <argsstring>(const vector&lt; Mat &gt; &amp;vid, double overlap_ratio, double max_bpm, double cutoff_freq, int colour_channel, String colourspace, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)</argsstring>
+        <name>temporal_mean_calc</name>
+        <param>
+          <type>const vector&lt; Mat &gt; &amp;</type>
+          <declname>vid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>overlap_ratio</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>max_bpm</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>cutoff_freq</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>colour_channel</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>colourspace</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>lower_range</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>upper_range</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isCalcMode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert frames of &lt;vid&gt; to signals. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>data type is CV_64FC3 or CV_64F </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overlap_ratio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>overlap ratio between 2 consecutive segments </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_bpm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum heart rate detectable (use in determining minPeaksDistance in <ref refid="namespace_m_h_r_1ad11b22e616f937a6817faa9a0c72ec21" kindref="member">findpeaks()</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>colour_channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if in _THREE_CHAN_MODE, then convert all frames of <emphasis>vid</emphasis> to monoframes by select only one channel of each frame. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>colourspace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if in _THREE_CHAN_MODE, then convert colourspace of all frames of <emphasis>vid</emphasis> to &quot;hsv&quot;, &quot;ycbcr&quot; or &quot;tsl&quot; before converting them to monoframes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cutoff_freq</parametername>
+<parametername>lower_range</parametername>
+<parametername>upper_range&gt;</parametername>
+<parametername>isCalcMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see <ref refid="namespace_m_h_r_1a53c0c282e2b27534f2726f735f9664e3" kindref="member">frames2signal()</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/temporal_mean_calc.cpp" bodystart="13" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ae8dc1afd1e611d432d98186da1f813e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::rgb2tsl</definition>
+        <argsstring>(const Mat &amp;rgbmap, Mat &amp;dst)</argsstring>
+        <name>rgb2tsl</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>rgbmap</declname>
+        </param>
+        <param>
+          <type>Mat &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convert a RGB frame to a TSL frame <linebreak/>
+Data type: CV_64FC3 <linebreak/>
+ <ulink url="http://en.wikipedia.org/wiki/TSL_color_space">http://en.wikipedia.org/wiki/TSL_color_space</ulink> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp" line="12" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp" bodystart="12" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a357c28865a17017a73d0f4ae8c4f7480" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::blurDnClr</definition>
+        <argsstring>(const Mat &amp;src, Mat &amp;dst, int level)</argsstring>
+        <name>blurDnClr</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>Mat &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blur and downsample an image. The blurring is done with filter kernel specified by FILT (default = &apos;binom5&apos;) <linebreak/>
+ <ulink url="https://github.com/diego898/matlab-utils/blob/master/toolbox/EVM_Matlab/blurDnClr.m">https://github.com/diego898/matlab-utils/blob/master/toolbox/EVM_Matlab/blurDnClr.m</ulink> <linebreak/>
+ <ulink url="http://docs.opencv.org/doc/tutorials/imgproc/pyramids/pyramids.html">http://docs.opencv.org/doc/tutorials/imgproc/pyramids/pyramids.html</ulink> <linebreak/>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp" line="89" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp" bodystart="89" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a30571de29e1537d20abf69d19329c1bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::corrDn</definition>
+        <argsstring>(const Mat &amp;src, Mat &amp;dst, const Mat &amp;filter, int rectRow, int rectCol)</argsstring>
+        <name>corrDn</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>Mat &amp;</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rectRow</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rectCol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compute correlation of 2D matrices <emphasis>src</emphasis> with <emphasis>filter</emphasis>, followed by downsampling. <linebreak/>
+ <ulink url="http://www.mathworks.com/matlabcentral/fileexchange/43909-separable-steerable-pyramid-toolbox/content/sepspyr/deps/matlabPyrTools-1.3/mpt_corrDn.m">http://www.mathworks.com/matlabcentral/fileexchange/43909-separable-steerable-pyramid-toolbox/content/sepspyr/deps/matlabPyrTools-1.3/mpt_corrDn.m</ulink> <linebreak/>
+ <ulink url="http://docs.opencv.org/modules/imgproc/doc/filtering.html#void%20filter2D%28InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20InputArray%20kernel,%20Point%20anchor,%20double%20delta,%20int%20borderType%29">http://docs.opencv.org/modules/imgproc/doc/filtering.html#void%20filter2D%28InputArray%20src,%20OutputArray%20dst,%20int%20ddepth,%20InputArray%20kernel,%20Point%20anchor,%20double%20delta,%20int%20borderType%29</ulink> <linebreak/>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>src</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>must be larger (in both dimensions) than <emphasis>filter</emphasis>. <linebreak/>
+</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is assumed to be floor(size(<emphasis>filter</emphasis>)/2)+1. <linebreak/>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><emphasis>dst&apos;s</emphasis> data types: CV_64F </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp" line="99" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/image.cpp" bodystart="99" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1af6125176deb7b4d4d503a4bcf851a076" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double MHR::mean</definition>
+        <argsstring>(const vector&lt; double &gt; &amp;a)</argsstring>
+        <name>mean</name>
+        <param>
+          <type>const vector&lt; double &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the mean value of a double vector </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="14" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="14" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ad11b22e616f937a6817faa9a0c72ec21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::findpeaks</definition>
+        <argsstring>(const vector&lt; double &gt; &amp;segment, double minPeakDistance, double threshold, vector&lt; double &gt; &amp;max_peak_strengths, vector&lt; int &gt; &amp;max_peak_locs)</argsstring>
+        <name>findpeaks</name>
+        <param>
+          <type>const vector&lt; double &gt; &amp;</type>
+          <declname>segment</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>minPeakDistance</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>threshold</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>max_peak_strengths</declname>
+        </param>
+        <param>
+          <type>vector&lt; int &gt; &amp;</type>
+          <declname>max_peak_locs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>findpeaks in <emphasis>segment</emphasis>, with <emphasis>minPeakDistance</emphasis> and <emphasis>threshold</emphasis>,<linebreak/>
+complexity O(n^2) with n = number of peaks <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>segment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a vector of signals </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minPeakDistance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum distance between two peaks </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum value that a peak point should be larger than its two neighbors point </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><emphasis>max_peak_strengths</emphasis> </para></simplesect>
+<simplesect kind="return"><para><emphasis>max_peak_locs</emphasis> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="24" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="24" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a22cd3e8872333ff4c203c15821bf69bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; pair&lt; double, int &gt; &gt;</type>
+        <definition>vector&lt; pair&lt; double, int &gt; &gt; MHR::unique_stable</definition>
+        <argsstring>(const vector&lt; pair&lt; double, int &gt;&gt; &amp;arr)</argsstring>
+        <name>unique_stable</name>
+        <param>
+          <type>const vector&lt; pair&lt; double, int &gt;&gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.<linebreak/>
+all identical item will be removed just left the first appearing value.<linebreak/>
+the order will be reserve. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="74" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="74" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a4e7d8efbc84874e131049dc705488cc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt; double &gt; MHR::corr_linear</definition>
+        <argsstring>(vector&lt; double &gt; signal, vector&lt; double &gt; kernel, bool subtractMean)</argsstring>
+        <name>corr_linear</name>
+        <param>
+          <type>vector&lt; double &gt;</type>
+          <declname>signal</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt;</type>
+          <declname>kernel</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>subtractMean</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ulink url="http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf">http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf</ulink> <simplesect kind="return"><para>1D convolution operation of 2 vectors signal and kernel </para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subtractMean</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if is true, then before all calculations, each elements of the signal vector will be subtracted by mean(<emphasis>signal</emphasis>), and each elements of the kernel vector will be subtracted by mean(<emphasis>kernel</emphasis>). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="87" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="87" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ab46344d4248f6c55622fef14c1eb78c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::hist</definition>
+        <argsstring>(const vector&lt; double &gt; &amp;arr, int nbins, vector&lt; int &gt; &amp;counts, vector&lt; double &gt; &amp;centers)</argsstring>
+        <name>hist</name>
+        <param>
+          <type>const vector&lt; double &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nbins</declname>
+        </param>
+        <param>
+          <type>vector&lt; int &gt; &amp;</type>
+          <declname>counts</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>centers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ulink url="http://www.mathworks.com/help/matlab/ref/hist.html">http://www.mathworks.com/help/matlab/ref/hist.html</ulink> <simplesect kind="return"><para><emphasis>counts:</emphasis> number of elements in each bin, </para></simplesect>
+<simplesect kind="return"><para><emphasis>centers:</emphasis> the center value of each bin get the histogram of arr&apos;s value, the range from min value to max value of the arr will be divided into <emphasis>nbins</emphasis> bins, each bin will have a centres point and a count value denoting number of value in the array belong to that bin&apos;s range </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="125" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="125" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a4d04157ea7582bbd0a165e1a8a679219" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double MHR::invprctile</definition>
+        <argsstring>(const vector&lt; double &gt; &amp;arr, double x)</argsstring>
+        <name>invprctile</name>
+        <param>
+          <type>const vector&lt; double &gt; &amp;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the invert percentile of arr with value x. <simplesect kind="return"><para>the percent of number of values in arr that smaller or equal x. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="164" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="164" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a401757908f80823dd6c6ced91e55d751" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double MHR::prctile</definition>
+        <argsstring>(vector&lt; double &gt; arr, double percent)</argsstring>
+        <name>prctile</name>
+        <param>
+          <type>vector&lt; double &gt;</type>
+          <declname>arr</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the percentile of arr with a percent value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="172" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="172" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1af85b8b218e683bde30d7ee0329b29716" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt; double &gt; MHR::low_pass_filter</definition>
+        <argsstring>(vector&lt; double &gt; arr)</argsstring>
+        <name>low_pass_filter</name>
+        <param>
+          <type>vector&lt; double &gt;</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>filter function for frames2signal function, apply low pass filter on vector <emphasis>arr</emphasis>.  <ulink url="http://en.wikipedia.org/wiki/Low-pass_filter">http://en.wikipedia.org/wiki/Low-pass_filter</ulink> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="194" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="194" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a0380a36a3a26da3c0a32e0f4b3d9fec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::gaussianFilter</definition>
+        <argsstring>(int length, double sigma, vector&lt; double &gt; &amp;ans)</argsstring>
+        <name>gaussianFilter</name>
+        <param>
+          <type>int</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>ans</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a vector of Gaussian values of a desired length and properties<linebreak/>
+ <ulink url="http://www.mathworks.com/help/images/ref/fspecial.html">http://www.mathworks.com/help/images/ref/fspecial.html</ulink> <linebreak/>
+ <ulink url="http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29">http://docs.opencv.org/modules/imgproc/doc/filtering.html#Mat%20getGaussianKernel%28int%20ksize,%20double%20sigma,%20int%20ktype%29</ulink> <linebreak/>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="222" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="222" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a2e51d3fdfa37bc717ccc0c4557d64445" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double MHR::diff_percent</definition>
+        <argsstring>(double a, double b)</argsstring>
+        <name>diff_percent</name>
+        <param>
+          <type>double</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>100*|a-b|/b </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="234" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="234" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a8612a874ea7842e4b65969e11f1c2416" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::hr_polisher</definition>
+        <argsstring>(double &amp;hr, double &amp;old_hr, double &amp;hrThreshold, double &amp;hrStanDev)</argsstring>
+        <name>hr_polisher</name>
+        <param>
+          <type>double &amp;</type>
+          <declname>hr</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>old_hr</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>hrThreshold</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>hrStanDev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" line="240" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.cpp" bodystart="240" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ad90e260536ab41e3da12f739038743d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat MHR::atan2Mat</definition>
+        <argsstring>(const Mat &amp;a, const Mat &amp;b)</argsstring>
+        <name>atan2Mat</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>which have the same size <linebreak/>
+</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new Mat which each element[i, j] = atan2(a[i, j], b[i, j]) <linebreak/>
+Data type: CV_64F </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" bodystart="13" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1afef7e1a6e6fe95a9debb07c2d7ba3008" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat MHR::powMat</definition>
+        <argsstring>(const Mat &amp;src, double n)</argsstring>
+        <name>powMat</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the <emphasis>n-th</emphasis> power of <emphasis>src</emphasis> (element-wise) <linebreak/>
+Data type: CV_64F </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" line="24" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" bodystart="24" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1ac0d7c563ab4072cf5cba2d2b1cb3761e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat MHR::add</definition>
+        <argsstring>(const Mat &amp;a, const Mat &amp;b)</argsstring>
+        <name>add</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a + b </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" line="32" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" bodystart="32" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a497a8cfdabb210ba4d68b592fb589e00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat MHR::multiply</definition>
+        <argsstring>(const Mat &amp;a, const Mat &amp;b)</argsstring>
+        <name>multiply</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a * b (element-wise) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" line="40" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a22b0fbac0253b08d84d9c2493324e5db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Mat</type>
+        <definition>Mat MHR::multiply</definition>
+        <argsstring>(const Mat &amp;a, double x)</argsstring>
+        <name>multiply</name>
+        <param>
+          <type>const Mat &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a new Mat which each element[i, j] = a[i, j] * x <linebreak/>
+Data type: CV_64F </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" line="48" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/matrix/matrix.cpp" bodystart="48" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1a8f470f59589f00a7570d089362d6aa50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::processingCumulative</definition>
+        <argsstring>(vector&lt; double &gt; &amp;temporal_mean, vector&lt; double &gt; temp, hrResult &amp;currentResult)</argsstring>
+        <name>processingCumulative</name>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>temporal_mean</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt;</type>
+          <declname>temp</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref> &amp;</type>
+          <declname>currentResult</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/processingCumulative.cpp" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/processingCumulative.cpp" bodystart="13" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_m_h_r_1af87fd1d23c5d7c0a72caf3061057ebda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MHR::processingPerBlock</definition>
+        <argsstring>(const string &amp;srcDir, const string &amp;outDir, int fileStartIndex, int fileEndIndex, bool &amp;isCalcMode, double &amp;lower_range, double &amp;upper_range, hrResult &amp;result, vector&lt; double &gt; &amp;tmp)</argsstring>
+        <name>processingPerBlock</name>
+        <param>
+          <type>const string &amp;</type>
+          <declname>srcDir</declname>
+        </param>
+        <param>
+          <type>const string &amp;</type>
+          <declname>outDir</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fileStartIndex</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fileEndIndex</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>isCalcMode</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>lower_range</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>upper_range</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>vector&lt; double &gt; &amp;</type>
+          <declname>tmp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/processingPerBlock.cpp" line="12" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/processingPerBlock.cpp" bodystart="12" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/config.cpp" line="12" column="1"/>
+  </compounddef>
+</doxygen>

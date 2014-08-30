@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_h_r_result_view_controller" kind="class" prot="public">
+    <compoundname>MHRResultViewController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIViewController</basecompoundref>
+    <includes refid="_m_h_r_result_view_controller_8hpp" local="no">MHRResultViewController.hpp</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_m_h_r_result_view_controller_1ad2cc92ee5ee811f8df6b04883f090096" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>double</type>
+        <definition>double MHRResultViewController::autocorrResult</definition>
+        <argsstring></argsstring>
+        <name>autocorrResult</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_h_r_result_view_controller_1ae0daab10c086e438477f71f59fa0de37" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>double</type>
+        <definition>double MHRResultViewController::pdaResult</definition>
+        <argsstring></argsstring>
+        <name>pdaResult</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="45">
+        <label>MHRResultViewController</label>
+        <link refid="interface_m_h_r_result_view_controller"/>
+        <childnode refid="46" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>UIViewController</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="47">
+        <label>MHRResultViewController</label>
+        <link refid="interface_m_h_r_result_view_controller"/>
+        <childnode refid="48" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>UIViewController</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp" line="14" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.hpp" bodystart="13" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_h_r_result_view_controller_1ad2cc92ee5ee811f8df6b04883f090096" prot="public" virt="non-virtual"><scope>MHRResultViewController</scope><name>autocorrResult</name></member>
+      <member refid="interface_m_h_r_result_view_controller_1ae0daab10c086e438477f71f59fa0de37" prot="public" virt="non-virtual"><scope>MHRResultViewController</scope><name>pdaResult</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
