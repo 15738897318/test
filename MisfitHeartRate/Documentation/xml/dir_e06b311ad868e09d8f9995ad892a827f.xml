@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_e06b311ad868e09d8f9995ad892a827f" kind="dir">
+    <compoundname>algorithms/HeartRateCal</compoundname>
+    <innerfile refid="frames2signal_8cpp">frames2signal.cpp</innerfile>
+    <innerfile refid="frames2signal_8h">frames2signal.h</innerfile>
+    <innerfile refid="hb__counter__autocorr_8cpp">hb_counter_autocorr.cpp</innerfile>
+    <innerfile refid="hb__counter__autocorr_8h">hb_counter_autocorr.h</innerfile>
+    <innerfile refid="hb__counter__pda_8cpp">hb_counter_pda.cpp</innerfile>
+    <innerfile refid="hb__counter__pda_8h">hb_counter_pda.h</innerfile>
+    <innerfile refid="hr__calculator_8cpp">hr_calculator.cpp</innerfile>
+    <innerfile refid="hr__calculator_8h">hr_calculator.h</innerfile>
+    <innerfile refid="hr__signal__calc_8cpp">hr_signal_calc.cpp</innerfile>
+    <innerfile refid="hr__signal__calc_8h">hr_signal_calc.h</innerfile>
+    <innerfile refid="hr__structures_8cpp">hr_structures.cpp</innerfile>
+    <innerfile refid="hr__structures_8h">hr_structures.h</innerfile>
+    <innerfile refid="temporal__mean__calc_8cpp">temporal_mean_calc.cpp</innerfile>
+    <innerfile refid="temporal__mean__calc_8h">temporal_mean_calc.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/"/>
+  </compounddef>
+</doxygen>

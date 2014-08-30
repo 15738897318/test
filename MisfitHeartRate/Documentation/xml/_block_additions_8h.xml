@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_block_additions_8h" kind="file">
+    <compoundname>BlockAdditions.h</compoundname>
+    <includedby refid="_u_i_alert_view_09_block_8h" local="yes">Utilities/UIAlertView+Block.h</includedby>
+    <invincdepgraph>
+      <node id="1232">
+        <label>ResultView/MHRResultViewController.mm</label>
+        <link refid="_m_h_r_result_view_controller_8mm"/>
+      </node>
+      <node id="1225">
+        <label>Utilities/UIAlertView+Block.h</label>
+        <link refid="_u_i_alert_view_09_block_8h"/>
+        <childnode refid="1226" relation="include">
+        </childnode>
+        <childnode refid="1233" relation="include">
+        </childnode>
+      </node>
+      <node id="1233">
+        <label>Utilities/UIAlertView+Block.m</label>
+        <link refid="_u_i_alert_view_09_block_8m"/>
+      </node>
+      <node id="1229">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="1228">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="1226">
+        <label>ResultView/MHRResultViewController.hpp</label>
+        <link refid="_m_h_r_result_view_controller_8hpp"/>
+        <childnode refid="1227" relation="include">
+        </childnode>
+        <childnode refid="1232" relation="include">
+        </childnode>
+      </node>
+      <node id="1231">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="1224">
+        <label>Utilities/BlockAdditions.h</label>
+        <link refid="BlockAdditions.h"/>
+        <childnode refid="1225" relation="include">
+        </childnode>
+      </node>
+      <node id="1227">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="1228" relation="include">
+        </childnode>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1230" relation="include">
+        </childnode>
+      </node>
+      <node id="1230">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="1227" relation="include">
+        </childnode>
+        <childnode refid="1231" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_block_additions_8h_1aa070ffd6a26a5120a55550583b95c8c7" prot="public" static="no">
+        <name>kPhotoActionSheetTag</name>
+        <initializer>10000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" line="18" column="9" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_block_additions_8h_1aa6caa59baac5b9e0ffbf08a3de2f961d" prot="public" static="no">
+        <type>void(^</type>
+        <definition>typedef void(^ VoidBlock)()</definition>
+        <argsstring>)()</argsstring>
+        <name>VoidBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" line="12" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_block_additions_8h_1ad494ab35935449673e4736939406878e" prot="public" static="no">
+        <type>void(^</type>
+        <definition>typedef void(^ DismissBlock)(int buttonIndex)</definition>
+        <argsstring>)(int buttonIndex)</argsstring>
+        <name>DismissBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" line="14" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_block_additions_8h_1aa38483e1f273d6765108d57d0d6d01a7" prot="public" static="no">
+        <type>void(^</type>
+        <definition>typedef void(^ CancelBlock)()</definition>
+        <argsstring>)()</argsstring>
+        <name>CancelBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" line="15" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_block_additions_8h_1ad1a056ffbeb8db0717c9ed1177d61e29" prot="public" static="no">
+        <type>void(^</type>
+        <definition>typedef void(^ PhotoPickedBlock)(UIImage *chosenImage)</definition>
+        <argsstring>)(UIImage *chosenImage)</argsstring>
+        <name>PhotoPickedBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>BlockAdditions.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>SensorsCapture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>6/18/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>Misfit<sp/>Wearables.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>ref:<sp/>https://github.com/MugunthKumar/UIKitCategoryAdditions/blob/master/MKAdditions/MKBlockAdditions.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="_block_additions_8h_1aa6caa59baac5b9e0ffbf08a3de2f961d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(^<ref refid="_block_additions_8h_1aa6caa59baac5b9e0ffbf08a3de2f961d" kindref="member">VoidBlock</ref>)();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="_block_additions_8h_1ad494ab35935449673e4736939406878e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(^<ref refid="_block_additions_8h_1ad494ab35935449673e4736939406878e" kindref="member">DismissBlock</ref>)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>buttonIndex);</highlight></codeline>
+<codeline lineno="15" refid="_block_additions_8h_1aa38483e1f273d6765108d57d0d6d01a7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(^<ref refid="_block_additions_8h_1aa38483e1f273d6765108d57d0d6d01a7" kindref="member">CancelBlock</ref>)();</highlight></codeline>
+<codeline lineno="16" refid="_block_additions_8h_1ad1a056ffbeb8db0717c9ed1177d61e29" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(^<ref refid="_block_additions_8h_1ad1a056ffbeb8db0717c9ed1177d61e29" kindref="member">PhotoPickedBlock</ref>)(UIImage<sp/>*chosenImage);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="_block_additions_8h_1aa070ffd6a26a5120a55550583b95c8c7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>kPhotoActionSheetTag<sp/>10000</highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/BlockAdditions.h"/>
+  </compounddef>
+</doxygen>

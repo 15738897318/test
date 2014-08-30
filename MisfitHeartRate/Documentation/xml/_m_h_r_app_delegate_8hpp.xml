@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_m_h_r_app_delegate_8hpp" kind="file">
+    <compoundname>MHRAppDelegate.hpp</compoundname>
+    <includes local="no">UIKit/UIKit.h</includes>
+    <includedby refid="main_8m" local="yes">main.m</includedby>
+    <includedby refid="_m_h_r_app_delegate_8mm" local="yes">MHRAppDelegate.mm</includedby>
+    <includedby refid="_m_h_r_utilities_8h" local="yes">Utilities/MHRUtilities.h</includedby>
+    <incdepgraph>
+      <node id="1010">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="1009">
+        <label>MHRAppDelegate.hpp</label>
+        <link refid="MHRAppDelegate.hpp"/>
+        <childnode refid="1010" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1013">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="1016">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="1020">
+        <label>Utilities/UIView+Position.h</label>
+        <link refid="_u_i_view_09_position_8h"/>
+        <childnode refid="1015" relation="include">
+        </childnode>
+        <childnode refid="1021" relation="include">
+        </childnode>
+      </node>
+      <node id="1021">
+        <label>Utilities/UIView+Position.m</label>
+        <link refid="_u_i_view_09_position_8m"/>
+      </node>
+      <node id="1018">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="1015">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1013" relation="include">
+        </childnode>
+        <childnode refid="1017" relation="include">
+        </childnode>
+      </node>
+      <node id="1014">
+        <label>Utilities/MHRUtilities.h</label>
+        <link refid="_m_h_r_utilities_8h"/>
+        <childnode refid="1015" relation="include">
+        </childnode>
+        <childnode refid="1019" relation="include">
+        </childnode>
+        <childnode refid="1020" relation="include">
+        </childnode>
+      </node>
+      <node id="1019">
+        <label>Utilities/MHRUtilities.m</label>
+        <link refid="_m_h_r_utilities_8m"/>
+      </node>
+      <node id="1011">
+        <label>MHRAppDelegate.hpp</label>
+        <link refid="MHRAppDelegate.hpp"/>
+        <childnode refid="1012" relation="include">
+        </childnode>
+        <childnode refid="1013" relation="include">
+        </childnode>
+        <childnode refid="1014" relation="include">
+        </childnode>
+      </node>
+      <node id="1017">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="1015" relation="include">
+        </childnode>
+        <childnode refid="1018" relation="include">
+        </childnode>
+      </node>
+      <node id="1012">
+        <label>main.m</label>
+        <link refid="main_8m"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_m_h_r_app_delegate" prot="public">MHRAppDelegate</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MHRAppDelegate.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>videoHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>6/23/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;UIKit/UIKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="interface_m_h_r_app_delegate" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_h_r_app_delegate" kindref="compound">MHRAppDelegate</ref><sp/>:<sp/>UIResponder<sp/>&lt;UIApplicationDelegate&gt;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="interface_m_h_r_app_delegate_1ae07fbc2242a8ac6a6cca11d22a56dede" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(strong,<sp/>nonatomic)<sp/>UIWindow<sp/>*<ref refid="interface_m_h_r_app_delegate_1ae07fbc2242a8ac6a6cca11d22a56dede" kindref="member">window</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="interface_m_h_r_app_delegate_1a798999c986183b6b0f61070b46856713" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(readonly,<sp/>strong,<sp/>nonatomic)<sp/>NSManagedObjectContext<sp/>*<ref refid="interface_m_h_r_app_delegate_1a798999c986183b6b0f61070b46856713" kindref="member">managedObjectContext</ref>;</highlight></codeline>
+<codeline lineno="16" refid="interface_m_h_r_app_delegate_1ab0f79ebe18e402e0249870b98354612b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(readonly,<sp/>strong,<sp/>nonatomic)<sp/>NSManagedObjectModel<sp/>*<ref refid="interface_m_h_r_app_delegate_1ab0f79ebe18e402e0249870b98354612b" kindref="member">managedObjectModel</ref>;</highlight></codeline>
+<codeline lineno="17" refid="interface_m_h_r_app_delegate_1ade32c3c30bed3706907d1a52c129da79" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(readonly,<sp/>strong,<sp/>nonatomic)<sp/>NSPersistentStoreCoordinator<sp/>*<ref refid="interface_m_h_r_app_delegate_1ade32c3c30bed3706907d1a52c129da79" kindref="member">persistentStoreCoordinator</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">-<sp/>(void)<ref refid="interface_m_h_r_app_delegate_1aec18685dadaebd97aa02780c3f43c5c1" kindref="member">saveContext</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">-<sp/>(NSURL<sp/>*)<ref refid="interface_m_h_r_app_delegate_1a7f18dc9ee3d899f8b4661b48734f1001" kindref="member">applicationDocumentsDirectory</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-<sp/>(NSDictionary*)<ref refid="interface_m_h_r_app_delegate_1ac246805d8cd3d8477430f1a9c7fefbac" kindref="member">getPlistSkinDict</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/MHRAppDelegate.hpp"/>
+  </compounddef>
+</doxygen>

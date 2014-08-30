@@ -1,0 +1,817 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_b_progress_h_u_d" kind="class" prot="public">
+    <compoundname>MBProgressHUD</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIView</basecompoundref>
+    <includes refid="_m_b_progress_h_u_d_8h" local="no">MBProgressHUD.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1ace77eaaf507e86fe56436f7ee7b6fdc9" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" kindref="member">MBProgressHUDMode</ref></type>
+        <definition>MBProgressHUDMode MBProgressHUD::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref> operation mode. The default is MBProgressHUDModeIndeterminate.</para><para><simplesect kind="see"><para><ref refid="_m_b_progress_h_u_d_8h_1a553b6bab1602fa03257edde8491bb621" kindref="member">MBProgressHUDMode</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="284" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" kindref="member">MBProgressHUDAnimation</ref></type>
+        <definition>MBProgressHUDAnimation MBProgressHUD::animationType</definition>
+        <argsstring></argsstring>
+        <name>animationType</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The animation type that should be used when the HUD is shown and hidden.</para><para><simplesect kind="see"><para><ref refid="_m_b_progress_h_u_d_8h_1a892ebf586d23b21a74bc54138ca25990" kindref="member">MBProgressHUDAnimation</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="291" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a78f89e05d797a46bf9b41a5dfd1f5d4a" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIView *</type>
+        <definition>UIView* MBProgressHUD::customView</definition>
+        <argsstring></argsstring>
+        <name>customView</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The UIView (e.g., a UIImageView) to be shown when the HUD is in MBProgressHUDModeCustomView. For best results use a 37 by 37 pixel view (so the bounds match the built in indicator bounds). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="297" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1ad6fee32939fa55fc1a341aba117aa28f" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>id&lt; <ref refid="protocol_m_b_progress_h_u_d_delegate-p" kindref="compound">MBProgressHUDDelegate</ref> &gt;</type>
+        <definition>id&lt;MBProgressHUDDelegate&gt; MBProgressHUD::delegate</definition>
+        <argsstring></argsstring>
+        <name>delegate</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The HUD delegate object.</para><para><simplesect kind="see"><para><ref refid="protocol_m_b_progress_h_u_d_delegate-p" kindref="compound">MBProgressHUDDelegate</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="304" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a531706887f08881c7f13b4309521b299" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="copy">
+        <type>NSString *</type>
+        <definition>NSString* MBProgressHUD::labelText</definition>
+        <argsstring></argsstring>
+        <name>labelText</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit the entire text. If the text is too long it will get clipped by displaying &quot;...&quot; at the end. If left unchanged or set to "", then no message is displayed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="311" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a8b7cbf551fc551c64159b7a3f648c6ac" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="copy">
+        <type>NSString *</type>
+        <definition>NSString* MBProgressHUD::detailsLabelText</definition>
+        <argsstring></argsstring>
+        <name>detailsLabelText</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An optional details message displayed below the labelText message. This message is displayed only if the labelText property is also set and is different from an empty string (""). The details text can span multiple lines. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="317" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a24ab5e37917e3489d6add081324a49ff" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::opacity</definition>
+        <argsstring></argsstring>
+        <name>opacity</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The opacity of the HUD window. Defaults to 0.8 (80% opacity). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="322" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a1f4ab0f3ddc52af9353a4cf225ad1361" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBProgressHUD::color</definition>
+        <argsstring></argsstring>
+        <name>color</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The color of the HUD window. Defaults to black. If this property is set, color is set using this UIColor and the opacity property is not used. using retain because performing copy on UIColor base colors (like [UIColor greenColor]) cause problems with the copyZone. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="329" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="329" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a4e6ee114c04b90ced1a253a6d33ba785" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::xOffset</definition>
+        <argsstring></argsstring>
+        <name>xOffset</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The x-axis offset of the HUD relative to the centre of the superview. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="334" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1ad526ffcabab5131697eb0850c50ab1f4" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::yOffset</definition>
+        <argsstring></argsstring>
+        <name>yOffset</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The y-axis offset of the HUD relative to the centre of the superview. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="339" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a4126e72234f8afcb87905a9ed65c022c" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::margin</definition>
+        <argsstring></argsstring>
+        <name>margin</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The amount of space between the HUD edge and the HUD elements (labels, indicators or custom views). Defaults to 20.0 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="345" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a8a3573dbf4dcdeeb187a08d0070e811c" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::cornerRadius</definition>
+        <argsstring></argsstring>
+        <name>cornerRadius</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The corner radius for th HUD Defaults to 10.0 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="351" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="351" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1ab781ccd4428c8eff6907d2cdc90fc3ee" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MBProgressHUD::dimBackground</definition>
+        <argsstring></argsstring>
+        <name>dimBackground</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cover the HUD background view with a radial gradient. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="356" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="356" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a6f837c351a405d0bb6ec05856d7776dd" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::graceTime</definition>
+        <argsstring></argsstring>
+        <name>graceTime</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="367" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="367" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a9946e4b0b16d75f070ff0cbcc50226ef" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::minShowTime</definition>
+        <argsstring></argsstring>
+        <name>minShowTime</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The minimum time (in seconds) that the HUD is shown. This avoids the problem of the HUD being shown and than instantly hidden. Defaults to 0 (no minimum show time). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="374" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="374" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a6077ea42c37c18b3058ed63ac10ede8f" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MBProgressHUD::taskInProgress</definition>
+        <argsstring></argsstring>
+        <name>taskInProgress</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Indicates that the executed operation is in progress. Needed for correct graceTime operation. If you don&apos;t set a graceTime (different than 0.0) this does nothing. This property is automatically set when using showWhileExecuting:onTarget:withObject:animated:. When threading is done outside of the HUD (i.e., when the show: and hide: methods are used directly), you need to set this property when your task starts and completes in order to have normal graceTime functionality. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="384" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="384" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a36639aa18a70f2734942695c32ec5e91" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MBProgressHUD::removeFromSuperViewOnHide</definition>
+        <argsstring></argsstring>
+        <name>removeFromSuperViewOnHide</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes the HUD from its parent view when hidden. Defaults to NO. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="390" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1ae61e736a34f341f4190b065f19010af8" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIFont *</type>
+        <definition>UIFont* MBProgressHUD::labelFont</definition>
+        <argsstring></argsstring>
+        <name>labelFont</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Font to be used for the main label. Set this property if the default is not adequate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="395" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a04eba696a66f65d28b485bb5f0a940cd" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBProgressHUD::labelColor</definition>
+        <argsstring></argsstring>
+        <name>labelColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Color to be used for the main label. Set this property if the default is not adequate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="400" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1af070a363d323d8eb0285e38d398b51c2" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIFont *</type>
+        <definition>UIFont* MBProgressHUD::detailsLabelFont</definition>
+        <argsstring></argsstring>
+        <name>detailsLabelFont</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Font to be used for the details label. Set this property if the default is not adequate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="405" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="405" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1ace929217bd7673159f063d5b8e80b080" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIColor *</type>
+        <definition>UIColor* MBProgressHUD::detailsLabelColor</definition>
+        <argsstring></argsstring>
+        <name>detailsLabelColor</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Color to be used for the details label. Set this property if the default is not adequate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="410" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="410" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a4c8328617d11efd1f5452032246ca97f" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>float</type>
+        <definition>float MBProgressHUD::progress</definition>
+        <argsstring></argsstring>
+        <name>progress</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="415" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="415" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a69c6b2cad533d6fe7d90df02bf7f8b0c" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGSize</type>
+        <definition>CGSize MBProgressHUD::minSize</definition>
+        <argsstring></argsstring>
+        <name>minSize</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The minimum size of the HUD bezel. Defaults to CGSizeZero (no minimum size). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="420" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_b_progress_h_u_d_1a4bf7271b213e304259aa7d97f7cb1849" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MBProgressHUD::square</definition>
+        <argsstring></argsstring>
+        <name>square</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Force the HUD dimensions to be equal if possible. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="425" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a85d0c8c9647c47a289e7e7ea5d477c9a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" kindref="member">MB_INSTANCETYPE</ref></type>
+        <definition>MB_INSTANCETYPE MBProgressHUD::showHUDAddedTo:animated:</definition>
+        <argsstring>(UIView *view,[animated] BOOL animated)</argsstring>
+        <name>showHUDAddedTo:animated:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <attributes>[animated]</attributes>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new HUD, adds it to provided view and shows it. The counterpart to this method is hideHUDForView:animated:.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The view that the HUD will be added to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUD will appear using the current animationType. If set to NO the HUD will not use animations while appearing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the created HUD.</para></simplesect>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1ab7a06aebc0d49b4fc963815ad424013f" kindref="member">+ hideHUDForView:animated:</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="126" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1ab7a06aebc0d49b4fc963815ad424013f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL MBProgressHUD::hideHUDForView:animated:</definition>
+        <argsstring>(UIView *view,[animated] BOOL animated)</argsstring>
+        <name>hideHUDForView:animated:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <attributes>[animated]</attributes>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Finds the top-most HUD subview and hides it. The counterpart to this method is showHUDAddedTo:animated:.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The view that is going to be searched for a HUD subview. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUD will disappear using the current animationType. If set to NO the HUD will not use animations while disappearing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>YES if a HUD was found and removed, NO otherwise.</para></simplesect>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a85d0c8c9647c47a289e7e7ea5d477c9a" kindref="member">+ showHUDAddedTo:animated:</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="133" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a86053d76e84d0fdf033af091df5ea239" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSUInteger</type>
+        <definition>NSUInteger MBProgressHUD::hideAllHUDsForView:animated:</definition>
+        <argsstring>(UIView *view,[animated] BOOL animated)</argsstring>
+        <name>hideAllHUDsForView:animated:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <attributes>[animated]</attributes>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Finds all the HUD subviews and hides them.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The view that is going to be searched for HUD subviews. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUDs will disappear using the current animationType. If set to NO the HUDs will not use animations while disappearing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of HUDs found and removed.</para></simplesect>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1ab7a06aebc0d49b4fc963815ad424013f" kindref="member">+ hideHUDForView:animated:</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="143" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a30afd912f412c6612eee7f1e17241b5b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="_m_b_progress_h_u_d_8h_1a3b2863c8570213ff818b8e2361014d34" kindref="member">MB_INSTANCETYPE</ref></type>
+        <definition>MB_INSTANCETYPE MBProgressHUD::HUDForView:</definition>
+        <argsstring>(UIView *view)</argsstring>
+        <name>HUDForView:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Finds the top-most HUD subview and returns it.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The view that is going to be searched. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the last HUD subview discovered. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="152" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1aaa8882a53b5edfd617b4ba112c60811b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSArray *</type>
+        <definition>NSArray * MBProgressHUD::allHUDsForView:</definition>
+        <argsstring>(UIView *view)</argsstring>
+        <name>allHUDsForView:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Finds all HUD subviews and returns them.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The view that is going to be searched. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>All found HUD views (array of <ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref> objects). </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="162" bodyend="171"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a8f3c01167d59153c85ae7efdca7717fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id MBProgressHUD::initWithWindow:</definition>
+        <argsstring>(UIWindow *window)</argsstring>
+        <name>initWithWindow:</name>
+        <param>
+          <type>UIWindow *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A convenience constructor that initializes the HUD with the window&apos;s bounds. Calls the designated constructor with window.bounds as the parameter.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>window</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The window instance that will provide the bounds for the HUD. Should be the same instance as the HUD&apos;s superview (i.e., the window that the HUD will be added to). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="224" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1ae42ee0d2d0ea58fac1ce8de6b5ea3b60" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id MBProgressHUD::initWithView:</definition>
+        <argsstring>(UIView *view)</argsstring>
+        <name>initWithView:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A convenience constructor that initializes the HUD with the view&apos;s bounds. Calls the designated constructor with view.bounds as the parameter</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The view instance that will provide the bounds for the HUD. Should be the same instance as the HUD&apos;s superview (i.e., the view that the HUD will be added to). </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="219" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a3ef075a3be624c2f94629d63bfeae25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD::show:</definition>
+        <argsstring>(BOOL animated)</argsstring>
+        <name>show:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Display the HUD. You need to make sure that the main thread completes its run loop soon after this method call so the user interface can be updated. Call this method when your task is already set-up to be executed in a new thread (e.g., when using something like NSOperation or calling an asynchronous call like NSURLRequest).</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUD will appear using the current animationType. If set to NO the HUD will not use animations while appearing.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="255" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a500fd79859e56cf98fd2eebfd37b4204" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD::hide:</definition>
+        <argsstring>(BOOL animated)</argsstring>
+        <name>hide:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hide the HUD. This still calls the hudWasHidden: delegate. This is the counterpart of the show: method. Use it to hide the HUD when your task completes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUD will disappear using the current animationType. If set to NO the HUD will not use animations while disappearing.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="269" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1aec6533c21bf8a9f3e552cb133ef6aeed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD::hide:afterDelay:</definition>
+        <argsstring>(BOOL animated,[afterDelay] NSTimeInterval delay)</argsstring>
+        <name>hide:afterDelay:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <param>
+          <attributes>[afterDelay]</attributes>
+          <type>NSTimeInterval</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hide the HUD after a delay. This still calls the hudWasHidden: delegate. This is the counterpart of the show: method. Use it to hide the HUD when your task completes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUD will disappear using the current animationType. If set to NO the HUD will not use animations while disappearing. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay in seconds until the HUD is hidden.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" kindref="member">animationType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="285" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_m_b_progress_h_u_d_1a23cd23b9c46bd819f14314426ed9dcdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD::showWhileExecuting:onTarget:withObject:animated:</definition>
+        <argsstring>(SEL method,[onTarget] id target,[withObject] id object,[animated] BOOL animated)</argsstring>
+        <name>showWhileExecuting:onTarget:withObject:animated:</name>
+        <param>
+          <type>SEL</type>
+          <declname>method</declname>
+        </param>
+        <param>
+          <attributes>[onTarget]</attributes>
+          <type>id</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <attributes>[withObject]</attributes>
+          <type>id</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <attributes>[animated]</attributes>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shows the HUD while a background task is executing in a new thread, then hides the HUD.</para><para>This method also takes care of autorelease pools so your method does not have to be concerned with setting up a pool.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The method to be executed while the HUD is shown. This method will be executed in a new thread. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object that the target method belongs to. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An optional object to be passed to the method. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>animated</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to YES the HUD will (dis)appear using the current animationType. If set to NO the HUD will not use animations while (dis)appearing. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="16" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="389" bodyend="398"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Displays a simple HUD window containing a progress indicator and two optional labels for short messages.</para><para>This is a simple drop-in class for displaying a progress HUD view similar to Apple&apos;s private UIProgressHUD class. The <ref refid="interface_m_b_progress_h_u_d" kindref="compound">MBProgressHUD</ref> window spans over the entire space given to it by the initWithFrame constructor and catches all user input on this region, thereby preventing the user operations on components below the view. The HUD itself is drawn centered as a rounded semi-transparent view which resizes depending on the user specified content.</para><para>This view supports four modes of operation:<itemizedlist>
+<listitem><para>MBProgressHUDModeIndeterminate - shows a UIActivityIndicatorView</para></listitem><listitem><para>MBProgressHUDModeDeterminate - shows a custom round progress indicator</para></listitem><listitem><para>MBProgressHUDModeAnnularDeterminate - shows a custom annular progress indicator</para></listitem><listitem><para>MBProgressHUDModeCustomView - shows an arbitrary, user specified view (<simplesect kind="see"><para><ref refid="interface_m_b_progress_h_u_d_1a78f89e05d797a46bf9b41a5dfd1f5d4a" kindref="member">customView</ref>)</para></simplesect>
+All three modes can have optional labels assigned:</para></listitem><listitem><para>If the labelText property is set and non-empty then a label containing the provided content is placed below the indicator view.</para></listitem><listitem><para>If also the detailsLabelText property is set then another label is placed below the first label. </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>MBProgressHUD</label>
+        <link refid="interface_m_b_progress_h_u_d"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>UIView</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10">
+        <label>MBProgressHUD</label>
+        <link refid="interface_m_b_progress_h_u_d"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>UIView</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" line="112" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.h" bodystart="111" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_b_progress_h_u_d_1aaa8882a53b5edfd617b4ba112c60811b" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>allHUDsForView:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a71d04bb9e2839df9377ad10d03b2e468" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>animationType</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a1f4ab0f3ddc52af9353a4cf225ad1361" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>color</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a8a3573dbf4dcdeeb187a08d0070e811c" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>cornerRadius</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a78f89e05d797a46bf9b41a5dfd1f5d4a" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>customView</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ad6fee32939fa55fc1a341aba117aa28f" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>delegate</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ace929217bd7673159f063d5b8e80b080" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>detailsLabelColor</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1af070a363d323d8eb0285e38d398b51c2" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>detailsLabelFont</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a8b7cbf551fc551c64159b7a3f648c6ac" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>detailsLabelText</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ab781ccd4428c8eff6907d2cdc90fc3ee" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>dimBackground</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a6f837c351a405d0bb6ec05856d7776dd" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>graceTime</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a500fd79859e56cf98fd2eebfd37b4204" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>hide:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1aec6533c21bf8a9f3e552cb133ef6aeed" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>hide:afterDelay:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a86053d76e84d0fdf033af091df5ea239" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>hideAllHUDsForView:animated:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ab7a06aebc0d49b4fc963815ad424013f" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>hideHUDForView:animated:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a30afd912f412c6612eee7f1e17241b5b" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>HUDForView:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ae42ee0d2d0ea58fac1ce8de6b5ea3b60" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>initWithView:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a8f3c01167d59153c85ae7efdca7717fc" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>initWithWindow:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a04eba696a66f65d28b485bb5f0a940cd" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>labelColor</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ae61e736a34f341f4190b065f19010af8" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>labelFont</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a531706887f08881c7f13b4309521b299" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>labelText</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a4126e72234f8afcb87905a9ed65c022c" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>margin</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a9946e4b0b16d75f070ff0cbcc50226ef" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>minShowTime</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a69c6b2cad533d6fe7d90df02bf7f8b0c" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>minSize</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ace77eaaf507e86fe56436f7ee7b6fdc9" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>mode</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a24ab5e37917e3489d6add081324a49ff" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>opacity</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a4c8328617d11efd1f5452032246ca97f" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>progress</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a36639aa18a70f2734942695c32ec5e91" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>removeFromSuperViewOnHide</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a3ef075a3be624c2f94629d63bfeae25b" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>show:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a85d0c8c9647c47a289e7e7ea5d477c9a" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>showHUDAddedTo:animated:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a23cd23b9c46bd819f14314426ed9dcdb" prot="public" virt="virtual"><scope>MBProgressHUD</scope><name>showWhileExecuting:onTarget:withObject:animated:</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a4bf7271b213e304259aa7d97f7cb1849" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>square</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a6077ea42c37c18b3058ed63ac10ede8f" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>taskInProgress</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1a4e6ee114c04b90ced1a253a6d33ba785" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>xOffset</name></member>
+      <member refid="interface_m_b_progress_h_u_d_1ad526ffcabab5131697eb0850c50ab1f4" prot="public" virt="non-virtual"><scope>MBProgressHUD</scope><name>yOffset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

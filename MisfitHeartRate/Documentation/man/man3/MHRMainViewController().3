@@ -1,0 +1,272 @@
+.TH "MHRMainViewController()" 3 "Sat Aug 30 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MHRMainViewController() \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "BOOL \fBisCapturing\fP"
+.br
+.ti -1c
+.RI "cv::Rect \fBcropArea\fP"
+.br
+.ti -1c
+.RI "cv::Rect \fBROI_upper\fP"
+.br
+.ti -1c
+.RI "cv::Rect \fBROI_lower\fP"
+.br
+.ti -1c
+.RI "\fBMHRResultViewController\fP * \fBresultView\fP"
+.br
+.ti -1c
+.RI "\fBhrResult\fP \fBcurrentResult\fP"
+.br
+.ti -1c
+.RI "int \fBframesWithFace\fP"
+.br
+.ti -1c
+.RI "int \fBframesWithNoFace\fP"
+.br
+.ti -1c
+.RI "\fBMBProgressHUD\fP * \fBprogressHUD\fP"
+.br
+.ti -1c
+.RI "bool \fBisCalcMode\fP"
+.br
+.ti -1c
+.RI "double \fBlower_range\fP"
+.br
+.ti -1c
+.RI "double \fBupper_range\fP"
+.br
+.ti -1c
+.RI "\fBhrResult\fP \fBresult\fP"
+.br
+.ti -1c
+.RI "std::vector< double > \fBtemporal_mean\fP"
+.br
+.ti -1c
+.RI "NSMutableArray * \fBframeIndexArray\fP"
+.br
+.ti -1c
+.RI "NSOperationQueue * \fBmyQueue\fP"
+.br
+.ti -1c
+.RI "int \fBblockNumber\fP"
+.br
+.ti -1c
+.RI "int \fBblockCount\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "CvVideoCamera * \fBvideoCamera\fP"
+.br
+.ti -1c
+.RI "NSString * \fBoutPath\fP"
+.br
+.ti -1c
+.RI "NSInteger \fBnFrames\fP"
+.br
+.ti -1c
+.RI "NSInteger \fBrecordTime\fP"
+.br
+.ti -1c
+.RI "NSTimer * \fBrecordTimer\fP"
+.br
+.ti -1c
+.RI "IBOutlet UIImageView * \fBimageView\fP"
+.br
+.ti -1c
+.RI "IBOutlet UISwitch * \fBcameraSwitch\fP"
+.br
+.ti -1c
+.RI "IBOutlet UILabel * \fBfaceLabel\fP"
+.br
+.ti -1c
+.RI "IBOutlet UILabel * \fBfingerLabel\fP"
+.br
+.ti -1c
+.RI "IBOutlet UILabel * \fBfingerSwitchLabel\fP"
+.br
+.ti -1c
+.RI "IBOutlet UILabel * \fBfaceSwitchLabel\fP"
+.br
+.ti -1c
+.RI "IBOutlet UILabel * \fBrecordTimeLabel\fP"
+.br
+.ti -1c
+.RI "IBOutlet UIBarButtonItem * \fBstartButton\fP"
+.br
+.ti -1c
+.RI "IBOutlet UIBarButtonItem * \fBstopButton\fP"
+.br
+.ti -1c
+.RI "IBOutlet UIView * \fBviewTop\fP"
+.br
+.ti -1c
+.RI "IBOutlet UILabel * \fBlabelTop\fP"
+.br
+.ti -1c
+.RI "IBOutlet UIView * \fBviewTop2\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 25 of file MHRMainViewController\&.mm\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "- (int) blockCount\fC [protected]\fP"
+
+.PP
+Definition at line 44 of file MHRMainViewController\&.mm\&.
+.SS "- (int) blockNumber\fC [protected]\fP"
+
+.PP
+Definition at line 43 of file MHRMainViewController\&.mm\&.
+.SS "- (Rect \fBMHRMainViewController\fP()):\fC [protected]\fP"
+
+.PP
+Definition at line 28 of file MHRMainViewController\&.mm\&.
+.SS "- (\fBhrResult\fP) currentResult\fC [protected]\fP"
+
+.PP
+Definition at line 30 of file MHRMainViewController\&.mm\&.
+.SS "- (NSMutableArray*) frameIndexArray\fC [protected]\fP"
+
+.PP
+Definition at line 40 of file MHRMainViewController\&.mm\&.
+.SS "- (int) framesWithFace\fC [protected]\fP"
+
+.PP
+Definition at line 31 of file MHRMainViewController\&.mm\&.
+.SS "- (int) framesWithNoFace\fC [protected]\fP"
+
+.PP
+Definition at line 32 of file MHRMainViewController\&.mm\&.
+.SS "- (bool) isCalcMode\fC [protected]\fP"
+
+.PP
+Definition at line 35 of file MHRMainViewController\&.mm\&.
+.SS "- (BOOL) isCapturing\fC [protected]\fP"
+
+.PP
+Definition at line 27 of file MHRMainViewController\&.mm\&.
+.SS "- (double) lower_range\fC [protected]\fP"
+
+.PP
+Definition at line 36 of file MHRMainViewController\&.mm\&.
+.SS "- (NSOperationQueue*) myQueue\fC [protected]\fP"
+
+.PP
+Definition at line 42 of file MHRMainViewController\&.mm\&.
+.SS "- (\fBMBProgressHUD\fP*) progressHUD\fC [protected]\fP"
+
+.PP
+Definition at line 33 of file MHRMainViewController\&.mm\&.
+.SS "- (\fBhrResult\fP) result\fC [protected]\fP"
+
+.PP
+Definition at line 38 of file MHRMainViewController\&.mm\&.
+.SS "- (\fBMHRResultViewController\fP*) resultView\fC [protected]\fP"
+
+.PP
+Definition at line 29 of file MHRMainViewController\&.mm\&.
+.SS "- (Rect \fBMHRMainViewController\fP()):\fC [protected]\fP"
+
+.PP
+Definition at line 28 of file MHRMainViewController\&.mm\&.
+.SS "- (Rect \fBMHRMainViewController\fP()):\fC [protected]\fP"
+
+.PP
+Definition at line 28 of file MHRMainViewController\&.mm\&.
+.SS "- (vector<double> \fBMHRMainViewController\fP()):\fC [protected]\fP"
+
+.PP
+Definition at line 39 of file MHRMainViewController\&.mm\&.
+.SS "- (double) upper_range\fC [protected]\fP"
+
+.PP
+Definition at line 37 of file MHRMainViewController\&.mm\&.
+.SH "Property Documentation"
+.PP 
+.SS "- (IBOutlet UISwitch*) cameraSwitch\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 54 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UILabel*) faceLabel\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 55 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UILabel*) faceSwitchLabel\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 58 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UILabel*) fingerLabel\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 56 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UILabel*) fingerSwitchLabel\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 57 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UIImageView*) imageView\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 53 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UILabel*) labelTop\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 63 of file MHRMainViewController\&.mm\&.
+.SS "- (NSInteger) nFrames\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [assign]\fP"
+
+.PP
+Definition at line 49 of file MHRMainViewController\&.mm\&.
+.SS "- (NSString*) outPath\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+
+.PP
+Definition at line 48 of file MHRMainViewController\&.mm\&.
+.SS "- (NSInteger) recordTime\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [assign]\fP"
+
+.PP
+Definition at line 50 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UILabel*) recordTimeLabel\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 59 of file MHRMainViewController\&.mm\&.
+.SS "- (NSTimer*) recordTimer\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+
+.PP
+Definition at line 51 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UIBarButtonItem*) startButton\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+
+.PP
+Definition at line 60 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UIBarButtonItem*) stopButton\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+
+.PP
+Definition at line 61 of file MHRMainViewController\&.mm\&.
+.SS "- (CvVideoCamera*) videoCamera\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [retain]\fP"
+
+.PP
+Definition at line 47 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UIView*) viewTop\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 62 of file MHRMainViewController\&.mm\&.
+.SS "- (IBOutlet UIView*) viewTop2\fC [read]\fP, \fC [write]\fP, \fC [nonatomic]\fP, \fC [weak]\fP"
+
+.PP
+Definition at line 64 of file MHRMainViewController\&.mm\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

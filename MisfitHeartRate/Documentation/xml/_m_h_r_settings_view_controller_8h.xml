@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_m_h_r_settings_view_controller_8h" kind="file">
+    <compoundname>MHRSettingsViewController.h</compoundname>
+    <includes local="no">UIKit/UIKit.h</includes>
+    <includedby refid="_m_h_r_main_view_controller_8hpp" local="yes">MainView/MHRMainViewController.hpp</includedby>
+    <includedby refid="_m_h_r_settings_view_controller_8m" local="yes">SettingsView/MHRSettingsViewController.m</includedby>
+    <incdepgraph>
+      <node id="1104">
+        <label>UIKit/UIKit.h</label>
+      </node>
+      <node id="1103">
+        <label>SettingsView/MHRSettingsViewController.h</label>
+        <link refid="MHRSettingsViewController.h"/>
+        <childnode refid="1104" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1108">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="1107">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="1110">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="1106">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="1107" relation="include">
+        </childnode>
+        <childnode refid="1108" relation="include">
+        </childnode>
+        <childnode refid="1109" relation="include">
+        </childnode>
+      </node>
+      <node id="1105">
+        <label>SettingsView/MHRSettingsViewController.h</label>
+        <link refid="MHRSettingsViewController.h"/>
+        <childnode refid="1106" relation="include">
+        </childnode>
+        <childnode refid="1111" relation="include">
+        </childnode>
+      </node>
+      <node id="1111">
+        <label>SettingsView/MHRSettingsViewController.m</label>
+        <link refid="_m_h_r_settings_view_controller_8m"/>
+      </node>
+      <node id="1109">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="1106" relation="include">
+        </childnode>
+        <childnode refid="1110" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="protocol_m_h_r_settings_view_delegate-p" prot="public">MHRSettingsViewDelegate-p</innerclass>
+    <innerclass refid="interface_m_h_r_settings_view_controller" prot="public">MHRSettingsViewController</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MHRSettingsViewController.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Pulsar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>8/18/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>Misfit<sp/>Wearables<sp/>Corporation.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;UIKit/UIKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="protocol_m_h_r_settings_view_delegate-p" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@protocol<sp/></highlight><highlight class="normal"><ref refid="protocol_m_h_r_settings_view_delegate-p" kindref="compound">MHRSettingsViewDelegate</ref><sp/>&lt;NSObject&gt;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">@required</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">-<sp/>(void)debugModeChanged:(BOOL)mode;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">-<sp/>(void)threeChanModeChanged:(BOOL)mode;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="interface_m_h_r_settings_view_controller" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_m_h_r_settings_view_controller" kindref="compound">MHRSettingsViewController</ref><sp/>:<sp/>UIViewController</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22" refid="interface_m_h_r_settings_view_controller_1a6fa685e4f9358a047d6f1cfd77f7ac0f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>id<sp/>&lt;MHRSettingsViewDelegate&gt;<sp/><ref refid="interface_m_h_r_settings_view_controller_1a6fa685e4f9358a047d6f1cfd77f7ac0f" kindref="member">_delegate</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="interface_m_h_r_settings_view_controller_1a44380e171f6d773f58dc158ff58d47aa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(strong,<sp/>nonatomic)<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>delegate;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="interface_m_h_r_settings_view_controller_1abb8745a6f5f7529e69628d8f5f4f068e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign,<sp/>nonatomic)<sp/>BOOL<sp/>debugModeOn;</highlight></codeline>
+<codeline lineno="28" refid="interface_m_h_r_settings_view_controller_1add55937fcb10a424e5f651d372b4b6a9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">@property</highlight><highlight class="normal"><sp/>(assign,<sp/>nonatomic)<sp/>BOOL<sp/>threeChanModeOn;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h"/>
+  </compounddef>
+</doxygen>

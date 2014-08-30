@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="hr__structures_8h" kind="file">
+    <compoundname>hr_structures.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="hb__counter__autocorr_8h" local="yes">algorithms/HeartRateCal/hb_counter_autocorr.h</includedby>
+    <includedby refid="hb__counter__pda_8h" local="yes">algorithms/HeartRateCal/hb_counter_pda.h</includedby>
+    <includedby refid="hr__structures_8cpp" local="yes">algorithms/HeartRateCal/hr_structures.cpp</includedby>
+    <incdepgraph>
+      <node id="507">
+        <label>algorithms/HeartRateCal/hr_structures.h</label>
+        <link refid="hr_structures.h"/>
+        <childnode refid="508" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+      </node>
+      <node id="508">
+        <label>vector</label>
+      </node>
+      <node id="509">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="511">
+        <label>algorithms/HeartRateCal/hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+      </node>
+      <node id="527">
+        <label>globals.cpp</label>
+        <link refid="globals_8cpp"/>
+      </node>
+      <node id="520">
+        <label>algorithms/processingPerBlock.cpp</label>
+        <link refid="processing_per_block_8cpp"/>
+      </node>
+      <node id="526">
+        <label>globals.h</label>
+        <link refid="globals_8h"/>
+        <childnode refid="517" relation="include">
+        </childnode>
+        <childnode refid="527" relation="include">
+        </childnode>
+        <childnode refid="521" relation="include">
+        </childnode>
+      </node>
+      <node id="523">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="522">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="517">
+        <label>algorithms/processingCumulative.h</label>
+        <link refid="processing_cumulative_8h"/>
+        <childnode refid="518" relation="include">
+        </childnode>
+        <childnode refid="519" relation="include">
+        </childnode>
+        <childnode refid="521" relation="include">
+        </childnode>
+      </node>
+      <node id="518">
+        <label>algorithms/processingCumulative.cpp</label>
+        <link refid="processing_cumulative_8cpp"/>
+      </node>
+      <node id="513">
+        <label>algorithms/HeartRateCal/hr_signal_calc.h</label>
+        <link refid="hr__signal__calc_8h"/>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+        <childnode refid="526" relation="include">
+        </childnode>
+      </node>
+      <node id="516">
+        <label>algorithms/HeartRateCal/temporal_mean_calc.cpp</label>
+        <link refid="temporal__mean__calc_8cpp"/>
+      </node>
+      <node id="510">
+        <label>algorithms/HeartRateCal/hr_structures.h</label>
+        <link refid="hr_structures.h"/>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="528" relation="include">
+        </childnode>
+        <childnode refid="530" relation="include">
+        </childnode>
+      </node>
+      <node id="528">
+        <label>algorithms/HeartRateCal/hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="529" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+      </node>
+      <node id="530">
+        <label>algorithms/HeartRateCal/hr_structures.cpp</label>
+        <link refid="hr__structures_8cpp"/>
+      </node>
+      <node id="525">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="521">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="522" relation="include">
+        </childnode>
+        <childnode refid="523" relation="include">
+        </childnode>
+        <childnode refid="524" relation="include">
+        </childnode>
+      </node>
+      <node id="515">
+        <label>algorithms/HeartRateCal/temporal_mean_calc.h</label>
+        <link refid="temporal__mean__calc_8h"/>
+        <childnode refid="516" relation="include">
+        </childnode>
+        <childnode refid="517" relation="include">
+        </childnode>
+      </node>
+      <node id="512">
+        <label>algorithms/HeartRateCal/hb_counter_autocorr.cpp</label>
+        <link refid="hb__counter__autocorr_8cpp"/>
+      </node>
+      <node id="519">
+        <label>algorithms/processingPerBlock.h</label>
+        <link refid="processing_per_block_8h"/>
+        <childnode refid="520" relation="include">
+        </childnode>
+        <childnode refid="521" relation="include">
+        </childnode>
+      </node>
+      <node id="514">
+        <label>algorithms/HeartRateCal/hr_signal_calc.cpp</label>
+        <link refid="hr__signal__calc_8cpp"/>
+      </node>
+      <node id="524">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="521" relation="include">
+        </childnode>
+        <childnode refid="525" relation="include">
+        </childnode>
+      </node>
+      <node id="529">
+        <label>algorithms/HeartRateCal/hb_counter_pda.cpp</label>
+        <link refid="hb__counter__pda_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_m_h_r_1_1hr_debug" prot="public">MHR::hrDebug</innerclass>
+    <innerclass refid="struct_m_h_r_1_1hr_result" prot="public">MHR::hrResult</innerclass>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>hr_structures.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Pulsar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Bao<sp/>Nguyen<sp/>on<sp/>8/20/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>Misfit<sp/>Wearables<sp/>Corporation.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__Pulsar__hr_structures__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__Pulsar__hr_structures__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="18" refid="struct_m_h_r_1_1hr_debug" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_m_h_r_1_1hr_debug" kindref="compound">hrDebug</ref><sp/>{</highlight></codeline>
+<codeline lineno="19" refid="struct_m_h_r_1_1hr_debug_1ab0a19a437cbd96f0af5d1b41114c1b80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_debug_1ab0a19a437cbd96f0af5d1b41114c1b80" kindref="member">avg_hr</ref>;</highlight></codeline>
+<codeline lineno="20" refid="struct_m_h_r_1_1hr_debug_1aecd197b08db2c97469bc1d99af93a559" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;pair&lt;double,int&gt;&gt;<sp/><ref refid="struct_m_h_r_1_1hr_debug_1aecd197b08db2c97469bc1d99af93a559" kindref="member">heartBeats</ref>;</highlight></codeline>
+<codeline lineno="21" refid="struct_m_h_r_1_1hr_debug_1a019b377c2e1d3ade917074967cf20504" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/><ref refid="struct_m_h_r_1_1hr_debug_1a019b377c2e1d3ade917074967cf20504" kindref="member">heartRates</ref>;</highlight></codeline>
+<codeline lineno="22" refid="struct_m_h_r_1_1hr_debug_1a6222c0c8c70a697d9d312e238933952b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/><ref refid="struct_m_h_r_1_1hr_debug_1a6222c0c8c70a697d9d312e238933952b" kindref="member">autocorrelation</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="26" refid="struct_m_h_r_1_1hr_result" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result_1a369652948d5ff326dc1a822cbc0cc082" kindref="member">autocorr</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>avg_hr_autocorr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result_1a7b5e354201327bd08c0ebded5c48367d" kindref="member">pda</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>avg_hr_pda</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>autocorr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pda);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_m_h_r_1_1hr_result" kindref="compound">hrResult</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__Pulsar__hr_structures__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_1db81da9ff9a71f9da8bc79036c759da" kind="dir">
+    <compoundname>algorithms/image</compoundname>
+    <innerfile refid="image_8cpp">image.cpp</innerfile>
+    <innerfile refid="image_8h">image.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/image/"/>
+  </compounddef>
+</doxygen>

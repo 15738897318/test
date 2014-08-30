@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="category_m_h_r_result_view_controller_07_08" kind="category" prot="public">
+    <compoundname>MHRResultViewController()</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="category_m_h_r_result_view_controller_07_08_1a47e15cc9dd4edba89fabe5631de70baa" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRResultViewController()::autocorrLabel</definition>
+        <argsstring></argsstring>
+        <name>autocorrLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.mm" line="13" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.mm" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_h_r_result_view_controller_07_08_1a4d91971b1a4e42c64a1c0d2790b1fe53" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="weak">
+        <type>IBOutlet UILabel *</type>
+        <definition>IBOutlet UILabel* MHRResultViewController()::pdaLabel</definition>
+        <argsstring></argsstring>
+        <name>pdaLabel</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.mm" line="14" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.mm" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.mm" line="11" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/ResultView/MHRResultViewController.mm" bodystart="11" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="category_m_h_r_result_view_controller_07_08_1a47e15cc9dd4edba89fabe5631de70baa" prot="public" virt="non-virtual"><scope>MHRResultViewController()</scope><name>autocorrLabel</name></member>
+      <member refid="category_m_h_r_result_view_controller_07_08_1a4d91971b1a4e42c64a1c0d2790b1fe53" prot="public" virt="non-virtual"><scope>MHRResultViewController()</scope><name>pdaLabel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

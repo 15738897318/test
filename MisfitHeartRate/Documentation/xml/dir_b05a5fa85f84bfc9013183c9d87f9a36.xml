@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_b05a5fa85f84bfc9013183c9d87f9a36" kind="dir">
+    <compoundname>Utilities</compoundname>
+    <innerfile refid="auto__start_8hpp">auto_start.hpp</innerfile>
+    <innerfile refid="auto__start_8mm">auto_start.mm</innerfile>
+    <innerfile refid="_block_additions_8h">BlockAdditions.h</innerfile>
+    <innerfile refid="_m_b_progress_h_u_d_8h">MBProgressHUD.h</innerfile>
+    <innerfile refid="_m_b_progress_h_u_d_8m">MBProgressHUD.m</innerfile>
+    <innerfile refid="_m_h_r_utilities_8h">MHRUtilities.h</innerfile>
+    <innerfile refid="_m_h_r_utilities_8m">MHRUtilities.m</innerfile>
+    <innerfile refid="_u_i_alert_view_09_block_8h">UIAlertView+Block.h</innerfile>
+    <innerfile refid="_u_i_alert_view_09_block_8m">UIAlertView+Block.m</innerfile>
+    <innerfile refid="_u_i_image_c_v_mat_converter_8hpp">UIImageCVMatConverter.hpp</innerfile>
+    <innerfile refid="_u_i_image_c_v_mat_converter_8mm">UIImageCVMatConverter.mm</innerfile>
+    <innerfile refid="_u_i_view_09_position_8h">UIView+Position.h</innerfile>
+    <innerfile refid="_u_i_view_09_position_8m">UIView+Position.m</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/"/>
+  </compounddef>
+</doxygen>

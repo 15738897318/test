@@ -1,0 +1,115 @@
+.TH "Utilities/MBProgressHUD.h" 3 "Sat Aug 30 2014" "Pulsar" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Utilities/MBProgressHUD.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#import <Foundation/Foundation\&.h>\fP
+.br
+\fC#import <UIKit/UIKit\&.h>\fP
+.br
+\fC#import <CoreGraphics/CoreGraphics\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBMBProgressHUD\fP"
+.br
+.ti -1c
+.RI "protocol \fB<MBProgressHUDDelegate>\fP"
+.br
+.ti -1c
+.RI "class \fBMBRoundProgressView\fP"
+.br
+.ti -1c
+.RI "class \fBMBBarProgressView\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBMB_INSTANCETYPE\fP   id"
+.br
+.ti -1c
+.RI "#define \fBMB_STRONG\fP   retain"
+.br
+.ti -1c
+.RI "#define \fBMB_WEAK\fP   assign"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMBProgressHUDMode\fP { \fBMBProgressHUDModeIndeterminate\fP, \fBMBProgressHUDModeDeterminate\fP, \fBMBProgressHUDModeDeterminateHorizontalBar\fP, \fBMBProgressHUDModeAnnularDeterminate\fP, \fBMBProgressHUDModeCustomView\fP, \fBMBProgressHUDModeText\fP }"
+.br
+.ti -1c
+.RI "enum \fBMBProgressHUDAnimation\fP { \fBMBProgressHUDAnimationFade\fP, \fBMBProgressHUDAnimationZoom\fP, \fBMBProgressHUDAnimationZoomOut\fP = MBProgressHUDAnimationZoom, \fBMBProgressHUDAnimationZoomIn\fP }"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define MB_INSTANCETYPE   id"
+
+.PP
+Definition at line 65 of file MBProgressHUD\&.h\&.
+.SS "#define MB_STRONG   retain"
+
+.PP
+Definition at line 73 of file MBProgressHUD\&.h\&.
+.SS "#define MB_WEAK   assign"
+
+.PP
+Definition at line 83 of file MBProgressHUD\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBMBProgressHUDAnimation\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMBProgressHUDAnimationFade \fP\fP
+Opacity animation 
+.TP
+\fB\fIMBProgressHUDAnimationZoom \fP\fP
+Opacity + scale animation 
+.TP
+\fB\fIMBProgressHUDAnimationZoomOut \fP\fP
+.TP
+\fB\fIMBProgressHUDAnimationZoomIn \fP\fP
+.PP
+Definition at line 51 of file MBProgressHUD\&.h\&.
+.SS "enum \fBMBProgressHUDMode\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMBProgressHUDModeIndeterminate \fP\fP
+Progress is shown using an UIActivityIndicatorView\&. This is the default\&. 
+.TP
+\fB\fIMBProgressHUDModeDeterminate \fP\fP
+Progress is shown using a round, pie-chart like, progress view\&. 
+.TP
+\fB\fIMBProgressHUDModeDeterminateHorizontalBar \fP\fP
+Progress is shown using a horizontal progress bar 
+.TP
+\fB\fIMBProgressHUDModeAnnularDeterminate \fP\fP
+Progress is shown using a ring-shaped progress view\&. 
+.TP
+\fB\fIMBProgressHUDModeCustomView \fP\fP
+Shows a custom view 
+.TP
+\fB\fIMBProgressHUDModeText \fP\fP
+Shows only labels 
+.PP
+Definition at line 36 of file MBProgressHUD\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Pulsar from the source code\&.

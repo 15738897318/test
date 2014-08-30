@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['read2dmatfromfile',['read2DMatFromFile',['../namespace_m_h_r.html#aca720721cf34fb61faddf517a6f1ecb7',1,'MHR']]],
+  ['readdouble',['readDouble',['../namespace_m_h_r.html#a30d68a835eaf7530b13d542662a88642',1,'MHR']]],
+  ['readframe',['readFrame',['../namespace_m_h_r.html#a3b899245a37e41550b80b44fb40fe3e9',1,'MHR']]],
+  ['readint',['readInt',['../namespace_m_h_r.html#aca054bab24695d684662a7972fc07d02',1,'MHR']]],
+  ['readvectorfromfile',['readVectorFromFile',['../namespace_m_h_r.html#a8b31e05ada67db2ce123a0674568ad29',1,'MHR']]],
+  ['recordtime',['recordTime',['../category_m_h_r_main_view_controller_07_08.html#ac15f6b287a439206e9a1a8816248f635',1,'MHRMainViewController()']]],
+  ['recordtimelabel',['recordTimeLabel',['../category_m_h_r_main_view_controller_07_08.html#a63bbbfafd497288fe3035250ab5d9fcb',1,'MHRMainViewController()']]],
+  ['recordtimer',['recordTimer',['../category_m_h_r_main_view_controller_07_08.html#a1f1639552968eeba13ed2b4575bea129',1,'MHRMainViewController()']]],
+  ['registerforkvo',['registerForKVO',['../category_m_b_progress_h_u_d_07_08.html#ab854d39884bfbab11016768cd963c149',1,'MBProgressHUD()']]],
+  ['registerfornotifications',['registerForNotifications',['../category_m_b_progress_h_u_d_07_08.html#a69ef8d11e37509cd6153008561495748',1,'MBProgressHUD()']]],
+  ['removefromsuperviewonhide',['removeFromSuperViewOnHide',['../interface_m_b_progress_h_u_d.html#a36639aa18a70f2734942695c32ec5e91',1,'MBProgressHUD']]],
+  ['report_5fmemory',['report_memory',['../interface_m_h_r_utilities.html#a1f7c42bb731cae8fb90d106014b00df9',1,'MHRUtilities']]],
+  ['result',['result',['../category_m_h_r_main_view_controller_07_08.html#a9dbae9ee1ba7bf908a253626a618ecf6',1,'MHRMainViewController()']]],
+  ['resultview',['resultView',['../category_m_h_r_main_view_controller_07_08.html#aee235ca60383f404b812a075eca55e75',1,'MHRMainViewController()']]],
+  ['rgb2ntsc_5fbasemat',['rgb2ntsc_baseMat',['../namespace_m_h_r.html#a7191e886f0a618347db01d5743eb2856',1,'MHR']]],
+  ['rgb2tsl',['rgb2tsl',['../namespace_m_h_r.html#ae8dc1afd1e611d432d98186da1f813e5',1,'MHR']]],
+  ['roi_5flower',['ROI_lower',['../category_m_h_r_main_view_controller_07_08.html#a8e5e7cd7481bac3b8bf77d684976a283',1,'MHRMainViewController()']]],
+  ['roi_5fupper',['ROI_upper',['../category_m_h_r_main_view_controller_07_08.html#a8ec78910220259631707236b9160c626',1,'MHRMainViewController()']]],
+  ['rotationtransform',['rotationTransform',['../_m_b_progress_h_u_d_8m.html#adc611101946978c2d856725aee5f3268',1,'MBProgressHUD.m']]]
+];

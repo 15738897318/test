@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="interface_m_h_r_settings_view_controller" kind="class" prot="public">
+    <compoundname>MHRSettingsViewController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UIViewController</basecompoundref>
+    <includes refid="_m_h_r_settings_view_controller_8h" local="no">MHRSettingsViewController.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_m_h_r_settings_view_controller_1a6fa685e4f9358a047d6f1cfd77f7ac0f" prot="protected" static="no" mutable="no">
+        <type>id&lt; <ref refid="protocol_m_h_r_settings_view_delegate-p" kindref="compound">MHRSettingsViewDelegate</ref> &gt;</type>
+        <definition>id&lt;MHRSettingsViewDelegate&gt; MHRSettingsViewController::_delegate</definition>
+        <argsstring></argsstring>
+        <name>_delegate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="22" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_m_h_r_settings_view_controller_1a44380e171f6d773f58dc158ff58d47aa" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="strong">
+        <type>id</type>
+        <definition>id MHRSettingsViewController::delegate</definition>
+        <argsstring></argsstring>
+        <name>delegate</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="25" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_h_r_settings_view_controller_1abb8745a6f5f7529e69628d8f5f4f068e" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MHRSettingsViewController::debugModeOn</definition>
+        <argsstring></argsstring>
+        <name>debugModeOn</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="27" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_m_h_r_settings_view_controller_1add55937fcb10a424e5f651d372b4b6a9" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>BOOL</type>
+        <definition>BOOL MHRSettingsViewController::threeChanModeOn</definition>
+        <argsstring></argsstring>
+        <name>threeChanModeOn</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="51">
+        <label>MHRSettingsViewController</label>
+        <link refid="interface_m_h_r_settings_view_controller"/>
+        <childnode refid="52" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>UIViewController</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="53">
+        <label>MHRSettingsViewController</label>
+        <link refid="interface_m_h_r_settings_view_controller"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>UIViewController</label>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" line="21" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/MHRSettingsViewController.h" bodystart="20" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_m_h_r_settings_view_controller_1a6fa685e4f9358a047d6f1cfd77f7ac0f" prot="protected" virt="non-virtual"><scope>MHRSettingsViewController</scope><name>_delegate</name></member>
+      <member refid="interface_m_h_r_settings_view_controller_1abb8745a6f5f7529e69628d8f5f4f068e" prot="public" virt="non-virtual"><scope>MHRSettingsViewController</scope><name>debugModeOn</name></member>
+      <member refid="interface_m_h_r_settings_view_controller_1a44380e171f6d773f58dc158ff58d47aa" prot="public" virt="non-virtual"><scope>MHRSettingsViewController</scope><name>delegate</name></member>
+      <member refid="interface_m_h_r_settings_view_controller_1add55937fcb10a424e5f651d372b4b6a9" prot="public" virt="non-virtual"><scope>MHRSettingsViewController</scope><name>threeChanModeOn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

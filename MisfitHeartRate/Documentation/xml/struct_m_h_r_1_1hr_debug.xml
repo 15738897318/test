@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="struct_m_h_r_1_1hr_debug" kind="struct" prot="public">
+    <compoundname>MHR::hrDebug</compoundname>
+    <includes refid="hr__structures_8h" local="no">hr_structures.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_m_h_r_1_1hr_debug_1ab0a19a437cbd96f0af5d1b41114c1b80" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MHR::hrDebug::avg_hr</definition>
+        <argsstring></argsstring>
+        <name>avg_hr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" line="19" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_m_h_r_1_1hr_debug_1aecd197b08db2c97469bc1d99af93a559" prot="public" static="no" mutable="no">
+        <type>vector&lt; pair&lt; double, int &gt; &gt;</type>
+        <definition>vector&lt;pair&lt;double,int&gt; &gt; MHR::hrDebug::heartBeats</definition>
+        <argsstring></argsstring>
+        <name>heartBeats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" line="20" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_m_h_r_1_1hr_debug_1a019b377c2e1d3ade917074967cf20504" prot="public" static="no" mutable="no">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt;double&gt; MHR::hrDebug::heartRates</definition>
+        <argsstring></argsstring>
+        <name>heartRates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" line="21" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_m_h_r_1_1hr_debug_1a6222c0c8c70a697d9d312e238933952b" prot="public" static="no" mutable="no">
+        <type>vector&lt; double &gt;</type>
+        <definition>vector&lt;double&gt; MHR::hrDebug::autocorrelation</definition>
+        <argsstring></argsstring>
+        <name>autocorrelation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" line="22" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" line="18" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/HeartRateCal/hr_structures.h" bodystart="18" bodyend="23"/>
+    <listofallmembers>
+      <member refid="struct_m_h_r_1_1hr_debug_1a6222c0c8c70a697d9d312e238933952b" prot="public" virt="non-virtual"><scope>MHR::hrDebug</scope><name>autocorrelation</name></member>
+      <member refid="struct_m_h_r_1_1hr_debug_1ab0a19a437cbd96f0af5d1b41114c1b80" prot="public" virt="non-virtual"><scope>MHR::hrDebug</scope><name>avg_hr</name></member>
+      <member refid="struct_m_h_r_1_1hr_debug_1aecd197b08db2c97469bc1d99af93a559" prot="public" virt="non-virtual"><scope>MHR::hrDebug</scope><name>heartBeats</name></member>
+      <member refid="struct_m_h_r_1_1hr_debug_1a019b377c2e1d3ade917074967cf20504" prot="public" virt="non-virtual"><scope>MHR::hrDebug</scope><name>heartRates</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

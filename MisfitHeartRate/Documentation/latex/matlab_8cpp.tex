@@ -1,0 +1,34 @@
+\hypertarget{matlab_8cpp}{\section{algorithms/math/matlab.cpp File Reference}
+\label{matlab_8cpp}\index{algorithms/math/matlab.\+cpp@{algorithms/math/matlab.\+cpp}}
+}
+{\ttfamily \#include \char`\"{}matlab.\+h\char`\"{}}\\*
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_m_h_r}{M\+H\+R}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespace_m_h_r_af6125176deb7b4d4d503a4bcf851a076}{M\+H\+R\+::mean} (const vector$<$ double $>$ \&a)
+\item 
+void \hyperlink{namespace_m_h_r_ad11b22e616f937a6817faa9a0c72ec21}{M\+H\+R\+::findpeaks} (const vector$<$ double $>$ \&segment, double min\+Peak\+Distance, double threshold, vector$<$ double $>$ \&max\+\_\+peak\+\_\+strengths, vector$<$ int $>$ \&max\+\_\+peak\+\_\+locs)
+\item 
+vector$<$ pair$<$ double, int $>$ $>$ \hyperlink{namespace_m_h_r_a22cd3e8872333ff4c203c15821bf69bb}{M\+H\+R\+::unique\+\_\+stable} (const vector$<$ pair$<$ double, int $>$$>$ \&arr)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_a4e7d8efbc84874e131049dc705488cc9}{M\+H\+R\+::corr\+\_\+linear} (vector$<$ double $>$ signal, vector$<$ double $>$ kernel, bool subtract\+Mean)
+\item 
+void \hyperlink{namespace_m_h_r_ab46344d4248f6c55622fef14c1eb78c7}{M\+H\+R\+::hist} (const vector$<$ double $>$ \&arr, int nbins, vector$<$ int $>$ \&counts, vector$<$ double $>$ \&centers)
+\item 
+double \hyperlink{namespace_m_h_r_a4d04157ea7582bbd0a165e1a8a679219}{M\+H\+R\+::invprctile} (const vector$<$ double $>$ \&arr, double x)
+\item 
+double \hyperlink{namespace_m_h_r_a401757908f80823dd6c6ced91e55d751}{M\+H\+R\+::prctile} (vector$<$ double $>$ arr, double percent)
+\item 
+vector$<$ double $>$ \hyperlink{namespace_m_h_r_af85b8b218e683bde30d7ee0329b29716}{M\+H\+R\+::low\+\_\+pass\+\_\+filter} (vector$<$ double $>$ arr)
+\item 
+void \hyperlink{namespace_m_h_r_a0380a36a3a26da3c0a32e0f4b3d9fec9}{M\+H\+R\+::gaussian\+Filter} (int length, double sigma, vector$<$ double $>$ \&ans)
+\item 
+double \hyperlink{namespace_m_h_r_a2e51d3fdfa37bc717ccc0c4557d64445}{M\+H\+R\+::diff\+\_\+percent} (double a, double b)
+\item 
+void \hyperlink{namespace_m_h_r_a8612a874ea7842e4b65969e11f1c2416}{M\+H\+R\+::hr\+\_\+polisher} (double \&hr, double \&old\+\_\+hr, double \&hr\+Threshold, double \&hr\+Stan\+Dev)
+\end{DoxyCompactItemize}

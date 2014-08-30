@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_dd04980def7ea85666b7a58ba2817d6f" kind="dir">
+    <compoundname>SettingsView</compoundname>
+    <innerfile refid="_m_h_r_settings_view_controller_8h">MHRSettingsViewController.h</innerfile>
+    <innerfile refid="_m_h_r_settings_view_controller_8m">MHRSettingsViewController.m</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/SettingsView/"/>
+  </compounddef>
+</doxygen>

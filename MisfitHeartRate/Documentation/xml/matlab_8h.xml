@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="matlab_8h" kind="file">
+    <compoundname>matlab.h</compoundname>
+    <includes local="no">set</includes>
+    <includes local="no">random</includes>
+    <includes refid="matrix_8h" local="yes">matrix.h</includes>
+    <includedby refid="ideal__bandpassing_8h" local="yes">algorithms/Eulerian/ideal_bandpassing.h</includedby>
+    <includedby refid="frames2signal_8h" local="yes">algorithms/HeartRateCal/frames2signal.h</includedby>
+    <includedby refid="hb__counter__autocorr_8h" local="yes">algorithms/HeartRateCal/hb_counter_autocorr.h</includedby>
+    <includedby refid="hb__counter__pda_8h" local="yes">algorithms/HeartRateCal/hb_counter_pda.h</includedby>
+    <includedby refid="hr__calculator_8h" local="yes">algorithms/HeartRateCal/hr_calculator.h</includedby>
+    <includedby refid="matlab_8cpp" local="yes">algorithms/math/matlab.cpp</includedby>
+    <includedby refid="_m_h_r_main_view_controller_8hpp" local="yes">MainView/MHRMainViewController.hpp</includedby>
+    <includedby refid="_m_h_r_main_view_controller_8mm" local="yes">MainView/MHRMainViewController.mm</includedby>
+    <incdepgraph>
+      <node id="638">
+        <label>algorithms/math/matlab.h</label>
+        <link refid="matlab.h"/>
+        <childnode refid="639" relation="include">
+        </childnode>
+        <childnode refid="640" relation="include">
+        </childnode>
+        <childnode refid="641" relation="include">
+        </childnode>
+      </node>
+      <node id="644">
+        <label>opencv2/core/core.hpp</label>
+      </node>
+      <node id="642">
+        <label>config.h</label>
+        <link refid="config_8h"/>
+        <childnode refid="643" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+      </node>
+      <node id="640">
+        <label>random</label>
+      </node>
+      <node id="645">
+        <label>opencv2/imgproc/types_c.h</label>
+      </node>
+      <node id="643">
+        <label>face_params.h</label>
+        <link refid="face__params_8h"/>
+        <childnode refid="644" relation="include">
+        </childnode>
+        <childnode refid="645" relation="include">
+        </childnode>
+      </node>
+      <node id="641">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="642" relation="include">
+        </childnode>
+      </node>
+      <node id="639">
+        <label>set</label>
+      </node>
+      <node id="646">
+        <label>finger_params.h</label>
+        <link refid="finger__params_8h"/>
+        <childnode refid="644" relation="include">
+        </childnode>
+        <childnode refid="645" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="665">
+        <label>algorithms/HeartRateCal/hb_counter_autocorr.h</label>
+        <link refid="hb__counter__autocorr_8h"/>
+        <childnode refid="666" relation="include">
+        </childnode>
+        <childnode refid="667" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="670">
+        <label>globals.cpp</label>
+        <link refid="globals_8cpp"/>
+      </node>
+      <node id="652">
+        <label>algorithms/processingPerBlock.cpp</label>
+        <link refid="processing_per_block_8cpp"/>
+      </node>
+      <node id="669">
+        <label>globals.h</label>
+        <link refid="globals_8h"/>
+        <childnode refid="663" relation="include">
+        </childnode>
+        <childnode refid="670" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+      </node>
+      <node id="655">
+        <label>MHRAppDelegate.mm</label>
+        <link refid="_m_h_r_app_delegate_8mm"/>
+      </node>
+      <node id="654">
+        <label>MainView/MHRMainViewController.mm</label>
+        <link refid="_m_h_r_main_view_controller_8mm"/>
+      </node>
+      <node id="663">
+        <label>algorithms/processingCumulative.h</label>
+        <link refid="processing_cumulative_8h"/>
+        <childnode refid="664" relation="include">
+        </childnode>
+        <childnode refid="651" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+      </node>
+      <node id="664">
+        <label>algorithms/processingCumulative.cpp</label>
+        <link refid="processing_cumulative_8cpp"/>
+      </node>
+      <node id="647">
+        <label>algorithms/math/matlab.h</label>
+        <link refid="matlab.h"/>
+        <childnode refid="648" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+        <childnode refid="665" relation="include">
+        </childnode>
+        <childnode refid="671" relation="include">
+        </childnode>
+        <childnode refid="673" relation="include">
+        </childnode>
+        <childnode refid="675" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+        <childnode refid="654" relation="include">
+        </childnode>
+      </node>
+      <node id="667">
+        <label>algorithms/HeartRateCal/hr_signal_calc.h</label>
+        <link refid="hr__signal__calc_8h"/>
+        <childnode refid="668" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+        <childnode refid="669" relation="include">
+        </childnode>
+      </node>
+      <node id="648">
+        <label>algorithms/Eulerian/ideal_bandpassing.h</label>
+        <link refid="ideal__bandpassing_8h"/>
+        <childnode refid="649" relation="include">
+        </childnode>
+        <childnode refid="658" relation="include">
+        </childnode>
+      </node>
+      <node id="662">
+        <label>algorithms/HeartRateCal/temporal_mean_calc.cpp</label>
+        <link refid="temporal__mean__calc_8cpp"/>
+      </node>
+      <node id="671">
+        <label>algorithms/HeartRateCal/hb_counter_pda.h</label>
+        <link refid="hb__counter__pda_8h"/>
+        <childnode refid="672" relation="include">
+        </childnode>
+        <childnode refid="667" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="674">
+        <label>algorithms/HeartRateCal/hr_calculator.cpp</label>
+        <link refid="hr__calculator_8cpp"/>
+      </node>
+      <node id="658">
+        <label>algorithms/Eulerian/ideal_bandpassing.cpp</label>
+        <link refid="ideal__bandpassing_8cpp"/>
+      </node>
+      <node id="657">
+        <label>Utilities/auto_start.mm</label>
+        <link refid="auto__start_8mm"/>
+      </node>
+      <node id="675">
+        <label>algorithms/math/matlab.cpp</label>
+        <link refid="matlab_8cpp"/>
+      </node>
+      <node id="673">
+        <label>algorithms/HeartRateCal/hr_calculator.h</label>
+        <link refid="hr__calculator_8h"/>
+        <childnode refid="674" relation="include">
+        </childnode>
+        <childnode refid="667" relation="include">
+        </childnode>
+      </node>
+      <node id="659">
+        <label>algorithms/HeartRateCal/frames2signal.h</label>
+        <link refid="frames2signal_8h"/>
+        <childnode refid="660" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="650">
+        <label>algorithms/Eulerian/eulerian.cpp</label>
+        <link refid="eulerian_8cpp"/>
+      </node>
+      <node id="653">
+        <label>MainView/MHRMainViewController.hpp</label>
+        <link refid="_m_h_r_main_view_controller_8hpp"/>
+        <childnode refid="654" relation="include">
+        </childnode>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="656" relation="include">
+        </childnode>
+      </node>
+      <node id="649">
+        <label>algorithms/Eulerian/eulerian.h</label>
+        <link refid="eulerian_8h"/>
+        <childnode refid="650" relation="include">
+        </childnode>
+        <childnode refid="651" relation="include">
+        </childnode>
+      </node>
+      <node id="660">
+        <label>algorithms/HeartRateCal/frames2signal.cpp</label>
+        <link refid="frames2signal_8cpp"/>
+      </node>
+      <node id="661">
+        <label>algorithms/HeartRateCal/temporal_mean_calc.h</label>
+        <link refid="temporal__mean__calc_8h"/>
+        <childnode refid="662" relation="include">
+        </childnode>
+        <childnode refid="663" relation="include">
+        </childnode>
+      </node>
+      <node id="666">
+        <label>algorithms/HeartRateCal/hb_counter_autocorr.cpp</label>
+        <link refid="hb__counter__autocorr_8cpp"/>
+      </node>
+      <node id="651">
+        <label>algorithms/processingPerBlock.h</label>
+        <link refid="processing_per_block_8h"/>
+        <childnode refid="652" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+      </node>
+      <node id="668">
+        <label>algorithms/HeartRateCal/hr_signal_calc.cpp</label>
+        <link refid="hr__signal__calc_8cpp"/>
+      </node>
+      <node id="656">
+        <label>Utilities/auto_start.hpp</label>
+        <link refid="auto__start_8hpp"/>
+        <childnode refid="653" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+      </node>
+      <node id="672">
+        <label>algorithms/HeartRateCal/hb_counter_pda.cpp</label>
+        <link refid="hb__counter__pda_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_m_h_r">MHR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>matlab.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MisfitHeartRate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Thanh<sp/>Le<sp/>on<sp/>7/2/14.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2014<sp/>misfit.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__MisfitHeartRate__matlab__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MisfitHeartRate__matlab__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;random&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="matrix_8h" kindref="compound">matrix.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">cv;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">MHR<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1af6125176deb7b4d4d503a4bcf851a076" kindref="member">mean</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;double&gt;<sp/>&amp;a);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1ad11b22e616f937a6817faa9a0c72ec21" kindref="member">findpeaks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;double&gt;<sp/>&amp;segment,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>minPeakDistance,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/>&amp;max_peak_strengths,<sp/>vector&lt;int&gt;<sp/>&amp;max_peak_locs);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;pair&lt;double,int&gt;&gt;<sp/><ref refid="namespace_m_h_r_1a22cd3e8872333ff4c203c15821bf69bb" kindref="member">unique_stable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;pair&lt;double,int&gt;&gt;<sp/>&amp;arr);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/><ref refid="namespace_m_h_r_1a4e7d8efbc84874e131049dc705488cc9" kindref="member">corr_linear</ref>(vector&lt;double&gt;<sp/>signal,<sp/>vector&lt;double&gt;<sp/>kernel,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>subtractMean<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1ab46344d4248f6c55622fef14c1eb78c7" kindref="member">hist</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;double&gt;<sp/>&amp;arr,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbins,<sp/>vector&lt;int&gt;<sp/>&amp;counts,<sp/>vector&lt;double&gt;<sp/>&amp;centers);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a4d04157ea7582bbd0a165e1a8a679219" kindref="member">invprctile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>vector&lt;double&gt;<sp/>&amp;arr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a401757908f80823dd6c6ced91e55d751" kindref="member">prctile</ref>(vector&lt;double&gt;<sp/>arr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>percent);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;double&gt;<sp/><ref refid="namespace_m_h_r_1af85b8b218e683bde30d7ee0329b29716" kindref="member">low_pass_filter</ref>(vector&lt;double&gt;<sp/>arr);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a0380a36a3a26da3c0a32e0f4b3d9fec9" kindref="member">gaussianFilter</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>length,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sigma,<sp/>vector&lt;double&gt;<sp/>&amp;ans);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a2e51d3fdfa37bc717ccc0c4557d64445" kindref="member">diff_percent</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>b);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_m_h_r_1a8612a874ea7842e4b65969e11f1c2416" kindref="member">hr_polisher</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;hr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;old_hr,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;hrThreshold,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;hrStanDev);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>defined(__MisfitHeartRate__matlab__)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/algorithms/math/matlab.h"/>
+  </compounddef>
+</doxygen>

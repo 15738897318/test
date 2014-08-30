@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="category_u_i_view_07_position_08" kind="category" prot="public">
+    <compoundname>UIView(Position)</compoundname>
+    <includes refid="_u_i_view_09_position_8h" local="no">UIView+Position.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1af1d70399207fb8befa7e0f287bf23368" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGPoint</type>
+        <definition>CGPoint UIView(Position)::frameOrigin</definition>
+        <argsstring></argsstring>
+        <name>frameOrigin</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="24" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1afa9efa5679d7caac0a6a03f6e71342de" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGSize</type>
+        <definition>CGSize UIView(Position)::frameSize</definition>
+        <argsstring></argsstring>
+        <name>frameSize</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="25" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1a16476712cc236d743510b2f39363396d" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGFloat</type>
+        <definition>CGFloat UIView(Position)::frameX</definition>
+        <argsstring></argsstring>
+        <name>frameX</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="27" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1a60a2692ff93131e7bbba22ecf3726f55" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGFloat</type>
+        <definition>CGFloat UIView(Position)::frameY</definition>
+        <argsstring></argsstring>
+        <name>frameY</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="28" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1a203a633f161baa33534255efff338ec3" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGFloat</type>
+        <definition>CGFloat UIView(Position)::frameRight</definition>
+        <argsstring></argsstring>
+        <name>frameRight</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="31" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1a6a730310961d877923cbe081dc3e5b39" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGFloat</type>
+        <definition>CGFloat UIView(Position)::frameBottom</definition>
+        <argsstring></argsstring>
+        <name>frameBottom</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="32" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1aff1bcfa93fa19e1ed68022c263452a3b" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGFloat</type>
+        <definition>CGFloat UIView(Position)::frameWidth</definition>
+        <argsstring></argsstring>
+        <name>frameWidth</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="34" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_u_i_view_07_position_08_1a96659e2eec8d359d96a460582247f4c8" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGFloat</type>
+        <definition>CGFloat UIView(Position)::frameHeight</definition>
+        <argsstring></argsstring>
+        <name>frameHeight</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1a4ab53ef69f304fba4732aeb9256b5ee0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::addCenteredSubview:</definition>
+        <argsstring>(UIView *subview)</argsstring>
+        <name>addCenteredSubview:</name>
+        <param>
+          <type>UIView *</type>
+          <declname>subview</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1afaae9a5b1741fa3eb2ae7c57cf4687d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::moveToCenterOfSuperview</definition>
+        <argsstring>()</argsstring>
+        <name>moveToCenterOfSuperview</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1a3ede327c32904e3e1e9e5c90b6cd8071" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::centerVerticallyInSuperview</definition>
+        <argsstring>()</argsstring>
+        <name>centerVerticallyInSuperview</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1a50aabdd38d9ff4e017bc0238e2346ae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::centerHorizontallyInSuperview</definition>
+        <argsstring>()</argsstring>
+        <name>centerHorizontallyInSuperview</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="100" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1aee174d95a8088008dd006205fad44d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::setFrameXPlus:yPlus:widthPlus:heightPlus:</definition>
+        <argsstring>(CGFloat dX,[yPlus] CGFloat dY,[widthPlus] CGFloat dWidth,[heightPlus] CGFloat dHeight)</argsstring>
+        <name>setFrameXPlus:yPlus:widthPlus:heightPlus:</name>
+        <param>
+          <type>CGFloat</type>
+          <declname>dX</declname>
+        </param>
+        <param>
+          <attributes>[yPlus]</attributes>
+          <type>CGFloat</type>
+          <declname>dY</declname>
+        </param>
+        <param>
+          <attributes>[widthPlus]</attributes>
+          <type>CGFloat</type>
+          <declname>dWidth</declname>
+        </param>
+        <param>
+          <attributes>[heightPlus]</attributes>
+          <type>CGFloat</type>
+          <declname>dHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="105" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1a3f7385a31ead16eb46e759a413aa9f19" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::adjustFrameFormiOS6ToiOS7:</definition>
+        <argsstring>(CGFloat distance)</argsstring>
+        <name>adjustFrameFormiOS6ToiOS7:</name>
+        <param>
+          <type>CGFloat</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="111" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="category_u_i_view_07_position_08_1a26680d798543876e3d295c69ecf7f35c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void UIView(Position)::adjustFrameFormiOS7ToiOS6:</definition>
+        <argsstring>(CGFloat distance)</argsstring>
+        <name>adjustFrameFormiOS7ToiOS6:</name>
+        <param>
+          <type>CGFloat</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="35" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.m" bodystart="119" bodyend="125"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" line="22" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/UIView+Position.h" bodystart="22" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="category_u_i_view_07_position_08_1a4ab53ef69f304fba4732aeb9256b5ee0" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>addCenteredSubview:</name></member>
+      <member refid="category_u_i_view_07_position_08_1a3f7385a31ead16eb46e759a413aa9f19" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>adjustFrameFormiOS6ToiOS7:</name></member>
+      <member refid="category_u_i_view_07_position_08_1a26680d798543876e3d295c69ecf7f35c" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>adjustFrameFormiOS7ToiOS6:</name></member>
+      <member refid="category_u_i_view_07_position_08_1a50aabdd38d9ff4e017bc0238e2346ae2" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>centerHorizontallyInSuperview</name></member>
+      <member refid="category_u_i_view_07_position_08_1a3ede327c32904e3e1e9e5c90b6cd8071" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>centerVerticallyInSuperview</name></member>
+      <member refid="category_u_i_view_07_position_08_1a6a730310961d877923cbe081dc3e5b39" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameBottom</name></member>
+      <member refid="category_u_i_view_07_position_08_1a96659e2eec8d359d96a460582247f4c8" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameHeight</name></member>
+      <member refid="category_u_i_view_07_position_08_1af1d70399207fb8befa7e0f287bf23368" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameOrigin</name></member>
+      <member refid="category_u_i_view_07_position_08_1a203a633f161baa33534255efff338ec3" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameRight</name></member>
+      <member refid="category_u_i_view_07_position_08_1afa9efa5679d7caac0a6a03f6e71342de" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameSize</name></member>
+      <member refid="category_u_i_view_07_position_08_1aff1bcfa93fa19e1ed68022c263452a3b" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameWidth</name></member>
+      <member refid="category_u_i_view_07_position_08_1a16476712cc236d743510b2f39363396d" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameX</name></member>
+      <member refid="category_u_i_view_07_position_08_1a60a2692ff93131e7bbba22ecf3726f55" prot="public" virt="non-virtual"><scope>UIView(Position)</scope><name>frameY</name></member>
+      <member refid="category_u_i_view_07_position_08_1afaae9a5b1741fa3eb2ae7c57cf4687d8" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>moveToCenterOfSuperview</name></member>
+      <member refid="category_u_i_view_07_position_08_1aee174d95a8088008dd006205fad44d17" prot="public" virt="virtual"><scope>UIView(Position)</scope><name>setFrameXPlus:yPlus:widthPlus:heightPlus:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

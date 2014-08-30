@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="category_m_b_progress_h_u_d_07_08" kind="category" prot="public">
+    <compoundname>MBProgressHUD()</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="category_m_b_progress_h_u_d_07_08_1a88f0841ae8c0e93249afc68954859072" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>UIView *</type>
+        <definition>UIView* MBProgressHUD()::indicator</definition>
+        <argsstring></argsstring>
+        <name>indicator</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="70" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_b_progress_h_u_d_07_08_1a856da5d6ea8f970c9f79cd43f8f4e3d7" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>NSTimer *</type>
+        <definition>NSTimer* MBProgressHUD()::graceTimer</definition>
+        <argsstring></argsstring>
+        <name>graceTimer</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="71" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_b_progress_h_u_d_07_08_1ae0ef7ca861bf900eaed11b57ad49eddc" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>NSTimer *</type>
+        <definition>NSTimer* MBProgressHUD()::minShowTimer</definition>
+        <argsstring></argsstring>
+        <name>minShowTimer</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="72" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_b_progress_h_u_d_07_08_1a45366644943d7cd700062c755ceef991" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>NSDate *</type>
+        <definition>NSDate* MBProgressHUD()::showStarted</definition>
+        <argsstring></argsstring>
+        <name>showStarted</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="73" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="category_m_b_progress_h_u_d_07_08_1aa7e6a57f64a0347bf480dc63ca6d2d35" prot="public" static="no" readable="yes" writable="yes" gettable="no" settable="no" accessor="assign">
+        <type>CGSize</type>
+        <definition>CGSize MBProgressHUD()::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <read></read>
+        <write></write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="74" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1afdd98061febe4c70612ec90781072666" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::setupLabels</definition>
+        <argsstring>()</argsstring>
+        <name>setupLabels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1ab854d39884bfbab11016768cd963c149" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::registerForKVO</definition>
+        <argsstring>()</argsstring>
+        <name>registerForKVO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1af2d221a723e70926a82f8f676d5fc14d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::unregisterFromKVO</definition>
+        <argsstring>()</argsstring>
+        <name>unregisterFromKVO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1abc52ed122a077567f45667fb2e229d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSArray *</type>
+        <definition>NSArray * MBProgressHUD()::observableKeypaths</definition>
+        <argsstring>()</argsstring>
+        <name>observableKeypaths</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a69ef8d11e37509cd6153008561495748" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::registerForNotifications</definition>
+        <argsstring>()</argsstring>
+        <name>registerForNotifications</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a48798d7cd00acabbf68c3042359ee26d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::unregisterFromNotifications</definition>
+        <argsstring>()</argsstring>
+        <name>unregisterFromNotifications</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a1a10daf9c000912334350f6436793334" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::updateUIForKeypath:</definition>
+        <argsstring>(NSString *keyPath)</argsstring>
+        <name>updateUIForKeypath:</name>
+        <param>
+          <type>NSString *</type>
+          <declname>keyPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1aa3a0b42eeeb2df228793b32806af1883" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::hideUsingAnimation:</definition>
+        <argsstring>(BOOL animated)</argsstring>
+        <name>hideUsingAnimation:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a1d81696b9e99cce3e4291c7a5e7ca13f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::showUsingAnimation:</definition>
+        <argsstring>(BOOL animated)</argsstring>
+        <name>showUsingAnimation:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1ac2a1bbca15d4c98346db20c155252e1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::done</definition>
+        <argsstring>()</argsstring>
+        <name>done</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a0c6fd8c9f5579d07ee037f1db6113152" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::updateIndicators</definition>
+        <argsstring>()</argsstring>
+        <name>updateIndicators</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1ac171139695b879a83d4b27c383dacf1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::handleGraceTimer:</definition>
+        <argsstring>(NSTimer *theTimer)</argsstring>
+        <name>handleGraceTimer:</name>
+        <param>
+          <type>NSTimer *</type>
+          <declname>theTimer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1ac821792e52ccf50a0f706e8d5df4e385" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::handleMinShowTimer:</definition>
+        <argsstring>(NSTimer *theTimer)</argsstring>
+        <name>handleMinShowTimer:</name>
+        <param>
+          <type>NSTimer *</type>
+          <declname>theTimer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1afeb3056f684d58ef12ef0a62d05d6f56" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::setTransformForCurrentOrientation:</definition>
+        <argsstring>(BOOL animated)</argsstring>
+        <name>setTransformForCurrentOrientation:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1ad37178e8a931dd238e164cc1e13042fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::cleanUp</definition>
+        <argsstring>()</argsstring>
+        <name>cleanUp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a101d93f06bd73aa0cb365842cfc8966d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::launchExecution</definition>
+        <argsstring>()</argsstring>
+        <name>launchExecution</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1a75105f00fb727353b35fa6d2cf320114" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::deviceOrientationDidChange:</definition>
+        <argsstring>(NSNotification *notification)</argsstring>
+        <name>deviceOrientationDidChange:</name>
+        <param>
+          <type>NSNotification *</type>
+          <declname>notification</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="category_m_b_progress_h_u_d_07_08_1afa9de8a535c05efd09ab379039557536" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MBProgressHUD()::hideDelayed:</definition>
+        <argsstring>(NSNumber *animated)</argsstring>
+        <name>hideDelayed:</name>
+        <param>
+          <type>NSNumber *</type>
+          <declname>animated</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="46" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" line="49" column="1" bodyfile="/Users/misfit/Desktop/Codes - Github-linked/videoHeartRate/MisfitHeartRate/MisfitHeartRate/Utilities/MBProgressHUD.m" bodystart="49" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="category_m_b_progress_h_u_d_07_08_1ad37178e8a931dd238e164cc1e13042fa" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>cleanUp</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a75105f00fb727353b35fa6d2cf320114" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>deviceOrientationDidChange:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1ac2a1bbca15d4c98346db20c155252e1f" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>done</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a856da5d6ea8f970c9f79cd43f8f4e3d7" prot="public" virt="non-virtual"><scope>MBProgressHUD()</scope><name>graceTimer</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1ac171139695b879a83d4b27c383dacf1a" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>handleGraceTimer:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1ac821792e52ccf50a0f706e8d5df4e385" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>handleMinShowTimer:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1afa9de8a535c05efd09ab379039557536" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>hideDelayed:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1aa3a0b42eeeb2df228793b32806af1883" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>hideUsingAnimation:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a88f0841ae8c0e93249afc68954859072" prot="public" virt="non-virtual"><scope>MBProgressHUD()</scope><name>indicator</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a101d93f06bd73aa0cb365842cfc8966d" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>launchExecution</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1ae0ef7ca861bf900eaed11b57ad49eddc" prot="public" virt="non-virtual"><scope>MBProgressHUD()</scope><name>minShowTimer</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1abc52ed122a077567f45667fb2e229d99" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>observableKeypaths</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1ab854d39884bfbab11016768cd963c149" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>registerForKVO</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a69ef8d11e37509cd6153008561495748" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>registerForNotifications</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1afeb3056f684d58ef12ef0a62d05d6f56" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>setTransformForCurrentOrientation:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1afdd98061febe4c70612ec90781072666" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>setupLabels</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a45366644943d7cd700062c755ceef991" prot="public" virt="non-virtual"><scope>MBProgressHUD()</scope><name>showStarted</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a1d81696b9e99cce3e4291c7a5e7ca13f" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>showUsingAnimation:</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1aa7e6a57f64a0347bf480dc63ca6d2d35" prot="public" virt="non-virtual"><scope>MBProgressHUD()</scope><name>size</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1af2d221a723e70926a82f8f676d5fc14d" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>unregisterFromKVO</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a48798d7cd00acabbf68c3042359ee26d" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>unregisterFromNotifications</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a0c6fd8c9f5579d07ee037f1db6113152" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>updateIndicators</name></member>
+      <member refid="category_m_b_progress_h_u_d_07_08_1a1a10daf9c000912334350f6436793334" prot="public" virt="virtual"><scope>MBProgressHUD()</scope><name>updateUIForKeypath:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
