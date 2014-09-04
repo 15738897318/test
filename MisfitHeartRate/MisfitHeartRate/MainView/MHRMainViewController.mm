@@ -9,6 +9,7 @@
 #import "MHRMainViewController.hpp"
 #import "UIImageCVMatConverter.hpp"
 #import "matlab.h"
+#import "files.h"
 
 const int IOS6_Y_DELTA = 60;
 const int CAMERA_WIDTH = 352;
@@ -398,14 +399,14 @@ static const int kBlockFrameSize = 128;
         else
         {
             // back camera - finger capturing
-            [MHRUtilities setTorchModeOn:YES];
+            [MHRUtilities setTorchModeOn:NO];
             _faceLabel.text = @"";
-            _fingerLabel.text = FINGER_MESSAGE;
-            [self drawFaceCaptureRect:@"MHRWhiteColor"];
+            _fingerLabel.text = @""; // TODO: set back to FINGER_MESSAGE when done
+            [self drawFaceCaptureRect:@"MHRCameraCaptureRect"]; //TODO: set back to @"MHRWhiteColor" when done
             [_videoCamera stop];
             
             // Set the camera to hide camera capture from the screen
-            _videoCamera.ParentView = nil;
+            _videoCamera.ParentView = self.imageView; //TODO: set back to nil when done
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
             [_videoCamera start];
             setFingerParams();
@@ -463,7 +464,82 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    #pragma - Protocol CvVideoCameraDelegate
+    #pragma mark - Condition for finger autostart
+
+    #define darkThreshold 25
+    #define uniformThreshold 25
+    #define redThreshold 50
+    #define variationThreshold 25
+
+    - (BOOL)isDarkFrame:(Mat)tmp {
+        float averageVal = 0;
+        
+        for (int i = 0; i < tmp.rows; ++i) for (int j = 0; j < tmp.cols; ++j)
+            averageVal += tmp.at<Vec3b>(i, j)[2];
+        
+        averageVal /= tmp.rows * tmp.cols;
+        
+        return averageVal < darkThreshold;
+    }
+
+    - (BOOL)isUniformColored:(Mat)tmp {
+        
+        for (int i = 0; i < 3; ++i) {
+            vector <double> arr;
+            for (int x = 0; x < tmp.cols; ++x)
+                for (int y = 0; y < tmp.rows; ++y)
+                    arr.push_back(tmp.at<Vec3b>(y, x)[i]);
+            
+            
+            int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
+            //NSLog(@"%d", maxVal - minVal);
+            if (maxVal - minVal > uniformThreshold)
+                return NO;
+        }
+        
+        
+        return YES;
+    }
+
+    - (BOOL)isRedColored:(Mat)tmp {
+        Vec3f averageVal = 0;
+        
+        for (int i = 0; i < tmp.rows; ++i) for (int j = 0; j < tmp.cols; ++j) {
+            averageVal[0] += tmp.at<Vec3b>(i, j)[0];
+            averageVal[1] += tmp.at<Vec3b>(i, j)[1];
+            averageVal[2] += tmp.at<Vec3b>(i, j)[2];
+        }
+        
+        averageVal /= tmp.rows * tmp.cols;
+        
+        if (averageVal[2] > redThreshold && averageVal[0] < redThreshold && averageVal[1] < redThreshold)
+            return YES;
+        
+        return NO;
+    }
+
+    - (float)calculateAverageRedValue:(Mat)tmp {
+        float averageVal = 0;
+        
+        for (int i = 0; i < tmp.rows; ++i) for (int j = 0; j < tmp.cols; ++j)
+            averageVal += tmp.at<Vec3b>(i, j)[2];
+        
+        averageVal /= tmp.rows * tmp.cols;
+        
+        return averageVal;
+    }
+
+    - (BOOL)isHeartBeat:(vector <float>)val {
+        float maxVal = 255, minVal = 0;
+        for (int i = 0; i < (int)val.size(); ++i) {
+            maxVal = max(maxVal, val[i]);
+            minVal = min(minVal, val[i]);
+        }
+        
+        return maxVal - minVal > variationThreshold;
+    }
+
+    #pragma mark - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
         if (isCapturing)
@@ -554,7 +630,54 @@ static const int kBlockFrameSize = 128;
             }
             else
             {
-                return;
+                static Mat tmpFinger;
+                static int cnt = 0;
+                static int framesWithTorchOn = 0;
+                static BOOL isTorchOn = NO;
+                static vector <float> avgRedVal;
+                cnt = (cnt + 1) % 3;
+                if(cnt) return;
+                
+                tmpFinger = image(cropArea).clone();
+                cvtColor(tmpFinger, tmpFinger, CV_BGRA2BGR);
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    if (!isTorchOn && ![self isDarkFrame:tmpFinger] && ![self isUniformColored:tmpFinger])
+                        return;
+                    
+                    if (!isTorchOn) {
+                        isTorchOn = YES;
+                        avgRedVal.clear();
+                        [MHRUtilities setTorchModeOn:YES];
+                        framesWithTorchOn = 0;
+                        return;
+                    }
+                    if (++framesWithTorchOn <= 15)
+                        return;
+                    
+                    if ([self isRedColored:tmpFinger]) {
+                        avgRedVal.push_back([self calculateAverageRedValue:tmpFinger]);
+                        if (avgRedVal.size() >= 60) {
+                            if ([self isHeartBeat:avgRedVal]) {
+                                isTorchOn = NO;
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self startButtonDidTap:self];
+                                });
+                            }
+                            else {
+                                isTorchOn = NO;
+                                [MHRUtilities setTorchModeOn:NO];
+                            }
+    
+                        }
+                    }
+                    else {
+                        isTorchOn = NO;
+                        [MHRUtilities setTorchModeOn:NO];
+                    }
+                    
+                    // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
+                });
             }
             
         }
