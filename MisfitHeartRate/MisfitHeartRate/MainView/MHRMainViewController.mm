@@ -468,7 +468,8 @@ static const int kBlockFrameSize = 128;
 
     #define darkThreshold 25
     #define uniformThreshold 25
-    #define redThreshold 50
+    #define redThreshold 100
+    #define notRedThreshold 100
     #define variationThreshold 25
 
     - (BOOL)isDarkFrame:(Mat)tmp {
@@ -484,18 +485,29 @@ static const int kBlockFrameSize = 128;
 
     - (BOOL)isUniformColored:(Mat)tmp {
         
-        for (int i = 0; i < 3; ++i) {
-            vector <double> arr;
-            for (int x = 0; x < tmp.cols; ++x)
-                for (int y = 0; y < tmp.rows; ++y)
-                    arr.push_back(tmp.at<Vec3b>(y, x)[i]);
+        float avgB = 0, avgG = 0;
+        for (int x = 0; x < tmp.cols; ++x)
+            for (int y = 0; y < tmp.rows; ++ y) {
+                avgB += tmp.at<Vec3b>(y, x)[0];
+                avgG += tmp.at<Vec3b>(y, x)[1];
+            }
+        
+        avgB /= tmp.cols * tmp.rows;
+        avgG /= tmp.cols * tmp.rows;
+        
+        if (avgB > redThreshold || avgG > redThreshold)
+            return NO;
+        
+        vector <double> arr;
+        for (int x = 0; x < tmp.cols; ++x)
+            for (int y = 0; y < tmp.rows; ++y)
+                arr.push_back(tmp.at<Vec3b>(y, x)[2]);
             
             
-            int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
+        int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
             //NSLog(@"%d", maxVal - minVal);
-            if (maxVal - minVal > uniformThreshold)
-                return NO;
-        }
+        if (maxVal - minVal > uniformThreshold)
+            return NO;
         
         
         return YES;
@@ -652,7 +664,7 @@ static const int kBlockFrameSize = 128;
                         framesWithTorchOn = 0;
                         return;
                     }
-                    if (++framesWithTorchOn <= 15)
+                    if (++framesWithTorchOn <= 30)
                         return;
                     
                     if ([self isRedColored:tmpFinger]) {
