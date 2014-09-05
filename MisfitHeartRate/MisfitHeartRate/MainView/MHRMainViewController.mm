@@ -33,6 +33,8 @@ static const int kBlockFrameSize = 128;
         int framesWithNoFace; // Count the number of frames NOT having a face in the region of interest
         MBProgressHUD *progressHUD;
         
+        BOOL isTorchOn;
+        
         bool isCalcMode;
         double lower_range;
         double upper_range;
@@ -96,6 +98,8 @@ static const int kBlockFrameSize = 128;
         self.viewTop.hidden = NO;
         self.labelTop.text = @"Calculating...";
         self.viewTop2.hidden = YES;
+        
+        isTorchOn = NO;
         
         setFaceParams();
         [self setUpThreads];
@@ -467,50 +471,71 @@ static const int kBlockFrameSize = 128;
     #pragma mark - Condition for finger autostart
 
     #define darkThreshold 25
-    #define uniformThreshold 25
+    #define uniformThreshold 15
     #define redThreshold 100
-    #define notRedThreshold 100
+    #define notRedThreshold 50
     #define variationThreshold 25
+    #define diffThreshold 8
 
-    - (BOOL)isDarkFrame:(Mat)tmp {
-        float averageVal = 0;
+    - (BOOL)isDarkOrDarkRed:(Mat)tmp {
         
-        for (int i = 0; i < tmp.rows; ++i) for (int j = 0; j < tmp.cols; ++j)
-            averageVal += tmp.at<Vec3b>(i, j)[2];
+        Vec3f avgVal = 0;
+        for (int x = 0; x < tmp.cols; ++x)
+            for (int y = 0; y < tmp.rows; ++ y) {
+                avgVal[0] += tmp.at<Vec3b>(y, x)[0];
+                avgVal[1] += tmp.at<Vec3b>(y, x)[1];
+                avgVal[2] += tmp.at<Vec3b>(y, x)[2];
+            }
         
-        averageVal /= tmp.rows * tmp.cols;
+        avgVal /= tmp.cols * tmp.rows;
         
-        return averageVal < darkThreshold;
+        if (avgVal[0] > notRedThreshold || avgVal[1] > notRedThreshold) {
+            return NO;
+        }
+        return YES;
     }
 
     - (BOOL)isUniformColored:(Mat)tmp {
-        
-        float avgB = 0, avgG = 0;
-        for (int x = 0; x < tmp.cols; ++x)
-            for (int y = 0; y < tmp.rows; ++ y) {
-                avgB += tmp.at<Vec3b>(y, x)[0];
-                avgG += tmp.at<Vec3b>(y, x)[1];
-            }
-        
-        avgB /= tmp.cols * tmp.rows;
-        avgG /= tmp.cols * tmp.rows;
-        
-        if (avgB > redThreshold || avgG > redThreshold)
-            return NO;
         
         vector <double> arr;
         for (int x = 0; x < tmp.cols; ++x)
             for (int y = 0; y < tmp.rows; ++y)
                 arr.push_back(tmp.at<Vec3b>(y, x)[2]);
             
-            
         int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
             //NSLog(@"%d", maxVal - minVal);
-        if (maxVal - minVal > uniformThreshold)
+        if (maxVal - minVal > uniformThreshold) {
             return NO;
-        
+        }
         
         return YES;
+    }
+
+    - (BOOL)isSameAsPreviousFrame:(Mat)tmp {
+        static Vec3f prevAvg(-1, -1, -1);
+        
+        Vec3f avgVal(0, 0, 0);
+        for (int x = 0; x < tmp.cols; ++x)
+            for (int y = 0; y < tmp.rows; ++ y) {
+                avgVal[0] += tmp.at<Vec3b>(y, x)[0];
+                avgVal[1] += tmp.at<Vec3b>(y, x)[1];
+                avgVal[2] += tmp.at<Vec3b>(y, x)[2];
+            }
+        
+        avgVal /= tmp.cols * tmp.rows;
+
+        
+        Vec3f diff;
+        absdiff(avgVal, prevAvg, diff);
+        
+        if (prevAvg != Vec3f(-1, -1, -1) && diff[0] < diffThreshold && diff[1] < diffThreshold && diff[2] < diffThreshold) {
+            prevAvg = avgVal;
+            return YES;
+        }
+        
+        prevAvg = avgVal;
+        
+        return NO;
     }
 
     - (BOOL)isRedColored:(Mat)tmp {
@@ -524,7 +549,7 @@ static const int kBlockFrameSize = 128;
         
         averageVal /= tmp.rows * tmp.cols;
         
-        if (averageVal[2] > redThreshold && averageVal[0] < redThreshold && averageVal[1] < redThreshold)
+        if (averageVal[2] > redThreshold && averageVal[0] < notRedThreshold && averageVal[1] < notRedThreshold)
             return YES;
         
         return NO;
@@ -640,12 +665,10 @@ static const int kBlockFrameSize = 128;
                     // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
                 });
             }
-            else
-            {
+            else {
                 static Mat tmpFinger;
                 static int cnt = 0;
                 static int framesWithTorchOn = 0;
-                static BOOL isTorchOn = NO;
                 static vector <float> avgRedVal;
                 cnt = (cnt + 1) % 3;
                 if(cnt) return;
@@ -654,46 +677,46 @@ static const int kBlockFrameSize = 128;
                 cvtColor(tmpFinger, tmpFinger, CV_BGRA2BGR);
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                    if (!isTorchOn && ![self isDarkFrame:tmpFinger] && ![self isUniformColored:tmpFinger])
-                        return;
-                    
-                    if (!isTorchOn) {
-                        isTorchOn = YES;
-                        avgRedVal.clear();
-                        [MHRUtilities setTorchModeOn:YES];
-                        framesWithTorchOn = 0;
-                        return;
-                    }
-                    if (++framesWithTorchOn <= 30)
-                        return;
-                    
-                    if ([self isRedColored:tmpFinger]) {
-                        avgRedVal.push_back([self calculateAverageRedValue:tmpFinger]);
-                        if (avgRedVal.size() >= 60) {
-                            if ([self isHeartBeat:avgRedVal]) {
-                                isTorchOn = NO;
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self startButtonDidTap:self];
-                                });
+                    if (isTorchOn) {
+                        
+                        if (++framesWithTorchOn <= 20)
+                            return;
+                        
+                        if ([self isRedColored:tmpFinger]) {
+                            avgRedVal.push_back([self calculateAverageRedValue:tmpFinger]);
+                            if (avgRedVal.size() >= 20) {
+                                if ([self isHeartBeat:avgRedVal]) {
+                                    isTorchOn = NO;
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self startButtonDidTap:self];
+                                    });
+                                }
+                                else {
+                                    isTorchOn = NO;
+                                    [MHRUtilities setTorchModeOn:NO];
+                                }
                             }
-                            else {
-                                isTorchOn = NO;
-                                [MHRUtilities setTorchModeOn:NO];
-                            }
-    
+                        }
+                        else {
+                            isTorchOn = NO;
+                            [MHRUtilities setTorchModeOn:NO];
                         }
                     }
                     else {
-                        isTorchOn = NO;
-                        [MHRUtilities setTorchModeOn:NO];
+                        if (![self isSameAsPreviousFrame:tmpFinger] && [self isUniformColored:tmpFinger] && [self isDarkOrDarkRed:tmpFinger]) {
+                            isTorchOn = YES;
+                            avgRedVal.clear();
+                            [MHRUtilities setTorchModeOn:YES];
+                            framesWithTorchOn = 0;
+                        }
+                        else {
+                            return;
+                        }
                     }
-                    
-                    // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
                 });
             }
-            
         }
-        
     }
 
 
