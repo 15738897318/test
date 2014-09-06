@@ -408,7 +408,9 @@ static const int kBlockFrameSize = 128;
             [MHRUtilities setTorchModeOn:NO];
             _faceLabel.text = @"";
             _fingerLabel.text = FINGER_MESSAGE;
+            _fingerLabel.textColor = [UIColor blackColor];
             [self drawFaceCaptureRect:@"MHRWhiteColor"];
+            [self.view bringSubviewToFront:_fingerLabel];
             [_videoCamera stop];
             
             // Set the camera to hide camera capture from the screen
