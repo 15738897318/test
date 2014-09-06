@@ -15,4 +15,6 @@
 extern MHR::hrResult hrGlobalResult;
 extern MHR::hrResult hrOldGlobalResult;
 
+extern Mat firstFrameWithFace;
+
 #endif /* defined(__Pulsar__globals__) */

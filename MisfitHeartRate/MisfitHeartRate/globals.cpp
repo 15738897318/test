@@ -10,3 +10,5 @@
 
 MHR::hrResult hrGlobalResult;
 MHR::hrResult hrOldGlobalResult;
+
+Mat firstFrameWithFace;
