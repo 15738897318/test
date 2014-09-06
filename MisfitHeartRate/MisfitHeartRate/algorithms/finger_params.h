@@ -95,6 +95,18 @@ namespace MHR {
     //params for hr_polisher
     const double _finger_hrThreshold = 40;
     const double _finger_hrStanDev = 2.5;
+    
+    
+    /*---------------for finger auto start--------------*/
+    const int darkThreshold = 25;
+    const int uniformThreshold = 15;
+    const int redThreshold = 100;
+    const int notRedThreshold = 50;
+    const int variationThreshold = 25;
+    const int diffThreshold = 20;
+    
+    const int delayTorchOnInFrames = 40;
+    const int delayTorchOffInFrames = 40;
 }
 
 #endif /* defined(__Pulsar__finger_params__) */

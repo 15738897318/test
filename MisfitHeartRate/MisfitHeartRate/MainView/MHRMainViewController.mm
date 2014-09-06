@@ -9,6 +9,7 @@
 #import "MHRMainViewController.hpp"
 #import "UIImageCVMatConverter.hpp"
 #import "matlab.h"
+#import "files.h"
 
 const int IOS6_Y_DELTA = 60;
 const int CAMERA_WIDTH = 352;
@@ -23,27 +24,6 @@ static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and 
 static const int kBlockFrameSize = 128;
 
 @interface MHRMainViewController ()
-    {
-        BOOL isCapturing;
-        cv::Rect cropArea, ROI_upper, ROI_lower;
-        MHRResultViewController *resultView;
-        hrResult currentResult;
-        int framesWithFace; // Count the number of frames having a face in the region of interest
-        int framesWithNoFace; // Count the number of frames NOT having a face in the region of interest
-        MBProgressHUD *progressHUD;
-        
-        bool isCalcMode;
-        double lower_range;
-        double upper_range;
-        hrResult result;
-        std::vector<double> temporal_mean;
-        NSMutableArray *frameIndexArray;
-        
-        NSOperationQueue *myQueue;
-        int blockNumber;
-        int blockCount;
-    }
-
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
     @property (strong, nonatomic) NSString *outPath;
     @property (assign, nonatomic) NSInteger nFrames;
@@ -59,10 +39,9 @@ static const int kBlockFrameSize = 128;
     @property (weak, nonatomic) IBOutlet UILabel *recordTimeLabel;
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *startButton;
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *stopButton;
-@property (weak, nonatomic) IBOutlet UIView *viewTop;
-@property (weak, nonatomic) IBOutlet UILabel *labelTop;
-@property (weak, nonatomic) IBOutlet UIView *viewTop2;
-
+    @property (weak, nonatomic) IBOutlet UIView *viewTop;
+    @property (weak, nonatomic) IBOutlet UILabel *labelTop;
+    @property (weak, nonatomic) IBOutlet UIView *viewTop2;
 @end
 
 
@@ -95,6 +74,8 @@ static const int kBlockFrameSize = 128;
         self.viewTop.hidden = NO;
         self.labelTop.text = @"Calculating...";
         self.viewTop2.hidden = YES;
+        
+        isTorchOn = NO;
         
         setFaceParams();
         [self setUpThreads];
@@ -398,14 +379,16 @@ static const int kBlockFrameSize = 128;
         else
         {
             // back camera - finger capturing
-            [MHRUtilities setTorchModeOn:YES];
+            [MHRUtilities setTorchModeOn:NO];
             _faceLabel.text = @"";
             _fingerLabel.text = FINGER_MESSAGE;
+            _fingerLabel.textColor = [UIColor blackColor];
             [self drawFaceCaptureRect:@"MHRWhiteColor"];
+            [self.view bringSubviewToFront:_fingerLabel];
             [_videoCamera stop];
             
             // Set the camera to hide camera capture from the screen
-            _videoCamera.ParentView = nil;
+            _videoCamera.ParentView = nil; //self.imageView;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
             [_videoCamera start];
             setFingerParams();
@@ -463,11 +446,13 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    #pragma - Protocol CvVideoCameraDelegate
+
+    #pragma mark - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
         if (isCapturing)
         {
+            static int failedFrames = 0;
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
@@ -485,6 +470,19 @@ static const int kBlockFrameSize = 128;
                     [self heartRateCalculation];
                 }];
             }
+            
+            if (_cameraSwitch.isOn)
+                failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()];
+            else
+                failedFrames += ![auto_stop fingerCheck:new_image];
+            
+            if (failedFrames > 5) {
+                failedFrames = 0;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self stopButtonDidTap:self];
+                });
+            }
+
         }
         else
         {
@@ -543,22 +541,87 @@ static const int kBlockFrameSize = 128;
                     
                     if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
                     {
+                        firstFrameWithFace = frame_ROI.clone();
                         // tap the startButton
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self startButtonDidTap:self];
                         });
-                        
                     }
-                    // NSLog(@"%d %d %d",assessmentResult, framesWithFace, framesWithNoFace);
                 });
             }
             else
             {
-                return;
+                static Mat tmpFinger;
+                static int framesWithTorchOn = 0;
+                static int framesWithTorchOff = delayTorchOffInFrames;
+                static vector <float> avgRedVal;
+                
+                static int cnt = 0;
+                cnt = (cnt + 1) % 3;
+                if(cnt) return;
+                
+                tmpFinger = image(cropArea).clone();
+                cvtColor(tmpFinger, tmpFinger, CV_BGRA2BGR);
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                    if (isTorchOn)
+                    {
+                        if (++framesWithTorchOn <= delayTorchOnInFrames)
+                            return;
+                        
+                        if ([auto_start isRedColored:tmpFinger])
+                        {
+                            avgRedVal.push_back([auto_start calculateAverageRedValue:tmpFinger]);
+                            if (avgRedVal.size() >= 20)
+                            {
+                                if ([auto_start isHeartBeat:avgRedVal])
+                                {
+                                    isTorchOn = NO;
+                                    
+                                    if(isCapturing) return;
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self startButtonDidTap:self];
+                                    });
+                                }
+                                else
+                                {
+                                    isTorchOn = NO;
+                                    [MHRUtilities setTorchModeOn:NO];
+                                    
+                                    framesWithTorchOff = 0;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            isTorchOn = NO;
+                            [MHRUtilities setTorchModeOn:NO];
+                            
+                            framesWithTorchOff = 0;
+                        }
+                    }
+                    else {
+                        if (++framesWithTorchOff <= delayTorchOffInFrames)
+                            return;
+                        
+                        if (![auto_start isSameAsPreviousFrame:tmpFinger] && [auto_start isUniformColored:tmpFinger] && [auto_start isDarkOrDarkRed:tmpFinger])
+                        {
+                            isTorchOn = YES;
+                            avgRedVal.clear();
+                            
+                            [MHRUtilities setTorchModeOn:YES];
+                        
+                            framesWithTorchOn = 0;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                });
             }
-            
         }
-        
     }
 
 

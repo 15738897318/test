@@ -97,6 +97,8 @@ namespace MHR {
     
     
     /*---------------for face auto start--------------*/
+    const int faceDetectionThreshold = 30;
+    
     const int _THRESHOLD_NO_FACE_FRAMES_MIN = 2;
     const int _THRESHOLD_FACE_FRAMES_MIN = 2;
     const int _THRESHOLD_FACE_FRAMES_FOR_START = 5;
