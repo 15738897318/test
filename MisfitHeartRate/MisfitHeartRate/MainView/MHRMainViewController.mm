@@ -468,129 +468,6 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    #pragma mark - Condition for finger autostart
-
-    #define darkThreshold 25
-    #define uniformThreshold 15
-    #define redThreshold 100
-    #define notRedThreshold 50
-    #define variationThreshold 25
-    #define diffThreshold 20
-    #define delayTorchOnInFrames 30
-    #define delayTorchOffInFrames 30
-
-    - (BOOL)isDarkOrDarkRed:(Mat)tmp
-    {
-        
-        Vec3f testVal = 0;
-        
-        for (int i = 0; i <= 2; ++i)
-        {
-            vector <double> arr;
-            for (int x = 0; x < tmp.cols; ++x)
-                for (int y = 0; y < tmp.rows; ++y)
-                    arr.push_back(tmp.at<Vec3b>(y, x)[i]);
-            
-            testVal[i] = prctile(arr, 95);
-        }
-        
-        if (testVal[0] > notRedThreshold || testVal[1] > notRedThreshold)
-        {
-            return NO;
-        }
-        return YES;
-    }
-
-    - (BOOL)isUniformColored:(Mat)tmp
-    {
-        
-        vector <double> arr;
-        for (int x = 0; x < tmp.cols; ++x)
-            for (int y = 0; y < tmp.rows; ++y)
-                arr.push_back(tmp.at<Vec3b>(y, x)[2]);
-            
-        int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
-
-        if (maxVal - minVal > uniformThreshold) {
-            return NO;
-        }
-        
-        return YES;
-    }
-
-    - (BOOL)isSameAsPreviousFrame:(Mat)tmp
-    {
-        static Vec3f prevAvg(-1, -1, -1);
-        
-        Vec3f avgVal(0, 0, 0);
-        for (int x = 0; x < tmp.cols; ++x)
-            for (int y = 0; y < tmp.rows; ++ y)
-            {
-                avgVal[0] += tmp.at<Vec3b>(y, x)[0];
-                avgVal[1] += tmp.at<Vec3b>(y, x)[1];
-                avgVal[2] += tmp.at<Vec3b>(y, x)[2];
-            }
-        avgVal /= tmp.cols * tmp.rows;
-
-//        NSLog(@"PreviousVal = %f, %f, %f", prevAvg[0], prevAvg[1], prevAvg[2]);
-//        NSLog(@"AverageVal = %f, %f, %f", avgVal[0], avgVal[1], avgVal[2]);
-        
-        Vec3f diff;
-        absdiff(avgVal, prevAvg, diff);
-        
-        if (prevAvg != Vec3f(-1, -1, -1) && diff[0] < diffThreshold && diff[1] < diffThreshold && diff[2] < diffThreshold)
-        {
-            prevAvg = avgVal;
-            return YES;
-        }
-        
-        prevAvg = avgVal;
-        return NO;
-    }
-
-    - (BOOL)isRedColored:(Mat)tmp
-    {
-        Vec3f averageVal = 0;
-        
-        for (int i = 0; i < tmp.rows; ++i) for (int j = 0; j < tmp.cols; ++j)
-        {
-            averageVal[0] += tmp.at<Vec3b>(i, j)[0];
-            averageVal[1] += tmp.at<Vec3b>(i, j)[1];
-            averageVal[2] += tmp.at<Vec3b>(i, j)[2];
-        }
-        
-        averageVal /= tmp.rows * tmp.cols;
-        
-        if (averageVal[2] > redThreshold && averageVal[0] < notRedThreshold && averageVal[1] < notRedThreshold)
-            return YES;
-        
-        return NO;
-    }
-
-    - (float)calculateAverageRedValue:(Mat)tmp
-    {
-        float averageVal = 0;
-        
-        for (int i = 0; i < tmp.rows; ++i) for (int j = 0; j < tmp.cols; ++j)
-            averageVal += tmp.at<Vec3b>(i, j)[2];
-        
-        averageVal /= tmp.rows * tmp.cols;
-        
-        return averageVal;
-    }
-
-    - (BOOL)isHeartBeat:(vector <float>)val
-    {
-        float maxVal = 255, minVal = 0;
-        for (int i = 0; i < (int)val.size(); ++i)
-        {
-            maxVal = max(maxVal, val[i]);
-            minVal = min(minVal, val[i]);
-        }
-        
-        return maxVal - minVal > variationThreshold;
-    }
-
     #pragma mark - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
@@ -681,10 +558,11 @@ static const int kBlockFrameSize = 128;
             else
             {
                 static Mat tmpFinger;
-                static int cnt = 0;
                 static int framesWithTorchOn = 0;
                 static int framesWithTorchOff = delayTorchOffInFrames;
                 static vector <float> avgRedVal;
+                
+                static int cnt = 0;
                 cnt = (cnt + 1) % 3;
                 if(cnt) return;
                 
@@ -697,14 +575,16 @@ static const int kBlockFrameSize = 128;
                         if (++framesWithTorchOn <= delayTorchOnInFrames)
                             return;
                         
-                        if ([self isRedColored:tmpFinger])
+                        if ([auto_start isRedColored:tmpFinger])
                         {
-                            avgRedVal.push_back([self calculateAverageRedValue:tmpFinger]);
+                            avgRedVal.push_back([auto_start calculateAverageRedValue:tmpFinger]);
                             if (avgRedVal.size() >= 20)
                             {
-                                if ([self isHeartBeat:avgRedVal])
+                                if ([auto_start isHeartBeat:avgRedVal])
                                 {
                                     isTorchOn = NO;
+                                    
+                                    if(isCapturing) return;
                                     
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         [self startButtonDidTap:self];
@@ -714,6 +594,7 @@ static const int kBlockFrameSize = 128;
                                 {
                                     isTorchOn = NO;
                                     [MHRUtilities setTorchModeOn:NO];
+                                    
                                     framesWithTorchOff = 0;
                                 }
                             }
@@ -722,6 +603,7 @@ static const int kBlockFrameSize = 128;
                         {
                             isTorchOn = NO;
                             [MHRUtilities setTorchModeOn:NO];
+                            
                             framesWithTorchOff = 0;
                         }
                     }
@@ -729,11 +611,13 @@ static const int kBlockFrameSize = 128;
                         if (++framesWithTorchOff <= delayTorchOffInFrames)
                             return;
                         
-                        if (![self isSameAsPreviousFrame:tmpFinger] && [self isUniformColored:tmpFinger] && [self isDarkOrDarkRed:tmpFinger])
+                        if (![auto_start isSameAsPreviousFrame:tmpFinger] && [auto_start isUniformColored:tmpFinger] && [auto_start isDarkOrDarkRed:tmpFinger])
                         {
                             isTorchOn = YES;
                             avgRedVal.clear();
+                            
                             [MHRUtilities setTorchModeOn:YES];
+                        
                             framesWithTorchOn = 0;
                         }
                         else
