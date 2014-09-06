@@ -45,6 +45,8 @@ static const int kBlockFrameSize = 128;
         NSOperationQueue *myQueue;
         int blockNumber;
         int blockCount;
+        
+        Mat firstFrameWithFace;
     }
 
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
@@ -467,12 +469,54 @@ static const int kBlockFrameSize = 128;
         }
     }
 
+#define faceThreshold 30
+
+- (BOOL)faceCheck:(Mat)tmp {
+    
+    Vec3f avgVal(0, 0, 0);
+    for (int x = 0; x < tmp.cols; ++x)
+        for (int y = 0; y < tmp.rows; ++ y)
+        {
+            avgVal[0] += tmp.at<Vec3b>(y, x)[0];
+            avgVal[1] += tmp.at<Vec3b>(y, x)[1];
+            avgVal[2] += tmp.at<Vec3b>(y, x)[2];
+        }
+    avgVal /= tmp.cols * tmp.rows;
+    
+    //        NSLog(@"PreviousVal = %f, %f, %f", prevAvg[0], prevAvg[1], prevAvg[2]);
+    //        NSLog(@"AverageVal = %f, %f, %f", avgVal[0], avgVal[1], avgVal[2]);
+    
+    Vec3f diff(0, 0, 0);
+    for (int x = 0; x < firstFrameWithFace.cols; ++x)
+        for (int y = 0; y < firstFrameWithFace.rows; ++ y)
+        {
+            diff[0] += firstFrameWithFace.at<Vec3b>(y, x)[0];
+            diff[1] += firstFrameWithFace.at<Vec3b>(y, x)[1];
+            diff[2] += firstFrameWithFace.at<Vec3b>(y, x)[2];
+        }
+    diff /= firstFrameWithFace.cols * firstFrameWithFace.rows;
+    
+    absdiff(avgVal, diff, diff);
+    
+    if (diff[0] < faceThreshold && diff[1] < faceThreshold && diff[2] < faceThreshold)
+        return YES;
+    
+    //    prevAvg = avgVal;
+    return NO;
+}
+
+- (BOOL)fingerCheck:(Mat)frame {
+    return [auto_start isRedColored:frame];
+}
+
+
 
     #pragma mark - Protocol CvVideoCameraDelegate
     - (void)processImage:(Mat &)image
     {
         if (isCapturing)
         {
+            static int failedFrames = 0;
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
@@ -490,6 +534,19 @@ static const int kBlockFrameSize = 128;
                     [self heartRateCalculation];
                 }];
             }
+            
+            if (_cameraSwitch.isOn)
+                failedFrames += ![self faceCheck:image(ROI_upper).clone()];
+            else
+                failedFrames += ![self fingerCheck:new_image];
+            
+            if (failedFrames > 5) {
+                failedFrames = 0;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self stopButtonDidTap:self];
+                });
+            }
+
         }
         else
         {
@@ -548,6 +605,7 @@ static const int kBlockFrameSize = 128;
                     
                     if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
                     {
+                        firstFrameWithFace = frame_ROI;
                         // tap the startButton
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self startButtonDidTap:self];
