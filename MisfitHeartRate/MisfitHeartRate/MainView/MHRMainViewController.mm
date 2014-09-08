@@ -644,24 +644,30 @@ static const int kBlockFrameSize = 128;
         int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
         NSNumber *endIndex = frameIndexArray[value];
         
+        // If still capturing, then wait until there are enough unprocessed frames for one block
+        if (isCapturing && ((endIndex.intValue - startIndex.intValue + 1) < kBlockFrameSize))
+            return;
+        
         NSLog(@"=====");
         NSLog(@"Start index: %@", startIndex);
         NSLog(@"End index: %@", endIndex);
         
-        // Run algorithm
-        //isProcessing = YES;
-        std::vector<double> temp;
-        processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
-        processingCumulative(temporal_mean, temp, currentResult);
-        NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
-        NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
+        // Run algorithm only if there are at least 10 frames left
+        if (endIndex.intValue - startIndex.intValue >= 10)
+        {
+            std::vector<double> temp;
         
-        blockCount = blockNumber + 1;
-        NSLog(@"Number of blocks processed: %d", blockCount);
-        blockNumber ++;
-        
-        isCalcMode = NO;
-        
+            processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
+            processingCumulative(temporal_mean, temp, currentResult);
+            NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
+            NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
+            
+            blockCount = blockNumber + 1;
+            NSLog(@"Number of blocks processed: %d", blockCount);
+            blockNumber ++;
+            
+            isCalcMode = NO;
+        }
     }
 
     - (void)startThreads
