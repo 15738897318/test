@@ -288,7 +288,7 @@ static const int kBlockFrameSize = 128;
             while (myQueue.operationCount != 0);
             
             if (_DEBUG_MODE)
-                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %d\n", (long)_nFrames, _minVidLength, _frameRate);
+                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %f\n", (long)_nFrames, _minVidLength, _frameRate);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 // show result
@@ -447,7 +447,7 @@ static const int kBlockFrameSize = 128;
 
 
 
-    #pragma mark - Protocol CvVideoCameraDelegate
+    #pragma mark - Processing each recorded frame
     - (void)processImage:(Mat &)image
     {
         if (isCapturing)
@@ -459,7 +459,8 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
-            
+            _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
+                        
             // Add new block to queue
             int upper = (blockNumber + 1) * kBlockFrameSize;
             int size = (int)frameIndexArray.count;
@@ -625,7 +626,7 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    #pragma - Threads process
+    #pragma mark - Threads process
     - (void)setUpThreads
     {
         isCalcMode = YES;

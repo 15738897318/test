@@ -26,7 +26,7 @@ namespace MHR {
     double _eulerian_chromaMagnifier = -1; // Standard: 1
     
     // Native params of the algorithm
-    int _frameRate = 30;
+    double _frameRate = 30;
     int _number_of_channels = -1;
     int _Gpyr_filter_length = -1;
     int _startFrame = -1;
