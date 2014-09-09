@@ -182,8 +182,8 @@ static const int kBlockFrameSize = 128;
 
     - (IBAction)startButtonDidTap:(id)sender
     {
-        printf("_DEBUG_MODE = %d\n", _DEBUG_MODE);
-        printf("_THREE_CHAN_MODE = %d\n", _THREE_CHAN_MODE);
+        NSLog(@"_DEBUG_MODE = %d", _DEBUG_MODE);
+        NSLog(@"_THREE_CHAN_MODE = %d", _THREE_CHAN_MODE);
         
         if(isCapturing) return;
         isCapturing = TRUE;
@@ -196,7 +196,11 @@ static const int kBlockFrameSize = 128;
         
         static int touchCount = 0;
         touchCount ++;
-        NSLog(@"%d",touchCount);
+        
+        if (_DEBUG_MODE)
+        {
+            NSLog(@"%d",touchCount);
+        }
         
         // create new directory for this session
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
@@ -226,6 +230,9 @@ static const int kBlockFrameSize = 128;
         
         [MHRUtilities createDirectory:_outPath];
         _outputPath = [_outPath UTF8String] + String("/");
+        
+        if (_DEBUG_MODE)
+            NSLog(@"Create directory: %@", _outPath);
         
         isCapturing = YES;
         _startButton.enabled = NO;
@@ -649,9 +656,12 @@ static const int kBlockFrameSize = 128;
         if (isCapturing && ((endIndex.intValue - startIndex.intValue + 1) < kBlockFrameSize))
             return;
         
-        NSLog(@"=====");
-        NSLog(@"Start index: %@", startIndex);
-        NSLog(@"End index: %@", endIndex);
+        if (_DEBUG_MODE)
+        {
+            NSLog(@"=====");
+            NSLog(@"Start index: %@", startIndex);
+            NSLog(@"End index: %@", endIndex);
+        }
         
         // Run algorithm only if there are at least 10 frames left
         if (endIndex.intValue - startIndex.intValue >= 10)
@@ -660,14 +670,18 @@ static const int kBlockFrameSize = 128;
         
             processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
             processingCumulative(temporal_mean, temp, currentResult);
-            NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
-            NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
             
             blockCount = blockNumber + 1;
-            NSLog(@"Number of blocks processed: %d", blockCount);
             blockNumber ++;
             
             isCalcMode = NO;
+            
+            if (_DEBUG_MODE)
+            {
+                NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
+                NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
+                NSLog(@"Number of blocks processed: %d", blockCount);
+            }
         }
     }
 

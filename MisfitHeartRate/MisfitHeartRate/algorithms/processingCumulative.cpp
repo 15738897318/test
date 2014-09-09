@@ -32,9 +32,7 @@ namespace MHR
         // - Cardiio takes 30secs to generate an HR estimate
         currentResult = hr_signal_calc(temporal_mean_filt, firstSample, window_size, _frameRate,
                                       _overlap_ratio, _max_bpm, threshold_fraction);
-        
-        printf("%lf %lf\n",currentResult.autocorr,currentResult.pda);
-        
+                
         hrGlobalResult = currentResult;
     }
 }
