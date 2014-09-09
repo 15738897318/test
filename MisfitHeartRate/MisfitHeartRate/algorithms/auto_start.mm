@@ -13,8 +13,6 @@ using namespace cv;
     + (NSArray*) detectFrontalFaces:(cv::Mat*) frame
     {
         //-- Detect faces
-        //face_cascade.detectMultiScale(frame_gray, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(30, 30));
-        
         static CIContext *context = [CIContext contextWithOptions:nil];
         static NSDictionary *opts = @{ CIDetectorAccuracy : CIDetectorAccuracyLow };
         
@@ -26,8 +24,6 @@ using namespace cv;
             CIImage *ciImage = [CIImage imageWithCGImage:uiImage.CGImage];
             
             NSArray *features = [detector featuresInImage:ciImage]; // Potential memory leak is caused by the ARC not being used in queues other than Main. Need @autoreleasepool
-            
-            //NSLog(@"features = %d", features.count);
             
             return features;
         }
@@ -158,9 +154,6 @@ using namespace cv;
                 avgVal[2] += tmp.at<Vec3b>(y, x)[2];
             }
         avgVal /= tmp.cols * tmp.rows;
-        
-        //        NSLog(@"PreviousVal = %f, %f, %f", prevAvg[0], prevAvg[1], prevAvg[2]);
-        //        NSLog(@"AverageVal = %f, %f, %f", avgVal[0], avgVal[1], avgVal[2]);
         
         Vec3f diff;
         absdiff(avgVal, prevAvg, diff);

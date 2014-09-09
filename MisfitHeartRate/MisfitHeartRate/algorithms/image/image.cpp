@@ -27,23 +27,14 @@ namespace MHR {
                     rgb_channel[channel].at<double>(i, j) = rgbmap.at<Vec3d>(i, j)[channel];
                 }
 
-//        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
-//        r_primes(isnan(r_primes)) = -1/3;
 		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(rgb_channel[0], rgb_sumchannels, r_primes);
 		r_primes = r_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
         
-//        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
-//        g_primes(isnan(g_primes)) = -1/3;
 		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(rgb_channel[1], rgb_sumchannels, g_primes);
 		g_primes = g_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
         
-//        temp1 = zeros(size(g_primes));
-//        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
-//        temp1(bsxfun(@lt, g_primes, 0)) = 3/4;
-//        temp2 = ones(size(g_primes));
-//        temp2(bsxfun(@eq, g_primes, 0)) = 0;
 		Mat temp1 = Mat::zeros(nRow, nCol, CV_64F);
 		Mat temp2 = Mat::ones(nRow, nCol, CV_64F);
 		for (int i = 0; i < nRow; ++i)
@@ -63,19 +54,16 @@ namespace MHR {
         
 
         dst = Mat::zeros(nRow, nCol, CV_64FC3);
-//        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
 		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
 		multiply(tmp0, temp2, tmp0);
 		tmp0 = tmp0 + temp1;
         
-//        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
 		Mat tmp1 = powMat(r_primes, 2);
 		tmp1 = tmp1 + powMat(g_primes, 2);
 		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
 		pow(tmp1, 0.5, tmp1);
         
-//        tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
 		Mat tmp2 = add(multiply(rgb_channel[0], 0.299),
 					   multiply(rgb_channel[1], 0.587));
 		tmp2 = tmp2 + multiply(rgb_channel[2], 0.114);
