@@ -39,7 +39,7 @@ namespace MHR {
     extern double _eulerian_chromaMagnifier; // Standard: 1
     
     // Native params of the algorithm
-    extern int _frameRate;
+    extern double _frameRate;
     extern int _number_of_channels;
     extern int _Gpyr_filter_length;
     extern int _startFrame;

@@ -23,17 +23,16 @@ namespace MHR {
 		// Extract video info
 		int vidHeight = vid[0].rows;
 		int vidWidth = vid[0].cols;
-		int nChannels = _number_of_channels;		// should get from vid?
-		int frameRate = _frameRate;             // Can not get it from vidIn!!!! :((
+		int nChannels = _number_of_channels;
+		samplingRate = _frameRate;
 		int len = (int)vid.size();
         
         if (_DEBUG_MODE) {
             printf("width = %d, height = %d\n", vidWidth, vidHeight);
-            printf("frameRate = %d, len = %d\n", frameRate, len);
+            printf("frameRate = %f, len = %d\n", samplingRate, len);
 //            frameToFile(vid[0], outDir + "test_frame_in.jpg");
         }
       
-		samplingRate = frameRate;
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
         
 		// Define the indices of the frames to be processed

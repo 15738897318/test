@@ -34,13 +34,10 @@ namespace MHR {
     
     vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean = true);
     
-    // [counts, centres] = hist(arr, nbins)
     void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers);
 
-    // invprctile
     double invprctile(const vector<double> &arr, double x);
 
-    //prctile
     double prctile(vector<double> arr, double percent);
 
     //filter function for frames2signal function

@@ -20,8 +20,6 @@ namespace MHR {
 	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level) {
         clock_t t1 = clock();
         
-//        int nChannels = vid[0].channels();
-        
         // firstFrame
         Mat frame;
         if (_THREE_CHAN_MODE)
@@ -32,13 +30,11 @@ namespace MHR {
         // Blur and downsample the frame
         Mat blurred;
         blurDnClr(frame, blurred, level);
-//        int nRow = blurred.size.p[0], nCol = blurred.size.p[1];
         
         if (_DEBUG_MODE) {
             printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
             frameChannelToFile(frame, _outputPath + "1_vid[0]_build_Gdown_Stack.txt", _channels_to_process);
             frameChannelToFile(blurred, _outputPath + "1_GDownStack[0]_build_Gdown_Stack.txt", _channels_to_process);
-//            frameToFile(blurred, _outputPath + "test_frame_blurred.jpg");
         }
         
         // create pyr stack

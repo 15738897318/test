@@ -13,6 +13,7 @@
 		12B587DD1963EC9100BA19A5 /* hrDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587DB1963EC9100BA19A5 /* hrDebug.cpp */; };
 		12B587E41963F48700BA19A5 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E21963F48700BA19A5 /* matlab.cpp */; };
 		12B587E71964017E00BA19A5 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */; };
+		614CC05219BB0C420009E68A /* auto_stop.mm in Sources */ = {isa = PBXBuildFile; fileRef = 614CC05119BB0C420009E68A /* auto_stop.mm */; };
 		6195C5E319A1B96A00D975CD /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6195C5E119A1B96A00D975CD /* globals.cpp */; };
 		61DA08E119B03A6600C5D412 /* input_frame[0].png in Resources */ = {isa = PBXBuildFile; fileRef = 61DA057819B03A6200C5D412 /* input_frame[0].png */; };
 		61DA08E219B03A6600C5D412 /* input_frame[1].png in Resources */ = {isa = PBXBuildFile; fileRef = 61DA057919B03A6200C5D412 /* input_frame[1].png */; };
@@ -992,6 +993,8 @@
 		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
 		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
+		614CC05019BB0C420009E68A /* auto_stop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auto_stop.hpp; sourceTree = "<group>"; };
+		614CC05119BB0C420009E68A /* auto_stop.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = auto_stop.mm; sourceTree = "<group>"; };
 		6195C5E119A1B96A00D975CD /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
 		6195C5E219A1B96A00D975CD /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		61DA057819B03A6200C5D412 /* input_frame[0].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "input_frame[0].png"; path = "pulsarTestData/input_frame[0].png"; sourceTree = "<group>"; };
@@ -2902,6 +2905,10 @@
 		DCAE6B9D195A789800B9FE9F /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				614CC05019BB0C420009E68A /* auto_stop.hpp */,
+				614CC05119BB0C420009E68A /* auto_stop.mm */,
+				121C1D54199B5888003C9E47 /* auto_start.hpp */,
+				121C1D55199B5888003C9E47 /* auto_start.mm */,
 				DCAE6BAE195AEBFB00B9FE9F /* Eulerian */,
 				DCAE6BAA195A80FF00B9FE9F /* HeartRateCal */,
 				DCAE6BA6195A794800B9FE9F /* math */,
@@ -2934,8 +2941,6 @@
 		DCAE6BA5195A791B00B9FE9F /* image */ = {
 			isa = PBXGroup;
 			children = (
-				121C1D54199B5888003C9E47 /* auto_start.hpp */,
-				121C1D55199B5888003C9E47 /* auto_start.mm */,
 				DCAE524219657AF300A8AFB6 /* image.h */,
 				DCAE524119657AF300A8AFB6 /* image.cpp */,
 			);
@@ -4100,6 +4105,7 @@
 				121C1D56199B5888003C9E47 /* auto_start.mm in Sources */,
 				DCBDEA20196124F3005F6298 /* MHRUtilities.m in Sources */,
 				DCAE5240196579BC00A8AFB6 /* matrix.cpp in Sources */,
+				614CC05219BB0C420009E68A /* auto_stop.mm in Sources */,
 				DCAE524D1966AB9200A8AFB6 /* run_algorithms.cpp in Sources */,
 				DCADC191196BB46200AFCDE5 /* MBProgressHUD.m in Sources */,
 				DC9D58C7197FB062002C6BB8 /* config.cpp in Sources */,
@@ -4285,7 +4291,7 @@
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Pulsar;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6C70245F-0E89-4DF6-AD51-A99FC5F1CB11";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

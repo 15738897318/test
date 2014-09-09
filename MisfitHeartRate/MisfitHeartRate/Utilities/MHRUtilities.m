@@ -36,7 +36,6 @@
 
 + (void)createDirectory:(NSString *)directoryPath
 {
-    NSLog(@"Create directory: %@", directoryPath);
     if (![[NSFileManager defaultManager] fileExistsAtPath:directoryPath])
         [[NSFileManager defaultManager] createDirectoryAtPath:directoryPath
                                   withIntermediateDirectories:YES

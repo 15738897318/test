@@ -22,6 +22,7 @@
 #import "MHRSettingsViewController.h"
 #import "run_algorithms.h"
 #import "auto_start.hpp"
+#import "auto_stop.hpp"
 #import "globals.h"
 #import "processingCumulative.h"
 #import "processingPerBlock.h"
@@ -32,5 +33,26 @@ using namespace MHR;
 
 
 @interface MHRMainViewController : UIViewController <CvVideoCameraDelegate, MHRSettingsViewDelegate>
-
+{
+    BOOL isCapturing;
+    cv::Rect cropArea, ROI_upper, ROI_lower;
+    MHRResultViewController *resultView;
+    hrResult currentResult;
+    int framesWithFace; // Count the number of frames having a face in the region of interest
+    int framesWithNoFace; // Count the number of frames NOT having a face in the region of interest
+    MBProgressHUD *progressHUD;
+    
+    BOOL isTorchOn;
+    
+    bool isCalcMode;
+    double lower_range;
+    double upper_range;
+    hrResult result;
+    std::vector<double> temporal_mean;
+    NSMutableArray *frameIndexArray;
+    
+    NSOperationQueue *myQueue;
+    int blockNumber;
+    int blockCount;
+}
 @end

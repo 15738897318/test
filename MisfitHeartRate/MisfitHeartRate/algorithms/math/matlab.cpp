@@ -222,11 +222,6 @@ namespace MHR {
         for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
             ans[nAnPositions[i]] = NaN;
         
-        // remove last _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
-        // (using only with filter2D)
-//        for(int i = 0; i < _beatSignalFilterKernel_size/2; ++i)
-//            if(!ans.empty()) ans.pop_back();
-
         // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
         ans = vector<double>(ans.begin() + _beatSignalFilterKernel_size/2, ans.end());
         
