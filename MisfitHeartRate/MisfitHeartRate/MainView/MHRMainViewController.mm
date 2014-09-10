@@ -11,13 +11,6 @@
 #import "matlab.h"
 #import "files.h"
 
-const int IOS6_Y_DELTA = 60;
-const int CAMERA_WIDTH = 352;
-const int CAMERA_HEIGHT = 288;
-const int IMAGE_WIDTH = 128;
-const int IMAGE_HEIGHT = 128;
-const int WIDTH_PADDING = (CAMERA_WIDTH-IMAGE_WIDTH)/2;
-const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 static NSString * const FACE_MESSAGE = @"Make sure your face fitted in the Aqua rectangle!";
 static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and the flash with your finger!";
 
@@ -71,6 +64,8 @@ static const int kBlockFrameSize = 128;
     {
         [super viewDidLoad];
         
+        fastMode = false;
+        
         self.viewTop.hidden = NO;
         self.labelTop.text = @"Calculating...";
         self.viewTop2.hidden = YES;
@@ -87,6 +82,7 @@ static const int kBlockFrameSize = 128;
         
         isCapturing = NO;
         cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
+        searchArea = cv::Rect(WIDTH_PADDING - 0.25 * IMAGE_WIDTH, HEIGHT_PADDING - 0.25 * IMAGE_HEIGHT, 1.5 * IMAGE_WIDTH, 1.5 * IMAGE_HEIGHT);
         
         // Create the upper & lower bounds for the face-detection area
         int ROI_x;
@@ -124,8 +120,17 @@ static const int kBlockFrameSize = 128;
         self.navigationItem.leftBarButtonItem = _startButton;
         self.navigationItem.rightBarButtonItem = _stopButton;
         
+        
+        
         // draw Aqua rectangle
-        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+        int x0 = self.imageView.frameX;
+        int y0 = self.imageView.frameY;
+        int dx = (CAMERA_HEIGHT - IMAGE_WIDTH)/2;
+        int dy = (CAMERA_WIDTH - IMAGE_HEIGHT)/2;
+        defaultOriginX = x0 + dx;
+        defaultOriginY = y0 + dy;
+//        cropArea = cv::Rect(defaultOriginX, defaultOriginY, IMAGE_WIDTH, IMAGE_HEIGHT);
+        [self drawFaceCaptureRect:cropArea withColorKey:@"MHRCameraCaptureRect"];
         
         // update Layout (iOS6 vs iOS7)
         [self updateLayout];
@@ -261,7 +266,11 @@ static const int kBlockFrameSize = 128;
         
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
-        [self drawFaceCaptureRect:@"MHRWhiteColor"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view bringSubviewToFront:self.imageView];
+            [self drawFaceCaptureRect:cropArea withColorKey:@"MHRCameraCaptureRect"];
+            [self drawFaceCaptureRect:searchArea withColorKey:@"MHRWhiteColor"];
+        });
         
         // stop camera capturing
         [_videoCamera stop];
@@ -282,6 +291,28 @@ static const int kBlockFrameSize = 128;
         if (!_cameraSwitch.isOn)
         {
             _fingerLabel.text = @"";
+        }
+        else {
+            cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
+            searchArea = cv::Rect(WIDTH_PADDING - 0.25 * IMAGE_WIDTH, HEIGHT_PADDING - 0.25 * IMAGE_HEIGHT, 1.5 * IMAGE_WIDTH, 1.5 * IMAGE_HEIGHT);
+            
+            // Create the upper & lower bounds for the face-detection area
+            int ROI_x;
+            int ROI_y;
+            int ROI_width;
+            int ROI_height;
+            
+            ROI_x = cropArea.x - (int)((double)cropArea.width * (_ROI_RATIO_UPPER - 1)) / 2;
+            ROI_y = cropArea.y - (int)((double)cropArea.height * (_ROI_RATIO_UPPER - 1)) / 2;
+            ROI_width = (int)((double)cropArea.width * _ROI_RATIO_UPPER);
+            ROI_height = (int)((double)cropArea.height * _ROI_RATIO_UPPER);
+            ROI_upper = cv::Rect(ROI_x, ROI_y, ROI_width, ROI_height);
+            
+            ROI_x = cropArea.x - (int)((double)cropArea.width * (_ROI_RATIO_LOWER - 1)) / 2;
+            ROI_y = cropArea.y - (int)((double)cropArea.height * (_ROI_RATIO_LOWER - 1)) / 2;
+            ROI_width = (int)((double)cropArea.width * _ROI_RATIO_LOWER);
+            ROI_height = (int)((double)cropArea.height * _ROI_RATIO_LOWER);
+            ROI_lower = cv::Rect(ROI_x, ROI_y, ROI_width, ROI_height);
         }
         _faceLabel.text = @"Processing....";
         
@@ -373,7 +404,7 @@ static const int kBlockFrameSize = 128;
             [MHRUtilities setTorchModeOn:NO];
             _faceLabel.text = FACE_MESSAGE;
             _fingerLabel.text = @"";
-            [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+            [self drawFaceCaptureRect:cropArea withColorKey:@"MHRCameraCaptureRect"];
             [_videoCamera stop];
             
             // Set the camera to show camera capture onto the screen
@@ -390,7 +421,7 @@ static const int kBlockFrameSize = 128;
             _faceLabel.text = @"";
             _fingerLabel.text = FINGER_MESSAGE;
             _fingerLabel.textColor = [UIColor blackColor];
-            [self drawFaceCaptureRect:@"MHRWhiteColor"];
+            [self drawFaceCaptureRect:cropArea withColorKey:@"MHRWhiteColor"];
             [self.view bringSubviewToFront:_fingerLabel];
             [_videoCamera stop];
             
@@ -415,26 +446,29 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    - (void)drawFaceCaptureRect:(NSString *)colorKey
+- (void)drawFaceCaptureRect:(cv::Rect)rect withColorKey:(NSString *)colorKey
     {
-        int x0 = self.imageView.frameX;
-        int y0 = self.imageView.frameY;
-        int x1 = x0 + self.imageView.frameWidth;
-        int y1 = y0 + self.imageView.frameHeight;
-        int dx = (CAMERA_HEIGHT - IMAGE_WIDTH)/2;
-        int dy = (CAMERA_WIDTH - IMAGE_HEIGHT)/2;
         int yDelta = 0;
         if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
         {
             yDelta = -IOS6_Y_DELTA;
         }
         
+        int x0 = rect.y, y0 = rect.x;
+        int x1 = rect.y + rect.width, y1 = rect.x + rect.height;
+        
+        y1 = CAMERA_WIDTH - y1;
+        y0 = CAMERA_WIDTH - y0;
+        swap(y0, y1);
+        x0 += self.imageView.frameX; x1 += self.imageView.frameX;
+        y0 += self.imageView.frameY; y1 += self.imageView.frameY;
+        
         // horizontal lines
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy + yDelta, IMAGE_WIDTH, 5) pListKey:colorKey]];
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y1 - dy + yDelta, IMAGE_WIDTH, 5) pListKey:colorKey]];
-        // vertical lines
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0 + dx, y0 + dy + yDelta, 5, IMAGE_HEIGHT) pListKey:colorKey]];
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x1 - dx, y0 + dy + yDelta, 5, IMAGE_HEIGHT+5) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0, y0, rect.width, 5) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0, y1, rect.width, 5) pListKey:colorKey]];
+        // vertical line
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x0, y0, 5, rect.height) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x1, y0, 5, rect.height+5) pListKey:colorKey]];
     }
 
 
@@ -465,9 +499,8 @@ static const int kBlockFrameSize = 128;
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
-            
             _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
-                        
+            
             // Add new block to queue
             int upper = (blockNumber + 1) * kBlockFrameSize;
             int size = (int)frameIndexArray.count;
@@ -479,8 +512,19 @@ static const int kBlockFrameSize = 128;
                 }];
             }
             
-            if (_cameraSwitch.isOn)
-                failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view bringSubviewToFront:self.imageView];
+                [self drawFaceCaptureRect:cropArea withColorKey:@"MHRCameraCaptureRect"];
+                //[self drawFaceCaptureRect:searchArea withColorKey:@"MHRWhiteColor"];
+            });
+
+            
+            if (_cameraSwitch.isOn) {
+                if (fastMode)
+                    failedFrames += ![auto_stop fastFaceCheck:image(ROI_upper).clone()];
+                else
+                    failedFrames += ![auto_stop slowFaceCheck:image.clone()];
+            }
             else
                 failedFrames += ![auto_stop fingerCheck:new_image];
             
@@ -525,7 +569,7 @@ static const int kBlockFrameSize = 128;
                     // - Increment the framesWithFace variable
                     int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
                     faces = nil;
-                    if (assessmentResult == 1)
+                    if (assessmentResult)
                     {
                         framesWithFace += 1;
                     }

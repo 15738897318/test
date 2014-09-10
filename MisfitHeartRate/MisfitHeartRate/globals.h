@@ -17,4 +17,11 @@ extern MHR::hrResult hrOldGlobalResult;
 
 extern Mat firstFrameWithFace;
 
+extern cv::Rect cropArea;
+extern cv::Rect searchArea;
+extern cv::Rect ROI_upper;
+extern cv::Rect ROI_lower;
+
+extern bool fastMode;
+
 #endif /* defined(__Pulsar__globals__) */

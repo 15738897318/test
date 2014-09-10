@@ -9,7 +9,7 @@ using namespace cv;
 @implementation auto_start
     RNG rng(12345);
 
-    /** For face detection */
+    /* For face detection */
     + (NSArray*) detectFrontalFaces:(cv::Mat*) frame
     {
         //-- Detect faces

@@ -31,11 +31,17 @@
 using namespace cv;
 using namespace MHR;
 
+const int IOS6_Y_DELTA = 60;
+const int CAMERA_WIDTH = 352;
+const int CAMERA_HEIGHT = 288;
+const int IMAGE_WIDTH = 128;
+const int IMAGE_HEIGHT = 128;
+const int WIDTH_PADDING = (CAMERA_WIDTH-IMAGE_WIDTH)/2;
+const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 
 @interface MHRMainViewController : UIViewController <CvVideoCameraDelegate, MHRSettingsViewDelegate>
 {
     BOOL isCapturing;
-    cv::Rect cropArea, ROI_upper, ROI_lower;
     MHRResultViewController *resultView;
     hrResult currentResult;
     int framesWithFace; // Count the number of frames having a face in the region of interest
@@ -54,5 +60,8 @@ using namespace MHR;
     NSOperationQueue *myQueue;
     int blockNumber;
     int blockCount;
+    
+    int defaultOriginX;
+    int defaultOriginY;
 }
 @end

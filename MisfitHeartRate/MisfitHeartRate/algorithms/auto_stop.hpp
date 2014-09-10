@@ -8,7 +8,9 @@
 
 @interface auto_stop:NSObject
 
-    + (BOOL)faceCheck:(Mat)tmp;
+    + (BOOL)fastFaceCheck:(Mat)tmp;
+
+    + (BOOL)slowFaceCheck:(Mat)tmp;
 
     + (BOOL)fingerCheck:(Mat)frame;
 @end
