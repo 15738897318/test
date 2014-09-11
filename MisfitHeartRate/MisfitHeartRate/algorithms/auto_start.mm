@@ -67,10 +67,23 @@ using namespace cv;
     {
         // There must be at least one face in the detected faces that is bigger than the minimum size of the ROI
         for(int i = 0; i < faces.count; i++) {
-            CIFeature *face = [faces objectAtIndex:i];
+            CIFaceFeature *face = [faces objectAtIndex:i];
             
             if ((face.bounds.size.width >= ROI_lower.width) && (face.bounds.size.height >= ROI_lower.height))
             {
+                if (face.hasLeftEyePosition)
+                    leftEye = cv::Rect(face.leftEyePosition.x - 50, face.leftEyePosition.y - 50, 50, 50);
+                else
+                    leftEye = cv::Rect(0, 0, 0, 0);
+                
+                if (face.hasRightEyePosition)
+                    rightEye = cv::Rect(face.rightEyePosition.x - 50, face.rightEyePosition.y - 50, 50, 50);
+                else
+                    rightEye = cv::Rect(0, 0, 0, 0);
+                if (face.hasMouthPosition)
+                    mouth = cv::Rect(face.mouthPosition.x - 50, face.mouthPosition.y - 50, 50, 50);
+                else
+                    mouth = cv::Rect(0, 0, 0, 0);
                 return 1;
             }
         }
@@ -98,8 +111,6 @@ using namespace cv;
         }
         return data;
     }
-
-
 
     /** For finger detection */
     + (BOOL)isDarkOrDarkRed:(Mat)tmp

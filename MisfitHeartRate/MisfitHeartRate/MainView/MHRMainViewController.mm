@@ -462,6 +462,19 @@ static const int kBlockFrameSize = 128;
             static int failedFrames = 0;
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
+            
+            for (int x = MAX(0, leftEye.x); x <= MIN(new_image.rows, leftEye.x + leftEye.width); ++x)
+                for (int y = MAX(0, leftEye.y); y <= MIN(new_image.cols, leftEye.y + leftEye.height); ++y)
+                    new_image.at<Vec3b>(x, y) = Vec3b(0, 0, 0);
+            
+            for (int x = MAX(0, rightEye.x); x <= MIN(new_image.rows, rightEye.x + rightEye.width); ++x)
+                for (int y = MAX(0, rightEye.y); y <= MIN(new_image.cols, rightEye.y + rightEye.height); ++y)
+                    new_image.at<Vec3b>(x, y) = Vec3b(0, 0, 0);
+            
+            for (int x = MAX(0, mouth.x); x <= MIN(new_image.rows, mouth.x + mouth.width); ++x)
+                for (int y = MAX(0, mouth.y); y <= MIN(new_image.cols, mouth.y + mouth.height); ++y)
+                    new_image.at<Vec3b>(x, y) = Vec3b(0, 0, 0);
+            
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;

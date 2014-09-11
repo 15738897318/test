@@ -17,4 +17,8 @@ extern MHR::hrResult hrOldGlobalResult;
 
 extern Mat firstFrameWithFace;
 
+extern cv::Rect leftEye;
+extern cv::Rect rightEye;
+extern cv::Rect mouth;
+
 #endif /* defined(__Pulsar__globals__) */

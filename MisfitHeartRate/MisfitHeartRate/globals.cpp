@@ -12,3 +12,7 @@ MHR::hrResult hrGlobalResult;
 MHR::hrResult hrOldGlobalResult;
 
 Mat firstFrameWithFace;
+
+cv::Rect rightEye;
+cv::Rect leftEye;
+cv::Rect mouth;

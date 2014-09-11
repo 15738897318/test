@@ -16,7 +16,7 @@
 
     + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat;
 
-    
+
     /** For finger detection */
     + (BOOL)isDarkOrDarkRed:(Mat)tmp;
 
