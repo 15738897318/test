@@ -72,16 +72,16 @@ using namespace cv;
             if ((face.bounds.size.width >= ROI_lower.width) && (face.bounds.size.height >= ROI_lower.height))
             {
                 if (face.hasLeftEyePosition)
-                    leftEye = cv::Rect(face.leftEyePosition.x - 25 + ROI_upper.x - cropArea.x, face.leftEyePosition.y - 25 + ROI_upper.y - cropArea.y, 50, 50);
+                    leftEye = cv::Rect(face.leftEyePosition.y - 10 + ROI_upper.x - cropArea.x, face.leftEyePosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
                 else
                     leftEye = cv::Rect(0, 0, 0, 0);
                 
                 if (face.hasRightEyePosition)
-                    rightEye = cv::Rect(face.rightEyePosition.x - 25 + ROI_upper.x - cropArea.x, face.rightEyePosition.y - 25 + ROI_upper.y - cropArea.y, 50, 50);
+                    rightEye = cv::Rect(face.rightEyePosition.y - 10 + ROI_upper.x - cropArea.x, face.rightEyePosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
                 else
                     rightEye = cv::Rect(0, 0, 0, 0);
                 if (face.hasMouthPosition)
-                    mouth = cv::Rect(face.mouthPosition.x - 25 + ROI_upper.x - cropArea.x, face.mouthPosition.y - 25 + ROI_upper.y - cropArea.y, 50, 50);
+                    mouth = cv::Rect(face.mouthPosition.y - 10 + ROI_upper.x - cropArea.x, face.mouthPosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
                 else
                     mouth = cv::Rect(0, 0, 0, 0);
                 return 1;
@@ -114,17 +114,17 @@ using namespace cv;
 
     + (void) removeEyesAndMouth:(cv::Mat*)new_image
     {
-        for (int x = MAX(0, leftEye.x); x <= MIN(new_image->rows, leftEye.x + leftEye.width); ++x)
-            for (int y = MAX(0, leftEye.y); y <= MIN(new_image->cols, leftEye.y + leftEye.height); ++y)
-                new_image->at<Vec3b>(x, y) = Vec3b(0, 0, 0);
+        for (int x = MAX(0, leftEye.x); x <= MIN(new_image->cols, leftEye.x + leftEye.width); ++x)
+            for (int y = MAX(0, leftEye.y); y <= MIN(new_image->rows, leftEye.y + leftEye.height); ++y)
+                new_image->at<Vec3b>(y, x) = Vec3b(0, 0, 0);
         
-        for (int x = MAX(0, rightEye.x); x <= MIN(new_image->rows, rightEye.x + rightEye.width); ++x)
-            for (int y = MAX(0, rightEye.y); y <= MIN(new_image->cols, rightEye.y + rightEye.height); ++y)
-                new_image->at<Vec3b>(x, y) = Vec3b(0, 0, 0);
+        for (int x = MAX(0, rightEye.x); x <= MIN(new_image->cols, rightEye.x + rightEye.width); ++x)
+            for (int y = MAX(0, rightEye.y); y <= MIN(new_image->rows, rightEye.y + rightEye.height); ++y)
+                new_image->at<Vec3b>(y, x) = Vec3b(0, 0, 0);
         
-        for (int x = MAX(0, mouth.x); x <= MIN(new_image->rows, mouth.x + mouth.width); ++x)
-            for (int y = MAX(0, mouth.y); y <= MIN(new_image->cols, mouth.y + mouth.height); ++y)
-                new_image->at<Vec3b>(x, y) = Vec3b(0, 0, 0);
+        for (int x = MAX(0, mouth.x); x <= MIN(new_image->cols, mouth.x + mouth.width); ++x)
+            for (int y = MAX(0, mouth.y); y <= MIN(new_image->rows, mouth.y + mouth.height); ++y)
+                new_image->at<Vec3b>(y, x) = Vec3b(0, 0, 0);
     }
 
     /** For finger detection */

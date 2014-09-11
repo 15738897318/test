@@ -193,11 +193,9 @@ static const int kBlockFrameSize = 128;
         if (_DEBUG_MODE)
         {
             NSLog(@"%d",touchCount);
-            [self.view bringSubviewToFront:self.imageView];
-            [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
-            [self drawFaceCaptureRect:cv::Rect(leftEye.x + cropArea.x, leftEye.y + cropArea.y, leftEye.width, leftEye.height) withColorKey:@"MHRRedColor"];
-            [self drawFaceCaptureRect:cv::Rect(rightEye.x + cropArea.x, rightEye.y + cropArea.y, rightEye.width, rightEye.height) withColorKey:@"MHRRedColor"];
-            [self drawFaceCaptureRect:cv::Rect(mouth.x + cropArea.x, mouth.y + cropArea.y, mouth.width, mouth.height) withColorKey:@"MHRWhiteColor"];
+            [self drawFaceCaptureRect:leftEye withColorKey:@"MHRRedColor"];
+            [self drawFaceCaptureRect:rightEye withColorKey:@"MHRRedColor"];
+            [self drawFaceCaptureRect:mouth withColorKey:@"MHRWhiteColor"];
         }
         
         // create new directory for this session
@@ -282,6 +280,9 @@ static const int kBlockFrameSize = 128;
             _fingerLabel.text = @"";
         }
         _faceLabel.text = @"Processing....";
+        
+        [self.view bringSubviewToFront:self.imageView];
+        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
         
         // write _nFrames to file
         FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
@@ -437,21 +438,21 @@ static const int kBlockFrameSize = 128;
 
     - (void)drawFaceCaptureRect:(cv::Rect)rect withColorKey:(NSString *)colorKey
     {
-        int yDelta = 0;
-        if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
-        {
-            yDelta = -IOS6_Y_DELTA;
-        }
+//        int yDelta = 0;
+//        if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+//        {
+//            yDelta = -IOS6_Y_DELTA;
+//        }
         
-        int X0 = rect.x, Y0 = rect.y;
-        int X1 = rect.x + rect.width, Y1 = rect.y + rect.height;
+        int X0 = rect.y + cropArea.y, Y0 = rect.x + rect.width + cropArea.x;
+        int X1 = rect.y + rect.height + cropArea.y, Y1 = rect.x + cropArea.x;
 
-        Y1 = CAMERA_HEIGHT - Y1;
-        Y0 = CAMERA_HEIGHT - Y0;
-        swap(Y0, Y1);
+        Y1 = CAMERA_WIDTH - Y1;
+        Y0 = CAMERA_WIDTH - Y0;
+        //swap(Y0, Y1);
         
-        X0 += self.imageView.frameX - 20; X1 += self.imageView.frameX - 20;
-        Y0 += self.imageView.frameY + 20; Y1 += self.imageView.frameY + 20;
+        X0 += self.imageView.frameX; X1 += self.imageView.frameX;
+        Y0 += self.imageView.frameY; Y1 += self.imageView.frameY;
         
         // horizontal lines
         [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, rect.width, 5) pListKey:colorKey]];
