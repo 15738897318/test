@@ -5,8 +5,7 @@ using namespace cv;
 
 
 @implementation auto_stop
-    + (BOOL)faceCheck:(Mat)tmp {
-        
+    + (BOOL)faceCheck:(Mat)tmp {        
         Vec3f avgVal(0, 0, 0);
         for (int x = 0; x < tmp.cols; ++x)
             for (int y = 0; y < tmp.rows; ++ y)

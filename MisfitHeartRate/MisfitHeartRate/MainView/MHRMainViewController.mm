@@ -11,13 +11,6 @@
 #import "matlab.h"
 #import "files.h"
 
-const int IOS6_Y_DELTA = 60;
-const int CAMERA_WIDTH = 352;
-const int CAMERA_HEIGHT = 288;
-const int IMAGE_WIDTH = 128;
-const int IMAGE_HEIGHT = 128;
-const int WIDTH_PADDING = (CAMERA_WIDTH-IMAGE_WIDTH)/2;
-const int HEIGHT_PADDING = (CAMERA_HEIGHT-IMAGE_HEIGHT)/2;
 static NSString * const FACE_MESSAGE = @"Make sure your face fitted in the Aqua rectangle!";
 static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and the flash with your finger!";
 
@@ -200,6 +193,11 @@ static const int kBlockFrameSize = 128;
         if (_DEBUG_MODE)
         {
             NSLog(@"%d",touchCount);
+            [self.view bringSubviewToFront:self.imageView];
+            [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+            [self drawFaceCaptureRect:cv::Rect(leftEye.x + cropArea.x, leftEye.y + cropArea.y, leftEye.width, leftEye.height) withColorKey:@"MHRRedColor"];
+            [self drawFaceCaptureRect:cv::Rect(rightEye.x + cropArea.x, rightEye.y + cropArea.y, rightEye.width, rightEye.height) withColorKey:@"MHRRedColor"];
+            [self drawFaceCaptureRect:cv::Rect(mouth.x + cropArea.x, mouth.y + cropArea.y, mouth.width, mouth.height) withColorKey:@"MHRWhiteColor"];
         }
         
         // create new directory for this session
@@ -437,6 +435,31 @@ static const int kBlockFrameSize = 128;
         [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(x1 - dx, y0 + dy + yDelta, 5, IMAGE_HEIGHT+5) pListKey:colorKey]];
     }
 
+    - (void)drawFaceCaptureRect:(cv::Rect)rect withColorKey:(NSString *)colorKey
+    {
+        int yDelta = 0;
+        if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        {
+            yDelta = -IOS6_Y_DELTA;
+        }
+        
+        int X0 = rect.x, Y0 = rect.y;
+        int X1 = rect.x + rect.width, Y1 = rect.y + rect.height;
+
+        Y1 = CAMERA_HEIGHT - Y1;
+        Y0 = CAMERA_HEIGHT - Y0;
+        swap(Y0, Y1);
+        
+        X0 += self.imageView.frameX - 20; X1 += self.imageView.frameX - 20;
+        Y0 += self.imageView.frameY + 20; Y1 += self.imageView.frameY + 20;
+        
+        // horizontal lines
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, rect.width, 5) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y1, rect.width, 5) pListKey:colorKey]];
+        // vertical line
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, 5, rect.height) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X1, Y0, 5, rect.height + 5) pListKey:colorKey]];
+    }
 
     - (void)updateLayout
     {
@@ -462,19 +485,7 @@ static const int kBlockFrameSize = 128;
             static int failedFrames = 0;
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
-            
-            for (int x = MAX(0, leftEye.x); x <= MIN(new_image.rows, leftEye.x + leftEye.width); ++x)
-                for (int y = MAX(0, leftEye.y); y <= MIN(new_image.cols, leftEye.y + leftEye.height); ++y)
-                    new_image.at<Vec3b>(x, y) = Vec3b(0, 0, 0);
-            
-            for (int x = MAX(0, rightEye.x); x <= MIN(new_image.rows, rightEye.x + rightEye.width); ++x)
-                for (int y = MAX(0, rightEye.y); y <= MIN(new_image.cols, rightEye.y + rightEye.height); ++y)
-                    new_image.at<Vec3b>(x, y) = Vec3b(0, 0, 0);
-            
-            for (int x = MAX(0, mouth.x); x <= MIN(new_image.rows, mouth.x + mouth.width); ++x)
-                for (int y = MAX(0, mouth.y); y <= MIN(new_image.cols, mouth.y + mouth.height); ++y)
-                    new_image.at<Vec3b>(x, y) = Vec3b(0, 0, 0);
-            
+            [auto_start removeEyesAndMouth:&new_image];
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;

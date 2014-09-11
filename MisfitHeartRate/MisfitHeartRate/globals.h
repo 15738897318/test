@@ -20,5 +20,6 @@ extern Mat firstFrameWithFace;
 extern cv::Rect leftEye;
 extern cv::Rect rightEye;
 extern cv::Rect mouth;
+extern cv::Rect ROI_upper, cropArea, ROI_lower;
 
 #endif /* defined(__Pulsar__globals__) */

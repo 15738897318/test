@@ -16,3 +16,4 @@ Mat firstFrameWithFace;
 cv::Rect rightEye;
 cv::Rect leftEye;
 cv::Rect mouth;
+cv::Rect ROI_upper, cropArea, ROI_lower;
