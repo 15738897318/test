@@ -27,7 +27,8 @@ using namespace cv;
 using namespace std;
 
 
-namespace MHR {
+namespace MHR
+{
     vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
                                  double fr, double cutoff_freq,
                                  double &lower_range, double &upper_range, bool isCalcMode);

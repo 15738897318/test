@@ -20,7 +20,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -43,12 +44,14 @@
 }
 
 
-- (IBAction)switchDebugMode:(id)sender {
+- (IBAction)switchDebugMode:(id)sender
+{
     [self.delegate debugModeChanged:self.debugModeSwitch.isOn];
 }
 
 
-- (IBAction)switchThreeChanMode:(id)sender {
+- (IBAction)switchThreeChanMode:(id)sender
+{
     [self.delegate threeChanModeChanged:self.threeChanModeSwitch.isOn];
 }
 

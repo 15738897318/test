@@ -9,7 +9,8 @@
 #include "temporal_mean_calc.h"
 
 
-namespace MHR {
+namespace MHR
+{
     vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
                                       double max_bpm, double cutoff_freq,
                                       int colour_channel, String colourspace,
@@ -36,8 +37,10 @@ namespace MHR {
         Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
         vector<Mat> monoframes;
         
-        if (_THREE_CHAN_MODE) {
-			for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+        if (_THREE_CHAN_MODE)
+        {
+			for (int i = startIndex, k = 0; i < endIndex; ++i, ++k)
+            {
 				vid[i].convertTo(frame, CV_64FC3);
 				if (colourspace == "hsv")
 					cvtColor(frame, frame, CV_RGB2HSV);
@@ -59,8 +62,10 @@ namespace MHR {
 				monoframes.push_back(tmp_monoframe.clone());
 			}
 		}
-        else {
-        	for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+        else
+        {
+        	for (int i = startIndex, k = 0; i < endIndex; ++i, ++k)
+            {
 				vid[i].convertTo(frame, CV_64F);
 			
 				// Downsample the frame for ease of computation

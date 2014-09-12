@@ -9,7 +9,8 @@
 #include "run_algorithms.h"
 
 
-namespace MHR {
+namespace MHR
+{
     hrResult run_algorithms(const String &srcDir, const String &outDir,
                             int fileStartIndex, int fileEndIndex, hrResult &currHrResult)
     {
@@ -30,7 +31,8 @@ namespace MHR {
         /*-----------------read the first block of M frames to extract video params---------------*/
         int currentFrame = -1;
         vector<Mat> vid;
-        for (int i = 0; i < min(_framesBlock_size, nFrames); ++i) {
+        for (int i = 0; i < min(_framesBlock_size, nFrames); ++i)
+        {
             ++currentFrame;
             readFrame(srcDir + string("/input_frame[") + to_string(fileStartIndex + i) + "].png", vid);
         }
@@ -52,16 +54,20 @@ namespace MHR {
         vector<double> temporal_mean_filt;
         Mat tmp_eulerianVid;
         
-        while(1) {
+        while(1)
+        {
             clock_t t1 = clock();
             
             /*-----------------read M frames, add to odd frames (0)-----------------*/
-            if (_DEBUG_MODE) {
+            if (_DEBUG_MODE)
+            {
                 printf("load block: %d\n", blockCount);
                 printf("len before = %d\n", (int)vid.size());
             }
-            if (!isCalcMode) {
-                for (int i = 0; i < _framesBlock_size; ++i) {
+            if (!isCalcMode)
+            {
+                for (int i = 0; i < _framesBlock_size; ++i)
+                {
                     ++currentFrame;
                     readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
                     if (currentFrame == nFrames - 1) break;
@@ -97,7 +103,8 @@ namespace MHR {
             
             isCalcMode = false;
 
-            if (_DEBUG_MODE) {
+            if (_DEBUG_MODE)
+            {
                 printf("block %d runtime = %f\n", blockCount++, ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
                 printf("_colourspace = %s\n", _colourspace.c_str());
             }
@@ -125,7 +132,8 @@ namespace MHR {
         hrResult hr_output = currHrResult;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        if (_DEBUG_MODE) {
+        if (_DEBUG_MODE)
+        {
             String resultFilePath = outDir + "result.txt";
             FILE *resultFile = fopen(resultFilePath.c_str(), "w");
             fprintf(resultFile, "temporal_mean_before_low_pass_filter:\n");

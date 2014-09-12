@@ -16,7 +16,8 @@ using namespace std;
 using namespace cv;
 
 
-namespace MHR {
+namespace MHR
+{
     extern int _DEBUG_MODE;
     extern int _THREE_CHAN_MODE;
     

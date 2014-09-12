@@ -17,7 +17,8 @@
 #include "ideal_bandpassing.h"
 
 
-namespace MHR {
+namespace MHR
+{
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
     void eulerianGaussianPyramidMagnification(const vector<Mat> &vid, vector<Mat> &ans,

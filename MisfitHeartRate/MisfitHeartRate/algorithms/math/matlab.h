@@ -20,7 +20,8 @@ using namespace std;
 using namespace cv;
 
 
-namespace MHR {
+namespace MHR
+{
     // get mean value of a double vector
     double mean(const vector<double> &a);
     

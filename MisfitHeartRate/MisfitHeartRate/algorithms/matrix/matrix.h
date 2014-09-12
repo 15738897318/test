@@ -21,7 +21,8 @@ using namespace cv;
 using namespace std;
 
 
-namespace MHR {
+namespace MHR
+{
 	// return a vector of integer from a to b with specific step
 	vector<int> vectorRange(int a, int b, int step = 1);
     

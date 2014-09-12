@@ -16,7 +16,8 @@ using namespace cv;
         static CIContext *context = [CIContext contextWithOptions:nil];
         static NSDictionary *opts = @{ CIDetectorAccuracy : CIDetectorAccuracyLow };
         
-        @autoreleasepool {
+        @autoreleasepool
+        {
             CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace
                                                       context:context
                                                       options:opts];
@@ -35,9 +36,12 @@ using namespace cv;
             
             CGColorSpaceRef colorSpace;
             
-            if (cvMat.elemSize() == 1) {
+            if (cvMat.elemSize() == 1)
+            {
                 colorSpace = CGColorSpaceCreateDeviceGray();
-            } else {
+            }
+            else
+            {
                 colorSpace = CGColorSpaceCreateDeviceRGB();
             }
             
@@ -66,7 +70,8 @@ using namespace cv;
     + (int) assessFaces:(NSArray *)faces withLowerBound:(cv::Rect)ROI_lower
     {
         // There must be at least one face in the detected faces that is bigger than the minimum size of the ROI
-        for(int i = 0; i < faces.count; i++) {
+        for (int i = 0; i < faces.count; i++)
+        {
             CIFaceFeature *face = [faces objectAtIndex:i];
             
             if ((face.bounds.size.width >= ROI_lower.width) && (face.bounds.size.height >= ROI_lower.height))
@@ -106,9 +111,9 @@ using namespace cv;
             {
                 pix = &image->data[i * matCols + j];
                 [data appendBytes:(void*)pix length:1];
-                
             }
         }
+        
         return data;
     }
 
@@ -152,7 +157,6 @@ using namespace cv;
 
     + (BOOL)isUniformColored:(Mat)tmp
     {
-        
         vector <double> arr;
         for (int x = 0; x < tmp.cols; ++x)
             for (int y = 0; y < tmp.rows; ++y)
@@ -160,10 +164,10 @@ using namespace cv;
         
         int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
         
-        if (maxVal - minVal > uniformThreshold) {
+        if (maxVal - minVal > uniformThreshold)
+        {
             return NO;
         }
-        
         return YES;
     }
 

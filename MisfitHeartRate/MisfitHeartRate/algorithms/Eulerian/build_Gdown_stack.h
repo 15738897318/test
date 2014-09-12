@@ -12,7 +12,8 @@
 #include "files.h"
 
 
-namespace MHR {
+namespace MHR
+{
 	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
 	// and select a specific band indicated by LEVEL.
 	// GDOWN_STACK: stack of one band of Gaussian pyramid of each frame

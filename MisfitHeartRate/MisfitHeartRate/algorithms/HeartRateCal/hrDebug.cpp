@@ -9,6 +9,7 @@
 #include "hrDebug.h"
 
 
-namespace MHR {
+namespace MHR
+{
 
 }

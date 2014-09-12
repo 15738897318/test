@@ -52,7 +52,8 @@ static const int kBlockFrameSize = 128;
     - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
     {
         self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-        if (self) {
+        if (self)
+        {
             // Custom initialization
             
         }
@@ -152,8 +153,10 @@ static const int kBlockFrameSize = 128;
         // Dispose of any resources that can be recreated.
     }
 
-    - (void)updateViewTop:(NSTimer *)timer {
-        if (!isCapturing) {
+    - (void)updateViewTop:(NSTimer *)timer
+    {
+        if (!isCapturing)
+        {
             [timer invalidate];
             timer = nil;
         }
@@ -178,7 +181,8 @@ static const int kBlockFrameSize = 128;
         NSLog(@"_DEBUG_MODE = %d", _DEBUG_MODE);
         NSLog(@"_THREE_CHAN_MODE = %d", _THREE_CHAN_MODE);
         
-        if(isCapturing) return;
+        if (isCapturing)
+            return;
         isCapturing = TRUE;
         blockCount = 0;
         
@@ -219,7 +223,8 @@ static const int kBlockFrameSize = 128;
             NSFileManager *fm = [NSFileManager defaultManager];
             NSError *error = nil;
             BOOL success = [fm removeItemAtPath:_outPath error:&error];
-            if (!success || error) {
+            if (!success || error)
+            {
                 // something went wrong
             }
         }
@@ -343,7 +348,8 @@ static const int kBlockFrameSize = 128;
     }
 
 
-    - (IBAction)settingsButtonDidTap:(id)sender {
+    - (IBAction)settingsButtonDidTap:(id)sender
+    {
         MHRSettingsViewController *settingsView = [[MHRSettingsViewController alloc] init];
         settingsView.delegate = self;
         settingsView.debugModeOn = (_DEBUG_MODE > 0);
@@ -423,7 +429,7 @@ static const int kBlockFrameSize = 128;
         int dx = (CAMERA_HEIGHT - IMAGE_WIDTH)/2;
         int dy = (CAMERA_WIDTH - IMAGE_HEIGHT)/2;
         int yDelta = 0;
-        if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
         {
             yDelta = -IOS6_Y_DELTA;
         }
@@ -470,7 +476,7 @@ static const int kBlockFrameSize = 128;
         [_faceSwitchLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
         [_cameraSwitch adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
         [_recordTimeLabel adjustFrameFormiOS7ToiOS6:IOS6_Y_DELTA];
-        if(SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
         {
             _cameraSwitch.frameX -= 20;
         }
@@ -499,7 +505,7 @@ static const int kBlockFrameSize = 128;
             
             if ( size >= upper)
             {
-                [myQueue addOperationWithBlock: ^ {
+                [myQueue addOperationWithBlock: ^{
                     [self heartRateCalculation];
                 }];
             }
@@ -509,7 +515,8 @@ static const int kBlockFrameSize = 128;
             else
                 failedFrames += ![auto_stop fingerCheck:new_image];
             
-            if (failedFrames > 5) {
+            if (failedFrames > 5)
+            {
                 failedFrames = 0;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self stopButtonDidTap:self];
@@ -524,7 +531,8 @@ static const int kBlockFrameSize = 128;
                 static Mat tmp;
                 static int cnt = 0;
                 cnt = (cnt + 1) % 3;
-                if(cnt) return;
+                if (cnt)
+                    return;
                 
                 tmp = image(ROI_upper).clone();
                 
@@ -534,22 +542,26 @@ static const int kBlockFrameSize = 128;
                     
                     // Rotate the frame to fit the orientation preferred by the detector
                     transpose(frame_ROI, frame_ROI);
-                    for(int i=0; i < frame_ROI.rows / 2; ++i) for(int j = 0; j < frame_ROI.cols * 4; ++j)
-                        swap(frame_ROI.at<unsigned char>(i, j), frame_ROI.at<unsigned char>(frame_ROI.rows - i - 1, j));
+                    for (int i = 0; i < frame_ROI.rows / 2; ++i)
+                        for (int j = 0; j < frame_ROI.cols * 4; ++j)
+                            swap(frame_ROI.at<unsigned char>(i, j), frame_ROI.at<unsigned char>(frame_ROI.rows - i - 1, j));
                     
                     // If the main thread is already running the capture algo, then dont do the face detection
-                    if(isCapturing) return;
+                    if (isCapturing)
+                        return;
                     
                     // Face detection
                     NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
                     
                     // If in the meantime, the main thread already transitions into running the capture algo, then dont do the counting increment
-                    if(isCapturing) return;
+                    if (isCapturing)
+                        return;
                     
                     // If this iteration detects valid faces
                     // - Increment the framesWithFace variable
                     int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
                     faces = nil;
+                    
                     if (assessmentResult == 1)
                     {
                         framesWithFace += 1;
@@ -591,7 +603,8 @@ static const int kBlockFrameSize = 128;
                 
                 static int cnt = 0;
                 cnt = (cnt + 1) % 3;
-                if(cnt) return;
+                if (cnt)
+                    return;
                 
                 tmpFinger = image(cropArea).clone();
                 cvtColor(tmpFinger, tmpFinger, CV_BGRA2BGR);
@@ -611,7 +624,8 @@ static const int kBlockFrameSize = 128;
                                 {
                                     isTorchOn = NO;
                                     
-                                    if(isCapturing) return;
+                                    if (isCapturing)
+                                        return;
                                     
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         [self startButtonDidTap:self];
@@ -634,7 +648,8 @@ static const int kBlockFrameSize = 128;
                             framesWithTorchOff = 0;
                         }
                     }
-                    else {
+                    else
+                    {
                         if (++framesWithTorchOff <= delayTorchOffInFrames)
                             return;
                         

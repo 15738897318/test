@@ -25,7 +25,8 @@
 #include "hr_calculator.h"
 
 
-namespace MHR {
+namespace MHR
+{
     struct hrResult
     {
         double autocorr;        // avg_hr_autocorr

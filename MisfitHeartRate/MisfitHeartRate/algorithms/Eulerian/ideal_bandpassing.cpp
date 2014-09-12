@@ -9,12 +9,14 @@
 #include "ideal_bandpassing.h"
 
 
-namespace MHR {
+namespace MHR
+{
     // Apply ideal band pass filter on SRC
     // WL: lower cutoff frequency of ideal band pass filter
     // WH: higher cutoff frequency of ideal band pass filter
     // SAMPLINGRATE: sampling rate of SRC
-    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double wl, double wh, double samplingRate) {
+    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double wl, double wh, double samplingRate)
+    {
 //        src: T*M*N*C;
 //        new src: vector<M*N*C>
         
@@ -46,8 +48,10 @@ namespace MHR {
         // FFT
         Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
         
-        for (int channel = 0; channel < nChannel; ++channel) {
-            for (int col = 0; col < nCol; ++col) {
+        for (int channel = 0; channel < nChannel; ++channel)
+        {
+            for (int col = 0; col < nCol; ++col)
+            {
                 for (int time = 0; time < nTime; ++time)
                     for (int row = 0; row < nRow; ++row)
                         if (_THREE_CHAN_MODE)

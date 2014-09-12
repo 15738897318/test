@@ -27,7 +27,8 @@
 #include "hr_signal_calc.h"
 
 
-namespace MHR {
+namespace MHR
+{
     vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
                                       double max_bpm, double cutoff_freq,
                                       int colour_channel, String colourspace,

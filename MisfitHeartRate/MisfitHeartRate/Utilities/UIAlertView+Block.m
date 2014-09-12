@@ -61,7 +61,7 @@ static char CANCEL_IDENTIFER;
     [alert setDismissBlock:dismissed];
     [alert setCancelBlock:cancelled];
     
-    for(NSString *buttonTitle in otherButtons)
+    for (NSString *buttonTitle in otherButtons)
         [alert addButtonWithTitle:buttonTitle];
     
     [alert show];
@@ -93,9 +93,10 @@ static char CANCEL_IDENTIFER;
 
 + (void)alertView:(UIAlertView*) alertView didDismissWithButtonIndex:(NSInteger) buttonIndex {
     
-    if(buttonIndex == [alertView cancelButtonIndex])
+    if (buttonIndex == [alertView cancelButtonIndex])
     {
-        if (alertView.cancelBlock) {
+        if (alertView.cancelBlock)
+        {
             alertView.cancelBlock();
         }
     }

@@ -9,7 +9,8 @@
 #include "files.h"
 
 
-namespace MHR {
+namespace MHR
+{
     void readFrame(const String& srcFile, vector<Mat> &dst)
     {
         Mat frame = imread(srcFile);
@@ -17,7 +18,8 @@ namespace MHR {
         
         if (_THREE_CHAN_MODE)
             dst.push_back(frame.clone());
-        else {
+        else
+        {
             /*-----------------if using 1-chan mode, then do the colour conversion here (0)-----------------*/
             frame.convertTo(frame, CV_64FC3);
             if (_colourspace == "hsv")
@@ -50,7 +52,8 @@ namespace MHR {
     {
         vector<double> ans;
         double value;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             fscanf(file, "%lf", &value);
             ans.push_back(value);
         }
@@ -105,9 +108,11 @@ namespace MHR {
         if (file == NULL) return;
         printf("Write frame[%d] to file %s\n", channel, outFile.c_str());
         
-        for (int i = 0; i < frame.rows; ++i) {
+        for (int i = 0; i < frame.rows; ++i)
+        {
             for (int j = 0; j < frame.cols; ++j)
-                if (_THREE_CHAN_MODE) {
+                if (_THREE_CHAN_MODE)
+                {
                     if (frame.type() == CV_8UC4)
                         fprintf(file, "%d, ", (int)frame.at<Vec4b>(i, j)[channel]);
                     if (frame.type() == CV_8UC3)
@@ -115,7 +120,8 @@ namespace MHR {
                     else if (frame.type() == CV_64FC3)
                         fprintf(file, "%lf, ", frame.at<Vec3d>(i, j)[channel]);
                 }
-                else {
+                else
+                {
                     if (frame.type() == CV_8U)
                         fprintf(file, "%d, ", (int)frame.at<unsigned char>(i, j));
                     else if (frame.type() == CV_64F)

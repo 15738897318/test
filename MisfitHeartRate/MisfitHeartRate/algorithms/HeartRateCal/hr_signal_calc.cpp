@@ -9,7 +9,8 @@
 #include "hr_signal_calc.h"
 
 
-namespace MHR {
+namespace MHR
+{
     hrResult::hrResult(){}
     hrResult::hrResult(double autocorr, double pda)
     {

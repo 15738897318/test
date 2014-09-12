@@ -21,7 +21,7 @@
                                    TASK_BASIC_INFO,
                                    (task_info_t)&info,
                                    &size);
-    if( kerr == KERN_SUCCESS )
+    if (kerr == KERN_SUCCESS)
     {
         return [NSString stringWithFormat:@"Memory in use (KB): %lu", (unsigned long)(info.resident_size / 1000)];
     }
@@ -49,7 +49,8 @@
 + (void)setTorchModeOn:(BOOL)isOn
 {
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([device hasTorch]) {
+    if ([device hasTorch])
+    {
         [device lockForConfiguration:nil];
         if (isOn)
         {

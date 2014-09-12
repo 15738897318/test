@@ -12,7 +12,8 @@
 #include "matrix.h"
 #include "image.h"
 
-namespace MHR {
+namespace MHR
+{
     // read frames from a VideoCapture to a vector<Mat>
     // return true if endOfFile
     void readFrame(const String& srcFile, vector<Mat> &dst);

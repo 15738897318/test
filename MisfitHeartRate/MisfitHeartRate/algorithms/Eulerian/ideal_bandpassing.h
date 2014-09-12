@@ -16,7 +16,8 @@
 using namespace cv;
 using namespace std;
 
-namespace MHR {
+namespace MHR
+{
     // Apply ideal band pass filter on SRC
     // WL: lower cutoff frequency of ideal band pass filter
     // WH: higher cutoff frequency of ideal band pass filter

@@ -17,7 +17,8 @@
 using namespace std;
 using namespace cv;
 
-namespace MHR {
+namespace MHR
+{
     void processingCumulative(vector<double> &temporal_mean, vector<double> temp, hrResult &currentResult);
 }
 

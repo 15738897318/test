@@ -9,7 +9,8 @@
 #include "build_Gdown_stack.h"
 
 
-namespace MHR {
+namespace MHR
+{
 	// Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to END_INDEX
 	// and select a specific band indicated by LEVEL.
 	// GDOWN_STACK: stack of one band of Gaussian pyramid of each frame
@@ -17,7 +18,8 @@ namespace MHR {
 	// the second dimension is the y axis of the video
 	// the third dimension is the x axis of the video
 	// the forth dimension is the color channel
-	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level) {
+	void build_Gdown_Stack(const vector<Mat>& vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level)
+    {
         clock_t t1 = clock();
         
         // firstFrame
@@ -31,7 +33,8 @@ namespace MHR {
         Mat blurred;
         blurDnClr(frame, blurred, level);
         
-        if (_DEBUG_MODE) {
+        if (_DEBUG_MODE)
+        {
             printf("blurred.size = (%d, %d)\n", blurred.rows, blurred.cols);
             frameChannelToFile(frame, _outputPath + "1_vid[0]_build_Gdown_Stack.txt", _channels_to_process);
             frameChannelToFile(blurred, _outputPath + "1_GDownStack[0]_build_Gdown_Stack.txt", _channels_to_process);
@@ -44,7 +47,8 @@ namespace MHR {
         // The first frame in the stack is saved
         GDownStack.push_back(blurred.clone());
         
-        for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
+        for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k)
+        {
             // Create a frame from the ith array in the stream
             if (_THREE_CHAN_MODE)
 				vid[i].convertTo(frame, CV_64FC3);

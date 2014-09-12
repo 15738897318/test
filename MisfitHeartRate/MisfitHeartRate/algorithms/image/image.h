@@ -19,7 +19,8 @@
 #include "config.h"
 
 
-namespace MHR {
+namespace MHR
+{
     const Mat rgb2ntsc_baseMat = (Mat_<double>(3, 3) <<
                                   0.299, 0.587, 0.114,
                                   0.596, -0.274, -0.322,

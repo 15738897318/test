@@ -9,7 +9,8 @@
 #include "config.h"
 
 
-namespace MHR {
+namespace MHR
+{
     int _DEBUG_MODE = 0;
     int _THREE_CHAN_MODE = 0;
     
@@ -203,4 +204,4 @@ namespace MHR {
         _hrThreshold = _finger_hrThreshold;
         _hrStanDev = _finger_hrStanDev;
     }
-};
+}

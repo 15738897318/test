@@ -9,7 +9,8 @@
 #include "image.h"
 
 
-namespace MHR {
+namespace MHR
+{
 	// convert a RGB Mat to a TSL Mat
     // rgbmap is a CV_64F Mat
 	void rgb2tsl(const Mat& rgbmap, Mat &dst)
@@ -22,7 +23,8 @@ namespace MHR {
         Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F)};
         for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel) {
+                for (int channel = 0; channel < nChannel; ++channel)
+                {
                     rgb_sumchannels.at<double>(i, j) += rgbmap.at<Vec3d>(i, j)[channel];
                     rgb_channel[channel].at<double>(i, j) = rgbmap.at<Vec3d>(i, j)[channel];
                 }
@@ -79,9 +81,11 @@ namespace MHR {
 
     // Blur and downsample an image.  The blurring is done with
     // filter kernel specified by FILT (default = 'binom5')
-    void blurDnClr(const Mat& src, Mat &dst, int level) {
+    void blurDnClr(const Mat& src, Mat &dst, int level)
+    {
         dst = src.clone();
-        for (int i = 0; i < level; ++i) {
+        for (int i = 0; i < level; ++i)
+        {
             int nRow = dst.rows/2 + int(dst.rows%2 > 0);
             int nCol = dst.cols/2 + int(dst.cols%2 > 0);
             pyrDown(dst, dst, Size(nCol, nRow));
@@ -102,7 +106,8 @@ namespace MHR {
         dst = Mat::zeros(m, n, CV_64F);
         int last_i = -1, last_j = -1;
         for (int i = 0, x = 0; x < src.rows; ++i, x += rectRow)
-            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol) {
+            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol)
+            {
                 dst.at<double>(i, j) = tmp.at<double>(x, y);
                 last_i = max(last_i, i);
                 last_j = max(last_j, j);

@@ -21,7 +21,8 @@
 using namespace cv;
 using namespace std;
 
-namespace MHR {
+namespace MHR
+{
     hrResult run_algorithms(const String &srcDir, const String &fileName, const String &outDir, hrResult &currHrResult);
 }
 

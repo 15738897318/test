@@ -15,7 +15,8 @@
 using namespace std;
 using namespace cv;
 
-namespace MHR {    
+namespace MHR
+{
     /*--------------for run_eulerian()--------------*/
     const double _finger_eulerian_alpha = 50;          // Eulerian magnifier, standard < 50
     const double _finger_eulerian_pyrLevel = 6;        // Standard: 4, but updated by the real frame size

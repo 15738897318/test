@@ -33,7 +33,8 @@
 @protocol MBProgressHUDDelegate;
 
 
-typedef enum {
+typedef enum
+{
 	/** Progress is shown using an UIActivityIndicatorView. This is the default. */
 	MBProgressHUDModeIndeterminate,
 	/** Progress is shown using a round, pie-chart like, progress view. */
@@ -48,7 +49,8 @@ typedef enum {
 	MBProgressHUDModeText
 } MBProgressHUDMode;
 
-typedef enum {
+typedef enum
+{
 	/** Opacity animation */
 	MBProgressHUDAnimationFade,
 	/** Opacity + scale animation */
