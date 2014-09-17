@@ -19,6 +19,7 @@ using namespace cv;
 namespace MHR {
     extern int _DEBUG_MODE;
     extern int _THREE_CHAN_MODE;
+    extern int _LOAD_FROM_FILE;
     
     extern String _outputPath;
     

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *debugModeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *threeChanModeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *loadFromFileSwitch;
 
 @end
 
@@ -32,8 +33,10 @@
     // Do any additional setup after loading the view from its nib.
     [self.debugModeSwitch setOn:self.debugModeOn animated:NO];
     [self.threeChanModeSwitch setOn:self.threeChanModeOn animated:NO];
+    [self.loadFromFileSwitch setOn:self.loadFromFileOn animated:NO];
     [self.delegate debugModeChanged:self.debugModeSwitch.isOn];
     [self.delegate threeChanModeChanged:self.threeChanModeSwitch.isOn];
+    [self.delegate loadFromFileChanged:self.loadFromFileSwitch.isOn];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +53,10 @@
 
 - (IBAction)switchThreeChanMode:(id)sender {
     [self.delegate threeChanModeChanged:self.threeChanModeSwitch.isOn];
+}
+
+- (IBAction)switchLoadFromFileMode:(id)sender {
+    [self.delegate loadFromFileChanged:self.loadFromFileSwitch.isOn];
 }
 
 @end

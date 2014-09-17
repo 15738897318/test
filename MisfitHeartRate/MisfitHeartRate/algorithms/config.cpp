@@ -12,6 +12,7 @@
 namespace MHR {
     int _DEBUG_MODE = 0;
     int _THREE_CHAN_MODE = 0;
+    int _LOAD_FROM_FILE = 0;
     
     bool _FACE_MODE = true;
     

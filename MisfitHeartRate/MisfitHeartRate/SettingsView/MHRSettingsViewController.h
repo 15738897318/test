@@ -13,6 +13,7 @@
 @required
 - (void)debugModeChanged:(BOOL)mode;
 - (void)threeChanModeChanged:(BOOL)mode;
+- (void)loadFromFileChanged:(BOOL)mode;
 
 @end
 
@@ -26,6 +27,7 @@
 
 @property (assign, nonatomic) BOOL debugModeOn;
 @property (assign, nonatomic) BOOL threeChanModeOn;
+@property (assign, nonatomic) BOOL loadFromFileOn;
 
 
 @end

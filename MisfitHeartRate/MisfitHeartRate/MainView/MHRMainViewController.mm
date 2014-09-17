@@ -184,6 +184,7 @@ static const int kBlockFrameSize = 128;
     {
         NSLog(@"_DEBUG_MODE = %d", _DEBUG_MODE);
         NSLog(@"_THREE_CHAN_MODE = %d", _THREE_CHAN_MODE);
+        NSLog(@"_LOAD_FROM_FILE = %d", _LOAD_FROM_FILE);
         
         if(isCapturing) return;
         isCapturing = TRUE;
@@ -238,7 +239,7 @@ static const int kBlockFrameSize = 128;
         _startButton.enabled = NO;
         _cameraSwitch.enabled = NO;
         _nFrames = 0;
-        _faceLabel.text = [NSString stringWithFormat:@"Recording.... (keep at least %d seconds)", _minVidLength ];
+        _faceLabel.text = [NSString stringWithFormat:@"Recording.... (keep at least %d seconds)", _minVidLength];
         _recordTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                         target:self
                                                       selector:@selector(updateRecordTime:)
@@ -246,6 +247,26 @@ static const int kBlockFrameSize = 128;
                                                        repeats:YES];
         // Start thread
         [self startThreads];
+        if (_LOAD_FROM_FILE) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+            NSString *inPath = [paths objectAtIndex:0];
+            inPath = [inPath substringToIndex:([inPath length] - [@"Library/Documentation/" length] + 1)];
+            inPath = [inPath stringByAppendingFormat:@"Documents/testFrames"];
+            FILE *f = fopen([[inPath stringByAppendingString:@"/input_frames.txt"] UTF8String], "r");
+            int nTestFrames;
+            fscanf(f, "%d", &nTestFrames);
+            _frameRate = 30;
+            for (int i = 0; i < nTestFrames; ++i) {
+                Mat tmp = imread([inPath UTF8String] + string("/input_frame[") + to_string(i) + string("].png"));
+                if (i == 0)
+                    firstFrameWithFace = tmp;
+                [self processImage:tmp];
+//                usleep(1000);
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self stopButtonDidTap:self];
+            });
+        }
     }
 
 
@@ -349,6 +370,7 @@ static const int kBlockFrameSize = 128;
         settingsView.delegate = self;
         settingsView.debugModeOn = (_DEBUG_MODE > 0);
         settingsView.threeChanModeOn = (_THREE_CHAN_MODE > 0);
+        settingsView.loadFromFileOn = (_LOAD_FROM_FILE > 0);
         [self.navigationController pushViewController:settingsView animated:YES];
     }
 
@@ -362,6 +384,15 @@ static const int kBlockFrameSize = 128;
     - (void)threeChanModeChanged:(BOOL)mode
     {
         _THREE_CHAN_MODE = int(mode);
+    }
+
+    - (void)loadFromFileChanged:(BOOL)mode
+    {
+        _LOAD_FROM_FILE = int(mode);
+        if (mode)
+            _videoCamera.delegate = nil;
+        else
+            _videoCamera.delegate = self;
     }
 
 
@@ -460,13 +491,19 @@ static const int kBlockFrameSize = 128;
         if (isCapturing)
         {
             static int failedFrames = 0;
-            Mat new_image = image(cropArea);
-            cvtColor(new_image, new_image, CV_BGRA2BGR);
+            Mat new_image;
+            if (_LOAD_FROM_FILE)
+                new_image = image;
+            else
+                new_image = image(cropArea);
+            if (new_image.type() != CV_8UC3)
+                cvtColor(new_image, new_image, CV_BGRA2BGR);
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
-            _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
+            if (!_LOAD_FROM_FILE)
+                _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
                         
             // Add new block to queue
             int upper = (blockNumber + 1) * kBlockFrameSize;
@@ -479,8 +516,10 @@ static const int kBlockFrameSize = 128;
                 }];
             }
             
-            if (_cameraSwitch.isOn)
-                failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()];
+            if (_cameraSwitch.isOn) {
+                if (!_LOAD_FROM_FILE)
+                    failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()];
+            }
             else
                 failedFrames += ![auto_stop fingerCheck:new_image];
             
