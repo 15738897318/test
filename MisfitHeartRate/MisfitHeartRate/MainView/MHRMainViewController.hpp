@@ -56,10 +56,11 @@ using namespace MHR;
     double upper_range;
     hrResult result;
     std::vector<double> temporal_mean;
-    NSMutableArray *frameIndexArray;
+    NSMutableArray *frameIndexArray[2];
     
     NSOperationQueue *myQueue;
-    int blockNumber;
-    int blockCount;
+    int blockNumber[2];
+    int blockCount[2];
+    int nFrames[2];
 }
 @end

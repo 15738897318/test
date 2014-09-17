@@ -21,5 +21,9 @@ extern cv::Rect leftEye;
 extern cv::Rect rightEye;
 extern cv::Rect mouth;
 extern cv::Rect ROI_upper, cropArea, ROI_lower;
+extern cv::Rect faceCropArea[2];
+
+extern int nFaces;
+//extern int currentFace;
 
 #endif /* defined(__Pulsar__globals__) */

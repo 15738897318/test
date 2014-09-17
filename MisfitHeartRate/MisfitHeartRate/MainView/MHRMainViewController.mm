@@ -10,16 +10,19 @@
 #import "UIImageCVMatConverter.hpp"
 #import "matlab.h"
 #import "files.h"
+#include "time.h"
 
 static NSString * const FACE_MESSAGE = @"Make sure your face fitted in the Aqua rectangle!";
 static NSString * const FINGER_MESSAGE = @"Completely cover the back-camera and the flash with your finger!";
 
 static const int kBlockFrameSize = 128;
 
-@interface MHRMainViewController ()
+@interface MHRMainViewController () {
+    FILE *_fout;
+    clock_t Last;
+}
     @property (retain, nonatomic) CvVideoCamera *videoCamera;
     @property (strong, nonatomic) NSString *outPath;
-    @property (assign, nonatomic) NSInteger nFrames;
     @property (assign, nonatomic) NSInteger recordTime;
     @property (strong, nonatomic) NSTimer *recordTimer;
 
@@ -43,7 +46,6 @@ static const int kBlockFrameSize = 128;
     @synthesize videoCamera = _videoCamera;
     @synthesize cameraSwitch = _cameraSwitch;
     @synthesize outPath = _outPath;
-    @synthesize nFrames = _nFrames;
     @synthesize recordTime = _recordTime;
     @synthesize recordTimer = _recordTimer;
 
@@ -119,16 +121,25 @@ static const int kBlockFrameSize = 128;
         self.navigationItem.rightBarButtonItem = _stopButton;
         
         // draw Aqua rectangle
-        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+//        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
         
         // update Layout (iOS6 vs iOS7)
         [self updateLayout];
         
-        frameIndexArray = [[NSMutableArray alloc] init];
+        frameIndexArray[0] = [[NSMutableArray alloc] init];
+        frameIndexArray[1] = [[NSMutableArray alloc] init];
         myQueue = [[NSOperationQueue alloc] init];
         myQueue.maxConcurrentOperationCount = 1;
         
-        blockNumber = 0;
+        blockNumber[0] = blockNumber[1] = 0;
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+        _outPath = [paths objectAtIndex:0];
+        _outPath = [_outPath substringToIndex:([_outPath length] - [@"Library/Documentation/" length] + 1)];
+        _outPath = [_outPath stringByAppendingFormat:@"Documents/frameRate.txt"];
+        
+        _fout = fopen([_outPath UTF8String], "w");
+
         
 //        [MHRTest test_run_algorithm];
     }
@@ -136,6 +147,7 @@ static const int kBlockFrameSize = 128;
 
     -(void)viewDidDisappear:(BOOL)animated
     {
+        fclose(_fout);
         [super viewDidDisappear:animated];
     }
 
@@ -184,7 +196,7 @@ static const int kBlockFrameSize = 128;
         if (isCapturing)
             return;
         isCapturing = TRUE;
-        blockCount = 0;
+        blockCount[0] = blockCount[1] = 0;
         
         // hide the view viewTop
         self.viewTop.hidden = YES;
@@ -197,9 +209,9 @@ static const int kBlockFrameSize = 128;
         if (_DEBUG_MODE)
         {
             NSLog(@"%d",touchCount);
-            [self drawFaceCaptureRect:leftEye withColorKey:@"MHRRedColor"];
-            [self drawFaceCaptureRect:rightEye withColorKey:@"MHRRedColor"];
-            [self drawFaceCaptureRect:mouth withColorKey:@"MHRWhiteColor"];
+            [self drawFaceCaptureRect:cv::Rect(leftEye.x + cropArea.x, leftEye.y + cropArea.y, leftEye.width, leftEye.height) withColorKey:@"MHRRedColor"];
+            [self drawFaceCaptureRect:cv::Rect(rightEye.x + cropArea.x, rightEye.y + cropArea.y, rightEye.width, rightEye.height) withColorKey:@"MHRRedColor"];
+            [self drawFaceCaptureRect:cv::Rect(mouth.x + cropArea.x, mouth.y + cropArea.y, mouth.width, mouth.height) withColorKey:@"MHRWhiteColor"];
         }
         
         // create new directory for this session
@@ -229,7 +241,18 @@ static const int kBlockFrameSize = 128;
             }
         }
         
-        [MHRUtilities createDirectory:_outPath];
+        if (_cameraSwitch.isOn)
+        {
+            for (int i = 0; i < nFaces; ++i)
+            {
+                [MHRUtilities createDirectory:[_outPath stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+                [self drawFaceCaptureRect:faceCropArea[i] withColorKey:@"MHRCameraCaptureRect"];
+            }
+        }
+        else
+        {
+            [MHRUtilities createDirectory:_outPath];
+        }
         _outputPath = [_outPath UTF8String] + String("/");
         
         if (_DEBUG_MODE)
@@ -238,7 +261,7 @@ static const int kBlockFrameSize = 128;
         isCapturing = YES;
         _startButton.enabled = NO;
         _cameraSwitch.enabled = NO;
-        _nFrames = 0;
+        nFrames[0] = nFrames[1] = 0;
         _faceLabel.text = [NSString stringWithFormat:@"Recording.... (keep at least %d seconds)", _minVidLength ];
         _recordTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                         target:self
@@ -262,7 +285,7 @@ static const int kBlockFrameSize = 128;
         
         _startButton.enabled = YES;
         _cameraSwitch.enabled = YES;
-        [self drawFaceCaptureRect:@"MHRWhiteColor"];
+//        [self drawFaceCaptureRect:@"MHRWhiteColor"];
         
         // stop camera capturing
         [_videoCamera stop];
@@ -287,19 +310,30 @@ static const int kBlockFrameSize = 128;
         _faceLabel.text = @"Processing....";
         
         [self.view bringSubviewToFront:self.imageView];
-        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+//        [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
         
         // write _nFrames to file
-        FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
-        fprintf(file, "%d\n", (int)_nFrames);
-        fclose(file);
+        if (_cameraSwitch.isOn) {
+            for (int i = 0; i < nFaces; ++i)
+            {
+                FILE *file = fopen(([_outPath UTF8String] + string ("/") + to_string(i) + string("/input_frames.txt")).c_str(), "w");
+                fprintf(file, "%d\n", (int)nFrames[i]);
+                fclose(file);
+            }
+        }
+        else
+        {
+            FILE *file = fopen(([_outPath UTF8String] + string("/input_frames.txt")).c_str(), "w");
+            fprintf(file, "%d\n", (int)nFrames[0]);
+            fclose(file);
+        }
         
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             while (myQueue.operationCount != 0);
             
             if (_DEBUG_MODE)
-                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %f\n", (long)_nFrames, _minVidLength, _frameRate);
+                printf("_nFrames = %ld, _minVidLength = %d, _frameRate = %f\n", (long)nFrames, _minVidLength, _frameRate);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 // show result
@@ -328,7 +362,7 @@ static const int kBlockFrameSize = 128;
         double hr;
         double old_hr;
         
-        if (blockCount <= 1)
+        if (blockCount[0] <= 1)
         {
             hr = _hrThreshold + 20;
             old_hr = _hrThreshold + 20;
@@ -372,19 +406,29 @@ static const int kBlockFrameSize = 128;
 
     - (IBAction)switchCamera:(id)sender
     {
+//        currentFace = 0;
         if (_cameraSwitch.isOn)
         {
             // front camera - face capturing
             [MHRUtilities setTorchModeOn:NO];
             _faceLabel.text = FACE_MESSAGE;
             _fingerLabel.text = @"";
-            [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
+//            [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
             [_videoCamera stop];
             
             // Set the camera to show camera capture onto the screen
             _videoCamera.ParentView = self.imageView;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
             [_videoCamera start];
+            for (AVCaptureDeviceInput *deviceInput in _videoCamera.captureSession.inputs) {
+                NSError *error;
+                [deviceInput.device lockForConfiguration:&error];
+                deviceInput.device.activeVideoMinFrameDuration = CMTimeMake(1, 30);
+                deviceInput.device.activeVideoMaxFrameDuration = CMTimeMake(1, 30);
+                //                [deviceInput.device unlockForConfiguration];
+            }
+            Last = clock();
+
             setFaceParams();
             currentResult = hrResult(-1, -1);
         }
@@ -395,7 +439,7 @@ static const int kBlockFrameSize = 128;
             _faceLabel.text = @"";
             _fingerLabel.text = FINGER_MESSAGE;
             _fingerLabel.textColor = [UIColor blackColor];
-            [self drawFaceCaptureRect:@"MHRWhiteColor"];
+//            [self drawFaceCaptureRect:@"MHRWhiteColor"];
             [self.view bringSubviewToFront:_fingerLabel];
             [_videoCamera stop];
             
@@ -450,8 +494,8 @@ static const int kBlockFrameSize = 128;
 //            yDelta = -IOS6_Y_DELTA;
 //        }
         
-        int X0 = rect.y + cropArea.y, Y0 = rect.x + rect.width + cropArea.x;
-        int X1 = rect.y + rect.height + cropArea.y, Y1 = rect.x + cropArea.x;
+        int X0 = rect.y, Y0 = rect.x + rect.width;
+        int X1 = rect.y + rect.height, Y1 = rect.x;
 
         Y1 = CAMERA_WIDTH - Y1;
         Y0 = CAMERA_WIDTH - Y0;
@@ -487,42 +531,81 @@ static const int kBlockFrameSize = 128;
     #pragma mark - Processing each recorded frame
     - (void)processImage:(Mat &)image
     {
+        clock_t Curr = clock();
+        fprintf(_fout, "%f ", (float)(Curr - Last) / CLOCKS_PER_SEC);
+        Last = Curr;
+
         if (isCapturing)
         {
             static int failedFrames = 0;
-            Mat new_image = image(cropArea);
-            cvtColor(new_image, new_image, CV_BGRA2BGR);
-            [auto_start removeEyesAndMouth:&new_image];
-            imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
-            [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
-            ++_nFrames;
-            
-            _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
-                        
-            // Add new block to queue
-            int upper = (blockNumber + 1) * kBlockFrameSize;
-            int size = (int)frameIndexArray.count;
-            
-            if ( size >= upper)
-            {
-                [myQueue addOperationWithBlock: ^{
-                    [self heartRateCalculation];
-                }];
-            }
-            
             if (_cameraSwitch.isOn)
-                failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()];
-            else
-                failedFrames += ![auto_stop fingerCheck:new_image];
-            
-            if (failedFrames > 5)
             {
-                failedFrames = 0;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self stopButtonDidTap:self];
-                });
+                for (int i = 0; i < nFaces; ++i)
+                {
+                    Mat new_image = image(faceCropArea[i]);
+                    cvtColor(new_image, new_image, CV_BGRA2BGR);
+                    [auto_start removeEyesAndMouth:&new_image];
+                    imwrite([_outPath UTF8String] + string("/") + to_string(i) + string("/input_frame[") + to_string(nFrames[i]) + string("].png"), new_image);
+                    NSLog(@"%s", ([_outPath UTF8String] + string("/") + to_string(i) + string("/input_frame[") + to_string(nFrames[i]) + string("].png")).c_str());
+                    [frameIndexArray[i] addObject:[NSNumber numberWithInt:(int)nFrames[i]]];
+                    ++nFrames[i];
+                    
+                    _frameRate = ((float)nFrames[i] - 1) / (float)_recordTime;
+                    
+                    // Add new block to queue
+                    int upper = (blockNumber[i] + 1) * kBlockFrameSize;
+                    int size = (int)frameIndexArray[i].count;
+                    
+                    if (size >= upper)
+                    {
+                        [myQueue addOperationWithBlock: ^{
+                            [self heartRateCalculation:i];
+                        }];
+                    }
+                    
+                    failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()]; 
+                    
+                    if (failedFrames > 5)
+                    {
+                        failedFrames = 0;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self stopButtonDidTap:self];
+                        });
+                    }
+                }
             }
-
+            else
+            {
+                Mat new_image = image(cropArea);
+                cvtColor(new_image, new_image, CV_BGRA2BGR);
+                [auto_start removeEyesAndMouth:&new_image];
+                imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(nFrames[0]) + string("].png"), new_image);
+                [frameIndexArray[0] addObject:[NSNumber numberWithInt:(int)nFrames[0]]];
+                ++nFrames[0];
+                
+                _frameRate = ((float)nFrames[0] - 1) / (float)_recordTime;
+                
+                // Add new block to queue
+                int upper = (blockNumber[0] + 1) * kBlockFrameSize;
+                int size = (int)frameIndexArray[0].count;
+                
+                if (size >= upper)
+                {
+                    [myQueue addOperationWithBlock: ^{
+                        [self heartRateCalculation:0];
+                    }];
+                }
+                
+                failedFrames += ![auto_stop fingerCheck:new_image];
+                
+                if (failedFrames > 5)
+                {
+                    failedFrames = 0;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self stopButtonDidTap:self];
+                    });
+                }
+            }
         }
         else
         {
@@ -534,7 +617,7 @@ static const int kBlockFrameSize = 128;
                 if (cnt)
                     return;
                 
-                tmp = image(ROI_upper).clone();
+                tmp = image.clone();
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                     // Cut the frame down to the upper bound of ROI
@@ -677,20 +760,20 @@ static const int kBlockFrameSize = 128;
     - (void)setUpThreads
     {
         isCalcMode = YES;
-        blockNumber = 0;
+        blockNumber[0] = blockNumber[1] = 0;
     }
 
-    - (void)heartRateCalculation
+- (void)heartRateCalculation:(int)currentFace
     {
-        int idx = blockNumber * kBlockFrameSize;
-        if (idx >= frameIndexArray.count)
+        int idx = blockNumber[currentFace] * kBlockFrameSize;
+        if (idx >= frameIndexArray[currentFace].count)
         {
             return;
         }
         
-        NSNumber *startIndex = frameIndexArray[idx];
-        int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
-        NSNumber *endIndex = frameIndexArray[value];
+        NSNumber *startIndex = frameIndexArray[currentFace][idx];
+        int value = min((blockNumber[currentFace] + 1) * kBlockFrameSize, (int)frameIndexArray[currentFace].count) - 1;
+        NSNumber *endIndex = frameIndexArray[currentFace][value];
         
         // If still capturing, then wait until there are enough unprocessed frames for one block
         if (isCapturing && ((endIndex.intValue - startIndex.intValue + 1) < kBlockFrameSize))
@@ -708,11 +791,14 @@ static const int kBlockFrameSize = 128;
         {
             std::vector<double> temp;
         
-            processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
+            processingPerBlock([_outPath UTF8String] + string("/") + to_string(currentFace), [_outPath UTF8String] + string("/") + to_string(currentFace), startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
             processingCumulative(temporal_mean, temp, currentResult);
+            for (int i = 0; i < temporal_mean.size(); ++i)
+                printf("%f ", temporal_mean[i]);
+            printf("\n");
             
-            blockCount = blockNumber + 1;
-            blockNumber ++;
+            blockCount[currentFace] = blockNumber[currentFace] + 1;
+            blockNumber[currentFace] ++;
             
             isCalcMode = NO;
             
@@ -720,18 +806,19 @@ static const int kBlockFrameSize = 128;
             {
                 NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
                 NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
-                NSLog(@"Number of blocks processed: %d", blockCount);
+                NSLog(@"Number of blocks processed: %d", blockCount[currentFace]);
             }
         }
     }
 
     - (void)startThreads
     {
-        _nFrames = 0;
-        [frameIndexArray removeAllObjects];
+        nFrames[0] = nFrames[1] = 0;
+        [frameIndexArray[0] removeAllObjects];
+        [frameIndexArray[1] removeAllObjects];
         temporal_mean.clear();
         isCalcMode = YES;
-        blockNumber = 0;
+        blockNumber[0] = blockNumber[1] = 0;
     }
 
 @end

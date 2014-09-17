@@ -17,3 +17,7 @@ cv::Rect rightEye;
 cv::Rect leftEye;
 cv::Rect mouth;
 cv::Rect ROI_upper, cropArea, ROI_lower;
+cv::Rect faceCropArea[2];
+
+int nFaces;
+//int currentFace;
