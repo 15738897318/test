@@ -187,7 +187,6 @@ static const int kBlockFrameSize = 128;
         
         if(isCapturing) return;
         isCapturing = TRUE;
-        blockCount = 0;
         
         // hide the view viewTop
         self.viewTop.hidden = YES;
@@ -290,6 +289,10 @@ static const int kBlockFrameSize = 128;
         fprintf(file, "%d\n", (int)_nFrames);
         fclose(file);
         
+        // Add the final block into the processing queue
+        [myQueue addOperationWithBlock: ^ {
+            [self heartRateCalculation];
+        }];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             while (myQueue.operationCount != 0);
@@ -324,7 +327,7 @@ static const int kBlockFrameSize = 128;
         double hr;
         double old_hr;
         
-        if (blockCount <= 1)
+        if (blockNumber <= 1)
         {
             hr = _hrThreshold + 20;
             old_hr = _hrThreshold + 20;
@@ -469,10 +472,10 @@ static const int kBlockFrameSize = 128;
             _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
                         
             // Add new block to queue
-            int upper = (blockNumber + 1) * kBlockFrameSize;
+            int nextBlockStart = blockNumber * kBlockFrameSize;
             int size = (int)frameIndexArray.count;
             
-            if ( size >= upper)
+            if (size >= nextBlockStart)
             {
                 [myQueue addOperationWithBlock: ^ {
                     [self heartRateCalculation];
@@ -666,13 +669,12 @@ static const int kBlockFrameSize = 128;
         // Run algorithm only if there are at least 10 frames left
         if (endIndex.intValue - startIndex.intValue >= 10)
         {
+            blockNumber ++;
+            
             std::vector<double> temp;
         
             processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
             processingCumulative(temporal_mean, temp, currentResult);
-            
-            blockCount = blockNumber + 1;
-            blockNumber ++;
             
             isCalcMode = NO;
             
@@ -680,7 +682,7 @@ static const int kBlockFrameSize = 128;
             {
                 NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
                 NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
-                NSLog(@"Number of blocks processed: %d", blockCount);
+                NSLog(@"Number of blocks processed: %d", blockNumber);
             }
         }
     }
