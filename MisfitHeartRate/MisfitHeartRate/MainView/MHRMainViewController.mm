@@ -468,6 +468,9 @@ static const int kBlockFrameSize = 128;
         static int framesWithTorchOn = 0;
         if (isCapturing)
         {
+            if (!_cameraSwitch.isOn && (++framesWithTorchOn <= delayTorchOnInFrames))
+                return;
+            
             static int failedFrames = 0;
             if (_nFrames == 0)
                 firstFrameWithFace = image(ROI_upper).clone();
@@ -499,8 +502,6 @@ static const int kBlockFrameSize = 128;
             }
             else
             {
-                if (++framesWithTorchOn <= delayTorchOnInFrames)
-                    return;
                 if (![auto_stop fingerCheck:new_image])
                     ++failedFrames;
                 else
