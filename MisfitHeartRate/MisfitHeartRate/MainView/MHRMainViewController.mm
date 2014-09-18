@@ -137,7 +137,6 @@ static const int kBlockFrameSize = 128;
         blockNumber = 0;
         
 //        [MHRTest test_run_algorithm];
-        
     }
 
 
@@ -555,6 +554,7 @@ static const int kBlockFrameSize = 128;
             if (failedFrames > 5) {
                 failedFrames = 0;
                 
+                // If using auto-stop, then remove the last 6 frames as that is number of frames that have been recorded before auto-stop really takes place
                 _nFrames -= 6;
                 [frameIndexArray removeObjectsInRange:NSMakeRange(frameIndexArray.count - 6, 6)];
                 
