@@ -314,10 +314,11 @@ static const int kBlockFrameSize = 128;
         fprintf(file, "%d\n", (int)_nFrames);
         fclose(file);
         
-        // Add the final block into the processing queue
-        [myQueue addOperationWithBlock: ^ {
-            [self heartRateCalculation];
-        }];
+        // Add the final block into the processing queue only if there is at least one full block preceding it
+        if (_nFrames > kBlockFrameSize)
+            [myQueue addOperationWithBlock: ^ {
+                [self heartRateCalculation];
+            }];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             while (myQueue.operationCount != 0);
@@ -519,14 +520,13 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
+            // Update the frame-rate
             if (!_LOAD_FROM_FILE)
                 _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
                         
-            // Add new block to queue
-            int nextBlockStart = blockNumber * kBlockFrameSize;
+            // Wait until there are enough unprocessed frames for one block then add the block
             int size = (int)frameIndexArray.count;
-            
-            if (size >= nextBlockStart)
+            if ((size > 0) && (size % kBlockFrameSize == 0))
             {
                 [myQueue addOperationWithBlock: ^ {
                     [self heartRateCalculation];
@@ -707,19 +707,22 @@ static const int kBlockFrameSize = 128;
 
     - (void)heartRateCalculation
     {
-        int idx = blockNumber * kBlockFrameSize;
-        if (idx >= frameIndexArray.count)
+        int idxStart = blockNumber * kBlockFrameSize;
+        if (idxStart >= frameIndexArray.count)
         {
+            NSLog(@"Error: Block starts beyond frame count!");
             return;
         }
         
-        NSNumber *startIndex = frameIndexArray[idx];
-        int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
-        NSNumber *endIndex = frameIndexArray[value];
-        
-        // If still capturing, then wait until there are enough unprocessed frames for one block
-        if (isCapturing && ((endIndex.intValue - startIndex.intValue + 1) < kBlockFrameSize))
+        int idxEnd = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
+        if (isCapturing && ((idxEnd - idxStart + 1) < kBlockFrameSize))
+        {
+            NSLog(@"Error: Non-final block length is shorter than allowed");
             return;
+        }
+
+        NSNumber *startIndex = frameIndexArray[idxStart];
+        NSNumber *endIndex = frameIndexArray[idxEnd];
         
         if (_DEBUG_MODE)
         {
@@ -731,14 +734,13 @@ static const int kBlockFrameSize = 128;
         // Run algorithm only if there are at least 10 frames left
         if (endIndex.intValue - startIndex.intValue >= 10)
         {
-            blockNumber ++;
-            
             std::vector<double> temp;
         
             processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
             processingCumulative(temporal_mean, temp, currentResult);
             
             isCalcMode = NO;
+            blockNumber ++;
             
             if (_DEBUG_MODE)
             {
