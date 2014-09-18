@@ -480,13 +480,12 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
+            // Update the frame-rate
             _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
                         
-            // Add new block to queue
-            int nextBlockStart = blockNumber * kBlockFrameSize;
+            // Wait until there are enough unprocessed frames for one block then add the block
             int size = (int)frameIndexArray.count;
-            
-            if (size >= nextBlockStart)
+            if ((size > 0) && (size % kBlockFrameSize == 0))
             {
                 [myQueue addOperationWithBlock: ^ {
                     [self heartRateCalculation];
@@ -664,18 +663,9 @@ static const int kBlockFrameSize = 128;
     - (void)heartRateCalculation
     {
         int idx = blockNumber * kBlockFrameSize;
-        if (idx >= frameIndexArray.count)
-        {
-            return;
-        }
-        
         NSNumber *startIndex = frameIndexArray[idx];
-        int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
+        int value = (blockNumber + 1) * kBlockFrameSize - 1;
         NSNumber *endIndex = frameIndexArray[value];
-        
-        // If still capturing, then wait until there are enough unprocessed frames for one block
-        if (isCapturing && ((endIndex.intValue - startIndex.intValue + 1) < kBlockFrameSize))
-            return;
         
         if (_DEBUG_MODE)
         {
@@ -687,14 +677,13 @@ static const int kBlockFrameSize = 128;
         // Run algorithm only if there are at least 10 frames left
         if (endIndex.intValue - startIndex.intValue >= 10)
         {
-            blockNumber ++;
-            
             std::vector<double> temp;
         
             processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
             processingCumulative(temporal_mean, temp, currentResult);
             
             isCalcMode = NO;
+            blockNumber ++;
             
             if (_DEBUG_MODE)
             {
