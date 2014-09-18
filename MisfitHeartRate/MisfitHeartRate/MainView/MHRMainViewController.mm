@@ -294,10 +294,11 @@ static const int kBlockFrameSize = 128;
         fprintf(file, "%d\n", (int)_nFrames);
         fclose(file);
         
-        // Add the final block into the processing queue
-        [myQueue addOperationWithBlock: ^ {
-            [self heartRateCalculation];
-        }];
+        // Add the final block into the processing queue only if there is at least one full block preceding it
+        if (_nFrames > kBlockFrameSize)
+            [myQueue addOperationWithBlock: ^ {
+                [self heartRateCalculation];
+            }];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             while (myQueue.operationCount != 0);
@@ -662,10 +663,22 @@ static const int kBlockFrameSize = 128;
 
     - (void)heartRateCalculation
     {
-        int idx = blockNumber * kBlockFrameSize;
-        NSNumber *startIndex = frameIndexArray[idx];
-        int value = (blockNumber + 1) * kBlockFrameSize - 1;
-        NSNumber *endIndex = frameIndexArray[value];
+        int idxStart = blockNumber * kBlockFrameSize;
+        if (idxStart >= frameIndexArray.count)
+        {
+            NSLog(@"Error: Block starts beyond frame count!");
+            return;
+        }
+        
+        int idxEnd = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
+        if (isCapturing && ((idxEnd - idxStart + 1) < kBlockFrameSize))
+        {
+            NSLog(@"Error: Non-final block length is shorter than allowed");
+            return;
+        }
+
+        NSNumber *startIndex = frameIndexArray[idxStart];
+        NSNumber *endIndex = frameIndexArray[idxEnd];
         
         if (_DEBUG_MODE)
         {
