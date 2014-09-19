@@ -60,6 +60,5 @@ using namespace MHR;
     
     NSOperationQueue *myQueue;
     int blockNumber;
-    int blockCount;
 }
 @end

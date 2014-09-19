@@ -52,8 +52,8 @@ namespace MHR
         double minValue = segment[n], maxValue = segment[n];
         for (int i = n+1; i < nSegment; ++i)
         {
-            minValue = min(minValue, segment[i]);
-            maxValue = max(maxValue, segment[i]);
+            minValue = MIN(minValue, segment[i]);
+            maxValue = MAX(maxValue, segment[i]);
         }
         if (maxValue == minValue)
             peak_list.pop_back();
@@ -152,8 +152,8 @@ namespace MHR
         double minv = arr[0], maxv = arr[0];
         for (int i = 0; i < (int)arr.size(); ++i)
         {
-            minv = min(minv,arr[i]);
-            maxv = max(maxv,arr[i]);
+            minv = MIN(minv,arr[i]);
+            maxv = MAX(maxv,arr[i]);
         }
         
         double length = maxv - minv;

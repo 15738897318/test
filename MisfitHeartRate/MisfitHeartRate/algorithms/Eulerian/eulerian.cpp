@@ -35,15 +35,15 @@ namespace MHR
 //            frameToFile(vid[0], outDir + "test_frame_in.jpg");
         }
       
-		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
+		level = MIN(level, (int)floor(log(MIN(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
         
 		// Define the indices of the frames to be processed
 		int startIndex = _startFrame;
         int endIndex = len - 1;
         if (_endFrame > 0)
-            endIndex = min(endIndex, _endFrame);
+            endIndex = MIN(endIndex, _endFrame);
         else
-            endIndex = max(0, endIndex + _endFrame);
+            endIndex = MAX(0, endIndex + _endFrame);
         
 		// ================= Core part of the algo described in literature
 		// compute Gaussian blur stack
@@ -134,8 +134,8 @@ namespace MHR
                         {
 							double tmp = filtered.at<Vec3d>(i, j)[channel];
 							
-							tmp = min(tmp, 255.0);
-							tmp = max(tmp, 0.0);
+							tmp = MIN(tmp, 255.0);
+							tmp = MAX(tmp, 0.0);
 							
 							filtered.at<Vec3d>(i, j)[channel] = tmp;
 						}
@@ -165,8 +165,8 @@ namespace MHR
                     {
 						double tmp = filtered.at<double>(i, j);
 						
-						tmp = min(tmp, 255.0);
-						tmp = max(tmp, 0.0);
+						tmp = MIN(tmp, 255.0);
+						tmp = MAX(tmp, 0.0);
 						
 						filtered.at<double>(i, j) = tmp;
             		}

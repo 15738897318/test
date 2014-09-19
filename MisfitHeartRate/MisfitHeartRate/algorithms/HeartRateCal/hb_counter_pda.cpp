@@ -27,7 +27,7 @@ namespace MHR
             vector<int> max_peak_locs, min_peak_locs;
             int segment_length;
             
-            int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
+            int windowEnd = MIN(windowStart + window_size, (int)temporal_mean.size());
             for (int i = windowStart; i < windowEnd; ++i)
                 segment.push_back(temporal_mean[i]);
             
@@ -49,7 +49,7 @@ namespace MHR
                 if (min_peak_locs.empty())
                 {
                     segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size)/2.0 + 1); //round
-                    segment_length = min(segment_length, (int)segment.size());
+                    segment_length = MIN(segment_length, (int)segment.size());
                 }
                 else
                 {

@@ -28,7 +28,7 @@ namespace MHR
         /*-----------------read the first block of M frames to extract video params---------------*/
         int currentFrame = -1;
         vector<Mat> vid;
-        for (int i = 0; i < min(_framesBlock_size, nFrames); ++i)
+        for (int i = 0; i < MIN(_framesBlock_size, nFrames); ++i)
         {
             ++currentFrame;
             readFrame(srcDir + string("/input_frame[") + to_string(fileStartIndex + i) + "].png", vid);

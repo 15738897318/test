@@ -58,8 +58,8 @@ namespace MHR
 				double lower_pct_range = _pct_reach_below_mode;
 				double upper_pct_range = _pct_reach_above_mode;
 			
-				int first_training_frames_start = min((int)round(fr * _training_time_start), total_frames);
-				int first_training_frames_end = min((int)round(fr * _training_time_end), total_frames) - 1;
+				int first_training_frames_start = MIN((int)round(fr * _training_time_start), total_frames);
+				int first_training_frames_end = MIN((int)round(fr * _training_time_end), total_frames) - 1;
 			
 				// this arr stores values of pixels from first trainning frames
 				vector<double> arr;
@@ -82,8 +82,8 @@ namespace MHR
 			
 				// find the percentile range centred on the mode
 				double percentile_of_centre_mode = invprctile(arr, centre_mode);
-				double percentile_lower_range = max(0.0, percentile_of_centre_mode - lower_pct_range);
-				double percentile_upper_range = min(100.0, percentile_of_centre_mode + upper_pct_range);
+				double percentile_lower_range = MAX(0.0, percentile_of_centre_mode - lower_pct_range);
+				double percentile_upper_range = MIN(100.0, percentile_of_centre_mode + upper_pct_range);
 				// correct the percentile range for the boundary cases
 				if (percentile_upper_range == 100)
 					percentile_lower_range = 100 - (lower_pct_range + upper_pct_range);

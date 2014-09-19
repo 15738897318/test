@@ -109,8 +109,8 @@ namespace MHR
             for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol)
             {
                 dst.at<double>(i, j) = tmp.at<double>(x, y);
-                last_i = max(last_i, i);
-                last_j = max(last_j, j);
+                last_i = MAX(last_i, i);
+                last_j = MAX(last_j, j);
             }
         if (_DEBUG_MODE)
             if (last_i+1 != m && last_j+1 != n)

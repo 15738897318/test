@@ -77,16 +77,28 @@ using namespace cv;
             if ((face.bounds.size.width >= ROI_lower.width) && (face.bounds.size.height >= ROI_lower.height))
             {
                 if (face.hasLeftEyePosition)
-                    leftEye = cv::Rect(face.leftEyePosition.y - 10 + ROI_upper.x - cropArea.x, face.leftEyePosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
+                {
+                    int leftEyeWidth = face.bounds.size.width / 4;
+                    int leftEyeHeight = face.bounds.size.height / 6;
+                    leftEye = cv::Rect(face.leftEyePosition.x - leftEyeWidth / 2 + ROI_upper.x - cropArea.x, face.leftEyePosition.y - leftEyeHeight / 2 + ROI_upper.y - cropArea.y, leftEyeWidth, leftEyeHeight);
+                }
                 else
                     leftEye = cv::Rect(0, 0, 0, 0);
                 
                 if (face.hasRightEyePosition)
-                    rightEye = cv::Rect(face.rightEyePosition.y - 10 + ROI_upper.x - cropArea.x, face.rightEyePosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
+                {
+                    int rightEyeWidth = face.bounds.size.width / 4;
+                    int rightEyeHeight = face.bounds.size.height / 6;
+                    rightEye = cv::Rect(face.rightEyePosition.x - rightEyeWidth / 2 + ROI_upper.x - cropArea.x, face.rightEyePosition.y - rightEyeHeight / 2 + ROI_upper.y - cropArea.y, rightEyeWidth, rightEyeHeight);
+                }
                 else
                     rightEye = cv::Rect(0, 0, 0, 0);
                 if (face.hasMouthPosition)
-                    mouth = cv::Rect(face.mouthPosition.y - 10 + ROI_upper.x - cropArea.x, face.mouthPosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
+                {
+                    int mouthWidth = face.bounds.size.width / 3;
+                    int mouthHeight = face.bounds.size.height / 4;
+                    mouth = cv::Rect(face.mouthPosition.x - mouthWidth / 2 + ROI_upper.x - cropArea.x, face.mouthPosition.y - mouthHeight / 2 + ROI_upper.y - cropArea.y, mouthWidth, mouthHeight);
+                }
                 else
                     mouth = cv::Rect(0, 0, 0, 0);
                 return 1;
@@ -121,15 +133,15 @@ using namespace cv;
     {
         for (int x = MAX(0, leftEye.x); x <= MIN(new_image->cols, leftEye.x + leftEye.width); ++x)
             for (int y = MAX(0, leftEye.y); y <= MIN(new_image->rows, leftEye.y + leftEye.height); ++y)
-                new_image->at<Vec3b>(y, x) = Vec3b(0, 0, 0);
+                new_image->at<Vec3b>(new_image->rows - y, x) = Vec3b(0, 0, 0);
         
         for (int x = MAX(0, rightEye.x); x <= MIN(new_image->cols, rightEye.x + rightEye.width); ++x)
             for (int y = MAX(0, rightEye.y); y <= MIN(new_image->rows, rightEye.y + rightEye.height); ++y)
-                new_image->at<Vec3b>(y, x) = Vec3b(0, 0, 0);
+                new_image->at<Vec3b>(new_image->rows - y, x) = Vec3b(0, 0, 0);
         
         for (int x = MAX(0, mouth.x); x <= MIN(new_image->cols, mouth.x + mouth.width); ++x)
             for (int y = MAX(0, mouth.y); y <= MIN(new_image->rows, mouth.y + mouth.height); ++y)
-                new_image->at<Vec3b>(y, x) = Vec3b(0, 0, 0);
+                new_image->at<Vec3b>(new_image->rows - y, x) = Vec3b(0, 0, 0);
     }
 
     /** For finger detection */
@@ -234,8 +246,8 @@ using namespace cv;
         float maxVal = 255, minVal = 0;
         for (int i = 0; i < (int)val.size(); ++i)
         {
-            maxVal = max(maxVal, val[i]);
-            minVal = min(minVal, val[i]);
+            maxVal = MAX(maxVal, val[i]);
+            minVal = MIN(minVal, val[i]);
         }
         
         return maxVal - minVal > variationThreshold;

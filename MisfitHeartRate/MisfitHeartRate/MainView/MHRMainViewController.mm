@@ -80,7 +80,7 @@ static const int kBlockFrameSize = 128;
         currentResult = hrResult(-1, -1);
         
         isCapturing = NO;
-        cropArea = cv::Rect(WIDTH_PADDING, HEIGHT_PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
+        cropArea = cv::Rect(HEIGHT_PADDING, WIDTH_PADDING, IMAGE_HEIGHT, IMAGE_WIDTH);
         
         // Create the upper & lower bounds for the face-detection area
         int ROI_x;
@@ -105,7 +105,7 @@ static const int kBlockFrameSize = 128;
         _videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
         _videoCamera.delegate = self;
         _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
-        _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+        _videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
         _videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
         _videoCamera.defaultFPS = _frameRate;
         _videoCamera.rotateVideo = YES;
@@ -131,6 +131,7 @@ static const int kBlockFrameSize = 128;
         blockNumber = 0;
         
 //        [MHRTest test_run_algorithm];
+        
     }
 
 
@@ -165,8 +166,8 @@ static const int kBlockFrameSize = 128;
             double hr;
             double old_hr;
             
-            hr = min(_hrThreshold + 20, hrGlobalResult.autocorr);
-            old_hr = min(_hrThreshold + 20, hrOldGlobalResult.autocorr);
+            hr = MIN(_hrThreshold + 20, hrGlobalResult.autocorr);
+            old_hr = MIN(_hrThreshold + 20, hrOldGlobalResult.autocorr);
             
             hr_polisher(hr, old_hr, _hrThreshold, _hrStanDev);
             hrOldGlobalResult.autocorr = old_hr;
@@ -184,7 +185,10 @@ static const int kBlockFrameSize = 128;
         if (isCapturing)
             return;
         isCapturing = TRUE;
-        blockCount = 0;
+        
+        if (!_cameraSwitch.isOn) {
+            [MHRUtilities setTorchModeOn:YES];
+        }
         
         // hide the view viewTop
         self.viewTop.hidden = YES;
@@ -294,6 +298,11 @@ static const int kBlockFrameSize = 128;
         fprintf(file, "%d\n", (int)_nFrames);
         fclose(file);
         
+        // Add the final block into the processing queue only if there is at least one full block preceding it
+        if (_nFrames > kBlockFrameSize)
+            [myQueue addOperationWithBlock: ^ {
+                [self heartRateCalculation];
+            }];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             while (myQueue.operationCount != 0);
@@ -328,7 +337,7 @@ static const int kBlockFrameSize = 128;
         double hr;
         double old_hr;
         
-        if (blockCount <= 1)
+        if (blockNumber <= 1)
         {
             hr = _hrThreshold + 20;
             old_hr = _hrThreshold + 20;
@@ -450,8 +459,8 @@ static const int kBlockFrameSize = 128;
 //            yDelta = -IOS6_Y_DELTA;
 //        }
         
-        int X0 = rect.y + cropArea.y, Y0 = rect.x + rect.width + cropArea.x;
-        int X1 = rect.y + rect.height + cropArea.y, Y1 = rect.x + cropArea.x;
+        int X0 = rect.x + cropArea.x, Y0 = rect.y + rect.width + cropArea.y;
+        int X1 = rect.x + rect.height + cropArea.x, Y1 = rect.y + cropArea.y;
 
         Y1 = CAMERA_WIDTH - Y1;
         Y0 = CAMERA_WIDTH - Y0;
@@ -487,9 +496,15 @@ static const int kBlockFrameSize = 128;
     #pragma mark - Processing each recorded frame
     - (void)processImage:(Mat &)image
     {
+        static int framesWithTorchOn = 0;
         if (isCapturing)
         {
+            if (!_cameraSwitch.isOn && (++framesWithTorchOn <= delayTorchOnInFrames))
+                return;
+            
             static int failedFrames = 0;
+            if (_nFrames == 0)
+                firstFrameWithFace = image(ROI_upper).clone();
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
             [auto_start removeEyesAndMouth:&new_image];
@@ -497,13 +512,12 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
+            // Update the frame-rate
             _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
                         
-            // Add new block to queue
-            int upper = (blockNumber + 1) * kBlockFrameSize;
+            // Wait until there are enough unprocessed frames for one block then add the block
             int size = (int)frameIndexArray.count;
-            
-            if ( size >= upper)
+            if ((size > 0) && (size % kBlockFrameSize == 0))
             {
                 [myQueue addOperationWithBlock: ^{
                     [self heartRateCalculation];
@@ -511,13 +525,27 @@ static const int kBlockFrameSize = 128;
             }
             
             if (_cameraSwitch.isOn)
-                failedFrames += ![auto_stop faceCheck:image(ROI_upper).clone()];
+            {
+                if (![auto_stop faceCheck:image(ROI_upper).clone()])
+                    ++failedFrames;
+                else
+                    failedFrames = 0;
+            }
             else
-                failedFrames += ![auto_stop fingerCheck:new_image];
+            {
+                if (![auto_stop fingerCheck:new_image])
+                    ++failedFrames;
+                else
+                    failedFrames = 0;
+            }
             
             if (failedFrames > 5)
             {
                 failedFrames = 0;
+                
+                _nFrames -= 6;
+                [frameIndexArray removeObjectsInRange:NSMakeRange(frameIndexArray.count - 6, 6)];
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self stopButtonDidTap:self];
                 });
@@ -539,12 +567,6 @@ static const int kBlockFrameSize = 128;
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                     // Cut the frame down to the upper bound of ROI
                     Mat frame_ROI = tmp;
-                    
-                    // Rotate the frame to fit the orientation preferred by the detector
-                    transpose(frame_ROI, frame_ROI);
-                    for (int i = 0; i < frame_ROI.rows / 2; ++i)
-                        for (int j = 0; j < frame_ROI.cols * 4; ++j)
-                            swap(frame_ROI.at<unsigned char>(i, j), frame_ROI.at<unsigned char>(frame_ROI.rows - i - 1, j));
                     
                     // If the main thread is already running the capture algo, then dont do the face detection
                     if (isCapturing)
@@ -586,7 +608,6 @@ static const int kBlockFrameSize = 128;
                     
                     if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
                     {
-                        firstFrameWithFace = frame_ROI.clone();
                         // tap the startButton
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self startButtonDidTap:self];
@@ -597,7 +618,6 @@ static const int kBlockFrameSize = 128;
             else
             {
                 static Mat tmpFinger;
-                static int framesWithTorchOn = 0;
                 static int framesWithTorchOff = delayTorchOffInFrames;
                 static vector <float> avgRedVal;
                 
@@ -682,19 +702,22 @@ static const int kBlockFrameSize = 128;
 
     - (void)heartRateCalculation
     {
-        int idx = blockNumber * kBlockFrameSize;
-        if (idx >= frameIndexArray.count)
+        int idxStart = blockNumber * kBlockFrameSize;
+        if (idxStart >= frameIndexArray.count)
         {
+            NSLog(@"Error: Block starts beyond frame count!");
             return;
         }
         
-        NSNumber *startIndex = frameIndexArray[idx];
-        int value = min((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
-        NSNumber *endIndex = frameIndexArray[value];
-        
-        // If still capturing, then wait until there are enough unprocessed frames for one block
-        if (isCapturing && ((endIndex.intValue - startIndex.intValue + 1) < kBlockFrameSize))
+        int idxEnd = MIN((blockNumber + 1) * kBlockFrameSize, (int)frameIndexArray.count) - 1;
+        if (isCapturing && ((idxEnd - idxStart + 1) < kBlockFrameSize))
+        {
+            NSLog(@"Error: Non-final block length is shorter than allowed");
             return;
+        }
+
+        NSNumber *startIndex = frameIndexArray[idxStart];
+        NSNumber *endIndex = frameIndexArray[idxEnd];
         
         if (_DEBUG_MODE)
         {
@@ -711,16 +734,14 @@ static const int kBlockFrameSize = 128;
             processingPerBlock([_outPath UTF8String], [_outPath UTF8String], startIndex.intValue, endIndex.intValue, isCalcMode, lower_range, upper_range, result, temp);
             processingCumulative(temporal_mean, temp, currentResult);
             
-            blockCount = blockNumber + 1;
-            blockNumber ++;
-            
             isCalcMode = NO;
+            blockNumber ++;
             
             if (_DEBUG_MODE)
             {
                 NSLog(@"currentResult: %lf, %lf", currentResult.autocorr, currentResult.pda);
                 NSLog(@"hrGlobalResult: %lf, %lf", hrGlobalResult.autocorr, hrGlobalResult.pda);
-                NSLog(@"Number of blocks processed: %d", blockCount);
+                NSLog(@"Number of blocks processed: %d", blockNumber);
             }
         }
     }

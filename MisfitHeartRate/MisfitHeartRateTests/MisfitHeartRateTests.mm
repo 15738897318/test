@@ -763,9 +763,9 @@ String resourcePath = "get simulator's resource path in setUp() function";
     }
     for (int i = 0; i < n; ++i)
     {
-        double tmp = max(diff_percent(debug.heartBeats[i].first, readDouble(file)),
+        double tmp = MAX(diff_percent(debug.heartBeats[i].first, readDouble(file)),
                          diff_percent(debug.heartBeats[i].second, readInt(file)));
-        max_percent = max(max_percent, tmp);
+        max_percent = MAX(max_percent, tmp);
     }
     if (max_percent > EPSILON_PERCENT)
         XCTFail(@"wrong output - percent = %lf", max_percent);
@@ -878,9 +878,9 @@ String resourcePath = "get simulator's resource path in setUp() function";
 //        double fr = debug.heartBeats[n-1-i].first;
 //        int sc = debug.heartBeats[n-1-i].second + 1;
 //        printf("(%lf, %d) ----- (%lf, %d)\n", a, b, fr, sc);
-//        double tmp = max(diff_percent(fr, a),
+//        double tmp = MAX(diff_percent(fr, a),
 //                         diff_percent(sc, b));
-//        max_percent = max(max_percent, tmp);
+//        max_percent = MAX(max_percent, tmp);
 //    }
 //    if (max_percent > EPSILON_PERCENT)
 //        XCTFail(@"wrong output - percent = %lf", max_percent);
