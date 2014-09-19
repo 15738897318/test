@@ -119,6 +119,7 @@ static const int kBlockFrameSize = 128;
         self.navigationItem.rightBarButtonItem = _stopButton;
         
         // draw Aqua rectangle
+        [self.view bringSubviewToFront:self.imageView];
         [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
         
         // update Layout (iOS6 vs iOS7)
@@ -131,7 +132,6 @@ static const int kBlockFrameSize = 128;
         blockNumber = 0;
         
 //        [MHRTest test_run_algorithm];
-        
     }
 
 
@@ -387,6 +387,7 @@ static const int kBlockFrameSize = 128;
             [MHRUtilities setTorchModeOn:NO];
             _faceLabel.text = FACE_MESSAGE;
             _fingerLabel.text = @"";
+            [self.view bringSubviewToFront:self.imageView];
             [self drawFaceCaptureRect:@"MHRCameraCaptureRect"];
             [_videoCamera stop];
             
@@ -459,22 +460,26 @@ static const int kBlockFrameSize = 128;
 //            yDelta = -IOS6_Y_DELTA;
 //        }
         
-        int X0 = rect.x + cropArea.x, Y0 = rect.y + rect.width + cropArea.y;
-        int X1 = rect.x + rect.height + cropArea.x, Y1 = rect.y + cropArea.y;
+        int X0 = rect.x + cropArea.x;
+        int Y0 = rect.y + cropArea.y + rect.height;
+        int X1 = rect.x + cropArea.x + rect.width;
+        int Y1 = rect.y + cropArea.y;
 
         Y1 = CAMERA_WIDTH - Y1;
         Y0 = CAMERA_WIDTH - Y0;
-        //swap(Y0, Y1);
         
-        X0 += self.imageView.frameX; X1 += self.imageView.frameX;
-        Y0 += self.imageView.frameY; Y1 += self.imageView.frameY;
+        //swap(Y0, Y1);
+        X0 += self.imageView.frameX;
+        Y0 += self.imageView.frameY;
+        X1 += self.imageView.frameX;
+        Y1 += self.imageView.frameY;
         
         // horizontal lines
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, rect.width, 5) pListKey:colorKey]];
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y1, rect.width, 5) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, rect.width, 2) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y1, rect.width, 2) pListKey:colorKey]];
         // vertical line
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, 5, rect.height) pListKey:colorKey]];
-        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X1, Y0, 5, rect.height + 5) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X0, Y0, 2, rect.height) pListKey:colorKey]];
+        [self.view.layer addSublayer:[MHRUtilities newRectangleLayer:CGRectMake(X1, Y0, 2, rect.height + 2) pListKey:colorKey]];
     }
 
     - (void)updateLayout
