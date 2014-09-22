@@ -59,8 +59,8 @@ using namespace MHR;
     NSMutableArray *frameIndexArray[2];
     
     NSOperationQueue *myQueue;
+    
     int blockNumber[2];
-    int blockCount[2];
     int nFrames[2];
 }
 @end

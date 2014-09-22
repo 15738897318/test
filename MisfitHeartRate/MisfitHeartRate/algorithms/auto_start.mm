@@ -74,22 +74,7 @@ using namespace cv;
         for (int i = 0; i < faces.count; i++)
         {
             CIFaceFeature *face = [faces objectAtIndex:i];
-            
-//            if ((face.bounds.size.width >= ROI_lower.width) && (face.bounds.size.height >= ROI_lower.height))
             {
-//                if (face.hasLeftEyePosition)
-//                    leftEye = cv::Rect(face.leftEyePosition.y - 10 + ROI_upper.x - cropArea.x, face.leftEyePosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
-//                else
-//                    leftEye = cv::Rect(0, 0, 0, 0);
-//                
-//                if (face.hasRightEyePosition)
-//                    rightEye = cv::Rect(face.rightEyePosition.y - 10 + ROI_upper.x - cropArea.x, face.rightEyePosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
-//                else
-//                    rightEye = cv::Rect(0, 0, 0, 0);
-//                if (face.hasMouthPosition)
-//                    mouth = cv::Rect(face.mouthPosition.y - 10 + ROI_upper.x - cropArea.x, face.mouthPosition.x - 10 + ROI_upper.y - cropArea.y, 20, 20);
-//                else
-//                    mouth = cv::Rect(0, 0, 0, 0);
                 faceCropArea[nFaces++] = cv::Rect(face.bounds.origin.y, face.bounds.origin.x, face.bounds.size.width, face.bounds.size.height);
             }
         }
