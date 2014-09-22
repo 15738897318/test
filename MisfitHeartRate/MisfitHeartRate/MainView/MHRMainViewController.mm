@@ -116,6 +116,9 @@ static const int kBlockFrameSize = 128;
         _videoCamera.defaultFPS = _frameRate;
         _videoCamera.rotateVideo = YES;
         _videoCamera.grayscaleMode = NO;
+//        for (AVCaptureDeviceInput *deviceInput in _videoCamera.captureSession.inputs) {
+//            deviceInput.device.activeVideoMinFrameDuration =
+//        }
         [_videoCamera start];
         
         // add start and stop button
@@ -388,7 +391,23 @@ static const int kBlockFrameSize = 128;
             // Set the camera to show camera capture onto the screen
             _videoCamera.ParentView = self.imageView;
             _videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+            for (AVCaptureDeviceInput *deviceInput in _videoCamera.captureSession.inputs) {
+                NSError *error;
+                [deviceInput.device lockForConfiguration:&error];
+                deviceInput.device.activeVideoMinFrameDuration = CMTimeMake(1, 10);
+                deviceInput.device.activeVideoMaxFrameDuration = CMTimeMake(1, 10);
+                //[deviceInput.device unlockForConfiguration];
+            }
+
             [_videoCamera start];
+            for (AVCaptureDeviceInput *deviceInput in _videoCamera.captureSession.inputs) {
+                NSError *error;
+                [deviceInput.device lockForConfiguration:&error];
+                deviceInput.device.activeVideoMinFrameDuration = CMTimeMake(1, 10);
+                deviceInput.device.activeVideoMaxFrameDuration = CMTimeMake(1, 10);
+//                [deviceInput.device unlockForConfiguration];
+            }
+
             setFaceParams();
             currentResult = hrResult(-1, -1);
         }
@@ -481,8 +500,8 @@ static const int kBlockFrameSize = 128;
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
-            // Update the frame-rate
             _frameRate = ((float)_nFrames - 1) / (float)_recordTime;
+
                         
             // Wait until there are enough unprocessed frames for one block then add the block
             int size = (int)frameIndexArray.count;
