@@ -14,7 +14,6 @@ MHR::hrResult hrOldGlobalResult;
 Mat firstFrameWithFace;
 
 cv::Rect cropArea;
-cv::Rect searchArea;
 cv::Rect ROI_upper;
 cv::Rect ROI_lower;
 

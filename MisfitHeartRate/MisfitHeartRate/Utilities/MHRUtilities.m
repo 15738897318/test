@@ -92,6 +92,7 @@ UIColor* MFUIColorMakeFromRGBAArray(NSArray* rgbaArray)
     CALayer *rect = [CALayer layer];
     rect.frame = frame;
     rect.backgroundColor = MFUIColorMakeFromRGBAArray([[appDelegate getPlistSkinDict] objectForKey:pListKey]).CGColor;
+    rect.name = @"CameraCaptureRect";
     return rect;
 }
 
