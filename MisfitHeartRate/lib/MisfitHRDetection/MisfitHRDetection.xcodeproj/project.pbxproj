@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC64AB6219D260A400E16B66 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3819D260A400E16B66 /* config.cpp */; };
+		DC64AB6419D260A400E16B66 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */; };
+		DC64AB6619D260A400E16B66 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3D19D260A400E16B66 /* eulerian.cpp */; };
+		DC64AB6819D260A400E16B66 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */; };
+		DC64AB6B19D260A400E16B66 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4319D260A400E16B66 /* files.cpp */; };
+		DC64AB6E19D260A400E16B66 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4719D260A400E16B66 /* frames2signal.cpp */; };
+		DC64AB7019D260A400E16B66 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */; };
+		DC64AB7219D260A400E16B66 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */; };
+		DC64AB7419D260A400E16B66 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */; };
+		DC64AB7619D260A400E16B66 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */; };
+		DC64AB7819D260A400E16B66 /* hr_structures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5119D260A400E16B66 /* hr_structures.cpp */; };
+		DC64AB7A19D260A400E16B66 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */; };
+		DC64AB7C19D260A400E16B66 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5619D260A400E16B66 /* image.cpp */; };
+		DC64AB7E19D260A400E16B66 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5919D260A400E16B66 /* matlab.cpp */; };
+		DC64AB8019D260A400E16B66 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5C19D260A400E16B66 /* matrix.cpp */; };
+		DC64AB8219D260A400E16B66 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */; };
+		DC64AB8419D260A400E16B66 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB6019D260A400E16B66 /* globals.cpp */; };
+		DC64AB8719D260B400E16B66 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AB8619D260B400E16B66 /* opencv2.framework */; };
+		DC64AB8C19D261B600E16B66 /* config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3919D260A400E16B66 /* config.h */; };
+		DC64AB8D19D261B600E16B66 /* build_Gdown_stack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */; };
+		DC64AB8E19D261B600E16B66 /* eulerian.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3E19D260A400E16B66 /* eulerian.h */; };
+		DC64AB8F19D261B600E16B66 /* ideal_bandpassing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */; };
+		DC64AB9019D261B600E16B66 /* face_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4119D260A400E16B66 /* face_params.h */; };
+		DC64AB9119D261B600E16B66 /* files.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4419D260A400E16B66 /* files.h */; };
+		DC64AB9219D261B600E16B66 /* finger_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4519D260A400E16B66 /* finger_params.h */; };
+		DC64AB9319D261B600E16B66 /* image.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5719D260A400E16B66 /* image.h */; };
+		DC64AB9419D261B600E16B66 /* run_algorithms.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5F19D260A400E16B66 /* run_algorithms.h */; };
+		DC64AB9519D261B600E16B66 /* globals.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB6119D260A400E16B66 /* globals.h */; };
+		DC64AB9619D263E000E16B66 /* frames2signal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4819D260A400E16B66 /* frames2signal.h */; };
+		DC64AB9719D263E000E16B66 /* hb_counter_autocorr.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */; };
+		DC64AB9819D263E000E16B66 /* hb_counter_pda.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */; };
+		DC64AB9919D263E000E16B66 /* hr_calculator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4E19D260A400E16B66 /* hr_calculator.h */; };
+		DC64AB9A19D263E000E16B66 /* hr_signal_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5019D260A400E16B66 /* hr_signal_calc.h */; };
+		DC64AB9B19D263E000E16B66 /* hr_structures.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5219D260A400E16B66 /* hr_structures.h */; };
+		DC64AB9C19D263E000E16B66 /* temporal_mean_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */; };
+		DC64AB9D19D263E000E16B66 /* matlab.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5A19D260A400E16B66 /* matlab.h */; };
+		DC64AB9E19D263E000E16B66 /* matrix.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5D19D260A400E16B66 /* matrix.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DC64AB8B19D2619000E16B66 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				DC64AB9619D263E000E16B66 /* frames2signal.h in CopyFiles */,
+				DC64AB9719D263E000E16B66 /* hb_counter_autocorr.h in CopyFiles */,
+				DC64AB9819D263E000E16B66 /* hb_counter_pda.h in CopyFiles */,
+				DC64AB9919D263E000E16B66 /* hr_calculator.h in CopyFiles */,
+				DC64AB9A19D263E000E16B66 /* hr_signal_calc.h in CopyFiles */,
+				DC64AB9B19D263E000E16B66 /* hr_structures.h in CopyFiles */,
+				DC64AB9C19D263E000E16B66 /* temporal_mean_calc.h in CopyFiles */,
+				DC64AB9D19D263E000E16B66 /* matlab.h in CopyFiles */,
+				DC64AB9E19D263E000E16B66 /* matrix.h in CopyFiles */,
+				DC64AB8C19D261B600E16B66 /* config.h in CopyFiles */,
+				DC64AB8D19D261B600E16B66 /* build_Gdown_stack.h in CopyFiles */,
+				DC64AB8E19D261B600E16B66 /* eulerian.h in CopyFiles */,
+				DC64AB8F19D261B600E16B66 /* ideal_bandpassing.h in CopyFiles */,
+				DC64AB9019D261B600E16B66 /* face_params.h in CopyFiles */,
+				DC64AB9119D261B600E16B66 /* files.h in CopyFiles */,
+				DC64AB9219D261B600E16B66 /* finger_params.h in CopyFiles */,
+				DC64AB9319D261B600E16B66 /* image.h in CopyFiles */,
+				DC64AB9419D261B600E16B66 /* run_algorithms.h in CopyFiles */,
+				DC64AB9519D261B600E16B66 /* globals.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMIsfitHRDetection.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC64AB3819D260A400E16B66 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
+		DC64AB3919D260A400E16B66 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build_Gdown_stack.cpp; sourceTree = "<group>"; };
+		DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_Gdown_stack.h; sourceTree = "<group>"; };
+		DC64AB3D19D260A400E16B66 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eulerian.cpp; sourceTree = "<group>"; };
+		DC64AB3E19D260A400E16B66 /* eulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eulerian.h; sourceTree = "<group>"; };
+		DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ideal_bandpassing.cpp; sourceTree = "<group>"; };
+		DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ideal_bandpassing.h; sourceTree = "<group>"; };
+		DC64AB4119D260A400E16B66 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
+		DC64AB4319D260A400E16B66 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = files.cpp; sourceTree = "<group>"; };
+		DC64AB4419D260A400E16B66 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = files.h; sourceTree = "<group>"; };
+		DC64AB4519D260A400E16B66 /* finger_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finger_params.h; sourceTree = "<group>"; };
+		DC64AB4719D260A400E16B66 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = frames2signal.cpp; sourceTree = "<group>"; };
+		DC64AB4819D260A400E16B66 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frames2signal.h; sourceTree = "<group>"; };
+		DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hb_counter_autocorr.cpp; sourceTree = "<group>"; };
+		DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hb_counter_autocorr.h; sourceTree = "<group>"; };
+		DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hb_counter_pda.cpp; sourceTree = "<group>"; };
+		DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hb_counter_pda.h; sourceTree = "<group>"; };
+		DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_calculator.cpp; sourceTree = "<group>"; };
+		DC64AB4E19D260A400E16B66 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_calculator.h; sourceTree = "<group>"; };
+		DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_signal_calc.cpp; sourceTree = "<group>"; };
+		DC64AB5019D260A400E16B66 /* hr_signal_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_signal_calc.h; sourceTree = "<group>"; };
+		DC64AB5119D260A400E16B66 /* hr_structures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_structures.cpp; sourceTree = "<group>"; };
+		DC64AB5219D260A400E16B66 /* hr_structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_structures.h; sourceTree = "<group>"; };
+		DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = temporal_mean_calc.cpp; sourceTree = "<group>"; };
+		DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temporal_mean_calc.h; sourceTree = "<group>"; };
+		DC64AB5619D260A400E16B66 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
+		DC64AB5719D260A400E16B66 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
+		DC64AB5919D260A400E16B66 /* matlab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matlab.cpp; sourceTree = "<group>"; };
+		DC64AB5A19D260A400E16B66 /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matlab.h; sourceTree = "<group>"; };
+		DC64AB5C19D260A400E16B66 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		DC64AB5D19D260A400E16B66 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_algorithms.cpp; sourceTree = "<group>"; };
+		DC64AB5F19D260A400E16B66 /* run_algorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_algorithms.h; sourceTree = "<group>"; };
+		DC64AB6019D260A400E16B66 /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		DC64AB6119D260A400E16B66 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		DC64AB8619D260B400E16B66 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../frameworks/opencv2.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC64AAD819D2604B00E16B66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64AB8719D260B400E16B66 /* opencv2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC64AAD219D2604B00E16B66 = {
+			isa = PBXGroup;
+			children = (
+				DC64AB8619D260B400E16B66 /* opencv2.framework */,
+				DC64AB3719D260A400E16B66 /* algorithms */,
+				DC64AB6019D260A400E16B66 /* globals.cpp */,
+				DC64AB6119D260A400E16B66 /* globals.h */,
+				DC64AADC19D2604B00E16B66 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC64AADC19D2604B00E16B66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC64AB3719D260A400E16B66 /* algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB3819D260A400E16B66 /* config.cpp */,
+				DC64AB3919D260A400E16B66 /* config.h */,
+				DC64AB3A19D260A400E16B66 /* Eulerian */,
+				DC64AB4119D260A400E16B66 /* face_params.h */,
+				DC64AB4219D260A400E16B66 /* files */,
+				DC64AB4519D260A400E16B66 /* finger_params.h */,
+				DC64AB4619D260A400E16B66 /* HeartRateCal */,
+				DC64AB5519D260A400E16B66 /* image */,
+				DC64AB5819D260A400E16B66 /* math */,
+				DC64AB5B19D260A400E16B66 /* matrix */,
+				DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */,
+				DC64AB5F19D260A400E16B66 /* run_algorithms.h */,
+			);
+			path = algorithms;
+			sourceTree = "<group>";
+		};
+		DC64AB3A19D260A400E16B66 /* Eulerian */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */,
+				DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */,
+				DC64AB3D19D260A400E16B66 /* eulerian.cpp */,
+				DC64AB3E19D260A400E16B66 /* eulerian.h */,
+				DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */,
+				DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */,
+			);
+			path = Eulerian;
+			sourceTree = "<group>";
+		};
+		DC64AB4219D260A400E16B66 /* files */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB4319D260A400E16B66 /* files.cpp */,
+				DC64AB4419D260A400E16B66 /* files.h */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
+		DC64AB4619D260A400E16B66 /* HeartRateCal */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB4719D260A400E16B66 /* frames2signal.cpp */,
+				DC64AB4819D260A400E16B66 /* frames2signal.h */,
+				DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */,
+				DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */,
+				DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */,
+				DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */,
+				DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */,
+				DC64AB4E19D260A400E16B66 /* hr_calculator.h */,
+				DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */,
+				DC64AB5019D260A400E16B66 /* hr_signal_calc.h */,
+				DC64AB5119D260A400E16B66 /* hr_structures.cpp */,
+				DC64AB5219D260A400E16B66 /* hr_structures.h */,
+				DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */,
+				DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */,
+			);
+			path = HeartRateCal;
+			sourceTree = "<group>";
+		};
+		DC64AB5519D260A400E16B66 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB5619D260A400E16B66 /* image.cpp */,
+				DC64AB5719D260A400E16B66 /* image.h */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		DC64AB5819D260A400E16B66 /* math */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB5919D260A400E16B66 /* matlab.cpp */,
+				DC64AB5A19D260A400E16B66 /* matlab.h */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		DC64AB5B19D260A400E16B66 /* matrix */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AB5C19D260A400E16B66 /* matrix.cpp */,
+				DC64AB5D19D260A400E16B66 /* matrix.h */,
+			);
+			path = matrix;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC64AADA19D2604B00E16B66 /* MIsfitHRDetection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC64AADF19D2604B00E16B66 /* Build configuration list for PBXNativeTarget "MIsfitHRDetection" */;
+			buildPhases = (
+				DC64AAD719D2604B00E16B66 /* Sources */,
+				DC64AAD819D2604B00E16B66 /* Frameworks */,
+				DC64AB8B19D2619000E16B66 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIsfitHRDetection;
+			productName = MIsfitHRDetection;
+			productReference = DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC64AAD319D2604B00E16B66 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Nguyen Tien Viet";
+			};
+			buildConfigurationList = DC64AAD619D2604B00E16B66 /* Build configuration list for PBXProject "MIsfitHRDetection" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DC64AAD219D2604B00E16B66;
+			productRefGroup = DC64AADC19D2604B00E16B66 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC64AADA19D2604B00E16B66 /* MIsfitHRDetection */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC64AAD719D2604B00E16B66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64AB7419D260A400E16B66 /* hr_calculator.cpp in Sources */,
+				DC64AB8219D260A400E16B66 /* run_algorithms.cpp in Sources */,
+				DC64AB7A19D260A400E16B66 /* temporal_mean_calc.cpp in Sources */,
+				DC64AB7819D260A400E16B66 /* hr_structures.cpp in Sources */,
+				DC64AB7219D260A400E16B66 /* hb_counter_pda.cpp in Sources */,
+				DC64AB7619D260A400E16B66 /* hr_signal_calc.cpp in Sources */,
+				DC64AB8019D260A400E16B66 /* matrix.cpp in Sources */,
+				DC64AB6619D260A400E16B66 /* eulerian.cpp in Sources */,
+				DC64AB7E19D260A400E16B66 /* matlab.cpp in Sources */,
+				DC64AB8419D260A400E16B66 /* globals.cpp in Sources */,
+				DC64AB6219D260A400E16B66 /* config.cpp in Sources */,
+				DC64AB6819D260A400E16B66 /* ideal_bandpassing.cpp in Sources */,
+				DC64AB6419D260A400E16B66 /* build_Gdown_stack.cpp in Sources */,
+				DC64AB6E19D260A400E16B66 /* frames2signal.cpp in Sources */,
+				DC64AB7C19D260A400E16B66 /* image.cpp in Sources */,
+				DC64AB7019D260A400E16B66 /* hb_counter_autocorr.cpp in Sources */,
+				DC64AB6B19D260A400E16B66 /* files.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DC64AADD19D2604B00E16B66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DC64AADE19D2604B00E16B66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DC64AAE019D2604B00E16B66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/nguyentienviet/videoHeartRate/MisfitHeartRate/frameworks,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DC64AAE119D2604B00E16B66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/nguyentienviet/videoHeartRate/MisfitHeartRate/frameworks,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC64AAD619D2604B00E16B66 /* Build configuration list for PBXProject "MIsfitHRDetection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC64AADD19D2604B00E16B66 /* Debug */,
+				DC64AADE19D2604B00E16B66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC64AADF19D2604B00E16B66 /* Build configuration list for PBXNativeTarget "MIsfitHRDetection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC64AAE019D2604B00E16B66 /* Debug */,
+				DC64AAE119D2604B00E16B66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC64AAD319D2604B00E16B66 /* Project object */;
+}

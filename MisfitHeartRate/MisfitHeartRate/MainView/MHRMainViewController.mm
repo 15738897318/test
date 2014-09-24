@@ -8,7 +8,7 @@
 
 #import "MHRMainViewController.hpp"
 #import "UIImageCVMatConverter.hpp"
-#import "matlab.h"
+#import <MIsfitHRDetection/matlab.h>
 
 const int IOS6_Y_DELTA = 60;
 const int CAMERA_WIDTH = 352;

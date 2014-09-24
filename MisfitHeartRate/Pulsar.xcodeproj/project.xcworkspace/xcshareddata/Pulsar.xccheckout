@@ -5,34 +5,54 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3BE3335E-81AC-4C86-9299-0F02FF6CF01D</string>
+	<string>747DB59F-BDC9-4740-BE2C-C1FE51CB4EA3</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Pulsar</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>A2229C43-F8C4-4FD0-A363-9BDE32A8D3F8</key>
-		<string>https://github.com/Misfit-Wearables/videoHeartRate</string>
+		<key>91F35D22-8DFA-495A-B54B-5EC4646EE015</key>
+		<string>https://github.com/Misfit-Wearables/videoHeartRate/</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MisfitHeartRate/Pulsar.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>A2229C43-F8C4-4FD0-A363-9BDE32A8D3F8</key>
+		<key>91F35D22-8DFA-495A-B54B-5EC4646EE015</key>
 		<string>../../..</string>
+		<key>9A6228B1-BC12-4C83-A61C-852EC9672CC1</key>
+		<string>../../lib/MIsfitHRDetection</string>
+		<key>FA780070-ACD6-41BD-8B5F-E53D38C0F47A</key>
+		<string>../../lib/MisfitHRDetection</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Misfit-Wearables/videoHeartRate</string>
+	<string>https://github.com/Misfit-Wearables/videoHeartRate/</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A2229C43-F8C4-4FD0-A363-9BDE32A8D3F8</string>
+	<string>91F35D22-8DFA-495A-B54B-5EC4646EE015</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A2229C43-F8C4-4FD0-A363-9BDE32A8D3F8</string>
+			<string>FA780070-ACD6-41BD-8B5F-E53D38C0F47A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MisfitHRDetection</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9A6228B1-BC12-4C83-A61C-852EC9672CC1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MIsfitHRDetection</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>91F35D22-8DFA-495A-B54B-5EC4646EE015</string>
 			<key>IDESourceControlWCCName</key>
 			<string>videoHeartRate</string>
 		</dict>

@@ -8,7 +8,6 @@
 
 #include "temporal_mean_calc.h"
 
-
 namespace MHR {
     vector<double> temporal_mean_calc(const vector<Mat> &vid, double overlap_ratio,
                                       double max_bpm, double cutoff_freq,

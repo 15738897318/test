@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 //#import "MHRMainViewController.hpp"
-#import "run_algorithms.h"
+#import <MIsfitHRDetection/run_algorithms.h>
 #import "MHRUtilities.h"
 
 using namespace MHR;
