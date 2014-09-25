@@ -186,7 +186,6 @@ void CV2ImageProcessor::eulerianGaussianPyramidMagnification() {
     int vidHeight = vid[0].rows;
     int vidWidth = vid[0].cols;
     int nChannels = _number_of_channels;
-    int frameRate = _frameRate;
     int len = (int)vid.size();
     
     double samplingRate = _eulerian_frameRate;
