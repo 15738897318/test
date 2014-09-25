@@ -41,7 +41,7 @@ namespace MHR {
             /*-----------------read M frames, add to odd frames (0)-----------------*/
             for (int i = 0; i < _framesBlock_size; ++i) {
                 ++currentFrame;
-                readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
+                readFrame(srcDir + string("/input_frame[") + to_string(currentFrame) + "].png", vid);
                 if (currentFrame >= nFrames - 1) break;
             }
             
