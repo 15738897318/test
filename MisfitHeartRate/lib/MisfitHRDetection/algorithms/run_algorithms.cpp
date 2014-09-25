@@ -7,56 +7,39 @@
 //
 
 #include "run_algorithms.h"
+#include "CV2ImageProcessor.h"
 
 
 namespace MHR {
     hrResult run_algorithms(const String &srcDir, const String &outDir, hrResult &currHrResult)
     {
         clock_t t1 = clock();
-        
-		// Read first frames
-        int nFrames = 0;
-        FILE *file = fopen((srcDir + string("/input_frames.txt")).c_str(), "r");
-        if (file) fscanf(file, "%d", &nFrames);
-        fclose(file);
-        if (nFrames <= 0)
-        {
-            if (_DEBUG_MODE) printf("nFrames == 0\n");
-            return hrResult(-1, -1);
-        }
+    CV2ImageProcessor *proc = new CV2ImageProcessor();
+    proc->setSrcDir(srcDir.c_str());
+    proc->setDstDir(outDir.c_str());
+    proc->readFrameInfo();
+    int nFrames = proc->getNFrame();
 
         // Block 1: turn frames to signals
-        vector<Mat> vid;
         int currentFrame = -1;
         bool isCalcMode = true;
         int window_size = round(_window_size_in_sec * _frameRate);
         int firstSample = round(_frameRate * _time_lag);
         double threshold_fraction = 0, lower_range, upper_range;
-        vector<Mat> monoframes, debug_monoframes, eulerianVid;
         vector<double> temporal_mean;
         vector<double> temporal_mean_filt;
         Mat tmp_eulerianVid;
         
         while(1) {
             /*-----------------read M frames, add to odd frames (0)-----------------*/
-            for (int i = 0; i < _framesBlock_size; ++i) {
-                ++currentFrame;
-                readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
-                if (currentFrame >= nFrames - 1) break;
-            }
-            
-            /*-----------------run_eulerian(): M frames (1)-----------------*/
-            eulerianGaussianPyramidMagnification(vid, eulerianVid,
-												 outDir, _eulerian_alpha, _eulerian_pyrLevel,
-												 _eulerian_minHR/60.0, _eulerian_maxHR/60.0,
-												 _eulerian_frameRate, _eulerian_chromaMagnifier);
+            if (proc->getCurrentFrame() >= nFrames -1) break;
+            proc->readFrames();
             
             /*-----------------remove old frames-----------------*/
-            int eulerianLen = (int)eulerianVid.size();
-            vid.clear();
+            int eulerianLen = (int)proc->getEulerienVid().size();
             
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
-            vector<double> tmp = temporal_mean_calc(eulerianVid, _overlap_ratio, _max_bpm, _cutoff_freq,
+            vector<double> tmp = temporal_mean_calc(proc->getEulerienVid(), _overlap_ratio, _max_bpm, _cutoff_freq,
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
             for (int i = 0; i < eulerianLen; ++i)

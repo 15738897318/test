@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DC64AB6219D260A400E16B66 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3819D260A400E16B66 /* config.cpp */; };
 		DC64AB6419D260A400E16B66 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */; };
-		DC64AB6619D260A400E16B66 /* eulerian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3D19D260A400E16B66 /* eulerian.cpp */; };
 		DC64AB6819D260A400E16B66 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */; };
 		DC64AB6B19D260A400E16B66 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4319D260A400E16B66 /* files.cpp */; };
 		DC64AB6E19D260A400E16B66 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4719D260A400E16B66 /* frames2signal.cpp */; };
@@ -27,7 +26,6 @@
 		DC64AB8719D260B400E16B66 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AB8619D260B400E16B66 /* opencv2.framework */; };
 		DC64AB8C19D261B600E16B66 /* config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3919D260A400E16B66 /* config.h */; };
 		DC64AB8D19D261B600E16B66 /* build_Gdown_stack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */; };
-		DC64AB8E19D261B600E16B66 /* eulerian.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3E19D260A400E16B66 /* eulerian.h */; };
 		DC64AB8F19D261B600E16B66 /* ideal_bandpassing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */; };
 		DC64AB9019D261B600E16B66 /* face_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4119D260A400E16B66 /* face_params.h */; };
 		DC64AB9119D261B600E16B66 /* files.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4419D260A400E16B66 /* files.h */; };
@@ -44,7 +42,112 @@
 		DC64AB9C19D263E000E16B66 /* temporal_mean_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */; };
 		DC64AB9D19D263E000E16B66 /* matlab.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5A19D260A400E16B66 /* matlab.h */; };
 		DC64AB9E19D263E000E16B66 /* matrix.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5D19D260A400E16B66 /* matrix.h */; };
+		DC64ACBD19D2875000E16B66 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3819D260A400E16B66 /* config.cpp */; };
+		DC64ACBE19D2875000E16B66 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */; };
+		DC64ACC019D2875000E16B66 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */; };
+		DC64ACC119D2875000E16B66 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4319D260A400E16B66 /* files.cpp */; };
+		DC64ACC219D2875000E16B66 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4719D260A400E16B66 /* frames2signal.cpp */; };
+		DC64ACC319D2875000E16B66 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */; };
+		DC64ACC419D2875000E16B66 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */; };
+		DC64ACC519D2875000E16B66 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */; };
+		DC64ACC619D2875000E16B66 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */; };
+		DC64ACC719D2875000E16B66 /* hr_structures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5119D260A400E16B66 /* hr_structures.cpp */; };
+		DC64ACC819D2875000E16B66 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */; };
+		DC64ACC919D2875000E16B66 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5619D260A400E16B66 /* image.cpp */; };
+		DC64ACCA19D2875000E16B66 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5919D260A400E16B66 /* matlab.cpp */; };
+		DC64ACCB19D2875000E16B66 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */; };
+		DC64ACCC19D2875000E16B66 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB6019D260A400E16B66 /* globals.cpp */; };
+		DC64ACCD19D2A5D800E16B66 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AB8619D260B400E16B66 /* opencv2.framework */; };
+		DC64AD3A19D2AE6800E16B66 /* config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3919D260A400E16B66 /* config.h */; };
+		DC64AD3B19D2AE6800E16B66 /* build_Gdown_stack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */; };
+		DC64AD3D19D2AE6800E16B66 /* ideal_bandpassing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */; };
+		DC64AD3E19D2AE6800E16B66 /* face_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4119D260A400E16B66 /* face_params.h */; };
+		DC64AD3F19D2AE6800E16B66 /* files.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4419D260A400E16B66 /* files.h */; };
+		DC64AD4019D2AE6800E16B66 /* finger_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4519D260A400E16B66 /* finger_params.h */; };
+		DC64AD4119D2AE6800E16B66 /* frames2signal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4819D260A400E16B66 /* frames2signal.h */; };
+		DC64AD4219D2AE6800E16B66 /* hb_counter_autocorr.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */; };
+		DC64AD4319D2AE6800E16B66 /* hb_counter_pda.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */; };
+		DC64AD4419D2AE6800E16B66 /* hr_calculator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4E19D260A400E16B66 /* hr_calculator.h */; };
+		DC64AD4519D2AE6800E16B66 /* hr_signal_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5019D260A400E16B66 /* hr_signal_calc.h */; };
+		DC64AD4619D2AE6800E16B66 /* hr_structures.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5219D260A400E16B66 /* hr_structures.h */; };
+		DC64AD4719D2AE6800E16B66 /* temporal_mean_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */; };
+		DC64AD4819D2AE6800E16B66 /* image.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5719D260A400E16B66 /* image.h */; };
+		DC64AD4919D2AE6800E16B66 /* matlab.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5A19D260A400E16B66 /* matlab.h */; };
+		DC64AD4A19D2AE6800E16B66 /* matrix.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5D19D260A400E16B66 /* matrix.h */; };
+		DC64AD4B19D2AE6800E16B66 /* run_algorithms.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5F19D260A400E16B66 /* run_algorithms.h */; };
+		DC64AD4C19D2AE6800E16B66 /* globals.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB6119D260A400E16B66 /* globals.h */; };
+		DC64AD6A19D2C6BE00E16B66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC64AD6819D2C6BE00E16B66 /* InfoPlist.strings */; };
+		DC64AD6C19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC64AD6B19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm */; };
+		DC64AD7319D2C70400E16B66 /* libMIsfitHRDetection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */; };
+		DC64AD7719D2C72E00E16B66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AD7619D2C72E00E16B66 /* Foundation.framework */; };
+		DC64AD7919D2C73900E16B66 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AD7819D2C73900E16B66 /* UIKit.framework */; };
+		DC64ADA919D2C80D00E16B66 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AB8619D260B400E16B66 /* opencv2.framework */; };
+		DC64AE1E19D2CBBD00E16B66 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AD7419D2C71600E16B66 /* XCTest.framework */; };
+		DC64AE2019D2CDAA00E16B66 /* add_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADAB19D2CB3800E16B66 /* add_test.in */; };
+		DC64AE2119D2CDAA00E16B66 /* add_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADAC19D2CB3800E16B66 /* add_test.out */; };
+		DC64AE2219D2CDAA00E16B66 /* atan2Mat_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADAD19D2CB3800E16B66 /* atan2Mat_test.in */; };
+		DC64AE2319D2CDAA00E16B66 /* atan2Mat_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADAE19D2CB3800E16B66 /* atan2Mat_test.out */; };
+		DC64AE2419D2CDAA00E16B66 /* blurDnClr_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADAF19D2CB3800E16B66 /* blurDnClr_test.in */; };
+		DC64AE2519D2CDAA00E16B66 /* blurDnClr_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB019D2CB3800E16B66 /* blurDnClr_test.out */; };
+		DC64AE2619D2CDAA00E16B66 /* conv_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB119D2CB3800E16B66 /* conv_test.in */; };
+		DC64AE2719D2CDAA00E16B66 /* conv_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB219D2CB3800E16B66 /* conv_test.out */; };
+		DC64AE2819D2CDAA00E16B66 /* corr_linear_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB319D2CB3800E16B66 /* corr_linear_test.in */; };
+		DC64AE2919D2CDAA00E16B66 /* corr_linear_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB419D2CB3800E16B66 /* corr_linear_test.out */; };
+		DC64AE2A19D2CDAA00E16B66 /* corr_linear_test_1.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB519D2CB3800E16B66 /* corr_linear_test_1.in */; };
+		DC64AE2B19D2CDAA00E16B66 /* corr_linear_test_1.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB619D2CB3800E16B66 /* corr_linear_test_1.out */; };
+		DC64AE2C19D2CDAA00E16B66 /* corrDn_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB719D2CB3800E16B66 /* corrDn_test.in */; };
+		DC64AE2D19D2CDAA00E16B66 /* corrDn_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB819D2CB3800E16B66 /* corrDn_test.out */; };
+		DC64AE2E19D2CDAA00E16B66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADB919D2CB3800E16B66 /* InfoPlist.strings */; };
+		DC64AE2F19D2CDAA00E16B66 /* findpeaks_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADBB19D2CB3800E16B66 /* findpeaks_test.in */; };
+		DC64AE3019D2CDAA00E16B66 /* findpeaks_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADBC19D2CB3800E16B66 /* findpeaks_test.out */; };
+		DC64AE3119D2CDAA00E16B66 /* frames2signal_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADBD19D2CB3800E16B66 /* frames2signal_test.in */; };
+		DC64AE3219D2CDAA00E16B66 /* frames2signal_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADBE19D2CB3800E16B66 /* frames2signal_test.out */; };
+		DC64AE3319D2CDAA00E16B66 /* hb_counter_autocorr_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADBF19D2CB3800E16B66 /* hb_counter_autocorr_test.in */; };
+		DC64AE3419D2CDAA00E16B66 /* hb_counter_autocorr_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC019D2CB3800E16B66 /* hb_counter_autocorr_test.out */; };
+		DC64AE3519D2CDAA00E16B66 /* hb_counter_pda_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC119D2CB3800E16B66 /* hb_counter_pda_test.in */; };
+		DC64AE3619D2CDAA00E16B66 /* hb_counter_pda_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC219D2CB3800E16B66 /* hb_counter_pda_test.out */; };
+		DC64AE3719D2CDAA00E16B66 /* hist_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC319D2CB3800E16B66 /* hist_test.in */; };
+		DC64AE3819D2CDAA00E16B66 /* hist_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC419D2CB3800E16B66 /* hist_test.out */; };
+		DC64AE3919D2CDAA00E16B66 /* hr_calculator_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC519D2CB3800E16B66 /* hr_calculator_test.in */; };
+		DC64AE3A19D2CDAA00E16B66 /* hr_calculator_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC619D2CB3800E16B66 /* hr_calculator_test.out */; };
+		DC64AE3B19D2CDAA00E16B66 /* hr_signal_calc_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC719D2CB3800E16B66 /* hr_signal_calc_test.in */; };
+		DC64AE3C19D2CDAA00E16B66 /* hr_signal_calc_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC819D2CB3800E16B66 /* hr_signal_calc_test.out */; };
+		DC64AE3D19D2CDAA00E16B66 /* ideal_bandpassing_test_0.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADC919D2CB3800E16B66 /* ideal_bandpassing_test_0.in */; };
+		DC64AE3E19D2CDAA00E16B66 /* ideal_bandpassing_test_0.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADCA19D2CB3800E16B66 /* ideal_bandpassing_test_0.out */; };
+		DC64AE3F19D2CDAA00E16B66 /* invprctile_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADCB19D2CB3800E16B66 /* invprctile_test.in */; };
+		DC64AE4019D2CDAA00E16B66 /* invprctile_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADCC19D2CB3800E16B66 /* invprctile_test.out */; };
+		DC64AE4119D2CDAA00E16B66 /* low_pass_filter_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADCD19D2CB3800E16B66 /* low_pass_filter_test.in */; };
+		DC64AE4219D2CDAA00E16B66 /* low_pass_filter_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADCE19D2CB3800E16B66 /* low_pass_filter_test.out */; };
+		DC64AE4319D2CDAA00E16B66 /* MisfitHeartRateTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADCF19D2CB3800E16B66 /* MisfitHeartRateTests-Info.plist */; };
+		DC64AE4419D2CDAA00E16B66 /* multiply_num_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD119D2CB3800E16B66 /* multiply_num_test.in */; };
+		DC64AE4519D2CDAA00E16B66 /* multiply_num_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD219D2CB3800E16B66 /* multiply_num_test.out */; };
+		DC64AE4619D2CDAA00E16B66 /* multiply_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD319D2CB3800E16B66 /* multiply_test.in */; };
+		DC64AE4719D2CDAA00E16B66 /* multiply_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD419D2CB3800E16B66 /* multiply_test.out */; };
+		DC64AE4819D2CDAA00E16B66 /* powMat_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD519D2CB3800E16B66 /* powMat_test.in */; };
+		DC64AE4919D2CDAA00E16B66 /* powMat_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD619D2CB3800E16B66 /* powMat_test.out */; };
+		DC64AE4A19D2CDAA00E16B66 /* prctile_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD719D2CB3800E16B66 /* prctile_test.in */; };
+		DC64AE4B19D2CDAA00E16B66 /* prctile_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD819D2CB3800E16B66 /* prctile_test.out */; };
+		DC64AE4C19D2CDAA00E16B66 /* rgb2tsl_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADD919D2CB3800E16B66 /* rgb2tsl_test.in */; };
+		DC64AE4D19D2CDAA00E16B66 /* rgb2tsl_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADDA19D2CB3800E16B66 /* rgb2tsl_test.out */; };
+		DC64AE4E19D2CDAA00E16B66 /* unique_stable_test.in in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADE719D2CB3800E16B66 /* unique_stable_test.in */; };
+		DC64AE4F19D2CDAA00E16B66 /* unique_stable_test.out in Resources */ = {isa = PBXBuildFile; fileRef = DC64ADE819D2CB3800E16B66 /* unique_stable_test.out */; };
+		DC64AE8B19D2D3E000E16B66 /* MIsfitHRDetection Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC64AD6719D2C6BE00E16B66 /* MIsfitHRDetection Tests-Info.plist */; };
+		DC64AE8C19D2D3E000E16B66 /* MIsfitHRDetection Tests-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = DC64AD6D19D2C6BE00E16B66 /* MIsfitHRDetection Tests-Prefix.pch */; };
+		DC64AE9419D3CF5D00E16B66 /* AbstractImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9219D3CF5D00E16B66 /* AbstractImageProcessor.cpp */; };
+		DC64AE9719D3D17700E16B66 /* TemporalArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9519D3D17700E16B66 /* TemporalArray.cpp */; };
+		DC64AE9A19D3D3AA00E16B66 /* AbstractHRCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9819D3D3AA00E16B66 /* AbstractHRCalculator.cpp */; };
+		DC64AE9D19D3D5C100E16B66 /* CV2ImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9B19D3D5C100E16B66 /* CV2ImageProcessor.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DC64AD6E19D2C6BE00E16B66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC64AAD319D2604B00E16B66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC64AADA19D2604B00E16B66;
+			remoteInfo = MIsfitHRDetection;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DC64AB8B19D2619000E16B66 /* CopyFiles */ = {
@@ -64,7 +167,6 @@
 				DC64AB9E19D263E000E16B66 /* matrix.h in CopyFiles */,
 				DC64AB8C19D261B600E16B66 /* config.h in CopyFiles */,
 				DC64AB8D19D261B600E16B66 /* build_Gdown_stack.h in CopyFiles */,
-				DC64AB8E19D261B600E16B66 /* eulerian.h in CopyFiles */,
 				DC64AB8F19D261B600E16B66 /* ideal_bandpassing.h in CopyFiles */,
 				DC64AB9019D261B600E16B66 /* face_params.h in CopyFiles */,
 				DC64AB9119D261B600E16B66 /* files.h in CopyFiles */,
@@ -72,6 +174,33 @@
 				DC64AB9319D261B600E16B66 /* image.h in CopyFiles */,
 				DC64AB9419D261B600E16B66 /* run_algorithms.h in CopyFiles */,
 				DC64AB9519D261B600E16B66 /* globals.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC64ACBB19D285A200E16B66 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				DC64AD3A19D2AE6800E16B66 /* config.h in CopyFiles */,
+				DC64AD3B19D2AE6800E16B66 /* build_Gdown_stack.h in CopyFiles */,
+				DC64AD3D19D2AE6800E16B66 /* ideal_bandpassing.h in CopyFiles */,
+				DC64AD3E19D2AE6800E16B66 /* face_params.h in CopyFiles */,
+				DC64AD3F19D2AE6800E16B66 /* files.h in CopyFiles */,
+				DC64AD4019D2AE6800E16B66 /* finger_params.h in CopyFiles */,
+				DC64AD4119D2AE6800E16B66 /* frames2signal.h in CopyFiles */,
+				DC64AD4219D2AE6800E16B66 /* hb_counter_autocorr.h in CopyFiles */,
+				DC64AD4319D2AE6800E16B66 /* hb_counter_pda.h in CopyFiles */,
+				DC64AD4419D2AE6800E16B66 /* hr_calculator.h in CopyFiles */,
+				DC64AD4519D2AE6800E16B66 /* hr_signal_calc.h in CopyFiles */,
+				DC64AD4619D2AE6800E16B66 /* hr_structures.h in CopyFiles */,
+				DC64AD4719D2AE6800E16B66 /* temporal_mean_calc.h in CopyFiles */,
+				DC64AD4819D2AE6800E16B66 /* image.h in CopyFiles */,
+				DC64AD4919D2AE6800E16B66 /* matlab.h in CopyFiles */,
+				DC64AD4A19D2AE6800E16B66 /* matrix.h in CopyFiles */,
+				DC64AD4B19D2AE6800E16B66 /* run_algorithms.h in CopyFiles */,
+				DC64AD4C19D2AE6800E16B66 /* globals.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +212,6 @@
 		DC64AB3919D260A400E16B66 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build_Gdown_stack.cpp; sourceTree = "<group>"; };
 		DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_Gdown_stack.h; sourceTree = "<group>"; };
-		DC64AB3D19D260A400E16B66 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eulerian.cpp; sourceTree = "<group>"; };
-		DC64AB3E19D260A400E16B66 /* eulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eulerian.h; sourceTree = "<group>"; };
 		DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ideal_bandpassing.cpp; sourceTree = "<group>"; };
 		DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ideal_bandpassing.h; sourceTree = "<group>"; };
 		DC64AB4119D260A400E16B66 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
@@ -116,6 +243,87 @@
 		DC64AB6019D260A400E16B66 /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
 		DC64AB6119D260A400E16B66 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		DC64AB8619D260B400E16B66 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../frameworks/opencv2.framework; sourceTree = "<group>"; };
+		DC64AC4719D2754800E16B66 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../frameworks/gtest.framework; sourceTree = "<group>"; };
+		DC64ACAA19D2857D00E16B66 /* libMIsfitHRDetectionPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMIsfitHRDetectionPC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC64ACB419D2858A00E16B66 /* unittest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = unittest.mm; sourceTree = "<group>"; };
+		DC64ACB619D2858A00E16B66 /* unittest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = unittest.1; sourceTree = "<group>"; };
+		DC64AD5D19D2C6BE00E16B66 /* MIsfitHRDetection Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MIsfitHRDetection Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC64AD5F19D2C6BE00E16B66 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DC64AD6119D2C6BE00E16B66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DC64AD6319D2C6BE00E16B66 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DC64AD6719D2C6BE00E16B66 /* MIsfitHRDetection Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MIsfitHRDetection Tests-Info.plist"; sourceTree = "<group>"; };
+		DC64AD6919D2C6BE00E16B66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC64AD6B19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MIsfitHRDetection_Tests.mm; sourceTree = "<group>"; };
+		DC64AD6D19D2C6BE00E16B66 /* MIsfitHRDetection Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MIsfitHRDetection Tests-Prefix.pch"; sourceTree = "<group>"; };
+		DC64AD7419D2C71600E16B66 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DC64AD7619D2C72E00E16B66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DC64AD7819D2C73900E16B66 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DC64ADAB19D2CB3800E16B66 /* add_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = add_test.in; sourceTree = "<group>"; };
+		DC64ADAC19D2CB3800E16B66 /* add_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = add_test.out; sourceTree = "<group>"; };
+		DC64ADAD19D2CB3800E16B66 /* atan2Mat_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = atan2Mat_test.in; sourceTree = "<group>"; };
+		DC64ADAE19D2CB3800E16B66 /* atan2Mat_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = atan2Mat_test.out; sourceTree = "<group>"; };
+		DC64ADAF19D2CB3800E16B66 /* blurDnClr_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blurDnClr_test.in; sourceTree = "<group>"; };
+		DC64ADB019D2CB3800E16B66 /* blurDnClr_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blurDnClr_test.out; sourceTree = "<group>"; };
+		DC64ADB119D2CB3800E16B66 /* conv_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conv_test.in; sourceTree = "<group>"; };
+		DC64ADB219D2CB3800E16B66 /* conv_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conv_test.out; sourceTree = "<group>"; };
+		DC64ADB319D2CB3800E16B66 /* corr_linear_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corr_linear_test.in; sourceTree = "<group>"; };
+		DC64ADB419D2CB3800E16B66 /* corr_linear_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corr_linear_test.out; sourceTree = "<group>"; };
+		DC64ADB519D2CB3800E16B66 /* corr_linear_test_1.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corr_linear_test_1.in; sourceTree = "<group>"; };
+		DC64ADB619D2CB3800E16B66 /* corr_linear_test_1.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corr_linear_test_1.out; sourceTree = "<group>"; };
+		DC64ADB719D2CB3800E16B66 /* corrDn_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corrDn_test.in; sourceTree = "<group>"; };
+		DC64ADB819D2CB3800E16B66 /* corrDn_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = corrDn_test.out; sourceTree = "<group>"; };
+		DC64ADBA19D2CB3800E16B66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC64ADBB19D2CB3800E16B66 /* findpeaks_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = findpeaks_test.in; sourceTree = "<group>"; };
+		DC64ADBC19D2CB3800E16B66 /* findpeaks_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = findpeaks_test.out; sourceTree = "<group>"; };
+		DC64ADBD19D2CB3800E16B66 /* frames2signal_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frames2signal_test.in; sourceTree = "<group>"; };
+		DC64ADBE19D2CB3800E16B66 /* frames2signal_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frames2signal_test.out; sourceTree = "<group>"; };
+		DC64ADBF19D2CB3800E16B66 /* hb_counter_autocorr_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hb_counter_autocorr_test.in; sourceTree = "<group>"; };
+		DC64ADC019D2CB3800E16B66 /* hb_counter_autocorr_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hb_counter_autocorr_test.out; sourceTree = "<group>"; };
+		DC64ADC119D2CB3800E16B66 /* hb_counter_pda_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hb_counter_pda_test.in; sourceTree = "<group>"; };
+		DC64ADC219D2CB3800E16B66 /* hb_counter_pda_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hb_counter_pda_test.out; sourceTree = "<group>"; };
+		DC64ADC319D2CB3800E16B66 /* hist_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hist_test.in; sourceTree = "<group>"; };
+		DC64ADC419D2CB3800E16B66 /* hist_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hist_test.out; sourceTree = "<group>"; };
+		DC64ADC519D2CB3800E16B66 /* hr_calculator_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hr_calculator_test.in; sourceTree = "<group>"; };
+		DC64ADC619D2CB3800E16B66 /* hr_calculator_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hr_calculator_test.out; sourceTree = "<group>"; };
+		DC64ADC719D2CB3800E16B66 /* hr_signal_calc_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hr_signal_calc_test.in; sourceTree = "<group>"; };
+		DC64ADC819D2CB3800E16B66 /* hr_signal_calc_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hr_signal_calc_test.out; sourceTree = "<group>"; };
+		DC64ADC919D2CB3800E16B66 /* ideal_bandpassing_test_0.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ideal_bandpassing_test_0.in; sourceTree = "<group>"; };
+		DC64ADCA19D2CB3800E16B66 /* ideal_bandpassing_test_0.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ideal_bandpassing_test_0.out; sourceTree = "<group>"; };
+		DC64ADCB19D2CB3800E16B66 /* invprctile_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = invprctile_test.in; sourceTree = "<group>"; };
+		DC64ADCC19D2CB3800E16B66 /* invprctile_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = invprctile_test.out; sourceTree = "<group>"; };
+		DC64ADCD19D2CB3800E16B66 /* low_pass_filter_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = low_pass_filter_test.in; sourceTree = "<group>"; };
+		DC64ADCE19D2CB3800E16B66 /* low_pass_filter_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = low_pass_filter_test.out; sourceTree = "<group>"; };
+		DC64ADCF19D2CB3800E16B66 /* MisfitHeartRateTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MisfitHeartRateTests-Info.plist"; sourceTree = "<group>"; };
+		DC64ADD019D2CB3800E16B66 /* MisfitHeartRateTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MisfitHeartRateTests.mm; sourceTree = "<group>"; };
+		DC64ADD119D2CB3800E16B66 /* multiply_num_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multiply_num_test.in; sourceTree = "<group>"; };
+		DC64ADD219D2CB3800E16B66 /* multiply_num_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multiply_num_test.out; sourceTree = "<group>"; };
+		DC64ADD319D2CB3800E16B66 /* multiply_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multiply_test.in; sourceTree = "<group>"; };
+		DC64ADD419D2CB3800E16B66 /* multiply_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multiply_test.out; sourceTree = "<group>"; };
+		DC64ADD519D2CB3800E16B66 /* powMat_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = powMat_test.in; sourceTree = "<group>"; };
+		DC64ADD619D2CB3800E16B66 /* powMat_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = powMat_test.out; sourceTree = "<group>"; };
+		DC64ADD719D2CB3800E16B66 /* prctile_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prctile_test.in; sourceTree = "<group>"; };
+		DC64ADD819D2CB3800E16B66 /* prctile_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prctile_test.out; sourceTree = "<group>"; };
+		DC64ADD919D2CB3800E16B66 /* rgb2tsl_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rgb2tsl_test.in; sourceTree = "<group>"; };
+		DC64ADDA19D2CB3800E16B66 /* rgb2tsl_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rgb2tsl_test.out; sourceTree = "<group>"; };
+		DC64ADDE19D2CB3800E16B66 /* test_frames2signal.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_frames2signal.dat; sourceTree = "<group>"; };
+		DC64ADDF19D2CB3800E16B66 /* test_hb_counter_autocorr.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_hb_counter_autocorr.dat; sourceTree = "<group>"; };
+		DC64ADE019D2CB3800E16B66 /* test_hb_counter_pda.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_hb_counter_pda.dat; sourceTree = "<group>"; };
+		DC64ADE119D2CB3800E16B66 /* test_hr_calculator.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_hr_calculator.dat; sourceTree = "<group>"; };
+		DC64ADE219D2CB3800E16B66 /* test_hr_signal_calc.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_hr_signal_calc.dat; sourceTree = "<group>"; };
+		DC64ADE319D2CB3800E16B66 /* test_ideal_bandpassing.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_ideal_bandpassing.dat; sourceTree = "<group>"; };
+		DC64ADE419D2CB3800E16B66 /* test_image.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_image.dat; sourceTree = "<group>"; };
+		DC64ADE519D2CB3800E16B66 /* test_matlab.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_matlab.dat; sourceTree = "<group>"; };
+		DC64ADE619D2CB3800E16B66 /* test_matrix.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_matrix.dat; sourceTree = "<group>"; };
+		DC64ADE719D2CB3800E16B66 /* unique_stable_test.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unique_stable_test.in; sourceTree = "<group>"; };
+		DC64ADE819D2CB3800E16B66 /* unique_stable_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unique_stable_test.out; sourceTree = "<group>"; };
+		DC64AE9219D3CF5D00E16B66 /* AbstractImageProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractImageProcessor.cpp; sourceTree = "<group>"; };
+		DC64AE9319D3CF5D00E16B66 /* AbstractImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractImageProcessor.h; sourceTree = "<group>"; };
+		DC64AE9519D3D17700E16B66 /* TemporalArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TemporalArray.cpp; sourceTree = "<group>"; };
+		DC64AE9619D3D17700E16B66 /* TemporalArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporalArray.h; sourceTree = "<group>"; };
+		DC64AE9819D3D3AA00E16B66 /* AbstractHRCalculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractHRCalculator.cpp; sourceTree = "<group>"; };
+		DC64AE9919D3D3AA00E16B66 /* AbstractHRCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractHRCalculator.h; sourceTree = "<group>"; };
+		DC64AE9B19D3D5C100E16B66 /* CV2ImageProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CV2ImageProcessor.cpp; sourceTree = "<group>"; };
+		DC64AE9C19D3D5C100E16B66 /* CV2ImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CV2ImageProcessor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,16 +335,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DC64ACA719D2857D00E16B66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64ACCD19D2A5D800E16B66 /* opencv2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC64AD5A19D2C6BE00E16B66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64AE1E19D2CBBD00E16B66 /* XCTest.framework in Frameworks */,
+				DC64ADA919D2C80D00E16B66 /* opencv2.framework in Frameworks */,
+				DC64AD7919D2C73900E16B66 /* UIKit.framework in Frameworks */,
+				DC64AD7719D2C72E00E16B66 /* Foundation.framework in Frameworks */,
+				DC64AD7319D2C70400E16B66 /* libMIsfitHRDetection.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		DC64AAD219D2604B00E16B66 = {
 			isa = PBXGroup;
 			children = (
+				DC64ADAA19D2CB3800E16B66 /* testData */,
+				DC64AC4719D2754800E16B66 /* gtest.framework */,
 				DC64AB8619D260B400E16B66 /* opencv2.framework */,
 				DC64AB3719D260A400E16B66 /* algorithms */,
 				DC64AB6019D260A400E16B66 /* globals.cpp */,
 				DC64AB6119D260A400E16B66 /* globals.h */,
+				DC64ACB319D2858A00E16B66 /* unittest */,
+				DC64AD6519D2C6BE00E16B66 /* MIsfitHRDetection Tests */,
+				DC64AD5E19D2C6BE00E16B66 /* Frameworks */,
 				DC64AADC19D2604B00E16B66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -145,6 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */,
+				DC64ACAA19D2857D00E16B66 /* libMIsfitHRDetectionPC.a */,
+				DC64AD5D19D2C6BE00E16B66 /* MIsfitHRDetection Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +387,8 @@
 		DC64AB3719D260A400E16B66 /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				DC64AE9019D3CF3200E16B66 /* ImageProcessor */,
+				DC64AE9119D3CF3200E16B66 /* TemporalArray */,
 				DC64AB3819D260A400E16B66 /* config.cpp */,
 				DC64AB3919D260A400E16B66 /* config.h */,
 				DC64AB3A19D260A400E16B66 /* Eulerian */,
@@ -173,8 +410,6 @@
 			children = (
 				DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */,
 				DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */,
-				DC64AB3D19D260A400E16B66 /* eulerian.cpp */,
-				DC64AB3E19D260A400E16B66 /* eulerian.h */,
 				DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */,
 				DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */,
 			);
@@ -202,11 +437,13 @@
 				DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */,
 				DC64AB4E19D260A400E16B66 /* hr_calculator.h */,
 				DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */,
-				DC64AB5019D260A400E16B66 /* hr_signal_calc.h */,
 				DC64AB5119D260A400E16B66 /* hr_structures.cpp */,
+				DC64AB5019D260A400E16B66 /* hr_signal_calc.h */,
 				DC64AB5219D260A400E16B66 /* hr_structures.h */,
 				DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */,
 				DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */,
+				DC64AE9819D3D3AA00E16B66 /* AbstractHRCalculator.cpp */,
+				DC64AE9919D3D3AA00E16B66 /* AbstractHRCalculator.h */,
 			);
 			path = HeartRateCal;
 			sourceTree = "<group>";
@@ -238,6 +475,133 @@
 			path = matrix;
 			sourceTree = "<group>";
 		};
+		DC64ACB319D2858A00E16B66 /* unittest */ = {
+			isa = PBXGroup;
+			children = (
+				DC64ACB419D2858A00E16B66 /* unittest.mm */,
+				DC64ACB619D2858A00E16B66 /* unittest.1 */,
+			);
+			path = unittest;
+			sourceTree = "<group>";
+		};
+		DC64AD5E19D2C6BE00E16B66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AD7819D2C73900E16B66 /* UIKit.framework */,
+				DC64AD7619D2C72E00E16B66 /* Foundation.framework */,
+				DC64AD7419D2C71600E16B66 /* XCTest.framework */,
+				DC64AD5F19D2C6BE00E16B66 /* XCTest.framework */,
+				DC64AD6119D2C6BE00E16B66 /* Foundation.framework */,
+				DC64AD6319D2C6BE00E16B66 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC64AD6519D2C6BE00E16B66 /* MIsfitHRDetection Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AD6B19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm */,
+				DC64AD6619D2C6BE00E16B66 /* Supporting Files */,
+			);
+			path = "MIsfitHRDetection Tests";
+			sourceTree = "<group>";
+		};
+		DC64AD6619D2C6BE00E16B66 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AD6719D2C6BE00E16B66 /* MIsfitHRDetection Tests-Info.plist */,
+				DC64AD6819D2C6BE00E16B66 /* InfoPlist.strings */,
+				DC64AD6D19D2C6BE00E16B66 /* MIsfitHRDetection Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC64ADAA19D2CB3800E16B66 /* testData */ = {
+			isa = PBXGroup;
+			children = (
+				DC64ADAB19D2CB3800E16B66 /* add_test.in */,
+				DC64ADAC19D2CB3800E16B66 /* add_test.out */,
+				DC64ADAD19D2CB3800E16B66 /* atan2Mat_test.in */,
+				DC64ADAE19D2CB3800E16B66 /* atan2Mat_test.out */,
+				DC64ADAF19D2CB3800E16B66 /* blurDnClr_test.in */,
+				DC64ADB019D2CB3800E16B66 /* blurDnClr_test.out */,
+				DC64ADB119D2CB3800E16B66 /* conv_test.in */,
+				DC64ADB219D2CB3800E16B66 /* conv_test.out */,
+				DC64ADB319D2CB3800E16B66 /* corr_linear_test.in */,
+				DC64ADB419D2CB3800E16B66 /* corr_linear_test.out */,
+				DC64ADB519D2CB3800E16B66 /* corr_linear_test_1.in */,
+				DC64ADB619D2CB3800E16B66 /* corr_linear_test_1.out */,
+				DC64ADB719D2CB3800E16B66 /* corrDn_test.in */,
+				DC64ADB819D2CB3800E16B66 /* corrDn_test.out */,
+				DC64ADB919D2CB3800E16B66 /* InfoPlist.strings */,
+				DC64ADBB19D2CB3800E16B66 /* findpeaks_test.in */,
+				DC64ADBC19D2CB3800E16B66 /* findpeaks_test.out */,
+				DC64ADBD19D2CB3800E16B66 /* frames2signal_test.in */,
+				DC64ADBE19D2CB3800E16B66 /* frames2signal_test.out */,
+				DC64ADBF19D2CB3800E16B66 /* hb_counter_autocorr_test.in */,
+				DC64ADC019D2CB3800E16B66 /* hb_counter_autocorr_test.out */,
+				DC64ADC119D2CB3800E16B66 /* hb_counter_pda_test.in */,
+				DC64ADC219D2CB3800E16B66 /* hb_counter_pda_test.out */,
+				DC64ADC319D2CB3800E16B66 /* hist_test.in */,
+				DC64ADC419D2CB3800E16B66 /* hist_test.out */,
+				DC64ADC519D2CB3800E16B66 /* hr_calculator_test.in */,
+				DC64ADC619D2CB3800E16B66 /* hr_calculator_test.out */,
+				DC64ADC719D2CB3800E16B66 /* hr_signal_calc_test.in */,
+				DC64ADC819D2CB3800E16B66 /* hr_signal_calc_test.out */,
+				DC64ADC919D2CB3800E16B66 /* ideal_bandpassing_test_0.in */,
+				DC64ADCA19D2CB3800E16B66 /* ideal_bandpassing_test_0.out */,
+				DC64ADCB19D2CB3800E16B66 /* invprctile_test.in */,
+				DC64ADCC19D2CB3800E16B66 /* invprctile_test.out */,
+				DC64ADCD19D2CB3800E16B66 /* low_pass_filter_test.in */,
+				DC64ADCE19D2CB3800E16B66 /* low_pass_filter_test.out */,
+				DC64ADCF19D2CB3800E16B66 /* MisfitHeartRateTests-Info.plist */,
+				DC64ADD019D2CB3800E16B66 /* MisfitHeartRateTests.mm */,
+				DC64ADD119D2CB3800E16B66 /* multiply_num_test.in */,
+				DC64ADD219D2CB3800E16B66 /* multiply_num_test.out */,
+				DC64ADD319D2CB3800E16B66 /* multiply_test.in */,
+				DC64ADD419D2CB3800E16B66 /* multiply_test.out */,
+				DC64ADD519D2CB3800E16B66 /* powMat_test.in */,
+				DC64ADD619D2CB3800E16B66 /* powMat_test.out */,
+				DC64ADD719D2CB3800E16B66 /* prctile_test.in */,
+				DC64ADD819D2CB3800E16B66 /* prctile_test.out */,
+				DC64ADD919D2CB3800E16B66 /* rgb2tsl_test.in */,
+				DC64ADDA19D2CB3800E16B66 /* rgb2tsl_test.out */,
+				DC64ADDE19D2CB3800E16B66 /* test_frames2signal.dat */,
+				DC64ADDF19D2CB3800E16B66 /* test_hb_counter_autocorr.dat */,
+				DC64ADE019D2CB3800E16B66 /* test_hb_counter_pda.dat */,
+				DC64ADE119D2CB3800E16B66 /* test_hr_calculator.dat */,
+				DC64ADE219D2CB3800E16B66 /* test_hr_signal_calc.dat */,
+				DC64ADE319D2CB3800E16B66 /* test_ideal_bandpassing.dat */,
+				DC64ADE419D2CB3800E16B66 /* test_image.dat */,
+				DC64ADE519D2CB3800E16B66 /* test_matlab.dat */,
+				DC64ADE619D2CB3800E16B66 /* test_matrix.dat */,
+				DC64ADE719D2CB3800E16B66 /* unique_stable_test.in */,
+				DC64ADE819D2CB3800E16B66 /* unique_stable_test.out */,
+			);
+			name = testData;
+			path = unittest/testData;
+			sourceTree = "<group>";
+		};
+		DC64AE9019D3CF3200E16B66 /* ImageProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AE9219D3CF5D00E16B66 /* AbstractImageProcessor.cpp */,
+				DC64AE9319D3CF5D00E16B66 /* AbstractImageProcessor.h */,
+				DC64AE9B19D3D5C100E16B66 /* CV2ImageProcessor.cpp */,
+				DC64AE9C19D3D5C100E16B66 /* CV2ImageProcessor.h */,
+			);
+			path = ImageProcessor;
+			sourceTree = "<group>";
+		};
+		DC64AE9119D3CF3200E16B66 /* TemporalArray */ = {
+			isa = PBXGroup;
+			children = (
+				DC64AE9519D3D17700E16B66 /* TemporalArray.cpp */,
+				DC64AE9619D3D17700E16B66 /* TemporalArray.h */,
+			);
+			path = TemporalArray;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,6 +622,41 @@
 			productReference = DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		DC64ACA919D2857D00E16B66 /* MIsfitHRDetectionPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC64ACAB19D2857D00E16B66 /* Build configuration list for PBXNativeTarget "MIsfitHRDetectionPC" */;
+			buildPhases = (
+				DC64ACA619D2857D00E16B66 /* Sources */,
+				DC64ACA719D2857D00E16B66 /* Frameworks */,
+				DC64ACBB19D285A200E16B66 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIsfitHRDetectionPC;
+			productName = MIsfitHRDetectionPC;
+			productReference = DC64ACAA19D2857D00E16B66 /* libMIsfitHRDetectionPC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		DC64AD5C19D2C6BE00E16B66 /* MIsfitHRDetection Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC64AD7019D2C6BE00E16B66 /* Build configuration list for PBXNativeTarget "MIsfitHRDetection Tests" */;
+			buildPhases = (
+				DC64AD5919D2C6BE00E16B66 /* Sources */,
+				DC64AD5A19D2C6BE00E16B66 /* Frameworks */,
+				DC64AD5B19D2C6BE00E16B66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC64AD6F19D2C6BE00E16B66 /* PBXTargetDependency */,
+			);
+			name = "MIsfitHRDetection Tests";
+			productName = "MIsfitHRDetection Tests";
+			productReference = DC64AD5D19D2C6BE00E16B66 /* MIsfitHRDetection Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -266,6 +665,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Nguyen Tien Viet";
+				TargetAttributes = {
+					DC64AD5C19D2C6BE00E16B66 = {
+						TestTargetID = DC64AADA19D2604B00E16B66;
+					};
+				};
 			};
 			buildConfigurationList = DC64AAD619D2604B00E16B66 /* Build configuration list for PBXProject "MIsfitHRDetection" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -280,9 +684,72 @@
 			projectRoot = "";
 			targets = (
 				DC64AADA19D2604B00E16B66 /* MIsfitHRDetection */,
+				DC64ACA919D2857D00E16B66 /* MIsfitHRDetectionPC */,
+				DC64AD5C19D2C6BE00E16B66 /* MIsfitHRDetection Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC64AD5B19D2C6BE00E16B66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64AE8B19D2D3E000E16B66 /* MIsfitHRDetection Tests-Info.plist in Resources */,
+				DC64AE8C19D2D3E000E16B66 /* MIsfitHRDetection Tests-Prefix.pch in Resources */,
+				DC64AE2019D2CDAA00E16B66 /* add_test.in in Resources */,
+				DC64AE2119D2CDAA00E16B66 /* add_test.out in Resources */,
+				DC64AE2219D2CDAA00E16B66 /* atan2Mat_test.in in Resources */,
+				DC64AE2319D2CDAA00E16B66 /* atan2Mat_test.out in Resources */,
+				DC64AE2419D2CDAA00E16B66 /* blurDnClr_test.in in Resources */,
+				DC64AE2519D2CDAA00E16B66 /* blurDnClr_test.out in Resources */,
+				DC64AE2619D2CDAA00E16B66 /* conv_test.in in Resources */,
+				DC64AE2719D2CDAA00E16B66 /* conv_test.out in Resources */,
+				DC64AE2819D2CDAA00E16B66 /* corr_linear_test.in in Resources */,
+				DC64AE2919D2CDAA00E16B66 /* corr_linear_test.out in Resources */,
+				DC64AE2A19D2CDAA00E16B66 /* corr_linear_test_1.in in Resources */,
+				DC64AE2B19D2CDAA00E16B66 /* corr_linear_test_1.out in Resources */,
+				DC64AE2C19D2CDAA00E16B66 /* corrDn_test.in in Resources */,
+				DC64AE2D19D2CDAA00E16B66 /* corrDn_test.out in Resources */,
+				DC64AE2E19D2CDAA00E16B66 /* InfoPlist.strings in Resources */,
+				DC64AE2F19D2CDAA00E16B66 /* findpeaks_test.in in Resources */,
+				DC64AE3019D2CDAA00E16B66 /* findpeaks_test.out in Resources */,
+				DC64AE3119D2CDAA00E16B66 /* frames2signal_test.in in Resources */,
+				DC64AE3219D2CDAA00E16B66 /* frames2signal_test.out in Resources */,
+				DC64AE3319D2CDAA00E16B66 /* hb_counter_autocorr_test.in in Resources */,
+				DC64AE3419D2CDAA00E16B66 /* hb_counter_autocorr_test.out in Resources */,
+				DC64AE3519D2CDAA00E16B66 /* hb_counter_pda_test.in in Resources */,
+				DC64AE3619D2CDAA00E16B66 /* hb_counter_pda_test.out in Resources */,
+				DC64AE3719D2CDAA00E16B66 /* hist_test.in in Resources */,
+				DC64AE3819D2CDAA00E16B66 /* hist_test.out in Resources */,
+				DC64AE3919D2CDAA00E16B66 /* hr_calculator_test.in in Resources */,
+				DC64AE3A19D2CDAA00E16B66 /* hr_calculator_test.out in Resources */,
+				DC64AE3B19D2CDAA00E16B66 /* hr_signal_calc_test.in in Resources */,
+				DC64AE3C19D2CDAA00E16B66 /* hr_signal_calc_test.out in Resources */,
+				DC64AE3D19D2CDAA00E16B66 /* ideal_bandpassing_test_0.in in Resources */,
+				DC64AE3E19D2CDAA00E16B66 /* ideal_bandpassing_test_0.out in Resources */,
+				DC64AE3F19D2CDAA00E16B66 /* invprctile_test.in in Resources */,
+				DC64AE4019D2CDAA00E16B66 /* invprctile_test.out in Resources */,
+				DC64AE4119D2CDAA00E16B66 /* low_pass_filter_test.in in Resources */,
+				DC64AE4219D2CDAA00E16B66 /* low_pass_filter_test.out in Resources */,
+				DC64AE4319D2CDAA00E16B66 /* MisfitHeartRateTests-Info.plist in Resources */,
+				DC64AE4419D2CDAA00E16B66 /* multiply_num_test.in in Resources */,
+				DC64AE4519D2CDAA00E16B66 /* multiply_num_test.out in Resources */,
+				DC64AE4619D2CDAA00E16B66 /* multiply_test.in in Resources */,
+				DC64AE4719D2CDAA00E16B66 /* multiply_test.out in Resources */,
+				DC64AE4819D2CDAA00E16B66 /* powMat_test.in in Resources */,
+				DC64AE4919D2CDAA00E16B66 /* powMat_test.out in Resources */,
+				DC64AE4A19D2CDAA00E16B66 /* prctile_test.in in Resources */,
+				DC64AE4B19D2CDAA00E16B66 /* prctile_test.out in Resources */,
+				DC64AE4C19D2CDAA00E16B66 /* rgb2tsl_test.in in Resources */,
+				DC64AE4D19D2CDAA00E16B66 /* rgb2tsl_test.out in Resources */,
+				DC64AE4E19D2CDAA00E16B66 /* unique_stable_test.in in Resources */,
+				DC64AE4F19D2CDAA00E16B66 /* unique_stable_test.out in Resources */,
+				DC64AD6A19D2C6BE00E16B66 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DC64AAD719D2604B00E16B66 /* Sources */ = {
@@ -293,23 +760,83 @@
 				DC64AB8219D260A400E16B66 /* run_algorithms.cpp in Sources */,
 				DC64AB7A19D260A400E16B66 /* temporal_mean_calc.cpp in Sources */,
 				DC64AB7819D260A400E16B66 /* hr_structures.cpp in Sources */,
+				DC64AE9719D3D17700E16B66 /* TemporalArray.cpp in Sources */,
 				DC64AB7219D260A400E16B66 /* hb_counter_pda.cpp in Sources */,
 				DC64AB7619D260A400E16B66 /* hr_signal_calc.cpp in Sources */,
 				DC64AB8019D260A400E16B66 /* matrix.cpp in Sources */,
-				DC64AB6619D260A400E16B66 /* eulerian.cpp in Sources */,
+				DC64AE9D19D3D5C100E16B66 /* CV2ImageProcessor.cpp in Sources */,
 				DC64AB7E19D260A400E16B66 /* matlab.cpp in Sources */,
 				DC64AB8419D260A400E16B66 /* globals.cpp in Sources */,
 				DC64AB6219D260A400E16B66 /* config.cpp in Sources */,
 				DC64AB6819D260A400E16B66 /* ideal_bandpassing.cpp in Sources */,
+				DC64AE9A19D3D3AA00E16B66 /* AbstractHRCalculator.cpp in Sources */,
 				DC64AB6419D260A400E16B66 /* build_Gdown_stack.cpp in Sources */,
 				DC64AB6E19D260A400E16B66 /* frames2signal.cpp in Sources */,
+				DC64AE9419D3CF5D00E16B66 /* AbstractImageProcessor.cpp in Sources */,
 				DC64AB7C19D260A400E16B66 /* image.cpp in Sources */,
 				DC64AB7019D260A400E16B66 /* hb_counter_autocorr.cpp in Sources */,
 				DC64AB6B19D260A400E16B66 /* files.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DC64ACA619D2857D00E16B66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64ACBD19D2875000E16B66 /* config.cpp in Sources */,
+				DC64ACBE19D2875000E16B66 /* build_Gdown_stack.cpp in Sources */,
+				DC64ACC019D2875000E16B66 /* ideal_bandpassing.cpp in Sources */,
+				DC64ACC119D2875000E16B66 /* files.cpp in Sources */,
+				DC64ACC219D2875000E16B66 /* frames2signal.cpp in Sources */,
+				DC64ACC319D2875000E16B66 /* hb_counter_autocorr.cpp in Sources */,
+				DC64ACC419D2875000E16B66 /* hb_counter_pda.cpp in Sources */,
+				DC64ACC519D2875000E16B66 /* hr_calculator.cpp in Sources */,
+				DC64ACC619D2875000E16B66 /* hr_signal_calc.cpp in Sources */,
+				DC64ACC719D2875000E16B66 /* hr_structures.cpp in Sources */,
+				DC64ACC819D2875000E16B66 /* temporal_mean_calc.cpp in Sources */,
+				DC64ACC919D2875000E16B66 /* image.cpp in Sources */,
+				DC64ACCA19D2875000E16B66 /* matlab.cpp in Sources */,
+				DC64ACCB19D2875000E16B66 /* run_algorithms.cpp in Sources */,
+				DC64ACCC19D2875000E16B66 /* globals.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC64AD5919D2C6BE00E16B66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC64AD6C19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DC64AD6F19D2C6BE00E16B66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC64AADA19D2604B00E16B66 /* MIsfitHRDetection */;
+			targetProxy = DC64AD6E19D2C6BE00E16B66 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DC64AD6819D2C6BE00E16B66 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC64AD6919D2C6BE00E16B66 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DC64ADB919D2CB3800E16B66 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC64ADBA19D2CB3800E16B66 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DC64AADD19D2604B00E16B66 /* Debug */ = {
@@ -408,6 +935,75 @@
 			};
 			name = Release;
 		};
+		DC64ACAC19D2857D00E16B66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/nguyentienviet/videoHeartRate/MisfitHeartRate/frameworks,
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DC64ACAD19D2857D00E16B66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/nguyentienviet/videoHeartRate/MisfitHeartRate/frameworks,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DC64AD7119D2C6BE00E16B66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/nguyentienviet/videoHeartRate/MisfitHeartRate/frameworks,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MIsfitHRDetection Tests/MIsfitHRDetection Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = "MIsfitHRDetection Tests/MIsfitHRDetection Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DC64AD7219D2C6BE00E16B66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/nguyentienviet/videoHeartRate/MisfitHeartRate/frameworks,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MIsfitHRDetection Tests/MIsfitHRDetection Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				INFOPLIST_FILE = "MIsfitHRDetection Tests/MIsfitHRDetection Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -427,6 +1023,25 @@
 				DC64AAE119D2604B00E16B66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC64ACAB19D2857D00E16B66 /* Build configuration list for PBXNativeTarget "MIsfitHRDetectionPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC64ACAC19D2857D00E16B66 /* Debug */,
+				DC64ACAD19D2857D00E16B66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC64AD7019D2C6BE00E16B66 /* Build configuration list for PBXNativeTarget "MIsfitHRDetection Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC64AD7119D2C6BE00E16B66 /* Debug */,
+				DC64AD7219D2C6BE00E16B66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,5 @@
+void hr_calculator(const vector<int> &heartBeatPositions, double frameRate, vector<double> &ans)
+	heartBeatPositions[17 elements] = 0     8    11    14    15    18    26    40    43    55    58    77    80   82    87    91    96
+	frameRate = 10;
+	
+	ans = 109.8417, 88.4211

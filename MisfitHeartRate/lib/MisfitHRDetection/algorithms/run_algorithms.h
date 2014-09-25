@@ -9,7 +9,6 @@
 #ifndef __MisfitHeartRate__run_algorithms__
 #define __MisfitHeartRate__run_algorithms__
 
-#include "eulerian.h"
 #include "temporal_mean_calc.h"
 #include "globals.h"
 

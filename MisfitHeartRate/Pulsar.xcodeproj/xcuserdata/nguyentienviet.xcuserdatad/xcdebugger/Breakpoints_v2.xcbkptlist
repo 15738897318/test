@@ -25,13 +25,521 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MisfitHeartRateTests/MisfitHeartRateTests.mm"
-            timestampString = "433219250.277033"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306469.707649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-setUp"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
+            landmarkName = "-test_frames2signal"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306469.707649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306469.707649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306469.707649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MHR::frames2signal(std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt; const&amp;, cv::String const&amp;, double, double, double&amp;, double&amp;, bool)"
+                  moduleName = "MIsfitHRDetection Tests"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+                  timestampString = "433305112.426504"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "4389">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MHR::frames2signal(std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt; const&amp;, cv::String const&amp;, double, double, double&amp;, double&amp;, bool)"
+                  moduleName = "MIsfitHRDetection Tests"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+                  timestampString = "433305112.426723"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "4457">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306469.707649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306469.707649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/frames2signal.cpp"
+            timestampString = "433306377.214607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "frames2signal(const vector&lt;Mat&gt;&amp; monoframes, const String &amp;conversion_method, double fr, double cutoff_freq, double &amp;lower_range, double &amp;upper_range, bool isCalcMode)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "587"
+            endingLineNumber = "587"
+            landmarkName = "-test_frames2signal"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "-test_frames2signal"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
+            landmarkName = "-test_frames2signal"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "735"
+            endingLineNumber = "735"
+            landmarkName = "-test_hb_counter_autocorr"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433306971.735228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307063.624614"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307254.835761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307257.090508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307412.756348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307531.96035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307539.841078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307541.156807"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307704.214975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433307709.92221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/hb_counter_autocorr.cpp"
+            timestampString = "433308165.474906"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "hb_counter_autocorr(vector&lt;double&gt; &amp;temporal_mean, double fr, int firstSample, int window_size, double overlap_ratio, double minPeakDistance, hrDebug&amp; debug)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "642"
+            endingLineNumber = "642"
+            landmarkName = "-test_ideal_bandpassing"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "656"
+            endingLineNumber = "656"
+            landmarkName = "-test_ideal_bandpassing"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MisfitHeartRateTests/MisfitHeartRateTests.mm"
+            timestampString = "433310996.486597"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-test_run_algorithm"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MisfitHeartRateTests/MisfitHeartRateTests.mm"
+            timestampString = "433311016.870015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-test_run_algorithm"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321646.986759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
+            landmarkName = "-test_frames2signal"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/MIsfitHRDetection Tests/MIsfitHRDetection_Tests.mm"
+            timestampString = "433321775.253945"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "739"
+            endingLineNumber = "739"
+            landmarkName = "-test_hb_counter_autocorr"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+            timestampString = "433327393.267292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+            timestampString = "433327393.267292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "CV2ImageProcessor::setFaceParams()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -4,15 +4,69 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MIsfitHRDetection Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>MIsfitHRDetection.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>MIsfitHRDetectionPC.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>MisfitHRDetectionTest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>unittest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>DC64AADA19D2604B00E16B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC64AC4D19D275D500E16B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC64AC8519D2769E00E16B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC64AC9619D2797500E16B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC64ACA919D2857D00E16B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC64ACB119D2858A00E16B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC64AD5C19D2C6BE00E16B66</key>
 		<dict>
 			<key>primary</key>
 			<true/>

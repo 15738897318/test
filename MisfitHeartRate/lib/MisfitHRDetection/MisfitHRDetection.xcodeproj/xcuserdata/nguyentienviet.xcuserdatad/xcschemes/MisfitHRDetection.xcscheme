@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DC64AD5C19D2C6BE00E16B66"
+               BuildableName = "MIsfitHRDetection Tests.xctest"
+               BlueprintName = "MIsfitHRDetection Tests"
+               ReferencedContainer = "container:MIsfitHRDetection.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
