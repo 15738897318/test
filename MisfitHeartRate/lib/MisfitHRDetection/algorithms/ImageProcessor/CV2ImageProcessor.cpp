@@ -326,7 +326,7 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
         // Extract video info
     int vidHeight = vid[0].rows;
     int vidWidth = vid[0].cols;
-    double frameRate = _frameRate;
+    double frameRate = MHR::_frameRate;
     int len = (int)vid.size();
     
         // Define the indices of the frames to be processed

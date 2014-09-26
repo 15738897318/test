@@ -77,7 +77,13 @@ String resourcePath = "get simulator's resource path in setUp() function";
             fclose(infoFile);
             
             usleep(1000); //Delay the operation a bit to allow garbage collector to clear the memory
-            MHR::setFaceParams();
+            if ([fileName hasSuffix:@"Finger_crop.mp4"]) {
+                MHR::setFingerParams();
+                MHR::_frameRate = 24;
+            } else {
+                MHR::setFaceParams();
+                MHR::_frameRate = 30;
+            }
             MHR::hrResult result = MHR::run_algorithms([inPath UTF8String], [outPath UTF8String], result);
             fprintf(outFile, "%s, %lf, %lf\n", [fileName UTF8String], result.autocorr, result.pda);
         }
