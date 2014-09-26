@@ -27,7 +27,7 @@ public:
     virtual void readFrames() = 0;
 //    virtual void writeFrames(uint8_t numFrame, uint16_t offset) = 0;
 //    virtual void setArrayInfo(TemporalArray &arr) = 0;
-//    virtual void writeArray(TemporalArray &arr, uint8_t numSig, uint16_t offset) = 0;
+    virtual void writeArray(vector<double> &arr) = 0;
 };
 
 #endif /* defined(__MIsfitHRDetection__AbstractImageProcessor__) */

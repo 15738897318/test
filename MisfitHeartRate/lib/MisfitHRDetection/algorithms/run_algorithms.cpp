@@ -25,7 +25,7 @@ namespace MHR {
         bool isCalcMode = true;
         int window_size = round(_window_size_in_sec * _frameRate);
         int firstSample = round(_frameRate * _time_lag);
-        double threshold_fraction = 0, lower_range, upper_range;
+        double threshold_fraction = 0;
         vector<double> temporal_mean;
         vector<double> temporal_mean_filt;
         Mat tmp_eulerianVid;
@@ -35,15 +35,8 @@ namespace MHR {
             if (proc->getCurrentFrame() >= nFrames -1) break;
             proc->readFrames();
             
-            /*-----------------remove old frames-----------------*/
-            int eulerianLen = (int)proc->getEulerienVid().size();
-            
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
-            vector<double> tmp = temporal_mean_calc(proc->getEulerienVid(), _overlap_ratio, _max_bpm, _cutoff_freq,
-                                                    _channels_to_process, _colourspace,
-                                                    lower_range, upper_range, isCalcMode);
-            for (int i = 0; i < eulerianLen; ++i)
-                temporal_mean.push_back(tmp[i]);
+            proc->writeArray(temporal_mean);
             
             isCalcMode = false;
             if (currentFrame == nFrames - 1) break;

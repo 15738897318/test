@@ -63,11 +63,22 @@ String resourcePath = "get simulator's resource path in setUp() function";
     for (NSString *fileName in directoryContent) {
         if ([fileName hasSuffix:@".mp4"]) {
             NSLog(@"File %@", fileName);
+            VideoCapture cap([[inPath stringByAppendingPathComponent: fileName] UTF8String]);
+            NSLog(@"%s",[[inPath stringByAppendingPathComponent: fileName] UTF8String]);
+            Mat buf;
+            int count = 0;
+            while (cap.read(buf)) {
+                imwrite([[NSString stringWithFormat:@"%@[%d].png",[inPath stringByAppendingPathComponent:@"input_frame"],count] UTF8String], buf);
+                count++;
+            }
+            
+            FILE *infoFile = fopen([[inPath stringByAppendingPathComponent:@"input_frames.txt"] UTF8String], "w");
+            fprintf(infoFile,"%d",count);
+            fclose(infoFile);
             
             usleep(1000); //Delay the operation a bit to allow garbage collector to clear the memory
-            
-            MHR::hrResult currResult;
-            MHR::hrResult result = MHR::run_algorithms([inPath UTF8String], [outPath UTF8String], currResult);
+            MHR::setFaceParams();
+            MHR::hrResult result = MHR::run_algorithms([inPath UTF8String], [outPath UTF8String], result);
             fprintf(outFile, "%s, %lf, %lf\n", [fileName UTF8String], result.autocorr, result.pda);
         }
     }

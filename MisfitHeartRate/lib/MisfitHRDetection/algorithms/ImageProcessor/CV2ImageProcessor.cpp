@@ -10,6 +10,7 @@
 #include "files.h"
 #include "build_Gdown_stack.h"
 #include "ideal_bandpassing.h"
+#include "frames2signal.h"
 #define READ_INFO_FAILED_NO_FRAME 1
 #define READ_INFO_SUCCESS 0
 
@@ -147,12 +148,18 @@ int CV2ImageProcessor::readFrameInfo() {
 void CV2ImageProcessor::readFrames() {
     vid.clear();
     eulerianVid.clear();
+    Mat frame;
     char *fileName = new char[strlen(srcDir) + 30];
     for (int i = 0; i < _framesBlock_size; ++i) {
         ++currentFrame;
         sprintf(fileName,"%s/input_frame[%d].png",srcDir,currentFrame);
             //what happens if readFrame fails
-        Mat frame = imread(fileName);
+        frame = imread(fileName);
+            //skip if read image fail
+        if (frame.data == NULL) {
+            vid.push_back(frame.clone());
+            continue;
+        }
         cvtColor(frame, frame, CV_BGR2RGB);
         
         if (_THREE_CHAN_MODE)
@@ -312,6 +319,71 @@ void CV2ImageProcessor::eulerianGaussianPyramidMagnification() {
             eulerianVid.push_back(filtered.clone());
         }
     }
+}
+
+void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
+        // Block 1 ==== Load the video & convert it to the desired colour-space
+        // Extract video info
+    int vidHeight = vid[0].rows;
+    int vidWidth = vid[0].cols;
+    double frameRate = _frameRate;
+    int len = (int)vid.size();
+    
+        // Define the indices of the frames to be processed
+    int startIndex = 0;     // 400
+    int endIndex = len;   // 1400
+    
+        // Convert colourspaces for each frame
+    Mat filt = _frame_downsampling_filt.clone();
+    Mat tmp_monoframe = Mat::zeros(vidHeight/4 + int(vidHeight%4 > 0), vidWidth/4 + int(vidWidth%4 > 0), CV_64F);
+    Mat frame, monoframe = Mat::zeros(vidHeight, vidWidth, CV_64F);
+    vector<Mat> monoframes;
+    
+    if (_THREE_CHAN_MODE) {
+        for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+                // convert each frame to right colourspace
+            vid[i].convertTo(frame, CV_64FC3);
+            if (!strcmp(_colourspace,"hsv"))
+                cvtColor(frame, frame, CV_RGB2HSV);
+            else if (!strcmp(_colourspace,"ycbcr"))
+                cvtColor(frame, frame, CV_RGB2YCrCb);
+            else if (!strcmp(_colourspace,"tsl"))
+                rgb2tsl(frame, frame);
+			
+				// Extract the right channel from the colour frame
+				// if only 1 channel ---> don't use monoframe.
+            for (int x = 0; x < vidHeight; ++x)
+                for (int y = 0; y < vidWidth; ++y)
+                    monoframe.at<double>(x, y) = frame.at<Vec3d>(x, y)[_channels_to_process];
+			
+				// Downsample the frame for ease of computation
+            corrDn(monoframe, tmp_monoframe, filt, 4, 4);
+			
+				// Put the frame into the video stream
+            monoframes.push_back(tmp_monoframe.clone());
+        }
+    }
+    else {
+        for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
+            vid[i].convertTo(frame, CV_64F);
+			
+				// Downsample the frame for ease of computation
+            corrDn(frame, tmp_monoframe, filt, 4, 4);
+			
+				// Put the frame into the video stream
+            monoframes.push_back(tmp_monoframe.clone());
+        }
+    }
+    
+        // Block 2 ==== Extract a signal stream & pre-process it
+        // Convert the frame stream into a 1-D signal
+    vector<double> tmp = frames2signal(monoframes, _frames2signalConversionMethod, frameRate, _cutoff_freq,
+                         lower_range, upper_range, isCalcMode);
+    temp.insert(temp.end(),tmp.begin(),tmp.end());
+}
+
+void CV2ImageProcessor::writeArray(vector<double> &arr) {
+    temporal_mean_calc(arr);
 }
 
 

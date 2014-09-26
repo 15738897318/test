@@ -89,6 +89,7 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     
 private:
     void eulerianGaussianPyramidMagnification();
+    void temporal_mean_calc(vector<double> &temp);
 
 public:
     CV2ImageProcessor();
@@ -99,12 +100,8 @@ public:
     void readFrames();
 //    void writeFrames(uint8_t numFrame, uint16_t offset);
 //    void setArrayInfo(TemporalArray &arr);
-//    void writeArray(TemporalArray &arr, uint8_t numSig, uint16_t offset);
+    void writeArray(vector<double> &arr);
         /*---------Test functions, to be removed------------*/
-    
-    vector<Mat> &getVid() {
-        return vid;
-    }
     
     vector<Mat> &getEulerienVid() {
         return eulerianVid;
