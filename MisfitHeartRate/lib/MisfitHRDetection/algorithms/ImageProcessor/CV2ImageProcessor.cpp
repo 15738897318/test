@@ -195,7 +195,7 @@ void CV2ImageProcessor::eulerianGaussianPyramidMagnification() {
     int nChannels = _number_of_channels;
     int len = (int)vid.size();
     
-    double samplingRate = _eulerian_frameRate;
+    double samplingRate = MHR::_frameRate;
     int level = _eulerian_pyrLevel < (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2))?_eulerian_pyrLevel : (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2));
     
 		// Define the indices of the frames to be processed
@@ -342,7 +342,7 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
     if (_THREE_CHAN_MODE) {
         for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
                 // convert each frame to right colourspace
-            vid[i].convertTo(frame, CV_64FC3);
+            eulerianVid[i].convertTo(frame, CV_64FC3);
             if (!strcmp(_colourspace,"hsv"))
                 cvtColor(frame, frame, CV_RGB2HSV);
             else if (!strcmp(_colourspace,"ycbcr"))
@@ -365,7 +365,7 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
     }
     else {
         for (int i = startIndex, k = 0; i < endIndex; ++i, ++k) {
-            vid[i].convertTo(frame, CV_64F);
+            eulerianVid[i].convertTo(frame, CV_64F);
 			
 				// Downsample the frame for ease of computation
             corrDn(frame, tmp_monoframe, filt, 4, 4);
@@ -379,6 +379,7 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
         // Convert the frame stream into a 1-D signal
     vector<double> tmp = frames2signal(monoframes, _frames2signalConversionMethod, frameRate, _cutoff_freq,
                          lower_range, upper_range, isCalcMode);
+    isCalcMode = false;
     temp.insert(temp.end(),tmp.begin(),tmp.end());
 }
 
