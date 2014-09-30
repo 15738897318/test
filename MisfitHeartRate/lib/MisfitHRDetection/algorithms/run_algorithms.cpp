@@ -23,9 +23,6 @@ namespace MHR {
     int nFrames = proc->getNFrame();
 
         // Block 1: turn frames to signals
-        int window_size = round(_window_size_in_sec * _frameRate);
-        int firstSample = round(_frameRate * _time_lag);
-        double threshold_fraction = 0;
         vector<double> temporal_mean;
         vector<double> temporal_mean_filt;
         Mat tmp_eulerianVid;
@@ -44,16 +41,10 @@ namespace MHR {
             proc->writeArray(temporal_mean);
             if (proc->getCurrentFrame() == nFrames - 1) break;
             
-            /*-----------------Perform HR calculation for the frames processed so far-----------------*/
-			// Low-pass-filter the signal stream to remove unwanted noises
-			//temporal_mean_filt = low_pass_filter(temporal_mean);
-            hrCounter->low_pass_filter(temporal_mean);
-            
 			// Block 2: Heart-rate calculation
 			// - Basis takes 15secs to generate an HR estimate
 			// - Cardiio takes 30secs to generate an HR estimate
-			currHrResult = hr_signal_calc(hrCounter->getTemporalMeanFilt(), firstSample, window_size, _frameRate,
-                                          _overlap_ratio, _max_bpm, threshold_fraction);
+			currHrResult = hrCounter->getHR(temporal_mean);
             hrGlobalResult = currHrResult;
             
             if (_DEBUG_MODE) {

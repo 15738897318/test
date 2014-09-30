@@ -9,6 +9,9 @@
 #include "SelfCorrPeakHRCounter.h"
 #include "face_params.h"
 #include "finger_params.h"
+#include "hb_counter_pda.h"
+#include "hb_counter_autocorr.h"
+#include "hr_calculator.h"
 
 using namespace MHR;
 
@@ -40,14 +43,7 @@ void SelfCorrPeakHRCounter::setFingerParameter() {
 SelfCorrPeakHRCounter::SelfCorrPeakHRCounter() {
     window_size = round(_window_size_in_sec * MHR::_frameRate);
     firstSample = round(MHR::_frameRate * _time_lag);
-}
-
-double mean(const vector<double> &signal) {
-    double sum = 0;
-    for (int i = 0;i < signal.size();i++) {
-        sum += signal[i];
-    }
-    return sum/signal.size();
+    threshold_fraction = 0;
 }
 
 void SelfCorrPeakHRCounter::corr_linear(vector<double> &signal, vector<double> &kernel, bool subtractMean ) {
@@ -116,4 +112,44 @@ void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {
     
         // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
     filtered_temporal_mean.erase(filtered_temporal_mean.begin(), filtered_temporal_mean.begin()+ _beatSignalFilterKernel_size/2);
+}
+
+MHR::hrResult SelfCorrPeakHRCounter::getHR(vector<double> &temporal_mean) {
+    /*-----------------Perform HR calculation for the frames processed so far-----------------*/
+        // Low-pass-filter the signal stream to remove unwanted noises
+        //temporal_mean_filt = low_pass_filter(temporal_mean);
+    low_pass_filter(temporal_mean);
+    
+    
+    clock_t t1 = clock();
+        // Set peak-detection params
+    if (firstSample > filtered_temporal_mean.size())
+        firstSample = 0;
+    double threshold = threshold_fraction * (*max_element(filtered_temporal_mean.begin() + firstSample, filtered_temporal_mean.end()));
+    int minPeakDistance = round(60 / _max_bpm * _frameRate);
+    
+        // Calculate heart-rate using peak-detection on the signal
+    hrDebug debug_pda;
+    vector<int> hb_locations_pda = hb_counter_pda(filtered_temporal_mean, _frameRate, firstSample,
+                                                  window_size, _overlap_ratio,
+                                                  minPeakDistance, threshold,
+                                                  debug_pda);
+    vector<double> ans_pda;
+    hr_calculator(hb_locations_pda, _frameRate, ans_pda);
+    double avg_hr_pda = ans_pda[0];     // average heart rate
+    
+        // Calculate heart-rate using autocorr algorithm on the signal
+    hrDebug debug_autocorr;
+    vector<int> hb_locations_autocorr = hb_counter_autocorr(filtered_temporal_mean, _frameRate, firstSample,
+                                                            window_size, _overlap_ratio,
+                                                            minPeakDistance,
+                                                            debug_autocorr);
+    vector<double> ans_autocorr;
+    hr_calculator(hb_locations_autocorr, _frameRate, ans_autocorr);
+    double avg_hr_autocorr = ans_autocorr[0];     // average heart rate
+    
+    
+    if (_DEBUG_MODE)
+        printf("hr_signal_calc() time = %f\n", ((float)clock() - (float)t1)/1000.0);
+    return hrResult(avg_hr_autocorr, avg_hr_pda);
 }

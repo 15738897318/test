@@ -25,6 +25,7 @@ private:
     
     int window_size;
     int firstSample;
+    double threshold_fraction;
 
     std::vector<double> filtered_temporal_mean;
     /*!
@@ -42,12 +43,13 @@ private:
      */
 public:
     void low_pass_filter(vector<double> &arr);
+    
 public:
     SelfCorrPeakHRCounter();
     ~SelfCorrPeakHRCounter();
     static void setFaceParameters();
     static void setFingerParameter();
-    uint8_t getHR(vector<double> &temporal_mean);
+    MHR::hrResult getHR(vector<double> &temporal_mean);
     
     vector<double> &getTemporalMeanFilt() {
         return filtered_temporal_mean;

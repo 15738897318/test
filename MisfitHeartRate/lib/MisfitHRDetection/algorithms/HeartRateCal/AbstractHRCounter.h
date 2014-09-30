@@ -10,10 +10,11 @@
 #define __MIsfitHRDetection__AbstractHRCounter__
 
 #include <iostream>
+#include "hr_structures.h"
 
 class AbstractHRCounter {
 public:
-    uint8_t getHR();
+    MHR::hrResult getHR();
 };
 
 #endif /* defined(__MIsfitHRDetection__AbstractHRCounter__) */
