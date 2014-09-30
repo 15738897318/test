@@ -8,13 +8,21 @@
 
 #include "config.h"
 
-
 namespace MHR {
     int _DEBUG_MODE = 0;
     int _THREE_CHAN_MODE = 0;
     
-    bool _FACE_MODE = true;
+    /*
+     Params
+     */
     
+    bool _FACE_MODE;     // switch between Face mode and Finger mode
+    
+    const double NaN = -1e9;
+    
+    const int _framesBlock_size = 128;  // number of frames to be processed in each block
+    const int _minVidLength = 15;       // seconds
+    const int _maxVidLength = 30;       // seconds
     String _outputPath = "NULL";
     
     /*--------------for run_eulerian()--------------*/

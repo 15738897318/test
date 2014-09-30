@@ -22,32 +22,18 @@ namespace MHR {
     extern int _DEBUG_MODE;
     extern int _THREE_CHAN_MODE;
     
+    const extern double NaN;
+    
+    const extern int _framesBlock_size;  // number of frames to be processed in each block
+    const extern int _minVidLength;       // seconds
+    const extern int _maxVidLength;       // seconds
     extern String _outputPath;
-    
-    const double NaN = -1e9;
-    
-    const int _framesBlock_size = 128;  // number of frames to be processed in each block
-    const int _minVidLength = 15;       // seconds
-    const int _maxVidLength = 30;       // seconds
     
     extern bool _FACE_MODE;     // switch between Face mode and Finger mode
     
-    /*--------------for run_eulerian()--------------*/
-    extern double _eulerian_alpha;          // Eulerian magnifier, standard < 50
-    extern double _eulerian_pyrLevel;        // Standard: 4, but updated by the real frame size
-    extern double _eulerian_minHR;          // BPM Standard: 50
-    extern double _eulerian_maxHR;         // BPM Standard: 90
-    extern double _eulerian_frameRate;      // Standard: 30, but updated by the real frame-rate
-    extern double _eulerian_chromaMagnifier; // Standard: 1
-    
-    // Native params of the algorithm
-    extern int _frameRate;
-    extern int _number_of_channels;
-    extern int _Gpyr_filter_length;
-    extern int _startFrame;
-    extern int _endFrame; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
     /*--------------for run_hr()--------------*/
+    extern int _frameRate;
     extern double _window_size_in_sec;
     extern double _overlap_ratio;
     extern double _max_bpm;             // BPM
@@ -65,23 +51,6 @@ namespace MHR {
     extern int _endIndex;    //1400  >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
     extern double _peakStrengthThreshold_fraction;
-    extern String _frames2signalConversionMethod;
-    
-    extern int _frame_downsampling_filt_rows;
-    extern int _frame_downsampling_filt_cols;
-    extern Mat _frame_downsampling_filt;
-    
-    
-    /*--------------for frames2signal()--------------*/
-    //trimmed-mean
-    extern int _trimmed_size;
-    
-    //mode-balance
-    extern double _training_time_start;    // seconds
-    extern double _training_time_end;        // seconds
-    extern int _number_of_bins;             // 50 * round(fr * training_time);
-    extern double _pct_reach_below_mode;    // Percent
-    extern double _pct_reach_above_mode;    // Percent
     
     
     /*--------------for matlab functions--------------*/

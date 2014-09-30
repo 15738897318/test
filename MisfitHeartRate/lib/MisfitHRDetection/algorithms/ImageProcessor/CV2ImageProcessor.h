@@ -21,17 +21,6 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     double lower_range;
     double upper_range;
         //-------------------------------------------------------------------------------//
-    /*
-     Params
-     */
-    
-    const double NaN = -1e9;
-    
-    const int _framesBlock_size = 128;  // number of frames to be processed in each block
-    const int _minVidLength = 15;       // seconds
-    const int _maxVidLength = 30;       // seconds
-    
-    bool _FACE_MODE;     // switch between Face mode and Finger mode
     
     /*--------------for run_eulerian()--------------*/
     double _eulerian_alpha;          // Eulerian magnifier, standard < 50
@@ -48,17 +37,10 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     int _endFrame; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
     /*--------------for run_hr()--------------*/
-    double _max_bpm;             // BPM
-    double _cutoff_freq;         // Hz
     char *_colourspace;
     int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
-    int _number_of_bins_heartRate;
     
-        // heartRate_calc: Native params of the algorithm
-    int _flagDebug;
-    int _flagGetRaw;
     
-    double _peakStrengthThreshold_fraction;
     char *_frames2signalConversionMethod;
     
     int _frame_downsampling_filt_rows;
@@ -116,6 +98,19 @@ private:
      *
      * NOTE: params are provided in the class member
      */
+    
+        //!
+        //! The function will convert the array of frames into an array of signal value (type double)
+        //! note that the frame is mono channel.
+        //! \param fr video's frame rate
+        //! \param conversion_method we have 3 method for converting a frame into a double value:
+        //! + simple-mean
+        //! + trimmed-mean
+        //! + mode-balance
+        //!
+    vector<double> frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
+                                 double fr, double cutoff_freq,
+                                 double &lower_range, double &upper_range, bool isCalcMode);
     void temporal_mean_calc(vector<double> &temp);
 
 public:

@@ -67,10 +67,6 @@ namespace MHR {
                 fprintf(resultFile, "%lf, ", temporal_mean_filt[i]);
             fprintf(resultFile, "\n\n\n");
             String vidType = "mp4";
-            fprintf(resultFile, "run_hr(vidType = %s, colourspace = %s, min_hr = %lf, max_hr = %lf, \
-										alpha = %lf, level = %lf, chromAtn = %lf)\n",
-                   	vidType.c_str(), _colourspace.c_str(), _eulerian_minHR, _eulerian_maxHR,
-                   	_eulerian_alpha, _eulerian_pyrLevel, _eulerian_chromaMagnifier);
             fprintf(resultFile, "Heart Rate result {autocorr, pda} = {%lf, %lf}\n", currHrResult.autocorr, currHrResult.pda);
             fclose(resultFile);
             printf("run_algorithm() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
