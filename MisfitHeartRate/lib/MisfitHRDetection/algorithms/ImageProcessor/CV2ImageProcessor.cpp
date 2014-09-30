@@ -16,7 +16,6 @@ using namespace MHR;
 
 void CV2ImageProcessor::setFaceParams() {
     if (_DEBUG_MODE) printf("setFaceParams()\n");
-    _FACE_MODE = true;
     
     _eulerian_alpha = _face_eulerian_alpha;
     _eulerian_pyrLevel = _face_eulerian_pyrLevel;
@@ -53,7 +52,6 @@ void CV2ImageProcessor::setFaceParams() {
 void CV2ImageProcessor::setFingerParams()
 {
     if (_DEBUG_MODE) printf("setFingerParams()\n");
-    _FACE_MODE = false;
     
     _eulerian_alpha = _finger_eulerian_alpha;
     _eulerian_pyrLevel = _finger_eulerian_pyrLevel;
@@ -84,9 +82,6 @@ void CV2ImageProcessor::setFingerParams()
     _number_of_bins = _finger_number_of_bins;
     _pct_reach_below_mode = _finger_pct_reach_below_mode;
     _pct_reach_above_mode = _finger_pct_reach_above_mode;
-    
-    _beatSignalFilterKernel_size = _finger_beatSignalFilterKernel_size;
-    _beatSignalFilterKernel = _finger_beatSignalFilterKernel.clone();
 }
 
 

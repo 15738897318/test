@@ -19,7 +19,7 @@ namespace MHR {
     proc->setSrcDir(srcDir.c_str());
     proc->setDstDir(outDir.c_str());
     proc->readFrameInfo();
-    if (!_FACE_MODE) proc->setFingerParams();
+    if (!MHR::_FACE_MODE) proc->setFingerParams();
     int nFrames = proc->getNFrame();
 
         // Block 1: turn frames to signals
