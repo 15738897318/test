@@ -41,19 +41,18 @@ private:
      * filter function for frames2signal function, apply low pass filter on vector \a arr.
      * \ref: http://en.wikipedia.org/wiki/Low-pass_filter
      */
-public:
     void low_pass_filter(vector<double> &arr);
-    
 public:
     SelfCorrPeakHRCounter();
     ~SelfCorrPeakHRCounter();
     static void setFaceParameters();
     static void setFingerParameter();
     MHR::hrResult getHR(vector<double> &temporal_mean);
-    
-    vector<double> &getTemporalMeanFilt() {
+#ifdef DEBUG
+    const vector<double> &getTemporalMeanFilt() {
         return filtered_temporal_mean;
     };
+#endif
 };
 
 #endif /* defined(__MIsfitHRDetection__SelfCorrPeakHRCounter__) */

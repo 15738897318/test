@@ -18,9 +18,6 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     int nFrames;
     int currentFrame;
     bool isCalcMode;
-    int window_size;
-    int firstSample;
-    double threshold_fraction;
     double lower_range;
     double upper_range;
         //-------------------------------------------------------------------------------//
@@ -45,7 +42,6 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     double _eulerian_chromaMagnifier; // Standard: 1
     
         // Native params of the algorithm
-    int _frameRate;
     int _number_of_channels;
     int _Gpyr_filter_length;
     int _startFrame;
@@ -61,9 +57,6 @@ class CV2ImageProcessor: public AbstractImageProcessor {
         // heartRate_calc: Native params of the algorithm
     int _flagDebug;
     int _flagGetRaw;
-    
-    int _startIndex;  //400
-    int _endIndex;    //1400  >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
     double _peakStrengthThreshold_fraction;
     char *_frames2signalConversionMethod;
@@ -86,6 +79,43 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     
 private:
     void eulerianGaussianPyramidMagnification();
+    /**
+	 * Apply Gaussian pyramid decomposition on \a vid from \a startIndex to \a endIndex,
+	 * and select a specific band indicated by \a level. \n
+	 * \return \a GDownStack is stack of one band of Gaussian pyramid of each frame
+     * \param vid,GDownStack:
+	 *  + the first dimension is the time axis \n
+	 *  + the second dimension is the y axis of the video's frames \n
+	 *  + the third dimension is the x axis of the video's frames \n
+	 *  + the forth dimension is the color channel \n
+     * Data type: CV_64FC3 or CV_64F
+	 */
+	void build_Gdown_Stack(vector<Mat> &GDownStack, int startIndex, int endIndex, int level);
+    /**
+	 * Apply ideal band pass filter on \a src. \n
+     * \ref: http://en.wikipedia.org/wiki/Band-pass_filter
+     * \param src,dst:
+	 *  + the first dimension is the time axis \n
+	 *  + the second dimension is the y axis of the video's frames \n
+	 *  + the third dimension is the x axis of the video's frames \n
+	 *  + the forth dimension is the color channel \n
+	 * \param samplingRate sampling rate of \a src \n
+     * Data type: CV_64FC3 or CV_64F
+	 */
+    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double samplingRate);
+    /**
+     * Convert frames of <vid> to signals.
+     * \param vid data type is CV_64FC3 or CV_64F
+     * \param overlap_ratio overlap ratio between 2 consecutive segments
+     * \param max_bpm maximum heart rate detectable (use in determining minPeaksDistance in findpeaks())
+     * \param colour_channel if in _THREE_CHAN_MODE, then convert all frames of \a vid to
+     *  monoframes by select only one channel of each frame.
+     * \param colourspace if in _THREE_CHAN_MODE, then convert colourspace of
+     *  all frames of \a vid to "hsv", "ycbcr" or "tsl" before converting them to monoframes
+     * \param cutoff_freq,lower_range,upper_range>,isCalcMode: see frames2signal()
+     *
+     * NOTE: params are provided in the class member
+     */
     void temporal_mean_calc(vector<double> &temp);
 
 public:

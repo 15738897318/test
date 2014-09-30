@@ -8,8 +8,6 @@
 
 #include "CV2ImageProcessor.h"
 #include "files.h"
-#include "build_Gdown_stack.h"
-#include "ideal_bandpassing.h"
 #include "frames2signal.h"
 #define READ_INFO_FAILED_NO_FRAME 1
 #define READ_INFO_SUCCESS 0
@@ -116,9 +114,6 @@ CV2ImageProcessor::CV2ImageProcessor() {
     nFrames = 0;
     currentFrame = -1;
     isCalcMode = true;
-    window_size = round(_window_size_in_sec * _frameRate);
-    firstSample = round(_frameRate * _time_lag);
-    threshold_fraction = 0;
     vid.reserve(_framesBlock_size);
     eulerianVid.reserve(_framesBlock_size);
     setFaceParams();
@@ -205,13 +200,13 @@ void CV2ImageProcessor::eulerianGaussianPyramidMagnification() {
 		// This stack actually is just a single level of the pyramid
     if (_DEBUG_MODE) printf("Spatial filtering...\n");
     vector<Mat> GdownStack;
-    build_Gdown_Stack(vid, GdownStack, startIndex, endIndex, level);
+    build_Gdown_Stack(GdownStack, startIndex, endIndex, level);
     if (_DEBUG_MODE) printf("Finished\n");
     
 		// Temporal filtering
     if (_DEBUG_MODE) printf("Temporal filtering...\n");
     vector<Mat> filteredStack;
-    ideal_bandpassing(GdownStack, filteredStack, _eulerian_minHR/60.0, _eulerian_maxHR/60.0, samplingRate);
+    ideal_bandpassing(GdownStack, filteredStack, samplingRate);
     if (_DEBUG_MODE) printf("Finished\n");
     
     
@@ -380,6 +375,110 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
 void CV2ImageProcessor::writeArray(vector<double> &arr) {
     temporal_mean_calc(arr);
 }
+
+void CV2ImageProcessor::build_Gdown_Stack(vector<Mat> &GDownStack, int startIndex, int endIndex, int level) {
+        // firstFrame
+    Mat frame;
+    if (_THREE_CHAN_MODE)
+        vid[startIndex].convertTo(frame, CV_64FC3);
+    else
+        vid[startIndex].convertTo(frame, CV_64F);
+    
+        // Blur and downsample the frame
+    Mat blurred;
+    blurDnClr(frame, blurred, level);
+    
+        // create pyr stack
+        // Note that this stack is actually just a SINGLE level of the pyramid
+        // The first frame in the stack is saved
+    GDownStack.clear();
+    GDownStack.push_back(blurred.clone());
+    
+    for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
+            // Create a frame from the ith array in the stream
+        if (_THREE_CHAN_MODE)
+            vid[i].convertTo(frame, CV_64FC3);
+        else
+            vid[i].convertTo(frame, CV_64F);
+        
+            // Blur and downsample the frame
+        blurDnClr(frame, blurred, level);
+        
+            // The kth element in the stack is saved
+            // Note that this stack is actually just a SINGLE level of the pyramid
+        GDownStack.push_back(blurred.clone());
+    }
+}
+
+void CV2ImageProcessor::ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double samplingRate) {
+        //        src: T*M*N*C;
+    
+        // extract src info
+    int nTime = (int)src.size();
+    int nRow = src[0].rows;
+    int nCol = src[0].cols;
+    int nChannel = (_THREE_CHAN_MODE) ? _number_of_channels : 1;
+    
+        // copy and convert data from src to dst (CV_32FC(nChannels))
+    Mat tmp;
+    dst.clear();
+    for (int i = 0; i < nTime; ++i)
+        {
+        if (_THREE_CHAN_MODE)
+            src[i].convertTo(tmp, CV_32FC3);
+        else
+            src[i].convertTo(tmp, CV_32F);
+        dst.push_back(tmp.clone());
+        }
+    
+        // masking indexes
+    int f1 = ceil(_eulerian_minHR/60.0 * nTime/samplingRate);
+    int f2 = floor(_eulerian_maxHR/60.0 * nTime/samplingRate);
+    int ind1 = 2*f1, ind2 = 2*f2 - 1;
+    
+        // FFT: http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dft
+    Mat dft_out = Mat::zeros(nRow, nTime, CV_32F);
+    for (int channel = 0; channel < nChannel; ++channel) {
+        for (int col = 0; col < nCol; ++col) {
+                // select only 1 channel in the dst's Mats
+            for (int time = 0; time < nTime; ++time)
+                for (int row = 0; row < nRow; ++row)
+                    if (_THREE_CHAN_MODE)
+                        dft_out.at<float>(row, time) = dst[time].at<Vec3f>(row, col)[channel];
+                    else
+                        dft_out.at<float>(row, time) = dst[time].at<float>(row, col);
+            
+                // call FFT
+            dft(dft_out, dft_out, DFT_ROWS);
+            
+                // masking: all elements with time-index in ranges [0, ind1] and [ind2, nTime-1]
+                // will be set to 0
+            for (int row = 0; row < nRow; ++row) {
+                for (int time = 0; time <= ind1; ++time)
+                    dft_out.at<float>(row, time) = 0;
+                for (int time = ind2; time < nTime; ++time)
+                    dft_out.at<float>(row, time) = 0;
+            }
+            
+                // assign values in dft_out to dst
+            dft(dft_out, dft_out, DFT_ROWS + DFT_INVERSE + DFT_REAL_OUTPUT + DFT_SCALE);
+            for (int time = 0; time < nTime; ++time)
+                for (int row = 0; row < nRow; ++row)
+                    if (_THREE_CHAN_MODE)
+                        dst[time].at<Vec3f>(row, col)[channel] = dft_out.at<float>(row, time);
+                    else
+                        dst[time].at<float>(row, col) = dft_out.at<float>(row, time);
+        }
+    }
+    
+        // convert the dst Mat to CV_64FC3 or CV_64F
+    for (int i = 0; i < nTime; ++i)
+        if (_THREE_CHAN_MODE)
+            dst[i].convertTo(dst[i], CV_64FC3);
+        else
+            dst[i].convertTo(dst[i], CV_64F);
+}
+
 
 
 
