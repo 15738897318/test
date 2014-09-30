@@ -472,7 +472,6 @@ static const int kBlockFrameSize = 128;
             if (!_cameraSwitch.isOn && (++framesWithTorchOn <= delayTorchOnInFrames))
                 return;
             
-            static int failedFrames = 0;
             if (_nFrames == 0)
                 firstFrameWithFace = image(ROI_upper).clone();
             Mat new_image = image(cropArea);
@@ -493,164 +492,166 @@ static const int kBlockFrameSize = 128;
                 }];
             }
             
-            if (_cameraSwitch.isOn)
-            {
-                if (![auto_stop faceCheck:image(ROI_upper).clone()])
-                    ++failedFrames;
-                else
-                    failedFrames = 0;
-            }
-            else
-            {
-                if (![auto_stop fingerCheck:new_image])
-                    ++failedFrames;
-                else
-                    failedFrames = 0;
-            }
-            
-            if (failedFrames > 5) {
-                failedFrames = 0;
-                
-                _nFrames -= 6;
-                [frameIndexArray removeObjectsInRange:NSMakeRange(frameIndexArray.count - 6, 6)];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self stopButtonDidTap:self];
-                });
-            }
-
+            // Auto-stop feature
+//            static int failedFrames = 0;
+//            if (_cameraSwitch.isOn)
+//            {
+//                if (![auto_stop faceCheck:image(ROI_upper).clone()])
+//                    ++failedFrames;
+//                else
+//                    failedFrames = 0;
+//            }
+//            else
+//            {
+//                if (![auto_stop fingerCheck:new_image])
+//                    ++failedFrames;
+//                else
+//                    failedFrames = 0;
+//            }
+//            
+//            if (failedFrames > 5) {
+//                failedFrames = 0;
+//                
+//                _nFrames -= 6;
+//                [frameIndexArray removeObjectsInRange:NSMakeRange(frameIndexArray.count - 6, 6)];
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [self stopButtonDidTap:self];
+//                });
+//            }
         }
-        else
-        {
-            if (_cameraSwitch.isOn)
-            {
-                static Mat tmp;
-                static int cnt = 0;
-                cnt = (cnt + 1) % 3;
-                if(cnt) return;
-                
-                tmp = image(ROI_upper).clone();
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                    // Cut the frame down to the upper bound of ROI
-                    Mat frame_ROI = tmp;
-                    
-                    // If the main thread is already running the capture algo, then dont do the face detection
-                    if(isCapturing) return;
-                    
-                    // Face detection
-                    NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
-                    
-                    // If in the meantime, the main thread already transitions into running the capture algo, then dont do the counting increment
-                    if(isCapturing) return;
-                    
-                    // If this iteration detects valid faces
-                    // - Increment the framesWithFace variable
-                    int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
-                    faces = nil;
-                    if (assessmentResult == 1)
-                    {
-                        framesWithFace += 1;
-                    }
-                    else
-                    {
-                        framesWithNoFace += 1;
-                    }
-                    
-                    // If a face is not detected in N frames, then reset the face-detected streak
-                    if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
-                    {
-                        framesWithFace = 0;
-                        framesWithNoFace = 0;
-                    }
-                    
-                    // If a face is detected in more than M frames, then reset the no-face streak
-                    if (framesWithFace > _THRESHOLD_FACE_FRAMES_MIN)
-                    {
-                        framesWithNoFace = 0;
-                    }
-                    
-                    if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
-                    {
-                        // tap the startButton
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self startButtonDidTap:self];
-                        });
-                    }
-                });
-            }
-            else
-            {
-                static Mat tmpFinger;
-                static int framesWithTorchOff = delayTorchOffInFrames;
-                static vector <float> avgRedVal;
-                
-                static int cnt = 0;
-                cnt = (cnt + 1) % 3;
-                if(cnt) return;
-                
-                tmpFinger = image(cropArea).clone();
-                cvtColor(tmpFinger, tmpFinger, CV_BGRA2BGR);
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                    if (isTorchOn)
-                    {
-                        if (++framesWithTorchOn <= delayTorchOnInFrames)
-                            return;
-                        
-                        if ([auto_start isRedColored:tmpFinger])
-                        {
-                            avgRedVal.push_back([auto_start calculateAverageRedValue:tmpFinger]);
-                            if (avgRedVal.size() >= 20)
-                            {
-                                if ([auto_start isHeartBeat:avgRedVal])
-                                {
-                                    isTorchOn = NO;
-                                    
-                                    if(isCapturing) return;
-                                    
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        [self startButtonDidTap:self];
-                                    });
-                                }
-                                else
-                                {
-                                    isTorchOn = NO;
-                                    [MHRUtilities setTorchModeOn:NO];
-                                    
-                                    framesWithTorchOff = 0;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            isTorchOn = NO;
-                            [MHRUtilities setTorchModeOn:NO];
-                            
-                            framesWithTorchOff = 0;
-                        }
-                    }
-                    else {
-                        if (++framesWithTorchOff <= delayTorchOffInFrames)
-                            return;
-                        
-                        if (![auto_start isSameAsPreviousFrame:tmpFinger] && [auto_start isUniformColored:tmpFinger] && [auto_start isDarkOrDarkRed:tmpFinger])
-                        {
-                            isTorchOn = YES;
-                            avgRedVal.clear();
-                            
-                            [MHRUtilities setTorchModeOn:YES];
-                        
-                            framesWithTorchOn = 0;
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    }
-                });
-            }
-        }
+        // Auto-start feature
+//        else
+//        {
+//            if (_cameraSwitch.isOn)
+//            {
+//                static Mat tmp;
+//                static int cnt = 0;
+//                cnt = (cnt + 1) % 3;
+//                if(cnt) return;
+//                
+//                tmp = image(ROI_upper).clone();
+//                
+//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+//                    // Cut the frame down to the upper bound of ROI
+//                    Mat frame_ROI = tmp;
+//                    
+//                    // If the main thread is already running the capture algo, then dont do the face detection
+//                    if(isCapturing) return;
+//                    
+//                    // Face detection
+//                    NSArray *faces = [auto_start detectFrontalFaces:&frame_ROI];
+//                    
+//                    // If in the meantime, the main thread already transitions into running the capture algo, then dont do the counting increment
+//                    if(isCapturing) return;
+//                    
+//                    // If this iteration detects valid faces
+//                    // - Increment the framesWithFace variable
+//                    int assessmentResult = [auto_start assessFaces:faces withLowerBound:ROI_lower];
+//                    faces = nil;
+//                    if (assessmentResult == 1)
+//                    {
+//                        framesWithFace += 1;
+//                    }
+//                    else
+//                    {
+//                        framesWithNoFace += 1;
+//                    }
+//                    
+//                    // If a face is not detected in N frames, then reset the face-detected streak
+//                    if (framesWithNoFace > _THRESHOLD_NO_FACE_FRAMES_MIN)
+//                    {
+//                        framesWithFace = 0;
+//                        framesWithNoFace = 0;
+//                    }
+//                    
+//                    // If a face is detected in more than M frames, then reset the no-face streak
+//                    if (framesWithFace > _THRESHOLD_FACE_FRAMES_MIN)
+//                    {
+//                        framesWithNoFace = 0;
+//                    }
+//                    
+//                    if (framesWithFace > _THRESHOLD_FACE_FRAMES_FOR_START)
+//                    {
+//                        // tap the startButton
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            [self startButtonDidTap:self];
+//                        });
+//                    }
+//                });
+//            }
+//            else
+//            {
+//                static Mat tmpFinger;
+//                static int framesWithTorchOff = delayTorchOffInFrames;
+//                static vector <float> avgRedVal;
+//                
+//                static int cnt = 0;
+//                cnt = (cnt + 1) % 3;
+//                if(cnt) return;
+//                
+//                tmpFinger = image(cropArea).clone();
+//                cvtColor(tmpFinger, tmpFinger, CV_BGRA2BGR);
+//                
+//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+//                    if (isTorchOn)
+//                    {
+//                        if (++framesWithTorchOn <= delayTorchOnInFrames)
+//                            return;
+//                        
+//                        if ([auto_start isRedColored:tmpFinger])
+//                        {
+//                            avgRedVal.push_back([auto_start calculateAverageRedValue:tmpFinger]);
+//                            if (avgRedVal.size() >= 20)
+//                            {
+//                                if ([auto_start isHeartBeat:avgRedVal])
+//                                {
+//                                    isTorchOn = NO;
+//                                    
+//                                    if(isCapturing) return;
+//                                    
+//                                    dispatch_async(dispatch_get_main_queue(), ^{
+//                                        [self startButtonDidTap:self];
+//                                    });
+//                                }
+//                                else
+//                                {
+//                                    isTorchOn = NO;
+//                                    [MHRUtilities setTorchModeOn:NO];
+//                                    
+//                                    framesWithTorchOff = 0;
+//                                }
+//                            }
+//                        }
+//                        else
+//                        {
+//                            isTorchOn = NO;
+//                            [MHRUtilities setTorchModeOn:NO];
+//                            
+//                            framesWithTorchOff = 0;
+//                        }
+//                    }
+//                    else {
+//                        if (++framesWithTorchOff <= delayTorchOffInFrames)
+//                            return;
+//                        
+//                        if (![auto_start isSameAsPreviousFrame:tmpFinger] && [auto_start isUniformColored:tmpFinger] && [auto_start isDarkOrDarkRed:tmpFinger])
+//                        {
+//                            isTorchOn = YES;
+//                            avgRedVal.clear();
+//                            
+//                            [MHRUtilities setTorchModeOn:YES];
+//                        
+//                            framesWithTorchOn = 0;
+//                        }
+//                        else
+//                        {
+//                            return;
+//                        }
+//                    }
+//                });
+//            }
+//        }
     }
 
 
