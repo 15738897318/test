@@ -15,6 +15,7 @@ namespace MHR {
     {
         clock_t t1 = clock();
     CV2ImageProcessor *proc = new CV2ImageProcessor();
+    SelfCorrPeakHRCounter *hrCounter = new SelfCorrPeakHRCounter();
     proc->setSrcDir(srcDir.c_str());
     proc->setDstDir(outDir.c_str());
     proc->readFrameInfo();
@@ -22,7 +23,6 @@ namespace MHR {
     int nFrames = proc->getNFrame();
 
         // Block 1: turn frames to signals
-        bool isCalcMode = true;
         int window_size = round(_window_size_in_sec * _frameRate);
         int firstSample = round(_frameRate * _time_lag);
         double threshold_fraction = 0;
@@ -46,12 +46,13 @@ namespace MHR {
             
             /*-----------------Perform HR calculation for the frames processed so far-----------------*/
 			// Low-pass-filter the signal stream to remove unwanted noises
-			temporal_mean_filt = low_pass_filter(temporal_mean);
+			//temporal_mean_filt = low_pass_filter(temporal_mean);
+            hrCounter->low_pass_filter(temporal_mean);
             
 			// Block 2: Heart-rate calculation
 			// - Basis takes 15secs to generate an HR estimate
 			// - Cardiio takes 30secs to generate an HR estimate
-			currHrResult = hr_signal_calc(temporal_mean_filt, firstSample, window_size, _frameRate,
+			currHrResult = hr_signal_calc(hrCounter->getTemporalMeanFilt(), firstSample, window_size, _frameRate,
                                           _overlap_ratio, _max_bpm, threshold_fraction);
             hrGlobalResult = currHrResult;
             
@@ -70,6 +71,7 @@ namespace MHR {
             for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
                 fprintf(resultFile, "%lf, ", temporal_mean[i]);
             fprintf(resultFile, "\n\ntemporal_mean:\n");
+            temporal_mean_filt = hrCounter->getTemporalMeanFilt();
             for (int i = 0, sz = (int)temporal_mean_filt.size(); i < sz; ++i)
                 fprintf(resultFile, "%lf, ", temporal_mean_filt[i]);
             fprintf(resultFile, "\n\n\n");

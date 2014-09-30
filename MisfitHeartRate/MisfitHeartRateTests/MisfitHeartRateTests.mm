@@ -80,10 +80,14 @@ String resourcePath = "get simulator's resource path in setUp() function";
             if ([fileName hasSuffix:@"Finger_crop.mp4"]) {
                 MHR::setFingerParams();
                 MHR::_frameRate = 24;
+                SelfCorrPeakHRCounter::setFaceParameters();
             } else {
                 MHR::setFaceParams();
                 MHR::_frameRate = 30;
+                SelfCorrPeakHRCounter::setFingerParameter();
             }
+            
+            MHR::_DEBUG_MODE = true;
             MHR::hrResult result = MHR::run_algorithms([inPath UTF8String], [outPath UTF8String], result);
             fprintf(outFile, "%s, %lf, %lf\n", [fileName UTF8String], result.autocorr, result.pda);
         }

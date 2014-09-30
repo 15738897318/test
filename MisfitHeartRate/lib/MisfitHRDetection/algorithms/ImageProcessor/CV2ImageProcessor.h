@@ -52,11 +52,8 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     int _endFrame; // >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
     
     /*--------------for run_hr()--------------*/
-    double _window_size_in_sec;
-    double _overlap_ratio;
     double _max_bpm;             // BPM
     double _cutoff_freq;         // Hz
-    double _time_lag;              // seconds
     char *_colourspace;
     int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
     int _number_of_bins_heartRate;

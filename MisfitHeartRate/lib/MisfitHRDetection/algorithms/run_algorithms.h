@@ -10,6 +10,7 @@
 #define __MisfitHeartRate__run_algorithms__
 
 #include "temporal_mean_calc.h"
+#include "SelfCorrPeakHRCounter.h"
 #include "globals.h"
 
 using namespace cv;

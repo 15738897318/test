@@ -11,4 +11,9 @@
 
 #include <iostream>
 
+class AbstractHRCounter {
+public:
+    uint8_t getHR();
+};
+
 #endif /* defined(__MIsfitHRDetection__AbstractHRCounter__) */

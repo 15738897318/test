@@ -8,7 +8,3 @@
 
 #include "AbstractHRCounter.h"
 
-class AbstractHRCounter {
-public:
-    uint8_t getHR();
-};

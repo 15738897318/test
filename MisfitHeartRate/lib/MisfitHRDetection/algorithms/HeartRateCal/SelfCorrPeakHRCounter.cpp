@@ -83,6 +83,8 @@ void SelfCorrPeakHRCounter::corr_linear(vector<double> &signal, vector<double> &
                 filtered_temporal_mean[i] -= minValue;
     }
     
+    signal.erase(signal.begin() + m, signal.end());
+    kernel.erase(kernel.begin() + m, kernel.end());
 }
 
 void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {
@@ -90,8 +92,7 @@ void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {
     if (filtered_temporal_mean.capacity() != temporal_mean.size())
         filtered_temporal_mean.reserve(temporal_mean.size());
     
-    assert(temporal_mean.size() ==  filtered_temporal_mean.size());
-        // assign values in all NaN positions to 0
+    // assign values in all NaN positions to 0
     vector<int> nAnPositions;
     int n = (int)temporal_mean.size();
     for (int i = 0; i < n; ++i)
@@ -108,8 +109,10 @@ void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {
     corr_linear(temporal_mean, kernel, false);
     
         // assign values in all old NaN positions to NaN
-    for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
+    for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i) {
+        temporal_mean[nAnPositions[i]] = NaN;
         filtered_temporal_mean[nAnPositions[i]] = NaN;
+    }
     
         // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
     filtered_temporal_mean.erase(filtered_temporal_mean.begin(), filtered_temporal_mean.begin()+ _beatSignalFilterKernel_size/2);

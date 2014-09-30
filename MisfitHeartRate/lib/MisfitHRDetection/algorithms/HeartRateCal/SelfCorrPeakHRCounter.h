@@ -10,6 +10,8 @@
 #define __MIsfitHRDetection__SelfCorrPeakHRCounter__
 
 #include "AbstractHRCounter.h"
+#include <vector>
+#include "config.h"
 
 class SelfCorrPeakHRCounter: public AbstractHRCounter {
 private:
@@ -24,7 +26,7 @@ private:
     int window_size;
     int firstSample;
 
-    vector<double> filtered_temporal_mean;
+    std::vector<double> filtered_temporal_mean;
     /*!
      * \ref: http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf
      * \return 1D convolution operation of 2 vectors signal and kernel
@@ -32,12 +34,13 @@ private:
      * each elements of the signal vector will be subtracted by mean(\a signal),
      * and each elements of the kernel vector will be subtracted by mean(\a kernel).
      */
-    void corr_linear(vector<double> &signal, vector<double> &kernel, bool subtractMean = true);
+    void corr_linear(std::vector<double> &signal, std::vector<double> &kernel, bool subtractMean = true);
     
     /**
      * filter function for frames2signal function, apply low pass filter on vector \a arr.
      * \ref: http://en.wikipedia.org/wiki/Low-pass_filter
      */
+public:
     void low_pass_filter(vector<double> &arr);
 public:
     SelfCorrPeakHRCounter();

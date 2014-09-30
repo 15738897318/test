@@ -32,11 +32,8 @@ void CV2ImageProcessor::setFaceParams() {
     _startFrame = _face_startFrame;
     _endFrame = _face_endFrame;
     
-    _window_size_in_sec = _face_window_size_in_sec;
-    _overlap_ratio = _face_overlap_ratio;
     _max_bpm = _face_max_bpm;
     _cutoff_freq = _face_cutoff_freq;
-    _time_lag = _face_time_lag;
     _colourspace = new char[_face_colourspace.length() + 1];
     strcpy(_colourspace, _face_colourspace.c_str());
     _channels_to_process = _face_channels_to_process;
@@ -82,11 +79,8 @@ void CV2ImageProcessor::setFingerParams()
     _startFrame = _finger_startFrame;
     _endFrame = _finger_endFrame;
     
-    _window_size_in_sec = _finger_window_size_in_sec;
-    _overlap_ratio = _finger_overlap_ratio;
     _max_bpm = _finger_max_bpm;
     _cutoff_freq = _finger_cutoff_freq;
-    _time_lag = _finger_time_lag;
     _colourspace = new char[_finger_colourspace.length()];
     strcpy(_colourspace, _finger_colourspace.c_str());
     _channels_to_process = _finger_channels_to_process;
