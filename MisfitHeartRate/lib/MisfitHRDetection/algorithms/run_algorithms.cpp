@@ -47,7 +47,7 @@ namespace MHR {
 			// Block 2: Heart-rate calculation
 			// - Basis takes 15secs to generate an HR estimate
 			// - Cardiio takes 30secs to generate an HR estimate
-			currHrResult = hrCounter->getHR(temporal_mean);
+			currHrResult = hrCounter->getHR(temporal_mean, MHR::_frameRate);
             hrGlobalResult = currHrResult;
             
             if (_DEBUG_MODE) {

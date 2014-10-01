@@ -8,7 +8,10 @@
 
 #import <XCTest/XCTest.h>
     //#import "MHRMainViewController.hpp"
-#import <MIsfitHRDetection/run_algorithms.h>
+#import "run_algorithms.h"
+#import "FrameToSignalHelper.h"
+#import "EulerianMagnificationHelper.h"
+#import "SelfCorrPeakHRCounter.h"
 #import "files.h"
 #import "matlab.h"
 
@@ -432,13 +435,15 @@ String resourcePath = "get simulator's resource path in setUp() function";
 
 - (void)test_low_pass_filter
 {
+    SelfCorrPeakHRCounter hrCounter;
+    hrCounter.setFaceParameters();
     FILE *file = fopen(String(resourcePath + "low_pass_filter_test.in").c_str(), "r");
     int n = readInt(file);
     vector<double> arr = readVectorFromFile(file, n);
     fclose(file);
     
-    vector<double> output = low_pass_filter(arr);
-    n = (int)output.size();
+    hrCounter.low_pass_filter(arr);
+    n = (int)hrCounter.filtered_temporal_mean.size();
     
     file = fopen(String(resourcePath + "low_pass_filter_test.out").c_str(), "r");
     int m = readInt(file);
@@ -448,7 +453,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     }
     for (int i = 0; i < n; ++i) {
         double correct_ans = readDouble(file);
-        double ans = output[i];
+        double ans = hrCounter.filtered_temporal_mean[i];
         if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
             {
             XCTFail(@"wrong output - expected: %lf, found: %lf, percent = %lf", correct_ans, ans, diff_percent(ans, correct_ans));
@@ -582,10 +587,12 @@ String resourcePath = "get simulator's resource path in setUp() function";
             for (int col = 0; col < nCol; ++col)
                 monoframes[i].at<double>(row, col) = readDouble(file);
     fclose(file);
-    
-    double fr = 30, cutoff_freq = 0;
-    double lower_range, upper_range;
-    vector<double> output = frames2signal(monoframes, "mode-balance", fr, cutoff_freq, lower_range, upper_range, true);
+    SimpleMeanFrameToSignalHelper f2sHelper;
+    f2sHelper.setFaceParams();
+    SelfCorrPeakHRCounter hrCounter;
+    hrCounter.setFaceParameters();
+    vector<double> output;
+    f2sHelper.convert(monoframes, output, MHR::_frameRate, true);
     
         //    vector<double> kernel;
         //    for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
@@ -593,8 +600,8 @@ String resourcePath = "get simulator's resource path in setUp() function";
         //            kernel.push_back(_beatSignalFilterKernel.at<double>(i, j));
         //    output = corr_linear(output, kernel);
     
-    output = low_pass_filter(output);
-    int nSignal = (int)output.size();
+    hrCounter.low_pass_filter(output);
+    int nSignal = (int)hrCounter.filtered_temporal_mean.size();
     
     for (int i = 0; i < nSignal; ++i)
         printf("%d, %lf\n", i, output[i]);
@@ -607,7 +614,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     }
     for (int i = 0; i < nSignal; ++i) {
         double correct_ans = readDouble(file);
-        double ans = output[i];
+        double ans = hrCounter.filtered_temporal_mean[i];
         printf("%d, %lf\n", i, ans);
         if (diff_percent(ans, correct_ans) > EPSILON_PERCENT)
             {
@@ -639,7 +646,9 @@ String resourcePath = "get simulator's resource path in setUp() function";
     fclose(file);
     
     vector<Mat> output;
-    ideal_bandpassing(input, output, wl, wh, samplingRate);
+    EulerianMagnificationHelper eHelper;
+    eHelper.setFaceParams();
+    ideal_bandpassing(input, output, wl, wh, 3, samplingRate);
     
     file = fopen(String(resourcePath + "ideal_bandpassing_test_0.out").c_str(), "r");
         //    printf("Output vector<Mat>: size() = %i, nRow = %i, nCol = %i\n", (int)input.size(), nRow, nCol);
@@ -689,9 +698,10 @@ String resourcePath = "get simulator's resource path in setUp() function";
     for (int i = 0; i < n; ++i)
         heartBeatPositions.push_back(readInt(file));
     fclose(file);
-    
+    SelfCorrPeakHRCounter hrCounter;
+    hrCounter.setFaceParameters();
     vector<double> output;
-    hr_calculator(heartBeatPositions, 10, output);
+    hrCounter.hr_calculator(heartBeatPositions, 10, output);
     
     file = fopen(String(resourcePath + "hr_calculator_test.out").c_str(), "r");
     double max_percent = 0, max_correct_ans = 0, max_ans = 0;
@@ -715,24 +725,23 @@ String resourcePath = "get simulator's resource path in setUp() function";
 
 - (void)test_hb_counter_autocorr
 {
+    SelfCorrPeakHRCounter hrCounter;
+    hrCounter.setFaceParameters();
     FILE *file = fopen(String(resourcePath + "hb_counter_autocorr_test.in").c_str(), "r");
     int n = readInt(file);
-    vector<double> temporal_mean;
     for (int i = 0; i < n; ++i) {
         double x = readDouble(file);
-        temporal_mean.push_back(x);
+        hrCounter.filtered_temporal_mean.push_back(x);
     }
     double frameRate = readDouble(file);
-    int firstSample = readInt(file);
-    int window_size = readInt(file);
-    double overlap_ratio = readDouble(file);
+    hrCounter.firstSample = readInt(file);
+    hrCounter.window_size = readInt(file);
+    hrCounter._overlap_ratio = readDouble(file);
     double minPeakDistance = readDouble(file);
         //    double threshold = readDouble(file);
     fclose(file);
-    
     hrDebug debug;
-    vector<int> output = hb_counter_autocorr(temporal_mean, frameRate, firstSample, window_size,
-                                             overlap_ratio, minPeakDistance, debug);
+    vector<int> output = hrCounter.hb_counter_autocorr(frameRate, minPeakDistance, debug);
     
     file = fopen(String(resourcePath + "hb_counter_autocorr_test.out").c_str(), "r");
     n = (int)output.size();
@@ -802,11 +811,18 @@ String resourcePath = "get simulator's resource path in setUp() function";
 {
     double input[] = {0.019163, 0.020138, 0.021193, 0.021776, 0.021532, 0.020445, 0.018137, 0.014522, 0.010996, 0.009046, 0.009033, 0.010771, 0.013807, 0.017501, 0.021010, 0.023283, 0.024015, 0.023065, 0.021282, 0.019326, 0.017607, 0.017003, 0.018093, 0.019642, 0.020950, 0.021776, 0.021543, 0.020373, 0.018921, 0.017814, 0.017638, 0.017861, 0.017560, 0.016170, 0.014260, 0.012239, 0.010717, 0.010010, 0.010976, 0.013243, 0.015991, 0.018853, 0.021250, 0.022504, 0.022213, 0.020542, 0.018220, 0.016679, 0.016479, 0.017185, 0.018489, 0.019903, 0.021360, 0.022451, 0.023018, 0.023617, 0.023854, 0.023437, 0.022331, 0.020245, 0.017035, 0.013034, 0.008712, 0.005406, 0.004146, 0.004960, 0.007422, 0.010891, 0.014817, 0.018490, 0.021178, 0.022762, 0.023843, 0.024710, 0.025377, 0.025312, 0.024527, 0.023359, 0.022139, 0.020787, 0.019047, 0.017924, 0.017275, 0.017203, 0.017081, 0.016548, 0.016244, 0.015722, 0.014059, 0.012100, 0.011015, 0.011092, 0.012459, 0.014394, 0.016413, 0.019121, 0.021683, 0.023989, 0.025060, 0.025250, 0.024404, 0.021913, 0.018562, 0.015886, 0.014216, 0.013628, 0.014076, 0.015021, 0.015871, 0.016721, 0.017275, 0.017571, 0.017676, 0.017318, 0.016390, 0.014759, 0.013115, 0.011958, 0.012070, 0.013519, 0.017129, 0.020676, 0.024422, 0.027904, 0.030421, 0.031612, 0.030826, 0.027662, 0.022788, 0.017126, 0.012298, 0.009203, 0.008132, 0.008167, 0.008672, 0.008686, 0.009879, 0.011314, 0.012825, 0.013960, 0.014473, 0.014941, 0.015741, 0.017710, 0.020662, 0.023977, 0.026824, 0.028454, 0.028730, 0.028073, 0.026343, 0.023880, 0.020974, 0.018118, 0.015960, 0.015437, 0.016298, 0.018047, 0.019275, 0.019164, 0.017797, 0.015001, 0.011002, 0.006698, 0.002464, 0.000000, 0.000387, 0.003876, 0.010276, 0.018190, 0.025424, 0.030369, 0.032250, 0.031429, 0.028853, 0.025259, 0.021959, 0.020093, 0.020096, 0.021736, 0.023741, 0.024918, 0.024904, 0.022803, 0.019099, 0.014582, 0.010426, 0.007668, 0.006514, 0.006814, 0.008320, 0.010568, 0.012931, 0.014979, 0.017179, 0.019315, 0.021046, 0.021716, 0.021369, 0.019993, 0.018164, 0.016355, 0.015088, 0.015075, 0.016816, 0.020088, 0.024280, 0.027952, 0.029782, 0.029054, 0.025848, 0.020640, 0.014412, 0.009073, 0.005511, 0.004434, 0.006302, 0.010570, 0.016109, 0.021519, 0.025735, 0.027588, 0.027211, 0.024730, 0.020638, 0.016001, 0.012225, 0.010112, 0.009605, 0.010994, 0.013955, 0.017492, 0.020818, 0.023263, 0.024359, 0.023702, 0.021836, 0.018760, 0.015516, 0.012781, 0.011159, 0.010854, 0.011816, 0.012543, 0.012784, 0.013025, 0.013503, 0.015210, 0.018254, 0.024434, 0.029592, 0.032864, 0.034041, 0.032678, 0.029036, 0.023646, 0.017199, 0.010881, 0.006951, 0.006127, 0.007923, 0.011906, 0.015910, 0.018932, 0.018132, 0.016999, 0.015891, 0.014898, 0.014078, 0.013939, 0.014605, 0.015512, 0.016854, 0.018462, 0.020650, 0.022848, 0.024320, 0.025032, 0.024807, 0.023726, 0.021877, 0.019271, 0.016462, 0.014218, 0.012567, 0.011493, 0.011611, 0.012689, 0.014631, 0.016466, 0.017862, 0.018714, 0.019125, 0.019124, 0.019181, 0.019235, 0.018943, 0.018838, 0.018847, 0.018763, 0.018476, 0.017796, 0.017045, 0.016368, 0.016410, 0.017198, 0.018492, 0.019825, 0.020725, 0.020337, 0.018871, 0.017454, 0.016122, 0.015136, 0.014472, 0.014193, 0.014764, 0.015956, 0.017713, 0.019264, 0.020318, 0.020519, 0.020172, 0.019901, 0.020062, 0.020449, 0.020648, 0.020169, 0.018802, 0.017136, 0.015708, 0.014513, 0.014105, 0.014478, 0.015483, 0.016726, 0.017904, 0.018941, 0.018790, 0.017226, 0.014747, 0.012334, 0.011311, 0.012441, 0.015400, 0.018910, 0.022066, 0.023788, 0.023538, 0.021887, 0.019849, 0.018771, 0.018438, 0.019187, 0.020773, 0.022595, 0.023709, 0.023381, 0.021507, 0.018989, 0.016635, 0.014942, 0.013923, 0.013551, 0.013299, 0.012789, 0.011713, 0.010426, 0.009423, 0.009040, 0.009341, 0.010671, 0.013504, 0.016886, 0.019926, 0.022520, 0.026741, 0.029339, 0.031778, 0.033037, 0.032611, 0.030037, 0.025920, 0.021005, 0.015918, 0.011851, 0.009511, 0.008467, 0.008458, 0.009120, 0.010389, 0.009856, 0.010775, 0.011325, 0.012285, 0.013626, 0.015369, 0.017098, 0.018800, 0.020654, 0.022396, 0.023923, 0.025254, 0.026666, 0.027501, 0.027261, 0.026064, 0.023833, 0.020754, 0.017602, 0.014990, 0.013142, 0.012060, 0.011676, 0.012037, 0.013122, 0.014270, 0.014845, 0.014648, 0.014520, 0.014735, 0.014853, 0.014755, 0.014824, 0.015274, 0.016233, 0.017876, 0.020157, 0.022748, 0.025102, 0.026563, 0.026898, 0.026205, 0.024746, 0.022284, 0.019200, 0.016181, 0.013972, 0.012722, 0.011972, 0.011820, 0.012074, 0.012591, 0.013342, 0.014436, 0.015581, 0.016326, 0.016769, 0.016981, 0.017287, 0.017726, 0.018437, 0.019197, 0.019933, 0.021007, 0.022533, 0.024450, 0.025642, 0.025258, 0.023231, 0.020499, 0.018130, 0.016229, 0.014539, 0.013022, 0.011852, 0.010947, 0.010355, 0.010580, 0.011048, 0.011388, 0.012335, 0.014525, 0.017732, 0.021240, 0.024155, 0.025694, 0.025533, 0.024538, 0.023618, 0.023077, 0.022831, 0.022559, 0.021674, 0.020505, 0.019318, 0.017595, 0.015568, 0.013796, 0.012326, 0.011357, 0.011018, 0.011449, 0.012359, 0.013572, 0.015153, 0.016895, 0.018248, 0.018673, 0.017475, 0.015110, 0.012251, 0.010090, 0.009927, 0.012829, 0.019557, 0.025869, 0.030936, 0.034237, 0.035149, 0.032969, 0.027872, 0.021086, 0.014305, 0.009495, 0.007208, 0.007493, 0.009786, 0.012885, 0.015666, 0.016257, 0.017645, 0.019502, 0.021292, 0.022121, 0.021912, 0.020813, 0.019387, 0.017955, 0.016823, 0.015954, 0.015328, 0.014701, 0.014140, 0.013824, 0.013985, 0.014678, 0.015954, 0.017474, 0.019227, 0.020738, 0.021744, 0.021919, 0.021331, 0.019913, 0.018173, 0.016550, 0.015717, 0.015921, 0.016892, 0.018137, 0.019265, 0.019984, 0.020134, 0.019603, 0.018521, 0.017446, 0.016678, 0.015954, 0.015351, 0.014902, 0.014774, 0.014795, 0.014874, 0.015070, 0.015794, 0.016863, 0.018087, 0.019327, 0.020353, 0.020853, 0.020492, 0.019446, 0.018139, 0.017029, 0.016949, 0.018049, 0.019968, 0.022049, 0.023665, 0.024180, 0.023522, 0.021856, 0.019099, 0.015840, 0.012905, 0.010702, 0.009527, 0.009547, 0.010461, 0.011604, 0.012905, 0.014265, 0.015736, 0.017309, 0.019355, 0.021565, 0.023341, 0.024471, 0.024655, 0.024460, 0.023948, 0.022983, 0.021638, 0.019999, 0.018147, 0.016045, 0.014355, 0.013136, 0.012616, 0.012461, 0.012839, 0.013687, 0.015128, 0.016914, 0.018200, 0.018741, 0.018606, 0.018158, 0.017633, 0.016982, 0.016552, 0.016246, 0.016413, 0.017160, 0.018638, 0.020638, 0.022649, 0.023763, 0.023479, 0.021840, 0.019454, 0.017487, 0.017297, 0.017688, 0.018580, 0.019469, 0.019985, 0.020022, 0.019113, 0.016550, 0.012710, 0.008883, 0.006631, 0.006942, 0.009724, 0.014360, 0.019115, 0.021815, 0.023325, 0.023659, 0.022898, 0.021343, 0.019355, 0.017720, 0.017418, 0.018465, 0.020265, 0.022094, 0.023259, 0.023421, 0.022603, 0.021030, 0.018981, 0.016583, 0.014277, 0.012215, 0.010581, 0.009314, 0.008839, 0.009292, 0.010809, 0.013253, 0.016237, 0.019256, 0.021526, 0.022208, 0.021473, 0.020084, 0.019124, 0.019259, 0.020727};
     int n = 682;
+    hrDebug debug;
+    SelfCorrPeakHRCounter hrCounter;
+    hrCounter.setFaceParameters();
     vector<double> temporal_mean;
     for (int i = 0; i < n; ++i)
-        temporal_mean.push_back(input[i]);
-    hrDebug debug;
-    vector<int> positions = hb_counter_pda(temporal_mean, 30, 90, 300, 0, 9, 0, debug);
+        hrCounter.filtered_temporal_mean.push_back(input[i]);
+
+    hrCounter.firstSample = 90;
+    hrCounter.window_size = 200;
+    hrCounter._overlap_ratio = 0;
+    
+    vector<int> positions = hrCounter.hb_counter_pda(30, 9, 0, debug);
     
         //    int m = (int)positions.size();
         //    printf("size = %d\n", m);
@@ -814,7 +830,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
         //        printf("%d, %d\n", i, positions[i]);
     
     vector<double> ans;
-    hr_calculator(positions, 30, ans);
+    hrCounter.hr_calculator(positions, 30, ans);
     
     
     int m = (int)ans.size();
@@ -918,21 +934,21 @@ String resourcePath = "get simulator's resource path in setUp() function";
 
 - (void)test_hr_signal_calc
 {
+    SelfCorrPeakHRCounter hrCounter;
     FILE *file = fopen(String(resourcePath + "hr_signal_calc_test.in").c_str(), "r");
     int n = readInt(file);
     vector<double> temporal_mean;
     for (int i = 0; i < n; ++i)
         temporal_mean.push_back(readDouble(file));
-    int firstSample = readInt(file);
-    int window_size = readInt(file);
+    hrCounter.firstSample = readInt(file);
+    hrCounter.window_size = readInt(file);
     double frameRate = readDouble(file);
-    double overlap_ratio = readDouble(file);
-    double max_bpm = readDouble(file);
-    double threshold_fraction = readDouble(file);
+    hrCounter._overlap_ratio = readDouble(file);
+    hrCounter._max_bpm = readDouble(file);
+    hrCounter.threshold_fraction = readDouble(file);
     fclose(file);
     
-    hrResult output = hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
-                                     overlap_ratio, max_bpm, threshold_fraction);
+    hrResult output = hrCounter.getHR(temporal_mean, frameRate);
     
     printf("avg_hr_autocorr = %lf, avg_hr_pda = %lf\n", output.autocorr, output.pda);
     

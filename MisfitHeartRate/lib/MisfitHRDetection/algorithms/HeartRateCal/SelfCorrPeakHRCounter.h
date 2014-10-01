@@ -14,7 +14,7 @@
 #include "config.h"
 
 class SelfCorrPeakHRCounter: public AbstractHRCounter {
-private:
+public:
     double _time_lag;              // seconds
     double _max_bpm;             // BPM
     double _window_size_in_sec;
@@ -29,7 +29,7 @@ private:
 
     std::vector<double> filtered_temporal_mean;
 
-    
+public:
     /**
      * filter function for frames2signal function, apply low pass filter on vector \a arr.
      * \ref: http://en.wikipedia.org/wiki/Low-pass_filter
@@ -60,12 +60,11 @@ private:
      \param minPeakDistance,threshold these arguments are for the findPeaks function.
      */
     vector<int> hb_counter_autocorr(double fr, double minPeakDistance, MHR::hrDebug& debug);
-public:
     SelfCorrPeakHRCounter();
     ~SelfCorrPeakHRCounter();
     void setFaceParameters();
     void setFingerParameter();
-    MHR::hrResult getHR(vector<double> &temporal_mean);
+    MHR::hrResult getHR(vector<double> &temporal_mean, double frameRate);
 #ifdef DEBUG
     const vector<double> &getTemporalMeanFilt() {
         return filtered_temporal_mean;

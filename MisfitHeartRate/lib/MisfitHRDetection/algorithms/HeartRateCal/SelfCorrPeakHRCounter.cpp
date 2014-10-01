@@ -41,6 +41,9 @@ void SelfCorrPeakHRCounter::setFingerParameter() {
 SelfCorrPeakHRCounter::SelfCorrPeakHRCounter() {
 }
 
+SelfCorrPeakHRCounter::~SelfCorrPeakHRCounter() {
+}
+
 void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {
     filtered_temporal_mean.clear();
     if (filtered_temporal_mean.capacity() != temporal_mean.size())
@@ -72,7 +75,7 @@ void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {
     filtered_temporal_mean.erase(filtered_temporal_mean.begin(), filtered_temporal_mean.begin()+ _beatSignalFilterKernel_size/2);
 }
 
-MHR::hrResult SelfCorrPeakHRCounter::getHR(vector<double> &temporal_mean) {
+MHR::hrResult SelfCorrPeakHRCounter::getHR(vector<double> &temporal_mean, double frameRate) {
     /*-----------------Perform HR calculation for the frames processed so far-----------------*/
         // Low-pass-filter the signal stream to remove unwanted noises
         //temporal_mean_filt = low_pass_filter(temporal_mean);
@@ -84,24 +87,24 @@ MHR::hrResult SelfCorrPeakHRCounter::getHR(vector<double> &temporal_mean) {
     if (firstSample > filtered_temporal_mean.size())
         firstSample = 0;
     double threshold = threshold_fraction * (*max_element(filtered_temporal_mean.begin() + firstSample, filtered_temporal_mean.end()));
-    int minPeakDistance = round(60 / _max_bpm * _frameRate);
+    int minPeakDistance = round(60 / _max_bpm * frameRate);
     
         // Calculate heart-rate using peak-detection on the signal
     hrDebug debug_pda;
-    vector<int> hb_locations_pda = hb_counter_pda(MHR::_frameRate,
+    vector<int> hb_locations_pda = hb_counter_pda(frameRate,
                                                   minPeakDistance, threshold,
                                                   debug_pda);
     vector<double> ans_pda;
-    hr_calculator(hb_locations_pda, _frameRate, ans_pda);
+    hr_calculator(hb_locations_pda, frameRate, ans_pda);
     double avg_hr_pda = ans_pda[0];     // average heart rate
     
         // Calculate heart-rate using autocorr algorithm on the signal
     hrDebug debug_autocorr;
-    vector<int> hb_locations_autocorr = hb_counter_autocorr(MHR::_frameRate,
+    vector<int> hb_locations_autocorr = hb_counter_autocorr(frameRate,
                                                             minPeakDistance,
                                                             debug_autocorr);
     vector<double> ans_autocorr;
-    hr_calculator(hb_locations_autocorr, _frameRate, ans_autocorr);
+    hr_calculator(hb_locations_autocorr, frameRate, ans_autocorr);
     double avg_hr_autocorr = ans_autocorr[0];     // average heart rate
     
     
