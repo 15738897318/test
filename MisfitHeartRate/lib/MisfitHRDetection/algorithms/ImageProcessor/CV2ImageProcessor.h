@@ -40,15 +40,13 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     char *_colourspace;
     int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
     
-    
-    char *_frames2signalConversionMethod;
-    
     int _frame_downsampling_filt_rows;
     int _frame_downsampling_filt_cols;
     Mat _frame_downsampling_filt;
     
     
     /*--------------for frames2signal()--------------*/
+    char *_frames2signalConversionMethod;
         //trimmed-mean
     int _trimmed_size;
     

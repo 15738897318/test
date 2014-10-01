@@ -10,33 +10,6 @@
 
 
 namespace MHR {
-    void readFrame(const String& srcFile, vector<Mat> &dst)
-    {
-        Mat frame = imread(srcFile);
-        cvtColor(frame, frame, CV_BGR2RGB);
-        
-        if (_THREE_CHAN_MODE)
-            dst.push_back(frame.clone());
-        else {
-            // if using 1-chan mode, then do the colour conversion here
-            frame.convertTo(frame, CV_64FC3);
-            if (_colourspace == "hsv")
-                cvtColor(frame, frame, CV_RGB2HSV);
-            else if (_colourspace == "ycbcr")
-                cvtColor(frame, frame, CV_RGB2YCrCb);
-            else if (_colourspace == "tsl")
-                rgb2tsl(frame, frame);
-
-            // extracts 1 channel only from the frame
-            Mat tmp = Mat::zeros(frame.rows, frame.cols, CV_64F);
-            for (int i = 0; i < frame.rows; ++i)
-                for (int j = 0; j < frame.cols; ++j)
-                    tmp.at<double>(i, j) = frame.at<Vec3d>(i, j)[_channels_to_process];
-            dst.push_back(tmp.clone());
-        }
-    }
-    
-    
     Mat read2DMatFromFile(FILE* &file, int rows, int cols)
     {
         Mat ans = Mat::zeros(rows, cols, CV_64F);

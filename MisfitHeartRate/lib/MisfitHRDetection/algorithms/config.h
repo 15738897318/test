@@ -33,13 +33,8 @@ namespace MHR {
     
     
     /*--------------for run_hr()--------------*/
-    extern int _frameRate;
-    extern double _window_size_in_sec;
-    extern double _overlap_ratio;
-    extern double _max_bpm;             // BPM
+    extern int _frameRate;      // BPM
     extern double _cutoff_freq;         // Hz
-    extern double _time_lag;              // seconds
-    extern String _colourspace;
     extern int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
     extern int _number_of_bins_heartRate;
     
@@ -47,17 +42,11 @@ namespace MHR {
     extern int _flagDebug;
     extern int _flagGetRaw;
     
-    extern int _startIndex;  //400
-    extern int _endIndex;    //1400  >= 0 to get definite end-frame, < 0 to get end-frame relative to stream length
-    
     extern double _peakStrengthThreshold_fraction;
     
     
     /*--------------for matlab functions--------------*/
     
-    //kernel for low_pass_filter(), used in frames2sinal()
-    extern int _beatSignalFilterKernel_size;
-    extern Mat _beatSignalFilterKernel;
     
     
     /*--------------change params functions--------------*/

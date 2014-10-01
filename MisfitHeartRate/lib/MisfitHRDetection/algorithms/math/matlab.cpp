@@ -189,34 +189,6 @@ namespace MHR {
             
         }
     }
-
-    
-    vector<double> low_pass_filter(vector<double> arr) {
-        // assign values in all NaN positions to 0
-        vector<int> nAnPositions;
-        int n = (int)arr.size();
-        for (int i = 0; i < n; ++i)
-            if (abs(arr[i] - NaN) < 1e-11) {
-                arr[i] = 0;
-                nAnPositions.push_back(i);
-            }
-
-        // using corr_linear()
-        vector<double> kernel;
-        for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
-            for (int j = 0; j < _beatSignalFilterKernel.size.p[1]; ++j)
-                kernel.push_back(_beatSignalFilterKernel.at<double>(i, j));
-        vector<double> ans = corr_linear(arr, kernel, false);
-
-        // assign values in all old NaN positions to NaN
-        for (int i = 0, sz = (int)nAnPositions.size(); i < sz; ++i)
-            ans[nAnPositions[i]] = NaN;
-        
-        // remove first _beatSignalFilterKernel_size/2 elements when use FilterBandPassing
-        ans = vector<double>(ans.begin() + _beatSignalFilterKernel_size/2, ans.end());
-        
-        return ans;
-    }
     
     
     void gaussianFilter(int length, double sigma, vector<double> &ans) {
