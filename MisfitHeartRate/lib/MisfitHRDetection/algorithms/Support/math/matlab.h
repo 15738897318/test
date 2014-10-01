@@ -10,10 +10,8 @@
 #define __MisfitHeartRate__matlab__
 
 #include <set>
-#include "matrix.h"
-
+#include <vector>
 using namespace std;
-using namespace cv;
 
 
 namespace MHR {

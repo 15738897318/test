@@ -101,9 +101,7 @@ void EulerianMagnificationHelper::eulerianGaussianPyramidMagnification(vector<Ma
     }
     else {
         for (int t = 0; t < nTime; ++t)
-            for (int i = 0; i < nRow; ++i)
-                for (int j = 0; j < nCol; ++j)
-                    filteredStack[t].at<double>(i, j) = _eulerian_alpha * filteredStack[t].at<double>(i, j);
+                    filteredStack[t] = _eulerian_alpha * filteredStack[t];
     }
     
     

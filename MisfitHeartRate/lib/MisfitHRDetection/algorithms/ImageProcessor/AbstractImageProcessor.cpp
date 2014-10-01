@@ -21,7 +21,11 @@ void AbstractImageProcessor::setDstDir(const char *dir) {
 AbstractImageProcessor::AbstractImageProcessor() {
     srcDir = NULL;
     dstDir = NULL;
+#ifdef DEBUG
     _DEBUG = DEBUG;
+#else
+    _DEBUG = false;
+#endif
 }
 
 AbstractImageProcessor::~AbstractImageProcessor() {

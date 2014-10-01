@@ -65,7 +65,7 @@ namespace MHR {
             for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
                 fprintf(resultFile, "%lf, ", temporal_mean[i]);
             fprintf(resultFile, "\n\ntemporal_mean:\n");
-            vector<double> temporal_mean_filt = hrCounter->getTemporalMeanFilt();
+            vector<double> temporal_mean_filt = hrCounter->filtered_temporal_mean;
             for (int i = 0, sz = (int)temporal_mean_filt.size(); i < sz; ++i)
                 fprintf(resultFile, "%lf, ", temporal_mean_filt[i]);
             fprintf(resultFile, "\n\n\n");

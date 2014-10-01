@@ -7,6 +7,7 @@
 //
 
 #include "matlab.h"
+#include "matrix.h"
 
 
 namespace MHR {
