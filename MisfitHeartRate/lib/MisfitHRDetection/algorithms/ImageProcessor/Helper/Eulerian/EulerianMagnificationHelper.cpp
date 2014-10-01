@@ -84,24 +84,26 @@ void EulerianMagnificationHelper::eulerianGaussianPyramidMagnification(vector<Ma
         Mat base_C = (MHR::ntsc2rgb_baseMat * base_B) * MHR::rgb2ntsc_baseMat;
         
             // calculate filteredStack[t] = baseC * filteredStack[t]
-        Mat tmp = Mat::zeros(nChannels, nCol, CV_64F);
+        Mat tmp = Mat::zeros(3, nCol, CV_64F);
+        Mat rgb_channels[3];
         for (int t = 0; t < nTime; ++t) {
+            split(filteredStack[t], rgb_channels);
             for (int i = 0; i < nRow; ++i) {
-                for (int j = 0; j < nCol; ++j)
-                    for (int channel = 0; channel < nChannels; ++channel)
-                        tmp.at<double>(channel, j) = filteredStack[t].at<Vec3d>(i, j)[channel];
+                for (int channel = 0; channel < 3; ++channel)
+                    rgb_channels[channel].row(i).copyTo(tmp.row(channel));
                 
                 tmp = base_C * tmp;
                 
-                for (int j = 0; j < nCol; ++j)
-                    for (int channel = 0; channel < nChannels; ++channel)
-                        filteredStack[t].at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
+                for (int channel = 0; channel < 3; ++channel)
+                    tmp.row(channel).copyTo(rgb_channels[channel].row(i));
             }
+            merge(rgb_channels, 3, filteredStack[t]);
         }
+        
     }
     else {
         for (int t = 0; t < nTime; ++t)
-                    filteredStack[t] = _eulerian_alpha * filteredStack[t];
+            filteredStack[t] = _eulerian_alpha * filteredStack[t];
     }
     
     
@@ -112,7 +114,6 @@ void EulerianMagnificationHelper::eulerianGaussianPyramidMagnification(vector<Ma
 		// output video
 		// Convert each frame from the filtered stream to movie frame
     Mat frame, filtered;
-    if (MHR::_THREE_CHAN_MODE) {
         for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
             	// Reconstruct the frame from pyramid stack
 				// by removing the singleton dimensions of the kth filtered array
@@ -127,47 +128,9 @@ void EulerianMagnificationHelper::eulerianGaussianPyramidMagnification(vector<Ma
 				// Add the filtered frame to the original frame
             filtered = filtered + frame;
             
-            for (int i = 0; i < vidHeight; ++i)
-                for (int j = 0; j < vidWidth; ++j) {
-                    for (int channel = 0; channel < nChannels; ++channel) {
-                        double tmp = filtered.at<Vec3d>(i, j)[channel];
-                        
-                        tmp = min(tmp, 255.0);
-                        tmp = max(tmp, 0.0);
-                        
-                        filtered.at<Vec3d>(i, j)[channel] = tmp;
-                    }
-                }
+            filtered = max(min(filtered, 255.0), 0.0);
             eulerianVid.push_back(filtered.clone());
         }
-    }
-    else {
-        for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
-            	// Reconstruct the frame from pyramid stack
-				// by removing the singleton dimensions of the kth filtered array
-				// since the filtered stack is just a selected level of the Gaussian pyramid
-            
-				// Format the image to the right size
-            resize(filteredStack[k], filtered, cvSize(vidWidth, vidHeight), 0, 0, INTER_CUBIC);
-            
-				// Convert the ith frame in the video stream to RGB (double-precision) image
-            vid[i].convertTo(frame, CV_64F);
-            
-				// Add the filtered frame to the original frame
-            filtered = filtered + frame;
-            
-            for (int i = 0; i < vidHeight; ++i)
-                for (int j = 0; j < vidWidth; ++j) {
-                    double tmp = filtered.at<double>(i, j);
-                    
-                    tmp = min(tmp, 255.0);
-                    tmp = max(tmp, 0.0);
-                    
-                    filtered.at<double>(i, j) = tmp;
-                }
-            eulerianVid.push_back(filtered.clone());
-        }
-    }
 }
 
 
