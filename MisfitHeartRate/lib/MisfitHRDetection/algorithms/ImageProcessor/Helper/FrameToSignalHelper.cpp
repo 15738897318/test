@@ -108,8 +108,8 @@ void BalancedModeFrameToSignalHelper::convert(std::vector<Mat> &eulerianVid, std
             percentile_upper_range = (lower_pct_range + upper_pct_range);
         
             //convert the percentile range into pixel-value range
-        double lower_range = MHR::prctile(arr, percentile_lower_range);
-        double upper_range = MHR::prctile(arr, percentile_upper_range);
+        lower_range = MHR::prctile(arr, percentile_lower_range);
+        upper_range = MHR::prctile(arr, percentile_upper_range);
         
         if (MHR::_DEBUG_MODE)
             printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);

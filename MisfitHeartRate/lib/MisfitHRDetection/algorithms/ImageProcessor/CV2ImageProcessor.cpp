@@ -25,22 +25,21 @@ void CV2ImageProcessor::setFaceParams() {
     _colourspace = new char[_face_colourspace.length() + 1];
     strcpy(_colourspace, _face_colourspace.c_str());
     _channels_to_process = _face_channels_to_process;
-    _cutoff_freq = MHR::_face_cutoff_freq;
     
     _frames2signalConversionMethod = new char[_face_frames2signalConversionMethod.length()];
     strcpy(_frames2signalConversionMethod,_face_frames2signalConversionMethod.c_str());
+    if (!strcmp(_frames2signalConversionMethod,"simple-mean")) {
+        _f2sHelper = new SimpleMeanFrameToSignalHelper();
+    } else if (!strcmp(_frames2signalConversionMethod, "trimmed-mean")) {
+        _f2sHelper = new TrimmedMeanFrameToSignalHelper();
+    } else if (!strcmp(_frames2signalConversionMethod,"mode-balance")) {
+        _f2sHelper = new BalancedModeFrameToSignalHelper();
+    }
+    _f2sHelper->setFaceParams();
     
     _frame_downsampling_filt_rows = _face_frame_downsampling_filt_rows;
     _frame_downsampling_filt_cols = _face_frame_downsampling_filt_cols;
     _frame_downsampling_filt = _face_frame_downsampling_filt.clone();
-    
-    _trimmed_size = _face_trimmed_size;
-    
-    _training_time_start = _face_training_time_start;
-    _training_time_end = _face_training_time_end;
-    _number_of_bins = _face_number_of_bins;
-    _pct_reach_below_mode = _face_pct_reach_below_mode;
-    _pct_reach_above_mode = _face_pct_reach_above_mode;
 }
 
 void CV2ImageProcessor::setFingerParams()
@@ -52,22 +51,21 @@ void CV2ImageProcessor::setFingerParams()
     
     _colourspace = new char[_finger_colourspace.length()];
     strcpy(_colourspace, _finger_colourspace.c_str());
-    _cutoff_freq = MHR::_finger_cutoff_freq;
     _channels_to_process = _finger_channels_to_process;
 
     _frames2signalConversionMethod = new char[_finger_frames2signalConversionMethod.length()];
     strcpy(_frames2signalConversionMethod,_finger_frames2signalConversionMethod.c_str());
+    if (!strcmp(_frames2signalConversionMethod,"simple-mean")) {
+        _f2sHelper = new SimpleMeanFrameToSignalHelper();
+    } else if (!strcmp(_frames2signalConversionMethod, "trimmed-mean")) {
+        _f2sHelper = new TrimmedMeanFrameToSignalHelper();
+    } else if (!strcmp(_frames2signalConversionMethod,"mode-balance")) {
+        _f2sHelper = new BalancedModeFrameToSignalHelper();
+    }
+    _f2sHelper->setFingerParams();
     _frame_downsampling_filt_rows = _finger_frame_downsampling_filt_rows;
     _frame_downsampling_filt_cols = _finger_frame_downsampling_filt_cols;
     _frame_downsampling_filt = _finger_frame_downsampling_filt.clone();
-    
-    _trimmed_size = _finger_trimmed_size;
-    
-    _training_time_start = _finger_training_time_start;
-    _training_time_end = _finger_training_time_end;
-    _number_of_bins = _finger_number_of_bins;
-    _pct_reach_below_mode = _finger_pct_reach_below_mode;
-    _pct_reach_above_mode = _finger_pct_reach_above_mode;
 }
 
 
@@ -143,7 +141,6 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
         // Extract video info
     int vidHeight = vid[0].rows;
     int vidWidth = vid[0].cols;
-    double frameRate = MHR::_frameRate;
     int len = (int)vid.size();
     
         // Define the indices of the frames to be processed
@@ -194,8 +191,8 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
     
         // Block 2 ==== Extract a signal stream & pre-process it
         // Convert the frame stream into a 1-D signal
-    vector<double> tmp = frames2signal(monoframes, _frames2signalConversionMethod, frameRate, _cutoff_freq,
-                         lower_range, upper_range, isCalcMode);
+    vector<double> tmp ;
+    _f2sHelper->convert(monoframes, tmp, MHR::_frameRate, isCalcMode);
     isCalcMode = false;
     temp.insert(temp.end(),tmp.begin(),tmp.end());
 }
@@ -203,132 +200,3 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
 void CV2ImageProcessor::writeArray(vector<double> &arr) {
     temporal_mean_calc(arr);
 }
-
-
-vector<double>  CV2ImageProcessor::frames2signal(const vector<Mat>& monoframes, const String &conversion_method,
-                             double fr, double cutoff_freq,
-                             double &lower_range, double &upper_range, bool isCalcMode)
-{
-    clock_t t1 = clock();
-    
-        //=== Block 1. Convert the frame stream into a 1-D signal
-    
-    vector<double> temporal_mean;
-    int height = monoframes[0].rows;
-    int width = monoframes[0].cols;
-    int total_frames = (int)monoframes.size();
-    
-    
-    
-    if(conversion_method == "simple-mean"){
-            //!
-            //! mode : 'simple-mean'
-            //! get the mean of all pixel's value in the picture frame
-            //!
-        double size = height * width;
-        for(int i=0; i<total_frames; ++i){
-            double sum = 0;
-            for(int x=0; x<height; ++x)
-                for(int y=0; y<width; ++y)
-                    sum+=monoframes[i].at<double>(x,y);
-            temporal_mean.push_back(sum/size);
-        }
-        
-    }else if(conversion_method == "trimmed-mean"){
-        
-            //Set the trimmed size here
-        int trimmed_size = _trimmed_size;
-            //!
-            //! mode : 'trimmed-mean'
-            //! get the mean of all pixel's value in a smaller rectangle inside the picture frame
-            //!
-        double size = (height - trimmed_size * 2) * (width - trimmed_size * 2);
-        for(int i=0; i<total_frames; ++i){
-            double sum = 0;
-            for(int x=trimmed_size; x<height-trimmed_size; ++x)
-                for(int y=trimmed_size; y<width-trimmed_size; ++y)
-                    sum+=monoframes[i].at<double>(x,y);
-            temporal_mean.push_back(sum/size);
-        }
-        
-    }else if(conversion_method == "mode-balance"){
-            //!
-            //! this method will calculate the histogram of pixel's value from the first_training_frames_start to first_training_frames_end. Then get the bin that has the most number of value, get the centre of that bin as a centre value, then use the prctile function to get the percentile of that centre value.
-            //! Finally we calculate the mean of values that have the inverted percentile in the range from (centre value's percentile - lower_pct_range) to (centre value's percentile + upper_pct_range).
-            //!
-        if (isCalcMode)
-            {
-                // Selection parameters
-            double lower_pct_range = _pct_reach_below_mode;
-            double upper_pct_range = _pct_reach_above_mode;
-            
-            int first_training_frames_start = min( (int)round(fr * _training_time_start), total_frames );
-            int first_training_frames_end = min( (int)round(fr * _training_time_end), total_frames) - 1;
-            
-                // this arr stores values of pixels from first trainning frames
-            vector<double> arr;
-            for(int i = first_training_frames_start; i <= first_training_frames_end; ++i)
-                for(int y=0; y<width; ++y)
-                    for(int x=0; x<height; ++x)
-                        arr.push_back(monoframes[i].at<double>(x,y));
-            
-                //find the mode
-            vector<double> centres;
-            vector<int> counts;
-            
-            hist(arr, _number_of_bins, counts, centres);
-            
-            int argmax=0;
-            for(int i=0; i<(int)counts.size(); ++i) if(counts[i]>counts[argmax]) argmax = i;
-            double centre_mode = centres[argmax];
-            
-                // find the percentile range centred on the mode
-            double percentile_of_centre_mode = invprctile(arr, centre_mode);
-            double percentile_lower_range = max(0.0, percentile_of_centre_mode - lower_pct_range);
-            double percentile_upper_range = min(100.0, percentile_of_centre_mode + upper_pct_range);
-                // correct the percentile range for the boundary cases
-            if(percentile_upper_range == 100)
-                percentile_lower_range = 100 - (lower_pct_range + upper_pct_range);
-            if(percentile_lower_range == 0)
-                percentile_upper_range = (lower_pct_range + upper_pct_range);
-            
-                //convert the percentile range into pixel-value range
-            lower_range = prctile(arr, percentile_lower_range);
-            upper_range = prctile(arr, percentile_upper_range);
-            
-            if (_DEBUG_MODE)
-                printf("lower_range = %lf, upper_range = %lf\n", lower_range, upper_range);
-            }
-        
-            //now calc the avg of each frame while inogre the values outside the range
-            //this is the debug vector<Mat>
-        for(int i=0; i<total_frames; ++i){
-            double sum = 0;
-            int cnt = 0; //number of not-NaN-pixels
-            for(int x=0; x<height; ++x)
-                for(int y=0; y<width; ++y){
-                    double val=monoframes[i].at<double>(x,y);
-                    if(val<lower_range - 1e-9 || val>upper_range + 1e-9){
-                        val=0;
-                    }else ++cnt;
-                    sum+=val;
-                }
-            
-            if(cnt==0) //push NaN for all-NaN-frames
-                temporal_mean.push_back(NaN);
-            else
-                temporal_mean.push_back(sum/cnt);
-        }
-        
-    }
-    
-    if (_DEBUG_MODE)
-        printf("frames2signal() runtime = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
-    
-    return temporal_mean;
-}
-
-
-
-
-

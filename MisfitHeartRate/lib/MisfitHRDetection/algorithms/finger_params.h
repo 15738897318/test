@@ -34,7 +34,6 @@ namespace MHR {
     const double _finger_window_size_in_sec = 10;
     const double _finger_overlap_ratio = 0;
     const double _finger_max_bpm = 200;             // BPM
-    const double _finger_cutoff_freq = 2.5;         // Hz
     const double _finger_time_lag = 3;              // seconds
     const String _finger_colourspace = "rgb";
     const int _finger_channels_to_process = 0;     // If only 1 channel: 1 for tsl, 0 for rgb

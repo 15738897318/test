@@ -34,7 +34,6 @@ namespace MHR {
     const double _face_window_size_in_sec = 10;
     const double _face_overlap_ratio = 0;
     const double _face_max_bpm = 200;             // BPM
-    const double _face_cutoff_freq = 2.5;         // Hz
     const double _face_time_lag = 3;              // seconds
     const String _face_colourspace = "tsl";
     const int _face_channels_to_process = 1;     // If only 1 channel: 1 for tsl, 0 for rgb

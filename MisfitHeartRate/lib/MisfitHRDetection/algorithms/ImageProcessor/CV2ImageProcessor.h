@@ -29,7 +29,6 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     
     /*--------------for run_hr()--------------*/
     char *_colourspace;
-    double _cutoff_freq;
     int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
     double lower_range;
     double upper_range;
@@ -41,15 +40,8 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     
     /*--------------for frames2signal()--------------*/
     char *_frames2signalConversionMethod;
-        //trimmed-mean
-    int _trimmed_size;
     
-        //mode-balance
-    double _training_time_start;    // seconds
-    double _training_time_end;        // seconds
-    int _number_of_bins;             // 50 * round(fr * training_time);
-    double _pct_reach_below_mode;    // Percent
-    double _pct_reach_above_mode;    // Percent
+    AbstractFrameToSignalHelper *_f2sHelper;
     
 private:
     /**
