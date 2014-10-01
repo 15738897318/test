@@ -91,8 +91,7 @@ MHR::hrResult SelfCorrPeakHRCounter::getHR(vector<double> &temporal_mean) {
     
         // Calculate heart-rate using peak-detection on the signal
     hrDebug debug_pda;
-    vector<int> hb_locations_pda = hb_counter_pda(filtered_temporal_mean, _frameRate, firstSample,
-                                                  window_size, _overlap_ratio,
+    vector<int> hb_locations_pda = hb_counter_pda(MHR::_frameRate,
                                                   minPeakDistance, threshold,
                                                   debug_pda);
     vector<double> ans_pda;
@@ -101,8 +100,7 @@ MHR::hrResult SelfCorrPeakHRCounter::getHR(vector<double> &temporal_mean) {
     
         // Calculate heart-rate using autocorr algorithm on the signal
     hrDebug debug_autocorr;
-    vector<int> hb_locations_autocorr = hb_counter_autocorr(filtered_temporal_mean, _frameRate, firstSample,
-                                                            window_size, _overlap_ratio,
+    vector<int> hb_locations_autocorr = hb_counter_autocorr(MHR::_frameRate,
                                                             minPeakDistance,
                                                             debug_autocorr);
     vector<double> ans_autocorr;
@@ -198,65 +196,14 @@ void SelfCorrPeakHRCounter::hr_calculator(const vector<int> &heartBeatPositions,
     }
 }
 
-
-void SelfCorrPeakHRCounter::findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
-               vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
-{
-    max_peak_strengths.clear();
-    max_peak_locs.clear();
-    
-    vector<pair<double,int>> peak_list;
-    
-    int nSegment = (int)segment.size();
-    for (int i = 1; i < nSegment - 1; ++i) {
-        if ((segment[i] - segment[i-1] > threshold) &&
-            (segment[i] - segment[i+1] >= threshold))
-            {
-            peak_list.push_back(pair<double,int> (-segment[i], i));
-            }
-    }
-    
-    if (peak_list.empty())
-        return;
-    
-        // Code to sort the peaks by position. The first & last peaks should be such that between
-        // the peaks and the start / end of the segment there must be no 'straight line'
-    int nPeaks = (int)peak_list.size();
-    int n = peak_list[nPeaks - 1].second;
-    double minValue = segment[n], maxValue = segment[n];
-    for (int i = n+1; i < nSegment; ++i) {
-        minValue = min(minValue, segment[i]);
-        maxValue = max(maxValue, segment[i]);
-    }
-    if (maxValue == minValue)
-        peak_list.pop_back();
-    
-    
-    sort(peak_list.begin(), peak_list.end());
-    for (int i = 0; i < nPeaks; ++i){
-        int pos=peak_list[i].second;
-        if(pos==-1) continue;
-        for (int j = 0; j < nPeaks; ++j)
-            if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
-                peak_list[j].second=-1;
-    }
-    
-    for (int i = 0; i < nPeaks; ++i)
-        if(peak_list[i].second!=-1){
-            max_peak_locs.push_back(peak_list[i].second);
-            max_peak_strengths.push_back(segment[peak_list[i].second]);
-        }
-}
-
-vector<int> SelfCorrPeakHRCounter::hb_counter_pda(vector<double> temporal_mean, double fr, int firstSample, int window_size,
-                                                  double overlap_ratio, double minPeakDistance, double threshold, MHR::hrDebug& debug)
+vector<int> SelfCorrPeakHRCounter::hb_counter_pda(double fr, double minPeakDistance, double threshold, MHR::hrDebug& debug)
 {
         //Perform peak counting for each window
     int windowStart = firstSample - 1;
     bool isFirstSegment = true;
     vector<pair<double, int>> heartBeats;
     vector<double> heartRates;
-    while(windowStart < (int)temporal_mean.size() - 1) {
+    while(windowStart < (int)filtered_temporal_mean.size() - 1) {
         
             //Window to perform peak-couting in
         vector<double> segment;
@@ -264,9 +211,9 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_pda(vector<double> temporal_mean, 
         vector<int> max_peak_locs, min_peak_locs;
         int segment_length;
         
-        int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
+        int windowEnd = min(windowStart + window_size, (int)filtered_temporal_mean.size());
         for(int i = windowStart; i < windowEnd; ++i)
-            segment.push_back(temporal_mean[i]);
+            segment.push_back(filtered_temporal_mean[i]);
         
             //Count the number of peaks in this window
         findpeaks(segment, minPeakDistance, threshold, max_peak_strengths, max_peak_locs);
@@ -296,7 +243,7 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_pda(vector<double> temporal_mean, 
             heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
         
             // Calculate the HR for this window
-        int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+        int windowUpdate = int((1-_overlap_ratio)*segment_length+0.5+1e-9);
         if (isFirstSegment) {
             for (int i = 0; i < windowStart; ++i)
                 heartRates.push_back(0);
@@ -324,8 +271,8 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_pda(vector<double> temporal_mean, 
     if(!heartBeats.empty()){
             //avg_hr = round((double)heartBeats.size() / ((double)heartRates.size() - firstSample) * fr * 60);
         int cnt=0;
-        for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
-            if(temporal_mean[i] != NaN) ++cnt;
+        for(int i=firstSample-1; i<(int)filtered_temporal_mean.size(); ++i)
+            if(filtered_temporal_mean[i] != NaN) ++cnt;
         if(cnt==0) avg_hr = 0;
         else
             avg_hr = round((double)heartBeats.size() / cnt * fr * 60);
@@ -343,8 +290,7 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_pda(vector<double> temporal_mean, 
     return locations;
 }
 
-vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(vector<double> &temporal_mean, double fr, int firstSample,
-                                                       int window_size, double overlap_ratio, double minPeakDistance, MHR::hrDebug& debug)
+vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(double fr, double minPeakDistance, MHR::hrDebug& debug)
 {
         // Step 1: calc the window-based autocorrelation of the signal stream
     
@@ -353,7 +299,7 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(vector<double> &temporal_
     double lastSegmentEndVal = 0;
     bool isFirstSegment = true;
     
-    while(windowStart < (int)temporal_mean.size() - 1){
+    while(windowStart < (int)filtered_temporal_mean.size() - 1){
         
         vector<double> segment;
         vector<double> max_peak_strengths, min_peak_strengths;
@@ -362,9 +308,9 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(vector<double> &temporal_
         int segment_length;
         
             //Window to calculate the autocorrelation
-        int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
+        int windowEnd = min(windowStart + window_size, (int)filtered_temporal_mean.size());
         for(int i = windowStart; i < windowEnd; ++i)
-            segment.push_back(temporal_mean[i]);
+            segment.push_back(filtered_temporal_mean[i]);
         
             //Calculate the autocorrelation for the current window
         vector<double> local_autocorr;
@@ -399,7 +345,7 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(vector<double> &temporal_
             // segment_length = window_size
         
             // c. autocorrelation
-        int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+        int windowUpdate = int((1-_overlap_ratio)*segment_length+0.5+1e-9);
         if (isFirstSegment) {
             for (int i = 0; i < windowStart; ++i)
                 autocorrelation.push_back(0);
@@ -458,7 +404,7 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(vector<double> &temporal_
             heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart));
         
             // Calculate the HR for this window
-        int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+        int windowUpdate = int((1-_overlap_ratio)*segment_length+0.5+1e-9);
         if (isFirstSegment) {
             for (int i = 0; i < windowStart; ++i)
                 heartRates.push_back(0);
@@ -486,8 +432,8 @@ vector<int> SelfCorrPeakHRCounter::hb_counter_autocorr(vector<double> &temporal_
     double avg_hr=0;
     if(!heartBeats.empty()){
         int cnt=0;
-        for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
-            if(temporal_mean[i] != NaN) ++cnt;
+        for(int i=firstSample-1; i<(int)filtered_temporal_mean.size(); ++i)
+            if(filtered_temporal_mean[i] != NaN) ++cnt;
         if(cnt==0) avg_hr = 0;
         else
             avg_hr = round((double)heartBeats.size() / cnt * fr * 60);

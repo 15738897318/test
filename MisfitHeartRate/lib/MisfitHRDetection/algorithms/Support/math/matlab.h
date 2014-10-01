@@ -31,6 +31,18 @@ namespace MHR {
      */
     void corr_linear(std::vector<double> &signal, std::vector<double> &kernel, std::vector<double> &result, bool subtractMean = true);
 
+        //!
+        //! findpeaks in \a segment, with \a minPeakDistance and \a threshold,\n
+        //! complexity O(n^2) with n = number of peaks
+        //! \param segment a vector of signals
+        //! \param minPeakDistance minimum distance between two peaks
+        //! \param threshold the minimum value that a peak point should be larger than its two neighbors point
+        //! \return \a max_peak_strengths
+        //! \return \a max_peak_locs
+        //!
+    
+    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
+                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs);
     /*!
      remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.\n
      all identical item will be removed just left the first appearing value.\n

@@ -452,7 +452,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MisfitHeartRateTests/MisfitHeartRateTests.mm"
@@ -520,11 +520,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
-            timestampString = "433327393.267292"
+            timestampString = "433835288.677355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129">
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "CV2ImageProcessor::CV2ImageProcessor()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            condition = "!MHR::_FACE_MODE"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/run_algorithms.cpp"
+            timestampString = "433828259.695386"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "run_algorithms(const String &amp;srcDir, const String &amp;outDir, hrResult &amp;currHrResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/run_algorithms.cpp"
+            timestampString = "433828259.695386"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "run_algorithms(const String &amp;srcDir, const String &amp;outDir, hrResult &amp;currHrResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/SelfCorrPeakHRCounter.cpp"
+            timestampString = "433826341.590555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "SelfCorrPeakHRCounter::low_pass_filter(vector&lt;double&gt; &amp;temporal_mean)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/SelfCorrPeakHRCounter.cpp"
+            timestampString = "433826341.590555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "SelfCorrPeakHRCounter::low_pass_filter(vector&lt;double&gt; &amp;temporal_mean)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/HeartRateCal/SelfCorrPeakHRCounter.cpp"
+            timestampString = "433825874.973182"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -534,13 +615,253 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
-            timestampString = "433327393.267292"
+            timestampString = "433835288.677355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "CV2ImageProcessor::setFaceParams()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+            timestampString = "433835288.677355"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "CV2ImageProcessor::temporal_mean_calc(vector&lt;double&gt; &amp;temp)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+            timestampString = "433835288.677355"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "CV2ImageProcessor::temporal_mean_calc(vector&lt;double&gt; &amp;temp)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/Helper/FrameToSignalHelper.cpp"
+            timestampString = "433834841.93787"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "BalancedModeFrameToSignalHelper::convert(std::vector&lt;Mat&gt; &amp;eulerianVid, std::vector&lt;double&gt; &amp;sig, double frameRate, bool isCalcMode)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BalancedModeFrameToSignalHelper::convert(std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, double, bool)"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/Helper/FrameToSignalHelper.cpp"
+                  timestampString = "433834841.940209"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "1580">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BalancedModeFrameToSignalHelper::convert(std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, double, bool)"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/Helper/FrameToSignalHelper.cpp"
+                  timestampString = "433834841.940403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "2191">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BalancedModeFrameToSignalHelper::convert(std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, double, bool)"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/Helper/FrameToSignalHelper.cpp"
+                  timestampString = "433834841.940544"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "3231">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BalancedModeFrameToSignalHelper::convert(std::__1::vector&lt;cv::Mat, std::__1::allocator&lt;cv::Mat&gt; &gt;&amp;, std::__1::vector&lt;double, std::__1::allocator&lt;double&gt; &gt;&amp;, double, bool)"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/Helper/FrameToSignalHelper.cpp"
+                  timestampString = "433834841.940688"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "4564">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/Helper/FrameToSignalHelper.cpp"
+            timestampString = "433834907.208124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "BalancedModeFrameToSignalHelper::convert(std::vector&lt;Mat&gt; &amp;eulerianVid, std::vector&lt;double&gt; &amp;sig, double frameRate, bool isCalcMode)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+            timestampString = "433835288.677355"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "CV2ImageProcessor::temporal_mean_calc(vector&lt;double&gt; &amp;temp)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+            timestampString = "433835288.677355"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "CV2ImageProcessor::readFrames()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CV2ImageProcessor::readFrames()"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+                  timestampString = "433835763.716149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "1379">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CV2ImageProcessor::readFrames()"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+                  timestampString = "433835763.716347"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "1396">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CV2ImageProcessor::readFrames()"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+                  timestampString = "433835763.71662"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "1464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CV2ImageProcessor::readFrames()"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+                  timestampString = "433835763.716848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "2195">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CV2ImageProcessor::readFrames()"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+                  timestampString = "433835763.717155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "2529">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CV2ImageProcessor::readFrames()"
+                  moduleName = "Pulsar"
+                  urlString = "file:///Users/nguyentienviet/videoHeartRate/MisfitHeartRate/lib/MIsfitHRDetection/algorithms/ImageProcessor/CV2ImageProcessor.cpp"
+                  timestampString = "433835763.717413"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "3337">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

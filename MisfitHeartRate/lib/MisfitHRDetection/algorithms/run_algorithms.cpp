@@ -11,20 +11,19 @@
 
 
 namespace MHR {
-    hrResult run_algorithms(const String &srcDir, const String &outDir, hrResult &currHrResult)
-    {
+    hrResult run_algorithms(const String &srcDir, const String &outDir, hrResult &currHrResult) {
         clock_t t1 = clock();
-    CV2ImageProcessor *proc = new CV2ImageProcessor();
-    SelfCorrPeakHRCounter *hrCounter = new SelfCorrPeakHRCounter();
-    proc->setSrcDir(srcDir.c_str());
-    proc->setDstDir(outDir.c_str());
-    proc->readFrameInfo();
-    if (!MHR::_FACE_MODE) proc->setFingerParams();
-    int nFrames = proc->getNFrame();
+        CV2ImageProcessor *proc = new CV2ImageProcessor();
+        SelfCorrPeakHRCounter *hrCounter = new SelfCorrPeakHRCounter();
+        proc->setSrcDir(srcDir.c_str());
+        proc->setDstDir(outDir.c_str());
+        proc->readFrameInfo();
+        if (!MHR::_FACE_MODE) proc->setFingerParams();
+        int nFrames = proc->getNFrame();
 
         // Block 1: turn frames to signals
         vector<double> temporal_mean;
-        vector<double> temporal_mean_filt;
+        temporal_mean.reserve(nFrames);
         Mat tmp_eulerianVid;
         
         while(1) {
@@ -32,13 +31,8 @@ namespace MHR {
             proc->readFrames();
             
             /*-----------------turn eulerianLen (1) frames to signals-----------------*/
-//            vector<double> tmp = temporal_mean_calc(proc->getEulerienVid(), _overlap_ratio, _max_bpm, _cutoff_freq,
-//                                                    _channels_to_process, _colourspace,
-//                                                    lower_range, upper_range, isCalcMode);
-//            for (int i = 0; i < tmp.size(); ++i)
-//                temporal_mean.push_back(tmp[i]);
-
             proc->writeArray(temporal_mean);
+            
             if (proc->getCurrentFrame() == nFrames - 1) break;
             
 			// Block 2: Heart-rate calculation
@@ -62,7 +56,7 @@ namespace MHR {
             for (int i = 0, sz = (int)temporal_mean.size(); i < sz; ++i)
                 fprintf(resultFile, "%lf, ", temporal_mean[i]);
             fprintf(resultFile, "\n\ntemporal_mean:\n");
-            temporal_mean_filt = hrCounter->getTemporalMeanFilt();
+            vector<double> temporal_mean_filt = hrCounter->getTemporalMeanFilt();
             for (int i = 0, sz = (int)temporal_mean_filt.size(); i < sz; ++i)
                 fprintf(resultFile, "%lf, ", temporal_mean_filt[i]);
             fprintf(resultFile, "\n\n\n");

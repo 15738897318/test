@@ -10,7 +10,6 @@
 #define __MIsfitHRDetection__AbstractImageProcessor__
 
 #include <stdint.h>
-#include "TemporalArray.h"
 #include "config.h"
 
 class AbstractImageProcessor{

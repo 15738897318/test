@@ -9,8 +9,8 @@
 #import <XCTest/XCTest.h>
     //#import "MHRMainViewController.hpp"
 #import <MIsfitHRDetection/run_algorithms.h>
-#include "ideal_bandpassing.h"
 #import "files.h"
+#import "matlab.h"
 
 using namespace MHR;
 using namespace std;
@@ -318,7 +318,8 @@ String resourcePath = "get simulator's resource path in setUp() function";
     vector<double> seg2 = readVectorFromFile(file, n2);
     fclose(file);
     
-    vector<double> output = corr_linear(seg1, seg2);
+    vector<double> output;
+    corr_linear(seg1, seg2, output);
     
     int n = (int)output.size();
     if (n != n1) {

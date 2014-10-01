@@ -8,76 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		DC64AB6219D260A400E16B66 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3819D260A400E16B66 /* config.cpp */; };
-		DC64AB6419D260A400E16B66 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */; };
-		DC64AB6819D260A400E16B66 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */; };
-		DC64AB6B19D260A400E16B66 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4319D260A400E16B66 /* files.cpp */; };
-		DC64AB6E19D260A400E16B66 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4719D260A400E16B66 /* frames2signal.cpp */; };
-		DC64AB7019D260A400E16B66 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */; };
-		DC64AB7219D260A400E16B66 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */; };
-		DC64AB7419D260A400E16B66 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */; };
-		DC64AB7619D260A400E16B66 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */; };
 		DC64AB7819D260A400E16B66 /* hr_structures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5119D260A400E16B66 /* hr_structures.cpp */; };
-		DC64AB7A19D260A400E16B66 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */; };
-		DC64AB7C19D260A400E16B66 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5619D260A400E16B66 /* image.cpp */; };
-		DC64AB7E19D260A400E16B66 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5919D260A400E16B66 /* matlab.cpp */; };
-		DC64AB8019D260A400E16B66 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5C19D260A400E16B66 /* matrix.cpp */; };
 		DC64AB8219D260A400E16B66 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */; };
 		DC64AB8419D260A400E16B66 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB6019D260A400E16B66 /* globals.cpp */; };
 		DC64AB8719D260B400E16B66 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AB8619D260B400E16B66 /* opencv2.framework */; };
 		DC64AB8C19D261B600E16B66 /* config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3919D260A400E16B66 /* config.h */; };
-		DC64AB8D19D261B600E16B66 /* build_Gdown_stack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */; };
-		DC64AB8F19D261B600E16B66 /* ideal_bandpassing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */; };
 		DC64AB9019D261B600E16B66 /* face_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4119D260A400E16B66 /* face_params.h */; };
-		DC64AB9119D261B600E16B66 /* files.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4419D260A400E16B66 /* files.h */; };
 		DC64AB9219D261B600E16B66 /* finger_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4519D260A400E16B66 /* finger_params.h */; };
-		DC64AB9319D261B600E16B66 /* image.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5719D260A400E16B66 /* image.h */; };
 		DC64AB9419D261B600E16B66 /* run_algorithms.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5F19D260A400E16B66 /* run_algorithms.h */; };
 		DC64AB9519D261B600E16B66 /* globals.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB6119D260A400E16B66 /* globals.h */; };
-		DC64AB9619D263E000E16B66 /* frames2signal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4819D260A400E16B66 /* frames2signal.h */; };
-		DC64AB9719D263E000E16B66 /* hb_counter_autocorr.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */; };
-		DC64AB9819D263E000E16B66 /* hb_counter_pda.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */; };
-		DC64AB9919D263E000E16B66 /* hr_calculator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4E19D260A400E16B66 /* hr_calculator.h */; };
-		DC64AB9A19D263E000E16B66 /* hr_signal_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5019D260A400E16B66 /* hr_signal_calc.h */; };
 		DC64AB9B19D263E000E16B66 /* hr_structures.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5219D260A400E16B66 /* hr_structures.h */; };
-		DC64AB9C19D263E000E16B66 /* temporal_mean_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */; };
-		DC64AB9D19D263E000E16B66 /* matlab.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5A19D260A400E16B66 /* matlab.h */; };
-		DC64AB9E19D263E000E16B66 /* matrix.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5D19D260A400E16B66 /* matrix.h */; };
 		DC64ACBD19D2875000E16B66 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3819D260A400E16B66 /* config.cpp */; };
-		DC64ACBE19D2875000E16B66 /* build_Gdown_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */; };
-		DC64ACC019D2875000E16B66 /* ideal_bandpassing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */; };
-		DC64ACC119D2875000E16B66 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4319D260A400E16B66 /* files.cpp */; };
-		DC64ACC219D2875000E16B66 /* frames2signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4719D260A400E16B66 /* frames2signal.cpp */; };
-		DC64ACC319D2875000E16B66 /* hb_counter_autocorr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */; };
-		DC64ACC419D2875000E16B66 /* hb_counter_pda.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */; };
-		DC64ACC519D2875000E16B66 /* hr_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */; };
-		DC64ACC619D2875000E16B66 /* hr_signal_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */; };
 		DC64ACC719D2875000E16B66 /* hr_structures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5119D260A400E16B66 /* hr_structures.cpp */; };
-		DC64ACC819D2875000E16B66 /* temporal_mean_calc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */; };
-		DC64ACC919D2875000E16B66 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5619D260A400E16B66 /* image.cpp */; };
-		DC64ACCA19D2875000E16B66 /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5919D260A400E16B66 /* matlab.cpp */; };
 		DC64ACCB19D2875000E16B66 /* run_algorithms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */; };
 		DC64ACCC19D2875000E16B66 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AB6019D260A400E16B66 /* globals.cpp */; };
 		DC64ACCD19D2A5D800E16B66 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AB8619D260B400E16B66 /* opencv2.framework */; };
 		DC64AD3A19D2AE6800E16B66 /* config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3919D260A400E16B66 /* config.h */; };
-		DC64AD3B19D2AE6800E16B66 /* build_Gdown_stack.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */; };
-		DC64AD3D19D2AE6800E16B66 /* ideal_bandpassing.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */; };
 		DC64AD3E19D2AE6800E16B66 /* face_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4119D260A400E16B66 /* face_params.h */; };
-		DC64AD3F19D2AE6800E16B66 /* files.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4419D260A400E16B66 /* files.h */; };
 		DC64AD4019D2AE6800E16B66 /* finger_params.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4519D260A400E16B66 /* finger_params.h */; };
-		DC64AD4119D2AE6800E16B66 /* frames2signal.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4819D260A400E16B66 /* frames2signal.h */; };
-		DC64AD4219D2AE6800E16B66 /* hb_counter_autocorr.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */; };
-		DC64AD4319D2AE6800E16B66 /* hb_counter_pda.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */; };
-		DC64AD4419D2AE6800E16B66 /* hr_calculator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB4E19D260A400E16B66 /* hr_calculator.h */; };
-		DC64AD4519D2AE6800E16B66 /* hr_signal_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5019D260A400E16B66 /* hr_signal_calc.h */; };
 		DC64AD4619D2AE6800E16B66 /* hr_structures.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5219D260A400E16B66 /* hr_structures.h */; };
-		DC64AD4719D2AE6800E16B66 /* temporal_mean_calc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */; };
-		DC64AD4819D2AE6800E16B66 /* image.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5719D260A400E16B66 /* image.h */; };
-		DC64AD4919D2AE6800E16B66 /* matlab.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5A19D260A400E16B66 /* matlab.h */; };
-		DC64AD4A19D2AE6800E16B66 /* matrix.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5D19D260A400E16B66 /* matrix.h */; };
 		DC64AD4B19D2AE6800E16B66 /* run_algorithms.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB5F19D260A400E16B66 /* run_algorithms.h */; };
 		DC64AD4C19D2AE6800E16B66 /* globals.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC64AB6119D260A400E16B66 /* globals.h */; };
 		DC64AD6A19D2C6BE00E16B66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC64AD6819D2C6BE00E16B66 /* InfoPlist.strings */; };
-		DC64AD6C19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC64AD6B19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm */; };
 		DC64AD7319D2C70400E16B66 /* libMIsfitHRDetection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */; };
 		DC64AD7719D2C72E00E16B66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AD7619D2C72E00E16B66 /* Foundation.framework */; };
 		DC64AD7919D2C73900E16B66 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC64AD7819D2C73900E16B66 /* UIKit.framework */; };
@@ -134,9 +86,18 @@
 		DC64AE8B19D2D3E000E16B66 /* MIsfitHRDetection Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC64AD6719D2C6BE00E16B66 /* MIsfitHRDetection Tests-Info.plist */; };
 		DC64AE8C19D2D3E000E16B66 /* MIsfitHRDetection Tests-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = DC64AD6D19D2C6BE00E16B66 /* MIsfitHRDetection Tests-Prefix.pch */; };
 		DC64AE9419D3CF5D00E16B66 /* AbstractImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9219D3CF5D00E16B66 /* AbstractImageProcessor.cpp */; };
-		DC64AE9719D3D17700E16B66 /* TemporalArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9519D3D17700E16B66 /* TemporalArray.cpp */; };
-		DC64AE9A19D3D3AA00E16B66 /* AbstractHRCalculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9819D3D3AA00E16B66 /* AbstractHRCalculator.cpp */; };
 		DC64AE9D19D3D5C100E16B66 /* CV2ImageProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC64AE9B19D3D5C100E16B66 /* CV2ImageProcessor.cpp */; };
+		DCAED9FF19DAB890002B465B /* AbstractHRCounter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAED9FB19DAB890002B465B /* AbstractHRCounter.cpp */; };
+		DCAEDA0019DAB890002B465B /* SelfCorrPeakHRCounter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAED9FD19DAB890002B465B /* SelfCorrPeakHRCounter.cpp */; };
+		DCAEDA2019DBAEEE002B465B /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA1519DBAEEE002B465B /* files.cpp */; };
+		DCAEDA2119DBAEEE002B465B /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA1819DBAEEE002B465B /* image.cpp */; };
+		DCAEDA2219DBAEEE002B465B /* matlab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA1B19DBAEEE002B465B /* matlab.cpp */; };
+		DCAEDA2319DBAEEE002B465B /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA1E19DBAEEE002B465B /* matrix.cpp */; };
+		DCAEDA2519DBB58C002B465B /* MIsitHRDetection_Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA2419DBB58C002B465B /* MIsitHRDetection_Tests.mm */; };
+		DCAEDA2919DBB727002B465B /* EulerianMagnificationHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA2719DBB727002B465B /* EulerianMagnificationHelper.cpp */; };
+		DCAEDA2A19DBB9EF002B465B /* EulerianMagnificationHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA2719DBB727002B465B /* EulerianMagnificationHelper.cpp */; };
+		DCAEDA3019DBBFC2002B465B /* FrameToSignalHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA2E19DBBFC2002B465B /* FrameToSignalHelper.cpp */; };
+		DCAEDA3219DBC126002B465B /* FrameToSignalHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAEDA2E19DBBFC2002B465B /* FrameToSignalHelper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,22 +117,10 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				DC64AB9619D263E000E16B66 /* frames2signal.h in CopyFiles */,
-				DC64AB9719D263E000E16B66 /* hb_counter_autocorr.h in CopyFiles */,
-				DC64AB9819D263E000E16B66 /* hb_counter_pda.h in CopyFiles */,
-				DC64AB9919D263E000E16B66 /* hr_calculator.h in CopyFiles */,
-				DC64AB9A19D263E000E16B66 /* hr_signal_calc.h in CopyFiles */,
 				DC64AB9B19D263E000E16B66 /* hr_structures.h in CopyFiles */,
-				DC64AB9C19D263E000E16B66 /* temporal_mean_calc.h in CopyFiles */,
-				DC64AB9D19D263E000E16B66 /* matlab.h in CopyFiles */,
-				DC64AB9E19D263E000E16B66 /* matrix.h in CopyFiles */,
 				DC64AB8C19D261B600E16B66 /* config.h in CopyFiles */,
-				DC64AB8D19D261B600E16B66 /* build_Gdown_stack.h in CopyFiles */,
-				DC64AB8F19D261B600E16B66 /* ideal_bandpassing.h in CopyFiles */,
 				DC64AB9019D261B600E16B66 /* face_params.h in CopyFiles */,
-				DC64AB9119D261B600E16B66 /* files.h in CopyFiles */,
 				DC64AB9219D261B600E16B66 /* finger_params.h in CopyFiles */,
-				DC64AB9319D261B600E16B66 /* image.h in CopyFiles */,
 				DC64AB9419D261B600E16B66 /* run_algorithms.h in CopyFiles */,
 				DC64AB9519D261B600E16B66 /* globals.h in CopyFiles */,
 			);
@@ -184,21 +133,9 @@
 			dstSubfolderSpec = 16;
 			files = (
 				DC64AD3A19D2AE6800E16B66 /* config.h in CopyFiles */,
-				DC64AD3B19D2AE6800E16B66 /* build_Gdown_stack.h in CopyFiles */,
-				DC64AD3D19D2AE6800E16B66 /* ideal_bandpassing.h in CopyFiles */,
 				DC64AD3E19D2AE6800E16B66 /* face_params.h in CopyFiles */,
-				DC64AD3F19D2AE6800E16B66 /* files.h in CopyFiles */,
 				DC64AD4019D2AE6800E16B66 /* finger_params.h in CopyFiles */,
-				DC64AD4119D2AE6800E16B66 /* frames2signal.h in CopyFiles */,
-				DC64AD4219D2AE6800E16B66 /* hb_counter_autocorr.h in CopyFiles */,
-				DC64AD4319D2AE6800E16B66 /* hb_counter_pda.h in CopyFiles */,
-				DC64AD4419D2AE6800E16B66 /* hr_calculator.h in CopyFiles */,
-				DC64AD4519D2AE6800E16B66 /* hr_signal_calc.h in CopyFiles */,
 				DC64AD4619D2AE6800E16B66 /* hr_structures.h in CopyFiles */,
-				DC64AD4719D2AE6800E16B66 /* temporal_mean_calc.h in CopyFiles */,
-				DC64AD4819D2AE6800E16B66 /* image.h in CopyFiles */,
-				DC64AD4919D2AE6800E16B66 /* matlab.h in CopyFiles */,
-				DC64AD4A19D2AE6800E16B66 /* matrix.h in CopyFiles */,
 				DC64AD4B19D2AE6800E16B66 /* run_algorithms.h in CopyFiles */,
 				DC64AD4C19D2AE6800E16B66 /* globals.h in CopyFiles */,
 			);
@@ -210,34 +147,10 @@
 		DC64AADB19D2604B00E16B66 /* libMIsfitHRDetection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMIsfitHRDetection.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC64AB3819D260A400E16B66 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
 		DC64AB3919D260A400E16B66 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build_Gdown_stack.cpp; sourceTree = "<group>"; };
-		DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_Gdown_stack.h; sourceTree = "<group>"; };
-		DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ideal_bandpassing.cpp; sourceTree = "<group>"; };
-		DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ideal_bandpassing.h; sourceTree = "<group>"; };
 		DC64AB4119D260A400E16B66 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
-		DC64AB4319D260A400E16B66 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = files.cpp; sourceTree = "<group>"; };
-		DC64AB4419D260A400E16B66 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = files.h; sourceTree = "<group>"; };
 		DC64AB4519D260A400E16B66 /* finger_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finger_params.h; sourceTree = "<group>"; };
-		DC64AB4719D260A400E16B66 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = frames2signal.cpp; sourceTree = "<group>"; };
-		DC64AB4819D260A400E16B66 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frames2signal.h; sourceTree = "<group>"; };
-		DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hb_counter_autocorr.cpp; sourceTree = "<group>"; };
-		DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hb_counter_autocorr.h; sourceTree = "<group>"; };
-		DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hb_counter_pda.cpp; sourceTree = "<group>"; };
-		DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hb_counter_pda.h; sourceTree = "<group>"; };
-		DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_calculator.cpp; sourceTree = "<group>"; };
-		DC64AB4E19D260A400E16B66 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_calculator.h; sourceTree = "<group>"; };
-		DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_signal_calc.cpp; sourceTree = "<group>"; };
-		DC64AB5019D260A400E16B66 /* hr_signal_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_signal_calc.h; sourceTree = "<group>"; };
 		DC64AB5119D260A400E16B66 /* hr_structures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hr_structures.cpp; sourceTree = "<group>"; };
 		DC64AB5219D260A400E16B66 /* hr_structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hr_structures.h; sourceTree = "<group>"; };
-		DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = temporal_mean_calc.cpp; sourceTree = "<group>"; };
-		DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temporal_mean_calc.h; sourceTree = "<group>"; };
-		DC64AB5619D260A400E16B66 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
-		DC64AB5719D260A400E16B66 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
-		DC64AB5919D260A400E16B66 /* matlab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matlab.cpp; sourceTree = "<group>"; };
-		DC64AB5A19D260A400E16B66 /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matlab.h; sourceTree = "<group>"; };
-		DC64AB5C19D260A400E16B66 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
-		DC64AB5D19D260A400E16B66 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
 		DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_algorithms.cpp; sourceTree = "<group>"; };
 		DC64AB5F19D260A400E16B66 /* run_algorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_algorithms.h; sourceTree = "<group>"; };
 		DC64AB6019D260A400E16B66 /* globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
@@ -245,15 +158,12 @@
 		DC64AB8619D260B400E16B66 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../frameworks/opencv2.framework; sourceTree = "<group>"; };
 		DC64AC4719D2754800E16B66 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../frameworks/gtest.framework; sourceTree = "<group>"; };
 		DC64ACAA19D2857D00E16B66 /* libMIsfitHRDetectionPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMIsfitHRDetectionPC.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC64ACB419D2858A00E16B66 /* unittest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = unittest.mm; sourceTree = "<group>"; };
-		DC64ACB619D2858A00E16B66 /* unittest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = unittest.1; sourceTree = "<group>"; };
 		DC64AD5D19D2C6BE00E16B66 /* MIsfitHRDetection Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MIsfitHRDetection Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC64AD5F19D2C6BE00E16B66 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DC64AD6119D2C6BE00E16B66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DC64AD6319D2C6BE00E16B66 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		DC64AD6719D2C6BE00E16B66 /* MIsfitHRDetection Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MIsfitHRDetection Tests-Info.plist"; sourceTree = "<group>"; };
 		DC64AD6919D2C6BE00E16B66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DC64AD6B19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MIsfitHRDetection_Tests.mm; sourceTree = "<group>"; };
 		DC64AD6D19D2C6BE00E16B66 /* MIsfitHRDetection Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MIsfitHRDetection Tests-Prefix.pch"; sourceTree = "<group>"; };
 		DC64AD7419D2C71600E16B66 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DC64AD7619D2C72E00E16B66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -318,12 +228,26 @@
 		DC64ADE819D2CB3800E16B66 /* unique_stable_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unique_stable_test.out; sourceTree = "<group>"; };
 		DC64AE9219D3CF5D00E16B66 /* AbstractImageProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractImageProcessor.cpp; sourceTree = "<group>"; };
 		DC64AE9319D3CF5D00E16B66 /* AbstractImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractImageProcessor.h; sourceTree = "<group>"; };
-		DC64AE9519D3D17700E16B66 /* TemporalArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TemporalArray.cpp; sourceTree = "<group>"; };
-		DC64AE9619D3D17700E16B66 /* TemporalArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemporalArray.h; sourceTree = "<group>"; };
-		DC64AE9819D3D3AA00E16B66 /* AbstractHRCalculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractHRCalculator.cpp; sourceTree = "<group>"; };
-		DC64AE9919D3D3AA00E16B66 /* AbstractHRCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractHRCalculator.h; sourceTree = "<group>"; };
 		DC64AE9B19D3D5C100E16B66 /* CV2ImageProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CV2ImageProcessor.cpp; sourceTree = "<group>"; };
 		DC64AE9C19D3D5C100E16B66 /* CV2ImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CV2ImageProcessor.h; sourceTree = "<group>"; };
+		DCAED9FB19DAB890002B465B /* AbstractHRCounter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractHRCounter.cpp; sourceTree = "<group>"; };
+		DCAED9FC19DAB890002B465B /* AbstractHRCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractHRCounter.h; sourceTree = "<group>"; };
+		DCAED9FD19DAB890002B465B /* SelfCorrPeakHRCounter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelfCorrPeakHRCounter.cpp; sourceTree = "<group>"; };
+		DCAED9FE19DAB890002B465B /* SelfCorrPeakHRCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfCorrPeakHRCounter.h; sourceTree = "<group>"; };
+		DCAEDA1519DBAEEE002B465B /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = files.cpp; sourceTree = "<group>"; };
+		DCAEDA1619DBAEEE002B465B /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = files.h; sourceTree = "<group>"; };
+		DCAEDA1819DBAEEE002B465B /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
+		DCAEDA1919DBAEEE002B465B /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
+		DCAEDA1B19DBAEEE002B465B /* matlab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matlab.cpp; sourceTree = "<group>"; };
+		DCAEDA1C19DBAEEE002B465B /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matlab.h; sourceTree = "<group>"; };
+		DCAEDA1E19DBAEEE002B465B /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		DCAEDA1F19DBAEEE002B465B /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		DCAEDA2419DBB58C002B465B /* MIsitHRDetection_Tests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MIsitHRDetection_Tests.mm; sourceTree = "<group>"; };
+		DCAEDA2719DBB727002B465B /* EulerianMagnificationHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EulerianMagnificationHelper.cpp; sourceTree = "<group>"; };
+		DCAEDA2819DBB727002B465B /* EulerianMagnificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EulerianMagnificationHelper.h; sourceTree = "<group>"; };
+		DCAEDA2C19DBBEAB002B465B /* AbstractFrameToSignalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractFrameToSignalHelper.h; sourceTree = "<group>"; };
+		DCAEDA2E19DBBFC2002B465B /* FrameToSignalHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrameToSignalHelper.cpp; sourceTree = "<group>"; };
+		DCAEDA2F19DBBFC2002B465B /* FrameToSignalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameToSignalHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,7 +291,6 @@
 				DC64AB3719D260A400E16B66 /* algorithms */,
 				DC64AB6019D260A400E16B66 /* globals.cpp */,
 				DC64AB6119D260A400E16B66 /* globals.h */,
-				DC64ACB319D2858A00E16B66 /* unittest */,
 				DC64AD6519D2C6BE00E16B66 /* MIsfitHRDetection Tests */,
 				DC64AD5E19D2C6BE00E16B66 /* Frameworks */,
 				DC64AADC19D2604B00E16B66 /* Products */,
@@ -387,101 +310,30 @@
 		DC64AB3719D260A400E16B66 /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				DCAEDA1319DBAEEE002B465B /* Support */,
 				DC64AE9019D3CF3200E16B66 /* ImageProcessor */,
-				DC64AE9119D3CF3200E16B66 /* TemporalArray */,
+				DC64AB4619D260A400E16B66 /* HeartRateCal */,
 				DC64AB3819D260A400E16B66 /* config.cpp */,
 				DC64AB3919D260A400E16B66 /* config.h */,
-				DC64AB3A19D260A400E16B66 /* Eulerian */,
-				DC64AB4119D260A400E16B66 /* face_params.h */,
-				DC64AB4219D260A400E16B66 /* files */,
 				DC64AB4519D260A400E16B66 /* finger_params.h */,
-				DC64AB4619D260A400E16B66 /* HeartRateCal */,
-				DC64AB5519D260A400E16B66 /* image */,
-				DC64AB5819D260A400E16B66 /* math */,
-				DC64AB5B19D260A400E16B66 /* matrix */,
+				DC64AB4119D260A400E16B66 /* face_params.h */,
 				DC64AB5E19D260A400E16B66 /* run_algorithms.cpp */,
 				DC64AB5F19D260A400E16B66 /* run_algorithms.h */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
 		};
-		DC64AB3A19D260A400E16B66 /* Eulerian */ = {
-			isa = PBXGroup;
-			children = (
-				DC64AB3B19D260A400E16B66 /* build_Gdown_stack.cpp */,
-				DC64AB3C19D260A400E16B66 /* build_Gdown_stack.h */,
-				DC64AB3F19D260A400E16B66 /* ideal_bandpassing.cpp */,
-				DC64AB4019D260A400E16B66 /* ideal_bandpassing.h */,
-			);
-			path = Eulerian;
-			sourceTree = "<group>";
-		};
-		DC64AB4219D260A400E16B66 /* files */ = {
-			isa = PBXGroup;
-			children = (
-				DC64AB4319D260A400E16B66 /* files.cpp */,
-				DC64AB4419D260A400E16B66 /* files.h */,
-			);
-			path = files;
-			sourceTree = "<group>";
-		};
 		DC64AB4619D260A400E16B66 /* HeartRateCal */ = {
 			isa = PBXGroup;
 			children = (
-				DC64AB4719D260A400E16B66 /* frames2signal.cpp */,
-				DC64AB4819D260A400E16B66 /* frames2signal.h */,
-				DC64AB4919D260A400E16B66 /* hb_counter_autocorr.cpp */,
-				DC64AB4A19D260A400E16B66 /* hb_counter_autocorr.h */,
-				DC64AB4B19D260A400E16B66 /* hb_counter_pda.cpp */,
-				DC64AB4C19D260A400E16B66 /* hb_counter_pda.h */,
-				DC64AB4D19D260A400E16B66 /* hr_calculator.cpp */,
-				DC64AB4E19D260A400E16B66 /* hr_calculator.h */,
-				DC64AB4F19D260A400E16B66 /* hr_signal_calc.cpp */,
+				DCAED9FB19DAB890002B465B /* AbstractHRCounter.cpp */,
+				DCAED9FC19DAB890002B465B /* AbstractHRCounter.h */,
+				DCAED9FD19DAB890002B465B /* SelfCorrPeakHRCounter.cpp */,
+				DCAED9FE19DAB890002B465B /* SelfCorrPeakHRCounter.h */,
 				DC64AB5119D260A400E16B66 /* hr_structures.cpp */,
-				DC64AB5019D260A400E16B66 /* hr_signal_calc.h */,
 				DC64AB5219D260A400E16B66 /* hr_structures.h */,
-				DC64AB5319D260A400E16B66 /* temporal_mean_calc.cpp */,
-				DC64AB5419D260A400E16B66 /* temporal_mean_calc.h */,
-				DC64AE9819D3D3AA00E16B66 /* AbstractHRCalculator.cpp */,
-				DC64AE9919D3D3AA00E16B66 /* AbstractHRCalculator.h */,
 			);
 			path = HeartRateCal;
-			sourceTree = "<group>";
-		};
-		DC64AB5519D260A400E16B66 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				DC64AB5619D260A400E16B66 /* image.cpp */,
-				DC64AB5719D260A400E16B66 /* image.h */,
-			);
-			path = image;
-			sourceTree = "<group>";
-		};
-		DC64AB5819D260A400E16B66 /* math */ = {
-			isa = PBXGroup;
-			children = (
-				DC64AB5919D260A400E16B66 /* matlab.cpp */,
-				DC64AB5A19D260A400E16B66 /* matlab.h */,
-			);
-			path = math;
-			sourceTree = "<group>";
-		};
-		DC64AB5B19D260A400E16B66 /* matrix */ = {
-			isa = PBXGroup;
-			children = (
-				DC64AB5C19D260A400E16B66 /* matrix.cpp */,
-				DC64AB5D19D260A400E16B66 /* matrix.h */,
-			);
-			path = matrix;
-			sourceTree = "<group>";
-		};
-		DC64ACB319D2858A00E16B66 /* unittest */ = {
-			isa = PBXGroup;
-			children = (
-				DC64ACB419D2858A00E16B66 /* unittest.mm */,
-				DC64ACB619D2858A00E16B66 /* unittest.1 */,
-			);
-			path = unittest;
 			sourceTree = "<group>";
 		};
 		DC64AD5E19D2C6BE00E16B66 /* Frameworks */ = {
@@ -500,7 +352,7 @@
 		DC64AD6519D2C6BE00E16B66 /* MIsfitHRDetection Tests */ = {
 			isa = PBXGroup;
 			children = (
-				DC64AD6B19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm */,
+				DCAEDA2419DBB58C002B465B /* MIsitHRDetection_Tests.mm */,
 				DC64AD6619D2C6BE00E16B66 /* Supporting Files */,
 			);
 			path = "MIsfitHRDetection Tests";
@@ -585,6 +437,7 @@
 		DC64AE9019D3CF3200E16B66 /* ImageProcessor */ = {
 			isa = PBXGroup;
 			children = (
+				DCAEDA2619DBB714002B465B /* Helper */,
 				DC64AE9219D3CF5D00E16B66 /* AbstractImageProcessor.cpp */,
 				DC64AE9319D3CF5D00E16B66 /* AbstractImageProcessor.h */,
 				DC64AE9B19D3D5C100E16B66 /* CV2ImageProcessor.cpp */,
@@ -593,13 +446,63 @@
 			path = ImageProcessor;
 			sourceTree = "<group>";
 		};
-		DC64AE9119D3CF3200E16B66 /* TemporalArray */ = {
+		DCAEDA1319DBAEEE002B465B /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				DC64AE9519D3D17700E16B66 /* TemporalArray.cpp */,
-				DC64AE9619D3D17700E16B66 /* TemporalArray.h */,
+				DCAEDA1419DBAEEE002B465B /* files */,
+				DCAEDA1719DBAEEE002B465B /* image */,
+				DCAEDA1A19DBAEEE002B465B /* math */,
+				DCAEDA1D19DBAEEE002B465B /* matrix */,
 			);
-			path = TemporalArray;
+			path = Support;
+			sourceTree = "<group>";
+		};
+		DCAEDA1419DBAEEE002B465B /* files */ = {
+			isa = PBXGroup;
+			children = (
+				DCAEDA1519DBAEEE002B465B /* files.cpp */,
+				DCAEDA1619DBAEEE002B465B /* files.h */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
+		DCAEDA1719DBAEEE002B465B /* image */ = {
+			isa = PBXGroup;
+			children = (
+				DCAEDA1819DBAEEE002B465B /* image.cpp */,
+				DCAEDA1919DBAEEE002B465B /* image.h */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		DCAEDA1A19DBAEEE002B465B /* math */ = {
+			isa = PBXGroup;
+			children = (
+				DCAEDA1B19DBAEEE002B465B /* matlab.cpp */,
+				DCAEDA1C19DBAEEE002B465B /* matlab.h */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		DCAEDA1D19DBAEEE002B465B /* matrix */ = {
+			isa = PBXGroup;
+			children = (
+				DCAEDA1E19DBAEEE002B465B /* matrix.cpp */,
+				DCAEDA1F19DBAEEE002B465B /* matrix.h */,
+			);
+			path = matrix;
+			sourceTree = "<group>";
+		};
+		DCAEDA2619DBB714002B465B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				DCAEDA2719DBB727002B465B /* EulerianMagnificationHelper.cpp */,
+				DCAEDA2819DBB727002B465B /* EulerianMagnificationHelper.h */,
+				DCAEDA2C19DBBEAB002B465B /* AbstractFrameToSignalHelper.h */,
+				DCAEDA2E19DBBFC2002B465B /* FrameToSignalHelper.cpp */,
+				DCAEDA2F19DBBFC2002B465B /* FrameToSignalHelper.h */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -756,26 +659,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC64AB7419D260A400E16B66 /* hr_calculator.cpp in Sources */,
+				DCAEDA3219DBC126002B465B /* FrameToSignalHelper.cpp in Sources */,
+				DCAEDA2A19DBB9EF002B465B /* EulerianMagnificationHelper.cpp in Sources */,
 				DC64AB8219D260A400E16B66 /* run_algorithms.cpp in Sources */,
-				DC64AB7A19D260A400E16B66 /* temporal_mean_calc.cpp in Sources */,
 				DC64AB7819D260A400E16B66 /* hr_structures.cpp in Sources */,
-				DC64AE9719D3D17700E16B66 /* TemporalArray.cpp in Sources */,
-				DC64AB7219D260A400E16B66 /* hb_counter_pda.cpp in Sources */,
-				DC64AB7619D260A400E16B66 /* hr_signal_calc.cpp in Sources */,
-				DC64AB8019D260A400E16B66 /* matrix.cpp in Sources */,
+				DCAED9FF19DAB890002B465B /* AbstractHRCounter.cpp in Sources */,
+				DCAEDA2019DBAEEE002B465B /* files.cpp in Sources */,
+				DCAEDA0019DAB890002B465B /* SelfCorrPeakHRCounter.cpp in Sources */,
 				DC64AE9D19D3D5C100E16B66 /* CV2ImageProcessor.cpp in Sources */,
-				DC64AB7E19D260A400E16B66 /* matlab.cpp in Sources */,
 				DC64AB8419D260A400E16B66 /* globals.cpp in Sources */,
+				DCAEDA2219DBAEEE002B465B /* matlab.cpp in Sources */,
+				DCAEDA2319DBAEEE002B465B /* matrix.cpp in Sources */,
+				DCAEDA2119DBAEEE002B465B /* image.cpp in Sources */,
 				DC64AB6219D260A400E16B66 /* config.cpp in Sources */,
-				DC64AB6819D260A400E16B66 /* ideal_bandpassing.cpp in Sources */,
-				DC64AE9A19D3D3AA00E16B66 /* AbstractHRCalculator.cpp in Sources */,
-				DC64AB6419D260A400E16B66 /* build_Gdown_stack.cpp in Sources */,
-				DC64AB6E19D260A400E16B66 /* frames2signal.cpp in Sources */,
 				DC64AE9419D3CF5D00E16B66 /* AbstractImageProcessor.cpp in Sources */,
-				DC64AB7C19D260A400E16B66 /* image.cpp in Sources */,
-				DC64AB7019D260A400E16B66 /* hb_counter_autocorr.cpp in Sources */,
-				DC64AB6B19D260A400E16B66 /* files.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,18 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC64ACBD19D2875000E16B66 /* config.cpp in Sources */,
-				DC64ACBE19D2875000E16B66 /* build_Gdown_stack.cpp in Sources */,
-				DC64ACC019D2875000E16B66 /* ideal_bandpassing.cpp in Sources */,
-				DC64ACC119D2875000E16B66 /* files.cpp in Sources */,
-				DC64ACC219D2875000E16B66 /* frames2signal.cpp in Sources */,
-				DC64ACC319D2875000E16B66 /* hb_counter_autocorr.cpp in Sources */,
-				DC64ACC419D2875000E16B66 /* hb_counter_pda.cpp in Sources */,
-				DC64ACC519D2875000E16B66 /* hr_calculator.cpp in Sources */,
-				DC64ACC619D2875000E16B66 /* hr_signal_calc.cpp in Sources */,
 				DC64ACC719D2875000E16B66 /* hr_structures.cpp in Sources */,
-				DC64ACC819D2875000E16B66 /* temporal_mean_calc.cpp in Sources */,
-				DC64ACC919D2875000E16B66 /* image.cpp in Sources */,
-				DC64ACCA19D2875000E16B66 /* matlab.cpp in Sources */,
 				DC64ACCB19D2875000E16B66 /* run_algorithms.cpp in Sources */,
 				DC64ACCC19D2875000E16B66 /* globals.cpp in Sources */,
 			);
@@ -805,7 +691,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC64AD6C19D2C6BE00E16B66 /* MIsfitHRDetection_Tests.mm in Sources */,
+				DCAEDA2919DBB727002B465B /* EulerianMagnificationHelper.cpp in Sources */,
+				DCAEDA2519DBB58C002B465B /* MIsitHRDetection_Tests.mm in Sources */,
+				DCAEDA3019DBBFC2002B465B /* FrameToSignalHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

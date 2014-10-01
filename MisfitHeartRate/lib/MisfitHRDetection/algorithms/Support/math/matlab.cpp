@@ -57,6 +57,55 @@ namespace MHR {
         kernel.erase(kernel.begin() + m, kernel.end());
     }
 
+    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
+              vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
+    {
+    max_peak_strengths.clear();
+    max_peak_locs.clear();
+    
+    vector<pair<double,int>> peak_list;
+    
+    int nSegment = (int)segment.size();
+    for (int i = 1; i < nSegment - 1; ++i) {
+        if ((segment[i] - segment[i-1] > threshold) &&
+            (segment[i] - segment[i+1] >= threshold))
+            {
+            peak_list.push_back(pair<double,int> (-segment[i], i));
+            }
+    }
+    
+    if (peak_list.empty())
+        return;
+    
+        // Code to sort the peaks by position. The first & last peaks should be such that between
+        // the peaks and the start / end of the segment there must be no 'straight line'
+    int nPeaks = (int)peak_list.size();
+    int n = peak_list[nPeaks - 1].second;
+    double minValue = segment[n], maxValue = segment[n];
+    for (int i = n+1; i < nSegment; ++i) {
+        minValue = min(minValue, segment[i]);
+        maxValue = max(maxValue, segment[i]);
+    }
+    if (maxValue == minValue)
+        peak_list.pop_back();
+    
+    
+    sort(peak_list.begin(), peak_list.end());
+    for (int i = 0; i < nPeaks; ++i){
+        int pos=peak_list[i].second;
+        if(pos==-1) continue;
+        for (int j = 0; j < nPeaks; ++j)
+            if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
+                peak_list[j].second=-1;
+    }
+    
+    for (int i = 0; i < nPeaks; ++i)
+        if(peak_list[i].second!=-1){
+            max_peak_locs.push_back(peak_list[i].second);
+            max_peak_strengths.push_back(segment[peak_list[i].second]);
+        }
+    }
+
     
     vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
         set<int> mys;
