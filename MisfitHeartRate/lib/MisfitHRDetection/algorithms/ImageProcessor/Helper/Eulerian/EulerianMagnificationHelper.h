@@ -45,18 +45,7 @@ public:
      * Data type: CV_64FC3 or CV_64F
 	 */
 	void build_Gdown_Stack(vector<Mat> &vid, vector<Mat> &GDownStack, int startIndex, int endIndex, int level);
-    /**
-	 * Apply ideal band pass filter on \a src. \n
-     * \ref: http://en.wikipedia.org/wiki/Band-pass_filter
-     * \param src,dst:
-	 *  + the first dimension is the time axis \n
-	 *  + the second dimension is the y axis of the video's frames \n
-	 *  + the third dimension is the x axis of the video's frames \n
-	 *  + the forth dimension is the color channel \n
-	 * \param samplingRate sampling rate of \a src \n
-     * Data type: CV_64FC3 or CV_64F
-	 */
-    void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double samplingRate);
+   
 };
 
 #endif /* defined(__MIsfitHRDetection__EulerianMagnificationHelper__) */
