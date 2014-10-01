@@ -8,7 +8,7 @@
 
 #include "run_algorithms.h"
 #include "CV2ImageProcessor.h"
-
+#include "SelfCorrPeakHRCounter.h"
 
 namespace MHR {
     hrResult run_algorithms(const String &srcDir, const String &outDir, hrResult &currHrResult) {
@@ -18,7 +18,16 @@ namespace MHR {
         proc->setSrcDir(srcDir.c_str());
         proc->setDstDir(outDir.c_str());
         proc->readFrameInfo();
-        if (!MHR::_FACE_MODE) proc->setFingerParams();
+        if (!MHR::_FACE_MODE) {
+            hrCounter->setFingerParameter();
+            proc->setFingerParams();
+        }
+        else {
+            hrCounter->setFaceParameters();
+            proc->setFaceParams();
+        }
+        
+        
         int nFrames = proc->getNFrame();
 
         // Block 1: turn frames to signals

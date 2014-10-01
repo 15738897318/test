@@ -76,7 +76,6 @@ CV2ImageProcessor::CV2ImageProcessor() {
     vid.reserve(_framesBlock_size);
     eulerianVid.reserve(_framesBlock_size);
     _eHelper = new EulerianMagnificationHelper();
-    setFaceParams();
 };
 
 int CV2ImageProcessor::readFrameInfo() {

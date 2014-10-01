@@ -13,12 +13,6 @@
 
 using namespace MHR;
 
-double SelfCorrPeakHRCounter::_window_size_in_sec;
-double SelfCorrPeakHRCounter::_max_bpm;
-double SelfCorrPeakHRCounter::_overlap_ratio;
-double SelfCorrPeakHRCounter::_time_lag;
-int SelfCorrPeakHRCounter::_beatSignalFilterKernel_size;
-Mat SelfCorrPeakHRCounter::_beatSignalFilterKernel;
 
 void SelfCorrPeakHRCounter::setFaceParameters() {
     _window_size_in_sec = _face_window_size_in_sec;
@@ -27,6 +21,9 @@ void SelfCorrPeakHRCounter::setFaceParameters() {
     _time_lag = _face_time_lag;
     _beatSignalFilterKernel_size = _face_beatSignalFilterKernel_size;
     _beatSignalFilterKernel = _face_beatSignalFilterKernel.clone();
+    window_size = round(_window_size_in_sec * MHR::_frameRate);
+    firstSample = round(MHR::_frameRate * _time_lag);
+    threshold_fraction = 0;
 }
 
 void SelfCorrPeakHRCounter::setFingerParameter() {
@@ -36,12 +33,12 @@ void SelfCorrPeakHRCounter::setFingerParameter() {
     _time_lag = _finger_time_lag;
     _beatSignalFilterKernel_size = _finger_beatSignalFilterKernel_size;
     _beatSignalFilterKernel = _finger_beatSignalFilterKernel.clone();
-}
-
-SelfCorrPeakHRCounter::SelfCorrPeakHRCounter() {
     window_size = round(_window_size_in_sec * MHR::_frameRate);
     firstSample = round(MHR::_frameRate * _time_lag);
     threshold_fraction = 0;
+}
+
+SelfCorrPeakHRCounter::SelfCorrPeakHRCounter() {
 }
 
 void SelfCorrPeakHRCounter::low_pass_filter(vector<double> &temporal_mean) {

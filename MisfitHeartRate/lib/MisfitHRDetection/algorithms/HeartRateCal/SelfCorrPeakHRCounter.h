@@ -15,13 +15,13 @@
 
 class SelfCorrPeakHRCounter: public AbstractHRCounter {
 private:
-    static double _time_lag;              // seconds
-    static double _max_bpm;             // BPM
-    static double _window_size_in_sec;
-    static double _overlap_ratio;
+    double _time_lag;              // seconds
+    double _max_bpm;             // BPM
+    double _window_size_in_sec;
+    double _overlap_ratio;
     
-    static int _beatSignalFilterKernel_size;
-    static Mat _beatSignalFilterKernel;
+    int _beatSignalFilterKernel_size;
+    Mat _beatSignalFilterKernel;
     
     int window_size;
     int firstSample;
@@ -63,8 +63,8 @@ private:
 public:
     SelfCorrPeakHRCounter();
     ~SelfCorrPeakHRCounter();
-    static void setFaceParameters();
-    static void setFingerParameter();
+    void setFaceParameters();
+    void setFingerParameter();
     MHR::hrResult getHR(vector<double> &temporal_mean);
 #ifdef DEBUG
     const vector<double> &getTemporalMeanFilt() {

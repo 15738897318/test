@@ -7,6 +7,8 @@
 //
 
 #include "config.h"
+#include "face_params.h"
+#include "finger_params.h"
 
 namespace MHR {
     int _DEBUG_MODE = 0;

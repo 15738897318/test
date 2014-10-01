@@ -11,6 +11,8 @@
 
 #include <iostream>
 #include "config.h"
+#include "face_params.h"
+#include "finger_params.h"
 
 class AbstractFrameToSignalHelper{
     double _cutoff_freq;

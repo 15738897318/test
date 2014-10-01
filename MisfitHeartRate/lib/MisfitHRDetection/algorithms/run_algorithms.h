@@ -9,8 +9,8 @@
 #ifndef __MisfitHeartRate__run_algorithms__
 #define __MisfitHeartRate__run_algorithms__
 
-#include "SelfCorrPeakHRCounter.h"
 #include "globals.h"
+#include "config.h"
 
 using namespace cv;
 using namespace std;
