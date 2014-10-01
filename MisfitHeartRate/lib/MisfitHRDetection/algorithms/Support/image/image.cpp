@@ -15,14 +15,11 @@ namespace MHR {
 		int nCol = rgbmap.cols;
         int nChannel = rgbmap.channels();
         
-        Mat rgb_sumchannels = Mat::zeros(nRow, nCol, CV_64F);
-        Mat rgb_channel[3] = {Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F), Mat::zeros(nRow, nCol, CV_64F)};
-        for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-                for (int channel = 0; channel < nChannel; ++channel) {
-                    rgb_sumchannels.at<double>(i, j) += rgbmap.at<Vec3d>(i, j)[channel];
-                    rgb_channel[channel].at<double>(i, j) = rgbmap.at<Vec3d>(i, j)[channel];
-                }
+        Mat rgb_sumchannels;
+    Mat rgb_channel[3];
+    split(rgbmap,rgb_channel);
+    rgb_sumchannels = rgb_channel[0] + rgb_channel[1] + rgb_channel[2];
+                
 
 //        r_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 1), sum(rgbmap, 3)), 1/3);
 //        r_primes(isnan(r_primes)) = -1/3;
@@ -84,8 +81,7 @@ namespace MHR {
 				dst.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
 			}
 	}
-
-
+    
     void blurDnClr(const Mat& src, Mat &dst, int level) {
         dst = src.clone();
         for (int i = 0; i < level; ++i) {
@@ -119,6 +115,7 @@ namespace MHR {
         int nTime = (int)src.size();
         int nRow = src[0].rows;
         int nCol = src[0].cols;
+
         
             // copy and convert data from src to dst (CV_32FC(nChannels))
         Mat tmp;
@@ -179,5 +176,4 @@ namespace MHR {
             else
                 dst[i].convertTo(dst[i], CV_64F);
     }
-
 }
