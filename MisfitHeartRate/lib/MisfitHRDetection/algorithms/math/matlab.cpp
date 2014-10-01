@@ -20,57 +20,44 @@ namespace MHR {
         return sum/double(n);
     }
 
-
-    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
-                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs)
-    {
-        max_peak_strengths.clear();
-        max_peak_locs.clear();
+    void corr_linear(vector<double> &signal, vector<double> &kernel, vector<double> &result, bool subtractMean ) {
+        int m = (int)signal.size(), n = (int)kernel.size();
         
-        vector<pair<double,int>> peak_list;
+            // -meanValue
+        if (subtractMean) {
+            double meanValue = mean(signal);
+            for (int i = 0; i < m; ++i) signal[i] -= meanValue;
+            meanValue = mean(kernel);
+            for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
+        }
         
-        int nSegment = (int)segment.size();
-        for (int i = 1; i < nSegment - 1; ++i) {
-            if ((segment[i] - segment[i-1] > threshold) &&
-                (segment[i] - segment[i+1] >= threshold))
+            // padding of zeors
+        for(int i = m; i < m+n-1; i++) signal.push_back(0);
+        for(int i = n; i < m+n-1; i++) kernel.push_back(0);
+        
+        
+        for(int i = 0; i < m+n-1; i++)
             {
-                peak_list.push_back(pair<double,int> (-segment[i], i));
+            result.push_back(0);
+            for(int j = 0; j <= i; j++)
+                result[i] += signal[j]*kernel[i-j];
             }
+        
+        for (int i = 0; i < n-1; ++i)
+            result.pop_back();
+        
+        if (subtractMean) {
+            double minValue = *min_element(result.begin(), result.end());
+            if (minValue < 0)
+                for (int i = 0, sz = (int)result.size(); i < sz; ++i)
+                    result[i] -= minValue;
         }
         
-        if (peak_list.empty())
-            return;
-        
-        // Code to sort the peaks by position. The first & last peaks should be such that between
-        // the peaks and the start / end of the segment there must be no 'straight line'
-        int nPeaks = (int)peak_list.size();
-        int n = peak_list[nPeaks - 1].second;
-        double minValue = segment[n], maxValue = segment[n];
-        for (int i = n+1; i < nSegment; ++i) {
-            minValue = min(minValue, segment[i]);
-            maxValue = max(maxValue, segment[i]);
-        }
-        if (maxValue == minValue)
-            peak_list.pop_back();
-        
-
-        sort(peak_list.begin(), peak_list.end());
-        for (int i = 0; i < nPeaks; ++i){
-            int pos=peak_list[i].second;
-            if(pos==-1) continue;
-            for (int j = 0; j < nPeaks; ++j)
-                if(j!=i && peak_list[j].second!=-1 && abs(peak_list[j].second-pos) <= minPeakDistance)
-                    peak_list[j].second=-1;
-        }
-        
-        for (int i = 0; i < nPeaks; ++i)
-            if(peak_list[i].second!=-1){
-                max_peak_locs.push_back(peak_list[i].second);
-                max_peak_strengths.push_back(segment[peak_list[i].second]);
-            }
+        signal.erase(signal.begin() + m, signal.end());
+        kernel.erase(kernel.begin() + m, kernel.end());
     }
 
-
+    
     vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr) {
         set<int> mys;
         
@@ -82,45 +69,6 @@ namespace MHR {
         }
         return res;
     }
-
-    
-    vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean) {
-        int m = (int)signal.size(), n = (int)kernel.size();
-        
-        // -meanValue
-        if (subtractMean) {
-            double meanValue = mean(signal);
-            for (int i = 0; i < m; ++i) signal[i] -= meanValue;
-            meanValue = mean(kernel);
-            for (int i = 0; i < n; ++i) kernel[i] -= meanValue;
-        }
-
-        // padding of zeors
-        for(int i = m; i < m+n-1; i++) signal.push_back(0);
-        for(int i = n; i < m+n-1; i++) kernel.push_back(0);
-        
-        /* convolution operation */
-        vector<double> ans;
-        for(int i = 0; i < m+n-1; i++)
-        {
-            ans.push_back(0);
-            for(int j = 0; j <= i; j++)
-                ans[i] += signal[j]*kernel[i-j];
-        }
-        
-        for (int i = 0; i < n-1; ++i)
-            ans.pop_back();
-        
-        if (subtractMean) {
-            double minValue = *min_element(ans.begin(), ans.end());
-            if (minValue < 0)
-                for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
-                    ans[i] -= minValue;
-        }
-        
-        return ans;
-    }
-
 
     void hist(const vector<double> &arr, int nbins, vector<int> &counts, vector<double> &centers) {
         if (&arr == &centers) {

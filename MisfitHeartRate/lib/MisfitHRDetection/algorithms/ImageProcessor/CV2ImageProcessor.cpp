@@ -32,6 +32,7 @@ void CV2ImageProcessor::setFaceParams() {
     _colourspace = new char[_face_colourspace.length() + 1];
     strcpy(_colourspace, _face_colourspace.c_str());
     _channels_to_process = _face_channels_to_process;
+    _cutoff_freq = MHR::_face_cutoff_freq;
     
     _frames2signalConversionMethod = new char[_face_frames2signalConversionMethod.length()];
     strcpy(_frames2signalConversionMethod,_face_frames2signalConversionMethod.c_str());
@@ -67,6 +68,7 @@ void CV2ImageProcessor::setFingerParams()
     
     _colourspace = new char[_finger_colourspace.length()];
     strcpy(_colourspace, _finger_colourspace.c_str());
+    _cutoff_freq = MHR::_finger_cutoff_freq;
     _channels_to_process = _finger_channels_to_process;
 
     _frames2signalConversionMethod = new char[_finger_frames2signalConversionMethod.length()];

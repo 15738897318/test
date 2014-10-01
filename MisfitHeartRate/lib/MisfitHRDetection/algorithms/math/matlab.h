@@ -22,28 +22,6 @@ namespace MHR {
      */
     double mean(const vector<double> &a);
 
-
-    //!
-    //! findpeaks in \a segment, with \a minPeakDistance and \a threshold,\n
-    //! complexity O(n^2) with n = number of peaks
-    //! \param segment a vector of signals
-    //! \param minPeakDistance minimum distance between two peaks
-    //! \param threshold the minimum value that a peak point should be larger than its two neighbors point
-    //! \return \a max_peak_strengths
-    //! \return \a max_peak_locs
-    //!
-    void findpeaks(const vector<double> &segment, double minPeakDistance, double threshold,
-                   vector<double> &max_peak_strengths, vector<int> &max_peak_locs);
-
-
-    /*!
-     remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.\n
-     all identical item will be removed just left the first appearing value.\n
-     the order will be reserve.
-    */
-    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
-
-
     /*!
      * \ref: http://www.cs.cornell.edu/courses/CS1114/2013sp/sections/S06_convolution.pdf
      * \return 1D convolution operation of 2 vectors signal and kernel
@@ -51,7 +29,14 @@ namespace MHR {
      * each elements of the signal vector will be subtracted by mean(\a signal),
      * and each elements of the kernel vector will be subtracted by mean(\a kernel).
      */
-    vector<double> corr_linear(vector<double> signal, vector<double> kernel, bool subtractMean = true);
+    void corr_linear(std::vector<double> &signal, std::vector<double> &kernel, std::vector<double> &result, bool subtractMean = true);
+
+    /*!
+     remove all identical item in the arr, two items are equal if the second value (type int) of them are equal.\n
+     all identical item will be removed just left the first appearing value.\n
+     the order will be reserve.
+    */
+    vector<pair<double,int>> unique_stable(const vector<pair<double,int>> &arr);
 
     
     //!

@@ -34,20 +34,12 @@ namespace MHR {
     
     /*--------------for run_hr()--------------*/
     extern int _frameRate;      // BPM
-    extern double _cutoff_freq;         // Hz
     extern int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
     extern int _number_of_bins_heartRate;
     
     // heartRate_calc: Native params of the algorithm
     extern int _flagDebug;
     extern int _flagGetRaw;
-    
-    extern double _peakStrengthThreshold_fraction;
-    
-    
-    /*--------------for matlab functions--------------*/
-    
-    
     
     /*--------------change params functions--------------*/
     void setFaceParams();

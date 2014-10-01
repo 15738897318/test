@@ -10,7 +10,7 @@
 #define __Pulsar__globals__
 
 #include <iostream>
-#include "hr_signal_calc.h"
+#include "hr_structures.h"
 
 extern MHR::hrResult hrGlobalResult;
 extern MHR::hrResult hrOldGlobalResult;

@@ -38,6 +38,7 @@ class CV2ImageProcessor: public AbstractImageProcessor {
     
     /*--------------for run_hr()--------------*/
     char *_colourspace;
+    double _cutoff_freq;
     int _channels_to_process;     // If only 1 channel: 1 for tsl, 0 for rgb
     
     int _frame_downsampling_filt_rows;

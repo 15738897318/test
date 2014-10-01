@@ -913,26 +913,26 @@ String resourcePath = "get simulator's resource path in setUp() function";
 }
 
 
-- (void)test_hr_signal_calc
-{
-    FILE *file = fopen(String(resourcePath + "hr_signal_calc_test.in").c_str(), "r");
-    int n = readInt(file);
-    vector<double> temporal_mean;
-    for (int i = 0; i < n; ++i)
-        temporal_mean.push_back(readDouble(file));
-    int firstSample = readInt(file);
-    int window_size = readInt(file);
-    double frameRate = readDouble(file);
-    double overlap_ratio = readDouble(file);
-    double max_bpm = readDouble(file);
-    double threshold_fraction = readDouble(file);
-    fclose(file);
-    
-    hrResult output = hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
-                                     overlap_ratio, max_bpm, threshold_fraction);
-    
-    printf("avg_hr_autocorr = %lf, avg_hr_pda = %lf\n", output.autocorr, output.pda);
-    
+//- (void)test_hr_signal_calc
+//{
+//    FILE *file = fopen(String(resourcePath + "hr_signal_calc_test.in").c_str(), "r");
+//    int n = readInt(file);
+//    vector<double> temporal_mean;
+//    for (int i = 0; i < n; ++i)
+//        temporal_mean.push_back(readDouble(file));
+//    int firstSample = readInt(file);
+//    int window_size = readInt(file);
+//    double frameRate = readDouble(file);
+//    double overlap_ratio = readDouble(file);
+//    double max_bpm = readDouble(file);
+//    double threshold_fraction = readDouble(file);
+//    fclose(file);
+//    
+//    hrResult output = hr_signal_calc(temporal_mean, firstSample, window_size, frameRate,
+//                                     overlap_ratio, max_bpm, threshold_fraction);
+//    
+//    printf("avg_hr_autocorr = %lf, avg_hr_pda = %lf\n", output.autocorr, output.pda);
+
 //    file = fopen(String(resourcePath + "hr_signal_calc_test.out").c_str(), "r");
 //    double max_percent = 0, max_correct_ans = 0, max_ans = 0;
 //    for (int i = 0; i < 2; ++i)

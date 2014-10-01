@@ -31,16 +31,12 @@ namespace MHR {
     int _frameRate = 30;
     
     /*--------------for run_hr()--------------*/
-    double _cutoff_freq = -1;         // Hz
-    int _channels_to_process = -1;     // If only 1 channel: 1 for tsl, 0 for rgb
     int _number_of_bins_heartRate = -1;
     
     // heartRate_calc: Native params of the algorithm
     int _flagDebug = -1;
     int _flagGetRaw = -1;
-    
-    
-    double _peakStrengthThreshold_fraction = -1;
+
     
     
     /*--------------change params functions--------------*/
@@ -50,14 +46,10 @@ namespace MHR {
         if (_DEBUG_MODE) printf("setFaceParams()\n");
         _FACE_MODE = true;
 
-        _cutoff_freq = _face_cutoff_freq;
-        _channels_to_process = _face_channels_to_process;
         _number_of_bins_heartRate = _face_number_of_bins_heartRate;
         
         _flagDebug = _face_flagDebug;
         _flagGetRaw = _face_flagGetRaw;
-        
-        _peakStrengthThreshold_fraction = _face_peakStrengthThreshold_fraction;
     
     }
 
@@ -67,13 +59,10 @@ namespace MHR {
         if (_DEBUG_MODE) printf("setFingerParams()\n");
         _FACE_MODE = false;
 
-        _cutoff_freq = _finger_cutoff_freq;
-        _channels_to_process = _finger_channels_to_process;
         _number_of_bins_heartRate = _finger_number_of_bins_heartRate;
         
         _flagDebug = _finger_flagDebug;
         _flagGetRaw = _finger_flagGetRaw;
         
-        _peakStrengthThreshold_fraction = _finger_peakStrengthThreshold_fraction;
     }
 };
