@@ -10,6 +10,10 @@
 
 
 namespace MHR {
+        /* 
+         Reimplement atan following this
+         http://www.embedded.com/design/other/4216719/Performing-efficient-arctangent-approximation
+         */
 	Mat atan2Mat(const Mat &a, const Mat &b)
 	{
 		int nRow = a.rows, nCol = b.cols;

@@ -98,6 +98,7 @@ void CV2ImageProcessor::readFrames() {
     eulerianVid.clear();
     Mat frame;
     char *fileName = new char[strlen(srcDir) + 30];
+    Mat rgb_channels[3];
     for (int i = 0; i < _framesBlock_size; ++i) {
         ++currentFrame;
         sprintf(fileName,"%s/input_frame[%d].png",srcDir,currentFrame);
@@ -105,13 +106,13 @@ void CV2ImageProcessor::readFrames() {
         frame = imread(fileName);
             //skip if read image fail
         if (frame.data == NULL) {
-            vid.push_back(frame.clone());
+            vid.emplace_back(frame.clone());
             continue;
         }
         cvtColor(frame, frame, CV_BGR2RGB);
         
         if (_THREE_CHAN_MODE)
-            vid.push_back(frame.clone());
+            vid.emplace_back(frame.clone());
         else {
                 // if using 1-chan mode, then do the colour conversion here
             frame.convertTo(frame, CV_64FC3);
@@ -123,11 +124,9 @@ void CV2ImageProcessor::readFrames() {
                 rgb2tsl(frame, frame);
             
                 // extracts 1 channel only from the frame
+            split(frame, rgb_channels);
             Mat tmp = Mat::zeros(frame.rows, frame.cols, CV_64F);
-            for (int i = 0; i < frame.rows; ++i)
-                for (int j = 0; j < frame.cols; ++j)
-                    tmp.at<double>(i, j) = frame.at<Vec3d>(i, j)[_channels_to_process];
-            vid.push_back(tmp.clone());
+            vid.emplace_back(rgb_channels[_channels_to_process].clone());
         }
 
         if (currentFrame >= nFrames - 1) break;
@@ -173,7 +172,7 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
             corrDn(monoframe, tmp_monoframe, filt, 4, 4);
 			
 				// Put the frame into the video stream
-            monoframes.push_back(tmp_monoframe.clone());
+            monoframes.emplace_back(tmp_monoframe.clone());
         }
     }
     else {
@@ -184,7 +183,7 @@ void CV2ImageProcessor::temporal_mean_calc(vector<double> &temp) {
             corrDn(frame, tmp_monoframe, filt, 4, 4);
 			
 				// Put the frame into the video stream
-            monoframes.push_back(tmp_monoframe.clone());
+            monoframes.emplace_back(tmp_monoframe.clone());
         }
     }
     

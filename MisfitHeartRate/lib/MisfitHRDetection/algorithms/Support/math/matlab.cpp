@@ -33,13 +33,13 @@ namespace MHR {
         }
         
             // padding of zeors
-        for(int i = m; i < m+n-1; i++) signal.push_back(0);
-        for(int i = n; i < m+n-1; i++) kernel.push_back(0);
+        for(int i = m; i < m+n-1; i++) signal.emplace_back(0);
+        for(int i = n; i < m+n-1; i++) kernel.emplace_back(0);
         
         
         for(int i = 0; i < m+n-1; i++)
             {
-            result.push_back(0);
+            result.emplace_back(0);
             for(int j = 0; j <= i; j++)
                 result[i] += signal[j]*kernel[i-j];
             }
@@ -71,7 +71,7 @@ namespace MHR {
         if ((segment[i] - segment[i-1] > threshold) &&
             (segment[i] - segment[i+1] >= threshold))
             {
-            peak_list.push_back(pair<double,int> (-segment[i], i));
+            peak_list.emplace_back(pair<double,int> (-segment[i], i));
             }
     }
     
@@ -102,8 +102,8 @@ namespace MHR {
     
     for (int i = 0; i < nPeaks; ++i)
         if(peak_list[i].second!=-1){
-            max_peak_locs.push_back(peak_list[i].second);
-            max_peak_strengths.push_back(segment[peak_list[i].second]);
+            max_peak_locs.emplace_back(peak_list[i].second);
+            max_peak_strengths.emplace_back(segment[peak_list[i].second]);
         }
     }
 
@@ -114,7 +114,7 @@ namespace MHR {
         vector<pair<double,int>> res;
         for(int i=0; i<(int) arr.size(); ++i){
             if(mys.count(arr[i].second)>0) continue;
-            res.push_back(arr[i]);
+            res.emplace_back(arr[i]);
             mys.insert(arr[i].second);
         }
         return res;
@@ -194,7 +194,7 @@ namespace MHR {
         Mat kernel = getGaussianKernel(length, sigma, CV_64F);
         for (int i = 0; i < kernel.size.p[0]; ++i)
             for (int j = 0; j < kernel.size.p[1]; ++j)
-                ans.push_back(kernel.at<double>(i, j));
+                ans.emplace_back(kernel.at<double>(i, j));
         double max_value = *max_element(ans.begin(), ans.end());
         for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
             ans[i] /= max_value;

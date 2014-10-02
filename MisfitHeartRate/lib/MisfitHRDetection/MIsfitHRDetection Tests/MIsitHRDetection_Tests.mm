@@ -156,7 +156,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     Mat src2 = read2DMatFromFile(file, nRow, nCol);
     fclose(file);
     
-    Mat output = add(src1, src2);
+    Mat output = src1 + src2;
     
     file = fopen(String(resourcePath + "add_test.out").c_str(), "r");
     for (int i = 0; i < nRow; ++i)
@@ -281,7 +281,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     int n = readInt(file);
     vector<pair<double,int> > arr;
     for (int i = 0; i < n; ++i) {
-        arr.push_back(make_pair<double, int>(0.0, 0));
+        arr.emplace_back(make_pair<double, int>(0.0, 0));
         arr[i].first = readDouble(file);
         arr[i].second = readInt(file);
     }
@@ -581,7 +581,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     Mat tmp = Mat::zeros(nRow, nCol, CV_64F);
     vector<Mat> monoframes;
     for (int i = 0; i < nFrame; ++i)
-        monoframes.push_back(tmp.clone());
+        monoframes.emplace_back(tmp.clone());
     for (int i = 0; i < nFrame; ++i)
         for (int row = 0; row < nRow; ++row)
             for (int col = 0; col < nCol; ++col)
@@ -597,7 +597,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
         //    vector<double> kernel;
         //    for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
         //        for (int j = 0; j < _beatSignalFilterKernel.size.p[1]; ++j)
-        //            kernel.push_back(_beatSignalFilterKernel.at<double>(i, j));
+        //            kernel.emplace_back(_beatSignalFilterKernel.at<double>(i, j));
         //    output = corr_linear(output, kernel);
     
     hrCounter.low_pass_filter(output);
@@ -637,7 +637,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     vector<Mat> input;
     Mat tmp = Mat::zeros(nRow, nCol, CV_64FC3);
     for (int i = 0; i < nTime; ++i)
-        input.push_back(tmp.clone());
+        input.emplace_back(tmp.clone());
     for (int channel = 0; channel < 3; ++channel)
         for (int col = 0; col < nCol; ++col)
             for (int t = 0; t < nTime; ++t)
@@ -696,7 +696,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     int n = readInt(file);
     vector<int> heartBeatPositions;
     for (int i = 0; i < n; ++i)
-        heartBeatPositions.push_back(readInt(file));
+        heartBeatPositions.emplace_back(readInt(file));
     fclose(file);
     SelfCorrPeakHRCounter hrCounter;
     hrCounter.setFaceParameters();
@@ -731,7 +731,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     int n = readInt(file);
     for (int i = 0; i < n; ++i) {
         double x = readDouble(file);
-        hrCounter.filtered_temporal_mean.push_back(x);
+        hrCounter.filtered_temporal_mean.emplace_back(x);
     }
     double frameRate = readDouble(file);
     hrCounter.firstSample = readInt(file);
@@ -816,7 +816,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     hrCounter.setFaceParameters();
     vector<double> temporal_mean;
     for (int i = 0; i < n; ++i)
-        hrCounter.filtered_temporal_mean.push_back(input[i]);
+        hrCounter.filtered_temporal_mean.emplace_back(input[i]);
 
     hrCounter.firstSample = 90;
     hrCounter.window_size = 200;
@@ -844,7 +844,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
         //    vector<double> temporal_mean;
         //    for (int i = 0; i < n; ++i) {
         //        double x = readDouble(file);
-        //        temporal_mean.push_back(x);
+        //        temporal_mean.emplace_back(x);
         //    }
         //    double frameRate = readDouble(file);
         //    int firstSample = readInt(file);
@@ -939,7 +939,7 @@ String resourcePath = "get simulator's resource path in setUp() function";
     int n = readInt(file);
     vector<double> temporal_mean;
     for (int i = 0; i < n; ++i)
-        temporal_mean.push_back(readDouble(file));
+        temporal_mean.emplace_back(readDouble(file));
     hrCounter.firstSample = readInt(file);
     hrCounter.window_size = readInt(file);
     double frameRate = readDouble(file);

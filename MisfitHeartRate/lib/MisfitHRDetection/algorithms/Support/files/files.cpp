@@ -42,7 +42,7 @@ namespace MHR {
         double value;
         for (int i = 0; i < n; ++i) {
             fscanf(file, "%lf", &value);
-            ans.push_back(value);
+            ans.emplace_back(value);
         }
         return ans;
     }

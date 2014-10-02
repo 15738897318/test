@@ -129,7 +129,7 @@ void EulerianMagnificationHelper::eulerianGaussianPyramidMagnification(vector<Ma
             filtered = filtered + frame;
             
             filtered = max(min(filtered, 255.0), 0.0);
-            eulerianVid.push_back(filtered.clone());
+            eulerianVid.emplace_back(filtered.clone());
         }
 }
 
@@ -150,7 +150,7 @@ void EulerianMagnificationHelper::build_Gdown_Stack(vector<Mat> &vid, vector<Mat
         // Note that this stack is actually just a SINGLE level of the pyramid
         // The first frame in the stack is saved
     GDownStack.clear();
-    GDownStack.push_back(blurred.clone());
+    GDownStack.emplace_back(blurred.clone());
     
     for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k) {
             // Create a frame from the ith array in the stream
@@ -164,6 +164,6 @@ void EulerianMagnificationHelper::build_Gdown_Stack(vector<Mat> &vid, vector<Mat
         
             // The kth element in the stack is saved
             // Note that this stack is actually just a SINGLE level of the pyramid
-        GDownStack.push_back(blurred.clone());
+        GDownStack.emplace_back(blurred.clone());
     }
 }

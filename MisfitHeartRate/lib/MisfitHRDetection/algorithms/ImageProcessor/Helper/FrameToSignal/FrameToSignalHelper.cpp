@@ -20,7 +20,7 @@ void SimpleMeanFrameToSignalHelper::convert(std::vector<Mat> &eulerianVid, std::
         for(int x=0; x<height; ++x)
             for(int y=0; y<width; ++y)
                 sum+=eulerianVid[i].at<double>(x,y);
-        sig.push_back(sum/size);
+        sig.emplace_back(sum/size);
     }
 }
 
@@ -45,7 +45,7 @@ void TrimmedMeanFrameToSignalHelper::convert(std::vector<Mat> &eulerianVid, std:
         for(int x=_trimmed_size; x<height-_trimmed_size; ++x)
             for(int y=_trimmed_size; y<width-_trimmed_size; ++y)
                 sum+=eulerianVid[i].at<double>(x,y);
-        sig.push_back(sum/size);
+        sig.emplace_back(sum/size);
     }
 }
 
@@ -85,7 +85,7 @@ void BalancedModeFrameToSignalHelper::convert(std::vector<Mat> &eulerianVid, std
         for(int i = first_training_frames_start; i <= first_training_frames_end; ++i)
             for(int y=0; y<width; ++y)
                 for(int x=0; x<height; ++x)
-                    arr.push_back(eulerianVid[i].at<double>(x,y));
+                    arr.emplace_back(eulerianVid[i].at<double>(x,y));
         
             //find the mode
         vector<double> centres;
@@ -130,9 +130,9 @@ void BalancedModeFrameToSignalHelper::convert(std::vector<Mat> &eulerianVid, std
             }
         
         if(cnt==0) //push NaN for all-NaN-frames
-            sig.push_back(MHR::NaN);
+            sig.emplace_back(MHR::NaN);
         else
-            sig.push_back(sum/cnt);
+            sig.emplace_back(sum/cnt);
     }
     
 }

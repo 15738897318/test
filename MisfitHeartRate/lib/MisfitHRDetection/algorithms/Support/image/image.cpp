@@ -13,7 +13,6 @@ namespace MHR {
 	{
 		int nRow = rgbmap.rows;
 		int nCol = rgbmap.cols;
-        int nChannel = rgbmap.channels();
         
         Mat rgb_sumchannels;
     Mat rgb_channel[3];
@@ -25,13 +24,13 @@ namespace MHR {
 //        r_primes(isnan(r_primes)) = -1/3;
 		Mat r_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(rgb_channel[0], rgb_sumchannels, r_primes);
-		r_primes = r_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
+		r_primes = r_primes - 1.0/3.0;
         
 //        g_primes = bsxfun(@minus, bsxfun(@rdivide, rgbmap(:, :, 2), sum(rgbmap, 3)), 1/3);
 //        g_primes(isnan(g_primes)) = -1/3;
 		Mat g_primes = Mat::zeros(nRow, nCol, CV_64F);
 		divide(rgb_channel[1], rgb_sumchannels, g_primes);
-		g_primes = g_primes - Mat(nRow, nCol, CV_64F, cvScalar(1.0/3.0));
+		g_primes = g_primes - 1.0/3.0;
         
 //        temp1 = zeros(size(g_primes));
 //        temp1(bsxfun(@gt, g_primes, 0)) = 1/4;
@@ -39,47 +38,30 @@ namespace MHR {
 //        temp2 = ones(size(g_primes));
 //        temp2(bsxfun(@eq, g_primes, 0)) = 0;
 		Mat temp1 = Mat::zeros(nRow, nCol, CV_64F);
-		Mat temp2 = Mat::ones(nRow, nCol, CV_64F);
-		for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-				if (g_primes.at<double>(i, j) > 0)
-				{
-					temp1.at<double>(i, j) = 1.0/4.0;
-				}
-				else if (g_primes.at<double>(i, j) < 0)
-				{
-					temp1.at<double>(i, j) = 3.0/4.0;
-				}
-				else
-				{
-					temp2.at<double>(i, j) = 0;
-				}
+		Mat temp2 = Mat::zeros(nRow, nCol, CV_64F);
+    Mat index = (g_primes > 0)/255;
+    Mat doubleIndex;
+    index.convertTo(doubleIndex, CV_64F);
+    temp1 = temp1 + (1.0/(4.0)) * doubleIndex;
+    temp2 = temp2 + doubleIndex;
+    index = g_primes < 0;
+    temp1 = temp1 + (3.0/(4.0)) * doubleIndex ;
+    temp2 = temp2 + doubleIndex;
         
-
-        dst = Mat::zeros(nRow, nCol, CV_64FC3);
 //        tslmap(:, :, 1) = 1 / (2 * pi) * bsxfun(@atan2, r_primes, g_primes) .* temp2 + temp1;
-		Mat tmp0 = atan2Mat(r_primes, g_primes);
-		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
-		multiply(tmp0, temp2, tmp0);
-		tmp0 = tmp0 + temp1;
+    Mat tmp[3];
+		tmp[0] = atan2Mat(r_primes, g_primes);
+    tmp[0] = (1.0/(2*M_PI)) * tmp[0];
+		multiply(tmp[0], temp2, tmp[0]);
+		tmp[0] = tmp[0] + temp1;
         
 //        tslmap(:, :, 2) = bsxfun(@power, (9/5 * (r_primes.^2 + g_primes.^2)), 1/2);
-		Mat tmp1 = powMat(r_primes, 2);
-		tmp1 = tmp1 + powMat(g_primes, 2);
-		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
-		pow(tmp1, 0.5, tmp1);
+		tmp[1] = (9.0/5.0) *(multiply(r_primes, r_primes) + multiply(g_primes, g_primes));
+		sqrt(tmp[1], tmp[1]);
         
 //        tslmap(:, :, 3) = 0.299 * rgbmap(:, :, 1) + 0.587 * rgbmap(:, :, 2) + 0.114 * rgbmap(:, :, 3);
-		Mat tmp2 = add(multiply(rgb_channel[0], 0.299),
-					   multiply(rgb_channel[1], 0.587));
-		tmp2 = tmp2 + multiply(rgb_channel[2], 0.114);
-		for (int i = 0; i < nRow; ++i)
-			for (int j = 0; j < nCol; ++j)
-			{
-				dst.at<Vec3d>(i, j)[0] = tmp0.at<double>(i, j);
-				dst.at<Vec3d>(i, j)[1] = tmp1.at<double>(i, j);
-				dst.at<Vec3d>(i, j)[2] = tmp2.at<double>(i, j);
-			}
+		tmp[2] = 0.299 * rgb_channel[0] + 0.587 * rgb_channel[1] + 0.114 * rgb_channel[2];
+    merge(tmp, 3, dst);
 	}
     
     void blurDnClr(const Mat& src, Mat &dst, int level) {
@@ -92,22 +74,13 @@ namespace MHR {
     }
 
 
-    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol)
-    {
-        Mat tmp;
-        filter2D(src, tmp, -1, filter);
-        
-        int m = tmp.rows/rectRow + (tmp.rows%rectRow > 0);
-        int n = tmp.cols/rectCol + (tmp.cols%rectCol > 0);
-        dst = Mat::zeros(m, n, CV_64F);
-        
-        for (int i = 0, x = 0; x < src.rows; ++i, x += rectRow)
-            for (int j = 0, y = 0; y < src.cols; ++j, y += rectCol)
-            {
-                dst.at<double>(i, j) = tmp.at<double>(x, y);
-            }
+    void corrDn(const Mat &src, Mat &dst, const Mat &filter, int rectRow, int rectCol) {
+        resize(src,dst,Size(src.rows/rectRow,src.cols/rectCol),0,0,INTER_NEAREST);
     }
     
+    /*
+     Reimplement ideal band passing
+     */
     void ideal_bandpassing(const vector<Mat> &src, vector<Mat> &dst, double wl, double wh, int nChannel, double samplingRate) {
             //        src: T*M*N*C;
         
@@ -126,7 +99,7 @@ namespace MHR {
                 src[i].convertTo(tmp, CV_32FC3);
             else
                 src[i].convertTo(tmp, CV_32F);
-            dst.push_back(tmp.clone());
+            dst.emplace_back(tmp.clone());
             }
         
             // masking indexes
