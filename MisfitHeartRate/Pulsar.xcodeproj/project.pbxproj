@@ -982,15 +982,15 @@
 
 /* Begin PBXFileReference section */
 		121C1D54199B5888003C9E47 /* auto_start.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auto_start.hpp; sourceTree = "<group>"; };
-		121C1D55199B5888003C9E47 /* auto_start.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = auto_start.mm; sourceTree = "<group>"; };
+		121C1D55199B5888003C9E47 /* auto_start.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = auto_start.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		121C1D5C199B632A003C9E47 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_pda.cpp; path = HeartRateCal/hb_counter_pda.cpp; sourceTree = "<group>"; };
+		12B587D81963EBA300BA19A5 /* hb_counter_pda.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = hb_counter_pda.cpp; path = HeartRateCal/hb_counter_pda.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		12B587D91963EBA300BA19A5 /* hb_counter_pda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_pda.h; path = HeartRateCal/hb_counter_pda.h; sourceTree = "<group>"; };
 		12B587DB1963EC9100BA19A5 /* hrDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hrDebug.cpp; path = HeartRateCal/hrDebug.cpp; sourceTree = "<group>"; };
 		12B587DC1963EC9100BA19A5 /* hrDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hrDebug.h; path = HeartRateCal/hrDebug.h; sourceTree = "<group>"; };
 		12B587E21963F48700BA19A5 /* matlab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matlab.cpp; path = math/matlab.cpp; sourceTree = "<group>"; };
 		12B587E31963F48700BA19A5 /* matlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = matlab.h; path = math/matlab.h; sourceTree = "<group>"; };
-		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; };
+		12B587E51964017E00BA19A5 /* hb_counter_autocorr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = hb_counter_autocorr.cpp; path = HeartRateCal/hb_counter_autocorr.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		12B587E61964017E00BA19A5 /* hb_counter_autocorr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hb_counter_autocorr.h; path = HeartRateCal/hb_counter_autocorr.h; sourceTree = "<group>"; };
 		12B587EB19651DD700BA19A5 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = config.h; path = MisfitHeartRate/algorithms/config.h; sourceTree = SOURCE_ROOT; };
 		614CC05019BB0C420009E68A /* auto_stop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auto_stop.hpp; sourceTree = "<group>"; };
@@ -1874,7 +1874,7 @@
 		93C5BD4E19A357C5002E8277 /* processingPerBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = processingPerBlock.h; sourceTree = "<group>"; };
 		93C5BD5319A358FA002E8277 /* processingCumulative.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = processingCumulative.cpp; sourceTree = "<group>"; };
 		93C5BD5419A358FA002E8277 /* processingCumulative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = processingCumulative.h; sourceTree = "<group>"; };
-		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; };
+		DC23397019863C8500D5F520 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = files.cpp; path = files/files.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		DC23397119863C8500D5F520 /* files.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = files.h; path = files/files.h; sourceTree = "<group>"; };
 		DC3E2D0119A208910012DAE9 /* MHRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHRSettingsViewController.h; path = SettingsView/MHRSettingsViewController.h; sourceTree = "<group>"; };
 		DC3E2D0219A208910012DAE9 /* MHRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHRSettingsViewController.m; path = SettingsView/MHRSettingsViewController.m; sourceTree = "<group>"; };
@@ -1882,7 +1882,7 @@
 		DC9D58C6197FB062002C6BB8 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
 		DC9D58CC197FB15B002C6BB8 /* finger_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finger_params.h; sourceTree = "<group>"; };
 		DC9D58CF197FB166002C6BB8 /* face_params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = face_params.h; sourceTree = "<group>"; };
-		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; };
+		DCA50B8B1964179200F99D33 /* frames2signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = frames2signal.cpp; path = HeartRateCal/frames2signal.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		DCA50B8C1964179200F99D33 /* frames2signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = frames2signal.h; path = HeartRateCal/frames2signal.h; sourceTree = "<group>"; };
 		DCA9CB6A196F89F7002AAC90 /* UIView+Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Position.h"; path = "Utilities/UIView+Position.h"; sourceTree = "<group>"; };
 		DCA9CB6B196F89F7002AAC90 /* UIView+Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Position.m"; path = "Utilities/UIView+Position.m"; sourceTree = "<group>"; };
@@ -1896,7 +1896,7 @@
 		DCAE523F196579BC00A8AFB6 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
 		DCAE524119657AF300A8AFB6 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = image/image.cpp; sourceTree = "<group>"; };
 		DCAE524219657AF300A8AFB6 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = image.h; path = image/image.h; sourceTree = "<group>"; };
-		DCAE524419657B7700A8AFB6 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eulerian.cpp; path = Eulerian/eulerian.cpp; sourceTree = "<group>"; };
+		DCAE524419657B7700A8AFB6 /* eulerian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = eulerian.cpp; path = Eulerian/eulerian.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		DCAE524519657B7700A8AFB6 /* eulerian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eulerian.h; path = Eulerian/eulerian.h; sourceTree = "<group>"; };
 		DCAE524B1966AB9200A8AFB6 /* run_algorithms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = run_algorithms.cpp; sourceTree = "<group>"; };
 		DCAE524C1966AB9200A8AFB6 /* run_algorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_algorithms.h; sourceTree = "<group>"; };
@@ -1904,7 +1904,7 @@
 		DCAE52521966B45300A8AFB6 /* hr_signal_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_signal_calc.h; path = HeartRateCal/hr_signal_calc.h; sourceTree = "<group>"; };
 		DCAE52541966CE5800A8AFB6 /* temporal_mean_calc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = temporal_mean_calc.cpp; path = HeartRateCal/temporal_mean_calc.cpp; sourceTree = "<group>"; };
 		DCAE52551966CE5800A8AFB6 /* temporal_mean_calc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = temporal_mean_calc.h; path = HeartRateCal/temporal_mean_calc.h; sourceTree = "<group>"; };
-		DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = build_Gdown_stack.cpp; path = Eulerian/build_Gdown_stack.cpp; sourceTree = "<group>"; };
+		DCAE52571967B8BA00A8AFB6 /* build_Gdown_stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = build_Gdown_stack.cpp; path = Eulerian/build_Gdown_stack.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		DCAE52581967B8BA00A8AFB6 /* build_Gdown_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = build_Gdown_stack.h; path = Eulerian/build_Gdown_stack.h; sourceTree = "<group>"; };
 		DCB55F131957CB3B0095A98E /* Pulsar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulsar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB55F161957CB3B0095A98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1934,7 +1934,7 @@
 		DCB55F6D1957D3840095A98E /* MHRMainViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MHRMainViewController.hpp; path = MisfitHeartRate/MainView/MHRMainViewController.hpp; sourceTree = SOURCE_ROOT; };
 		DCB55F6E1957D3840095A98E /* MHRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MHRMainViewController.mm; path = MisfitHeartRate/MainView/MHRMainViewController.mm; sourceTree = SOURCE_ROOT; };
 		DCB55F6F1957D3840095A98E /* MHRMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MHRMainViewController.xib; path = MisfitHeartRate/MainView/MHRMainViewController.xib; sourceTree = SOURCE_ROOT; };
-		DCB91D111975049E00793884 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hr_calculator.cpp; path = HeartRateCal/hr_calculator.cpp; sourceTree = "<group>"; };
+		DCB91D111975049E00793884 /* hr_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = hr_calculator.cpp; path = HeartRateCal/hr_calculator.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		DCB91D121975049F00793884 /* hr_calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hr_calculator.h; path = HeartRateCal/hr_calculator.h; sourceTree = "<group>"; };
 		DCB91D1C19762E9900793884 /* videoHeartRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = videoHeartRate.xcdatamodel; sourceTree = "<group>"; };
 		DCB91D2019762FD900793884 /* MisfitHeartRateTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MisfitHeartRateTests.mm; sourceTree = "<group>"; };

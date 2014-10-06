@@ -16,7 +16,7 @@ namespace MHR {
         cvtColor(frame, frame, CV_BGR2RGB);
         
         if (_THREE_CHAN_MODE)
-            dst.push_back(frame.clone());
+            dst.emplace_back(frame.clone());
         else {
             /*-----------------if using 1-chan mode, then do the colour conversion here (0)-----------------*/
             frame.convertTo(frame, CV_64FC3);
@@ -31,7 +31,7 @@ namespace MHR {
             for (int i = 0; i < frame.rows; ++i)
                 for (int j = 0; j < frame.cols; ++j)
                     tmp.at<double>(i, j) = frame.at<Vec3d>(i, j)[_channels_to_process];
-            dst.push_back(tmp.clone());
+            dst.emplace_back(tmp.clone());
         }
     }
     
@@ -52,7 +52,7 @@ namespace MHR {
         double value;
         for (int i = 0; i < n; ++i) {
             fscanf(file, "%lf", &value);
-            ans.push_back(value);
+            ans.emplace_back(value);
         }
         return ans;
     }

@@ -31,7 +31,7 @@ namespace MHR {
                 for(int x=0; x<height; ++x)
                     for(int y=0; y<width; ++y)
                         sum+=monoframes[i].at<double>(x,y);
-                temporal_mean.push_back(sum/size);
+                temporal_mean.emplace_back(sum/size);
             }
             
         }else if(conversion_method == "trimmed-mean"){
@@ -45,7 +45,7 @@ namespace MHR {
                 for(int x=trimmed_size; x<height-trimmed_size; ++x)
                     for(int y=trimmed_size; y<width-trimmed_size; ++y)
                         sum+=monoframes[i].at<double>(x,y);
-                temporal_mean.push_back(sum/size);
+                temporal_mean.emplace_back(sum/size);
             }
             
         }else if(conversion_method == "mode-balance"){
@@ -65,7 +65,7 @@ namespace MHR {
                 for(int i = first_training_frames_start; i <= first_training_frames_end; ++i)
                     for(int y=0; y<width; ++y)
                         for(int x=0; x<height; ++x)
-                            arr.push_back(monoframes[i].at<double>(x,y));
+                            arr.emplace_back(monoframes[i].at<double>(x,y));
                 
                 //find the mode
                 vector<double> centres;
@@ -110,9 +110,9 @@ namespace MHR {
                     }
                 
                 if(cnt==0) //push NaN for all-NaN-frames
-                    temporal_mean.push_back(NaN);
+                    temporal_mean.emplace_back(NaN);
                 else
-                    temporal_mean.push_back(sum/cnt);
+                    temporal_mean.emplace_back(sum/cnt);
             }
             
         }

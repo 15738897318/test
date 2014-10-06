@@ -55,18 +55,17 @@ namespace MHR {
 
         dst = Mat::zeros(nRow, nCol, CV_64FC3);
 		Mat tmp0 = atan2Mat(r_primes, g_primes);
-		multiply(tmp0, Mat(nRow, nCol, CV_64F, cvScalar(1.0/(2*M_PI))), tmp0);
+        tmp0 = 1.0 / (2 * M_PI) * tmp0;
 		multiply(tmp0, temp2, tmp0);
 		tmp0 = tmp0 + temp1;
         
 		Mat tmp1 = powMat(r_primes, 2);
 		tmp1 = tmp1 + powMat(g_primes, 2);
-		multiply(tmp1, Mat(nRow, nCol, CV_64F, cvScalar(9.0/5.0)), tmp1);
-		pow(tmp1, 0.5, tmp1);
+        tmp1 = 9.0 / 5.0 * tmp1;
+        pow(tmp1, 0.5, tmp1);
         
-		Mat tmp2 = add(multiply(rgb_channel[0], 0.299),
-					   multiply(rgb_channel[1], 0.587));
-		tmp2 = tmp2 + multiply(rgb_channel[2], 0.114);
+        Mat tmp2 = 0.299 * rgb_channel[0] + 0.587 * rgb_channel[1] + 0.114 * rgb_channel[2];
+        
 		for (int i = 0; i < nRow; ++i)
 			for (int j = 0; j < nCol; ++j)
 			{
