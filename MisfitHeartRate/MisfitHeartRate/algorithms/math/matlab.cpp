@@ -36,7 +36,7 @@ namespace MHR {
             if ((segment[i] - segment[i-1] > threshold) &&
                 (segment[i] - segment[i+1] >= threshold))
             {
-                peak_list.push_back(pair<double,int> (-segment[i], i));
+                peak_list.emplace_back(pair<double,int> (-segment[i], i));
             }
         }
         
@@ -67,8 +67,8 @@ namespace MHR {
         
         for (int i = 0; i < nPeaks; ++i)
             if(peak_list[i].second!=-1){
-                max_peak_locs.push_back(peak_list[i].second);
-                max_peak_strengths.push_back(segment[peak_list[i].second]);
+                max_peak_locs.emplace_back(peak_list[i].second);
+                max_peak_strengths.emplace_back(segment[peak_list[i].second]);
             }
     }
 
@@ -80,7 +80,7 @@ namespace MHR {
         vector<pair<double,int>> res;
         for(int i=0; i<(int) arr.size(); ++i){
             if(mys.count(arr[i].second)>0) continue;
-            res.push_back(arr[i]);
+            res.emplace_back(arr[i]);
             mys.insert(arr[i].second);
         }
         return res;
@@ -99,14 +99,14 @@ namespace MHR {
         }
 
         // padding of zeors
-        for(int i = m; i < m+n-1; i++) signal.push_back(0);
-        for(int i = n; i < m+n-1; i++) kernel.push_back(0);
+        for(int i = m; i < m+n-1; i++) signal.emplace_back(0);
+        for(int i = n; i < m+n-1; i++) kernel.emplace_back(0);
         
         /* convolution operation */
         vector<double> ans;
         for(int i = 0; i < m+n-1; i++)
         {
-            ans.push_back(0);
+            ans.emplace_back(0);
             for(int j = 0; j <= i; j++)
                 ans[i] += signal[j]*kernel[i-j];
         }
@@ -208,14 +208,14 @@ namespace MHR {
         for (int i = 0; i < n; ++i)
             if (abs(arr[i] - NaN) < 1e-11) {
                 arr[i] = 0;
-                nAnPositions.push_back(i);
+                nAnPositions.emplace_back(i);
             }
 
         // using corr_linear()
         vector<double> kernel;
         for (int i = 0; i < _beatSignalFilterKernel.size.p[0]; ++i)
             for (int j = 0; j < _beatSignalFilterKernel.size.p[1]; ++j)
-                kernel.push_back(_beatSignalFilterKernel.at<double>(i, j));
+                kernel.emplace_back(_beatSignalFilterKernel.at<double>(i, j));
         vector<double> ans = corr_linear(arr, kernel, false);
 
         // assign values in all old NaN positions to NaN

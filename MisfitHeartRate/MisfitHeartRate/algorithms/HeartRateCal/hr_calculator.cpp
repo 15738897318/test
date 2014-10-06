@@ -21,7 +21,7 @@ namespace MHR {
         if ((int)heartBeatPositions.size() > 2) {
             vector<double> heartRate_inst;
             for (int i = 1, sz = (int)heartBeatPositions.size(); i < sz; ++i)
-                heartRate_inst.push_back( 1.0 / (heartBeatPositions[i] - heartBeatPositions[i-1]) );
+                heartRate_inst.emplace_back( 1.0 / (heartBeatPositions[i] - heartBeatPositions[i-1]) );
             
             //Find the mode
             vector<double> centres;
@@ -43,7 +43,7 @@ namespace MHR {
             vector<double> count_signal;
             int temp = heartBeatPositions[heartBeatPositions.size() - 1] - heartBeatPositions[0] + 1;
             for (int i = 0; i < temp; ++i) {
-                count_signal.push_back(0);
+                count_signal.emplace_back(0);
             }
             for (int i = 0, sz = (int)heartBeatPositions.size(); i < sz; ++i) {
                 temp = heartBeatPositions[i] - heartBeatPositions[0];
@@ -76,22 +76,22 @@ namespace MHR {
             }
         
             //Calculate the heart-rate from the new beat count
-            ans.push_back(0);
+            ans.emplace_back(0);
             int len = (int)count_signal.size();
             for (int i = 0; i < len; ++i)
                 ans[0] += abs(count_signal[i]);
             ans[0] /= (double(len) + 1.0/centre_mode);
             ans[0] *= frameRate * 60;
             
-            ans.push_back(centre_mode * frameRate * 60);
+            ans.emplace_back(centre_mode * frameRate * 60);
         }
         else if ((int)heartBeatPositions.size() == 2) {
-            ans.push_back(1.0 / (heartBeatPositions[1] - heartBeatPositions[0]));
-            ans.push_back(1.0 / (heartBeatPositions[1] - heartBeatPositions[0]));
+            ans.emplace_back(1.0 / (heartBeatPositions[1] - heartBeatPositions[0]));
+            ans.emplace_back(1.0 / (heartBeatPositions[1] - heartBeatPositions[0]));
         }
         else {
-            ans.push_back(0);
-            ans.push_back(0);
+            ans.emplace_back(0);
+            ans.emplace_back(0);
         }
 	}
     
@@ -102,7 +102,7 @@ namespace MHR {
         Mat kernel = getGaussianKernel(length, sigma, CV_64F);
         for (int i = 0; i < kernel.size.p[0]; ++i)
             for (int j = 0; j < kernel.size.p[1]; ++j)
-                ans.push_back(kernel.at<double>(i, j));
+                ans.emplace_back(kernel.at<double>(i, j));
         double max_value = *max_element(ans.begin(), ans.end());
         for (int i = 0, sz = (int)ans.size(); i < sz; ++i)
             ans[i] /= max_value;

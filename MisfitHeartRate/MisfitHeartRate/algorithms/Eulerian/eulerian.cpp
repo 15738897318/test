@@ -30,7 +30,6 @@ namespace MHR {
         if (_DEBUG_MODE) {
             printf("width = %d, height = %d\n", vidWidth, vidHeight);
             printf("frameRate = %f, len = %d\n", samplingRate, len);
-//            frameToFile(vid[0], outDir + "test_frame_in.jpg");
         }
       
 		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
@@ -88,10 +87,7 @@ namespace MHR {
         }
 		else {
 			for (int t = 0; t < nTime; ++t)
-//				filteredStack[t] = multiply(filteredStack[t], alpha);
-                for (int i = 0; i < nRow; ++i)
-                    for (int j = 0; j < nCol; ++j)
-                        filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);
+            filteredStack[t] = alpha * filteredStack[t];
         }
         
         if (_DEBUG_MODE)
@@ -118,19 +114,9 @@ namespace MHR {
 				
 				// Add the filtered frame to the original frame
 				filtered = filtered + frame;
+                filtered = max(min(filtered, 255.0), 0.0);
                 
-				for (int i = 0; i < vidHeight; ++i)
-					for (int j = 0; j < vidWidth; ++j) {
-						for (int channel = 0; channel < nChannels; ++channel) {
-							double tmp = filtered.at<Vec3d>(i, j)[channel];
-							
-							tmp = min(tmp, 255.0);
-							tmp = max(tmp, 0.0);
-							
-							filtered.at<Vec3d>(i, j)[channel] = tmp;
-						}
-					}
-                ans.push_back(filtered.clone());
+                ans.emplace_back(filtered.clone());
 			}
 		}
         else {
@@ -147,17 +133,9 @@ namespace MHR {
 				
 				// Add the filtered frame to the original frame
 				filtered = filtered + frame;
-            	
-				for (int i = 0; i < vidHeight; ++i)
-					for (int j = 0; j < vidWidth; ++j) {
-						double tmp = filtered.at<double>(i, j);
-						
-						tmp = min(tmp, 255.0);
-						tmp = max(tmp, 0.0);
-						
-						filtered.at<double>(i, j) = tmp;
-            		}
-                ans.push_back(filtered.clone());
+                filtered = max(min(filtered, 255.0), 0.0);
+                
+                ans.emplace_back(filtered.clone());
             }
 		}
         
