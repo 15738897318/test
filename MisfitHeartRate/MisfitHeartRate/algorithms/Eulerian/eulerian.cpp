@@ -88,10 +88,7 @@ namespace MHR {
         }
 		else {
 			for (int t = 0; t < nTime; ++t)
-//				filteredStack[t] = multiply(filteredStack[t], alpha);
-                for (int i = 0; i < nRow; ++i)
-                    for (int j = 0; j < nCol; ++j)
-                        filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);
+                filteredStack[t] = alpha * filteredStack[t];
         }
         
         if (_DEBUG_MODE)
@@ -130,7 +127,7 @@ namespace MHR {
 							filtered.at<Vec3d>(i, j)[channel] = tmp;
 						}
 					}
-                ans.push_back(filtered.clone());
+                ans.emplace_back(filtered.clone());
 			}
 		}
         else {
@@ -157,7 +154,7 @@ namespace MHR {
 						
 						filtered.at<double>(i, j) = tmp;
             		}
-                ans.push_back(filtered.clone());
+                ans.emplace_back(filtered.clone());
             }
 		}
         

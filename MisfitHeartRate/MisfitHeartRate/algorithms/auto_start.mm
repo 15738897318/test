@@ -112,7 +112,7 @@ using namespace cv;
             vector <double> arr;
             for (int x = 0; x < tmp.cols; ++x)
                 for (int y = 0; y < tmp.rows; ++y)
-                    arr.push_back(tmp.at<Vec3b>(y, x)[i]);
+                    arr.emplace_back(tmp.at<Vec3b>(y, x)[i]);
             
             testVal[i] = prctile(arr, 95);
         }
@@ -130,7 +130,7 @@ using namespace cv;
         vector <double> arr;
         for (int x = 0; x < tmp.cols; ++x)
             for (int y = 0; y < tmp.rows; ++y)
-                arr.push_back(tmp.at<Vec3b>(y, x)[2]);
+                arr.emplace_back(tmp.at<Vec3b>(y, x)[2]);
         
         int maxVal = prctile(arr, 90), minVal = prctile(arr, 10);
         

@@ -15,7 +15,7 @@ namespace MHR
         int eulerianLen = (int)temp.size();
         
         for (int i = 0; i < eulerianLen; ++i)
-            temporal_mean.push_back(temp[i]);
+            temporal_mean.emplace_back(temp[i]);
         
         double threshold_fraction = 0;
         int window_size = round(_window_size_in_sec * _frameRate);

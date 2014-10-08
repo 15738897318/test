@@ -601,7 +601,7 @@ static const int kBlockFrameSize = 128;
 //                        
 //                        if ([auto_start isRedColored:tmpFinger])
 //                        {
-//                            avgRedVal.push_back([auto_start calculateAverageRedValue:tmpFinger]);
+//                            avgRedVal.emplace_back([auto_start calculateAverageRedValue:tmpFinger]);
 //                            if (avgRedVal.size() >= 20)
 //                            {
 //                                if ([auto_start isHeartBeat:avgRedVal])

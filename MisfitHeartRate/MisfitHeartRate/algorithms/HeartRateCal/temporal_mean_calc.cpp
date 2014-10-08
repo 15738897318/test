@@ -56,7 +56,7 @@ namespace MHR {
 				corrDn(monoframe, tmp_monoframe, filt, 4, 4);
 			
 				// Put the frame into the video stream
-				monoframes.push_back(tmp_monoframe.clone());
+				monoframes.emplace_back(tmp_monoframe.clone());
 			}
 		}
         else {
@@ -67,7 +67,7 @@ namespace MHR {
 				corrDn(frame, tmp_monoframe, filt, 4, 4);
 			
 				// Put the frame into the video stream
-				monoframes.push_back(tmp_monoframe.clone());
+				monoframes.emplace_back(tmp_monoframe.clone());
             }
         }
         

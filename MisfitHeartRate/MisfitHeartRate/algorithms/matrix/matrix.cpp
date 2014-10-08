@@ -14,7 +14,7 @@ namespace MHR {
 	vector<int> vectorRange(int a, int b, int step) {
 		vector<int> ans;
 		for (int i = a; i <= b; i += step)
-			ans.push_back(i);
+			ans.emplace_back(i);
 		return ans;
 	}
     
@@ -33,7 +33,7 @@ namespace MHR {
     vector<double> matToVector1D(const Mat &m) {
         vector<double> arr;
         for(int i = 0; i < m.cols; ++i)
-            arr.push_back(m.at<double>(0, i));
+            arr.emplace_back(m.at<double>(0, i));
         return arr;
     }
 

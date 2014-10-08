@@ -31,7 +31,7 @@ namespace MHR {
             //Window to calculate the autocorrelation
             int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
             for(int i = windowStart; i < windowEnd; ++i)
-                segment.push_back(temporal_mean[i]);
+                segment.emplace_back(temporal_mean[i]);
             
             //Calculate the autocorrelation for the current window
             vector<double> local_autocorr = corr_linear(segment, segment);
@@ -68,11 +68,11 @@ namespace MHR {
             int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
             if (isFirstSegment) {
                 for (int i = 0; i < windowStart; ++i)
-                    autocorrelation.push_back(0);
+                    autocorrelation.emplace_back(0);
                 isFirstSegment = false;
             }
             for(int i = 0, sz = min((int)local_autocorr.size(), windowUpdate); i < sz; ++i)
-                autocorrelation.push_back(local_autocorr[i]);
+                autocorrelation.emplace_back(local_autocorr[i]);
 
             // Define the start of the next window
             windowStart = windowStart + windowUpdate;
@@ -94,7 +94,7 @@ namespace MHR {
             
             int windowEnd = min(windowStart + window_size, (int)autocorrelation.size());
             for(int i = windowStart; i < windowEnd; ++i)
-                segment.push_back(autocorrelation[i]);
+                segment.emplace_back(autocorrelation[i]);
             
             //Count the number of peaks in this window
             findpeaks(segment, minPeakDistance, 0, max_peak_strengths, max_peak_locs);
@@ -121,13 +121,13 @@ namespace MHR {
             
             // Record all beats in the window, even if there are duplicates
             for(int i=0; i<(int) max_peak_locs.size(); ++i)
-                heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart - firstSample+1)); // Subtract all positions by firstSample
+                heartBeats.emplace_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart - firstSample+1)); // Subtract all positions by firstSample
             
             // Calculate the HR for this window
             int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
             if (isFirstSegment) {
                 for (int i = 0; i < windowStart; ++i)
-                    heartRates.push_back(0);
+                    heartRates.emplace_back(0);
                 isFirstSegment = false;
             }
             
@@ -138,7 +138,7 @@ namespace MHR {
             double rate = (double) max_peak_locs.size() / count * fr;
             
             for(int i = windowStart; i < windowStart+windowUpdate; ++i)
-                heartRates.push_back(rate);
+                heartRates.emplace_back(rate);
             
             windowStart = windowStart + windowUpdate;
             
@@ -165,7 +165,7 @@ namespace MHR {
         
         vector<int> locations;
         for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
-            locations.push_back(heartBeats[i].second);
+            locations.emplace_back(heartBeats[i].second);
         sort(locations.begin(), locations.end());
         
         return locations;
