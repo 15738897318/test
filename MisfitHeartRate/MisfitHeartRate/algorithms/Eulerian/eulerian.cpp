@@ -69,25 +69,29 @@ namespace MHR {
 						  0, alpha*chromAttenuation, 0,
 						  0, 0, alpha*chromAttenuation);
 			Mat base_C = (ntsc2rgb_baseMat * base_B) * rgb2ntsc_baseMat;
-			Mat tmp = Mat::zeros(nChannels, nCol, CV_64F);
-        	
-			for (int t = 0; t < nTime; ++t) {
-				for (int i = 0; i < nRow; ++i) {
-					for (int j = 0; j < nCol; ++j)
-						for (int channel = 0; channel < nChannels; ++channel)
-							tmp.at<double>(channel, j) = filteredStack[t].at<Vec3d>(i, j)[channel];
-                    
-					tmp = base_C * tmp;
-					
-					for (int j = 0; j < nCol; ++j)
-						for (int channel = 0; channel < nChannels; ++channel)
-							filteredStack[t].at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
+			
+
+            Mat tmp = Mat::zeros(nChannels, nCol, CV_64F);
+            Mat rgb_channels[3];
+            for (int t = 0; t < nTime; ++t)
+            {
+                split(filteredStack[t], rgb_channels);
+                for (int i = 0; i < nRow; ++i)
+                {
+                    for (int channel = 0; channel < nChannels; ++channel)
+                        rgb_channels[channel].row(i).copyTo(tmp.row(channel));
+
+                    tmp = base_C * tmp;
+
+                    for (int channel = 0; channel < nChannels; ++channel)
+                        tmp.row(channel).copyTo(rgb_channels[channel].row(i));
                 }
+                merge(rgb_channels, nChannels, filteredStack[t]);
             }
         }
 		else {
 			for (int t = 0; t < nTime; ++t)
-            filteredStack[t] = alpha * filteredStack[t];
+                filteredStack[t] = alpha * filteredStack[t];
         }
         
         if (_DEBUG_MODE)
