@@ -35,7 +35,7 @@ namespace MHR
             	src[i].convertTo(tmp, CV_32FC3);
             else
             	src[i].convertTo(tmp, CV_32F);
-            dst.push_back(tmp.clone());
+            dst.emplace_back(tmp.clone());
         }
         // masking indexes
         int f1 = ceil(wl * nTime/samplingRate);

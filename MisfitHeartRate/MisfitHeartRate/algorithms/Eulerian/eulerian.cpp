@@ -9,8 +9,7 @@
 #include "eulerian.h"
 
 
-namespace MHR
-{
+namespace MHR {
 	// Spatial Filtering: Gaussian blur and down sample
 	// Temporal Filtering: Ideal bandpass
     void eulerianGaussianPyramidMagnification(const vector<Mat> &vid, vector<Mat> &ans,
@@ -28,22 +27,20 @@ namespace MHR
 		samplingRate = _frameRate;
 		int len = (int)vid.size();
         
-        if (_DEBUG_MODE)
-        {
+        if (_DEBUG_MODE) {
             printf("width = %d, height = %d\n", vidWidth, vidHeight);
             printf("frameRate = %f, len = %d\n", samplingRate, len);
-//            frameToFile(vid[0], outDir + "test_frame_in.jpg");
         }
       
-		level = MIN(level, (int)floor(log(MIN(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
+		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
         
 		// Define the indices of the frames to be processed
 		int startIndex = _startFrame;
         int endIndex = len - 1;
         if (_endFrame > 0)
-            endIndex = MIN(endIndex, _endFrame);
+            endIndex = min(endIndex, _endFrame);
         else
-            endIndex = MAX(0, endIndex + _endFrame);
+            endIndex = max(0, endIndex + _endFrame);
         
 		// ================= Core part of the algo described in literature
 		// compute Gaussian blur stack
@@ -66,38 +63,35 @@ namespace MHR
         int nTime = (int)filteredStack.size();
         int nRow = filteredStack[0].rows;
         int nCol = filteredStack[0].cols;
-        if (_THREE_CHAN_MODE)
-        {
+        if (_THREE_CHAN_MODE) {
 			Mat base_B = (Mat_<double>(3, 3) <<
 						  alpha, 0, 0,
 						  0, alpha*chromAttenuation, 0,
 						  0, 0, alpha*chromAttenuation);
 			Mat base_C = (ntsc2rgb_baseMat * base_B) * rgb2ntsc_baseMat;
-			Mat tmp = Mat::zeros(nChannels, nCol, CV_64F);
-        	
-			for (int t = 0; t < nTime; ++t)
+			
+
+            Mat tmp = Mat::zeros(nChannels, nCol, CV_64F);
+            Mat rgb_channels[3];
+            for (int t = 0; t < nTime; ++t)
             {
-				for (int i = 0; i < nRow; ++i)
+                split(filteredStack[t], rgb_channels);
+                for (int i = 0; i < nRow; ++i)
                 {
-					for (int j = 0; j < nCol; ++j)
-						for (int channel = 0; channel < nChannels; ++channel)
-							tmp.at<double>(channel, j) = filteredStack[t].at<Vec3d>(i, j)[channel];
-                    
-					tmp = base_C * tmp;
-					
-					for (int j = 0; j < nCol; ++j)
-						for (int channel = 0; channel < nChannels; ++channel)
-							filteredStack[t].at<Vec3d>(i, j)[channel] = tmp.at<double>(channel, j);
+                    for (int channel = 0; channel < nChannels; ++channel)
+                        rgb_channels[channel].row(i).copyTo(tmp.row(channel));
+
+                    tmp = base_C * tmp;
+
+                    for (int channel = 0; channel < nChannels; ++channel)
+                        tmp.row(channel).copyTo(rgb_channels[channel].row(i));
                 }
+                merge(rgb_channels, nChannels, filteredStack[t]);
             }
         }
-		else
-        {
+		else {
 			for (int t = 0; t < nTime; ++t)
-//				filteredStack[t] = multiply(filteredStack[t], alpha);
-                for (int i = 0; i < nRow; ++i)
-                    for (int j = 0; j < nCol; ++j)
-                        filteredStack[t].at<double>(i, j) = alpha * filteredStack[t].at<double>(i, j);
+                filteredStack[t] = alpha * filteredStack[t];
         }
         
         if (_DEBUG_MODE)
@@ -110,10 +104,8 @@ namespace MHR
 		// output video
 		// Convert each frame from the filtered stream to movie frame
         Mat frame, filtered;
-        if (_THREE_CHAN_MODE)
-        {
-			for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k)
-            {
+        if (_THREE_CHAN_MODE) {
+			for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
             	// Reconstruct the frame from pyramid stack
 				// by removing the singleton dimensions of the kth filtered array
 				// since the filtered stack is just a selected level of the Gaussian pyramid
@@ -126,27 +118,13 @@ namespace MHR
 				
 				// Add the filtered frame to the original frame
 				filtered = filtered + frame;
+                filtered = max(min(filtered, 255.0), 0.0);
                 
-				for (int i = 0; i < vidHeight; ++i)
-					for (int j = 0; j < vidWidth; ++j)
-                    {
-						for (int channel = 0; channel < nChannels; ++channel)
-                        {
-							double tmp = filtered.at<Vec3d>(i, j)[channel];
-							
-							tmp = MIN(tmp, 255.0);
-							tmp = MAX(tmp, 0.0);
-							
-							filtered.at<Vec3d>(i, j)[channel] = tmp;
-						}
-					}
-                ans.push_back(filtered.clone());
+                ans.emplace_back(filtered.clone());
 			}
 		}
-        else
-        {
-            for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k)
-            {
+        else {
+            for (int i = startIndex, k = 0; i <= endIndex && k < nTime; ++i, ++k) {
             	// Reconstruct the frame from pyramid stack
 				// by removing the singleton dimensions of the kth filtered array
 				// since the filtered stack is just a selected level of the Gaussian pyramid
@@ -159,23 +137,13 @@ namespace MHR
 				
 				// Add the filtered frame to the original frame
 				filtered = filtered + frame;
-            	
-				for (int i = 0; i < vidHeight; ++i)
-					for (int j = 0; j < vidWidth; ++j)
-                    {
-						double tmp = filtered.at<double>(i, j);
-						
-						tmp = MIN(tmp, 255.0);
-						tmp = MAX(tmp, 0.0);
-						
-						filtered.at<double>(i, j) = tmp;
-            		}
-                ans.push_back(filtered.clone());
+                filtered = max(min(filtered, 255.0), 0.0);
+                
+                ans.emplace_back(filtered.clone());
             }
 		}
         
-        if (_DEBUG_MODE)
-        {
+        if (_DEBUG_MODE) {
             printf("eulerianGaussianPyramidMagnification() time = %f\n", ((float)clock() - (float)t1)/CLOCKS_PER_SEC);
             frameChannelToFile(ans[0], _outputPath + "5_ans[0]_eulerianGaussianPyramidMagnification.txt", _channels_to_process);
         }

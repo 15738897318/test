@@ -9,35 +9,31 @@
 #include "matrix.h"
 
 
-namespace MHR
-{
+namespace MHR {
 	// return a vector of integer from a to b with specific step
-	vector<int> vectorRange(int a, int b, int step)
-    {
+	vector<int> vectorRange(int a, int b, int step) {
 		vector<int> ans;
 		for (int i = a; i <= b; i += step)
-			ans.push_back(i);
+			ans.emplace_back(i);
 		return ans;
 	}
-
+    
     
     // vector to Mat
-    Mat vectorToMat(const vector<double>& arr)
-    {
+    Mat vectorToMat(const vector<double>& arr){
         int sz = (int)arr.size();
         Mat ans = Mat::zeros(1, sz, CV_64F);
-        for (int i = 0; i < sz; ++i)
+        for(int i = 0; i < sz; ++i)
             ans.at<double>(0, i) = arr[i];
         return ans;
     }
 
     
     // Mat to vector 1D (just get the first row)
-    vector<double> matToVector1D(const Mat &m)
-    {
+    vector<double> matToVector1D(const Mat &m) {
         vector<double> arr;
-        for (int i = 0; i < m.cols; ++i)
-            arr.push_back(m.at<double>(0, i));
+        for(int i = 0; i < m.cols; ++i)
+            arr.emplace_back(m.at<double>(0, i));
         return arr;
     }
 

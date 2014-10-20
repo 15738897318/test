@@ -69,7 +69,7 @@ namespace MHR
                 for (int i = 0; i < _framesBlock_size; ++i)
                 {
                     ++currentFrame;
-                    readFrame(srcDir + string("/input_frame[") + to_string(i) + "].png", vid);
+                    readFrame(srcDir + string("/input_frame[") + to_string(currentFrame) + "].png", vid);
                     if (currentFrame == nFrames - 1) break;
                 }
                 
@@ -90,7 +90,7 @@ namespace MHR
             if (eulerianLen != len)
                 startPos -= _eulerianTemporalFilterKernel_size;
             for (int i = startPos; i < len; ++i)
-                newVid.push_back(vid[i]);
+                newVid.emplace_back(vid[i]);
             vid.clear();
             vid = newVid;
             
@@ -99,7 +99,7 @@ namespace MHR
                                                     _channels_to_process, _colourspace,
                                                     lower_range, upper_range, isCalcMode);
             for (int i = 0; i < eulerianLen; ++i)
-                temporal_mean.push_back(tmp[i]);
+                temporal_mean.emplace_back(tmp[i]);
             
             isCalcMode = false;
 

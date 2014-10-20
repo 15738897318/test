@@ -45,7 +45,7 @@ namespace MHR
         GDownStack.clear();
         
         // The first frame in the stack is saved
-        GDownStack.push_back(blurred.clone());
+        GDownStack.emplace_back(blurred.clone());
         
         for (int i = startIndex+1, k = 1; i <= endIndex; ++i, ++k)
         {
@@ -60,7 +60,7 @@ namespace MHR
             
             // The kth element in the stack is saved
             // Note that this stack is actually just a SINGLE level of the pyramid
-            GDownStack.push_back(blurred.clone());
+            GDownStack.emplace_back(blurred.clone());
         }
         
         if (_DEBUG_MODE)

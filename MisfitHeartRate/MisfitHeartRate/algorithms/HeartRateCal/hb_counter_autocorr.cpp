@@ -9,8 +9,7 @@
 #include "hb_counter_autocorr.h"
 
 
-namespace MHR
-{
+namespace MHR {
     vector<int> hb_counter_autocorr(vector<double> &temporal_mean, double fr, int firstSample,
                             int window_size, double overlap_ratio, double minPeakDistance, hrDebug& debug)
     {
@@ -21,8 +20,8 @@ namespace MHR
         double lastSegmentEndVal = 0;
         bool isFirstSegment = true;
 
-        while(windowStart < (int)temporal_mean.size() - 1)
-        {
+        while(windowStart < (int)temporal_mean.size() - 1){
+            
             vector<double> segment;
             vector<double> max_peak_strengths, min_peak_strengths;
             vector<int> max_peak_locs, min_peak_locs;
@@ -30,14 +29,14 @@ namespace MHR
             int segment_length;
             
             //Window to calculate the autocorrelation
-            int windowEnd = MIN(windowStart + window_size, (int)temporal_mean.size());
-            for (int i = windowStart; i < windowEnd; ++i)
-                segment.push_back(temporal_mean[i]);
+            int windowEnd = min(windowStart + window_size, (int)temporal_mean.size());
+            for(int i = windowStart; i < windowEnd; ++i)
+                segment.emplace_back(temporal_mean[i]);
             
             //Calculate the autocorrelation for the current window
             vector<double> local_autocorr = corr_linear(segment, segment);
             double tmp = local_autocorr[0] - lastSegmentEndVal;
-            for (int i = 0, sz = (int)local_autocorr.size(); i < sz; ++i)
+            for(int i = 0, sz = (int)local_autocorr.size(); i < sz; ++i)
                 local_autocorr[i] -= tmp;
             
             //Define the segment length
@@ -45,28 +44,20 @@ namespace MHR
             // a. Shine-step-counting style
             findpeaks(local_autocorr, minPeakDistance, 0, max_peak_strengths, max_peak_locs);
             
-            if (max_peak_locs.empty())
-            {
+            if(max_peak_locs.empty()){
                 segment_length = (int)segment.size();
-            }
-            else
-            {
-                for (int i=0; i<(int) local_autocorr.size(); ++i)
-                    local_autocorr[i] = -local_autocorr[i];
+            }else{
+                for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
                 findpeaks(local_autocorr, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
                 
-                if (min_peak_locs.empty())
-                {
-                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size) / 2.0 + 1); //round
-                    segment_length = MIN(segment_length, (int)segment.size());
-                }
-                else
-                {
+                if(min_peak_locs.empty()){
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size)/2.0 + 1); //round
+                    segment_length = min(segment_length, (int)segment.size());
+                }else{
                     segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end())
-                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end())) / 2.0 + 1); //round
+                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()))/2.0 + 1); //round
                 }
-                for (int i = 0; i < (int) local_autocorr.size(); ++i)
-                    local_autocorr[i] = -local_autocorr[i];
+                for(int i=0; i<(int) local_autocorr.size(); ++i) local_autocorr[i] = -local_autocorr[i];
             }
             
             
@@ -74,15 +65,14 @@ namespace MHR
             // segment_length = window_size
             
             // c. autocorrelation
-            int windowUpdate = int((1 - overlap_ratio) * segment_length + 0.5 + 1e-9);
-            if (isFirstSegment)
-            {
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            if (isFirstSegment) {
                 for (int i = 0; i < windowStart; ++i)
-                    autocorrelation.push_back(0);
+                    autocorrelation.emplace_back(0);
                 isFirstSegment = false;
             }
-            for (int i = 0, sz = MIN((int)local_autocorr.size(), windowUpdate); i < sz; ++i)
-                autocorrelation.push_back(local_autocorr[i]);
+            for(int i = 0, sz = min((int)local_autocorr.size(), windowUpdate); i < sz; ++i)
+                autocorrelation.emplace_back(local_autocorr[i]);
 
             // Define the start of the next window
             windowStart = windowStart + windowUpdate;
@@ -91,63 +81,53 @@ namespace MHR
         
 
         // Step 2: perform peak-counting on the autocorrelation stream
-        windowStart = firstSample - 1;
+        windowStart = firstSample-1;
         vector<pair<double, int>> heartBeats;
         vector<double> heartRates;
         isFirstSegment = true;
-        while (windowStart < (int)autocorrelation.size() - 1)
-        {
+        while(windowStart < (int)autocorrelation.size() - 1){
+            
             vector<double> segment;
             vector<double> max_peak_strengths, min_peak_strengths;
             vector<int> max_peak_locs, min_peak_locs;
             int segment_length;
             
-            int windowEnd = MIN(windowStart + window_size, (int)autocorrelation.size());
-            for (int i = windowStart; i < windowEnd; ++i)
-                segment.push_back(autocorrelation[i]);
+            int windowEnd = min(windowStart + window_size, (int)autocorrelation.size());
+            for(int i = windowStart; i < windowEnd; ++i)
+                segment.emplace_back(autocorrelation[i]);
             
             //Count the number of peaks in this window
             findpeaks(segment, minPeakDistance, 0, max_peak_strengths, max_peak_locs);
             
             //Define the segment length
             // a. Shine-step-counting style
-            if (max_peak_locs.empty())
-            {
+            if(max_peak_locs.empty()){
                 segment_length = (int)segment.size();
-            }
-            else
-            {
-                for (int i = 0; i < (int) segment.size(); ++i)
-                    segment[i] = -segment[i];
+            }else{
+                for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
                 findpeaks(segment, minPeakDistance, 0, min_peak_strengths, min_peak_locs);
-                
-                if (min_peak_locs.empty())
-                {
-                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size) / 2.0 + 1); //round
-                    segment_length = MIN(segment_length, (int)segment.size());
-                }
-                else
-                {
+                if(min_peak_locs.empty()){
+                    segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end()) + window_size)/2.0 + 1); //round
+                    segment_length = min(segment_length, (int)segment.size());
+                }else{
                     segment_length = round((*max_element(max_peak_locs.begin(), max_peak_locs.end())
-                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end())) / 2.0 + 1); //round
+                                      + *max_element(min_peak_locs.begin(), min_peak_locs.end()))/2.0 + 1); //round
                 }
-                for (int i = 0; i<(int) segment.size(); ++i)
-                    segment[i] = -segment[i];
+                for(int i=0; i<(int) segment.size(); ++i) segment[i]=-segment[i];
             }
             
             // b. Equal_step progression
             // segment_length = window_size;
             
             // Record all beats in the window, even if there are duplicates
-            for (int i=0; i < (int) max_peak_locs.size(); ++i)
-                heartBeats.push_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart - firstSample + 1)); // Subtract all positions by firstSample
+            for(int i=0; i<(int) max_peak_locs.size(); ++i)
+                heartBeats.emplace_back(pair<double, int> (max_peak_strengths[i], max_peak_locs[i] + windowStart - firstSample+1)); // Subtract all positions by firstSample
             
             // Calculate the HR for this window
-            int windowUpdate = int((1 - overlap_ratio)*segment_length + 0.5 + 1e-9);
-            if (isFirstSegment)
-            {
+            int windowUpdate = int((1-overlap_ratio)*segment_length+0.5+1e-9);
+            if (isFirstSegment) {
                 for (int i = 0; i < windowStart; ++i)
-                    heartRates.push_back(0);
+                    heartRates.emplace_back(0);
                 isFirstSegment = false;
             }
             
@@ -157,10 +137,11 @@ namespace MHR
                     ++count;
             double rate = (double) max_peak_locs.size() / count * fr;
             
-            for (int i = windowStart; i < windowStart+windowUpdate; ++i)
-                heartRates.push_back(rate);
+            for(int i = windowStart; i < windowStart+windowUpdate; ++i)
+                heartRates.emplace_back(rate);
             
             windowStart = windowStart + windowUpdate;
+            
         }
         
         //Prune the beats counted to include only unique ones
@@ -168,16 +149,12 @@ namespace MHR
         
         //Calc the avg HR for the whole stream
         
-        double avg_hr = 0;
-        if (!heartBeats.empty())
-        {
+        double avg_hr=0;
+        if(!heartBeats.empty()){
             int cnt=0;
-            for (int i = firstSample-1; i < (int)temporal_mean.size(); ++i)
-                if (temporal_mean[i] != NaN)
-                    ++cnt;
-            
-            if (cnt==0)
-                avg_hr = 0;
+            for(int i=firstSample-1; i<(int)temporal_mean.size(); ++i)
+                if(temporal_mean[i] != NaN) ++cnt;
+            if(cnt==0) avg_hr = 0;
             else
                 avg_hr = round((double)heartBeats.size() / cnt * fr * 60);
         }
@@ -188,7 +165,7 @@ namespace MHR
         
         vector<int> locations;
         for (int i = 0, sz = (int)heartBeats.size(); i < sz; ++i)
-            locations.push_back(heartBeats[i].second);
+            locations.emplace_back(heartBeats[i].second);
         sort(locations.begin(), locations.end());
         
         return locations;
