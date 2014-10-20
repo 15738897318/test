@@ -512,8 +512,15 @@ static const int kBlockFrameSize = 128;
                 firstFrameWithFace = image(ROI_upper).clone();
             Mat new_image = image(cropArea);
             cvtColor(new_image, new_image, CV_BGRA2BGR);
+            
+            if (_DEBUG_MODE)
+            {
+                imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("]_original.png"), new_image);
+            }
+            
             [auto_start removeEyesAndMouth:&new_image];
             imwrite([_outPath UTF8String] + string("/input_frame[") + to_string(_nFrames) + string("].png"), new_image);
+            
             [frameIndexArray addObject:[NSNumber numberWithInt:(int)_nFrames]];
             ++_nFrames;
             
