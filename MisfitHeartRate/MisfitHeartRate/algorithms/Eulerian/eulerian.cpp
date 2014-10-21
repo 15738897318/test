@@ -35,7 +35,7 @@ namespace MHR
 //            frameToFile(vid[0], outDir + "test_frame_in.jpg");
         }
       
-		level = min(level, (int)floor(log(min(vidHeight, vidWidth) / _Gpyr_filter_length) / log(2)));
+        level = min(level, (int)floor(log((double)(min(vidHeight, vidWidth) - 1) / (double)(_Gpyr_filter_length - 1)) / log(2)));
         
 		// Define the indices of the frames to be processed
 		int startIndex = _startFrame;
