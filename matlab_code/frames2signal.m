@@ -43,9 +43,14 @@ function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_meth
 			
 			% For each video frame, values outside the range are rejected
 			monoframes((monoframes < range(1)) | (monoframes > range(2))) = NaN;
-	
+            
+            temporal_mean = [];
 			% Calculate the average of each frame
-			temporal_mean = squeeze(nanmean(nanmean(monoframes, 1), 2));
+            for i = 1 : size(monoframes, 3)
+                temp = monoframes(:, :, i);
+                temporal_mean(i) = sum(sum(temp(isfinite(temp)))) / sum(sum(isfinite(temp)));
+            end
+			%temporal_mean = squeeze(nanmean(nanmean(monoframes, 1), 2));
 			
 			debug.monoframes = monoframes;
 	end
