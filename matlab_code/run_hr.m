@@ -17,10 +17,12 @@ file_template = '2014-06-10-Hoang-Face_crop-ideal-from-0.5-to-4-alpha-30-level-6
 file_template = '2014-06-17-Loc-Face_crop-ideal-from-0.5-to-4-alpha-30-level-6-chromAtn-1.avi';
 
 
-file_template = 'test1*.avi';
+file_template = 'test1C*.mp4';
 %file_template = 'finger - 2014-07-11-14-41-54-ideal-from-0.5-to-4-alpha-50-level-6-chromAtn-1*.avi';
-file_template = '2014-06-10-Self-Face_crop*';
+%file_template = '2014-06-10-Self-Face_crop*.avi';
 %file_template = '2014*.avi';
+%file_template = '2014-06-10-Hoang-Face_crop-ideal-from-0.5-to-4-alpha-50-level-6-chromAtn-1.avi';
+
 
 task_desc = 'Params testing with the corrected correlation function';
 
@@ -35,21 +37,24 @@ time_lag = 3; %seconds
 results_file = 'hr_results.csv';
 
 src_folder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/';
+%src_folder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/Archives/Results/Demo quality/';
 
 colourspace = 'tsl';
-channels_to_process = 1:3;
+channels_to_process = 2;
 
 file_list = dir([src_folder file_template]);
-
-fileID = fopen([src_folder results_file], 'a');
 
 hr_array = {};
 k = 0;
 if ~exist([src_folder results_file], 'file')
+	fileID = fopen([src_folder results_file], 'a');
+	
 	k = 1;
 	hr_array{k} = 'ref_reading,channel,autocorr_reading,peak_detection_reading,type,colourspace,video_file,min_freq,max_freq,alpha,level,chromAtn';
 	
 	fprintf(fileID, '%s', hr_array{k});
+else
+	fileID = fopen([src_folder results_file], 'a');
 end
 
 for file_ind = 1 : length(file_list)

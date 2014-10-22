@@ -15,8 +15,8 @@ resultsDir = 'Results';
 src_folder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/';
 file_template = '2014-06-10-Self-Face_crop.mp4';
 file_template = 'finger - 2014-07-11-14-41-54*.mp4';
-file_template = 'test0*';
-file_template = '2014-*';
+file_template = 'test1*';
+%file_template = '2014-*';
 
 file_list = dir([src_folder file_template]);
 

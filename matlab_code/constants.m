@@ -1,3 +1,5 @@
+recordingTime = 30; %seconds
+
 eulerian_filter_length = 31;
 beat_filter_length = 15;
 
@@ -11,9 +13,15 @@ max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
 chroma_magnifier = 1; %Standard: 1
 
-C_matrix = [1, 0.9563, 0.6210; 1, -0.2721, -0.6474; 1, -1.1070, 1.7046] * ...
-			alpha * [1, 0, 0; 0, chroma_magnifier, 0; 0, 0, chroma_magnifier] * ...
-			[0.299, 0.587, 0.114; 0.595716, -0.274453, -0.321263; 0.211456, -0.522591, 0.311135];
+C_matrix = [1.0000, 0.9562, 0.6214,
+            1.0000, -0.2727, -0.6468,
+            1.0000, -1.1037, 1.7006] * ...
+			alpha * [1, 0, 0,
+					0, chroma_magnifier, 0,
+					0, 0, chroma_magnifier] * ...
+			[0.299, 0.587, 0.114,
+             0.596, -0.274, -0.322,
+             0.211, -0.523, 0.312];
 
 
 % Native params of the algorithm
@@ -67,7 +75,7 @@ frame_downsampling_filt = [0.0085, 0.0127, 0.0162, 0.0175, 0.0162, 0.0127, 0.008
 trimmed_size = 30;
 
 %Native params for the 'mode-balance' conversion method
-training_time_range = [0.5, 3]; %seconds %Double
+training_time_range = [0, 0.2]; %seconds %Double
 number_of_bins = 50; %50 * round(frame_rate * training_time);
 pct_reach_below_mode = 45; %Percent %Double
 pct_reach_above_mode = 45; %Percent %Double
