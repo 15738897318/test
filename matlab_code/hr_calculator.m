@@ -18,7 +18,7 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	count_signal(heartBeats(:, 2) - min(heartBeats(:, 2)) + 1) = 1;
 	
 	%Convolve the count_signal with the kernel to generate a score_signal
-	score_signal = filter(kernel, 1, count_signal); % OpenCV: filter2D
+    score_signal = conv(count_signal, kernel, 'same');
 	
 	%Decide if the any beats are missing and fill them in if need be
 	factor = 1.5;
@@ -38,4 +38,5 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	hold('on');
 	stem(count_signal);
 	plot(score_signal);
+	xlabel('Time axis in samples');
 	hold('off');
