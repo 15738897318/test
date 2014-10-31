@@ -780,8 +780,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MISFIT WEARABLES CORPORATION";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MISFIT WEARABLES CORPORATION";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks",
@@ -791,7 +791,7 @@
 				INFOPLIST_FILE = "MisfitHeartRate/MisfitHeartRate-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Pulsar;
-				PROVISIONING_PROFILE = "6C70245F-0E89-4DF6-AD51-A99FC5F1CB11";
+				PROVISIONING_PROFILE = "2175cf99-12fa-4a40-bb38-60a302d6675a";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
