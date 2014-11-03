@@ -1,6 +1,6 @@
 function filtered = filter_bandpassing(input, dim) %Input is a TxMxNxC array
 	% Load constants
-	constants;
+	initialiser;
 	
     if (dim > size(size(input),2))
         error('Exceed maximum dimension');
