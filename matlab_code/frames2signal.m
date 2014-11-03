@@ -1,6 +1,6 @@
 function [temporal_mean_filt, debug] = frames2signal(monoframes, conversion_method, fr, cutoff_freq)
 	% Load constants
-	constants;
+	initialiser;
 	
 	%=== Block 1. Convert the frame stream into a 1-D signal
 	%conversion_method = 'simple-mean';
