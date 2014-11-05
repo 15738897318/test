@@ -1,4 +1,4 @@
-function frames = frameloader(target_folder)
+function frames = frame_loader(target_folder)
 	frame_list = dir(fullfile(target_folder, '*.png'));
     
     frames = [];

@@ -19,7 +19,7 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	display(sprintf('Processing folder: %s', vidFolder));
 								   
 	% Read video
-	vid = frameloader(vidFolder); %Double array
+	vid = frame_loader(vidFolder); %Double array
 
 	% Extract video info
 	vidHeight = size(vid, 1);

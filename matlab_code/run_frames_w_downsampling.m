@@ -6,16 +6,16 @@ vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProces
 			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData1/removal'};
 
 
-vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData2/original';...
-			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData2/removal'};
+% vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData2/original';...
+% 			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData2/removal'};
 
 
-vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData3/original';...
-			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData3/removal'};
+% vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData3/original';...
+% 			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData3/removal'};
 			  
 
-vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData4/original';...
-			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData4/removal'};
+% vidFolders = {'/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData4/original';...
+% 			  '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/testData4/removal'};
 
 frame_rates_as_multiplier = 0.5 : 0.025 : 1;
 frame_sizes_as_multiplier = 0.5: 0.01 : 1;
@@ -38,7 +38,7 @@ for k = 1 : size(vidFolders)
 	hr_array = [];
 	for i = 1 : length(frame_rates_as_multiplier)
 		for j = 1 : length(frame_sizes_as_multiplier)
-			func_eulerianGaussianPyramidMagnification(vidFolder, ...
+			func_magnify_euler_pyr(vidFolder, ...
 														alpha, pyr_level, ...
 														min_hr/60, max_hr/60, ...
 														chroma_magnifier, ...
@@ -52,26 +52,28 @@ for k = 1 : size(vidFolders)
 	hr_arrays{k} = hr_array;
 end
 
+save([vidFolders{1} '/results.mat']);
+
 figure();
 lineSpecs = {'r-*', 'b-^'};
 if (length(frame_rates_as_multiplier) > 1) && (length(frame_sizes_as_multiplier) > 1)
 	for k = 1 : size(vidFolders)		
 		subplot(2, 1, 1);
 		hold('on');
-		temp = reshape(hr_arrays{k}(:, 3), frame_sizes_as_multiplier, frame_rates_as_multiplier);
+		temp = reshape(hr_arrays{k}(:, 3), length(frame_sizes_as_multiplier), length(frame_rates_as_multiplier));
 		surface(full_fr * frame_rates_as_multiplier, ...
 			full_vidHeight * frame_sizes_as_multiplier, ...
 			temp, ...
-			lineSpecs{k}, 'DisplayName', vidFolders{k});
+			'DisplayName', vidFolders{k});
 		zlabel('HR (BPM)');
 
 		subplot(2, 1, 2);
 		hold('on');
-		temp = reshape(100 * hr_arrays{k}(:, 3) / hr_arrays{k}(end, 3), frame_sizes_as_multiplier, frame_rates_as_multiplier);
+		temp = reshape(100 * hr_arrays{k}(:, 3) / hr_arrays{k}(end, 3), length(frame_sizes_as_multiplier), length(frame_rates_as_multiplier));
 		surface(full_fr * frame_rates_as_multiplier, ...
 			full_vidHeight * frame_sizes_as_multiplier, ...
 			temp, ...
-			lineSpecs{k}, 'DisplayName', vidFolders{k});
+			'DisplayName', vidFolders{k});
 		zlabel('%age of HR at full frame-rate');
 	end
 	xlabel('Nominal frame-rates (FPS)');

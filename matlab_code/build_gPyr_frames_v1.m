@@ -1,9 +1,9 @@
-% GDOWN_STACK = build_GDown_stack(VID_FILE, START_INDEX, END_INDEX, LEVEL)
+% pyramid = build_gPyr(VID_FILE, START_INDEX, END_INDEX, LEVEL)
 % 
 % Apply Gaussian pyramid decomposition on VID_FILE from START_INDEX to
 % END_INDEX and select a specific band indicated by LEVEL
 % 
-% GDOWN_STACK: stack of one band of Gaussian pyramid of each frame 
+% pyramid: stack of one band of Gaussian pyramid of each frame 
 % the first dimension is the time axis
 % the second dimension is the y axis of the video
 % the third dimension is the x axis of the video
@@ -16,7 +16,7 @@
 % License: Please refer to the LICENCE file
 % Date: June 2012
 %
-function GDown_stack = build_GDown_stack_frames(vid, startIndex, endIndex, level)
+function pyramid = build_gPyr_frames(vid, startIndex, endIndex, level)
 
 	% Extract video info
 	vidHeight = size(vid, 1);
@@ -33,10 +33,10 @@ function GDown_stack = build_GDown_stack_frames(vid, startIndex, endIndex, level
 
 	% create pyr stack
 	% Note that this stack is actually just a SINGLE level of the pyramid
-	GDown_stack = zeros(endIndex - startIndex + 1, size(blurred, 1), size(blurred, 2), size(blurred, 3));
+	pyramid = zeros(endIndex - startIndex + 1, size(blurred, 1), size(blurred, 2), size(blurred, 3));
 	
 	% The first frame in the stack is saved
-	GDown_stack(1, :, :, :) = blurred;
+	pyramid(1, :, :, :) = blurred;
 
 	k = 1;
 	for i = startIndex + 1 : endIndex
@@ -52,6 +52,6 @@ function GDown_stack = build_GDown_stack_frames(vid, startIndex, endIndex, level
 		
 		% The kth element in the stack is saved
 		% Note that this stack is actually just a SINGLE level of the pyramid
-		GDown_stack(k, :, :, :) = blurred;
+		pyramid(k, :, :, :) = blurred;
 	end
 end

@@ -1,4 +1,4 @@
-% eulerianGaussianPyramidMagnification(vidFile, outDir, alpha, 
+% magnify_euler_pyr(vidFile, outDir, alpha, 
 %                                      level, freq_band_low_end, freq_band_high_end, samplingRate, 
 %                                      chromAttenuation)
 % Based on code by Hao-yu Wu, Michael Rubinstein, Eugene Shih (June 2012)
@@ -7,7 +7,7 @@
 % Temporal Filtering: 15-tap FIR
 % 
 %
-function eulerianGaussianPyramidMagnification_video(vidFile, outDir, ...
+function magnify_euler_pyr_video(vidFile, outDir, ...
 											alpha, level, ...
                      						freq_band_low_end, freq_band_high_end, ...
                      						samplingRate, chromAttenuation)
@@ -56,13 +56,13 @@ function eulerianGaussianPyramidMagnification_video(vidFile, outDir, ...
     % compute Gaussian blur stack
     % This stack actually is just a single level of the pyramid
     disp('Spatial filtering...')
-    Gdown_stack = func_build_GDown_stack(vidFile, startIndex, endIndex, level); % TxMxNxC array
+    pyramid = func_build_pyramid(vidFile, startIndex, endIndex, level); % TxMxNxC array
     disp('Finished')
     
     % Temporal filtering
     disp('Temporal filtering...')
-    filtered_stack = ideal_bandpassing(Gdown_stack, 1, freq_band_low_end, freq_band_high_end, samplingRate);
-    %filtered_stack = filter_bandpassing(Gdown_stack, 1);
+    filtered_stack = ideal_bandpassing(pyramid, 1, freq_band_low_end, freq_band_high_end, samplingRate);
+    %filtered_stack = filter_bandpassing(pyramid, 1);
     disp('Finished')
     
     %% amplify
