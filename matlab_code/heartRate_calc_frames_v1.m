@@ -16,7 +16,7 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	conversion_method = frames2signalConversionMethod; %String
 	
 	%% Block 1 ==== Load the video & convert it to the desired colour-space
-	display(sprintf('Processing folder: %s', vidFolder));
+	%display(sprintf('Processing folder: %s', vidFolder));
 								   
 	% Read video
 	vid = frame_loader(vidFolder); %Double array
@@ -25,7 +25,12 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	vidHeight = size(vid, 1);
 	vidWidth = size(vid, 2);
 	len = size(vid, 4); %Int
-	fr = len / recordingTime; %Double
+	if exist([vidFolder '/vid_specs.txt'])
+		fr = textscan(fopen([vidFolder '/vid_specs.txt']), '%d, %d');
+		fr = double(fr{2});
+	else
+		fr = size(vid, 4) / recordingTime; %Double
+	end
 	
 	nChannels = number_of_channels;
 	window_size = round(window_size_in_sec * fr); %Int

@@ -20,13 +20,13 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		% Define the segment length
 		% a. Shine-step-counting style
         if  length(local_autocorr) > 3
-            [~, max_peak_locs] = findpeaks(local_autocorr, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 1));
+            [~, max_peak_locs] = findpeaks(local_autocorr, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 2));
             %[Double vector, Int vector]
 
             if isempty(max_peak_locs)
                 segment_length = length(segment); %Int
             else
-                [~, min_peak_locs] = findpeaks(-local_autocorr, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 1)); %Int vector
+                [~, min_peak_locs] = findpeaks(-local_autocorr, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 2)); %Int vector
 
                 if isempty(min_peak_locs)
                     segment_length = round((max(max_peak_locs) + window_size) / 2); %Int
@@ -59,7 +59,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 		segment = autocorrelation(windowStart : windowEnd);
 		
 		if  length(segment) > 3
-			[max_peak_strengths, max_peak_locs] = findpeaks(segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 1));
+			[max_peak_strengths, max_peak_locs] = findpeaks(segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 2));
 		
 			% Define the segment length
 			% a. Shine-step-counting style
@@ -68,7 +68,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_autocorr(temporal_mean, fr, fi
 			
 				heartRates(windowStart : windowStart + segment_length - 1) = zeros(1, segment_length);
 			else
-				[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 1), 'THRESHOLD', threshold); %Int vector
+				[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 2), 'THRESHOLD', threshold); %Int vector
 			
 				if isempty(min_peak_locs)
 					segment_length = round((max(max_peak_locs) + window_size) / 2); %Int

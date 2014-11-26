@@ -11,7 +11,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_pda(temporal_mean, fr, firstSa
 		
 		if length(segment) > 3
 			% Count the number of peaks in this window
-			[max_peak_strengths, max_peak_locs] = findpeaks(segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 1), 'THRESHOLD', threshold);
+			[max_peak_strengths, max_peak_locs] = findpeaks(segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 2), 'THRESHOLD', threshold);
 			%[Double vector, Int vector]
 		
 			% Define the segment length
@@ -21,7 +21,7 @@ function [heartBeats, avg_hr, debug] = hb_counter_pda(temporal_mean, fr, firstSa
 			
 				heartRates(windowStart : windowStart + segment_length - 1) = zeros(1, segment_length);
 			else
-				[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 1), 'THRESHOLD', threshold); %Int vector
+				[~, min_peak_locs] = findpeaks(-segment, 'MINPEAKDISTANCE', min(minPeakDistance, length(segment) - 2), 'THRESHOLD', threshold); %Int vector
 			
 				if isempty(min_peak_locs)
 					segment_length = round((max(max_peak_locs) + window_size) / 2); %Int
