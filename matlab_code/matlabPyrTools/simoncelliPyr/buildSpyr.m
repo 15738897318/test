@@ -46,7 +46,9 @@ if ( (exist('ht') ~= 1) | (ht == 'auto') )
   ht = max_ht;
 else
   if (ht > max_ht)
-    error(sprintf('Cannot build pyramid higher than %d levels.',max_ht));
+      ht = max_ht;
+      display(sprintf('Build pyramid with %d levels.',max_ht));
+      %error(sprintf('Cannot build pyramid higher than %d levels.',max_ht));
   end
 end
 
