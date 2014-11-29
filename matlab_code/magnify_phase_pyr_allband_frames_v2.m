@@ -104,32 +104,36 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
     
     clearvars 'phase_pyrs'
     
-    % Amplify
-    filtered_phase_pyrs = filtered_phase_pyrs * alpha;
+    %---- Amplify
+    % compute the representative wavelength lambda for the lowest spatial 
+	% frequency band of Laplacian pyramid
+	disp('Amplifying...')
+	lambda0 = sqrt(vidHeight^2 + vidWidth^2) / 3; % 3 is experimental constant (MIT)
+    amp_type = 'adaptive';
+    filtered_pyramids = func_amplify_pyr(filtered_pyramids, pind, [alpha chroma_magnifier], lambda0, amp_type);
+    disp('Finished')
+    
     
     % Weigh the phase by the magnitude
     % Not implemented yet
-        
-    % Add the amplified phases with the original pyramids
+    
+    disp('Rendering...')
+    %---- Add the amplified phases with the original pyramids
     filtered_pyramids = pyramids + filtered_phase_pyrs;
-	
-	clearvars 'pyramids'
-    clearvars 'filtered_phase_pyrs'
+    
+	clearvars 'pyramids', 'filtered_phase_pyrs'
 	
     % Convert the pyramids from polar back to cartesian representation
     [filtered_pyramids, ~, ~] = polar2cartPyr(filtered_pyramids, pind);
+        
     
-    %-----------------
-    
-    
-	% Reconstruct the frame stream from the pyramids and write out
-    disp('Rendering...')
-    
+	%---- Reconstruct the frame stream from the pyramids and write out    
     if exist(fullfile(vidFolder, 'out'))
     	rmdir(fullfile(vidFolder, 'out'), 's');
     end
     mkdir(fullfile(vidFolder, 'out'));
     
+    levels_to_reconstruct = [1 : spyrHt(pind) + 1]; % No highpass
     k = 0;
     for i = startIndex : endIndex
         k = k + 1;
@@ -139,15 +143,9 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 			filtered_pyramid = filtered_pyramids(:, :, k);
 			
 			processed_frame = [];
-			if strcmpi(pyramid_style, 'steerable')
-				for chan = 1 : size(filtered_pyramid, 2)
-					processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind, filter_file);
-				end
-			else
-				for chan = 1 : size(filtered_pyramid, 2)
-					processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind);
-				end
-            end
+			for chan = 1 : size(filtered_pyramid, 2)
+				processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind, filter_file, levels_to_reconstruct);
+			end
 			
 			% Format the image to the right size
 			processed_frame = imresize(processed_frame, [vidHeight vidWidth]); %Bicubic interpolation
@@ -163,6 +161,7 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 			processed_frame(processed_frame > 1) = 1;
 			processed_frame(processed_frame < 0) = 0;
 			
+			
 			% Write the frame into the video as unsigned 8-bit integer array
 			filename = fullfile(vidFolder, 'out', ...
 								[num2str(k)...
@@ -176,7 +175,7 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 			switch out_filetype
 				case 'png'
 					imwrite(processed_frame, [filename '.png'], 'png');
-                case 'mat'
+				case 'mat'
 					save([filename '.mat'], 'processed_frame');
 			end
 		else

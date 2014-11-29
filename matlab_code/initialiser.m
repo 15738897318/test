@@ -1,6 +1,10 @@
+global pyramid_style
+global filter_file
+
 input_format = 'frames';
 full_pyramid = 1;
 pyramid_style = 'steerable';
+frame_size = [128 128]; %Or empty array to avoid resizing the images
 
 
 %%%==== Functions
@@ -55,10 +59,15 @@ else
 					func_make_pyr = @buildSpyr;
 					func_recon_pyr = @reconSpyr;
 					func_magnify_pyr = @magnify_phase_pyr_allband_frames_v1;
+					
+					filter_file = 'sp3Filters'; %Accepted: 'sp1Filters', 'sp3Filters', 'sp5Filters'
 			end
 			
 			func_heartRate_calc = @heartRate_calc_frames_v1;
 	end
+	
+	amp_type = 'uniform';
+	func_amplify_pyr = @amplifyPyr_allband_v1;
 end
 
 %%%==== Constants
@@ -69,4 +78,6 @@ switch pyramid_style
 		constants_laplacian_v1;
 	case 'steerable'
 		constants_steerable_v1;
+	otherwise
+		constants_gaussian_v1;
 end

@@ -1,4 +1,4 @@
-% magnify_euler_pyr(vidFile, outDir, alpha, 
+% magnify_linear_pyr(vidFile, outDir, alpha, 
 %                                      level, freq_band_low_end, freq_band_high_end, samplingRate, 
 %                                      chromAttenuation)
 % Based on code by Hao-yu Wu, Michael Rubinstein, Eugene Shih (June 2012)
@@ -7,7 +7,7 @@
 % Temporal Filtering: 15-tap FIR
 % 
 %
-function magnify_phase_pyr_allband_frames(vidFolder, ...
+function magnify_linear_pyr_frames(vidFolder, ...
 											alpha, level, ...
 											freq_band_low_end, freq_band_high_end, ...
 											chromAttenuation, ...
@@ -26,6 +26,8 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
                 [0.299, 0.587, 0.114;
                  0.596, -0.274, -0.322;
                  0.211, -0.523, 0.312];
+	
+	C_matrix = C_matrix(channels_to_process, channels_to_process);
 										   
     disp('Loading the frames...')									   
     % Read video
@@ -45,7 +47,6 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 		full_fr = size(vid, 4) / recordingTime; %Double
 	end
 	
-	
 	% Re-sample & resize the video
 	vid = frame_interpolater(vid, new_fr, new_size);
 
@@ -54,13 +55,12 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 	vidWidth = size(vid, 2);
 	len = size(vid, 4); %Int
 	fr = len / recordingTime; %Double
-	    
-	samplingRate = fr;
- 	
- 	% Update the maximum level
-	[~, ~, lofilt, ~, ~, ~] = eval('sp1Filters'); % sp1Filters is the default filter used here. Unlikely to change though
- 	level = min(level, maxPyrHt([vidHeight, vidWidth], size(lofilt,1)));
 	
+    nChannels = number_of_channels;
+    
+	samplingRate = fr;
+	level = min(level, floor(log((min(vidHeight, vidWidth) - 1) / (Gpyr_filter_length  - 1)) / log(2)));
+    
     % Define the indices of the frames to be processed
     startIndex = startFrame;
     
@@ -69,60 +69,36 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
     else
     	endIndex = len + endFrame;
     end
-    disp('Finished')
     
     %% ================= Core part of the algo described in literature
-    %---- Decompose the frame stream into the pyramids
+    % compute Gaussian blur stack
+    % This stack actually is just a single level of the pyramids
     disp('Spatial filtering...')
-    [pyramids, pind] = func_build_pyramid_allband(vid, startIndex, endIndex, level); % PxCxT array where P: each pixel in the whole pyramid for 1 frame, C: colour channels, T: time
-    
-    % Convert the pyramids from cartesian to polar representation
-    [pyramids, band_pairs, band_indices] = cart2polarPyr(pyramids, pind);
+    pyramids = func_build_pyramid(vid, startIndex, endIndex, level); % TxMxNxC array
     disp('Finished')
     
-    clearvars 'vid'
-    
-    %---- Temporal filtering to remove DC and noise
-    % This is performed on the phases
+    % Temporal filtering
     disp('Temporal filtering...')
-    
-    % Create phase-only pyramids (where mag should be, it is 0)
-    mask = zeros(size(pyramids));
-    for band_pair = 1 : size(band_pairs, 1)
-    	mask(band_indices{band_pairs(band_pair, 2)}, :, :) = 1;
-    end
-    %mag_pyrs = (1 - mask) .* pyramids;
-    phase_pyrs = mask .* pyramids;
-    clearvars 'mask'
-    
-    filtered_phase_pyrs = ideal_bandpassing(phase_pyrs, length(size(phase_pyrs)), freq_band_low_end, freq_band_high_end, samplingRate); % PxCxT
-    if length(channels_to_process) == 1
-        filtered_phase_pyrs = permute(filtered_phase_pyrs, [2 3 1]);
-    end
-    
+    filtered_stack = ideal_bandpassing(pyramids, 1, freq_band_low_end, freq_band_high_end, samplingRate);
+    %filtered_stack = filter_bandpassing(pyramids, 1);
     disp('Finished')
     
-    clearvars 'phase_pyrs'
+    %% amplify
+    filtered_stack = permute(filtered_stack, [1, 4, 2, 3]);
+    for i = 1 : size(filtered_stack, 3)
+    	for j = 1 : size(filtered_stack, 4)
+    		temp_array = squeeze(filtered_stack(:, :, i, j));
+    		
+    		temp_array = temp_array * C_matrix';
+    		
+    		filtered_stack(:, :, i, j) = temp_array;
+    	end
+    end
+    filtered_stack = permute(filtered_stack, [1, 3, 4, 2]);
     
-    % Amplify
-    filtered_phase_pyrs = filtered_phase_pyrs * alpha;
-    
-    % Weigh the phase by the magnitude
-    % Not implemented yet
-        
-    % Add the amplified phases with the original pyramids
-    filtered_pyramids = pyramids + filtered_phase_pyrs;
-	
-	clearvars 'pyramids'
-    clearvars 'filtered_phase_pyrs'
-	
-    % Convert the pyramids from polar back to cartesian representation
-    [filtered_pyramids, ~, ~] = polar2cartPyr(filtered_pyramids, pind);
-    
-    %-----------------
-    
-    
-	% Reconstruct the frame stream from the pyramids and write out
+	%% =================
+
+    %% Render on the input video
     disp('Rendering...')
     
     if exist(fullfile(vidFolder, 'out'))
@@ -130,38 +106,37 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
     end
     mkdir(fullfile(vidFolder, 'out'));
     
+    % output video
     k = 0;
+    % Convert each frame from the filtered stream to movie frame
     for i = startIndex : endIndex
         k = k + 1;
         
-        if k <= size(filtered_pyramids, 1)
-			% Reconstruct the frame from its pyramid
-			filtered_pyramid = filtered_pyramids(:, :, k);
-			
-			processed_frame = [];
-			if strcmpi(pyramid_style, 'steerable')
-				for chan = 1 : size(filtered_pyramid, 2)
-					processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind, filter_file);
-				end
-			else
-				for chan = 1 : size(filtered_pyramid, 2)
-					processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind);
-				end
-            end
-			
-			% Format the image to the right size
-			processed_frame = imresize(processed_frame, [vidHeight vidWidth]); %Bicubic interpolation
+        if k <= size(filtered_stack, 1)
+			% Reconstruct the frame from pyramids stack		
+			% by removing the singleton dimensions of the kth filtered array
+			% since the filtered stack is just a selected level of the Gaussian pyramids
+			filtered = squeeze(filtered_stack(k, :, :, :));
 		
+			% Format the image to the right size
+			filtered = imresize(filtered, [vidHeight vidWidth]); %Bicubic interpolation
+		
+			% Extract the ith frame in the video stream
+			frame = vid(:, :, :, i); %Double MxNx3 array
+			
+			% Add the filtered frame to the original frame
+			filtered = filtered + frame;
+			
 			% Normalise the resultant frame
-			for chan = 1 : size(processed_frame, 3)
-				temp = processed_frame(:, :, chan);
+			for chan = 1 : size(filtered, 3)
+				temp = filtered(:, :, chan);
 				temp_range = max(temp(:)) - min(temp(:));
-				processed_frame(:, :, chan) = (temp - min(temp(:))) / temp_range;
+				frame(:, :, chan) = (temp - min(temp(:))) / temp_range;
 			end
 			
 			% Clip the values of the frame by 0 and 1
-			processed_frame(processed_frame > 1) = 1;
-			processed_frame(processed_frame < 0) = 0;
+			frame(frame > 1) = 1;
+			frame(frame < 0) = 0;
 			
 			% Write the frame into the video as unsigned 8-bit integer array
 			filename = fullfile(vidFolder, 'out', ...
@@ -176,15 +151,15 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 			switch out_filetype
 				case 'png'
 					imwrite(processed_frame, [filename '.png'], 'png');
-                case 'mat'
+				case 'mat'
 					save([filename '.mat'], 'processed_frame');
 			end
 		else
 			break;
 		end
     end
-    
-    if exist([vidFolder '/vid_specs.txt'])
+	
+	if exist([vidFolder '/vid_specs.txt'])
     	copyfile([vidFolder '/vid_specs.txt'], fullfile(vidFolder, 'out'));
 	end
 	

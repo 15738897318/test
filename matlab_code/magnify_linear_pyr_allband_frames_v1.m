@@ -8,13 +8,15 @@
 % 
 %
 function magnify_linear_pyr_allband_frames(vidFolder, ...
-													alpha, level, ...
-													freq_band_low_end, freq_band_high_end, ...
-													chromAttenuation, ...
-													new_fr, new_size)
+											alpha, level, ...
+											freq_band_low_end, freq_band_high_end, ...
+											chromAttenuation, ...
+											channels_to_process, ...
+											new_fr, new_size, ...
+											in_filetype, out_filetype)
     %Load constants
     initialiser;
-	
+	    
     C_matrix = [1.0000, 0.9562, 0.6214;
                 1.0000, -0.2727, -0.6468;
                 1.0000, -1.1037, 1.7006] * ...
@@ -24,10 +26,17 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
                 [0.299, 0.587, 0.114;
                  0.596, -0.274, -0.322;
                  0.211, -0.523, 0.312];
+             
+    C_matrix = C_matrix(channels_to_process, channels_to_process);
     
     
+    disp('Loading the frames...')									   
     % Read video
-	vid = frame_loader(vidFolder); % Double array
+    if strcmpi(channels_to_process, 'all')
+    	channels_to_process = 1 : 3;
+    end
+    
+	vid = frame_loader(vidFolder, frame_size, channels_to_process, in_filetype); % Double array
 	
 	global full_fr full_vidHeight full_vidWidth
 	full_vidHeight = size(vid, 1);
@@ -70,8 +79,12 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
     
     % Temporal filtering
     disp('Temporal filtering...')
-    filtered_pyramids = ideal_bandpassing(pyramids, 3, freq_band_low_end, freq_band_high_end, samplingRate); % PxCxT
+    filtered_pyramids = ideal_bandpassing(pyramids, length(size(pyramids)), freq_band_low_end, freq_band_high_end, samplingRate); % PxCxT
     disp('Finished')
+    
+    if length(size(filtered_pyramids)) == 2
+        filtered_pyramids = permute(filtered_pyramids, [2 3 1]);
+    end
     
     % Amplify
     for frame_index = 1 : size(filtered_pyramids, 3)
@@ -80,7 +93,7 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
 		temp_array = temp_array * C_matrix';
 		
 		filtered_pyramids(:, :, frame_index) = temp_array;
-	end
+    end
     
     %% Reconstruct the frame stream from the pyramids and write out
     disp('Rendering...')
@@ -99,8 +112,14 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
 			filtered_pyramid = filtered_pyramids(:, :, k);
 			
 			filtered_frame = [];
-			for chan = 1 : size(filtered_pyramid, 2)
-				filtered_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind);
+			if strcmpi(pyramid_style, 'steerable')
+				for chan = 1 : size(filtered_pyramid, 2)
+					filtered_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind, filter_file);
+				end
+			else
+				for chan = 1 : size(filtered_pyramid, 2)
+					filtered_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind);
+				end
 			end
 			
 			% Format the image to the right size
@@ -116,7 +135,7 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
 			for chan = 1 : size(processed_frame, 3)
 				temp = processed_frame(:, :, chan);
 				temp_range = max(temp(:)) - min(temp(:));
-				frame(:, :, chan) = (temp - min(temp(:))) / temp_range;
+				processed_frame(:, :, chan) = (temp - min(temp(:))) / temp_range;
 			end
 			
 			% Clip the values of the frame by 0 and 1
@@ -126,13 +145,19 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
 			% Write the frame into the video as unsigned 8-bit integer array
 			filename = fullfile(vidFolder, 'out', ...
 								[num2str(k)...
-								'-ideal-from-' num2str(freq_band_low_end) ...
-								'-to-' num2str(freq_band_high_end) ...
-								'-alpha-' num2str(alpha) ...
-								'-level-' num2str(level) ...
-								'-chromAtn-' num2str(chromAttenuation) ...
-								'.png']);
-			imwrite(im2uint8(processed_frame), filename, 'png');
+								'-idl-' num2str(freq_band_low_end) ...
+								'-' num2str(freq_band_high_end) ...
+								'-alp-' num2str(alpha) ...
+								'-lvl-' num2str(level) ...
+								'-chAtn-' num2str(chromAttenuation)]);
+			
+			processed_frame = im2uint8(processed_frame);
+			switch out_filetype
+				case 'png'
+					imwrite(processed_frame, [filename '.png'], 'png');
+				case 'mat'
+					save([filename '.mat'], 'processed_frame');
+			end
 		else
 			break;
 		end

@@ -3,7 +3,7 @@
 %	'/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/sample-Dung-finger-ideal-from-0.83333-to-1.5-alpha-50-level-4-chromAtn-1.avi'
 
 
-function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, colour_channel, ref_reading, colourspace, time_lag)
+function hr_array = heartRate_calc_frames(vidFolder, in_filetype, window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, colour_channel, ref_reading, colourspace, time_lag)
 											%Double				%Double			%Double	%Double		 %Int			 %Double		%String		%Double
 	close all
 	
@@ -19,7 +19,7 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	%display(sprintf('Processing folder: %s', vidFolder));
 								   
 	% Read video
-	vid = frame_loader(vidFolder); %Double array
+	vid = frame_loader(vidFolder, frame_size, colour_channel, in_filetype); %Double array
 
 	% Extract video info
 	vidHeight = size(vid, 1);
@@ -227,6 +227,7 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 		xlim([min(freq_vector - fr / 2) max(freq_vector - fr / 2)])
 		xlim([0 +2.5])
 		xlabel('Frequency (Hz)')
+		ylabel('FFT of 1-D signal');
 
 		window_size = 256;
 		overlap_ratio = 7 / 8;

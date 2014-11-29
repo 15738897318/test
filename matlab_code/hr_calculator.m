@@ -34,13 +34,6 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	
 		debug.count_signal = count_signal;
 		debug.score_signal = score_signal;
-	
-		figure(); 
-		hold('on');
-		stem(count_signal);
-		plot(score_signal);
-		xlabel('Time axis in samples');
-		hold('off');
 	else
 		heartRate.average = NaN;
 		heartRate.mode = NaN;

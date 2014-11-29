@@ -1,6 +1,5 @@
-clear all
 vidFolder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignalProcessing/eulerianMagnifcation/codeMatlab/testData/Set2';
-template_to_include = 'Face';
+template_to_include = 'Finger';
 
 vidFolders = dir(vidFolder);
 vidFolders = {vidFolders([vidFolders(:).isdir]).name};
@@ -30,11 +29,11 @@ global full_fr full_vidHeight full_vidWidth
 hr_arrays = {};
 for k = 1 : length(vidFolders)
 	current_vidFolder = vidFolders{k};
-	display(sprintf('Processing folder: %s', current_vidFolder));
+	display(sprintf('Processing folder %d of %d: %s', k, length(vidFolders), current_vidFolder));
     
 	if exist([current_vidFolder '/ref_pulse.txt'])
 		ref_pulse = textscan(fopen([current_vidFolder '/ref_pulse.txt']), '%s');
-		ref_pulse = str2num(ref_pulse{1}{end});
+		ref_pulse = str2double(ref_pulse{1}{end});
 	else
 		ref_pulse = 75;
 	end
@@ -53,18 +52,28 @@ for k = 1 : length(vidFolders)
 							alpha, pyr_level, ...
 							frame_rate_as_multiplier, frame_size_as_multiplier));
         
-		func_magnify_pyr(current_vidFolder, ...
-						alpha, pyr_level, ...
-						min_hr/60, max_hr/60, ...
-						chroma_magnifier, ...
-						frame_rate_as_multiplier, frame_size_as_multiplier);
+		if ~strcmpi(pyramid_style, 'none')
+            func_magnify_pyr(current_vidFolder, ...
+                            alpha, pyr_level, ...
+                            min_hr/60, max_hr/60, ...
+                            chroma_magnifier, ...
+                            channel_to_process, ...
+                            frame_rate_as_multiplier, frame_size_as_multiplier,...
+                            'png', 'mat');
+            
+            frameFolder_for_hr = fullfile(current_vidFolder, 'out');
+            hr_in_filetype = 'mat';
+        else
+            frameFolder_for_hr = current_vidFolder;
+            hr_in_filetype = 'png';
+        end
 	
-		temp_hr_array = func_heartRate_calc(fullfile(current_vidFolder, 'out'), window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, 2, ref_pulse, 'tsl', time_lag);
+		temp_hr_array = func_heartRate_calc(frameFolder_for_hr, hr_in_filetype, window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, channel_to_process, ref_pulse, colourspace, time_lag);
 		hr_array = [hr_array; temp_hr_array];
 	end
 		
 	hr_arrays{k, 1} = hr_array;
 	hr_arrays{k, 2} = current_vidFolder;
     
-    save(strcat(vidFolder, '/results_', template_to_include, '.mat'), 'hr_arrays', 'params_set');
+    save(strcat(vidFolder, '/results_', pyramid_style, '_', template_to_include, '.mat'), 'hr_arrays', 'params_set');
 end

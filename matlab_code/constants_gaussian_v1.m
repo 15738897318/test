@@ -5,13 +5,15 @@ beat_filter_length = 15;
 
 %%------- Eulerian-magnification parameters
 
+amp_type = 'uniform'; %Accepted: 'uniform', 'adaptive'
+
 % Control params for the algorithm
 min_hr = 30; %BPM %Standard: 30
 max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
 chroma_magnifier = 1; %Standard: 1
 
-alphas = [50]; %Eulerian magnifier %Standard: < 50
+alphas = 1 : 10 : 101; %Eulerian magnifier %Standard: < 50
 pyr_levels = [6]; %Standard: 6, but updated by the real frame size
 if length(alphas) == 1
 	alpha = alphas(1);
@@ -54,8 +56,8 @@ max_bpm = 200; %BPM
 cutoff_freq = 2.5; %Hz
 time_lag = 3; %seconds
 
-colourspace = 'tsl';
-channels_to_process = 1 : 3; %If only 1 channel: 2 for tsl, 1 for rgb
+colourspace = 'rgb';
+channel_to_process = 1; %If only 1 channel: 2 for tsl, 1 for rgb
 
 
 % heartRate_calc: Native params of the algorithm
