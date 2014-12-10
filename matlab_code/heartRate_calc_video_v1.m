@@ -130,8 +130,9 @@ function hr_array = heartRate_calc_video(vidFile, window_size_in_sec, overlap_ra
 	%% ============ Function output and summary
 	% Display the average rate using total peak counts on the full stream
 	[~, peak_locs] = findpeaks(temporal_mean(firstSample : end), 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold);
+	avg_hr = length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60;
 	disp('Average heart-rate: ');
-	disp(length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60);
+	disp(avg_hr);
 	
 	disp('Average heart-rate (PDA): ');
 	disp(hr_pda);
@@ -143,7 +144,7 @@ function hr_array = heartRate_calc_video(vidFile, window_size_in_sec, overlap_ra
 	disp(ref_reading);
 	
 	% Output of the function
-	hr_array = [ref_reading, colour_channel, hr_autocorr, hr_pda];
+	hr_array = [ref_reading, colour_channel, hr_autocorr, hr_pda, avg_hr];
 	
 	
 	

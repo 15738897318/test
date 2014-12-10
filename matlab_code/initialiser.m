@@ -53,12 +53,12 @@ else
 				case 'laplacian'
 					func_make_pyr = @buildLpyr;
 					func_recon_pyr = @reconLpyr;
-					func_magnify_pyr = @magnify_linear_pyr_allband_frames_v1;
+					func_magnify_pyr = @magnify_linear_pyr_allband_frames_v2;
 				
 				case 'steerable'
 					func_make_pyr = @buildSpyr;
 					func_recon_pyr = @reconSpyr;
-					func_magnify_pyr = @magnify_phase_pyr_allband_frames_v1;
+					func_magnify_pyr = @magnify_phase_pyr_allband_frames_v2;
 					
 					filter_file = 'sp3Filters'; %Accepted: 'sp1Filters', 'sp3Filters', 'sp5Filters'
 			end
@@ -66,7 +66,7 @@ else
 			func_heartRate_calc = @heartRate_calc_frames_v1;
 	end
 	
-	amp_type = 'uniform';
+	amp_type = 'adaptive';
 	func_amplify_pyr = @amplifyPyr_allband_v1;
 end
 

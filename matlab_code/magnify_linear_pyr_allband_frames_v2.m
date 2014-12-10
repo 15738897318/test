@@ -99,7 +99,8 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
     %---- Add the amplified phases with the original pyramids
     processed_pyramids = pyramids + filtered_pyramids;
     
-	clearvars 'pyramids', 'filtered_pyramids'
+	clearvars 'pyramids'
+    clearvars 'filtered_pyramids'
     
     %---- Reconstruct the vid and write out
     if exist(fullfile(vidFolder, 'out'))
@@ -111,12 +112,12 @@ function magnify_linear_pyr_allband_frames(vidFolder, ...
     for i = startIndex : endIndex
         k = k + 1;
         
-        if k <= size(filtered_pyramids, 1)
+        if k <= size(processed_pyramids, 1)
 			% Reconstruct the frame from its pyramid
-			filtered_pyramid = filtered_pyramids(:, :, k);
+			processed_pyramid = processed_pyramids(:, :, k);
 			
 			processed_frame = [];
-			for chan = 1 : size(filtered_pyramid, 2)
+			for chan = 1 : size(processed_pyramid, 2)
 				processed_frame(:, :, chan) = func_recon_pyr(processed_pyramid(:, chan), pind);
 			end
 			

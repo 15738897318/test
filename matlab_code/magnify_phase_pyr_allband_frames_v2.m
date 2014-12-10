@@ -110,7 +110,7 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 	disp('Amplifying...')
 	lambda0 = sqrt(vidHeight^2 + vidWidth^2) / 3; % 3 is experimental constant (MIT)
     amp_type = 'adaptive';
-    filtered_pyramids = func_amplify_pyr(filtered_pyramids, pind, [alpha chroma_magnifier], lambda0, amp_type);
+    filtered_phase_pyrs = func_amplify_pyr(filtered_phase_pyrs, pind, [alpha chroma_magnifier], lambda0, amp_type);
     disp('Finished')
     
     
@@ -121,7 +121,8 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
     %---- Add the amplified phases with the original pyramids
     filtered_pyramids = pyramids + filtered_phase_pyrs;
     
-	clearvars 'pyramids', 'filtered_phase_pyrs'
+	clearvars 'pyramids'
+    clearvars 'filtered_phase_pyrs'
 	
     % Convert the pyramids from polar back to cartesian representation
     [filtered_pyramids, ~, ~] = polar2cartPyr(filtered_pyramids, pind);
@@ -133,7 +134,6 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
     end
     mkdir(fullfile(vidFolder, 'out'));
     
-    levels_to_reconstruct = [1 : spyrHt(pind) + 1]; % No highpass
     k = 0;
     for i = startIndex : endIndex
         k = k + 1;
@@ -144,7 +144,7 @@ function magnify_phase_pyr_allband_frames(vidFolder, ...
 			
 			processed_frame = [];
 			for chan = 1 : size(filtered_pyramid, 2)
-				processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind, filter_file, levels_to_reconstruct);
+				processed_frame(:, :, chan) = func_recon_pyr(filtered_pyramid(:, chan), pind, filter_file);
 			end
 			
 			% Format the image to the right size

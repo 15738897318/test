@@ -12,8 +12,8 @@ max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
 chroma_magnifier = 1; %Standard: 1
 
-alphas = [20 : 20 : 200]; %Eulerian magnifier %Standard: < 50
-pyr_levels = [6]; %Standard: 6, but updated by the real frame size
+alphas = [-201 : 20 : 201]; %Eulerian magnifier %Standard: < 50
+pyr_levels = [2 : 2 : 6]; %Standard: 6, but updated by the real frame size
 if length(alphas) == 1
 	alpha = alphas(1);
 	
