@@ -22,11 +22,21 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 		score_signal = conv(count_signal, kernel, 'same');
 	
 		%Decide if the any beats are missing and fill them in if need be
-		factor = 1.5;
-		[min_peak_strengths, min_peak_locs] = findpeaks(-score_signal); % Already implemented
-		min_peak_strengths = -min_peak_strengths;
-		count_signal(min_peak_locs(min_peak_strengths < factor * base_threshold)) = -1;
-	
+		if length(score_signal) > 3
+            factor = 1.5;
+            [min_peak_strengths, min_peak_locs] = findpeaks(-score_signal); % Already implemented
+            min_peak_strengths = -min_peak_strengths;
+            count_signal(min_peak_locs(min_peak_strengths < factor * base_threshold)) = -1;
+        else
+            heartRate.average = NaN;
+            heartRate.mode = NaN;
+
+            debug.count_signal = [];
+            debug.score_signal = [];
+            
+            return
+        end
+        
 		%Calculate the heart-rate from the new beat count
 		heartRate.average = sum(abs(count_signal)) / (length(count_signal) + 1 / centre_mode) * frameRate * 60;
 	
@@ -34,13 +44,6 @@ function [heartRate, debug] = hr_calculator(heartBeats, frameRate)
 	
 		debug.count_signal = count_signal;
 		debug.score_signal = score_signal;
-	
-		figure(); 
-		hold('on');
-		stem(count_signal);
-		plot(score_signal);
-		xlabel('Time axis in samples');
-		hold('off');
 	else
 		heartRate.average = NaN;
 		heartRate.mode = NaN;

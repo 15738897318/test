@@ -3,7 +3,7 @@
 %	'/Users/misfit/Desktop/Codes - Local/Working bench/bioSignalProcessing/eulerianMagnifcation/codeMatlab/Results/sample-Dung-finger-ideal-from-0.83333-to-1.5-alpha-50-level-4-chromAtn-1.avi'
 
 
-function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, colour_channel, ref_reading, colourspace, time_lag)
+function hr_array = heartRate_calc_frames(vidFolder, in_filetype, window_size_in_sec, overlap_ratio, max_bpm, cutoff_freq, colour_channel, ref_reading, colourspace, time_lag)
 											%Double				%Double			%Double	%Double		 %Int			 %Double		%String		%Double
 	close all
 	
@@ -16,16 +16,21 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	conversion_method = frames2signalConversionMethod; %String
 	
 	%% Block 1 ==== Load the video & convert it to the desired colour-space
-	display(sprintf('Processing folder: %s', vidFolder));
+	%display(sprintf('Processing folder: %s', vidFolder));
 								   
 	% Read video
-	vid = frameloader(vidFolder); %Double array
+	vid = frame_loader(vidFolder, frame_size, colour_channel, in_filetype); %Double array
 
 	% Extract video info
 	vidHeight = size(vid, 1);
 	vidWidth = size(vid, 2);
 	len = size(vid, 4); %Int
-	fr = len / recordingTime; %Double
+	if exist([vidFolder '/vid_specs.txt'])
+		fr = textscan(fopen([vidFolder '/vid_specs.txt']), '%d, %d');
+		fr = double(fr{2});
+	else
+		fr = size(vid, 4) / recordingTime; %Double
+	end
 	
 	nChannels = number_of_channels;
 	window_size = round(window_size_in_sec * fr); %Int
@@ -123,8 +128,9 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	%% ============ Function output and summary
 	% Display the average rate using total peak counts on the full stream
 	[~, peak_locs] = findpeaks(temporal_mean(firstSample : end), 'MINPEAKDISTANCE', minPeakDistance, 'THRESHOLD', threshold);
+	avg_hr = length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60;
 	disp('Average heart-rate: ');
-	disp(length(peak_locs) / length(temporal_mean(firstSample : end)) * fr * 60);
+	disp(avg_hr);
 	
 	disp('Average heart-rate (PDA): ');
 	disp(hr_pda);
@@ -136,7 +142,7 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 	disp(ref_reading);
 	
 	% Output of the function
-	hr_array = [ref_reading, colour_channel, hr_autocorr, hr_pda];
+	hr_array = [ref_reading, colour_channel, hr_autocorr, hr_pda, avg_hr];
 	
 	
 	
@@ -222,6 +228,7 @@ function hr_array = heartRate_calc_frames(vidFolder, window_size_in_sec, overlap
 		xlim([min(freq_vector - fr / 2) max(freq_vector - fr / 2)])
 		xlim([0 +2.5])
 		xlabel('Frequency (Hz)')
+		ylabel('FFT of 1-D signal');
 
 		window_size = 256;
 		overlap_ratio = 7 / 8;
