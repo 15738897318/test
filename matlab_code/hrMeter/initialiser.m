@@ -3,12 +3,12 @@ global filter_file
 
 input_format = 'frames';
 full_pyramid = 1;
-pyramid_style = 'steerable';
+pyramid_style = 'laplacian';
 frame_size = [128 128]; %Or empty array to avoid resizing the images
 
 
 %%%==== Functions
-addpath(genpath('./matlabPyrTools'));
+addpath(genpath('../matlabPyrTools'));
 
 if ~full_pyramid
 	%%== Single-layer pyramid

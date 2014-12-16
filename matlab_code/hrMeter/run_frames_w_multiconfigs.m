@@ -31,7 +31,7 @@ for template_ind = 1 : length(templates_to_include)
 	
 	data_point = 0;
 	hr_arrays = {};
-	iter_limit = max(1, length(vidFolders) - 100 + 1); %Limit the number of loops
+	iter_limit = 1; max(1, length(vidFolders) - 100 + 1); %Limit the number of loops
 	for k = iter_limit : length(vidFolders)
 		current_vidFolder = vidFolders{k};
         data_point = data_point + 1;

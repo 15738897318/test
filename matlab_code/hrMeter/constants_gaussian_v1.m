@@ -5,15 +5,20 @@ beat_filter_length = 15;
 
 %%------- Eulerian-magnification parameters
 
+amp_type = 'adaptive'; %Accepted: 'uniform', 'adaptive'
+
 % Control params for the algorithm
-alpha = 50; %Eulerian magnifier %Standard: < 50
-pyr_level = 6; %Standard: 6, but updated by the real frame size
 min_hr = 30; %BPM %Standard: 30
 max_hr = 240; %BPM %Standard: > 150
 frame_rate = 30; %Standard: 30, but updated by the real frame-rate
 chroma_magnifier = 1; %Standard: 1
 
-C_matrix = [1.0000, 0.9562, 0.6214,
+alphas = [-101 : 20 : 101]; %Eulerian magnifier %Standard: < 50
+pyr_levels = [2 : 2 : 6]; %Standard: 6, but updated by the real frame size
+if length(alphas) == 1
+	alpha = alphas(1);
+	
+	C_matrix = [1.0000, 0.9562, 0.6214,
             1.0000, -0.2727, -0.6468,
             1.0000, -1.1037, 1.7006] * ...
 			alpha * [1, 0, 0,
@@ -22,6 +27,11 @@ C_matrix = [1.0000, 0.9562, 0.6214,
 			[0.299, 0.587, 0.114,
              0.596, -0.274, -0.322,
              0.211, -0.523, 0.312];
+end;
+if length(pyr_levels) == 1
+	pyr_level = pyr_levels(1);
+end
+
 
 
 % Native params of the algorithm
@@ -37,9 +47,6 @@ endFrame = 0; %Positive number to get definite end-frame, negative number to get
 %Same as above, filter_length = 31
 %eulerianTemporalFilterKernel = [-0.0083; -0.0183; -0.0234; -0.0209; -0.0115; -0.0010;  0.0003; -0.0155; -0.0461; -0.0759; -0.0824; -0.0487;  0.0249;  0.1173;  0.1942;  0.2241;  0.1942;  0.1173;  0.0249; -0.0487; -0.0824; -0.0759; -0.0461; -0.0155;  0.0003; -0.0010; -0.0115; -0.0209; -0.0234; -0.0183; -0.0083];
 
-addpath('./matlabPyrTools');
-addpath('./matlabPyrTools/MEX');
-
 %%------- HR calculation parameters
 
 % Control params for the algorithm
@@ -49,8 +56,8 @@ max_bpm = 200; %BPM
 cutoff_freq = 2.5; %Hz
 time_lag = 3; %seconds
 
-colourspace = 'tsl';
-channels_to_process = 1 : 3; %If only 1 channel: 2 for tsl, 1 for rgb
+colourspace = 'rgb';
+channel_to_process = 1; %If only 1 channel: 2 for tsl, 1 for rgb
 
 
 % heartRate_calc: Native params of the algorithm

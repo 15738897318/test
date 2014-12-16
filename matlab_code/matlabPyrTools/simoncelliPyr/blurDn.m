@@ -32,38 +32,28 @@ end
 
 filt = filt/sum(filt(:));
 
-% This part recursively gets the function to nlevs == 1 level of the pyramid
-% then returns the output as dictated by the next part of the code to nlevs == 2 level
-% which is then processed by the next part of the code for its layer, etc
 if nlevs > 1
   im = blurDn(im,nlevs-1,filt);
 end
 
-% This is the actual processing that takes place at each layer of the pyramid
 if (nlevs >= 1)
-	if (any(size(im)==1))
-		if (~any(size(filt)==1))
-			error('Cant apply 2D filter to 1D signal');
-		end
-	
-		if (size(im,2)==1)
-			filt = filt(:);
-		else
-			filt = filt(:)';
-		end
-		
-		% Calculate the downsampled convolution of the image and the filter
-		res = corrDn(im,filt,'reflect1',(size(im)~=1)+1);
-	
-	elseif (any(size(filt)==1))
-		filt = filt(:);
-		% Calculate the downsampled convolution of the image and the filter
-		res = corrDn(im,filt,'reflect1',[2 1]);
-		res = corrDn(res,filt','reflect1',[1 2]);
-	else
-		% Calculate the downsampled convolution of the image and the filter
-		res = corrDn(im,filt,'reflect1',[2 2]);
-	end
+  if (any(size(im)==1))
+    if (~any(size(filt)==1))
+      error('Cant  apply 2D filter to 1D signal');
+    end
+    if (size(im,2)==1)
+      filt = filt(:);
+    else
+      filt = filt(:)';
+    end
+    res = corrDn(im,filt,'reflect1',(size(im)~=1)+1);
+  elseif (any(size(filt)==1))
+    filt = filt(:);
+    res = corrDn(im,filt,'reflect1',[2 1]);
+    res = corrDn(res,filt','reflect1',[1 2]);
+  else
+    res = corrDn(im,filt,'reflect1',[2 2]);
+  end
 else
-  	res = im;
+  res = im;
 end
