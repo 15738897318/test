@@ -1,14 +1,14 @@
 global pyramid_style
 global filter_file
 
-input_format = 'video';
+input_format = 'frames';
 full_pyramid = 0;
 pyramid_style = 'gaussian';
 frame_size = []; [128 128]; %Or empty array to avoid resizing the images
 
 
 %%%==== Functions
-addpath(genpath('../tools'));
+addpath(genpath('../../../tools'))
 addpath(genpath('./'));
 
 if ~full_pyramid
