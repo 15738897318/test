@@ -1,4 +1,5 @@
-vidFile = 'test.avi';
+vidFolder = './test_data/frames/self2';
+vidFile = './test_data/videos/test.avi';
 
 
 % ROI def:
@@ -7,7 +8,7 @@ vidFile = 'test.avi';
 roi_params = {
 			  {[0.25, 0], [0.75, 0.9]}, ...
 			  {[0, 0.2], [1, 0.55]}
-			  };
+			 };
 forced_selection = false;
 
 % Feature-marker def:
@@ -25,7 +26,7 @@ filter_specs.freq = [0.75, 5]; % Hz
 
 % Function handles
 func_region_selection = @mit_select_region_video;
-func_feature_tracking = @mit_track_feature_video;
+func_feature_tracking = @mit_track_feature_frames;
 func_feature_processing = @mit_feature_processing;
 func_temporal_filtering = @mit_temporal_filtering;
 func_signal_selection = @mit_signal_selection;
@@ -38,6 +39,10 @@ cv_package = 'opencv'; % 'native'
 %% === Step 1.1: Separate the video into independent masked face-only streams
 vid = VideoReader(vidFile);
 frameRate = vid.FrameRate;
+
+func_region_selection = @mit_select_region_frames;
+vid = vidFolder;
+forced_selection = true;
 
 [roi_streams] = func_region_selection(vid, roi_params, forced_selection, cv_package);
 
