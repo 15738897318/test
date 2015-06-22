@@ -3,10 +3,12 @@ function frames = frame_loader(target_folder, frame_size, channels_to_process, f
 	switch file_type
 		case 'png'
 			frame_list = dir(fullfile(target_folder, '*.png'));
-	
+            frame_list = {frame_list.name};
+            frame_list = sort_nat(frame_list);
+            
 			frames = [];
 			for i = 1 : length(frame_list)
-				[X, ~] = imread(fullfile(target_folder, frame_list(i).name), 'png'); %uint8 array
+				[X, ~] = imread(fullfile(target_folder, frame_list{i}), 'png'); %uint8 array
 				X = double(X);
 		
 				if ~isempty(frame_size)
@@ -20,10 +22,12 @@ function frames = frame_loader(target_folder, frame_size, channels_to_process, f
 		
 		case 'mat'
 			frame_list = dir(fullfile(target_folder, '*.mat'));
-			
+			frame_list = {frame_list.name};
+            frame_list = sort_nat(frame_list);
+            
 			frames = [];
 			for i = 1 : length(frame_list)
-				X = load(fullfile(target_folder, frame_list(i).name)); %uint8 array from .mat file
+				X = load(fullfile(target_folder, frame_list{i})); %uint8 array from .mat file
 				frames(:, :, :, i) = double(X.processed_frame); % Double array
 			end
 	end
