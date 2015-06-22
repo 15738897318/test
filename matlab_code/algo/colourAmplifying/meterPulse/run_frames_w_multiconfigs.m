@@ -1,4 +1,4 @@
-vidFolder = '/Users/misfit/Desktop/Codes - Local/Active/bioSignal/Data/fieldData/fieldData-Processed';
+vidFolder = '~/Desktop/Codes - Local/Active/bioSignal/Data/fieldData/fieldData-Processed';
 templates_to_include = {'Finger', 'Face'};
 
 for template_ind = 1 : length(templates_to_include)

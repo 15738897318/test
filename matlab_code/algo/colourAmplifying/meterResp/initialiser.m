@@ -8,7 +8,7 @@ frame_size = []; [128 128]; %Or empty array to avoid resizing the images
 
 
 %%%==== Functions
-addpath(genpath('../tools'));
+addpath(genpath('../../../tools'))
 addpath(genpath('./'));
 
 if ~full_pyramid

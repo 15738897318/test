@@ -118,15 +118,16 @@ function magnify_linear_pyr_frames(vidFolder, ...
 			filtered = filtered + frame;
 			
 			% Normalise the resultant frame
-			for chan = 1 : size(filtered, 3)
+			processed_frame = frame;
+            for chan = 1 : size(filtered, 3)
 				temp = filtered(:, :, chan);
 				temp_range = max(temp(:)) - min(temp(:));
-				frame(:, :, chan) = (temp - min(temp(:))) / temp_range;
+				processed_frame(:, :, chan) = (temp - min(temp(:))) / temp_range;
 			end
 			
 			% Clip the values of the frame by 0 and 1
-			frame(frame > 1) = 1;
-			frame(frame < 0) = 0;
+			processed_frame(processed_frame > 1) = 1;
+			processed_frame(processed_frame < 0) = 0;
 			
 			% Write the frame into the video as unsigned 8-bit integer array
 			filename = fullfile(vidFolder, 'out', ...
