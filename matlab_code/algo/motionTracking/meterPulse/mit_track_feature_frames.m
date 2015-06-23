@@ -13,7 +13,7 @@ function [features_pos] = mit_track_feature_video(vid_array, features_def, cv_pa
     refframe = eval(['vid_array', '(', dim_slice_pad, '1', ')']);
 
     % Perform optical-flow calculation using Lucas-Kanade method for each frame compared with frame 1
-    pos_array = {};
+    pos_array = cell(vid_array_sz(time_dim), length(features_def));
     for i = 1 : vid_array_sz(time_dim)
         % Get the current frame
         currframe = eval(['vid_array', '(', dim_slice_pad, num2str(i), ')']);
@@ -22,7 +22,7 @@ function [features_pos] = mit_track_feature_video(vid_array, features_def, cv_pa
         currpos = mit_track_feature_frame(currframe, refframe, features_def, cv_package);
 
         % Concatenate into result array
-        pos_array = cat(1, pos_array, currpos);
+        pos_array(i, :) = currpos;
     end
 
     features_pos = {};
