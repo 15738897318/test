@@ -1,9 +1,11 @@
-function signals = mit_peak_detection(signals, samplingRate)
+function signals = own_peak_detection(signals, samplingRate)
+	width_coeff = 1/2;
+
 	for i = 1 : length(signals)
 		time_series = signals{i}.timeseries;
 		freq_pulse = signals{i}.freq_pulse;
 		
-		window_width = round(samplingRate / freq_pulse);
+		window_width = round(width_coeff * samplingRate / freq_pulse);
 		if length(time_series) <= window_width
 			window_width = length(time_series);
 		end

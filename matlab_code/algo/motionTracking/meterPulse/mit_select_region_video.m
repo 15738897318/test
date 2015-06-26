@@ -1,4 +1,4 @@
-function [roi_streams] = mit_select_region_video(vid, roi_params, forced_selection, cv_package)
+function [roi_streams, frameRate] = mit_select_region_video(vid, roi_params, forced_selection, cv_package)
     % Constants
     SETTLEMENT_TIME = 0.5; %seconds
 
@@ -27,20 +27,26 @@ function [roi_streams] = mit_select_region_video(vid, roi_params, forced_selecti
         roi_streams = cell(size(full_masks));
 
         % Separate ROIs in each frame into their own streams (represented as 3-D arrays)
-        frame_index = first_frame_index;
-        for i = 0 : vidLen - first_frame_index
-            % Extract the ith frame in the video stream
-            temp.cdata = read(vid, frame_index);
-            % Convert the extracted frame to RGB image
-            [rgbframe, ~] = frame2im(temp);
+        % Extract the ROI for each face
+        for j = 1 : length(full_masks)
+            full_mask = full_masks{j};
+            roi_mask = roi_masks{j, 1};
 
-            % Extract the ROI for each face
-            for j = 1 : length(full_masks)
-                roi = uint8(bsxfun(@times, full_masks{j}, double(rgbframe)));
-                roi_streams{j} = cat(time_dim, roi_streams{j}, imcrop(roi, roi_masks{j, 1}));
+            roi_stream = [];
+            frame_index = first_frame_index;
+            for i = 0 : vidLen - first_frame_index
+                % Extract the ith frame in the video stream
+                temp.cdata = read(vid, frame_index);
+                % Convert the extracted frame to RGB image
+                [rgbframe, ~] = frame2im(temp);
+
+                roi = uint8(bsxfun(@times, full_mask, double(rgbframe)));
+                roi_stream = cat(time_dim, roi_stream, imcrop(roi, roi_mask));
+
+                frame_index = frame_index + 1;
             end
 
-            frame_index = frame_index + 1;
+            roi_streams{j} = roi_stream;
         end
     else
         roi_streams = {};

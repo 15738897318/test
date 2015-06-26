@@ -1,4 +1,4 @@
-vidFolder = './test_data/frames/self2';
+vidFolder = './test_data/frames/self1';
 vidFile = './test_data/videos/test.avi';
 
 
@@ -38,13 +38,12 @@ cv_package = 'opencv'; % 'native'
 %% % ===== Step 1: Region selection and Tracking (Section 3.1 in paper)
 %% === Step 1.1: Separate the video into independent masked face-only streams
 vid = VideoReader(vidFile);
-frameRate = vid.FrameRate;
 
 func_region_selection = @mit_select_region_frames;
 vid = vidFolder;
 forced_selection = true;
 
-[roi_streams] = func_region_selection(vid, roi_params, forced_selection, cv_package);
+[roi_streams, frameRate] = func_region_selection(vid, roi_params, forced_selection, cv_package);
 
 
 %% === Step 1.2: Track features in the face-only streams
@@ -90,9 +89,9 @@ end
 %% === Step 1.3: Post-processing of the optical-flow data based on Y-dimension optical-flow
 features_pos_proc = {};
 if numel(features_pos) > 0
-	freq_params.current_freq = frameRate;
+	freq_params.original_freq = frameRate;
 	freq_params.new_freq = ECG_freq;
-	features_pos_proc = mit_feature_processing(features_pos, freq_params);
+	features_pos_proc = func_feature_processing(features_pos, freq_params);
 end
 
 

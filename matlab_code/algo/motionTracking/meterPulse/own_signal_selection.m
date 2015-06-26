@@ -1,4 +1,4 @@
-function signals = mit_signal_selection(features_pos, samplingRate)
+function signals = own_signal_selection(features_pos, samplingRate, method)
 	RETAINED_PORTION_4_PCA = 0.75;
 
 	signals = cell(size(features_pos));
@@ -10,11 +10,19 @@ function signals = mit_signal_selection(features_pos, samplingRate)
 		l2_threshold = prctile(l2_norms, RETAINED_PORTION_4_PCA * 100);
 		reduced_features = original_features(l2_norms <= l2_threshold, :);
 
-		% Calculate the PCA coefficients
-		transform_coeffs = pca(reduced_features);
-		
-		% Transform the features
-		transformed_features = original_features * transform_coeffs;
+		switch method
+		case 'pca'
+			% Calculate the PCA coefficients
+			transform_coeffs = pca(reduced_features);
+			
+			% Transform the features
+			transformed_features = original_features * transform_coeffs;
+
+		case 'ica'
+			% FastICA function has input/output in the form of NumOfSamples*NumOfSignals
+			transformed_features = fastica(reduced_features')';
+		end
+
 
 		%% === Select signal based on periodicity (Section 3.4 in paper)
 		% Calculate the power spectra for the features up to Nyquist frequency
