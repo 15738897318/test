@@ -1,4 +1,4 @@
-function [roi_streams] = mit_select_region_frames(vidFolder, roi_params, forced_selection, cv_package)
+function [roi_streams, frameRate] = mit_select_region_frames(vidFolder, roi_params, forced_selection, cv_package)
     % Constants
     SETTLEMENT_TIME = 0.5; %seconds
     nChannels = 3;
@@ -11,7 +11,7 @@ function [roi_streams] = mit_select_region_frames(vidFolder, roi_params, forced_
     vidHeight = size(vid, 1);
     vidWidth = size(vid, 2);
     vidLen = size(vid, 4);
-    if ~exist([vidFolder '/vid_specs.txt'])
+    if ~exist(fullfile(vidFolder, 'vid_specs.txt'))
         error('No vid_specs.txt file to get frame rate from.')
     end
     frameRate = textscan(fopen([vidFolder '/vid_specs.txt']), '%d, %d');
@@ -33,11 +33,14 @@ function [roi_streams] = mit_select_region_frames(vidFolder, roi_params, forced_
         % Separate ROIs in each frame into their own streams (represented as 3-D arrays)
         % Extract the ROI for each face
         for j = 1 : length(full_masks)
+            full_mask = full_masks{j};
+            roi_mask = roi_masks{j, 1};
+
             roi_stream = [];
             frame_index = first_frame_index;
             for i = 0 : vidLen - first_frame_index
-                roi = uint8(bsxfun(@times, full_masks{j}, vid(:, :, :, frame_index)));
-                roi_stream = cat(time_dim, roi_stream, imcrop(roi, roi_masks{j, 1}));
+                roi = uint8(bsxfun(@times, full_mask, vid(:, :, :, frame_index)));
+                roi_stream = cat(time_dim, roi_stream, imcrop(roi, roi_mask));
 
                 frame_index = frame_index + 1;
             end

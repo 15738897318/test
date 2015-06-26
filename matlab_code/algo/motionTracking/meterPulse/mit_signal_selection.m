@@ -16,7 +16,6 @@ function signals = mit_signal_selection(features_pos, samplingRate)
 		% Transform the features
 		transformed_features = original_features * transform_coeffs;
 
-
 		%% === Select signal based on periodicity (Section 3.4 in paper)
 		% Calculate the power spectra for the features up to Nyquist frequency
 		power_spectra = abs(fft(transformed_features));

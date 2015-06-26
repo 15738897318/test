@@ -41,7 +41,7 @@ function signals = mit_peak_detection(signals, samplingRate)
 		scatter(peaks(:, 1) / samplingRate, peaks(:, 2));
 		hold('off');
 		xlabel('Seconds');
-		legend(sprintf('HR: %g BMP', freq_pulse * 60), ...
+		legend(sprintf('HR: %g BMP', size(peaks, 1) / (length(time_series) / samplingRate) * 60), ...
 			   sprintf('HRV (SDNN): %.4g ms', hrv.sdnn));
 	end
 end

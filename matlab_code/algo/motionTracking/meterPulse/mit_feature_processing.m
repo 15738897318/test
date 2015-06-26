@@ -23,7 +23,7 @@ function features_pos = mit_feature_processing(features_pos, freq_params)
 		for j = 1 : length(features_pos{i})
 			temp = spline([1 : 1 : size(features_pos{i}{j}, 1)], ...
 										shiftdim(features_pos{i}{j}, length(size(features_pos{i}{j})) - 1), ...
-										[1 : (freq_params.current_freq / freq_params.new_freq) : size(features_pos{i}{j}, 1)]);
+										[1 : (freq_params.original_freq / freq_params.new_freq) : size(features_pos{i}{j}, 1)]);
 			features_pos{i}{j} = shiftdim(temp, length(size(temp)) - 1);
 		end
 
