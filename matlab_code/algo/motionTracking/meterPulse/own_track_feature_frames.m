@@ -1,4 +1,4 @@
-function [features_pos] = mit_track_feature_video(vid_array, features_def, cv_package)    
+function [features_pos] = own_track_feature_frames(vid_array, features_def, cv_package)    
     vid_array_sz = size(vid_array);
     time_dim = length(vid_array_sz);
 
@@ -12,17 +12,24 @@ function [features_pos] = mit_track_feature_video(vid_array, features_def, cv_pa
     % Get frame 1 as the reference frame
     refframe = eval(['vid_array', '(', dim_slice_pad, '1', ')']);
 
+    % Get feature points if the auto-mode is used
+    if (isempty(features_def)) && (strcmpi(cv_package, 'opencv'))
+        greyframe = cv.cvtColor(refframe,'RGB2GRAY');
+        greyframe = cv.equalizeHist(greyframe);
+        features_def = cv.goodFeaturesToTrack(greyframe);
+    end
+
     % Perform optical-flow calculation using Lucas-Kanade method for each frame compared with frame 1
-    pos_array = {};
+    pos_array = cell(vid_array_sz(time_dim), length(features_def));
     for i = 1 : vid_array_sz(time_dim)
         % Get the current frame
         currframe = eval(['vid_array', '(', dim_slice_pad, num2str(i), ')']);
 
         % Perform optical-flow calculation for current frame
-        currpos = mit_track_feature_frame(currframe, refframe, features_def, cv_package);
+        currpos = own_track_feature_frame(currframe, refframe, features_def, cv_package);
 
         % Concatenate into result array
-        pos_array = cat(1, pos_array, currpos);
+        pos_array(i, :) = currpos;
     end
 
     features_pos = {};

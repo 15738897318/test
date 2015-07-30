@@ -1,4 +1,4 @@
-resultFolder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignal/Data/fieldData/fieldData-Results/Run 01';
+resultFolder = '/Users/misfit/Desktop/Codes - Local/Code - Active/bioSignal/Data/fieldData/fieldData-Results/Run 03';
 template_to_include = 'Finger';
 exportFlag = 1;
 
