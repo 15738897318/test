@@ -1,33 +1,44 @@
 function signals = own_signal_selection(features_pos, samplingRate, method)
-	RETAINED_PORTION_4_PCA = 0.75;
+	RETAINED_PORTION_4_COMPONENT_ANALYSIS = 0.75;
 
 	signals = cell(size(features_pos));
 	for i = 1 : length(features_pos)
 		%% === Perform PCA decomposition to project the feature movements into orthogonal space (Section 3.3 in paper)
-		% Define the data to include in PCA calculation
+		% Define the data to include in component-analysis calculation
 		original_features = cell2mat(features_pos{i});
 		l2_norms = sqrt(sum(original_features.^2, 2));
-		l2_threshold = prctile(l2_norms, RETAINED_PORTION_4_PCA * 100);
+		l2_threshold = prctile(l2_norms, RETAINED_PORTION_4_COMPONENT_ANALYSIS * 100);
 		reduced_features = original_features(l2_norms <= l2_threshold, :);
 
 		switch method
-		case 'pca'
-			% Calculate the PCA coefficients
-			transform_coeffs = pca(reduced_features);
-			
-			% Transform the features
-			transformed_features = original_features * transform_coeffs;
+			case 'pca'
+				% Calculate the PCA coefficients
+				transform_coeffs = pca(reduced_features);
+				
+				% Transform the features
+				transformed_features = original_features * transform_coeffs;
 
-		case 'ica'
-			% FastICA function has input/output in the form of NumOfSamples*NumOfSignals
-			transformed_features = fastica(reduced_features')';
+			case 'ica'
+				% FastICA function has input/output in the form of NumOfSamples*NumOfSignals
+				transformed_features = fastica(reduced_features')';
+
+			% case 'sc'
+			% 	% sparse coding parameters
+			% 	num_bases = 2^ceil(log(size(reduced_features, 2)) / log(2));
+			% 	beta = 0.4;
+			% 	batch_size = 1000;
+			% 	num_iters = 100;
+			%     sparsity_func = 'L1';
+			%     epsilon = [];
+
+			% 	[B, S, stat] = sparse_coding(reduced_features, num_bases, beta, sparsity_func, epsilon, num_iters, batch_size);
 		end
 
 
 		%% === Select signal based on periodicity (Section 3.4 in paper)
-		% Calculate the power spectra for the features up to Nyquist frequency
+		% Calculate the power spectra for the features up to Nyquist frequency, but not DC
 		power_spectra = abs(fft(transformed_features));
-		power_spectra = power_spectra(1 : ceil(size(power_spectra, 1) / 2), :);
+		power_spectra = power_spectra(2 : ceil(size(power_spectra, 1) / 2), :);
 
 		% Identify the periodicity as ratio of power contained in freq with max power & its 1st harmonic
 		periodicity_scores = zeros(1, size(power_spectra, 2));
