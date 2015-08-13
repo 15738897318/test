@@ -2,6 +2,7 @@ multiple_vids = true;
 
 vid_as_frames = true;
 vidSource = '~/Desktop/Codes - Local/Active/bioSignal/Data/motionAmp/frames-refpulsox/';
+% vidSource = '~/Desktop/Codes - Local/Active/bioSignal/Data/motionAmp/remnant/';
 
 % vid_as_frames = false;
 % vidSource = './test_data/videos/test.avi';
@@ -11,14 +12,19 @@ vidSource = '~/Desktop/Codes - Local/Active/bioSignal/Data/motionAmp/frames-refp
 % cell(1): upper left and bottom right corner of outer box as ratio of the full face-detection rectangle
 % cell(2): upper left and bottom right corner of outer box as ratio of the rectangle defined in cell(1)
 roi_params = {
-%               {[0.15, 0], [0.85, 0.2]}
- 			  {[0.25, 0], [0.75, 0.9]}, ...
- 			  {[0, 0.2], [1, 0.55]}
+                {[0.25, 0], [0.75, 0.9]}, ...  % Version 0 -- MIT paper
+                {[0, 0.2], [1, 0.55]}
+%                 {[0.15, 0], [0.85, 0.9]}, ...  % Version 1 -- Full face
+%                 {[0, 0], [0, 0]}
+%                 {[0.15, 0], [0.85, 0.2]},...   % Version 2 -- Forehead only
+%                 {[0, 0], [0, 0]}
+%                 {[0.15, 0.45], [0.85, 0.65]}, ... % Version 3 -- Mid-face only
+%                 {[0, 0], [0, 0]}
 			 };
 forced_selection = false;
 
 % Feature-marker def:
-NUMBER_OF_FEATURE_MARKERS_X = 10; % Number of markers in x dimension
+NUMBER_OF_FEATURE_MARKERS_X = 0; % Number of markers in x dimension
 NUMBER_OF_FEATURE_MARKERS_Y = 10; % Number of markers in y dimension
 
 % Upsampling
@@ -49,8 +55,9 @@ signal_separation_method = 'ica';
 %% %% ====== Load video source
 if multiple_vids
 	vid_list = dir(vidSource);
-	vid_list = {vid_list.name};
-	index = ismember(vid_list, {'.', '..', '.DS_Store'});
+	is_folders = [vid_list(:).isdir];
+	vid_list = {vid_list(is_folders).name};
+	index = ismember(vid_list, {'.', '..', 'graphs'});
 	vid_list(index) = [];
 
 	vid_list = fullfile(vidSource, vid_list);
@@ -166,8 +173,45 @@ for index = 1 : length(vid_list)
 	if multiple_vids
 		if isempty(features_def)
 			feature_type = 'auto';
+		else
+			feature_type = 'regular';
 		end
 		result_file = ['results-' feature_type '-' signal_separation_method '-' cv_package];
-		save([result_file '.mat'], 'results');
+		save(fullfile(vidSource, [result_file '.mat']), 'results');
 	end
+end
+
+%% Plot the results
+if multiple_vids
+    close all
+    
+	results_struct = [results{:, :}];
+	labels = {results_struct.source};
+	for i = 1 : length(labels)
+		temp = strsplit(labels{i}, '/');
+		labels{i} = temp{end};
+	end;
+	
+	plotBlandAltman([results_struct.freq_pulse] * 60, [results_struct.ref_pulse]);
+	title(result_file);
+	exportThisPlot('name', [result_file, '-BlAlt'], 'plotPath', fullfile(vidSource, 'graphs'));
+	exportThisPlot('name', [result_file, '-BlAlt'], 'plotPath', fullfile(vidSource, 'graphs'), 'plotType', 'fig');
+
+	figure();
+	scatter([results_struct.ref_pulse], [results_struct.freq_pulse] * 60);
+	text([results_struct.ref_pulse], [results_struct.freq_pulse] * 60, labels);
+	refline([1 0]);
+    title(result_file);
+	xlabel('Reference - Average HR (BMP) from pulsox');
+	ylabel('Heart-rate result of Pulsar (BMP)');
+	exportThisPlot('name', result_file, 'plotPath', fullfile(vidSource, 'graphs'));
+	exportThisPlot('name', result_file, 'plotPath', fullfile(vidSource, 'graphs'), 'plotType', 'fig');
+
+	figure();
+	bar([results_struct.freq_pulse] * 60 ./ [results_struct.ref_pulse] * 100 - 100);
+	text([1 : length(results_struct)], [results_struct.freq_pulse] * 60 ./ [results_struct.ref_pulse] * 100 - 100, labels);
+    title(result_file);
+	ylabel('Difference between Pulsar & pulsox HRs (%)');
+	exportThisPlot('name', [result_file, '-Rel'], 'plotPath', fullfile(vidSource, 'graphs'));
+	exportThisPlot('name', [result_file, '-Rel'], 'plotPath', fullfile(vidSource, 'graphs'), 'plotType', 'fig');
 end
