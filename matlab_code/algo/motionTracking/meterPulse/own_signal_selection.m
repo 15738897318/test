@@ -1,4 +1,4 @@
-function signals = own_signal_selection(features_pos, samplingRate, method)
+function signals = own_signal_selection(features_pos, samplingRate, method, freq_range)
 	RETAINED_PORTION_4_COMPONENT_ANALYSIS = 0.75;
 
 	signals = cell(size(features_pos));
@@ -19,8 +19,11 @@ function signals = own_signal_selection(features_pos, samplingRate, method)
 				transformed_features = original_features * transform_coeffs;
 
 			case 'ica'
+				% Re-intialise the random-number generator every time
+				rng(2^10);
+
 				% FastICA function has input/output in the form of NumOfSamples*NumOfSignals
-				transformed_features = fastica(reduced_features')';
+				transformed_features = fastica(reduced_features', 'verbose', 'on')';
 
 			% case 'sc'
 			% 	% sparse coding parameters
@@ -46,10 +49,16 @@ function signals = own_signal_selection(features_pos, samplingRate, method)
 		for j = 1 : length(max_freq)
 			periodicity_scores(j) = (max_power(j) + power_spectra((max_freq(j) - 1) * 2 + 1, j)) / sum(power_spectra(:, j), 1);
 		end
+		max_freq = max_freq / size(transformed_features, 1) * samplingRate;
 
-		% Select the signal with the highest periodicity score
+		% Select the signal with the highest periodicity score whose peak falls within the freq range
+        eligible_ind = (max_freq >= freq_range(1)) & (max_freq <= freq_range(2));
+        max_freq = max_freq(eligible_ind);
+        periodicity_scores = periodicity_scores(eligible_ind);
+        transformed_features = transformed_features(:, eligible_ind);
+
 		[~, signal_index] = max(periodicity_scores);
 		signals{i}.timeseries = transformed_features(:, signal_index);
-		signals{i}.freq_pulse = max_freq(signal_index) / length(signals{i}.timeseries) * samplingRate;
+		signals{i}.freq_pulse = max_freq(signal_index);
 	end
 end

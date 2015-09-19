@@ -1,6 +1,7 @@
 function [roi_streams, frameRate] = mit_select_region_frames(vidFolder, roi_params, forced_selection, cv_package)
     % Constants
     SETTLEMENT_TIME = 0.5; %seconds
+    %SETTLEMENT_TIME = 5*rand; %seconds
     nChannels = 3;
     addpath(genpath('../../../tools'))
 
